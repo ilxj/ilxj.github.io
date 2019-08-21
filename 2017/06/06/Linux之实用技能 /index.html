@@ -1,0 +1,1211 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="工具,Linux," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="查看机器是多少位
+方法一12&amp;gt;&amp;gt;&amp;gt;$ getconf LONG_BIT&amp;gt;&amp;gt;&amp;gt;$ 64
+方法二12&amp;gt;&amp;gt;&amp;gt;$ uname -a&amp;gt;&amp;gt;&amp;gt;$ Linux alex-virtual-machine 3.16.0-30-generic #40~14.04.1-Ubuntu SMP Thu Jan 15 17:43:14 UTC 2015 x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux之实用技能">
+<meta property="og:url" content="http://lxj-life.com/2017/06/06/Linux之实用技能 /index.html">
+<meta property="og:site_name" content="AlexLin">
+<meta property="og:description" content="查看机器是多少位
+方法一12&amp;gt;&amp;gt;&amp;gt;$ getconf LONG_BIT&amp;gt;&amp;gt;&amp;gt;$ 64
+方法二12&amp;gt;&amp;gt;&amp;gt;$ uname -a&amp;gt;&amp;gt;&amp;gt;$ Linux alex-virtual-machine 3.16.0-30-generic #40~14.04.1-Ubuntu SMP Thu Jan 15 17:43:14 UTC 2015 x">
+<meta property="og:updated_time" content="2019-08-21T11:44:45.600Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux之实用技能">
+<meta name="twitter:description" content="查看机器是多少位
+方法一12&amp;gt;&amp;gt;&amp;gt;$ getconf LONG_BIT&amp;gt;&amp;gt;&amp;gt;$ 64
+方法二12&amp;gt;&amp;gt;&amp;gt;$ uname -a&amp;gt;&amp;gt;&amp;gt;$ Linux alex-virtual-machine 3.16.0-30-generic #40~14.04.1-Ubuntu SMP Thu Jan 15 17:43:14 UTC 2015 x">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+<script>
+  (function(){
+    if(''){
+      if (prompt('请输入文章密码','') !== ''){
+        alert('密码错误！');
+        history.back();
+      }
+    }
+  })();
+</script>
+
+
+
+  <link rel="canonical" href="http://lxj-life.com/2017/06/06/Linux之实用技能 /"/>
+
+
+
+
+
+  <title> Linux之实用技能 | AlexLin </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3f2517f772097ad50d3aaf0f1cf3bde0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AlexLin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-wulilove">
+          <a href="/wulilove" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            menu.wulilove
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://lxj-life.com/2017/06/06/Linux之实用技能 /">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex.Lin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://upload-images.jianshu.io/upload_images/1736256-0345dfb2d5302036.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AlexLin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux之实用技能
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-06T22:29:00+08:00">
+                2017-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,667
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><h2 id="查看机器是多少位"><a href="#查看机器是多少位" class="headerlink" title="查看机器是多少位"></a>查看机器是多少位</h2><hr>
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;$ getconf LONG_BIT</div><div class="line">&gt;&gt;&gt;$ 64</div></pre></td></tr></table></figure>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;$ uname -a</div><div class="line">&gt;&gt;&gt;$ Linux alex-virtual-machine 3.16.0-30-generic #40~14.04.1-Ubuntu SMP Thu Jan 15 17:43:14 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;$ uname -p</div><div class="line">&gt;&gt;&gt;$ x86_64</div></pre></td></tr></table></figure>
+<h2 id="实用命令"><a href="#实用命令" class="headerlink" title="实用命令"></a>实用命令</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">wc</td>
+<td>统计文本中行数、字数、字符数</td>
+</tr>
+<tr>
+<td style="text-align:center">stat</td>
+<td>显示指定文件的详细信息，比ls更详细</td>
+</tr>
+<tr>
+<td style="text-align:center">who</td>
+<td>显示在线登陆用户</td>
+</tr>
+<tr>
+<td style="text-align:center">whoami</td>
+<td>显示当前操作用户</td>
+</tr>
+<tr>
+<td style="text-align:center">hostname</td>
+<td>显示主机名</td>
+</tr>
+<tr>
+<td style="text-align:center">uname</td>
+<td>显示系统信息</td>
+</tr>
+<tr>
+<td style="text-align:center">top</td>
+<td>动态显示当前耗费资源最多进程信息</td>
+</tr>
+<tr>
+<td style="text-align:center">ps</td>
+<td>显示瞬间进程状态 ps -aux</td>
+</tr>
+<tr>
+<td style="text-align:center">du</td>
+<td>查看目录大小 du -h /home带有单位显示目录信息</td>
+</tr>
+<tr>
+<td style="text-align:center">df</td>
+<td>查看磁盘大小 df -h 带有单位显示磁盘信息</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Linux-代码文件大小、行数、字节数统计"><a href="#Linux-代码文件大小、行数、字节数统计" class="headerlink" title="Linux 代码文件大小、行数、字节数统计"></a>Linux 代码文件大小、行数、字节数统计</h2><h3 id="命令解释"><a href="#命令解释" class="headerlink" title="命令解释"></a>命令解释</h3><p><strong><em>语法：wc [选项] 文件…</em></strong></p>
+<blockquote>
+<p>说明：该命令统计给定文件中的字节数、字数、行数。如果没有给出文件名，则从标准输入读取。wc同时也给出所有指定文件的总统计数。字是由空格字符区分开的最大字符串。</p>
+</blockquote>
+<p>该命令各选项含义如下：</p>
+<ul>
+<li>- c 统计字节数。</li>
+<li>- l 统计行数。</li>
+<li>- w 统计字数。</li>
+</ul>
+<p>这些选项可以组合使用。</p>
+<p>输出列的顺序和数目不受选项的顺序和数目的影响。</p>
+<p>总是按下述顺序显示并且每项最多一列。</p>
+<p>行数、字数、字节数、文件名</p>
+<p>如果命令行中没有文件名，则输出中不出现文件名。</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><h4 id="查看某个文件"><a href="#查看某个文件" class="headerlink" title="查看某个文件"></a>查看某个文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Alex@alex:blog(master *)$wc -lcw package.json</div><div class="line">      24      44     618 package.json</div></pre></td></tr></table></figure>
+<h4 id="查看某目录下的所有文件-包括子目录"><a href="#查看某目录下的所有文件-包括子目录" class="headerlink" title="查看某目录下的所有文件(包括子目录)"></a>查看某目录下的所有文件(包括子目录)</h4><h5 id="查看blog-目录下命名后缀是html-文件所有的数量"><a href="#查看blog-目录下命名后缀是html-文件所有的数量" class="headerlink" title="查看blog 目录下命名后缀是html 文件所有的数量"></a>查看blog 目录下命名后缀是html 文件所有的数量</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Alex@alex:blog$find blog/ -name &quot;*.html&quot;|wc -l</div><div class="line">     199</div></pre></td></tr></table></figure>
+<h4 id="目录下所有md文件代码行数"><a href="#目录下所有md文件代码行数" class="headerlink" title="目录下所有md文件代码行数"></a>目录下所有md文件代码行数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find blog/ -name &quot;*.md&quot; |xargs cat|wc -l</div></pre></td></tr></table></figure>
+<p>或<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wc -l `find ./ -name &quot;*.md&quot;`|tail -n1</div></pre></td></tr></table></figure></p>
+<h4 id="统计当前目录下文件个数"><a href="#统计当前目录下文件个数" class="headerlink" title="统计当前目录下文件个数"></a>统计当前目录下文件个数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls -l |grep &quot;^-&quot;|wc -l</div></pre></td></tr></table></figure>
+<h4 id="统计当前文件夹下目录的个数"><a href="#统计当前文件夹下目录的个数" class="headerlink" title="统计当前文件夹下目录的个数"></a>统计当前文件夹下目录的个数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls -l |grep &quot;^d&quot;|wc -l</div></pre></td></tr></table></figure>
+<h4 id="统计当前文件夹下文件的个数，包括子文件夹里的"><a href="#统计当前文件夹下文件的个数，包括子文件夹里的" class="headerlink" title="统计当前文件夹下文件的个数，包括子文件夹里的"></a>统计当前文件夹下文件的个数，包括子文件夹里的</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls -lR|grep &quot;^-&quot;|wc -l</div></pre></td></tr></table></figure>
+<h4 id="统计文件夹下目录的个数，包括子文件夹里的"><a href="#统计文件夹下目录的个数，包括子文件夹里的" class="headerlink" title="统计文件夹下目录的个数，包括子文件夹里的"></a>统计文件夹下目录的个数，包括子文件夹里的</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls -lR|grep &quot;^d&quot;|wc -l</div></pre></td></tr></table></figure>
+<h2 id="性能分析工具-TOP命令"><a href="#性能分析工具-TOP命令" class="headerlink" title="性能分析工具 TOP命令"></a>性能分析工具 TOP命令</h2><blockquote>
+<p>TOP命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况</p>
+</blockquote>
+<p><strong>命令格式：</strong><br>top [-] [d] [p] [q] [c] [C] [S]    [n]</p>
+<p><strong>查看某个用户下的所有进程</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">alex@alex-virtual-machine:/mnt/hgfs/gagent/working/demo$ top -u alex</div><div class="line"></div><div class="line">PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND</div><div class="line">2763 alex      20   0 80420  16m  10m S   10  1.6   0:11.69 unity-panel-ser</div><div class="line">2865 alex      20   0 62216 4160 3268 S    6  0.4   0:05.54 hud-service</div><div class="line">2617 alex      20   0  4544 2144  632 S    4  0.2   0:05.30 dbus-daemon</div><div class="line">2646 alex      20   0  134m  12m 9884 S    2  1.2   0:09.35 metacity</div><div class="line">2667 alex      20   0  107m  22m  17m S    2  2.3   0:09.72 unity-2d-panel</div><div class="line">2679 alex      20   0 49608 8884 6936 S    2  0.9   0:02.26 bamfdaemon</div><div class="line">2681 alex      20   0  104m  13m  10m S    2  1.4   0:02.65 nm-apple</div></pre></td></tr></table></figure></p>
+<p><strong>查看单独某个进程</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">alex@alex-virtual-machine:/mnt/hgfs/gagent/working/demo$ ps -a</div><div class="line">  PID TTY          TIME CMD</div><div class="line"> 9463 pts/1    00:00:00 gizwits</div><div class="line"> 9471 pts/2    00:00:00 ps</div><div class="line">alex@alex-virtual-machine:/mnt/hgfs/gagent/working/demo$ top -p 9463</div><div class="line">PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND</div><div class="line">9463 alex      20   0 30424 1152  944 S    2  0.1   0:00.74 gizwits</div></pre></td></tr></table></figure></p>
+<p><strong>说明</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">PID</td>
+<td>进程的ID</td>
+</tr>
+<tr>
+<td style="text-align:center">USER</td>
+<td>进程所有者</td>
+</tr>
+<tr>
+<td style="text-align:center">PR</td>
+<td>进程的优先级别，越小越优先被执行</td>
+</tr>
+<tr>
+<td style="text-align:center">NInice</td>
+<td>值</td>
+</tr>
+<tr>
+<td style="text-align:center">VIRT</td>
+<td>进程占用的虚拟内存</td>
+</tr>
+<tr>
+<td style="text-align:center">RES</td>
+<td>进程占用的物理内存</td>
+</tr>
+<tr>
+<td style="text-align:center">SHR</td>
+<td>进程使用的共享内存</td>
+</tr>
+<tr>
+<td style="text-align:center">S</td>
+<td>进程的状态。S表示休眠，R表示正在运行，Z表示僵死状态，N表示该进程优先值为负数</td>
+</tr>
+<tr>
+<td style="text-align:center">%CPU</td>
+<td>进程占用CPU的使用率</td>
+</tr>
+<tr>
+<td style="text-align:center">%MEM</td>
+<td>进程使用的物理内存和总内存的百分比</td>
+</tr>
+<tr>
+<td style="text-align:center">TIME+</td>
+<td>该进程启动后占用的总的CPU时间，即占用CPU使用时间的累加值。</td>
+</tr>
+<tr>
+<td style="text-align:center">COMMAND</td>
+<td>进程启动命令名称</td>
+</tr>
+</tbody>
+</table>
+<h2 id="运行日志输出到终端和保存起来"><a href="#运行日志输出到终端和保存起来" class="headerlink" title="运行日志输出到终端和保存起来"></a>运行日志输出到终端和保存起来</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 运行targe 目标，且同时把日志输出到终端和保存到文件log.txt</div><div class="line">&gt;&gt;&gt;$ ./targe | tee log.txt</div></pre></td></tr></table></figure>
+<h2 id="tree-命令"><a href="#tree-命令" class="headerlink" title="tree 命令"></a>tree 命令</h2><hr>
+<p>此命令可以用树🌲形状显示目录结构；</p>
+<h3 id="mac-下安装"><a href="#mac-下安装" class="headerlink" title="mac 下安装"></a>mac 下安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install tree</div></pre></td></tr></table></figure>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tree(选项)(参数)</div></pre></td></tr></table></figure>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">-a：显示所有文件和目录；</div><div class="line">-A：使用ASNI绘图字符显示树状图而非以ASCII字符组合；</div><div class="line">-C：在文件和目录清单加上色彩，便于区分各种类型；</div><div class="line">-d：先是目录名称而非内容；</div><div class="line">-D：列出文件或目录的更改时间；</div><div class="line">-f：在每个文件或目录之前，显示完整的相对路径名称；</div><div class="line">-F：在执行文件，目录，Socket，符号连接，管道名称名称，各自加上&quot;*&quot;，&quot;/&quot;，&quot;@&quot;，&quot;|&quot;号；</div><div class="line">-g：列出文件或目录的所属群组名称，没有对应的名称时，则显示群组识别码；</div><div class="line">-i：不以阶梯状列出文件和目录名称；</div><div class="line">-l：&lt;范本样式&gt; 不显示符号范本样式的文件或目录名称；</div><div class="line">-l：如遇到性质为符号连接的目录，直接列出该连接所指向的原始目录；</div><div class="line">-n：不在文件和目录清单加上色彩；</div><div class="line">-N：直接列出文件和目录名称，包括控制字符；</div><div class="line">-p：列出权限标示；</div><div class="line">-P：&lt;范本样式&gt; 只显示符合范本样式的文件和目录名称；</div><div class="line">-q：用“？”号取代控制字符，列出文件和目录名称；</div><div class="line">-s：列出文件和目录大小；</div><div class="line">-t：用文件和目录的更改时间排序；</div><div class="line">-u：列出文件或目录的拥有者名称，没有对应的名称时，则显示用户识别码；</div><div class="line">-x：将范围局限在现行的文件系统中，若指定目录下的某些子目录，其存放于另一个文件系统上，则将该目录予以排除在寻找范围外。</div></pre></td></tr></table></figure>
+<h2 id="查看socket-端口占用情况"><a href="#查看socket-端口占用情况" class="headerlink" title="查看socket 端口占用情况"></a>查看socket 端口占用情况</h2><p><strong><code>netstat -tunlp |grep 端口号</code></strong></p>
+<p><strong>说明</strong></p>
+<blockquote>
+<p>-t (tcp) 仅显示tcp相关选项<br>                                 -u (udp)仅显示udp相关选项<br>                                 -n 拒绝显示别名，能显示数字的全部转化为数字<br>                                 -l 仅列出在Listen(监听)的服务状态<br>                                 -p 显示建立相关链接的程序名</p>
+</blockquote>
+<h2 id="显示命令执行时的参数"><a href="#显示命令执行时的参数" class="headerlink" title="显示命令执行时的参数"></a>显示命令执行时的参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps -aux | grep CMD</div></pre></td></tr></table></figure>
+<h2 id="ubuntu-防火墙"><a href="#ubuntu-防火墙" class="headerlink" title="ubuntu 防火墙"></a>ubuntu 防火墙</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查看状态</span></div><div class="line">sudo ufw status  </div><div class="line"><span class="comment"># 开启</span></div><div class="line">sudo ufw <span class="built_in">enable</span>  </div><div class="line"><span class="comment"># 默认关闭外部访问</span></div><div class="line">sudo ufw default deny </div><div class="line"><span class="comment"># 新增端口</span></div><div class="line">sudo ufw allow 8080  </div><div class="line"><span class="comment"># 删除端口</span></div><div class="line">sudo ufw delete allow 8080</div><div class="line"><span class="comment"># 允许特定来源的ip地址访问</span></div><div class="line">sudo ufw allow from 192.168.1.1</div></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="http://www.comptechdoc.org/os/linux/programming/c/linux_pgc.html" target="_blank" rel="external">http://www.comptechdoc.org/os/linux/programming/c/linux_pgc.html</a></li>
+<li><a href="http://man.linuxde.net/" target="_blank" rel="external">Linux在线man</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>你的支持使我不断前进！Enjoy it ? Donate me !</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://upload-images.jianshu.io/upload_images/1736256-3ba20f6256d1132d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alex.Lin WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://upload-images.jianshu.io/upload_images/1736256-6b41a0e538d4aa27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alex.Lin Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/工具/" rel="tag"><i class="fa fa-tag"></i> 工具</a>
+          
+            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/06/Linux之CoreDump/" rel="next" title="Linux之CoreDump">
+                <i class="fa fa-chevron-left"></i> Linux之CoreDump
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/06/Linux之服务安装/" rel="prev" title="Linux之服务安装">
+                Linux之服务安装 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://upload-images.jianshu.io/upload_images/1736256-0345dfb2d5302036.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+               alt="Alex.Lin" />
+          <p class="site-author-name" itemprop="name">Alex.Lin</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ilxj" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2011xiaojun" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/3add4c9179b3" target="_blank" title="JianShu">
+                  
+                    <i class="fa fa-fw fa-heartbeat"></i>
+                  
+                  JianShu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://upload-images.jianshu.io/upload_images/1736256-4c85a3f42e295e7e.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" title="Wchat">
+                  
+                    <i class="fa fa-fw fa-weixin"></i>
+                  
+                  Wchat
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看机器是多少位"><span class="nav-number">1.</span> <span class="nav-text">查看机器是多少位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一"><span class="nav-number">1.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二"><span class="nav-number">1.2.</span> <span class="nav-text">方法二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法三"><span class="nav-number">1.3.</span> <span class="nav-text">方法三</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实用命令"><span class="nav-number">2.</span> <span class="nav-text">实用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-代码文件大小、行数、字节数统计"><span class="nav-number">3.</span> <span class="nav-text">Linux 代码文件大小、行数、字节数统计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命令解释"><span class="nav-number">3.1.</span> <span class="nav-text">命令解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-number">3.2.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看某个文件"><span class="nav-number">3.2.1.</span> <span class="nav-text">查看某个文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看某目录下的所有文件-包括子目录"><span class="nav-number">3.2.2.</span> <span class="nav-text">查看某目录下的所有文件(包括子目录)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查看blog-目录下命名后缀是html-文件所有的数量"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">查看blog 目录下命名后缀是html 文件所有的数量</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目录下所有md文件代码行数"><span class="nav-number">3.2.3.</span> <span class="nav-text">目录下所有md文件代码行数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#统计当前目录下文件个数"><span class="nav-number">3.2.4.</span> <span class="nav-text">统计当前目录下文件个数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#统计当前文件夹下目录的个数"><span class="nav-number">3.2.5.</span> <span class="nav-text">统计当前文件夹下目录的个数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#统计当前文件夹下文件的个数，包括子文件夹里的"><span class="nav-number">3.2.6.</span> <span class="nav-text">统计当前文件夹下文件的个数，包括子文件夹里的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#统计文件夹下目录的个数，包括子文件夹里的"><span class="nav-number">3.2.7.</span> <span class="nav-text">统计文件夹下目录的个数，包括子文件夹里的</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能分析工具-TOP命令"><span class="nav-number">4.</span> <span class="nav-text">性能分析工具 TOP命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行日志输出到终端和保存起来"><span class="nav-number">5.</span> <span class="nav-text">运行日志输出到终端和保存起来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tree-命令"><span class="nav-number">6.</span> <span class="nav-text">tree 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mac-下安装"><span class="nav-number">6.1.</span> <span class="nav-text">mac 下安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">6.2.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选项"><span class="nav-number">6.3.</span> <span class="nav-text">选项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看socket-端口占用情况"><span class="nav-number">7.</span> <span class="nav-text">查看socket 端口占用情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示命令执行时的参数"><span class="nav-number">8.</span> <span class="nav-text">显示命令执行时的参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu-防火墙"><span class="nav-number">9.</span> <span class="nav-text">ubuntu 防火墙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">10.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alex.Lin</span>
+</div>
+
+
+<!--
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+-->
+<span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+<!--
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+-->
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2140501"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+
+  
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"hijiki","bottom":-30});</script></body>
+</html>

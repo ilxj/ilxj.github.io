@@ -1,0 +1,1312 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Linux,raspberry," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="WiFi 相关iwlist 命令
+
+iwlist 命令：用于对/proc/net/wireless文件进行分析，得出无线网卡相关信息
+
+热点扫描1sudo iwlist wlan0 scan">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派之Zero-W-01">
+<meta property="og:url" content="http://lxj-life.com/2018/09/02/树莓派之Zero-W/index.html">
+<meta property="og:site_name" content="AlexLin">
+<meta property="og:description" content="WiFi 相关iwlist 命令
+
+iwlist 命令：用于对/proc/net/wireless文件进行分析，得出无线网卡相关信息
+
+热点扫描1sudo iwlist wlan0 scan">
+<meta property="og:image" content="http://lxj-life.com/images/pi_gpio.png">
+<meta property="og:updated_time" content="2019-08-21T07:23:23.067Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="树莓派之Zero-W-01">
+<meta name="twitter:description" content="WiFi 相关iwlist 命令
+
+iwlist 命令：用于对/proc/net/wireless文件进行分析，得出无线网卡相关信息
+
+热点扫描1sudo iwlist wlan0 scan">
+<meta name="twitter:image" content="http://lxj-life.com/images/pi_gpio.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+<script>
+  (function(){
+    if(''){
+      if (prompt('请输入文章密码','') !== ''){
+        alert('密码错误！');
+        history.back();
+      }
+    }
+  })();
+</script>
+
+
+
+  <link rel="canonical" href="http://lxj-life.com/2018/09/02/树莓派之Zero-W/"/>
+
+
+
+
+
+  <title> 树莓派之Zero-W-01 | AlexLin </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3f2517f772097ad50d3aaf0f1cf3bde0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AlexLin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-wulilove">
+          <a href="/wulilove" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            menu.wulilove
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://lxj-life.com/2018/09/02/树莓派之Zero-W/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex.Lin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://upload-images.jianshu.io/upload_images/1736256-0345dfb2d5302036.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AlexLin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                树莓派之Zero-W-01
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-02T15:01:11+08:00">
+                2018-09-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  5,303
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  29
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><h2 id="WiFi-相关"><a href="#WiFi-相关" class="headerlink" title="WiFi 相关"></a>WiFi 相关</h2><h3 id="iwlist-命令"><a href="#iwlist-命令" class="headerlink" title="iwlist 命令"></a>iwlist 命令</h3><hr>
+<blockquote>
+<p><strong>iwlist 命令：用于对/proc/net/wireless文件进行分析，得出无线网卡相关信息</strong></p>
+</blockquote>
+<h4 id="热点扫描"><a href="#热点扫描" class="headerlink" title="热点扫描"></a>热点扫描</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo iwlist wlan0 scan</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">pi@raspberrypi:~$ sudo iwlist --help</div><div class="line">Usage: iwlist [interface] scanning [essid NNN] [last]</div><div class="line">              [interface] frequency</div><div class="line">              [interface] channel</div><div class="line">              [interface] bitrate</div><div class="line">              [interface] rate</div><div class="line">              [interface] encryption</div><div class="line">              [interface] keys</div><div class="line">              [interface] power</div><div class="line">              [interface] txpower</div><div class="line">              [interface] retry</div><div class="line">              [interface] ap</div><div class="line">              [interface] accesspoints</div><div class="line">              [interface] peers</div><div class="line">              [interface] event</div><div class="line">              [interface] auth</div><div class="line">              [interface] wpakeys</div><div class="line">              [interface] genie</div><div class="line">              [interface] modulation</div></pre></td></tr></table></figure>
+<p><strong>解说</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># iwlist wlan0 scanning   搜索当前无线网络</div><div class="line"># iwlist wlan0 frequency  显示频道信息</div><div class="line"># iwlist wlan0 rate       显示连接速度</div><div class="line"># iwlist wlan0 power      显示电源模式</div><div class="line"># iwlist wlan0 txpower    显示功耗</div><div class="line"># iwlist wlan0 retry      显示重试连接次数(网络不稳定查看)</div><div class="line"># iwlist wlan0 ap         显示热点信息</div><div class="line"># iwlist --help           显示帮助信息</div><div class="line"># iwlist --version        显示版本信息</div></pre></td></tr></table></figure></p>
+<h3 id="iwconfig-命令"><a href="#iwconfig-命令" class="headerlink" title="iwconfig 命令"></a>iwconfig 命令</h3><hr>
+<blockquote>
+<p>iwconfig 系统配置无线网络设备或显示无线网络设备信息。iwconfig 命令类似于ifconfig命令，但是他配置对象是无线网卡，它对网络设备进行无线操作，如设置无线通信频段</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">pi@raspberrypi:~$ iwconfig --help</div><div class="line">Usage: iwconfig [interface]</div><div class="line">                interface essid &#123;NNN|any|on|off&#125;</div><div class="line">                interface mode &#123;managed|ad-hoc|master|...&#125;</div><div class="line">                interface freq N.NNN[k|M|G]</div><div class="line">                interface channel N</div><div class="line">                interface bit &#123;N[k|M|G]|auto|fixed&#125;</div><div class="line">                interface rate &#123;N[k|M|G]|auto|fixed&#125;</div><div class="line">                interface enc &#123;NNNN-NNNN|off&#125;</div><div class="line">                interface key &#123;NNNN-NNNN|off&#125;</div><div class="line">                interface power &#123;period N|timeout N|saving N|off&#125;</div><div class="line">                interface nickname NNN</div><div class="line">                interface nwid &#123;NN|on|off&#125;</div><div class="line">                interface ap &#123;N|off|auto&#125;</div><div class="line">                interface txpower &#123;NmW|NdBm|off|auto&#125;</div><div class="line">                interface sens N</div><div class="line">                interface retry &#123;limit N|lifetime N&#125;</div><div class="line">                interface rts &#123;N|auto|fixed|off&#125;</div><div class="line">                interface frag &#123;N|auto|fixed|off&#125;</div><div class="line">                interface modulation &#123;11g|11a|CCK|OFDMg|...&#125;</div><div class="line">                interface commit</div><div class="line">       Check man pages for more details.</div></pre></td></tr></table></figure>
+<p><strong>解锁</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">auto        自动模式</div><div class="line">essid       设置ESSID</div><div class="line">nwid        设置网络ID</div><div class="line">freq        设置无线网络通信频段</div><div class="line">channel     设置无线网络通信频段</div><div class="line">sens        设置无线网络设备的感知阀值</div><div class="line">mode        设置无线网络设备的通信设备</div><div class="line">ap          强迫无线网卡向给定地址的接入点注册</div><div class="line">nick&lt;名字&gt;   为网卡设定别名</div><div class="line">rate&lt;速率&gt;   设定无线网卡的速率</div><div class="line">rts&lt;阀值&gt;    在传输数据包之前增加一次握手，确信信道在正常的</div><div class="line">power       无线网卡的功率设置</div></pre></td></tr></table></figure></p>
+<h3 id="iw-命令"><a href="#iw-命令" class="headerlink" title="iw 命令"></a>iw 命令</h3><hr>
+<blockquote>
+<p>iw 是一种新的基于 nl80211 的用于无线设备的CLI配置实用程序。它支持最近已添加到内核所有新的驱动程序。采用无线扩展接口的旧工具iwconfig已被废弃，强烈建议切换到 iw 和 nl80211。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div></pre></td><td class="code"><pre><div class="line">pi@raspberrypi:~$ iw --help</div><div class="line">Usage:  iw [options] command</div><div class="line">Options:</div><div class="line">        --debug         enable netlink debugging</div><div class="line">        --version       show version (4.9)</div><div class="line">Commands:</div><div class="line">        help [command]</div><div class="line">                Print usage for all or a specific command, e.g.</div><div class="line">                &quot;help wowlan&quot; or &quot;help wowlan enable&quot;.</div><div class="line"></div><div class="line">        event [-t|-r] [-f]</div><div class="line">                Monitor events from the kernel.</div><div class="line">                -t - print timestamp</div><div class="line">                -r - print relative timstamp</div><div class="line">                -f - print full frame for auth/assoc etc.</div><div class="line"></div><div class="line">        features</div><div class="line"></div><div class="line"></div><div class="line">        commands</div><div class="line">                list all known commands and their decimal &amp; hex value</div><div class="line"></div><div class="line">        phy</div><div class="line">        list</div><div class="line">                List all wireless devices and their capabilities.</div><div class="line"></div><div class="line">        phy &lt;phyname&gt; info</div><div class="line">                Show capabilities for the specified wireless device.</div><div class="line"></div><div class="line">        phy &lt;phyname&gt; channels</div><div class="line">                Show available channels.</div><div class="line"></div><div class="line">        dev</div><div class="line">                List all network interfaces for wireless hardware.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; info</div><div class="line">                Show information for this interface.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; del</div><div class="line">                Remove this virtual interface</div><div class="line"></div><div class="line">        dev &lt;devname&gt; interface add &lt;name&gt; type &lt;type&gt; [mesh_id &lt;meshid&gt;] [4addr on|off] [flags &lt;flag&gt;*] [addr &lt;mac-addr&gt;]</div><div class="line">        phy &lt;phyname&gt; interface add &lt;name&gt; type &lt;type&gt; [mesh_id &lt;meshid&gt;] [4addr on|off] [flags &lt;flag&gt;*] [addr &lt;mac-addr&gt;]</div><div class="line">                Add a new virtual interface with the given configuration.</div><div class="line">                Valid interface types are: managed, ibss, monitor, mesh, wds.</div><div class="line"></div><div class="line">                The flags are only used for monitor interfaces, valid flags are:</div><div class="line">                none:     no special flags</div><div class="line">                fcsfail:  show frames with FCS errors</div><div class="line">                control:  show control frames</div><div class="line">                otherbss: show frames from other BSSes</div><div class="line">                cook:     use cooked mode</div><div class="line">                active:   use active mode (ACK incoming unicast packets)</div><div class="line">                mumimo-groupid &lt;GROUP_ID&gt;: use MUMIMO according to a group id</div><div class="line">                mumimo-follow-mac &lt;MAC_ADDRESS&gt;: use MUMIMO according to a MAC address</div><div class="line"></div><div class="line">                The mesh_id is used only for mesh mode.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; ibss join &lt;SSID&gt; &lt;freq in MHz&gt; [NOHT|HT20|HT40+|HT40-|5MHz|10MHz|80MHz] [fixed-freq] [&lt;fixed bssid&gt;] [beacon-interval &lt;TU&gt;] [basic-rates &lt;rate in Mbps,rate2,...&gt;] [mcast-rate &lt;rate in Mbps&gt;] [key d:0:abcde]</div><div class="line">                Join the IBSS cell with the given SSID, if it doesn&apos;t exist create</div><div class="line">                it on the given frequency. When fixed frequency is requested, don&apos;t</div><div class="line">                join/create a cell on a different frequency. When a fixed BSSID is</div><div class="line">                requested use that BSSID and do not adopt another cell&apos;s BSSID even</div><div class="line">                if it has higher TSF and the same SSID. If an IBSS is created, create</div><div class="line">                it with the specified basic-rates, multicast-rate and beacon-interval.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; ibss leave</div><div class="line">                Leave the current IBSS cell.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; station set &lt;MAC address&gt; plink_action &lt;open|block&gt;</div><div class="line">                Set mesh peer link action for this station (peer).</div><div class="line"></div><div class="line">        dev &lt;devname&gt; station set &lt;MAC address&gt; vlan &lt;ifindex&gt;</div><div class="line">                Set an AP VLAN for this station.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; station set &lt;MAC address&gt; mesh_power_mode &lt;active|light|deep&gt;</div><div class="line">                Set link-specific mesh power mode for this station</div><div class="line"></div><div class="line">        dev &lt;devname&gt; station dump [-v]</div><div class="line">                List all stations known, e.g. the AP on managed interfaces</div><div class="line"></div><div class="line">        dev &lt;devname&gt; station del &lt;MAC address&gt; [subtype &lt;subtype&gt;] [reason-code &lt;code&gt;]</div><div class="line">                Remove the given station entry (use with caution!)</div><div class="line">                Example subtype values: 0xA (disassociation), 0xC (deauthentication)</div><div class="line"></div><div class="line">        dev &lt;devname&gt; station get &lt;MAC address&gt;</div><div class="line">                Get information for a specific station.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; survey dump</div><div class="line">                List all gathered channel survey data</div><div class="line"></div><div class="line">        dev &lt;devname&gt; ocb leave</div><div class="line">                Leave the OCB mode network.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; ocb join &lt;freq in MHz&gt; &lt;5MHz|10MHz&gt;</div><div class="line">                Join the OCB mode network.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; mesh leave</div><div class="line">                Leave a mesh.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; mesh join &lt;mesh ID&gt; [[freq &lt;freq in MHz&gt; &lt;NOHT|HT20|HT40+|HT40-|80MHz&gt;] [basic-rates &lt;rate in Mbps,rate2,...&gt;]], [mcast-rate &lt;rate in Mbps&gt;] [beacon-interval &lt;time in TUs&gt;] [dtim-period &lt;value&gt;] [vendor_sync on|off] [&lt;param&gt;=&lt;value&gt;]*</div><div class="line">                Join a mesh with the given mesh ID with frequency, basic-rates,</div><div class="line">                mcast-rate and mesh parameters. Basic-rates are applied only if</div><div class="line">                frequency is provided.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; mpath dump</div><div class="line">                List known mesh paths.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; mpath set &lt;destination MAC address&gt; next_hop &lt;next hop MAC address&gt;</div><div class="line">                Set an existing mesh path&apos;s next hop.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; mpath new &lt;destination MAC address&gt; next_hop &lt;next hop MAC address&gt;</div><div class="line">                Create a new mesh path (instead of relying on automatic discovery).</div><div class="line"></div><div class="line">        dev &lt;devname&gt; mpath del &lt;MAC address&gt;</div><div class="line">                Remove the mesh path to the given node.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; mpath get &lt;MAC address&gt;</div><div class="line">                Get information on mesh path to the given node.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; mpp dump</div><div class="line">                List known mesh proxy paths.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; mpp get &lt;MAC address&gt;</div><div class="line">                Get information on mesh proxy path to the given node.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; scan [-u] [freq &lt;freq&gt;*] [ies &lt;hex as 00:11:..&gt;] [meshid &lt;meshid&gt;] [lowpri,flush,ap-force] [randomise[=&lt;addr&gt;/&lt;mask&gt;]] [ssid &lt;ssid&gt;*|passive]</div><div class="line">                Scan on the given frequencies and probe for the given SSIDs</div><div class="line">                (or wildcard if not given) unless passive scanning is requested.</div><div class="line">                If -u is specified print unknown data in the scan results.</div><div class="line">                Specified (vendor) IEs must be well-formed.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; scan sched_stop</div><div class="line">                Stop an ongoing scheduled scan.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; scan sched_start [interval &lt;in_msecs&gt; | scan_plans [&lt;interval_secs:iterations&gt;*] &lt;interval_secs&gt;] [delay &lt;in_secs&gt;] [freqs &lt;freq&gt;+] [matches [ssid &lt;ssid&gt;]+]] [active [ssid &lt;ssid&gt;]+|passive] [randomise[=&lt;addr&gt;/&lt;mask&gt;]]</div><div class="line">                Start a scheduled scan at the specified interval on the given frequencies</div><div class="line">                with probing for the given SSIDs (or wildcard if not given) unless passive</div><div class="line">                scanning is requested.  If matches are specified, only matching results</div><div class="line">                will be returned.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; scan abort</div><div class="line">                Abort ongoing scan</div><div class="line"></div><div class="line">        dev &lt;devname&gt; scan trigger [freq &lt;freq&gt;*] [ies &lt;hex as 00:11:..&gt;] [meshid &lt;meshid&gt;] [lowpri,flush,ap-force] [randomise[=&lt;addr&gt;/&lt;mask&gt;]] [ssid &lt;ssid&gt;*|passive]</div><div class="line">                Trigger a scan on the given frequencies with probing for the given</div><div class="line">                SSIDs (or wildcard if not given) unless passive scanning is requested.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; scan dump [-u]</div><div class="line">                Dump the current scan results. If -u is specified, print unknown</div><div class="line">                data in scan results.</div><div class="line"></div><div class="line">        phy &lt;phyname&gt; reg get</div><div class="line">                Print out the devices&apos; current regulatory domain information.</div><div class="line"></div><div class="line">        reg get</div><div class="line">                Print out the kernel&apos;s current regulatory domain information.</div><div class="line"></div><div class="line">        reg set &lt;ISO/IEC 3166-1 alpha2&gt;</div><div class="line">                Notify the kernel about the current regulatory domain.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; auth &lt;SSID&gt; &lt;bssid&gt; &lt;type:open|shared&gt; &lt;freq in MHz&gt; [key 0:abcde d:1:6162636465]</div><div class="line">                Authenticate with the given network.</div><div class="line"></div><div class="line"></div><div class="line">        dev &lt;devname&gt; connect [-w] &lt;SSID&gt; [&lt;freq in MHz&gt;] [&lt;bssid&gt;] [key 0:abcde d:1:6162636465]</div><div class="line">                Join the network with the given SSID (and frequency, BSSID).</div><div class="line">                With -w, wait for the connect to finish or fail.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; disconnect</div><div class="line">                Disconnect from the current network.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; link</div><div class="line">                Print information about the current link, if any.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; offchannel &lt;freq&gt; &lt;duration&gt;</div><div class="line">                Leave operating channel and go to the given channel for a while.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; cqm rssi &lt;threshold|off&gt; [&lt;hysteresis&gt;]</div><div class="line">                Set connection quality monitor RSSI threshold.</div><div class="line"></div><div class="line"></div><div class="line">        phy &lt;phyname&gt; wowlan show</div><div class="line">                Show WoWLAN status.</div><div class="line"></div><div class="line">        phy &lt;phyname&gt; wowlan disable</div><div class="line">                Disable WoWLAN.</div><div class="line"></div><div class="line">        phy &lt;phyname&gt; wowlan enable [any] [disconnect] [magic-packet] [gtk-rekey-failure] [eap-identity-request] [4way-handshake] [rfkill-release] [net-detect [interval &lt;in_msecs&gt; | scan_plans [&lt;interval_secs:iterations&gt;*] &lt;interval_secs&gt;] [delay &lt;in_secs&gt;] [freqs &lt;freq&gt;+] [matches [ssid &lt;ssid&gt;]+]] [active [ssid &lt;ssid&gt;]+|passive] [randomise[=&lt;addr&gt;/&lt;mask&gt;]]] [tcp &lt;config-file&gt;] [patterns [offset1+]&lt;pattern1&gt; ...]</div><div class="line">                Enable WoWLAN with the given triggers.</div><div class="line">                Each pattern is given as a bytestring with &apos;-&apos; in places where any byte</div><div class="line">                may be present, e.g. 00:11:22:-:44 will match 00:11:22:33:44 and</div><div class="line">                00:11:22:33:ff:44 etc.</div><div class="line">                Offset and pattern should be separated by &apos;+&apos;, e.g. 18+43:34:00:12 will match &apos;43:34:00:12&apos; after 18 bytes of offset in Rx packet.</div><div class="line"></div><div class="line">                The TCP configuration file contains:</div><div class="line">                  source=ip[:port]</div><div class="line">                  dest=ip:port@mac</div><div class="line">                  data=&lt;hex data packet&gt;</div><div class="line">                  data.interval=seconds</div><div class="line">                  [wake=&lt;hex packet with masked out bytes indicated by &apos;-&apos;&gt;]</div><div class="line">                  [data.seq=len,offset[,start]]</div><div class="line">                  [data.tok=len,offset,&lt;token stream&gt;]</div><div class="line"></div><div class="line">                Net-detect configuration example:</div><div class="line">                 iw phy0 wowlan enable net-detect interval 5000 delay 30 freqs 2412 2422 matches ssid foo ssid bar</div><div class="line"></div><div class="line">        phy &lt;phyname&gt; coalesce show</div><div class="line">                Show coalesce status.</div><div class="line"></div><div class="line">        phy &lt;phyname&gt; coalesce disable</div><div class="line">                Disable coalesce.</div><div class="line"></div><div class="line">        phy &lt;phyname&gt; coalesce enable &lt;config-file&gt;</div><div class="line">                Enable coalesce with given configuration.</div><div class="line">                The configuration file contains coalesce rules:</div><div class="line">                  delay=&lt;delay&gt;</div><div class="line">                  condition=&lt;condition&gt;</div><div class="line">                  patterns=&lt;[offset1+]&lt;pattern1&gt;,&lt;[offset2+]&lt;pattern2&gt;,...&gt;</div><div class="line">                  delay=&lt;delay&gt;</div><div class="line">                  condition=&lt;condition&gt;</div><div class="line">                  patterns=&lt;[offset1+]&lt;pattern1&gt;,&lt;[offset2+]&lt;pattern2&gt;,...&gt;</div><div class="line">                  ...</div><div class="line">                delay: maximum coalescing delay in msec.</div><div class="line">                condition: 1/0 i.e. &apos;not match&apos;/&apos;match&apos; the patterns</div><div class="line">                patterns: each pattern is given as a bytestring with &apos;-&apos; in</div><div class="line">                places where any byte may be present, e.g. 00:11:22:-:44 will</div><div class="line">                match 00:11:22:33:44 and 00:11:22:33:ff:44 etc. Offset and</div><div class="line">                pattern should be separated by &apos;+&apos;, e.g. 18+43:34:00:12 will</div><div class="line">                match &apos;43:34:00:12&apos; after 18 bytes of offset in Rx packet.</div><div class="line"></div><div class="line"></div><div class="line">        dev &lt;devname&gt; roc start &lt;freq&gt; &lt;time in ms&gt;</div><div class="line"></div><div class="line"></div><div class="line">        wdev &lt;idx&gt; p2p stop</div><div class="line"></div><div class="line"></div><div class="line">        wdev &lt;idx&gt; p2p start</div><div class="line"></div><div class="line"></div><div class="line">        dev &lt;devname&gt; vendor recvbin &lt;oui&gt; &lt;subcmd&gt; &lt;filename|-|hex data&gt;</div><div class="line"></div><div class="line"></div><div class="line">        dev &lt;devname&gt; vendor recv &lt;oui&gt; &lt;subcmd&gt; &lt;filename|-|hex data&gt;</div><div class="line"></div><div class="line"></div><div class="line">        dev &lt;devname&gt; vendor send &lt;oui&gt; &lt;subcmd&gt; &lt;filename|-|hex data&gt;</div><div class="line"></div><div class="line"></div><div class="line">        phy &lt;phyname&gt; set antenna &lt;bitmap&gt; | all | &lt;tx bitmap&gt; &lt;rx bitmap&gt;</div><div class="line">                Set a bitmap of allowed antennas to use for TX and RX.</div><div class="line">                The driver may reject antenna configurations it cannot support.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; set txpower &lt;auto|fixed|limit&gt; [&lt;tx power in mBm&gt;]</div><div class="line">                Specify transmit power level and setting type.</div><div class="line"></div><div class="line">        phy &lt;phyname&gt; set txpower &lt;auto|fixed|limit&gt; [&lt;tx power in mBm&gt;]</div><div class="line">                Specify transmit power level and setting type.</div><div class="line"></div><div class="line">        phy &lt;phyname&gt; set distance &lt;auto|distance&gt;</div><div class="line">                Enable ACK timeout estimation algorithm (dynack) or set appropriate</div><div class="line">                coverage class for given link distance in meters.</div><div class="line">                To disable dynack set valid value for coverage class.</div><div class="line">                Valid values: 0 - 114750</div><div class="line"></div><div class="line">        phy &lt;phyname&gt; set coverage &lt;coverage class&gt;</div><div class="line">                Set coverage class (1 for every 3 usec of air propagation time).</div><div class="line">                Valid values: 0 - 255.</div><div class="line"></div><div class="line">        phy &lt;phyname&gt; set netns &#123; &lt;pid&gt; | name &lt;nsname&gt; &#125;</div><div class="line">                Put this wireless device into a different network namespace:</div><div class="line">                    &lt;pid&gt;    - change network namespace by process id</div><div class="line">                    &lt;nsname&gt; - change network namespace by name from /run/netns</div><div class="line">                               or by absolute path (man ip-netns)</div><div class="line"></div><div class="line"></div><div class="line">        phy &lt;phyname&gt; set retry [short &lt;limit&gt;] [long &lt;limit&gt;]</div><div class="line">                Set retry limit.</div><div class="line"></div><div class="line">        phy &lt;phyname&gt; set rts &lt;rts threshold|off&gt;</div><div class="line">                Set rts threshold.</div><div class="line"></div><div class="line">        phy &lt;phyname&gt; set frag &lt;fragmentation threshold|off&gt;</div><div class="line">                Set fragmentation threshold.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; set channel &lt;channel&gt; [HT20|HT40+|HT40-]</div><div class="line">        phy &lt;phyname&gt; set channel &lt;channel&gt; [HT20|HT40+|HT40-]</div><div class="line">        dev &lt;devname&gt; set freq &lt;freq&gt; [HT20|HT40+|HT40-]</div><div class="line">        dev &lt;devname&gt; set freq &lt;control freq&gt; [20|40|80|80+80|160] [&lt;center freq 1&gt;] [&lt;center freq 2&gt;]</div><div class="line">        phy &lt;phyname&gt; set freq &lt;freq&gt; [HT20|HT40+|HT40-]</div><div class="line">                Set frequency/channel the hardware is using, including HT</div><div class="line">                configuration.</div><div class="line"></div><div class="line">        phy &lt;phyname&gt; set name &lt;new name&gt;</div><div class="line">                Rename this wireless device.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; set mcast_rate &lt;rate in Mbps&gt;</div><div class="line">                Set the multicast bitrate.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; set peer &lt;MAC address&gt;</div><div class="line">                Set interface WDS peer.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; set noack_map &lt;map&gt;</div><div class="line">                Set the NoAck map for the TIDs. (0x0009 = BE, 0x0006 = BK, 0x0030 = VI, 0x00C0 = VO)</div><div class="line"></div><div class="line">        dev &lt;devname&gt; set 4addr &lt;on|off&gt;</div><div class="line">                Set interface 4addr (WDS) mode.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; set type &lt;type&gt;</div><div class="line">                Set interface type/mode.</div><div class="line">                Valid interface types are: managed, ibss, monitor, mesh, wds.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; set meshid &lt;meshid&gt;</div><div class="line">        dev &lt;devname&gt; set monitor &lt;flag&gt;*</div><div class="line">                Set monitor flags. Valid flags are:</div><div class="line">                none:     no special flags</div><div class="line">                fcsfail:  show frames with FCS errors</div><div class="line">                control:  show control frames</div><div class="line">                otherbss: show frames from other BSSes</div><div class="line">                cook:     use cooked mode</div><div class="line">                active:   use active mode (ACK incoming unicast packets)</div><div class="line">                mumimo-groupid &lt;GROUP_ID&gt;: use MUMIMO according to a group id</div><div class="line">                mumimo-follow-mac &lt;MAC_ADDRESS&gt;: use MUMIMO according to a MAC address</div><div class="line"></div><div class="line">        dev &lt;devname&gt; set mesh_param &lt;param&gt;=&lt;value&gt; [&lt;param&gt;=&lt;value&gt;]*</div><div class="line">                Set mesh parameter (run command without any to see available ones).</div><div class="line"></div><div class="line">        dev &lt;devname&gt; set power_save &lt;on|off&gt;</div><div class="line">                Set power save state to on or off.</div><div class="line"></div><div class="line">        dev &lt;devname&gt; set bitrates [legacy-&lt;2.4|5&gt; &lt;legacy rate in Mbps&gt;*] [ht-mcs-&lt;2.4|5&gt; &lt;MCS index&gt;*] [vht-mcs-&lt;2.4|5&gt; &lt;NSS:MCSx,MCSy... | NSS:MCSx-MCSy&gt;*] [sgi-2.4|lgi-2.4] [sgi-5|lgi-5]</div><div class="line">                Sets up the specified rate masks.</div><div class="line">                Not passing any arguments would clear the existing mask (if any).</div><div class="line"></div><div class="line">        dev &lt;devname&gt; get mesh_param [&lt;param&gt;]</div><div class="line">                Retrieve mesh parameter (run command without any to see available ones).</div><div class="line"></div><div class="line">        dev &lt;devname&gt; get power_save &lt;param&gt;</div><div class="line">                Retrieve power save state.</div><div class="line"></div><div class="line"></div><div class="line">Commands that use the netdev (&apos;dev&apos;) can also be given the</div><div class="line">&apos;wdev&apos; instead to identify the device.</div><div class="line"></div><div class="line">You can omit the &apos;phy&apos; or &apos;dev&apos; if the identification is unique,</div><div class="line">e.g. &quot;iw wlan0 info&quot; or &quot;iw phy0 info&quot;. (Don&apos;t when scripting.)</div><div class="line"></div><div class="line">Do NOT screenscrape this tool, we don&apos;t consider its output stable.</div></pre></td></tr></table></figure>
+<p><strong>解说</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># iw list                 # 获得所有设备的功能，如带宽信息（2.4GHz，和5GHz），和802.11n的信息</div><div class="line"># iw dev wlan0 scan       # 扫描</div><div class="line"># iw event                # 监听事件</div><div class="line"># iw dev wlan0 link       # 获得链路状态</div><div class="line"># iw wlan0 connect foo    # 连接到已禁用加密的AP，这里它的SSID是foo</div><div class="line"># iw wlan0 connect foo 2432  # 假设你有两个AP SSID 都是 foo ，你知道你要连接的是在 2432 频道</div><div class="line"># iw wlan0 connect foo keys 0:abcde d:1:0011223344    # 连接到使用WEP的AP</div><div class="line"># iw dev wlan1 station dump    # 获取station 的统计信息</div><div class="line"># iw dev wlan1 station get     # 获得station对应的peer统计信息</div><div class="line"># iw wlan0 set bitrates legacy-2.4 12 18 24    # 修改传输比特率</div><div class="line"># iw dev wlan0 set bitrates mcs-5 4    # 修改tx HT MCS的比特率</div></pre></td></tr></table></figure>
+<h3 id="WiFi-连接设置"><a href="#WiFi-连接设置" class="headerlink" title="WiFi 连接设置"></a>WiFi 连接设置</h3><hr>
+<h4 id="方法一、-修改WiFi连接配置文件"><a href="#方法一、-修改WiFi连接配置文件" class="headerlink" title="方法一、 修改WiFi连接配置文件"></a>方法一、 修改WiFi连接配置文件</h4><ul>
+<li><p>修改 /etc/network/interfaces 文件(这个文件是定义网络配置的)</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano /etc/network/interfaces</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>修改后文件内容如下：<br>    <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">auto</span> lo</div><div class="line">iface lo inet loopback</div><div class="line">iface eth0 inet dhcp</div><div class="line"></div><div class="line"><span class="keyword">auto</span> wlan0</div><div class="line">allow-hotplug wlan0</div><div class="line">iface wlan0 inet dhcp</div><div class="line">wpa-ssid <span class="string">"JoStudio"</span></div><div class="line">wpa-psk <span class="string">"password"</span></div></pre></td></tr></table></figure></p>
+<p><strong>说明:</strong><br>    <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">auto</span> lo  <span class="comment">//表示使用localhost</span></div><div class="line">iface eth0 inet dhcp  <span class="comment">//表示如果有网卡ech0, 则用dhcp获得IP地址 (这个网卡是本机的网卡，而不是WIFI网卡)</span></div><div class="line"><span class="keyword">auto</span> wlan0   <span class="comment">//表示如果有wlan设备，使用wlan0设备名</span></div><div class="line">allow-hotplug wlan0 <span class="comment">//表示wlan设备可以热插拨</span></div><div class="line">iface wlan0 inet dhcp <span class="comment">//表示如果有WLAN网卡wlan0 (就是WIFI网卡), 则用dhcp获得IP地址</span></div><div class="line">wpa-ssid <span class="string">"JoStudio"</span>  <span class="comment">//表示连接SSID名为 JoStudio的WIFI网络。  JoStudio是我的WIFI网SSID名称，如果是别的，请更改</span></div><div class="line">wpa-psk <span class="string">"password"</span> <span class="comment">//表示连接WIFI网络时，使用wpa-psk认证方式，认证密码是password。如果是别的密码，请更改</span></div></pre></td></tr></table></figure></p>
+<p>　　&gt;上述定义后，如果有网线连接，则采取DHCP自动连接。如果有名为JoStudio的WIFI网络，则自动连入，采取DHCP获得地址。</p>
+<ul>
+<li>立即连接WIFI网络</li>
+</ul>
+<p>　　使用命令<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">　　 	sudo /etc/init.d/networking restart</div></pre></td></tr></table></figure></p>
+<p>　　成功后，用 ifconfig 命令可以看到 wlan0 设备，且有了IP地址(已连接)</p>
+<ul>
+<li>以后每次启动，系统都将自动连接到名为JoStudio的WIFI网络</li>
+</ul>
+<h4 id="方法二、-wpa-cli命令"><a href="#方法二、-wpa-cli命令" class="headerlink" title="方法二、 wpa_cli命令"></a>方法二、 wpa_cli命令</h4><p>参考: <a href="http://shumeipai.nxez.com/2013/09/30/use-wpa-cli-command-line-to-configure-wi-fi-wireless-lan.html" target="_blank" rel="external">http://shumeipai.nxez.com/2013/09/30/use-wpa-cli-command-line-to-configure-wi-fi-wireless-lan.html</a></p>
+<blockquote>
+<p>wpa_cli是命令行界面下的无线网连接工具。<br>通过wpa_cli管理备选的网络列表。在备选网络中启用的网络，树莓派会自动试图连接。</p>
+</blockquote>
+<ol>
+<li><p>启动wpa_cli 命令界面</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo wpa_cli</div></pre></td></tr></table></figure>
+</li>
+<li><p>常用命令</p>
+</li>
+</ol>
+<hr>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">命令缩写</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">status</td>
+<td style="text-align:left">stat</td>
+<td style="text-align:left">显示当前连接的状态信息</td>
+</tr>
+<tr>
+<td style="text-align:left">ping</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">测试指令，看service端是否有响应</td>
+</tr>
+<tr>
+<td style="text-align:left">mib</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Request a list of MIB variables (dot1x, dot11).</td>
+</tr>
+<tr>
+<td style="text-align:left">interface</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">显示当前可用的interface，wpa_supplicant 支持多interface</td>
+</tr>
+<tr>
+<td style="text-align:left">set</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">设置环境变量，如果不带参数，显示当前环境变量</td>
+</tr>
+<tr>
+<td style="text-align:left">logon</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">IEEE 802.1X EAPOL state machine logon</td>
+</tr>
+<tr>
+<td style="text-align:left">logoff</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">IEEE 802.1X EAPOL state machine logff</td>
+</tr>
+<tr>
+<td style="text-align:left">reassociate</td>
+<td style="text-align:left">reas</td>
+<td style="text-align:left">设置连接标签，开启扫描，查找可用的AP进行连接，如果当前是连接状态，只会扫描一次。</td>
+</tr>
+<tr>
+<td style="text-align:left">preauthenticate</td>
+<td style="text-align:left">pr</td>
+<td style="text-align:left">针对一个AP进行预认证</td>
+</tr>
+<tr>
+<td style="text-align:left">identity</td>
+<td style="text-align:left">id</td>
+<td style="text-align:left">设置identity</td>
+</tr>
+<tr>
+<td style="text-align:left">password</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">设置密码</td>
+</tr>
+<tr>
+<td style="text-align:left">disconnect</td>
+<td style="text-align:left">disc</td>
+<td style="text-align:left">断开连接，并且会告知wpa_supplicant 不在连接其他AP</td>
+</tr>
+<tr>
+<td style="text-align:left">reconnect</td>
+<td style="text-align:left">reconn</td>
+<td style="text-align:left">重新连接，在运行上面的过程后，运行此命令</td>
+</tr>
+<tr>
+<td style="text-align:left">quit</td>
+<td style="text-align:left">q</td>
+<td style="text-align:left">exits wpa_cli</td>
+</tr>
+<tr>
+<td style="text-align:left">terminate</td>
+<td style="text-align:left">term</td>
+<td style="text-align:left">kills wpa_supplicant</td>
+</tr>
+<tr>
+<td style="text-align:left">reconfigure</td>
+<td style="text-align:left">recon</td>
+<td style="text-align:left">重新导入配置文件，可以在调试时，修改配置文件后运行此命令，使配置文件生效</td>
+</tr>
+<tr>
+<td style="text-align:left">scan</td>
+<td style="text-align:left">scan</td>
+<td style="text-align:left">扫描</td>
+</tr>
+<tr>
+<td style="text-align:left">scan_result</td>
+<td style="text-align:left">scan_r</td>
+<td style="text-align:left">显示扫描结果</td>
+</tr>
+<tr>
+<td style="text-align:left">bss</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">获取扫描结果 某一个热点的具体信息</td>
+</tr>
+<tr>
+<td style="text-align:left">list_networks</td>
+<td style="text-align:left">list_n</td>
+<td style="text-align:left">已经保存配置文件中的AP</td>
+</tr>
+<tr>
+<td style="text-align:left">bssid</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">配置ssid的bssid</td>
+</tr>
+<tr>
+<td style="text-align:left">add_network</td>
+<td style="text-align:left">add_n</td>
+<td style="text-align:left">添加一个AP配置，在framework还没调通之前，可以用此命令进行配置</td>
+</tr>
+<tr>
+<td style="text-align:left">set_network</td>
+<td style="text-align:left">set_n</td>
+<td style="text-align:left">设置ap的属性，用set_network 不接参数，可以看到所有可用信息。</td>
+</tr>
+<tr>
+<td style="text-align:left">select_network</td>
+<td style="text-align:left">select_n</td>
+<td style="text-align:left">选择一个已经配置的AP进行连接，这个命令用的比较多。上面set_n 命令进行配置后，可以用这命令进行连接</td>
+</tr>
+<tr>
+<td style="text-align:left">enable_network</td>
+<td style="text-align:left">enable_n</td>
+<td style="text-align:left">将network 的标志位:disable 置0，该位为1时，wifi在断开连接状态，不会去主动连接该热点。如果wifi不主动连接任何热点，可以查看配置文件。</td>
+</tr>
+<tr>
+<td style="text-align:left">disable_network</td>
+<td style="text-align:left">disable_n</td>
+<td style="text-align:left">对应上面 disable_network network_id</td>
+</tr>
+<tr>
+<td style="text-align:left">remove_network</td>
+<td style="text-align:left">remove_n</td>
+<td style="text-align:left">忘记网络 remove_network id 会删除对应network配置</td>
+</tr>
+<tr>
+<td style="text-align:left">get_network</td>
+<td style="text-align:left">get_n</td>
+<td style="text-align:left">获取network的属性 对应之前的set_network</td>
+</tr>
+<tr>
+<td style="text-align:left">wps_pbc</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">wps  push button功能</td>
+</tr>
+<tr>
+<td style="text-align:left">wps_pin</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Wps pin 功能</td>
+</tr>
+<tr>
+<td style="text-align:left">save_config</td>
+<td style="text-align:left">save_c</td>
+<td style="text-align:left">保存信息到配置文件中，每次修改配置后记得用</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><p>Example wpa_cli</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">for AP that doesn`t have encryption</div><div class="line">&gt;add_network      (It will display a network id for you, assume it returns 0)</div><div class="line">&gt;set_network 0 ssid “666”</div><div class="line">&gt;set_network 0 key_mgmt NONE</div><div class="line">&gt;enable_network 0</div><div class="line">&gt;quit</div><div class="line"></div><div class="line">if normal, we have connectted to the AP “666”, now you need a IP to access internet, for example:</div><div class="line">dhcpcd wlan0</div><div class="line">if everything is ok, it will get an IP &amp; can access internet</div><div class="line"></div><div class="line">for AP that has WEP</div><div class="line">&gt;add_network      (assume returns 1)</div><div class="line">&gt;set_network 1 ssid “666”</div><div class="line">&gt;set_network 1 key_mgmt NONE</div><div class="line">&gt;set_network 1 wep_key0 “your ap passwork”(if usting ASCII, it need double quotation marks, if using hex, then don`t need the double quotation marks)</div><div class="line">&gt;set_network 1 wep_tx_keyidx 0</div><div class="line">&gt;select_network 1  (optional, remember, if you are connecting with another AP, you should select it to disable the another)</div><div class="line">&gt;enable_network 1</div><div class="line">and then ,get an IP to access internet</div><div class="line"></div><div class="line">for AP that has WPA-PSK/WPA2-PSK</div><div class="line">&gt;add_network      (assume returns 2)</div><div class="line">&gt;set_network 2 ssid “666”</div><div class="line">&gt;set_network 2 psk “your pre-shared key”</div><div class="line">&gt;select_network 2  (optional, remember, if you are connecting with another AP, you should select it to disable the another)</div><div class="line">&gt;enable_network 2</div></pre></td></tr></table></figure>
+</li>
+<li><p>生效</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">pi@raspberrypi:~$ sudo /etc/init.d/networking restart</div><div class="line">pi@raspberrypi:~$ sudo service networking restart  #跟上面行的作用一样。</div><div class="line">pi@raspberrypi:~$ sudo ifdown wlan0   #有时需要执行 或者 下一行命令才能发生作用。</div><div class="line">pi@raspberrypi:~$ sudo ifup wlan0        #建议尝试本条命令</div><div class="line">pi@raspberrypi:~$ wpa_cli status      #查看连接状态</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="切换国内源"><a href="#切换国内源" class="headerlink" title="切换国内源"></a>切换国内源</h2><h3 id="查看自己的版本类型"><a href="#查看自己的版本类型" class="headerlink" title="查看自己的版本类型"></a>查看自己的版本类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">pi@raspberrypi:~$ lsb_release -a</div><div class="line">No LSB modules are available.</div><div class="line">Distributor ID: Raspbian</div><div class="line">Description:    Raspbian GNU/Linux 9.4 (stretch)</div><div class="line">Release:        9.4</div><div class="line">Codename:       stretch</div></pre></td></tr></table></figure>
+<h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>需要修改的地方有两处<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/etc/apt/sources.list</div><div class="line">/etc/apt/sources.list.d/raspi.list</div></pre></td></tr></table></figure></p>
+<p>/etc/apt/sources.list<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#deb http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free rpi</div><div class="line"># Uncomment line below then &apos;apt-get update&apos; to enable &apos;apt-get source&apos;</div><div class="line">#deb-src http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-freee rpi</div><div class="line">deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi</div></pre></td></tr></table></figure></p>
+<p>/etc/apt/sources.list.d/raspi.list<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#deb http://archive.raspberrypi.org/debian/ stretch main ui</div><div class="line"># Uncomment line below then &apos;apt-get update&apos; to enable &apos;apt-get source&apos;</div><div class="line">#deb-src http://archive.raspberrypi.org/debian/ stretch main ui</div><div class="line">deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/ stretch main ui</div><div class="line">deb-src http://mirrors.ustc.edu.cn/archive.raspberrypi.org/ stretch main ui</div></pre></td></tr></table></figure></p>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get upgrade</div></pre></td></tr></table></figure>
+<h2 id="samba"><a href="#samba" class="headerlink" title="samba"></a>samba</h2><hr>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install samba</div></pre></td></tr></table></figure>
+<p>过程日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line">pi@raspberrypi:~$ sudo apt-get install samba</div><div class="line">Reading package lists... Done</div><div class="line">Building dependency tree</div><div class="line">Reading state information... Done</div><div class="line">The following additional packages will be installed:</div><div class="line">  attr libaio1 libfile-copy-recursive-perl python-dnspython python-ldb</div><div class="line">  python-samba python-tdb samba-common-bin samba-dsdb-modules</div><div class="line">  samba-vfs-modules tdb-tools update-inetd</div><div class="line">Suggested packages:</div><div class="line">  python-gpgme bind9 bind9utils ctdb ldb-tools ntp | chrony smbldap-tools</div><div class="line">  winbind ufw heimdal-clients</div><div class="line">The following NEW packages will be installed:</div><div class="line">  attr libaio1 libfile-copy-recursive-perl python-dnspython python-ldb</div><div class="line">  python-samba python-tdb samba samba-common-bin samba-dsdb-modules</div><div class="line">  samba-vfs-modules tdb-tools update-inetd</div><div class="line">0 upgraded, 13 newly installed, 0 to remove and 0 not upgraded.</div><div class="line">Need to get 3,208 kB/3,473 kB of archives.</div><div class="line">After this operation, 23.7 MB of additional disk space will be used.</div><div class="line">Do you want to continue? [Y/n]</div><div class="line">Get:1 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf python-samba armhf 2:4.5.12+dfsg-2+deb9u3 [1,143 kB]</div><div class="line">Get:2 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf samba-common-bin armhf 2:4.5.12+dfsg-2+deb9u3 [556 kB]</div><div class="line">Get:3 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf samba armhf 2:4.5.12+dfsg-2+deb9u3 [871 kB]</div><div class="line">Get:4 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf samba-dsdb-modules armhf 2:4.5.12+dfsg-2+deb9u3 [304 kB]</div><div class="line">Get:5 http://mirrors.ustc.edu.cn/raspbian/raspbian stretch/main armhf samba-vfs-modules armhf 2:4.5.12+dfsg-2+deb9u3 [334 kB]</div><div class="line">Fetched 3,208 kB in 8s (383 kB/s)</div><div class="line">Preconfiguring packages ...</div><div class="line">Selecting previously unselected package python-dnspython.</div><div class="line">(Reading database ... 126437 files and directories currently installed.)</div><div class="line">Preparing to unpack .../00-python-dnspython_1.15.0-1_all.deb ...</div><div class="line">Unpacking python-dnspython (1.15.0-1) ...</div><div class="line">Selecting previously unselected package python-ldb.</div><div class="line">Preparing to unpack .../01-python-ldb_2%3a1.1.27-1_armhf.deb ...</div><div class="line">Unpacking python-ldb (2:1.1.27-1) ...</div><div class="line">Selecting previously unselected package python-tdb.</div><div class="line">Preparing to unpack .../02-python-tdb_1.3.11-2_armhf.deb ...</div><div class="line">Unpacking python-tdb (1.3.11-2) ...</div><div class="line">Selecting previously unselected package python-samba.</div><div class="line">Preparing to unpack .../03-python-samba_2%3a4.5.12+dfsg-2+deb9u3_armhf.deb ...</div><div class="line">Unpacking python-samba (2:4.5.12+dfsg-2+deb9u3) ...</div><div class="line">Selecting previously unselected package samba-common-bin.</div><div class="line">Preparing to unpack .../04-samba-common-bin_2%3a4.5.12+dfsg-2+deb9u3_armhf.deb ...</div><div class="line">Unpacking samba-common-bin (2:4.5.12+dfsg-2+deb9u3) ...</div><div class="line">Selecting previously unselected package tdb-tools.</div><div class="line">Preparing to unpack .../05-tdb-tools_1.3.11-2_armhf.deb ...</div><div class="line">Unpacking tdb-tools (1.3.11-2) ...</div><div class="line">Selecting previously unselected package libfile-copy-recursive-perl.</div><div class="line">Preparing to unpack .../06-libfile-copy-recursive-perl_0.38-1_all.deb ...</div><div class="line">Unpacking libfile-copy-recursive-perl (0.38-1) ...</div><div class="line">Selecting previously unselected package update-inetd.</div><div class="line">Preparing to unpack .../07-update-inetd_4.44_all.deb ...</div><div class="line">Unpacking update-inetd (4.44) ...</div><div class="line">Selecting previously unselected package samba.</div><div class="line">Preparing to unpack .../08-samba_2%3a4.5.12+dfsg-2+deb9u3_armhf.deb ...</div><div class="line">Unpacking samba (2:4.5.12+dfsg-2+deb9u3) ...</div><div class="line">Selecting previously unselected package attr.</div><div class="line">Preparing to unpack .../09-attr_1%3a2.4.47-2_armhf.deb ...</div><div class="line">Unpacking attr (1:2.4.47-2) ...</div><div class="line">Selecting previously unselected package libaio1:armhf.</div><div class="line">Preparing to unpack .../10-libaio1_0.3.110-3_armhf.deb ...</div><div class="line">Unpacking libaio1:armhf (0.3.110-3) ...</div><div class="line">Selecting previously unselected package samba-dsdb-modules.</div><div class="line">Preparing to unpack .../11-samba-dsdb-modules_2%3a4.5.12+dfsg-2+deb9u3_armhf.deb ...</div><div class="line">Unpacking samba-dsdb-modules (2:4.5.12+dfsg-2+deb9u3) ...</div><div class="line">Selecting previously unselected package samba-vfs-modules.</div><div class="line">Preparing to unpack .../12-samba-vfs-modules_2%3a4.5.12+dfsg-2+deb9u3_armhf.deb ...</div><div class="line">Unpacking samba-vfs-modules (2:4.5.12+dfsg-2+deb9u3) ...</div><div class="line">Setting up python-dnspython (1.15.0-1) ...</div><div class="line">Setting up python-tdb (1.3.11-2) ...</div><div class="line">Processing triggers for libc-bin (2.24-11+deb9u3) ...</div><div class="line">Setting up libaio1:armhf (0.3.110-3) ...</div><div class="line">Processing triggers for systemd (232-25+deb9u4) ...</div><div class="line">Setting up tdb-tools (1.3.11-2) ...</div><div class="line">update-alternatives: using /usr/bin/tdbbackup.tdbtools to provide /usr/bin/tdbbackup (tdbbackup) in auto mode</div><div class="line">Processing triggers for man-db (2.7.6.1-2) ...</div><div class="line">Setting up samba-dsdb-modules (2:4.5.12+dfsg-2+deb9u3) ...</div><div class="line">Setting up attr (1:2.4.47-2) ...</div><div class="line">Setting up libfile-copy-recursive-perl (0.38-1) ...</div><div class="line">Setting up python-ldb (2:1.1.27-1) ...</div><div class="line">Setting up update-inetd (4.44) ...</div><div class="line">Setting up samba-vfs-modules (2:4.5.12+dfsg-2+deb9u3) ...</div><div class="line">Setting up python-samba (2:4.5.12+dfsg-2+deb9u3) ...</div><div class="line">Setting up samba-common-bin (2:4.5.12+dfsg-2+deb9u3) ...</div><div class="line">Setting up samba (2:4.5.12+dfsg-2+deb9u3) ...</div><div class="line">Adding group `sambashare&apos; (GID 116) ...</div><div class="line">Done.</div><div class="line">Samba is not being run as an AD Domain Controller, masking samba-ad-dc-service.</div><div class="line">Please ignore the following error about deb-systemd-helper not finding samba-ad-dc-service.</div><div class="line">Created symlink /etc/systemd/system/multi-user.target.wants/nmbd.service → /lib/systemd/system/nmbd.service.</div><div class="line">Failed to preset unit: Unit file /etc/systemd/system/samba-ad-dc.service is masked.</div><div class="line">/usr/bin/deb-systemd-helper: error: systemctl preset failed on samba-ad-dc.service: No such file or directory</div><div class="line">Created symlink /etc/systemd/system/multi-user.target.wants/smbd.service → /lib/systemd/system/smbd.service.</div><div class="line">Processing triggers for libc-bin (2.24-11+deb9u3) ...</div><div class="line">Processing triggers for systemd (232-25+deb9u4) ...</div><div class="line">pi@raspberrypi:~$</div></pre></td></tr></table></figure></p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/samba/smb.conf</div></pre></td></tr></table></figure>
+<p>在最后面添加以下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[public]</div><div class="line">   comment = public storage</div><div class="line">   path = /home/pi/workdir</div><div class="line">   valid users = pi</div><div class="line">   read only = no</div><div class="line">   create mask = 0777</div><div class="line">   directory mask = 0777</div><div class="line">   guest ok = no</div><div class="line">   browseable = yes</div></pre></td></tr></table></figure></p>
+<p>参数说明：</p>
+<ul>
+<li>comment：共享文件夹说明</li>
+<li>path：共享文件夹目录</li>
+<li>valid users：有效用户</li>
+<li>read only：是否只读</li>
+<li>create mask：创建文件的权限</li>
+<li>directory mask：创建文件夹的权限</li>
+<li>guest ok：是否允许访客访问</li>
+<li>browseable：是否可见</li>
+</ul>
+<p>其中 <code>valid users</code> 即 <code>pi</code> 为有效用户，还需要添加其到 Samba 中，命令行执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo smbpasswd -a pi</div></pre></td></tr></table></figure></p>
+<p>重启 samba 以生效配置，命令行执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo samba restart</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注：Samba 默认开机自启，无需为重启担心。</p>
+</blockquote>
+<p>设置文件权限<br>在 Samba 配置文件设置权限后，还需在系统中将共享文件夹的权限设置为同配置文件中相同的权限，以确保其他用户正常访问及修改文件夹内容，命令行执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chmod -R 777 /mnt/udisk</div></pre></td></tr></table></figure></p>
+<h3 id="访问共享文件"><a href="#访问共享文件" class="headerlink" title="访问共享文件"></a>访问共享文件</h3><p><strong>Windows：</strong><br>在资源管理器地址栏输入：<code>\\\\192.168.1.37\\public</code>，其中 <code>192.168.1.37</code> 替换为你树莓派的 IP 地址即可。</p>
+<p><strong>macOS：</strong><br>打开 <code>FInder</code>，之后使用快捷键 <code>cmd+k</code>，服务器地址中填写<code>smb://192.168.1.37/public</code>，其中 <code>192.168.1.37</code> 替换为你树莓派的 IP 地址，之后点击连接即可。</p>
+<h2 id="外设相关"><a href="#外设相关" class="headerlink" title="外设相关"></a>外设相关</h2><h3 id="GPIO映射"><a href="#GPIO映射" class="headerlink" title="GPIO映射"></a>GPIO映射</h3><p><img src="/images/pi_gpio.png" alt="GPIO"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>你的支持使我不断前进！Enjoy it ? Donate me !</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://upload-images.jianshu.io/upload_images/1736256-3ba20f6256d1132d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alex.Lin WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://upload-images.jianshu.io/upload_images/1736256-6b41a0e538d4aa27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alex.Lin Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          
+            <a href="/tags/raspberry/" rel="tag"><i class="fa fa-tag"></i> raspberry</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/06/Android系列之各种疑难杂症处理/" rel="next" title="Android系列之各种疑难杂症处理">
+                <i class="fa fa-chevron-left"></i> Android系列之各种疑难杂症处理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/11/Android系列之工具adb/" rel="prev" title="Android系列之工具adb">
+                Android系列之工具adb <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://upload-images.jianshu.io/upload_images/1736256-0345dfb2d5302036.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+               alt="Alex.Lin" />
+          <p class="site-author-name" itemprop="name">Alex.Lin</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ilxj" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2011xiaojun" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/3add4c9179b3" target="_blank" title="JianShu">
+                  
+                    <i class="fa fa-fw fa-heartbeat"></i>
+                  
+                  JianShu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://upload-images.jianshu.io/upload_images/1736256-4c85a3f42e295e7e.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" title="Wchat">
+                  
+                    <i class="fa fa-fw fa-weixin"></i>
+                  
+                  Wchat
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#WiFi-相关"><span class="nav-number">1.</span> <span class="nav-text">WiFi 相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#iwlist-命令"><span class="nav-number">1.1.</span> <span class="nav-text">iwlist 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#热点扫描"><span class="nav-number">1.1.1.</span> <span class="nav-text">热点扫描</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iwconfig-命令"><span class="nav-number">1.2.</span> <span class="nav-text">iwconfig 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iw-命令"><span class="nav-number">1.3.</span> <span class="nav-text">iw 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WiFi-连接设置"><span class="nav-number">1.4.</span> <span class="nav-text">WiFi 连接设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一、-修改WiFi连接配置文件"><span class="nav-number">1.4.1.</span> <span class="nav-text">方法一、 修改WiFi连接配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二、-wpa-cli命令"><span class="nav-number">1.4.2.</span> <span class="nav-text">方法二、 wpa_cli命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切换国内源"><span class="nav-number">2.</span> <span class="nav-text">切换国内源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看自己的版本类型"><span class="nav-number">2.1.</span> <span class="nav-text">查看自己的版本类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改配置"><span class="nav-number">2.2.</span> <span class="nav-text">修改配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新"><span class="nav-number">2.3.</span> <span class="nav-text">更新</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#samba"><span class="nav-number">3.</span> <span class="nav-text">samba</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">3.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">3.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问共享文件"><span class="nav-number">3.3.</span> <span class="nav-text">访问共享文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外设相关"><span class="nav-number">4.</span> <span class="nav-text">外设相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GPIO映射"><span class="nav-number">4.1.</span> <span class="nav-text">GPIO映射</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alex.Lin</span>
+</div>
+
+
+<!--
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+-->
+<span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+<!--
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+-->
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2140501"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+
+  
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"hijiki","bottom":-30});</script></body>
+</html>

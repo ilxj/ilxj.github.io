@@ -1,0 +1,1177 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="算法,二叉树," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="这几天忙于考PMP(Project Management Professional), 连续几个周末都在看书，终于在昨天考完试了，不知道能不能过，1个月后看吧，🙏~言归正传，今天来学习了解一下二叉树。
+什么是二叉树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基本算法之二叉树">
+<meta property="og:url" content="http://lxj-life.com/2018/03/25/基本算法之二叉树/index.html">
+<meta property="og:site_name" content="AlexLin">
+<meta property="og:description" content="这几天忙于考PMP(Project Management Professional), 连续几个周末都在看书，终于在昨天考完试了，不知道能不能过，1个月后看吧，🙏~言归正传，今天来学习了解一下二叉树。
+什么是二叉树">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1736256-118acff5a8360370.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1736256-d7e27206d3749660.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1736256-2619928bf1b34ea2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1736256-d3834c103a766820.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-08-21T07:23:23.067Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基本算法之二叉树">
+<meta name="twitter:description" content="这几天忙于考PMP(Project Management Professional), 连续几个周末都在看书，终于在昨天考完试了，不知道能不能过，1个月后看吧，🙏~言归正传，今天来学习了解一下二叉树。
+什么是二叉树">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1736256-118acff5a8360370.gif?imageMogr2/auto-orient/strip">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+<script>
+  (function(){
+    if(''){
+      if (prompt('请输入文章密码','') !== ''){
+        alert('密码错误！');
+        history.back();
+      }
+    }
+  })();
+</script>
+
+
+
+  <link rel="canonical" href="http://lxj-life.com/2018/03/25/基本算法之二叉树/"/>
+
+
+
+
+
+  <title> 基本算法之二叉树 | AlexLin </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3f2517f772097ad50d3aaf0f1cf3bde0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AlexLin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-wulilove">
+          <a href="/wulilove" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            menu.wulilove
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://lxj-life.com/2018/03/25/基本算法之二叉树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex.Lin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://upload-images.jianshu.io/upload_images/1736256-0345dfb2d5302036.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AlexLin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                基本算法之二叉树
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-25T15:06:11+08:00">
+                2018-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,466
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>这几天忙于考<font color="#115533">PMP(Project Management Professional)</font>, 连续几个周末都在看书，终于在昨天考完试了，不知道能不能过，1个月后看吧，🙏~<br>言归正传，今天来学习了解一下二叉树。</p>
+<h2 id="什么是二叉树"><a href="#什么是二叉树" class="headerlink" title="什么是二叉树"></a>什么是二叉树</h2><div align="center"><br><img src="https://upload-images.jianshu.io/upload_images/1736256-118acff5a8360370.gif?imageMogr2/auto-orient/strip" alt="二叉树" title="动态树🌲"><br></div>
+
+<a id="more"></a>
+<p>其实在程序中二叉树长这样</p>
+<div align="center"><br><img src="https://upload-images.jianshu.io/upload_images/1736256-d7e27206d3749660.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="二叉树" title="二叉树中的红黑树"><br></div>
+
+<blockquote>
+<p>二叉树是数据结构中非常重要的内容，在计算机科学中，每个结点最多有两个子树的结构被称作二叉树.</p>
+</blockquote>
+<p><font color="#0101DF">以下摘自百度:</font></p>
+<blockquote>
+<p>在计算机科学中，二叉树是每个节点最多有两个子树的树结构。通常子树被称作“左子树”（left subtree）和“右子树”（right subtree）。<br>二叉树常被用于实现二叉查找树和二叉堆。<br>二叉树的每个结点至多只有二棵子树(不存在度大于2的结点)，二叉树的子树有左右之分，次序不能颠倒。<br>二叉树的第<code>i</code>层至多有<code>2^{i-1}</code> 个结点；深度为<code>k</code>的二叉树至多有<code>2^k-1</code>个结点；<br>对任何一棵二叉树T，如果其终端结点数为<code>n_0</code>，度为<code>2</code>的结点数为<code>n_2</code>，则<code>n_0=n_2+1</code>。<br>一棵深度为<code>k</code>，且有<code>2^k-1</code>个节点的二叉树，称为满二叉树。这种树的特点是每一层上的节点数都是最大节点数。<br>而在一棵二叉树中，除最后一层外，若其余层都是满的，并且最后一层或者是满的，或者是在右边缺少连续若干节点，则此二叉树为完全二叉树。<br>具有n个节点的完全二叉树的深度为<code>log2n+1</code>。深度为<code>k</code>的完全二叉树，至少有<code>2^(k-1)</code>个节点，至多有<code>2^k-1</code>个节点。</p>
+</blockquote>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="结点-子树"><a href="#结点-子树" class="headerlink" title="结点/子树"></a>结点/子树</h3><blockquote>
+<p>二叉树每个结点的的分支称作该结点的子树，其左侧分支称为左子树，右侧分支称为右字树。</p>
+</blockquote>
+<h3 id="树的结点"><a href="#树的结点" class="headerlink" title="树的结点"></a>树的结点</h3><blockquote>
+<p>包含一个数据元素及若干指向子树的分支；</p>
+</blockquote>
+<h3 id="孩子结点"><a href="#孩子结点" class="headerlink" title="孩子结点"></a>孩子结点</h3><blockquote>
+<p>结点的子树的根称为该结点的孩子；</p>
+</blockquote>
+<h3 id="结点层次"><a href="#结点层次" class="headerlink" title="结点层次"></a>结点层次</h3><blockquote>
+<p>一个结点的层次直观上来说就是其所在的行，其中根结点层次为1（第一行），其子结点层次为2（第二行），以此类推，第x行的结点为x。</p>
+</blockquote>
+<h3 id="二叉树的深度-高度"><a href="#二叉树的深度-高度" class="headerlink" title="二叉树的深度/高度"></a>二叉树的深度/高度</h3><blockquote>
+<p>二叉树的深度（高度）指的是二叉树中的最大叶子结点所在的层。<br>二叉树的深度=max(左子树深度，右子数深度)+1，可用递归的方式实现。</p>
+</blockquote>
+<h3 id="结点的度"><a href="#结点的度" class="headerlink" title="结点的度"></a>结点的度</h3><blockquote>
+<p>二叉树结点的度指该结点分支的个数，一棵非空二叉树结点的度只有以下三种情况：</p>
+<ul>
+<li>没有分支的结点度为0 ：如下图中6、7、8、9、10</li>
+<li>只有一个分支（左或右）结点度为1 ：如下图中</li>
+<li>有两个分支的结点度为2：如下图中1、2、3、4</li>
+</ul>
+</blockquote>
+<h3 id="树的度"><a href="#树的度" class="headerlink" title="树的度"></a>树的度</h3><blockquote>
+<p>树中最大的结点度。</p>
+</blockquote>
+<h3 id="叶子结点"><a href="#叶子结点" class="headerlink" title="叶子结点"></a>叶子结点</h3><blockquote>
+<p>也叫终端结点，是度为 0 的结点；</p>
+</blockquote>
+<h3 id="分枝结点"><a href="#分枝结点" class="headerlink" title="分枝结点"></a>分枝结点</h3><blockquote>
+<p>度不为0的结点；</p>
+</blockquote>
+<div align="center"><br><img src="https://upload-images.jianshu.io/upload_images/1736256-2619928bf1b34ea2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="二叉树" title="二叉树"><font color="red"><strong>二叉树结点的度最大为2.</strong></font><br></div>
+
+<h2 id="二叉树性质"><a href="#二叉树性质" class="headerlink" title="二叉树性质"></a>二叉树性质</h2><ol>
+<li>在非空二叉树中，第<code>i</code>层的结点总数不超过$2^{i-1}$, i&gt;=1；</li>
+<li>深度为<code>h</code>的二叉树最多$2^h-1$有个结点<em>(h&gt;=1)</em>，最少有<code>h</code>个结点</li>
+<li>对于任意一棵二叉树，如果其叶结点数为<code>N0</code>，而度数为2的结点总数为<code>N2</code>，则: $N0=N2+1$；</li>
+<li>给定<code>N</code>个节点，能构成h(N)种不同的二叉树。<br><code>h(N)</code>为卡特兰数的第N项。$h(n)=C(2*n，n)/(n+1)$。</li>
+<li>设有<code>i</code>个枝点，<code>I</code>为所有枝点的道路长度总和，<code>J</code>为叶的道路长度总和 $J=I+2i$;</li>
+<li>具有n个结点的完全二叉树的深度为$[log_2n]+1$<strong>([x] 表示不大于x的最大整数)</strong>.</li>
+</ol>
+<h2 id="二叉树遍历方式"><a href="#二叉树遍历方式" class="headerlink" title="二叉树遍历方式"></a>二叉树<font color="red">遍历</font>方式</h2><p>二叉树的基本遍历有三种：前序遍历、中序遍历和后序遍历，除此之外还有分层遍历等。其中基本遍历代码实现时可采用递归方式，其过程如下：</p>
+<h3 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h3><ul>
+<li>首先访问根，再先序遍历左（右）子树，最后先序遍历右（左）子树，C语言代码如下：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">XXBL</span><span class="params">(tree*root)</span></span>&#123;</div><div class="line"><span class="comment">//DoSomethingwithroot(处理根节点)</span></div><div class="line"><span class="keyword">if</span>(root-&gt;lchild!=<span class="literal">NULL</span>)</div><div class="line">XXBL(root-&gt;lchild);</div><div class="line"><span class="keyword">if</span>(root-&gt;rchild!=<span class="literal">NULL</span>)</div><div class="line">XXBL(root-&gt;rchild);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h3><ul>
+<li>首先中序遍历左（右）子树，再访问根，最后中序遍历右（左）子树，C语言代码如下</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">voidZXBL(tree*root)</div><div class="line">&#123;</div><div class="line"><span class="keyword">if</span>(root-&gt;lchild!=<span class="literal">NULL</span>)</div><div class="line">ZXBL(root-&gt;lchild);</div><div class="line"><span class="comment">//DoSomethingwithroot(处理根节点)</span></div><div class="line"><span class="keyword">if</span>(root-&gt;rchild!=<span class="literal">NULL</span>)</div><div class="line">ZXBL(root-&gt;rchild);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h3><ul>
+<li>首先后序遍历左（右）子树，再后序遍历右（左）子树，最后访问根，C语言代码如下</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">voidHXBL(tree*root)&#123;</div><div class="line"><span class="keyword">if</span>(root-&gt;lchild!=<span class="literal">NULL</span>)</div><div class="line">HXBL(root-&gt;lchild);</div><div class="line"><span class="keyword">if</span>(root-&gt;rchild!=<span class="literal">NULL</span>)</div><div class="line">HXBL(root-&gt;rchild);</div><div class="line"><span class="comment">//DoSomethingwithroot(处理根节点)</span></div></pre></td></tr></table></figure>
+<h3 id="层次遍历"><a href="#层次遍历" class="headerlink" title="层次遍历"></a>层次遍历</h3><ul>
+<li>即按照层次访问，通常用队列来做。访问根，访问子女，再访问子女的子女（越往后的层次越低）（两个子女的级别相同）</li>
+<li>分层遍历（广度优先搜索）：用队列实现。队列初始化，压入根结点，队列不为空时，弹出一个结点，访问，左右子结点不为空时，压入左右子结点。</li>
+</ul>
+<h2 id="二叉树分类"><a href="#二叉树分类" class="headerlink" title="二叉树分类"></a>二叉树分类</h2><h3 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h3><blockquote>
+<p>若设二叉树的高度为h，除第 h 层外，其它各层 (1-h-1) 的结点数都达到最大个数，第h层有叶子结点，并且叶子结点都是从左到右依次排布</p>
+</blockquote>
+<h3 id="满二叉树"><a href="#满二叉树" class="headerlink" title="满二叉树"></a>满二叉树</h3><blockquote>
+<p>除了叶结点外每一个结点都有左右子叶且叶子结点都处在最底层的二叉树</p>
+</blockquote>
+<h3 id="平衡二叉树-AVL"><a href="#平衡二叉树-AVL" class="headerlink" title="平衡二叉树(AVL)"></a>平衡二叉树(AVL)</h3><blockquote>
+<p>二叉排序树，空，或左子树和右子树都是平衡二叉树，且深度差&lt;=1</p>
+</blockquote>
+<p><div align="center"><br><img src="https://upload-images.jianshu.io/upload_images/1736256-d3834c103a766820.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="二叉树类型图" title="二叉树类型"><br></div>&gt;</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>你的支持使我不断前进！Enjoy it ? Donate me !</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://upload-images.jianshu.io/upload_images/1736256-3ba20f6256d1132d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alex.Lin WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://upload-images.jianshu.io/upload_images/1736256-6b41a0e538d4aa27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alex.Lin Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+          
+            <a href="/tags/二叉树/" rel="tag"><i class="fa fa-tag"></i> 二叉树</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/25/基本算法之平衡二叉树/" rel="next" title="基本算法之平衡二叉树">
+                <i class="fa fa-chevron-left"></i> 基本算法之平衡二叉树
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/26/SSL握手/" rel="prev" title="SSL握手过程">
+                SSL握手过程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://upload-images.jianshu.io/upload_images/1736256-0345dfb2d5302036.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+               alt="Alex.Lin" />
+          <p class="site-author-name" itemprop="name">Alex.Lin</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ilxj" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2011xiaojun" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/3add4c9179b3" target="_blank" title="JianShu">
+                  
+                    <i class="fa fa-fw fa-heartbeat"></i>
+                  
+                  JianShu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://upload-images.jianshu.io/upload_images/1736256-4c85a3f42e295e7e.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" title="Wchat">
+                  
+                    <i class="fa fa-fw fa-weixin"></i>
+                  
+                  Wchat
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是二叉树"><span class="nav-number">1.</span> <span class="nav-text">什么是二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">2.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结点-子树"><span class="nav-number">2.1.</span> <span class="nav-text">结点/子树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树的结点"><span class="nav-number">2.2.</span> <span class="nav-text">树的结点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#孩子结点"><span class="nav-number">2.3.</span> <span class="nav-text">孩子结点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结点层次"><span class="nav-number">2.4.</span> <span class="nav-text">结点层次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树的深度-高度"><span class="nav-number">2.5.</span> <span class="nav-text">二叉树的深度/高度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结点的度"><span class="nav-number">2.6.</span> <span class="nav-text">结点的度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树的度"><span class="nav-number">2.7.</span> <span class="nav-text">树的度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#叶子结点"><span class="nav-number">2.8.</span> <span class="nav-text">叶子结点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分枝结点"><span class="nav-number">2.9.</span> <span class="nav-text">分枝结点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树性质"><span class="nav-number">3.</span> <span class="nav-text">二叉树性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树遍历方式"><span class="nav-number">4.</span> <span class="nav-text">二叉树遍历方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前序遍历"><span class="nav-number">4.1.</span> <span class="nav-text">前序遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中序遍历"><span class="nav-number">4.2.</span> <span class="nav-text">中序遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后序遍历"><span class="nav-number">4.3.</span> <span class="nav-text">后序遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#层次遍历"><span class="nav-number">4.4.</span> <span class="nav-text">层次遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树分类"><span class="nav-number">5.</span> <span class="nav-text">二叉树分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#完全二叉树"><span class="nav-number">5.1.</span> <span class="nav-text">完全二叉树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#满二叉树"><span class="nav-number">5.2.</span> <span class="nav-text">满二叉树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平衡二叉树-AVL"><span class="nav-number">5.3.</span> <span class="nav-text">平衡二叉树(AVL)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alex.Lin</span>
+</div>
+
+
+<!--
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+-->
+<span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+<!--
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+-->
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2140501"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"hijiki","bottom":-30});</script></body>
+</html>
