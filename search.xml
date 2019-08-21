@@ -14,6 +14,14 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[win10子系统wsl]]></title>
+    <url>%2F2019%2F08%2F21%2Fwin10%E5%AD%90%E7%B3%BB%E7%BB%9Fwsl%2F</url>
+    <content type="text"><![CDATA[子系统重启wsl管理员权限下:12net stop LxssManagernet start LxssManager]]></content>
+      <tags>
+        <tag>win10</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[树莓派之Hexo环境搭建]]></title>
     <url>%2F2019%2F01%2F27%2F%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B9%8BHexo%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%2F</url>
     <content type="text"><![CDATA[安装node.js 环境123456789101112131415161718pi@raspberrypi:~/workdir/node_js $ wget -qO- https://raw.github.com/creationix/nvm/v0.33.11/install.sh | sh=&gt; Downloading nvm from git to &apos;/home/pi/.nvm&apos;=&gt; 正克隆到 &apos;/home/pi/.nvm&apos;...remote: Enumerating objects: 267, done.remote: Counting objects: 100% (267/267), done.remote: Compressing objects: 100% (242/242), done.remote: Total 267 (delta 31), reused 86 (delta 15), pack-reused 0接收对象中: 100% (267/267), 119.47 KiB | 7.00 KiB/s, 完成.处理 delta 中: 100% (31/31), 完成.=&gt; Compressing and cleaning up git repository=&gt; Appending nvm source string to /home/pi/.profile=&gt; bash_completion source string already in /home/pi/.profile=&gt; Close and reopen your terminal to start using nvm or run the following to use it now:export NVM_DIR=&quot;$HOME/.nvm&quot;[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot; # This loads nvm 使环境变量生效1source ~/.Profile 安装 npm12345678pi@raspberrypi:~/workdir/node_js $ nvm install stableDownloading and installing node v11.8.0...Downloading https://nodejs.org/dist/v11.8.0/node-v11.8.0-linux-armv6l.tar.xz...######################################################################## 100.0%Computing checksum with sha256sumChecksums matched!Now using node v11.8.0 (npm v6.5.0)Creating default alias: default -&gt; stable (-&gt; v11.8.0) 设置 npm 镜像源(不然安装很忙)12345pi@raspberrypi:~/workdir/hexo $ npm get registryhttps://registry.npmjs.org/pi@raspberrypi:~/workdir/hexo $ npm config set registry http://registry.npm.taobao.org/pi@raspberrypi:~/workdir/hexo $ npm get registryhttp://registry.npm.taobao.org/ 安装hexo 客户端1234567pi@raspberrypi:~/workdir/node_js $ npm install -g hexo-cli/home/pi/.nvm/versions/node/v11.8.0/bin/hexo -&gt; /home/pi/.nvm/versions/node/v11.8.0/lib/node_modules/hexo-cli/bin/hexonpm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.7 (node_modules/hexo-cli/node_modules/fsevents):npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.7: wanted &#123;&quot;os&quot;:&quot;darwin&quot;,&quot;arch&quot;:&quot;any&quot;&#125; (current: &#123;&quot;os&quot;:&quot;linux&quot;,&quot;arch&quot;:&quot;arm&quot;&#125;)+ hexo-cli@1.1.0added 225 packages from 431 contributors in 181.245s]]></content>
