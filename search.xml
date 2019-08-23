@@ -54,7 +54,7 @@
   <entry>
     <title><![CDATA[macOS小技能]]></title>
     <url>%2F2018%2F12%2F10%2FmacOS%E5%B0%8F%E6%8A%80%E8%83%BD%2F</url>
-    <content type="text"><![CDATA[iTerm2iTerm2 SSH免密码远程连接服务器12345678910111213#!/usr/bin/expectset timeout 30spawn ssh -p [lindex $argv 0] [lindex $argv 1]@[lindex $argv 2]expect &#123; "(yes/no)?" &#123;send "yes\n";exp_continue&#125; "password:" &#123;send "[lindex $argv 3]\n"&#125;&#125;expect "~"send "clear\n"interact 解说这里[lindex argv0]，[lindexargv0]，[lindexargv 1]， [lindex argv2]，[lindexargv2]，[lindexargv 3]分别代表着4个参数。分别是：端口号、用户名、服务器地址、密码。 iTerm2 界面设置如下]]></content>
+    <content type="text"><![CDATA[iTerm2iTerm2 SSH免密码远程连接服务器12345678910111213#!/usr/bin/expectset timeout 30spawn ssh -p [lindex $argv 0] [lindex $argv 1]@[lindex $argv 2]expect &#123; "(yes/no)?" &#123;send "yes\n";exp_continue&#125; "password:" &#123;send "[lindex $argv 3]\n"&#125;&#125;expect "~"send "clear\n"interact 解说这里[lindex argv0]，[lindexargv0]，[lindexargv 1]， [lindex argv2]，[lindexargv2]，[lindexargv 3]分别代表着4个参数。分别是：端口号、用户名、服务器地址、密码。 iTerm2 界面设置如下 SSH 免密登陆到服务器 拷贝公钥到服务器 1scp -p ~/.ssh/id_rsa.pub ubuntu@10.10.10.10:/home/ubuntu/.ssh/authorized_keys ssh 配置文件设置 /Users/alex/.ssh/config设置如下]]></content>
       <categories>
         <category>macOS</category>
       </categories>

@@ -94,7 +94,8 @@
 <meta property="og:site_name" content="AlexLin">
 <meta property="og:description" content="iTerm2iTerm2 SSH免密码远程连接服务器12345678910111213#!/usr/bin/expectset timeout 30spawn ssh -p [lindex $argv 0] [lindex $argv 1]@[lindex $argv 2]expect &amp;#123;        &quot;(yes/no)?&quot;        &amp;#123;send &quot;yes\n&quot;;exp_">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1736256-40764b317275b7a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-08-21T07:23:23.067Z">
+<meta property="og:image" content="http://lxj-life.com/images/ssh_config.png">
+<meta property="og:updated_time" content="2019-08-23T17:43:10.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="macOS小技能">
 <meta name="twitter:description" content="iTerm2iTerm2 SSH免密码远程连接服务器12345678910111213#!/usr/bin/expectset timeout 30spawn ssh -p [lindex $argv 0] [lindex $argv 1]@[lindex $argv 2]expect &amp;#123;        &quot;(yes/no)?&quot;        &amp;#123;send &quot;yes\n&quot;;exp_">
@@ -423,7 +424,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  94
+                  143
                 </span>
               
 
@@ -462,6 +463,13 @@
 <a id="more"></a>
 <p>解说<br>这里<code>[lindex argv0]</code>，<code>[lindexargv0]</code>，<code>[lindexargv 1]</code>， <code>[lindex argv2]</code>，<code>[lindexargv2]</code>，<code>[lindexargv 3]</code>分别代表着4个参数。分别是：端口号、用户名、服务器地址、密码。</p>
 <h3 id="iTerm2-界面设置如下"><a href="#iTerm2-界面设置如下" class="headerlink" title="iTerm2 界面设置如下"></a>iTerm2 界面设置如下</h3><p><img src="https://upload-images.jianshu.io/upload_images/1736256-40764b317275b7a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iTerm2"></p>
+<h3 id="SSH-免密登陆到服务器"><a href="#SSH-免密登陆到服务器" class="headerlink" title="SSH 免密登陆到服务器"></a>SSH 免密登陆到服务器</h3><ol>
+<li><p>拷贝公钥到服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp -p ~/.ssh/id_rsa.pub ubuntu@10.10.10.10:/home/ubuntu/.ssh/authorized_keys</div></pre></td></tr></table></figure>
+</li>
+<li><p>ssh 配置文件设置<br><br> <code>/Users/alex/.ssh/config</code><br>设置如下<br><img src="/images/ssh_config.png" alt="ssh_config"></p>
+</li>
+</ol>
 
       
     </div>
@@ -731,7 +739,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iTerm2"><span class="nav-number">1.</span> <span class="nav-text">iTerm2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#iTerm2-SSH免密码远程连接服务器"><span class="nav-number">1.1.</span> <span class="nav-text">iTerm2 SSH免密码远程连接服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iTerm2-界面设置如下"><span class="nav-number">1.2.</span> <span class="nav-text">iTerm2 界面设置如下</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iTerm2"><span class="nav-number">1.</span> <span class="nav-text">iTerm2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#iTerm2-SSH免密码远程连接服务器"><span class="nav-number">1.1.</span> <span class="nav-text">iTerm2 SSH免密码远程连接服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iTerm2-界面设置如下"><span class="nav-number">1.2.</span> <span class="nav-text">iTerm2 界面设置如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH-免密登陆到服务器"><span class="nav-number">1.3.</span> <span class="nav-text">SSH 免密登陆到服务器</span></a></li></ol></li></ol></div>
             
 
           </div>
