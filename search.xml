@@ -16,7 +16,7 @@
   <entry>
     <title><![CDATA[win10子系统wsl]]></title>
     <url>%2F2019%2F08%2F21%2Fwin10%E5%AD%90%E7%B3%BB%E7%BB%9Fwsl%2F</url>
-    <content type="text"><![CDATA[子系统重启wsl管理员权限下:12net stop LxssManagernet start LxssManager]]></content>
+    <content type="text"><![CDATA[子系统重启wsl管理员权限下:12net stop LxssManagernet start LxssManager 子系统在win10的默认位置1C:\Users\87832\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState]]></content>
       <tags>
         <tag>win10</tag>
       </tags>
