@@ -101,7 +101,7 @@ Shell 变量
 注意: 变量的“=”前后不能有空格
 
 123#!/bin/bashmyStr=&quot;hello world&quot;myNum=100">
-<meta property="og:updated_time" content="2019-08-21T07:23:23.063Z">
+<meta property="og:updated_time" content="2019-09-25T10:19:16.144Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux之shell">
 <meta name="twitter:description" content="最简单的shell12#!/bin/bashecho &quot;Hello World&quot;
@@ -411,7 +411,7 @@ Shell 变量
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  848
+                  1,057
                 </span>
               
 
@@ -427,7 +427,7 @@ Shell 变量
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  4
+                  5
                 </span>
               
             </div>
@@ -603,6 +603,99 @@ Shell 变量
 <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="没有返回值函数"><a href="#没有返回值函数" class="headerlink" title="没有返回值函数"></a>没有返回值函数</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line"></div><div class="line"><span class="function"><span class="title">sysout</span></span>()&#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"hello world"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">sysout</div></pre></td></tr></table></figure>
 <h3 id="有返回值函数"><a href="#有返回值函数" class="headerlink" title="有返回值函数"></a>有返回值函数</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">test</span></span>()&#123;</div><div class="line"></div><div class="line">    aNum=3</div><div class="line">    anotherNum=5</div><div class="line">    <span class="built_in">return</span> $((<span class="variable">$aNum</span>+<span class="variable">$anotherNum</span>))</div><div class="line">&#125;</div><div class="line"><span class="built_in">test</span></div><div class="line">result=$?</div><div class="line"><span class="built_in">echo</span> <span class="variable">$result</span></div></pre></td></tr></table></figure>
 <h3 id="定义传递参数的函数"><a href="#定义传递参数的函数" class="headerlink" title="定义传递参数的函数"></a>定义传递参数的函数</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line"></div><div class="line"><span class="function"><span class="title">test</span></span>()&#123;</div><div class="line">    <span class="built_in">echo</span> <span class="variable">$1</span>  <span class="comment">#接收第一个参数</span></div><div class="line">    <span class="built_in">echo</span> <span class="variable">$2</span>  <span class="comment">#接收第二个参数</span></div><div class="line">    <span class="built_in">echo</span> <span class="variable">$3</span>  <span class="comment">#接收第三个参数</span></div><div class="line">    <span class="built_in">echo</span> <span class="variable">$#</span>  <span class="comment">#接收到参数的个数</span></div><div class="line">    <span class="built_in">echo</span> $*  <span class="comment">#接收到的所有参数</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">test</span> aa bb cc</div></pre></td></tr></table></figure>
+<h2 id="shell-颜色输出"><a href="#shell-颜色输出" class="headerlink" title="shell 颜色输出"></a>shell 颜色输出</h2><p>利用echo 或者printf 可以输出带颜色的shell终端字体</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="_">-e</span> <span class="string">"\033[43;35m  Hello World \033[0m \n"</span> </div><div class="line"></div><div class="line"><span class="built_in">printf</span> <span class="string">"\033[44;36m  Hello World \033[0m \n"</span></div></pre></td></tr></table></figure>
+<h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo -e &quot;\003[背景颜色;文字颜色;显示方式m字符串\003[0m&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li>-e 是命令 echo 的一个可选项，它用于激活特殊字符的解析器，可以转义反斜杠字符;</li>
+<li><code>\033</code> 引导非常规字符序列;</li>
+<li>m 意味着设置属性然后结束非常规字符序列，显示的字符串之前有一个 m ；</li>
+</ul>
+<h4 id="显示方式具体内容："><a href="#显示方式具体内容：" class="headerlink" title="显示方式具体内容："></a>显示方式具体内容：</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">显示方式</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">关闭所有属性</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">设置高亮</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">下划线</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">闪烁</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">反显</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">消隐</td>
+</tr>
+</tbody>
+</table>
+<h4 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">文字颜色</th>
+<th style="text-align:left">背景颜色</th>
+<th style="text-align:left">颜色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">30</td>
+<td style="text-align:left">40</td>
+<td style="text-align:left">黑色</td>
+</tr>
+<tr>
+<td style="text-align:left">31</td>
+<td style="text-align:left">41</td>
+<td style="text-align:left">红色</td>
+</tr>
+<tr>
+<td style="text-align:left">32</td>
+<td style="text-align:left">42</td>
+<td style="text-align:left">绿色</td>
+</tr>
+<tr>
+<td style="text-align:left">33</td>
+<td style="text-align:left">43</td>
+<td style="text-align:left">黄色</td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">44</td>
+<td style="text-align:left">蓝色</td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">45</td>
+<td style="text-align:left">紫红色</td>
+</tr>
+<tr>
+<td style="text-align:left">36</td>
+<td style="text-align:left">46</td>
+<td style="text-align:left">青蓝色</td>
+</tr>
+<tr>
+<td style="text-align:left">37</td>
+<td style="text-align:left">47</td>
+<td style="text-align:left">白色</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -788,7 +881,7 @@ Shell 变量
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -799,7 +892,7 @@ Shell 变量
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">54</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -872,7 +965,7 @@ Shell 变量
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#最简单的shell"><span class="nav-number">1.</span> <span class="nav-text">最简单的shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell-变量"><span class="nav-number">2.</span> <span class="nav-text">Shell 变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#访问变量"><span class="nav-number">2.1.</span> <span class="nav-text">访问变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell-运算"><span class="nav-number">3.</span> <span class="nav-text">shell 运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式"><span class="nav-number">3.1.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符号"><span class="nav-number">3.2.</span> <span class="nav-text">运算符号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些例子"><span class="nav-number">4.</span> <span class="nav-text">一些例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取字符串长度"><span class="nav-number">4.1.</span> <span class="nav-text">获取字符串长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量计算"><span class="nav-number">4.2.</span> <span class="nav-text">变量计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组计算"><span class="nav-number">4.3.</span> <span class="nav-text">数组计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断语句"><span class="nav-number">4.4.</span> <span class="nav-text">判断语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-循环"><span class="nav-number">4.5.</span> <span class="nav-text">for 循环</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">5.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#没有返回值函数"><span class="nav-number">5.1.</span> <span class="nav-text">没有返回值函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有返回值函数"><span class="nav-number">5.2.</span> <span class="nav-text">有返回值函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义传递参数的函数"><span class="nav-number">5.3.</span> <span class="nav-text">定义传递参数的函数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#最简单的shell"><span class="nav-number">1.</span> <span class="nav-text">最简单的shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell-变量"><span class="nav-number">2.</span> <span class="nav-text">Shell 变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#访问变量"><span class="nav-number">2.1.</span> <span class="nav-text">访问变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell-运算"><span class="nav-number">3.</span> <span class="nav-text">shell 运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式"><span class="nav-number">3.1.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符号"><span class="nav-number">3.2.</span> <span class="nav-text">运算符号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些例子"><span class="nav-number">4.</span> <span class="nav-text">一些例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取字符串长度"><span class="nav-number">4.1.</span> <span class="nav-text">获取字符串长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量计算"><span class="nav-number">4.2.</span> <span class="nav-text">变量计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组计算"><span class="nav-number">4.3.</span> <span class="nav-text">数组计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断语句"><span class="nav-number">4.4.</span> <span class="nav-text">判断语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-循环"><span class="nav-number">4.5.</span> <span class="nav-text">for 循环</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">5.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#没有返回值函数"><span class="nav-number">5.1.</span> <span class="nav-text">没有返回值函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有返回值函数"><span class="nav-number">5.2.</span> <span class="nav-text">有返回值函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义传递参数的函数"><span class="nav-number">5.3.</span> <span class="nav-text">定义传递参数的函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell-颜色输出"><span class="nav-number">6.</span> <span class="nav-text">shell 颜色输出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-number">6.1.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式"><span class="nav-number">6.2.</span> <span class="nav-text">格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#显示方式具体内容："><span class="nav-number">6.2.1.</span> <span class="nav-text">显示方式具体内容：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#颜色"><span class="nav-number">6.2.2.</span> <span class="nav-text">颜色</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
