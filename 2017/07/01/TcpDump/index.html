@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://lxj-life.com/2017/07/01/TcpDump/index.html">
 <meta property="og:site_name" content="AlexLin">
 <meta property="og:description" content="Linux 混杂模式设置1. 查看网卡混杂模式状态123456789101112alex@ubuntu:~$ ifconfig eth0eth0      Link encap:Ethernet  HWaddr 00:0c:29:01:02:03          inet addr:10.211.55.3  Bcast:10.211.55.255  Mask:255.255.255.0">
-<meta property="og:updated_time" content="2019-08-21T07:23:23.067Z">
+<meta property="og:updated_time" content="2019-09-29T04:08:45.014Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tcpDump">
 <meta name="twitter:description" content="Linux 混杂模式设置1. 查看网卡混杂模式状态123456789101112alex@ubuntu:~$ ifconfig eth0eth0      Link encap:Ethernet  HWaddr 00:0c:29:01:02:03          inet addr:10.211.55.3  Bcast:10.211.55.255  Mask:255.255.255.0">
@@ -421,7 +421,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  3,491
+                  3,555
                 </span>
               
 
@@ -473,78 +473,101 @@
 <h3 id="命令参数"><a href="#命令参数" class="headerlink" title="命令参数"></a>命令参数</h3><table>
 <thead>
 <tr>
-<th style="text-align:center">命令字</th>
-<th>描述</th>
+<th style="text-align:left">命令字</th>
+<th style="text-align:left">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">-a</td>
-<td>　　　将网络地址和广播地址转变成名字；</td>
+<td style="text-align:left">-a</td>
+<td style="text-align:left">　　　将网络地址和广播地址转变成名字；</td>
 </tr>
 <tr>
-<td style="text-align:center">-d</td>
-<td>　　　将匹配信息包的代码以人们能够理解的汇编格式给出；</td>
+<td style="text-align:left">-d</td>
+<td style="text-align:left">　　　将匹配信息包的代码以人们能够理解的汇编格式给出；</td>
 </tr>
 <tr>
-<td style="text-align:center">-dd</td>
-<td>　　 将匹配信息包的代码以c语言程序段的格式给出；</td>
+<td style="text-align:left">-dd</td>
+<td style="text-align:left">　　 将匹配信息包的代码以c语言程序段的格式给出；</td>
 </tr>
 <tr>
-<td style="text-align:center">-ddd</td>
-<td>将匹配信息包的代码以十进制的形式给出；</td>
+<td style="text-align:left">-ddd</td>
+<td style="text-align:left">将匹配信息包的代码以十进制的形式给出；</td>
 </tr>
 <tr>
-<td style="text-align:center">-e</td>
-<td>　　　在输出行打印出数据链路层的头部信息；</td>
+<td style="text-align:left">-e</td>
+<td style="text-align:left">　　　在输出行打印出数据链路层的头部信息；</td>
 </tr>
 <tr>
-<td style="text-align:center">-f</td>
-<td>　　　将外部的Internet地址以数字的形式打印出来；</td>
+<td style="text-align:left">-f</td>
+<td style="text-align:left">　　　将外部的Internet地址以数字的形式打印出来；</td>
 </tr>
 <tr>
-<td style="text-align:center">-l</td>
-<td>　　　使标准输出变为缓冲行形式；</td>
+<td style="text-align:left">-l</td>
+<td style="text-align:left">　　　使标准输出变为缓冲行形式；</td>
 </tr>
 <tr>
-<td style="text-align:center">-n</td>
-<td>　　　不把网络地址转换成名字；</td>
+<td style="text-align:left">-n</td>
+<td style="text-align:left">　　　不把网络地址转换成名字；</td>
 </tr>
 <tr>
-<td style="text-align:center">-t</td>
-<td>　　　在输出的每一行不打印时间戳；</td>
+<td style="text-align:left">-t</td>
+<td style="text-align:left">　　　在输出的每一行不打印时间戳；</td>
 </tr>
 <tr>
-<td style="text-align:center">-v</td>
-<td>　　　输出一个稍微详细的信息，例如在ip包中可以包括ttl和服务类型的信息；</td>
+<td style="text-align:left">-v</td>
+<td style="text-align:left">　　　输出一个稍微详细的信息，例如在ip包中可以包括ttl和服务类型的信息；</td>
 </tr>
 <tr>
-<td style="text-align:center">-vv</td>
-<td>　　 输出详细的报文信息；</td>
+<td style="text-align:left">-vv</td>
+<td style="text-align:left">　　 输出详细的报文信息；</td>
 </tr>
 <tr>
-<td style="text-align:center">-c</td>
-<td>　　　在收到指定的包的数目后，tcpdump就会停止；</td>
+<td style="text-align:left">-c</td>
+<td style="text-align:left">　　　在收到指定的包的数目后，tcpdump就会停止；</td>
 </tr>
 <tr>
-<td style="text-align:center">-F</td>
-<td>　　　从指定的文件中读取表达式,忽略其它的表达式；</td>
+<td style="text-align:left">-F</td>
+<td style="text-align:left">　　　从指定的文件中读取表达式,忽略其它的表达式；</td>
 </tr>
 <tr>
-<td style="text-align:center">-i</td>
-<td>　　　指定监听的网络接口；</td>
+<td style="text-align:left">-i</td>
+<td style="text-align:left">　　　指定监听的网络接口；</td>
 </tr>
 <tr>
-<td style="text-align:center">-r</td>
-<td>　　　从指定的文件中读取包(这些包一般通过-w选项产生)；</td>
+<td style="text-align:left">-r</td>
+<td style="text-align:left">　　　从指定的文件中读取包(这些包一般通过-w选项产生)；</td>
 </tr>
 <tr>
-<td style="text-align:center">-w</td>
-<td>　　　直接将包写入文件中，并不分析和打印出来；</td>
+<td style="text-align:left">-w</td>
+<td style="text-align:left">　　　直接将包写入文件中，并不分析和打印出来；</td>
 </tr>
 <tr>
-<td style="text-align:center">-T</td>
-<td>　　　将监听到的包直接解释为指定的类型的报文，常见的类型有rpc （远程过程调用）和snmp（简单网络管理协议；）</td>
+<td style="text-align:left">-T</td>
+<td style="text-align:left">　　　将监听到的包直接解释为指定的类型的报文，常见的类型有rpc （远程过程调用）和snmp（简单网络管理协议；）</td>
+</tr>
+<tr>
+<td style="text-align:left">-x</td>
+<td style="text-align:left">用 hex 显示报文的内容</td>
+</tr>
+<tr>
+<td style="text-align:left">-X</td>
+<td style="text-align:left">同时用 hex 和 ascii 显示报文的内容</td>
+</tr>
+<tr>
+<td style="text-align:left">-XX</td>
+<td style="text-align:left">同 -X，但同时显示以太网头部</td>
+</tr>
+<tr>
+<td style="text-align:left">-A</td>
+<td style="text-align:left">只使用 ascii 打印报文的全部数据，不要和 -X 一起使用</td>
+</tr>
+<tr>
+<td style="text-align:left">port xxx</td>
+<td style="text-align:left">指定端口xxx</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
 </tr>
 </tbody>
 </table>
@@ -843,7 +866,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

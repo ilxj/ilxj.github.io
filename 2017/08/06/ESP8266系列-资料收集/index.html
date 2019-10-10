@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://lxj-life.com/2017/08/06/ESP8266系列-资料收集/index.html">
 <meta property="og:site_name" content="AlexLin">
 <meta property="og:description" content="ESP8266 通用系类安信可科技: http://wiki.ai-thinker.com/esp8266Jack’s LAB: http://wiki.jackslab.org/ESP8266乐鑫论坛: http://bbs.espressif.com/index.php">
-<meta property="og:updated_time" content="2019-08-21T07:23:23.063Z">
+<meta property="og:updated_time" content="2019-10-10T03:13:40.974Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ESP8266系列-资料收集">
 <meta name="twitter:description" content="ESP8266 通用系类安信可科技: http://wiki.ai-thinker.com/esp8266Jack’s LAB: http://wiki.jackslab.org/ESP8266乐鑫论坛: http://bbs.espressif.com/index.php">
@@ -421,7 +421,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  64
+                  138
                 </span>
               
 
@@ -459,6 +459,43 @@
         <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><h2 id="ESP8266-通用系类"><a href="#ESP8266-通用系类" class="headerlink" title="ESP8266 通用系类"></a>ESP8266 通用系类</h2><p>安信可科技: <a href="http://wiki.ai-thinker.com/esp8266" target="_blank" rel="external">http://wiki.ai-thinker.com/esp8266</a><br>Jack’s LAB: <a href="http://wiki.jackslab.org/ESP8266" target="_blank" rel="external">http://wiki.jackslab.org/ESP8266</a><br>乐鑫论坛: <a href="http://bbs.espressif.com/index.php" target="_blank" rel="external">http://bbs.espressif.com/index.php</a></p>
 <a id="more"></a>
 <h2 id="ESP8266-Lua系列"><a href="#ESP8266-Lua系列" class="headerlink" title="ESP8266 Lua系列"></a>ESP8266 Lua系列</h2><p>NodeMCU: <a href="https://github.com/nodemcu/nodemcu-firmware/wiki/nodemcu_api_cn" target="_blank" rel="external">https://github.com/nodemcu/nodemcu-firmware/wiki/nodemcu_api_cn</a><br>泰晓科技: <a href="http://tinylab.org/nodemcu-kickstart/" target="_blank" rel="external">http://tinylab.org/nodemcu-kickstart/</a><br>NodeMcu Docs: <a href="http://nodemcu.readthedocs.io/en/dev/" target="_blank" rel="external">http://nodemcu.readthedocs.io/en/dev/</a></p>
+<h2 id="ESP8266-常见问题"><a href="#ESP8266-常见问题" class="headerlink" title="ESP8266 常见问题"></a>ESP8266 常见问题</h2><p>上电输出以下信息</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ets Jan  8 2013,rst cause:1, boot mode:(3,6)</div></pre></td></tr></table></figure>
+<p>In the bootup message ‘boot mode:(x,y)’ three low bits of x are {MTDO, GPIO0, GPIO2}.<br><br>The Espressif code can boot in different modes, selected on power-up based on GPIO pin levels. (<strong>MTDO is equivalent to GPIO15</strong>).<br></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">MTDO</th>
+<th style="text-align:left">GPIO0</th>
+<th style="text-align:left">GPIO2</th>
+<th style="text-align:left">Mode</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">L</td>
+<td style="text-align:left">L</td>
+<td style="text-align:left">H</td>
+<td style="text-align:left">UART</td>
+<td style="text-align:left">Download code from UART</td>
+</tr>
+<tr>
+<td style="text-align:left">L</td>
+<td style="text-align:left">H</td>
+<td style="text-align:left">H</td>
+<td style="text-align:left">Flash</td>
+<td style="text-align:left">Boot from SPI Flash</td>
+</tr>
+<tr>
+<td style="text-align:left">H</td>
+<td style="text-align:left">x</td>
+<td style="text-align:left">x</td>
+<td style="text-align:left">SDIO</td>
+<td style="text-align:left">Boot from SD-card</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -631,7 +668,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -726,7 +763,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ESP8266-通用系类"><span class="nav-number">1.</span> <span class="nav-text">ESP8266 通用系类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ESP8266-Lua系列"><span class="nav-number">2.</span> <span class="nav-text">ESP8266 Lua系列</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ESP8266-通用系类"><span class="nav-number">1.</span> <span class="nav-text">ESP8266 通用系类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ESP8266-Lua系列"><span class="nav-number">2.</span> <span class="nav-text">ESP8266 Lua系列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ESP8266-常见问题"><span class="nav-number">3.</span> <span class="nav-text">ESP8266 常见问题</span></a></li></ol></div>
             
 
           </div>
