@@ -25,6 +25,15 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[vscode配置]]></title>
+    <url>%2F2019%2F08%2F26%2Fvscode%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[Vscode终端Terminal显示zsh的字体设置 没有设置之前的效果 安装Meslo LG M for Powerline 后，配置VsCode 安装后效果]]></content>
+      <tags>
+        <tag>go</tag>
+        <tag>vscode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[win10子系统wsl]]></title>
     <url>%2F2019%2F08%2F21%2Fwin10%E5%AD%90%E7%B3%BB%E7%BB%9Fwsl%2F</url>
     <content type="text"><![CDATA[子系统重启wsl管理员权限下:12net stop LxssManagernet start LxssManager 子系统在win10的默认位置1C:\Users\87832\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState]]></content>
