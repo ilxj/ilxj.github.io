@@ -27,7 +27,7 @@
   <entry>
     <title><![CDATA[vscode配置]]></title>
     <url>%2F2019%2F08%2F26%2Fvscode%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[Vscode终端Terminal显示zsh的字体设置 没有设置之前的效果 安装Meslo LG M for Powerline 后，配置VsCode 安装后效果]]></content>
+    <content type="text"><![CDATA[Vscode终端Terminal显示zsh的字体设置 没有设置之前的效果 安装Meslo LG M for Powerline 后，配置VsCode 安装后效果 vscode 配置同步 安装插件 sync 登录github账号获取token 上传配置快捷键: shift+alt+u 在弹出来的框里面填入token,然后再输出哪里能看到生成一个GitHub Gist用于另外一台机器下载配置； 下载配置 填入gist id,如下图快捷键:shift+alt+d 下载配置]]></content>
       <tags>
         <tag>go</tag>
         <tag>vscode</tag>
