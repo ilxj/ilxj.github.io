@@ -98,7 +98,7 @@
 方法一12&amp;gt;&amp;gt;&amp;gt;$ getconf LONG_BIT&amp;gt;&amp;gt;&amp;gt;$ 64
 方法二12&amp;gt;&amp;gt;&amp;gt;$ uname -a&amp;gt;&amp;gt;&amp;gt;$ Linux alex-virtual-machine 3.16.0-30-generic #40~14.04.1-Ubuntu SMP Thu Jan 15 17:43:14 UTC 2015 x">
 <meta property="og:image" content="http://lxj-life.com/images/nc.gif">
-<meta property="og:updated_time" content="2020-02-20T06:48:58.118Z">
+<meta property="og:updated_time" content="2020-02-20T06:55:37.946Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux之实用技能">
 <meta name="twitter:description" content="查看机器是多少位
@@ -407,7 +407,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  2,149
+                  2,150
                 </span>
               
 
@@ -423,7 +423,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  9
+                  10
                 </span>
               
             </div>
@@ -600,11 +600,11 @@
 <h2 id="显示命令执行时的参数"><a href="#显示命令执行时的参数" class="headerlink" title="显示命令执行时的参数"></a>显示命令执行时的参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps -aux | grep CMD</div></pre></td></tr></table></figure>
 <h2 id="ubuntu-防火墙"><a href="#ubuntu-防火墙" class="headerlink" title="ubuntu 防火墙"></a>ubuntu 防火墙</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查看状态</span></div><div class="line">sudo ufw status  </div><div class="line"><span class="comment"># 开启</span></div><div class="line">sudo ufw <span class="built_in">enable</span>  </div><div class="line"><span class="comment"># 默认关闭外部访问</span></div><div class="line">sudo ufw default deny </div><div class="line"><span class="comment"># 新增端口</span></div><div class="line">sudo ufw allow 8080  </div><div class="line"><span class="comment"># 删除端口</span></div><div class="line">sudo ufw delete allow 8080</div><div class="line"><span class="comment"># 允许特定来源的ip地址访问</span></div><div class="line">sudo ufw allow from 192.168.1.1</div></pre></td></tr></table></figure>
 <h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><ul>
-<li>删除目录下大小为0的文件<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> find ./ -name <span class="string">"*"</span> -type f -size 0c | xargs -n 1 rm <span class="_">-f</span></div><div class="line">``` </div><div class="line">- 删除当前目录下面所有 <span class="built_in">test</span> 文件夹下面的文件        </div><div class="line">```SH</div><div class="line"> find ./ -name <span class="string">"test"</span> -type d -exec rm -rf &#123;&#125; ;</div><div class="line">``` </div><div class="line">- 删除文件夹下面的所有的.py文件</div></pre></td></tr></table></figure>
-</li>
+<li>删除目录下大小为0的文件</li>
 </ul>
-<p>find ./ -name ‘.py’ -exec rm -rf {} ;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- 显示当前路径下，大于50M的文件</div></pre></td></tr></table></figure></p>
-<p>find ./ -size +50M<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- 删除当前路径下，大于50M的文件</div></pre></td></tr></table></figure></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> find ./ -name <span class="string">"*"</span> -type f -size 0c | xargs -n 1 rm <span class="_">-f</span></div><div class="line">``` </div><div class="line"></div><div class="line">- 删除当前目录下面所有 <span class="built_in">test</span> 文件夹下面的文件 </div><div class="line"></div><div class="line">```SH</div><div class="line"> find ./ -name <span class="string">"test"</span> -type d -exec rm -rf &#123;&#125; ;</div><div class="line">``` </div><div class="line"></div><div class="line">- 删除文件夹下面的所有的.py文件</div></pre></td></tr></table></figure>
+<p>find ./ -name ‘.py’ -exec rm -rf {} ;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 显示当前路径下，大于50M的文件</div></pre></td></tr></table></figure></p>
+<p>find ./ -size +50M<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 删除当前路径下，大于50M的文件</div></pre></td></tr></table></figure></p>
 <p>find ./ -size +50M -exec rm {} \;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">## Linux 下测试TCP/UDP 连通性</div><div class="line"></div><div class="line">**通过netcat软件实现**</div><div class="line"></div><div class="line">- Ubuntu 安装 `apt install netcat`</div><div class="line">- CentOS 安装 `yum install nc` </div><div class="line"></div><div class="line">**测试方法**</div><div class="line">- 服务器</div><div class="line">	```sh</div><div class="line">   ubuntu@VM-133-112-ubuntu:~$ nc -l -u 1885</div></pre></td></tr></table></figure></p>
 <ul>
 <li><p>客户端</p>
