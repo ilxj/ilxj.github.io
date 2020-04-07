@@ -14,6 +14,11 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Python基础使用技巧]]></title>
+    <url>%2F2020%2F04%2F08%2FPython%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%2F</url>
+    <content type="text"><![CDATA[依赖文件requirements生成和安装 生成 1pip freeze &gt; requirements.txt 安装 1pip install -r requirements.txt]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[win10 实用工具.md]]></title>
     <url>%2F2019%2F11%2F06%2Fwin10-%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7-md%2F</url>
     <content type="text"><![CDATA[包管理工具 - Scoop scoop 类似于Ubuntu下的apt-get install 官网 安装注意地方: 需要科学上网，不能下载不了 安装步骤 打开 powershell,输入下载安装命令 123456789101112PS C:\Users\87832&gt; iex (new-object net.webclient).downloadstring('https://get.scoop.sh')Initializing...Downloading scoop...Extracting...Creating shim...Downloading main bucket...Extracting...Adding ~\scoop\shims to your path.'lastupdate' has been set to '2019-11-06T11:20:35.0813495+08:00'Scoop was installed successfully!Type 'scoop help' for instructions.PS C:\Users\87832&gt; scoop help 例子安装7zip123456789λscoop install 7zipInstalling '7zip' (19.00) [64bit]7z1900-x64.msi (1.7 MB) [===========================================================] 100%Checking hash of 7z1900-x64.msi ... ok.Extracting 7z1900-x64.msi ... done.Linking ~\scoop\apps\7zip\current =&gt; ~\scoop\apps\7zip\19.00Creating shim for '7z'.Creating shortcut for 7-Zip (7zFM.exe)'7zip' (19.00) was installed successfully! 文件搜索 everything Wox 开发工具REST Client参考: https://blog.csdn.net/noArk/article/details/86748738 UMLhttp://plantuml.com/zh/]]></content>
