@@ -97,7 +97,7 @@
 服务端1openssh-server">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1736256-5f5382792923eb5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1736256-338f78770105f37a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-08-21T07:23:23.063Z">
+<meta property="og:updated_time" content="2020-05-16T10:48:14.599Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux之服务安装">
 <meta name="twitter:description" content="ssh-server 安装SSH分客户端1openssh-client
@@ -403,7 +403,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,792
+                  1,819
                 </span>
               
 
@@ -453,12 +453,24 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp /path/file（这部分为本地的路径） user（远端目标用户名）@host（远端目标IP）:/pathorfile（文件存储路径）</div></pre></td></tr></table></figure>
 </li>
 <li><p>下载</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp user（远端用户名）@host（远端IP）:/path/file（下载文件在远端的路径） localpathorfile（本地文件存放路径）</div></pre></td></tr></table></figure>
 </li>
-<li><p>查看目录或文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh user@host command ls &quot;/path/*.tgz&quot;</div></pre></td></tr></table></figure>
+<li><ul>
+<li>下载单独文件</li>
+</ul>
 </li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp user（远端用户名）@host（远端IP）:/path/file（下载文件在远端的路径） localpathorfile（本地文件存放路径）</div></pre></td></tr></table></figure>
+<ul>
+<li><ul>
+<li>下载整个文件夹</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp -P 2233 -r root@xxx.xxx.xxx.xxx:/data/gagent/log_gagent/00BSJ26M_0403000A_20190610170053  .</div></pre></td></tr></table></figure>
+<ul>
+<li>查看目录或文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh user@host command ls &quot;/path/*.tgz&quot;</div></pre></td></tr></table></figure>
 <h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><p><img src="https://upload-images.jianshu.io/upload_images/1736256-5f5382792923eb5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ssh"></p>
 <p>如上图，实现Company下的PC 通过ssh 访问到Home(A) 里的PC.实际上是在公网上一台主机Server(B)做SSH转发，在A上做SSH方向代理实现；</p>
 <p>A服务器用户名: <em><em>gagent</em></em><br>B服务器用户名: <em><em>ubuntu</em></em></p>
@@ -698,7 +710,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-count">62</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
