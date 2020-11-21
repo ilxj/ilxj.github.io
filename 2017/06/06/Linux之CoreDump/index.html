@@ -443,7 +443,7 @@
       
 
       
-        <script src="/assets/js/DPlayer.min.js"> </script><h2 id="Core-Dump-定位"><a href="#Core-Dump-定位" class="headerlink" title="Core Dump 定位"></a>Core Dump 定位</h2><hr>
+        <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><h2 id="Core-Dump-定位"><a href="#Core-Dump-定位" class="headerlink" title="Core Dump 定位"></a>Core Dump 定位</h2><hr>
 <h3 id="打开CoreDump-功能"><a href="#打开CoreDump-功能" class="headerlink" title="打开CoreDump 功能"></a>打开CoreDump 功能</h3><ul>
 <li>在终端中输入命令 ulimit -c ，输出的结果为 0，说明默认是关闭 core dump 的，即当程序异常终止时，也不会生成 core dump 文件。</li>
 <li>我们可以使用命令 ulimit -c unlimited 来开启 core dump 功能，并且不限制 core dump 文件的大小； 如果需要限制文件的大小，将 unlimited 改成你想生成 core 文件最大的大小，注意单位为 blocks（KB）。</li>
