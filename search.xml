@@ -502,6 +502,105 @@ Failure [INSTALL_FAILED_ALREADY_EXISTS]</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>C语言之奇门遁甲术</title>
+    <url>/2019/01/09/b2a3.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="C语言位操作与计算"><a href="#C语言位操作与计算" class="headerlink" title="C语言位操作与计算"></a>C语言位操作与计算</h2><hr>
+<blockquote>
+<p><strong>C语言中位取反是~，逻辑取反是</strong></p>
+</blockquote>
+<h3 id="布尔位运算符"><a href="#布尔位运算符" class="headerlink" title="布尔位运算符"></a>布尔位运算符</h3><table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">意义</th>
+<th align="left">示例</th>
+<th align="left">对于每个位位置的结果（1=设定，0=清除）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&amp;</td>
+<td align="left">位 AND</td>
+<td align="left">x&amp;y</td>
+<td align="left">如果 x 和 y 都为 1，则得到 1；如果 x 或 y 任何一个为 0，或都为0，则得到 0</td>
+</tr>
+<tr>
+<td align="left">I</td>
+<td align="left">位 OR</td>
+<td align="left">xIy</td>
+<td align="left">如果 x 或 y 为 1，或都为 1，则得到 1；如果 x 和 y 都为 0，则得到 0</td>
+</tr>
+<tr>
+<td align="left">^</td>
+<td align="left">位 XOR</td>
+<td align="left">x^y</td>
+<td align="left">如果 x 或 y 的值不同，则得到 1；如果两个值相同，则得到 0</td>
+</tr>
+<tr>
+<td align="left">~</td>
+<td align="left">位 NOT</td>
+<td align="left">（I的补码）~x</td>
+<td align="left">如果 x 为 0，则得到 1，如果 x 是 1，则得到 0</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+
+<h3 id="对某一位操作"><a href="#对某一位操作" class="headerlink" title="对某一位操作"></a>对某一位操作</h3><pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">define</span> set_bit(m,n)       m|=(1&lt;&lt;n)               </span><span class="token comment" spellcheck="true">//对某一位置一</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> reset_bit(m,n)     m &amp;= ~( 1&lt;&lt;n )          </span><span class="token comment" spellcheck="true">//对某一位置零</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> get_bit( m,n )     ((m) >> (n)&amp;1)          </span><span class="token comment" spellcheck="true">//获取的某一位的值</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> reversebit(m,n)    m^=(1&lt;&lt;n)               </span><span class="token comment" spellcheck="true">//对某一位取反</span></code></pre>
+<h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><h4 id="1-如果乘上一个2的倍数数值，可以改用左移运算-Left-Shift-加速-300"><a href="#1-如果乘上一个2的倍数数值，可以改用左移运算-Left-Shift-加速-300" class="headerlink" title="1. 如果乘上一个2的倍数数值，可以改用左移运算(Left Shift) 加速 300%"></a>1. 如果乘上一个2的倍数数值，可以改用左移运算(Left Shift) 加速 300%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> x <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+x <span class="token operator">=</span> x <span class="token operator">*</span> <span class="token number">64</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//改为:</span>
+x <span class="token operator">=</span> x <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 2 == 2</span>
+x <span class="token operator">=</span> x <span class="token operator">&lt;&lt;</span> <span class="token number">6</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 64 == 2*2*2*2*2*2</span></code></pre>
+<h4 id="2-如果除上一个-2-的倍数数值，可以改用右移运算加速-350"><a href="#2-如果除上一个-2-的倍数数值，可以改用右移运算加速-350" class="headerlink" title="2. 如果除上一个 2 的倍数数值，可以改用右移运算加速 350%"></a>2. 如果除上一个 2 的倍数数值，可以改用右移运算加速 350%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+x <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">64</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//改为:</span>
+x <span class="token operator">=</span> x <span class="token operator">>></span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 2 == 2</span>
+x <span class="token operator">=</span> x <span class="token operator">>></span> <span class="token number">6</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 64 == 2*2*2*2*2*2</span></code></pre>
+<h4 id="3-数值转整数加速-10"><a href="#3-数值转整数加速-10" class="headerlink" title="3. 数值转整数加速 10%"></a>3. 数值转整数加速 10%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">1.232</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//改为:</span>
+x <span class="token operator">=</span> <span class="token number">1.232</span> <span class="token operator">>></span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
+<h4 id="4-交换两个数值-swap-，使用-XOR-可以加速20"><a href="#4-交换两个数值-swap-，使用-XOR-可以加速20" class="headerlink" title="4. 交换两个数值(swap)，使用 XOR 可以加速20%"></a>4. 交换两个数值(swap)，使用 XOR 可以加速20%</h4><pre class=" language-c"><code class="language-c">var t<span class="token punctuation">:</span><span class="token keyword">int</span> <span class="token operator">=</span> a<span class="token punctuation">;</span>
+a <span class="token operator">=</span> b<span class="token punctuation">;</span>
+b <span class="token operator">=</span> t<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//equals:</span>
+a <span class="token operator">=</span> a<span class="token operator">^</span>b<span class="token punctuation">;</span>
+b <span class="token operator">=</span> a<span class="token operator">^</span>b<span class="token punctuation">;</span>
+a <span class="token operator">=</span> a<span class="token operator">^</span>b<span class="token punctuation">;</span></code></pre>
+<h4 id="5-正负号转换，可以加入-300"><a href="#5-正负号转换，可以加入-300" class="headerlink" title="5. 正负号转换，可以加入 300%"></a>5. 正负号转换，可以加入 300%</h4><pre class=" language-c"><code class="language-c">i <span class="token operator">=</span> <span class="token operator">-</span>i<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//改为</span>
+i <span class="token operator">=</span> <span class="token operator">~</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// NOT 写法</span>
+<span class="token comment" spellcheck="true">//或</span>
+i <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">^</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// XOR 写法</span></code></pre>
+<h4 id="6-取余数，如果除数为-2-的倍数，可利用-AND-运算加速-600"><a href="#6-取余数，如果除数为-2-的倍数，可利用-AND-运算加速-600" class="headerlink" title="6. 取余数，如果除数为 2 的倍数，可利用 AND 运算加速 600%"></a>6. 取余数，如果除数为 2 的倍数，可利用 AND 运算加速 600%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> <span class="token number">131</span> <span class="token operator">%</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//equals:</span>
+x <span class="token operator">=</span> <span class="token number">131</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">4</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="7-利用-AND-运算检查整数是否为-2-的倍数，可以加速-600"><a href="#7-利用-AND-运算检查整数是否为-2-的倍数，可以加速-600" class="headerlink" title="7. 利用 AND 运算检查整数是否为 2 的倍数，可以加速 600%"></a>7. 利用 AND 运算检查整数是否为 2 的倍数，可以加速 600%</h4><pre class=" language-c"><code class="language-c">isEven <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//equals:</span>
+isEven <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
+<h4 id="8-加速-Math-abs-600-的写法1，写法2-又比写法1加速-20"><a href="#8-加速-Math-abs-600-的写法1，写法2-又比写法1加速-20" class="headerlink" title="8. 加速 Math.abs 600% 的写法1，写法2 又比写法1加速 20%"></a>8. 加速 Math.abs 600% 的写法1，写法2 又比写法1加速 20%</h4><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">//写法1</span>
+i <span class="token operator">=</span> x <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token operator">-</span>x <span class="token punctuation">:</span> x<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//写法2</span>
+
+i <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">^</span> <span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//写法3</span>
+
+i<span class="token operator">=</span>x<span class="token operator">^</span><span class="token punctuation">(</span><span class="token operator">~</span><span class="token punctuation">(</span>x<span class="token operator">>></span><span class="token number">31</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token punctuation">(</span>x<span class="token operator">>></span><span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="9-比较两数值相乘之后是否拥有相同的符号，加速-35"><a href="#9-比较两数值相乘之后是否拥有相同的符号，加速-35" class="headerlink" title="9. 比较两数值相乘之后是否拥有相同的符号，加速 35%"></a>9. 比较两数值相乘之后是否拥有相同的符号，加速 35%</h4><pre class=" language-c"><code class="language-c">eqSign <span class="token operator">=</span> a <span class="token operator">*</span> b <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//equals:</span>
+eqSign <span class="token operator">=</span> a <span class="token operator">^</span> b <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
+]]></content>
+      <categories>
+        <category>C</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>COAP系列-入门介绍</title>
     <url>/2017/10/18/fb1f.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a href="http://coap.technology/">http://coap.technology/</a><br>WiKi<br><a href="https://en.wikipedia.org/wiki/Constrained_Application_Protocol">https://en.wikipedia.org/wiki/Constrained_Application_Protocol</a><br>开源库<br><a href="https://github.com/miri64/libcoap">https://github.com/miri64/libcoap</a></p>
@@ -800,105 +899,6 @@ Failure [INSTALL_FAILED_ALREADY_EXISTS]</code></pre>
       <tags>
         <tag>COAP</tag>
         <tag>协议</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C语言之奇门遁甲术</title>
-    <url>/2019/01/09/b2a3.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="C语言位操作与计算"><a href="#C语言位操作与计算" class="headerlink" title="C语言位操作与计算"></a>C语言位操作与计算</h2><hr>
-<blockquote>
-<p><strong>C语言中位取反是~，逻辑取反是</strong></p>
-</blockquote>
-<h3 id="布尔位运算符"><a href="#布尔位运算符" class="headerlink" title="布尔位运算符"></a>布尔位运算符</h3><table>
-<thead>
-<tr>
-<th align="left">运算符</th>
-<th align="left">意义</th>
-<th align="left">示例</th>
-<th align="left">对于每个位位置的结果（1=设定，0=清除）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">&amp;</td>
-<td align="left">位 AND</td>
-<td align="left">x&amp;y</td>
-<td align="left">如果 x 和 y 都为 1，则得到 1；如果 x 或 y 任何一个为 0，或都为0，则得到 0</td>
-</tr>
-<tr>
-<td align="left">I</td>
-<td align="left">位 OR</td>
-<td align="left">xIy</td>
-<td align="left">如果 x 或 y 为 1，或都为 1，则得到 1；如果 x 和 y 都为 0，则得到 0</td>
-</tr>
-<tr>
-<td align="left">^</td>
-<td align="left">位 XOR</td>
-<td align="left">x^y</td>
-<td align="left">如果 x 或 y 的值不同，则得到 1；如果两个值相同，则得到 0</td>
-</tr>
-<tr>
-<td align="left">~</td>
-<td align="left">位 NOT</td>
-<td align="left">（I的补码）~x</td>
-<td align="left">如果 x 为 0，则得到 1，如果 x 是 1，则得到 0</td>
-</tr>
-</tbody></table>
-<a id="more"></a>
-
-<h3 id="对某一位操作"><a href="#对某一位操作" class="headerlink" title="对某一位操作"></a>对某一位操作</h3><pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">define</span> set_bit(m,n)       m|=(1&lt;&lt;n)               </span><span class="token comment" spellcheck="true">//对某一位置一</span>
-<span class="token macro property">#<span class="token directive keyword">define</span> reset_bit(m,n)     m &amp;= ~( 1&lt;&lt;n )          </span><span class="token comment" spellcheck="true">//对某一位置零</span>
-<span class="token macro property">#<span class="token directive keyword">define</span> get_bit( m,n )     ((m) >> (n)&amp;1)          </span><span class="token comment" spellcheck="true">//获取的某一位的值</span>
-<span class="token macro property">#<span class="token directive keyword">define</span> reversebit(m,n)    m^=(1&lt;&lt;n)               </span><span class="token comment" spellcheck="true">//对某一位取反</span></code></pre>
-<h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><h4 id="1-如果乘上一个2的倍数数值，可以改用左移运算-Left-Shift-加速-300"><a href="#1-如果乘上一个2的倍数数值，可以改用左移运算-Left-Shift-加速-300" class="headerlink" title="1. 如果乘上一个2的倍数数值，可以改用左移运算(Left Shift) 加速 300%"></a>1. 如果乘上一个2的倍数数值，可以改用左移运算(Left Shift) 加速 300%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> x <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
-x <span class="token operator">=</span> x <span class="token operator">*</span> <span class="token number">64</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//改为:</span>
-x <span class="token operator">=</span> x <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 2 == 2</span>
-x <span class="token operator">=</span> x <span class="token operator">&lt;&lt;</span> <span class="token number">6</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 64 == 2*2*2*2*2*2</span></code></pre>
-<h4 id="2-如果除上一个-2-的倍数数值，可以改用右移运算加速-350"><a href="#2-如果除上一个-2-的倍数数值，可以改用右移运算加速-350" class="headerlink" title="2. 如果除上一个 2 的倍数数值，可以改用右移运算加速 350%"></a>2. 如果除上一个 2 的倍数数值，可以改用右移运算加速 350%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
-x <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">64</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//改为:</span>
-x <span class="token operator">=</span> x <span class="token operator">>></span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 2 == 2</span>
-x <span class="token operator">=</span> x <span class="token operator">>></span> <span class="token number">6</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 64 == 2*2*2*2*2*2</span></code></pre>
-<h4 id="3-数值转整数加速-10"><a href="#3-数值转整数加速-10" class="headerlink" title="3. 数值转整数加速 10%"></a>3. 数值转整数加速 10%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">1.232</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">//改为:</span>
-x <span class="token operator">=</span> <span class="token number">1.232</span> <span class="token operator">>></span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
-<h4 id="4-交换两个数值-swap-，使用-XOR-可以加速20"><a href="#4-交换两个数值-swap-，使用-XOR-可以加速20" class="headerlink" title="4. 交换两个数值(swap)，使用 XOR 可以加速20%"></a>4. 交换两个数值(swap)，使用 XOR 可以加速20%</h4><pre class=" language-c"><code class="language-c">var t<span class="token punctuation">:</span><span class="token keyword">int</span> <span class="token operator">=</span> a<span class="token punctuation">;</span>
-a <span class="token operator">=</span> b<span class="token punctuation">;</span>
-b <span class="token operator">=</span> t<span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//equals:</span>
-a <span class="token operator">=</span> a<span class="token operator">^</span>b<span class="token punctuation">;</span>
-b <span class="token operator">=</span> a<span class="token operator">^</span>b<span class="token punctuation">;</span>
-a <span class="token operator">=</span> a<span class="token operator">^</span>b<span class="token punctuation">;</span></code></pre>
-<h4 id="5-正负号转换，可以加入-300"><a href="#5-正负号转换，可以加入-300" class="headerlink" title="5. 正负号转换，可以加入 300%"></a>5. 正负号转换，可以加入 300%</h4><pre class=" language-c"><code class="language-c">i <span class="token operator">=</span> <span class="token operator">-</span>i<span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//改为</span>
-i <span class="token operator">=</span> <span class="token operator">~</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// NOT 写法</span>
-<span class="token comment" spellcheck="true">//或</span>
-i <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">^</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// XOR 写法</span></code></pre>
-<h4 id="6-取余数，如果除数为-2-的倍数，可利用-AND-运算加速-600"><a href="#6-取余数，如果除数为-2-的倍数，可利用-AND-运算加速-600" class="headerlink" title="6. 取余数，如果除数为 2 的倍数，可利用 AND 运算加速 600%"></a>6. 取余数，如果除数为 2 的倍数，可利用 AND 运算加速 600%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> <span class="token number">131</span> <span class="token operator">%</span> <span class="token number">4</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//equals:</span>
-x <span class="token operator">=</span> <span class="token number">131</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">4</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h4 id="7-利用-AND-运算检查整数是否为-2-的倍数，可以加速-600"><a href="#7-利用-AND-运算检查整数是否为-2-的倍数，可以加速-600" class="headerlink" title="7. 利用 AND 运算检查整数是否为 2 的倍数，可以加速 600%"></a>7. 利用 AND 运算检查整数是否为 2 的倍数，可以加速 600%</h4><pre class=" language-c"><code class="language-c">isEven <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//equals:</span>
-isEven <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
-<h4 id="8-加速-Math-abs-600-的写法1，写法2-又比写法1加速-20"><a href="#8-加速-Math-abs-600-的写法1，写法2-又比写法1加速-20" class="headerlink" title="8. 加速 Math.abs 600% 的写法1，写法2 又比写法1加速 20%"></a>8. 加速 Math.abs 600% 的写法1，写法2 又比写法1加速 20%</h4><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">//写法1</span>
-i <span class="token operator">=</span> x <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token operator">-</span>x <span class="token punctuation">:</span> x<span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">//写法2</span>
-
-i <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">^</span> <span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">//写法3</span>
-
-i<span class="token operator">=</span>x<span class="token operator">^</span><span class="token punctuation">(</span><span class="token operator">~</span><span class="token punctuation">(</span>x<span class="token operator">>></span><span class="token number">31</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token punctuation">(</span>x<span class="token operator">>></span><span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h4 id="9-比较两数值相乘之后是否拥有相同的符号，加速-35"><a href="#9-比较两数值相乘之后是否拥有相同的符号，加速-35" class="headerlink" title="9. 比较两数值相乘之后是否拥有相同的符号，加速 35%"></a>9. 比较两数值相乘之后是否拥有相同的符号，加速 35%</h4><pre class=" language-c"><code class="language-c">eqSign <span class="token operator">=</span> a <span class="token operator">*</span> b <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//equals:</span>
-eqSign <span class="token operator">=</span> a <span class="token operator">^</span> b <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
-]]></content>
-      <categories>
-        <category>C</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -1448,6 +1448,70 @@ invalid reference format</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>Github Blog 搭建入门</title>
+    <url>/2017/03/26/fc92.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h2 id="GitHub-项目创建"><a href="#GitHub-项目创建" class="headerlink" title="GitHub 项目创建"></a>GitHub 项目创建</h2><ul>
+<li>创建一个跟你的用户名相同的项目，比如我的*<strong>github**<em>名称是</em></strong>ilxj*** 则项目名称为**<em>ilxj.github.io**</em></li>
+</ul>
+<h2 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h2><ul>
+<li>安装nodejs，下载直接安装就可以了: <a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a>.</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h2><ul>
+<li>安装配置hexo，安装命令:</li>
+</ul>
+<h3 id="淘宝cnpm"><a href="#淘宝cnpm" class="headerlink" title="淘宝cnpm"></a>淘宝cnpm</h3><p>网址:<a href="https://npm.taobao.org/">https://npm.taobao.org/</a></p>
+<pre class=" language-sh"><code class="language-sh">npm install -g hexo-cli
+# 若npm 安装有问题，可以更改为淘宝源,之后可以用 cnpm 代替 npm
+npm install -g cnpm --registry=https://registry.npm.taobao.org</code></pre>
+<ul>
+<li>在终端输入:</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh"> $ hexo
+ #显示如下则成功.</code></pre>
+<p> ![hexo][3]</p>
+<ul>
+<li>初始化博客</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh"> #建立一个博客文件夹，并初始化博客，<folder>为文件夹的名称，可以随便起名字
+ $ hexo init <folder>
+ #进入博客文件夹，根据博客既定的dependencies配置安装所有的依赖包
+ $ npm install
+ # 部署所需的插件,加上--save比较好
+ $ npm install hexo-deployer-git    --save</code></pre>
+<ul>
+<li>初始化完成之后，目录如下图<br>![hexo 初始化图][2]<h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><img src="http://upload-images.jianshu.io/upload_images/1736256-70632d39b4a81358.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="博客配置"></li>
+</ul>
+<h3 id="本地发布命令"><a href="#本地发布命令" class="headerlink" title="本地发布命令"></a>本地发布命令</h3><pre class=" language-bash"><code class="language-bash"> $ hexo server.
+ <span class="token comment" spellcheck="true">#浏览器浏览:http://localhost:4000/</span></code></pre>
+<h3 id="GitHub-发布命令"><a href="#GitHub-发布命令" class="headerlink" title="GitHub 发布命令"></a>GitHub 发布命令</h3><pre class=" language-bash"><code class="language-bash"> $ hexo generate
+ $ hexo deploy</code></pre>
+<p>这时候我们的博客已经部署到网上了，我们可以在浏览器地址输入栏输入我们的网址即可，如我的博客是:[ilxj.github.io][1]。</p>
+<h2 id="跨PC部署"><a href="#跨PC部署" class="headerlink" title="跨PC部署"></a>跨PC部署</h2><p>原理是一个仓库存部署工具，另外一个参考用来做发布仓库；</p>
+<h2 id="Hexo-主题"><a href="#Hexo-主题" class="headerlink" title="Hexo 主题"></a>Hexo 主题</h2><ul>
+<li>[官网 hexo 主题][4]</li>
+<li>[主题 github][5]</li>
+</ul>
+<h3 id="本博客主题是NEXT"><a href="#本博客主题是NEXT" class="headerlink" title="本博客主题是NEXT"></a>本博客主题是NEXT</h3><ul>
+<li>新建一个页面，命名为 tags 。命令如下：<pre><code>$ hexo new page tags</code></pre>
+</li>
+<li>初始化<br>编辑刚新建的页面，设置type为tags：</li>
+</ul>
+<pre><code>title: 标签
+date: 2014-12-22 12:39:04
+type: &quot;tags&quot;
+
+---</code></pre>
+<p>[NEXT 参考][6]<br>[1]: <a href="http://lxj-life.com/">http://lxj-life.com/</a><br>[2]: <a href="http://upload-images.jianshu.io/upload_images/1736256-41e851da429e5a19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">http://upload-images.jianshu.io/upload_images/1736256-41e851da429e5a19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a><br>[3]: <a href="http://upload-images.jianshu.io/upload_images/1736256-808fd91a203124d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">http://upload-images.jianshu.io/upload_images/1736256-808fd91a203124d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a><br>[4]: <a href="https://hexo.io/themes/">https://hexo.io/themes/</a><br>[5]: <a href="https://github.com/hexojs/hexo/wiki/Themes">https://github.com/hexojs/hexo/wiki/Themes</a><br>[6]: <a href="http://theme-next.iissnan.com/getting-started.html">http://theme-next.iissnan.com/getting-started.html</a></p>
+]]></content>
+      <tags>
+        <tag>git</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ESP8266系列-连接OLED模块</title>
     <url>/2020/04/09/8529.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="OLED-屏幕介绍"><a href="#OLED-屏幕介绍" class="headerlink" title="OLED 屏幕介绍"></a>OLED 屏幕介绍</h2><ul>
@@ -1514,111 +1578,6 @@ invalid reference format</code></pre>
 ]]></content>
   </entry>
   <entry>
-    <title>Github Blog 搭建入门</title>
-    <url>/2017/03/26/fc92.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h2 id="GitHub-项目创建"><a href="#GitHub-项目创建" class="headerlink" title="GitHub 项目创建"></a>GitHub 项目创建</h2><ul>
-<li>创建一个跟你的用户名相同的项目，比如我的*<strong>github**<em>名称是</em></strong>ilxj*** 则项目名称为**<em>ilxj.github.io**</em></li>
-</ul>
-<h2 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h2><ul>
-<li>安装nodejs，下载直接安装就可以了: <a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a>.</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h2><ul>
-<li>安装配置hexo，安装命令:</li>
-</ul>
-<h3 id="淘宝cnpm"><a href="#淘宝cnpm" class="headerlink" title="淘宝cnpm"></a>淘宝cnpm</h3><p>网址:<a href="https://npm.taobao.org/">https://npm.taobao.org/</a></p>
-<pre class=" language-sh"><code class="language-sh">npm install -g hexo-cli
-# 若npm 安装有问题，可以更改为淘宝源,之后可以用 cnpm 代替 npm
-npm install -g cnpm --registry=https://registry.npm.taobao.org</code></pre>
-<ul>
-<li>在终端输入:</li>
-</ul>
-<pre class=" language-sh"><code class="language-sh"> $ hexo
- #显示如下则成功.</code></pre>
-<p> ![hexo][3]</p>
-<ul>
-<li>初始化博客</li>
-</ul>
-<pre class=" language-sh"><code class="language-sh"> #建立一个博客文件夹，并初始化博客，<folder>为文件夹的名称，可以随便起名字
- $ hexo init <folder>
- #进入博客文件夹，根据博客既定的dependencies配置安装所有的依赖包
- $ npm install
- # 部署所需的插件,加上--save比较好
- $ npm install hexo-deployer-git    --save</code></pre>
-<ul>
-<li>初始化完成之后，目录如下图<br>![hexo 初始化图][2]<h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><img src="http://upload-images.jianshu.io/upload_images/1736256-70632d39b4a81358.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="博客配置"></li>
-</ul>
-<h3 id="本地发布命令"><a href="#本地发布命令" class="headerlink" title="本地发布命令"></a>本地发布命令</h3><pre class=" language-bash"><code class="language-bash"> $ hexo server.
- <span class="token comment" spellcheck="true">#浏览器浏览:http://localhost:4000/</span></code></pre>
-<h3 id="GitHub-发布命令"><a href="#GitHub-发布命令" class="headerlink" title="GitHub 发布命令"></a>GitHub 发布命令</h3><pre class=" language-bash"><code class="language-bash"> $ hexo generate
- $ hexo deploy</code></pre>
-<p>这时候我们的博客已经部署到网上了，我们可以在浏览器地址输入栏输入我们的网址即可，如我的博客是:[ilxj.github.io][1]。</p>
-<h2 id="跨PC部署"><a href="#跨PC部署" class="headerlink" title="跨PC部署"></a>跨PC部署</h2><p>原理是一个仓库存部署工具，另外一个参考用来做发布仓库；</p>
-<h2 id="Hexo-主题"><a href="#Hexo-主题" class="headerlink" title="Hexo 主题"></a>Hexo 主题</h2><ul>
-<li>[官网 hexo 主题][4]</li>
-<li>[主题 github][5]</li>
-</ul>
-<h3 id="本博客主题是NEXT"><a href="#本博客主题是NEXT" class="headerlink" title="本博客主题是NEXT"></a>本博客主题是NEXT</h3><ul>
-<li>新建一个页面，命名为 tags 。命令如下：<pre><code>$ hexo new page tags</code></pre>
-</li>
-<li>初始化<br>编辑刚新建的页面，设置type为tags：</li>
-</ul>
-<pre><code>title: 标签
-date: 2014-12-22 12:39:04
-type: &quot;tags&quot;
-
----</code></pre>
-<p>[NEXT 参考][6]<br>[1]: <a href="http://lxj-life.com/">http://lxj-life.com/</a><br>[2]: <a href="http://upload-images.jianshu.io/upload_images/1736256-41e851da429e5a19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">http://upload-images.jianshu.io/upload_images/1736256-41e851da429e5a19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a><br>[3]: <a href="http://upload-images.jianshu.io/upload_images/1736256-808fd91a203124d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">http://upload-images.jianshu.io/upload_images/1736256-808fd91a203124d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a><br>[4]: <a href="https://hexo.io/themes/">https://hexo.io/themes/</a><br>[5]: <a href="https://github.com/hexojs/hexo/wiki/Themes">https://github.com/hexojs/hexo/wiki/Themes</a><br>[6]: <a href="http://theme-next.iissnan.com/getting-started.html">http://theme-next.iissnan.com/getting-started.html</a></p>
-]]></content>
-      <tags>
-        <tag>git</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo插件-Hexo Admin</title>
-    <url>/2017/08/08/6e86.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Hexo-Admin"><a href="#Hexo-Admin" class="headerlink" title="Hexo Admin"></a>Hexo Admin</h2><p>官网链接:<a href="https://jaredforsyth.com/hexo-admin/">https://jaredforsyth.com/hexo-admin/</a></p>
-<blockquote>
-<p>插件可以直接在网页端创建、编辑markdown文章内容，并将内容发布到_posts里。<br>另外，对我而言，最方便的是可以很方便的给文章加标题、分类、打标签。</p>
-</blockquote>
-<h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h2><ol>
-<li>第一步:下载启动</li>
-</ol>
-<pre class=" language-sh"><code class="language-sh">npm install --save hexo-admin
-hexo server -d
-open http://localhost:4000/admin/</code></pre>
-<a id="more"></a>
-
-<ol start="2">
-<li>第二步：配置</li>
-</ol>
-<p>在Hexo 全局配置文件<strong>_config.yml</strong>最后添加类似如下内容</p>
-<pre class=" language-sh"><code class="language-sh">admin:
-  username: AlexLin
-  password_hash: be121740bf988b2225a313fa1f107ca1
-  secret: your admin password</code></pre>
-<p><strong><em>secret :</em></strong>你的后台管理密码</p>
-<p><strong><em>password_hash:</em></strong> 用密码生成的哈希串</p>
-<p>我的生成命令如下:</p>
-<pre class=" language-sh"><code class="language-sh">Alex@Alex-PC MINGW64 /e/work/myblog/gitBlog/hexo (master)
-$ node
-> const bcrypt = require('bcrypt-nodejs')
-undefined
-> bcrypt.hashSync('AlexLin666')
-'$2a$10$NVMZ2dYeOd5YRxNb7g3WJOBMzJfaXJ5I53QCy8Pw5IV.3Uoldz0wq'
-></code></pre>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo添加Swiftype</title>
     <url>/2017/08/04/5fa1.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-swiftype-搭建站内搜索"><a href="#1-swiftype-搭建站内搜索" class="headerlink" title="1.swiftype 搭建站内搜索"></a>1.swiftype 搭建站内搜索</h2><p>Swiftype站内搜索 ，<a href="https://swiftype.com/">官网</a></p>
@@ -1669,9 +1628,38 @@ search:
       </tags>
   </entry>
   <entry>
-    <title>Hexo相关资源</title>
-    <url>/2017/08/04/ddcb.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>中文网站 : <a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
+    <title>Hexo插件-Hexo Admin</title>
+    <url>/2017/08/08/6e86.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Hexo-Admin"><a href="#Hexo-Admin" class="headerlink" title="Hexo Admin"></a>Hexo Admin</h2><p>官网链接:<a href="https://jaredforsyth.com/hexo-admin/">https://jaredforsyth.com/hexo-admin/</a></p>
+<blockquote>
+<p>插件可以直接在网页端创建、编辑markdown文章内容，并将内容发布到_posts里。<br>另外，对我而言，最方便的是可以很方便的给文章加标题、分类、打标签。</p>
+</blockquote>
+<h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h2><ol>
+<li>第一步:下载启动</li>
+</ol>
+<pre class=" language-sh"><code class="language-sh">npm install --save hexo-admin
+hexo server -d
+open http://localhost:4000/admin/</code></pre>
+<a id="more"></a>
+
+<ol start="2">
+<li>第二步：配置</li>
+</ol>
+<p>在Hexo 全局配置文件<strong>_config.yml</strong>最后添加类似如下内容</p>
+<pre class=" language-sh"><code class="language-sh">admin:
+  username: AlexLin
+  password_hash: be121740bf988b2225a313fa1f107ca1
+  secret: your admin password</code></pre>
+<p><strong><em>secret :</em></strong>你的后台管理密码</p>
+<p><strong><em>password_hash:</em></strong> 用密码生成的哈希串</p>
+<p>我的生成命令如下:</p>
+<pre class=" language-sh"><code class="language-sh">Alex@Alex-PC MINGW64 /e/work/myblog/gitBlog/hexo (master)
+$ node
+> const bcrypt = require('bcrypt-nodejs')
+undefined
+> bcrypt.hashSync('AlexLin666')
+'$2a$10$NVMZ2dYeOd5YRxNb7g3WJOBMzJfaXJ5I53QCy8Pw5IV.3Uoldz0wq'
+></code></pre>
 ]]></content>
       <categories>
         <category>Hexo</category>
@@ -1681,22 +1669,15 @@ search:
       </tags>
   </entry>
   <entry>
-    <title>Hexo第三方评论插件引用</title>
-    <url>/2017/08/01/6835.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="第三方插件-友言"><a href="#第三方插件-友言" class="headerlink" title="第三方插件-友言"></a>第三方插件-友言</h2><blockquote>
-<p>友言已经暂停服务了，又不能用<br>因公司业务调整，非常遗憾的向大家宣布JiaThis公司决定自2018年4月30日起关闭旗下“友言”业务。<br>因为关停“友言”业务给您造成的不便，我们深表歉意。</p>
-</blockquote>
-<ul>
-<li><a href="http://www.uyan.cc/">友言官网</a></li>
-<li><a href="http://www.jianshu.com/p/4729e92fddbe">相关教程 1 </a></li>
-<li><a href="http://www.qtdebug.com/hexo-uyan/">相关教程 2 </a></li>
-</ul>
-<a id="more"></a>
-
+    <title>Hexo相关资源</title>
+    <url>/2017/08/04/ddcb.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>中文网站 : <a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
 ]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
       <tags>
-        <tag>hexo</tag>
-        <tag>工具</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -1725,6 +1706,25 @@ search:
       <tags>
         <tag>智能硬件</tag>
         <tag>IoT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo第三方评论插件引用</title>
+    <url>/2017/08/01/6835.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="第三方插件-友言"><a href="#第三方插件-友言" class="headerlink" title="第三方插件-友言"></a>第三方插件-友言</h2><blockquote>
+<p>友言已经暂停服务了，又不能用<br>因公司业务调整，非常遗憾的向大家宣布JiaThis公司决定自2018年4月30日起关闭旗下“友言”业务。<br>因为关停“友言”业务给您造成的不便，我们深表歉意。</p>
+</blockquote>
+<ul>
+<li><a href="http://www.uyan.cc/">友言官网</a></li>
+<li><a href="http://www.jianshu.com/p/4729e92fddbe">相关教程 1 </a></li>
+<li><a href="http://www.qtdebug.com/hexo-uyan/">相关教程 2 </a></li>
+</ul>
+<a id="more"></a>
+
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -1892,6 +1892,19 @@ alex@ubuntu:/media/psf/Home/myself/C$ addr2line -e demo 080483e9
       </tags>
   </entry>
   <entry>
+    <title>Linux之SSH</title>
+    <url>/2018/12/18/720f.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
+<li><a href="https://linux.cn/article-5975-1.html">https://linux.cn/article-5975-1.html</a></li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">autossh -M 10109 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=false" -o "PasswordAuthentication=no" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -R ubuntu.lxj-life.com:10108:localhost:22 ubuntu@ubuntu.lxj-life.com</code></pre>
+]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux之kill命令</title>
     <url>/2018/02/23/730d.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Kill-命令列表"><a href="#Kill-命令列表" class="headerlink" title="Kill 命令列表"></a>Kill 命令列表</h2><hr>
@@ -1965,140 +1978,6 @@ SIGTERM 15  Termination (ANSI)</code></pre>
       <tags>
         <tag>工具</tag>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux之SSH</title>
-    <url>/2018/12/18/720f.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
-<li><a href="https://linux.cn/article-5975-1.html">https://linux.cn/article-5975-1.html</a></li>
-</ul>
-<pre class=" language-sh"><code class="language-sh">autossh -M 10109 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=false" -o "PasswordAuthentication=no" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -R ubuntu.lxj-life.com:10108:localhost:22 ubuntu@ubuntu.lxj-life.com</code></pre>
-]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux之Socket关键</title>
-    <url>/2017/06/07/179d.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一、Socket-属性设置函数"><a href="#一、Socket-属性设置函数" class="headerlink" title="一、Socket 属性设置函数"></a>一、Socket 属性设置函数</h2><pre class=" language-C"><code class="language-C">int getsockopt(int sockfd, int level, int optname,void *optval, socklen_t *optlen);
-int setsockopt(int sockfd, int level, int optname,const void *optval, socklen_t optlen);</code></pre>
-<p>解释:*<em>setsockopt(int sockfd, int level, int optname,const void <em>optval, socklen_t optlen)</em></em></p>
-<a id="more"></a>
-<ul>
-<li><strong>sockfd(套接字):</strong> 指向一个打开的套接口描述字</li>
-<li><strong>level(级别):</strong> 指定选项代码的类型</li>
-<li><ul>
-<li><strong>SOL_SOCKET:</strong> 基本套接口</li>
-</ul>
-</li>
-<li><ul>
-<li><strong>IPPROTO_IP:</strong> IPv4套接口</li>
-</ul>
-</li>
-<li><ul>
-<li><strong>IPPROTO_IPV6:</strong> IPv6套接口</li>
-</ul>
-</li>
-<li><ul>
-<li><strong>IPPROTO_TCP:</strong> TCP套接口</li>
-</ul>
-</li>
-<li><strong>optname(选项名):</strong> 选项名称</li>
-<li><strong>optval(选项值):</strong> 是一个指向变量的指针 类型：整形，套接口结构， 其他结构类型:linger{}, timeval{ }<br>该值有两种类型，分别是布尔型选项，允许或禁止一种特性；另一种是整形或结构选项。<br>允许一个布尔型选项，则将optval指向非零整形数；<br>禁止一个选项optval指向一个等于零的整形数。对于布尔型选项，optlen应等于sizeof(int)；<br>对其他选项，optval指向包含所需选项的整形数或结构，而optlen则为整形数或结构的长度。</li>
-<li><strong>optlen(选项长度):</strong> optval 的大小</li>
-</ul>
-<h2 id="二、Socket-端口复用-SO-REUSEADDR"><a href="#二、Socket-端口复用-SO-REUSEADDR" class="headerlink" title="二、Socket 端口复用(SO_REUSEADDR)"></a>二、Socket 端口复用(SO_REUSEADDR)</h2><blockquote>
-<p>一个网络应用程序只能绑定一个端口( 一个套接字只能绑定一个端口 )。</p>
-</blockquote>
-<ol>
-<li><em>端口复用允许在一个应用程序可以把 n 个套接字绑在一个端口上而不出错。</em></li>
-<li><em>端口复用真正的用处主要在于服务器编程：当服务器需要重启时，经常会碰到端口尚未完全关闭的情况，这时如果不设置端口复用，则无法完成绑定，因为端口还处于被别的套接口绑定的状态之中。</em></li>
-</ol>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><blockquote>
-<p><strong>SO_REUSEADDR可以用在以下四种情况下。 (摘自《Unix网络编程》卷一，即UNPv1)</strong></p>
-</blockquote>
-<ol>
-<li>当有一个有相同本地地址和端口的socket1处于TIME_WAIT状态时，而你启动的程序的socket2要占用该地址和端口，你的程序就要用到该选项。</li>
-<li>SO_REUSEADDR允许同一port上启动同一服务器的多个实例(多个进程)。但每个实例绑定的IP地址是不能相同的。在有多块网卡或用IP Alias技术的机器可以测试这种情况。</li>
-<li>SO_REUSEADDR允许单个进程绑定相同的端口到多个socket上，但每个socket绑定的ip地址不同。这和2很相似，区别请看UNPv1。</li>
-<li>SO_REUSEADDR允许完全相同的地址和端口的重复绑定。但这只用于UDP的多播，不用于TCP。</li>
-</ol>
-<h3 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h3><pre class=" language-C"><code class="language-C">int opt = 1;
-// sockfd为需要端口复用的套接字
-setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, (const void *)&opt, sizeof(opt));</code></pre>
-<h2 id="三、Socket-超时设置-SO-SNDTIMO-SO-RCVTIMEO"><a href="#三、Socket-超时设置-SO-SNDTIMO-SO-RCVTIMEO" class="headerlink" title="三、Socket 超时设置(SO_SNDTIMO/SO_RCVTIMEO)"></a>三、Socket 超时设置(SO_SNDTIMO/SO_RCVTIMEO)</h2><p><strong>SO_SNDTIMO :</strong> 用于设置发送和连接超时<br><strong>SO_RCVTIMEO:</strong> 用于设置接收超时<br><strong>例 子</strong></p>
-<pre class=" language-C"><code class="language-C">//3s超时设置
-struct timeval timeout = &#123;3, 0&#125;;
-//socket设置发送超时
-setsockopt(socket，SOL_SOCKET,SO_SNDTIMEO，(char *)&timeout,sizeof(struct timeval));
-
-//socket设置接收超时
-setsockopt(socket，SOL_SOCKET,SO_RCVTIMEO，(char *)&timeout,sizeof(struct timeval));
-
-//socket设置连接超时
-setsockopt(fd, SOL_SOCKET, SO_SNDTIMEO, &timeo, len);
-addr.sin_family = AF_INET;
-addr.sin_addr.s_addr = inet_addr(argv[1]);
-addr.sin_port = htons(atoi(argv[2]));
-if (connect(fd, (struct sockaddr*)&addr, sizeof(addr)) == -1) &#123;
-    if (errno == EINPROGRESS) &#123;
-            fprintf(stderr, "timeout/n");
-            return -1;
-    &#125;
-    perror("connect");
-    return 0;
-&#125;</code></pre>
-<h2 id="四、Socket-心跳设置-SO-KEEPALIVE"><a href="#四、Socket-心跳设置-SO-KEEPALIVE" class="headerlink" title="四、Socket 心跳设置(SO_KEEPALIVE)"></a>四、Socket 心跳设置(SO_KEEPALIVE)</h2><blockquote>
-<p>在《UNIX网络编程第1卷》中也有详细的阐述：<br>SO_KEEPALIVE 保持连接检测对方主机是否崩溃，避免（服务器）永远阻塞于TCP连接的输入。设置该选项后，如果2小时内在此套接口的任一方向都没有数据交换，TCP就自 动给对方 发一个保持存活探测分节(keepalive probe)。这是一个对方必须响应的TCP分节.它会导致以下三种情况：对方接收一切正常：以期望的ACK响应。2小时后，TCP将发出另一个探测分 节。对方已崩溃且已重新启动：以RST响应。套接口的待处理错误被置为ECONNRESET，套接 口本身则被关闭。对方无任何响应：源自berkeley的TCP发送另外8个探测分节，相隔75秒一个，试图得到一个响应。在发出第一个探测分节11分钟 15秒后若仍无响应就放弃。套接口的待处理错误被置为ETIMEOUT，套接口本身则被关闭。如ICMP错误是“host unreachable(主机不可达)”，说明对方主机并没有崩溃，但是不可达，这种情况下待处理错误被置为 EHOSTUNREACH。</p>
-</blockquote>
-<p><strong>简单来说</strong><br><em>TCP_KEEPALIVE</em>选项只是一个开关，Linux中默认的Keepalive的选项如下：</p>
-<pre class=" language-shell"><code class="language-shell">$sudo sysctl -a | grep keepalive
-net.ipv4.tcp_keepalive_time = 7200
-net.ipv4.tcp_keepalive_probes = 9
-net.ipv4.tcp_keepalive_intvl = 75</code></pre>
-<p>上文中的keepalive选项表示如果一个连接上7200s后没有任何数据发送，则设置了这个选项的本端向对端发送keepalive保活报文，它会有如下三种结果：</p>
-<ul>
-<li>对端回复ACK。则本端TCP认为该连接依然存活。继续等7200s后再发送keepalive报文。</li>
-<li>对端回复RESET。说明对端进程已经重启，本端的应用程序应该关闭该连接。</li>
-<li>没有对端的任何回复。则本端做重试，如果重试9次（前后重试间隔为75秒）仍然不可达，则向应用程序返回错误信息，ETIMEOUT（无任何应答）或EHOST</li>
-</ul>
-<h3 id="开启keepalive机制"><a href="#开启keepalive机制" class="headerlink" title="开启keepalive机制"></a>开启keepalive机制</h3><pre><code>keepAlive = 1;
-Setsockopt(listenfd, SOL_SOCKET, SO_KEEPALIVE, (void*)&amp;keepAlive, sizeof(keepAlive));</code></pre>
-<h3 id="修改过keepalive-时间"><a href="#修改过keepalive-时间" class="headerlink" title="修改过keepalive 时间"></a>修改过keepalive 时间</h3><p>如果我们不能接受如此之长的等待时间，从TCP-Keepalive-HOWTO上可以知道一共有两种方式可以设置，<br>一种是修改内核关于网络方面的 配置参数；<br>另外一种就是SOL_TCP字段的TCP_KEEPIDLE， TCP_KEEPINTVL， TCP_KEEPCNT三个选项。</p>
-<ul>
-<li>TCP_KEEPIDLE : 多长时间不活跃，就开始发探测包</li>
-<li>TCP_KEEPINTVL: 两个探测包之间的间隔</li>
-<li>TCP_KEEPCNT  : 发多少次探测包后没响应认为是断开</li>
-</ul>
-<p><strong>例子</strong></p>
-<pre class=" language-C"><code class="language-C">//连接上之后100s内没发送数据，则发探测包，每个探测包间隔10s,连续10次没收到响应认为断开
-int                 keepIdle = 100;
-int                 keepInterval = 10;
-int                 keepCount = 10;
-Setsockopt(listenfd, SOL_TCP, TCP_KEEPIDLE, (void *)&keepIdle, sizeof(keepIdle));
-Setsockopt(listenfd, SOL_TCP, TCP_KEEPINTVL, (void *)&keepInterval, sizeof(keepInterval));
-Setsockopt(listenfd, SOL_TCP, TCP_KEEPCNT, (void *)&keepCount, sizeof(keepCount));</code></pre>
-<h2 id="五、Socket-其他选项名"><a href="#五、Socket-其他选项名" class="headerlink" title="五、Socket 其他选项名"></a>五、Socket 其他选项名</h2><ul>
-<li>SO_RCVBUF             : int型  设置接收缓冲区的保留大小。</li>
-<li>SO_SNDBUF             : int型  设置发送缓冲区的保留大小。</li>
-<li>TCP_NODELAY           : bool型 设置是否开启Nagle算法。</li>
-<li>SO_EXCLUSIVEADDRUSE   : bool型 同一个端口不能别的进程使用.</li>
-</ul>
-<h2 id="六、常识"><a href="#六、常识" class="headerlink" title="六、常识"></a>六、常识</h2><ul>
-<li>每个套接口都有一个发送缓冲区和一个接收缓冲区。</li>
-<li>接收缓冲区被TCP和UDP用来将接收到的数据一直保存到由应用进程来读。</li>
-<li>TCP：TCP通告另一端的窗口大小。</li>
-<li>TCP套接口接收缓冲区不可能溢出，因为对方不允许发出超过所通告窗口大小的数据。这就是TCP的流量控制，如果对方无视窗口大小而发出了超过宙口大小的数据，则接 收方TCP将丢弃它。</li>
-<li>UDP：当接收到的数据报装不进套接口接收缓冲区时，此数据报就被丢弃。UDP是没有 流量控制的；快的发送者可以很容易地就淹没慢的接收者，导致接收方的UDP丢弃数据报。</li>
-</ul>
-<p>每个套接口都有一个接收低潮限度和一个发送低潮限度。<br>它们是函数selectt使用的，接收低潮限度是让select返回“可读”而在套接口接收缓冲区中必须有的数据总量。 对于一个TCP或UDP套接口，此值缺省为1。发送低潮限度是让select返回“可写” 而在套接口发送缓冲区中必须有的可用空间。对于TCP套接口，此值常缺省为2048。 对于UDP使用低潮限度， 由于其发送缓冲区中可用空间的字节数是从不变化的，只要 UDP套接口发送缓冲区大小大于套接口的低潮限度，这样的UDP套接口就总是可写的。 UDP没有发送缓冲区，只有发送缓冲区的大小。</p>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
-        <tag>网络</tag>
       </tags>
   </entry>
   <entry>
@@ -2681,6 +2560,127 @@ Setsockopt(listenfd, SOL_TCP, TCP_KEEPCNT, (void *)&keepCount, sizeof(keepCount)
       <tags>
         <tag>工具</tag>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux之Socket关键</title>
+    <url>/2017/06/07/179d.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一、Socket-属性设置函数"><a href="#一、Socket-属性设置函数" class="headerlink" title="一、Socket 属性设置函数"></a>一、Socket 属性设置函数</h2><pre class=" language-C"><code class="language-C">int getsockopt(int sockfd, int level, int optname,void *optval, socklen_t *optlen);
+int setsockopt(int sockfd, int level, int optname,const void *optval, socklen_t optlen);</code></pre>
+<p>解释:*<em>setsockopt(int sockfd, int level, int optname,const void <em>optval, socklen_t optlen)</em></em></p>
+<a id="more"></a>
+<ul>
+<li><strong>sockfd(套接字):</strong> 指向一个打开的套接口描述字</li>
+<li><strong>level(级别):</strong> 指定选项代码的类型</li>
+<li><ul>
+<li><strong>SOL_SOCKET:</strong> 基本套接口</li>
+</ul>
+</li>
+<li><ul>
+<li><strong>IPPROTO_IP:</strong> IPv4套接口</li>
+</ul>
+</li>
+<li><ul>
+<li><strong>IPPROTO_IPV6:</strong> IPv6套接口</li>
+</ul>
+</li>
+<li><ul>
+<li><strong>IPPROTO_TCP:</strong> TCP套接口</li>
+</ul>
+</li>
+<li><strong>optname(选项名):</strong> 选项名称</li>
+<li><strong>optval(选项值):</strong> 是一个指向变量的指针 类型：整形，套接口结构， 其他结构类型:linger{}, timeval{ }<br>该值有两种类型，分别是布尔型选项，允许或禁止一种特性；另一种是整形或结构选项。<br>允许一个布尔型选项，则将optval指向非零整形数；<br>禁止一个选项optval指向一个等于零的整形数。对于布尔型选项，optlen应等于sizeof(int)；<br>对其他选项，optval指向包含所需选项的整形数或结构，而optlen则为整形数或结构的长度。</li>
+<li><strong>optlen(选项长度):</strong> optval 的大小</li>
+</ul>
+<h2 id="二、Socket-端口复用-SO-REUSEADDR"><a href="#二、Socket-端口复用-SO-REUSEADDR" class="headerlink" title="二、Socket 端口复用(SO_REUSEADDR)"></a>二、Socket 端口复用(SO_REUSEADDR)</h2><blockquote>
+<p>一个网络应用程序只能绑定一个端口( 一个套接字只能绑定一个端口 )。</p>
+</blockquote>
+<ol>
+<li><em>端口复用允许在一个应用程序可以把 n 个套接字绑在一个端口上而不出错。</em></li>
+<li><em>端口复用真正的用处主要在于服务器编程：当服务器需要重启时，经常会碰到端口尚未完全关闭的情况，这时如果不设置端口复用，则无法完成绑定，因为端口还处于被别的套接口绑定的状态之中。</em></li>
+</ol>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><blockquote>
+<p><strong>SO_REUSEADDR可以用在以下四种情况下。 (摘自《Unix网络编程》卷一，即UNPv1)</strong></p>
+</blockquote>
+<ol>
+<li>当有一个有相同本地地址和端口的socket1处于TIME_WAIT状态时，而你启动的程序的socket2要占用该地址和端口，你的程序就要用到该选项。</li>
+<li>SO_REUSEADDR允许同一port上启动同一服务器的多个实例(多个进程)。但每个实例绑定的IP地址是不能相同的。在有多块网卡或用IP Alias技术的机器可以测试这种情况。</li>
+<li>SO_REUSEADDR允许单个进程绑定相同的端口到多个socket上，但每个socket绑定的ip地址不同。这和2很相似，区别请看UNPv1。</li>
+<li>SO_REUSEADDR允许完全相同的地址和端口的重复绑定。但这只用于UDP的多播，不用于TCP。</li>
+</ol>
+<h3 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h3><pre class=" language-C"><code class="language-C">int opt = 1;
+// sockfd为需要端口复用的套接字
+setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, (const void *)&opt, sizeof(opt));</code></pre>
+<h2 id="三、Socket-超时设置-SO-SNDTIMO-SO-RCVTIMEO"><a href="#三、Socket-超时设置-SO-SNDTIMO-SO-RCVTIMEO" class="headerlink" title="三、Socket 超时设置(SO_SNDTIMO/SO_RCVTIMEO)"></a>三、Socket 超时设置(SO_SNDTIMO/SO_RCVTIMEO)</h2><p><strong>SO_SNDTIMO :</strong> 用于设置发送和连接超时<br><strong>SO_RCVTIMEO:</strong> 用于设置接收超时<br><strong>例 子</strong></p>
+<pre class=" language-C"><code class="language-C">//3s超时设置
+struct timeval timeout = &#123;3, 0&#125;;
+//socket设置发送超时
+setsockopt(socket，SOL_SOCKET,SO_SNDTIMEO，(char *)&timeout,sizeof(struct timeval));
+
+//socket设置接收超时
+setsockopt(socket，SOL_SOCKET,SO_RCVTIMEO，(char *)&timeout,sizeof(struct timeval));
+
+//socket设置连接超时
+setsockopt(fd, SOL_SOCKET, SO_SNDTIMEO, &timeo, len);
+addr.sin_family = AF_INET;
+addr.sin_addr.s_addr = inet_addr(argv[1]);
+addr.sin_port = htons(atoi(argv[2]));
+if (connect(fd, (struct sockaddr*)&addr, sizeof(addr)) == -1) &#123;
+    if (errno == EINPROGRESS) &#123;
+            fprintf(stderr, "timeout/n");
+            return -1;
+    &#125;
+    perror("connect");
+    return 0;
+&#125;</code></pre>
+<h2 id="四、Socket-心跳设置-SO-KEEPALIVE"><a href="#四、Socket-心跳设置-SO-KEEPALIVE" class="headerlink" title="四、Socket 心跳设置(SO_KEEPALIVE)"></a>四、Socket 心跳设置(SO_KEEPALIVE)</h2><blockquote>
+<p>在《UNIX网络编程第1卷》中也有详细的阐述：<br>SO_KEEPALIVE 保持连接检测对方主机是否崩溃，避免（服务器）永远阻塞于TCP连接的输入。设置该选项后，如果2小时内在此套接口的任一方向都没有数据交换，TCP就自 动给对方 发一个保持存活探测分节(keepalive probe)。这是一个对方必须响应的TCP分节.它会导致以下三种情况：对方接收一切正常：以期望的ACK响应。2小时后，TCP将发出另一个探测分 节。对方已崩溃且已重新启动：以RST响应。套接口的待处理错误被置为ECONNRESET，套接 口本身则被关闭。对方无任何响应：源自berkeley的TCP发送另外8个探测分节，相隔75秒一个，试图得到一个响应。在发出第一个探测分节11分钟 15秒后若仍无响应就放弃。套接口的待处理错误被置为ETIMEOUT，套接口本身则被关闭。如ICMP错误是“host unreachable(主机不可达)”，说明对方主机并没有崩溃，但是不可达，这种情况下待处理错误被置为 EHOSTUNREACH。</p>
+</blockquote>
+<p><strong>简单来说</strong><br><em>TCP_KEEPALIVE</em>选项只是一个开关，Linux中默认的Keepalive的选项如下：</p>
+<pre class=" language-shell"><code class="language-shell">$sudo sysctl -a | grep keepalive
+net.ipv4.tcp_keepalive_time = 7200
+net.ipv4.tcp_keepalive_probes = 9
+net.ipv4.tcp_keepalive_intvl = 75</code></pre>
+<p>上文中的keepalive选项表示如果一个连接上7200s后没有任何数据发送，则设置了这个选项的本端向对端发送keepalive保活报文，它会有如下三种结果：</p>
+<ul>
+<li>对端回复ACK。则本端TCP认为该连接依然存活。继续等7200s后再发送keepalive报文。</li>
+<li>对端回复RESET。说明对端进程已经重启，本端的应用程序应该关闭该连接。</li>
+<li>没有对端的任何回复。则本端做重试，如果重试9次（前后重试间隔为75秒）仍然不可达，则向应用程序返回错误信息，ETIMEOUT（无任何应答）或EHOST</li>
+</ul>
+<h3 id="开启keepalive机制"><a href="#开启keepalive机制" class="headerlink" title="开启keepalive机制"></a>开启keepalive机制</h3><pre><code>keepAlive = 1;
+Setsockopt(listenfd, SOL_SOCKET, SO_KEEPALIVE, (void*)&amp;keepAlive, sizeof(keepAlive));</code></pre>
+<h3 id="修改过keepalive-时间"><a href="#修改过keepalive-时间" class="headerlink" title="修改过keepalive 时间"></a>修改过keepalive 时间</h3><p>如果我们不能接受如此之长的等待时间，从TCP-Keepalive-HOWTO上可以知道一共有两种方式可以设置，<br>一种是修改内核关于网络方面的 配置参数；<br>另外一种就是SOL_TCP字段的TCP_KEEPIDLE， TCP_KEEPINTVL， TCP_KEEPCNT三个选项。</p>
+<ul>
+<li>TCP_KEEPIDLE : 多长时间不活跃，就开始发探测包</li>
+<li>TCP_KEEPINTVL: 两个探测包之间的间隔</li>
+<li>TCP_KEEPCNT  : 发多少次探测包后没响应认为是断开</li>
+</ul>
+<p><strong>例子</strong></p>
+<pre class=" language-C"><code class="language-C">//连接上之后100s内没发送数据，则发探测包，每个探测包间隔10s,连续10次没收到响应认为断开
+int                 keepIdle = 100;
+int                 keepInterval = 10;
+int                 keepCount = 10;
+Setsockopt(listenfd, SOL_TCP, TCP_KEEPIDLE, (void *)&keepIdle, sizeof(keepIdle));
+Setsockopt(listenfd, SOL_TCP, TCP_KEEPINTVL, (void *)&keepInterval, sizeof(keepInterval));
+Setsockopt(listenfd, SOL_TCP, TCP_KEEPCNT, (void *)&keepCount, sizeof(keepCount));</code></pre>
+<h2 id="五、Socket-其他选项名"><a href="#五、Socket-其他选项名" class="headerlink" title="五、Socket 其他选项名"></a>五、Socket 其他选项名</h2><ul>
+<li>SO_RCVBUF             : int型  设置接收缓冲区的保留大小。</li>
+<li>SO_SNDBUF             : int型  设置发送缓冲区的保留大小。</li>
+<li>TCP_NODELAY           : bool型 设置是否开启Nagle算法。</li>
+<li>SO_EXCLUSIVEADDRUSE   : bool型 同一个端口不能别的进程使用.</li>
+</ul>
+<h2 id="六、常识"><a href="#六、常识" class="headerlink" title="六、常识"></a>六、常识</h2><ul>
+<li>每个套接口都有一个发送缓冲区和一个接收缓冲区。</li>
+<li>接收缓冲区被TCP和UDP用来将接收到的数据一直保存到由应用进程来读。</li>
+<li>TCP：TCP通告另一端的窗口大小。</li>
+<li>TCP套接口接收缓冲区不可能溢出，因为对方不允许发出超过所通告窗口大小的数据。这就是TCP的流量控制，如果对方无视窗口大小而发出了超过宙口大小的数据，则接 收方TCP将丢弃它。</li>
+<li>UDP：当接收到的数据报装不进套接口接收缓冲区时，此数据报就被丢弃。UDP是没有 流量控制的；快的发送者可以很容易地就淹没慢的接收者，导致接收方的UDP丢弃数据报。</li>
+</ul>
+<p>每个套接口都有一个接收低潮限度和一个发送低潮限度。<br>它们是函数selectt使用的，接收低潮限度是让select返回“可读”而在套接口接收缓冲区中必须有的数据总量。 对于一个TCP或UDP套接口，此值缺省为1。发送低潮限度是让select返回“可写” 而在套接口发送缓冲区中必须有的可用空间。对于TCP套接口，此值常缺省为2048。 对于UDP使用低潮限度， 由于其发送缓冲区中可用空间的字节数是从不变化的，只要 UDP套接口发送缓冲区大小大于套接口的低潮限度，这样的UDP套接口就总是可写的。 UDP没有发送缓冲区，只有发送缓冲区的大小。</p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+        <tag>网络</tag>
       </tags>
   </entry>
   <entry>
@@ -3631,37 +3631,6 @@ Environment variables are:
       </tags>
   </entry>
   <entry>
-    <title>Lua之 loadfile ,dofile, loadstring，require</title>
-    <url>/2017/03/26/4bf8.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h3 id="loadfile——只编译，不运行"><a href="#loadfile——只编译，不运行" class="headerlink" title="loadfile——只编译，不运行"></a>loadfile——只编译，不运行</h3><p>    1.功能：载入文件但不执行代码块，对于相同的文件每次都会执行。只是编译代码，然后将编译结果作为一个函数返回<br>    2.调用：loadfile(“filename”)<br>    3.错误处理：不引发错误，只返回错误值但不处理错误,即返回nil和错误消息<br>    4.优点：调用一次之后可以多次调用返回的结果（即函数），<br>      即“多次调用”只需编译一次（注：这里的多次调用   是指多次调用返回的函数，而不是多次调用loadfile）</p>
-<a id="more"></a>
-
-<p><strong>dofile可如下定义：</strong></p>
-<pre class=" language-lua"><code class="language-lua">    <span class="token keyword">function</span> <span class="token function">dofile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span>
-    　　<span class="token keyword">local</span> f <span class="token operator">=</span> <span class="token function">assert</span><span class="token punctuation">(</span><span class="token function">loadfile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--调用loadfile（的返回结果）并可处理错误</span>
-    <span class="token keyword">return</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">end</span></code></pre>
-<p><code>注：加载了程序块并没有定义其中的函数。在Lua中，函数定义是一种赋值操作，是在运行时才完成的操作。 例如：一个文件test.lua中有一个函数 function foo(x) print(x) end ,执行如下代码： 　　　f = loadfile(test.lua) --加载程序块，此时还没有定义函数foo 　　　f() --运行加载的程序块，此时就定义了函数foo      foo(&quot;hello lua&quot;) --&gt;hello lua --经过上面的步骤才能调用foo    </code></p>
-<h3 id="dofile——执行"><a href="#dofile——执行" class="headerlink" title="dofile——执行"></a>dofile——执行</h3><pre><code>1.功能：载入文件并执行代码块，对于相同的文件每次都会执行
-2.调用：dofile(&quot;filename&quot;)
-3.错误处理：如果代码块中有错误则会引发错误
-4.优点：对简单任务而言，非常便捷
-5.缺点：每次载入文件时都会执行程序块</code></pre>
-<p>    6.定位：内置操作，辅助函数</p>
-<h3 id="require——我只执行一次"><a href="#require——我只执行一次" class="headerlink" title="require——我只执行一次"></a>require——我只执行一次</h3><pre><code>require和dofile有点像，不过又很不一样，require在第一次加载文件的时候，会执行里面的代码。
-但是，第二次之后，再次加载文件，则不会重复执行了。换句话说，它会保存已经加载过的文件，不会重复加载。</code></pre>
-<h3 id="loadstring"><a href="#loadstring" class="headerlink" title="loadstring"></a>loadstring</h3><pre><code>1.特点：功能强大，但开销大；
-2.典型用处：执行外部代码，如：用户的输入
-3.错误错里：代码中如果有语法错误就会返回nil
-4.理解：f = loadstring(&quot;i = i+1&quot;)  可理解为（但不完全是）f = function()  i = i+1  end 
-(注：这里的变量&quot;i&quot;是全局变量，不是指局部变量，如果没有定义全局变量&quot;i&quot;,调用f()则会报错！，即loadstring   不涉及词法域)</code></pre>
-]]></content>
-      <tags>
-        <tag>lua</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MarkDonw语法</title>
     <url>/2017/06/07/9530.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>MarkDonw语法</p>
@@ -3784,6 +3753,37 @@ $$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$
       </tags>
   </entry>
   <entry>
+    <title>Lua之 loadfile ,dofile, loadstring，require</title>
+    <url>/2017/03/26/4bf8.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h3 id="loadfile——只编译，不运行"><a href="#loadfile——只编译，不运行" class="headerlink" title="loadfile——只编译，不运行"></a>loadfile——只编译，不运行</h3><p>    1.功能：载入文件但不执行代码块，对于相同的文件每次都会执行。只是编译代码，然后将编译结果作为一个函数返回<br>    2.调用：loadfile(“filename”)<br>    3.错误处理：不引发错误，只返回错误值但不处理错误,即返回nil和错误消息<br>    4.优点：调用一次之后可以多次调用返回的结果（即函数），<br>      即“多次调用”只需编译一次（注：这里的多次调用   是指多次调用返回的函数，而不是多次调用loadfile）</p>
+<a id="more"></a>
+
+<p><strong>dofile可如下定义：</strong></p>
+<pre class=" language-lua"><code class="language-lua">    <span class="token keyword">function</span> <span class="token function">dofile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span>
+    　　<span class="token keyword">local</span> f <span class="token operator">=</span> <span class="token function">assert</span><span class="token punctuation">(</span><span class="token function">loadfile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--调用loadfile（的返回结果）并可处理错误</span>
+    <span class="token keyword">return</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">end</span></code></pre>
+<p><code>注：加载了程序块并没有定义其中的函数。在Lua中，函数定义是一种赋值操作，是在运行时才完成的操作。 例如：一个文件test.lua中有一个函数 function foo(x) print(x) end ,执行如下代码： 　　　f = loadfile(test.lua) --加载程序块，此时还没有定义函数foo 　　　f() --运行加载的程序块，此时就定义了函数foo      foo(&quot;hello lua&quot;) --&gt;hello lua --经过上面的步骤才能调用foo    </code></p>
+<h3 id="dofile——执行"><a href="#dofile——执行" class="headerlink" title="dofile——执行"></a>dofile——执行</h3><pre><code>1.功能：载入文件并执行代码块，对于相同的文件每次都会执行
+2.调用：dofile(&quot;filename&quot;)
+3.错误处理：如果代码块中有错误则会引发错误
+4.优点：对简单任务而言，非常便捷
+5.缺点：每次载入文件时都会执行程序块</code></pre>
+<p>    6.定位：内置操作，辅助函数</p>
+<h3 id="require——我只执行一次"><a href="#require——我只执行一次" class="headerlink" title="require——我只执行一次"></a>require——我只执行一次</h3><pre><code>require和dofile有点像，不过又很不一样，require在第一次加载文件的时候，会执行里面的代码。
+但是，第二次之后，再次加载文件，则不会重复执行了。换句话说，它会保存已经加载过的文件，不会重复加载。</code></pre>
+<h3 id="loadstring"><a href="#loadstring" class="headerlink" title="loadstring"></a>loadstring</h3><pre><code>1.特点：功能强大，但开销大；
+2.典型用处：执行外部代码，如：用户的输入
+3.错误错里：代码中如果有语法错误就会返回nil
+4.理解：f = loadstring(&quot;i = i+1&quot;)  可理解为（但不完全是）f = function()  i = i+1  end 
+(注：这里的变量&quot;i&quot;是全局变量，不是指局部变量，如果没有定义全局变量&quot;i&quot;,调用f()则会报错！，即loadstring   不涉及词法域)</code></pre>
+]]></content>
+      <tags>
+        <tag>lua</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>NB-IoT 记录</title>
     <url>/2020/07/09/26e6.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="NB状态"><a href="#NB状态" class="headerlink" title="NB状态"></a>NB状态</h2><ul>
@@ -3835,28 +3835,6 @@ $$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$
 <h3 id="设备端M5311固件生产"><a href="#设备端M5311固件生产" class="headerlink" title="设备端M5311固件生产"></a>设备端M5311固件生产</h3>]]></content>
   </entry>
   <entry>
-    <title>OpenSSL 笔记</title>
-    <url>/2020/07/08/dfdf.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="OpenSSL-官网"><a href="#OpenSSL-官网" class="headerlink" title="OpenSSL 官网"></a>OpenSSL 官网</h2><p><a href="https://www.openssl.org/">https://www.openssl.org/</a></p>
-<h2 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h2><ul>
-<li>安装包 : openssl-1.1.0f.tar.gz</li>
-</ul>
-<pre class=" language-sh"><code class="language-sh">tar -xzf openssl-1.1.0f.tar.gz
-# 配置安装路径和生成makefile
-./config --prefix=/home/gagent/alexLam/gizwis_sdk/openssl_alexLin_20200702
-make
-make install</code></pre>
-<a id="more"></a>
-
-<p><strong>备注：</strong>运行./config –prefix=/usr/local/openssl (更多选项用./config –help 来查看),可用的选项有： no-mdc2、 no-cast no-rc2、 no-rc5、 no-ripemd、 no-rc4 no-des 、 no-md2、 no-md4、 no-idea 、no-aes、 no-bf、 no-err、 no-dsa、 no-dh、 no-ec、 no-hw、 no-asm、 no-krb5、 no-dso 、 no-threads 、no-zlib、 -DOPENSSL_NO_HASH_COMP、 -DOPENSSL_NO_ERR、 -DOPENSSL_NO_HW 、-DOPENSSL_NO_OCSP、 -DOPENSSL_NO_SHA256 和-DOPENSSL_NO_SHA512 等。去掉不必要的内容可以减少生成库的大小。 若要生成 debug 版本的库和可执行程序加-g 或者-g3(openssl 中有很多宏，需要调试学习最好加上-g3)。</p>
-<h2 id="OpenSSL-编程"><a href="#OpenSSL-编程" class="headerlink" title="OpenSSL 编程"></a>OpenSSL 编程</h2><h3 id="OpenSSL-服务端编写步骤"><a href="#OpenSSL-服务端编写步骤" class="headerlink" title="OpenSSL 服务端编写步骤"></a>OpenSSL 服务端编写步骤</h3><p><img src="/images/pasted-57.png" alt="upload successful"></p>
-<blockquote>
-<p><strong>绿色的胃普通socket 操作，其他的为ssl 操作。</strong></p>
-</blockquote>
-<h3 id="OpenSSL-客户端编写步骤"><a href="#OpenSSL-客户端编写步骤" class="headerlink" title="OpenSSL 客户端编写步骤"></a>OpenSSL 客户端编写步骤</h3><p><img src="/images/pasted-58.png" alt="upload successful"></p>
-]]></content>
-  </entry>
-  <entry>
     <title>PC小技巧</title>
     <url>/2017/07/01/56f1.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Win7-开热点"><a href="#Win7-开热点" class="headerlink" title="Win7 开热点"></a>Win7 开热点</h2><ol>
@@ -3884,6 +3862,28 @@ make install</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>OpenSSL 笔记</title>
+    <url>/2020/07/08/dfdf.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="OpenSSL-官网"><a href="#OpenSSL-官网" class="headerlink" title="OpenSSL 官网"></a>OpenSSL 官网</h2><p><a href="https://www.openssl.org/">https://www.openssl.org/</a></p>
+<h2 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h2><ul>
+<li>安装包 : openssl-1.1.0f.tar.gz</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">tar -xzf openssl-1.1.0f.tar.gz
+# 配置安装路径和生成makefile
+./config --prefix=/home/gagent/alexLam/gizwis_sdk/openssl_alexLin_20200702
+make
+make install</code></pre>
+<a id="more"></a>
+
+<p><strong>备注：</strong>运行./config –prefix=/usr/local/openssl (更多选项用./config –help 来查看),可用的选项有： no-mdc2、 no-cast no-rc2、 no-rc5、 no-ripemd、 no-rc4 no-des 、 no-md2、 no-md4、 no-idea 、no-aes、 no-bf、 no-err、 no-dsa、 no-dh、 no-ec、 no-hw、 no-asm、 no-krb5、 no-dso 、 no-threads 、no-zlib、 -DOPENSSL_NO_HASH_COMP、 -DOPENSSL_NO_ERR、 -DOPENSSL_NO_HW 、-DOPENSSL_NO_OCSP、 -DOPENSSL_NO_SHA256 和-DOPENSSL_NO_SHA512 等。去掉不必要的内容可以减少生成库的大小。 若要生成 debug 版本的库和可执行程序加-g 或者-g3(openssl 中有很多宏，需要调试学习最好加上-g3)。</p>
+<h2 id="OpenSSL-编程"><a href="#OpenSSL-编程" class="headerlink" title="OpenSSL 编程"></a>OpenSSL 编程</h2><h3 id="OpenSSL-服务端编写步骤"><a href="#OpenSSL-服务端编写步骤" class="headerlink" title="OpenSSL 服务端编写步骤"></a>OpenSSL 服务端编写步骤</h3><p><img src="/images/pasted-57.png" alt="upload successful"></p>
+<blockquote>
+<p><strong>绿色的胃普通socket 操作，其他的为ssl 操作。</strong></p>
+</blockquote>
+<h3 id="OpenSSL-客户端编写步骤"><a href="#OpenSSL-客户端编写步骤" class="headerlink" title="OpenSSL 客户端编写步骤"></a>OpenSSL 客户端编写步骤</h3><p><img src="/images/pasted-58.png" alt="upload successful"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Python基础使用技巧</title>
     <url>/2020/04/08/b6de.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="依赖文件requirements生成和安装"><a href="#依赖文件requirements生成和安装" class="headerlink" title="依赖文件requirements生成和安装"></a>依赖文件requirements生成和安装</h2><ul>
@@ -3903,24 +3903,6 @@ make install</code></pre>
 <li> <a href="https://doc.qt.io/qt-5/index.html">官方文档</a></li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>SI4432</title>
-    <url>/2017/03/26/760b.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="SPI方面"><a href="#SPI方面" class="headerlink" title="SPI方面"></a>SPI方面</h3><hr>
-<p><strong>1. 速率不要太高，SI4432手册上说不要大于10MHZ</strong>        <br><strong>2. MOSI、MOSO、SCK三个引脚配置为复用功能推挽输出</strong><br><strong>3.SPI的时钟极性配置为：同步时钟的空闲状态为 低电平</strong><br><strong>4.SPI的时钟的第2个跳变沿数据被采样。（SPI_CPHA）</strong><br><strong>5.片选信号软件控制自己定义一个IO空控制片选吧，方便.</strong></p>
-<a id="more"></a>
-
-<h3 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h3><hr>
-<p><strong>1. SI4432有3个GPIO，一般自己是不用的，但是依然要配置，因为这个和模块相关</strong><br><strong>2. 建议还是不要把SDN直接接地，毕竟发现异常后还可以将SDN拉高在置低来实现硬件复位 <em>(重要)</em></strong><br><strong>3. SI4432的SDN引脚，为高时：芯片停止工作。为低时：芯片允许工作。</strong></p>
-<h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3><hr>
-<p><strong>1. SPI配置好以后，向SI4432写数据注意地址最高位置1。 如：SPI1_ReadWriteByte(addr|0x80)</strong><br><strong>2.SI4432主要三个状态：接收状态、发送状态、挂起状态。发送和接收之间可以相互转换、但是转换之前需要先进入挂起状态然后至少15ms之后再进入发送或者接收状态。程序while（1）之前最好开始就配置为挂起状态：SI4432_WriteReg(0x07, 0x01);</strong><br><strong>3. 软件复位内部寄存器，不能立刻写入寄存器</strong><br><strong>4.某些寄存器写完之后，必须延时一段时间，才能继续写其他的寄存器，否则死机</strong></p>
-]]></content>
-      <tags>
-        <tag>SI4432</tag>
-        <tag>433MHZ</tag>
-      </tags>
   </entry>
   <entry>
     <title>SPI协议</title>
@@ -3996,6 +3978,24 @@ make install</code></pre>
       </categories>
       <tags>
         <tag>SPI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SI4432</title>
+    <url>/2017/03/26/760b.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="SPI方面"><a href="#SPI方面" class="headerlink" title="SPI方面"></a>SPI方面</h3><hr>
+<p><strong>1. 速率不要太高，SI4432手册上说不要大于10MHZ</strong>        <br><strong>2. MOSI、MOSO、SCK三个引脚配置为复用功能推挽输出</strong><br><strong>3.SPI的时钟极性配置为：同步时钟的空闲状态为 低电平</strong><br><strong>4.SPI的时钟的第2个跳变沿数据被采样。（SPI_CPHA）</strong><br><strong>5.片选信号软件控制自己定义一个IO空控制片选吧，方便.</strong></p>
+<a id="more"></a>
+
+<h3 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h3><hr>
+<p><strong>1. SI4432有3个GPIO，一般自己是不用的，但是依然要配置，因为这个和模块相关</strong><br><strong>2. 建议还是不要把SDN直接接地，毕竟发现异常后还可以将SDN拉高在置低来实现硬件复位 <em>(重要)</em></strong><br><strong>3. SI4432的SDN引脚，为高时：芯片停止工作。为低时：芯片允许工作。</strong></p>
+<h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3><hr>
+<p><strong>1. SPI配置好以后，向SI4432写数据注意地址最高位置1。 如：SPI1_ReadWriteByte(addr|0x80)</strong><br><strong>2.SI4432主要三个状态：接收状态、发送状态、挂起状态。发送和接收之间可以相互转换、但是转换之前需要先进入挂起状态然后至少15ms之后再进入发送或者接收状态。程序while（1）之前最好开始就配置为挂起状态：SI4432_WriteReg(0x07, 0x01);</strong><br><strong>3. 软件复位内部寄存器，不能立刻写入寄存器</strong><br><strong>4.某些寄存器写完之后，必须延时一段时间，才能继续写其他的寄存器，否则死机</strong></p>
+]]></content>
+      <tags>
+        <tag>SI4432</tag>
+        <tag>433MHZ</tag>
       </tags>
   </entry>
   <entry>
@@ -5172,6 +5172,56 @@ write_flash -fm qio -fs 32m -ff 40m 0x3fc000 ../bin/0x3fc000.bin</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>哈夫曼树&amp;哈夫曼编码</title>
+    <url>/2020/08/12/3729.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h2><blockquote>
+<p>哈夫曼树也叫最优二叉树（哈夫曼树）</p>
+</blockquote>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>  <a href="https://baike.baidu.com/item/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91/2305769?fr=aladdin">给定N个权值作为N个叶子结点，构造一棵二叉树，若该树的带权路径长度达到最小，称这样的二叉树为最优二叉树，也称为哈夫曼树(Huffman Tree)。哈夫曼树是带权路径长度最短的树，权值较大的结点离根较近。</a></p>
+<h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><table>
+<thead>
+<tr>
+<th align="left">名词</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">路径长度</td>
+<td align="left">根结点到第L层结点路径长度为L-1</td>
+</tr>
+<tr>
+<td align="left">树的带权路径长度（WPL）</td>
+<td align="left">树中所有叶子结点的带权路径长度之和<br><img src="/images/pasted-75.png" alt="upload successful"><br>其中，n表示叶子结点的数目，wi和li分别表示叶子结点ki的权值和树根结点到叶子结点ki之间的路径长度。</td>
+</tr>
+<tr>
+<td align="left"><img src="/images/pasted-76.png" alt="upload successful"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>|</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
+<li>哈夫曼树中权越大的叶子离根越近(WPL最小的二叉树)</li>
+<li>具有相同带权结点的哈夫曼树不惟一</li>
+<li>哈夫曼树的结点的度数为 0 或 2， 没有度为 1 的结点；</li>
+<li>包含 n 个叶子结点的哈夫曼树中共有 2n – 1 个结点。</li>
+<li>包含 n 棵树的森林要经过 n–1 次合并才能形成哈夫曼树，共产生 n–1 个新结点</li>
+</ol>
+<p><img src="/images/pasted-74.png" alt="upload successful"><br><img src="/images/pasted-62.png" alt="upload successful"><br><strong>WPL 最小的值所属的树即为哈夫曼树</strong></p>
+<p><img src="/images/pasted-65.png" alt="upload successful" title="hello"><br><img src="/images/pasted-63.png" alt="upload successful"><br><img src="/images/pasted-64.png" alt="upload successful"></p>
+<h2 id="哈夫曼创建"><a href="#哈夫曼创建" class="headerlink" title="哈夫曼创建"></a>哈夫曼创建</h2><p><img src="/images/pasted-66.png" alt="upload successful"><br>为什么数组buffTree[2n-1] 的大小是2n-1,是因为n个子节点构成的树节点最多的个数是2n-1个<br><img src="/images/pasted-67.png" alt="upload successful"></p>
+<p><img src="/images/pasted-68.png" alt="upload successful"></p>
+<p><img src="/images/pasted-69.png" alt="upload successful"></p>
+<h2 id="哈夫曼树编码"><a href="#哈夫曼树编码" class="headerlink" title="哈夫曼树编码"></a>哈夫曼树编码</h2><h3 id="前缀编码"><a href="#前缀编码" class="headerlink" title="前缀编码"></a>前缀编码</h3><p><img src="/images/pasted-70.png" alt="upload successful"></p>
+<p><img src="/images/pasted-71.png" alt="upload successful"></p>
+<p><img src="/images/pasted-72.png" alt="upload successful"></p>
+<p>特点:<br>权值越高的叶子节点越靠近根节点</p>
+<p><img src="/images/pasted-73.png" alt="upload successful"></p>
+]]></content>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>win10 实用工具.md</title>
     <url>/2019/11/06/c142.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="包管理工具-Scoop"><a href="#包管理工具-Scoop" class="headerlink" title="包管理工具 - Scoop"></a>包管理工具 - Scoop</h2><ul>
@@ -5250,69 +5300,6 @@ Creating shortcut for 7-Zip (7zFM.exe)
 </tr>
 </tbody></table>
 ]]></content>
-  </entry>
-  <entry>
-    <title>win10子系统wsl</title>
-    <url>/2019/08/21/d9b0.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="子系统重启wsl"><a href="#子系统重启wsl" class="headerlink" title="子系统重启wsl"></a>子系统重启wsl</h2><p>管理员权限下:</p>
-<pre class=" language-sh"><code class="language-sh">net stop LxssManager
-net start LxssManager</code></pre>
-<h2 id="子系统在win10的默认位置"><a href="#子系统在win10的默认位置" class="headerlink" title="子系统在win10的默认位置"></a>子系统在win10的默认位置</h2><pre class=" language-sh"><code class="language-sh">C:\Users\87832\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState</code></pre>
-<p><img src="/images/pasted-1.png" alt="upload successful"></p>
-]]></content>
-      <tags>
-        <tag>win10</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>哈夫曼树&amp;哈夫曼编码</title>
-    <url>/2020/08/12/3729.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h2><blockquote>
-<p>哈夫曼树也叫最优二叉树（哈夫曼树）</p>
-</blockquote>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>  <a href="https://baike.baidu.com/item/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91/2305769?fr=aladdin">给定N个权值作为N个叶子结点，构造一棵二叉树，若该树的带权路径长度达到最小，称这样的二叉树为最优二叉树，也称为哈夫曼树(Huffman Tree)。哈夫曼树是带权路径长度最短的树，权值较大的结点离根较近。</a></p>
-<h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><table>
-<thead>
-<tr>
-<th align="left">名词</th>
-<th align="left">解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">路径长度</td>
-<td align="left">根结点到第L层结点路径长度为L-1</td>
-</tr>
-<tr>
-<td align="left">树的带权路径长度（WPL）</td>
-<td align="left">树中所有叶子结点的带权路径长度之和<br><img src="/images/pasted-75.png" alt="upload successful"><br>其中，n表示叶子结点的数目，wi和li分别表示叶子结点ki的权值和树根结点到叶子结点ki之间的路径长度。</td>
-</tr>
-<tr>
-<td align="left"><img src="/images/pasted-76.png" alt="upload successful"></td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<p>|</p>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
-<li>哈夫曼树中权越大的叶子离根越近(WPL最小的二叉树)</li>
-<li>具有相同带权结点的哈夫曼树不惟一</li>
-<li>哈夫曼树的结点的度数为 0 或 2， 没有度为 1 的结点；</li>
-<li>包含 n 个叶子结点的哈夫曼树中共有 2n – 1 个结点。</li>
-<li>包含 n 棵树的森林要经过 n–1 次合并才能形成哈夫曼树，共产生 n–1 个新结点</li>
-</ol>
-<p><img src="/images/pasted-74.png" alt="upload successful"><br><img src="/images/pasted-62.png" alt="upload successful"><br><strong>WPL 最小的值所属的树即为哈夫曼树</strong></p>
-<p><img src="/images/pasted-65.png" alt="upload successful" title="hello"><br><img src="/images/pasted-63.png" alt="upload successful"><br><img src="/images/pasted-64.png" alt="upload successful"></p>
-<h2 id="哈夫曼创建"><a href="#哈夫曼创建" class="headerlink" title="哈夫曼创建"></a>哈夫曼创建</h2><p><img src="/images/pasted-66.png" alt="upload successful"><br>为什么数组buffTree[2n-1] 的大小是2n-1,是因为n个子节点构成的树节点最多的个数是2n-1个<br><img src="/images/pasted-67.png" alt="upload successful"></p>
-<p><img src="/images/pasted-68.png" alt="upload successful"></p>
-<p><img src="/images/pasted-69.png" alt="upload successful"></p>
-<h2 id="哈夫曼树编码"><a href="#哈夫曼树编码" class="headerlink" title="哈夫曼树编码"></a>哈夫曼树编码</h2><h3 id="前缀编码"><a href="#前缀编码" class="headerlink" title="前缀编码"></a>前缀编码</h3><p><img src="/images/pasted-70.png" alt="upload successful"></p>
-<p><img src="/images/pasted-71.png" alt="upload successful"></p>
-<p><img src="/images/pasted-72.png" alt="upload successful"></p>
-<p>特点:<br>权值越高的叶子节点越靠近根节点</p>
-<p><img src="/images/pasted-73.png" alt="upload successful"></p>
-]]></content>
-      <tags>
-        <tag>算法</tag>
-      </tags>
   </entry>
   <entry>
     <title>基本算法之二叉树</title>
@@ -5438,6 +5425,42 @@ HXBL(root->rchild);
       </tags>
   </entry>
   <entry>
+    <title>win10子系统wsl</title>
+    <url>/2019/08/21/d9b0.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="子系统重启wsl"><a href="#子系统重启wsl" class="headerlink" title="子系统重启wsl"></a>子系统重启wsl</h2><p>管理员权限下:</p>
+<pre class=" language-sh"><code class="language-sh">net stop LxssManager
+net start LxssManager</code></pre>
+<h2 id="子系统在win10的默认位置"><a href="#子系统在win10的默认位置" class="headerlink" title="子系统在win10的默认位置"></a>子系统在win10的默认位置</h2><pre class=" language-sh"><code class="language-sh">C:\Users\87832\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState</code></pre>
+<p><img src="/images/pasted-1.png" alt="upload successful"></p>
+]]></content>
+      <tags>
+        <tag>win10</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基本算法之算法图解Book</title>
+    <url>/2018/05/05/d585.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="算法图解"><a href="#算法图解" class="headerlink" title="算法图解"></a>算法图解</h2><h3 id="内容简介-·-·-·-·-·-·"><a href="#内容简介-·-·-·-·-·-·" class="headerlink" title="内容简介  · · · · · ·"></a><font color=#115533>内容简介  · · · · · ·</font></h3><font color=#228B22>
+本书示例丰富，图文并茂，以让人容易理解的方式阐释了算法，旨在帮助程序员在日常项目中更好地发挥算法的能量。书中的前三章将帮助你打下基础，带你学习二分查找、大O表示法、两种基本的数据结构以及递归等。余下的篇幅将主要介绍应用广泛的算法，具体内容包括：面对具体问题时的解决技巧，比如，何时采用贪婪算法或动态规划；散列表的应用；图算法；K最近邻算法。
+</font>
+
+<h3 id="作者简介-·-·-·-·-·-·"><a href="#作者简介-·-·-·-·-·-·" class="headerlink" title="作者简介  · · · · · ·"></a><font color=#115533>作者简介  · · · · · ·</font></h3><font color=#228B22>
+Aditya Bhargava
+
+<p>软件工程师，兼具计算机科学和美术方面的教育背景，在adit.io撰写编程方面的博客。<br></font></p>
+<h3 id="豆瓣点评"><a href="#豆瓣点评" class="headerlink" title="豆瓣点评"></a><font color=#228B22><a href="https://book.douban.com/subject/26979890/">豆瓣点评</a></font></h3><a id="more"></a>
+
+<h2 id="书本"><a href="#书本" class="headerlink" title="书本"></a>书本</h2><embed src="https://gitee.com/alexlin/algorithms/raw/master/doc/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95.pdf" width="100%" height="950" type="application/pdf" align=center >
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>图解算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>基本算法之平衡二叉树</title>
     <url>/2018/03/25/646b.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h2><p><a href="https://baike.baidu.com/item/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/10421057?fr=aladdin">摘自百度:</a></p>
@@ -5552,29 +5575,6 @@ struct AVLNode
       </tags>
   </entry>
   <entry>
-    <title>基本算法之算法图解Book</title>
-    <url>/2018/05/05/d585.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="算法图解"><a href="#算法图解" class="headerlink" title="算法图解"></a>算法图解</h2><h3 id="内容简介-·-·-·-·-·-·"><a href="#内容简介-·-·-·-·-·-·" class="headerlink" title="内容简介  · · · · · ·"></a><font color=#115533>内容简介  · · · · · ·</font></h3><font color=#228B22>
-本书示例丰富，图文并茂，以让人容易理解的方式阐释了算法，旨在帮助程序员在日常项目中更好地发挥算法的能量。书中的前三章将帮助你打下基础，带你学习二分查找、大O表示法、两种基本的数据结构以及递归等。余下的篇幅将主要介绍应用广泛的算法，具体内容包括：面对具体问题时的解决技巧，比如，何时采用贪婪算法或动态规划；散列表的应用；图算法；K最近邻算法。
-</font>
-
-<h3 id="作者简介-·-·-·-·-·-·"><a href="#作者简介-·-·-·-·-·-·" class="headerlink" title="作者简介  · · · · · ·"></a><font color=#115533>作者简介  · · · · · ·</font></h3><font color=#228B22>
-Aditya Bhargava
-
-<p>软件工程师，兼具计算机科学和美术方面的教育背景，在adit.io撰写编程方面的博客。<br></font></p>
-<h3 id="豆瓣点评"><a href="#豆瓣点评" class="headerlink" title="豆瓣点评"></a><font color=#228B22><a href="https://book.douban.com/subject/26979890/">豆瓣点评</a></font></h3><a id="more"></a>
-
-<h2 id="书本"><a href="#书本" class="headerlink" title="书本"></a>书本</h2><embed src="https://gitee.com/alexlin/algorithms/raw/master/doc/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95.pdf" width="100%" height="950" type="application/pdf" align=center >
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>图解算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>实用网站</title>
     <url>/2020/04/22/6c49.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="搜索相关"><a href="#搜索相关" class="headerlink" title="搜索相关"></a>搜索相关</h2><ul>
@@ -5674,24 +5674,6 @@ added 225 packages from 431 contributors in 181.245s</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>汉枫系列-LPT230环境搭建</title>
-    <url>/2018/04/17/97d9.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="MAC-下编译器下载"><a href="#MAC-下编译器下载" class="headerlink" title="MAC 下编译器下载"></a>MAC 下编译器下载</h2><blockquote>
-<p>Linux 环境类似；</p>
-</blockquote>
-<ul>
-<li><a href="https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads">https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>汉枫</category>
-      </categories>
-      <tags>
-        <tag>lpt230</tag>
-        <tag>gcc</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>活成自己的样子</title>
     <url>/2888/03/28/dbbb.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
@@ -5741,104 +5723,21 @@ added 225 packages from 431 contributors in 181.245s</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>红外遥控器制作</title>
-    <url>/2020/05/10/3418.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><p> &emsp;&emsp;端午节期间，广州的天气真的好热，恨不得整体泡在空调房里。这让我想起了在公司上班的时候，天气炎热，想开空调，却发现空调遥控器好像偏偏跟我们玩捉迷藏似的，找也找不到，只能看着空调干巴巴地流汗。也常常碰见，公司的空调上班的时候都开着，然后最后一位同事走的时候，想关空调，此时遥控器也不翼而飞，于是各种问同事，大伙知道空调遥控器在哪吗？这种类似的“问候”等等。另外，公司空调比较多的时候，走的时候需要一个空调一个空调检测有没有关了，不然就会造成浪费的情况。总之对我来说，空调遥控器就是一个神奇的东西，你想找的时候，就偏偏找不到。<br><br>&emsp;&emsp;基于以上的种种情况，于是我萌发了要做一个方便管理的空调控制器，这个控制器有以下2个特点；</p>
-<ol>
-<li>必须让每个同事都能轻易的对每个空调进行控制(那就是用手机控制啦，大家都有手机~)；</li>
-<li>必须满足远程关闭空调，因为如果当我们离开公司的时候，发现空调没关，可以远程关闭；</li>
-</ol>
-<a id="more"></a>
-
-<h2 id="二、方案选择"><a href="#二、方案选择" class="headerlink" title="二、方案选择"></a>二、方案选择</h2><p>&emsp;&emsp;基于空调遥控器的特点，我想到了机智云的Gokit，搭配机智云的平台，能够满足我的需求，(主要是手头刚好有几个Gokit哈哈~)；<br><br>&emsp;&emsp;那么怎么来做呢？根据经验所得，需要对这个工作拆分为几部分</p>
-<ol>
-<li>机智云平台数据点定义(啥是数据点，请到机智云官网查看);这里我订了两个核心功能，一个是开关，一个是温度调节;(当然，你也可以定义更多的数据点，如，模式，风向等等)；</li>
-<li>MCU开发，MCU开发需要细分为红外遥控器的协议解码和编码；<strong>解码</strong> 简单来说就是需要通过工具，来分析遥控器发出来的红外波形，什么波形对应着开，什么波形对应着光和温度设置。<strong>编码</strong> 就是要把我们下发的命令转换成和空调能识别的红外波形；</li>
-</ol>
-<h2 id="三、方案实施"><a href="#三、方案实施" class="headerlink" title="三、方案实施"></a>三、方案实施</h2><h3 id="1-数据点定义"><a href="#1-数据点定义" class="headerlink" title="1. 数据点定义"></a>1. 数据点定义</h3><p>&emsp;&emsp;很简单，两个数据点，温度设置和空调开关，如下图；</p>
-<p><img src="/images/pasted-47.png" alt="upload successful"></p>
-<h3 id="2-红外解码"><a href="#2-红外解码" class="headerlink" title="2. 红外解码"></a>2. 红外解码</h3><p>&emsp;&emsp; 对于红外解码，有两种方法，一种是找到空调厂商的红外协议，然后根据红外协议，直接编写就可以了，不过很不幸的是，我手头这款空调，我找了很久都没找到对应的空调协议，于是只能另辟途径。也就是第二种方法，红外波形拷贝。<br><br>&emsp;&emsp; 那么波形拷贝我采用的是，用逻辑分析仪对遥控器进行波形分析，然后使用红外波形拷贝的方法，把对应功能的波形拷贝下来。</p>
-<p>&emsp;&emsp;决定了使用红外波形拷贝，那么就需要先要搭建波形捕捉电路，翻开了压箱底多年的红外探头接收器和面板(⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄)，步骤如下。</p>
-<h4 id="2-1-硬件环境搭建"><a href="#2-1-硬件环境搭建" class="headerlink" title="2.1 硬件环境搭建"></a>2.1 硬件环境搭建</h4><h5 id="红外接收头型号-HS0038B"><a href="#红外接收头型号-HS0038B" class="headerlink" title="红外接收头型号 HS0038B"></a>红外接收头型号 <strong>HS0038B</strong></h5><p><img src="/images/pasted-33.png" alt="upload successful"></p>
-<h5 id="HS0038B-电路图搭建"><a href="#HS0038B-电路图搭建" class="headerlink" title="HS0038B 电路图搭建"></a>HS0038B 电路图搭建</h5><ul>
-<li>原理图<br><img src="/images/pasted-40.png" alt="upload successful"></li>
-<li>面包板搭建实物图<br><img src="/images/pasted-41.png" alt="upload successful"><br><img src="/images/pasted-42.png" alt="upload successful"></li>
-</ul>
-<h5 id="抓波形"><a href="#抓波形" class="headerlink" title="抓波形"></a>抓波形</h5><ul>
-<li>真实抓包红外码图<br><img src="/images/pasted-34.png" alt="upload successful"></li>
-<li><ul>
-<li>关<br><img src="/images/pasted-35.png" alt="upload successful"></li>
-</ul>
-</li>
-<li><ul>
-<li>开<br><img src="/images/pasted-36.png" alt="upload successful"></li>
-</ul>
-</li>
-<li><ul>
-<li>20度<br><img src="/images/pasted-37.png" alt="upload successful"></li>
-</ul>
-</li>
-<li><ul>
-<li>21度<br><img src="/images/pasted-38.png" alt="upload successful"></li>
-</ul>
-</li>
-<li><ul>
-<li>22度<br><img src="/images/pasted-39.png" alt="upload successful"></li>
-</ul>
-</li>
-</ul>
-<h5 id="红外解码程序编写"><a href="#红外解码程序编写" class="headerlink" title="红外解码程序编写"></a>红外解码程序编写</h5><p>&emsp;&emsp;对红外波形有一个大概的认识之后，就要编写MCU端的代码，把波形转成红外码。这里我的思路是，对STM32的某个IO，设置为输入下降沿捕捉，然后通过计算每一个高低电平的持续时间，进而把波形转成数组；具体的实现可以看代码,<strong>Talk is cheap, show me the code.（主要是懒(<em>/ω＼</em>)~）</strong></p>
-<h3 id="3-红外编码"><a href="#3-红外编码" class="headerlink" title="3. 红外编码"></a>3. 红外编码</h3><p>&emsp;&emsp;进过前面的红外拷贝之后，我存储了，几个功能点的红外码，分别低开关，和温度设置(16度到27度)；<br>这里简单说一下，红外的发送原理(主要是网上已经有很多这方面的教程了)，首先上面抓到的红外波形，并不是红外发送器真正发送的波形，红外发送的波形一般是要发送的命令“加”在一个38K 的一个波形上；因为接收端有一个波形过滤器，如果不是38K红外波形范围内会被过滤掉。所以一般会以38K的PWM作为一个红外载波；<br>&emsp;&emsp;那么发送的时候，我对STM32的PA5引脚做为输出PWM为38K的引脚，然后后根据机智云定义好的数据点，拿到对应的串口协议文档，进行命令提前，主要是APP控制和MCU状态上报，这两条协议，(<strong>当然还有进入WiFi配网和串口握手等，不过这些在MCU代码自动生成的时候已经帮我们实现好了</strong>)串口协议格式如下图</p>
-<p><img src="/images/pasted-48.png" alt="upload successful"><br><img src="/images/pasted-49.png" alt="upload successful"><br>那么后面的就是根据协议编程了。</p>
-<p>这里插播一条，我实现发送的时候，开始我想使用gokit上的红外来作为发送，不过后面发现发送的距离比较短，后面就自己焊接了红外发射头；<br>当时我对Gokit的改造如下，如果小伙伴要控制的距离不远的话，我想是可以的，具体我的改造如下:</p>
-<p><strong>Gokit引脚修改</strong></p>
-<p><img src="/images/pasted-43.png" alt="upload successful"><br><img src="/images/pasted-44.png" alt="upload successful"><br><img src="/images/pasted-45.png" alt="upload successful"><br><img src="/images/pasted-46.png" alt="upload successful"></p>
-<p><strong>我最后真实的红外发送搭建如下</strong><br><img src="/images/pasted-50.png" alt="upload successful"><br><img src="/images/pasted-51.png" alt="upload successful"></p>
-<h3 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h3><p>最后，我把手头几个Gokit 都接上了红外，这样就能开开心心开空调去啦~~~</p>
-<p><img src="/images/pasted-54.png" alt="upload successful"><br><img src="/images/pasted-52.png" alt="upload successful"><br><img src="/images/pasted-53.png" alt="upload successful"><br><img src="/images/pasted-55.png" alt="upload successful"></p>
-<h3 id="演示视频"><a href="#演示视频" class="headerlink" title="演示视频"></a>演示视频</h3><ul>
-<li>视频: <a href="https://www.bilibili.com/video/BV1WK4y1s7DA/">https://www.bilibili.com/video/BV1WK4y1s7DA/</a></li>
-</ul>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><a href="https://blog.csdn.net/qq_39690917/article/details/86713809">https://blog.csdn.net/qq_39690917/article/details/86713809</a></li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>编辑器介绍</title>
-    <url>/2017/06/07/f348.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Sublime"><a href="#Sublime" class="headerlink" title="Sublime"></a>Sublime</h1><hr>
-<h2 id="Sublime-Text主题推荐：Seti-UI"><a href="#Sublime-Text主题推荐：Seti-UI" class="headerlink" title="Sublime Text主题推荐：Seti_UI"></a>Sublime Text主题推荐：Seti_UI</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><hr>
-<p>Seti_UI 这款主题最大的特点是能够显示各种文件类型的图标，小图标不仅看起来漂亮，而且大大增加了辨识度，能够轻松的找到对应的文件。</p>
-<a id="more"></a>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><hr>
-<p><strong>1. 安装</strong><br>在 Package Control 安装包命令行输入 Seti_UI 回车即可。</p>
-<p><strong>2. 手动安装</strong></p>
+    <title>汉枫系列-LPT230环境搭建</title>
+    <url>/2018/04/17/97d9.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="MAC-下编译器下载"><a href="#MAC-下编译器下载" class="headerlink" title="MAC 下编译器下载"></a>MAC 下编译器下载</h2><blockquote>
+<p>Linux 环境类似；</p>
+</blockquote>
 <ul>
-<li><a href="https://github.com/ctf0/Seti_ST3/archive/master.zip">Download the .zip</a>.</li>
-<li>Unzip and rename the folder to Seti_UI</li>
-<li>Copy the folder into Packages directory, which you can find using the menu item Preferences -&gt; Browse Packages… in Sublime Text.</li>
+<li><a href="https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads">https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads</a></li>
 </ul>
-<p><strong>3. 启用</strong><br>在 Preferences -&gt; Settings -&gt; User 中加入：</p>
-<pre><code>&quot;theme&quot;: &quot;Seti.sublime-theme&quot;</code></pre>
-<p>或者</p>
-<pre><code>&quot;theme&quot;: &quot;Seti_orig.sublime-theme&quot;</code></pre>
-]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>IDE</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>风过留痕，雁过留声</title>
-    <url>/2017/08/06/23d1.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="我不想让你知道"><a href="#我不想让你知道" class="headerlink" title="我不想让你知道"></a>我不想让你知道</h2><p>就不想让你知道~~</p>
 ]]></content>
       <categories>
-        <category>个人</category>
+        <category>汉枫</category>
       </categories>
       <tags>
-        <tag>个人</tag>
+        <tag>lpt230</tag>
+        <tag>gcc</tag>
       </tags>
   </entry>
   <entry>
@@ -6189,6 +6088,107 @@ alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ source ~/.pro
       <tags>
         <tag>esp8266</tag>
         <tag>gcc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>红外遥控器制作</title>
+    <url>/2020/05/10/3418.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><p> &emsp;&emsp;端午节期间，广州的天气真的好热，恨不得整体泡在空调房里。这让我想起了在公司上班的时候，天气炎热，想开空调，却发现空调遥控器好像偏偏跟我们玩捉迷藏似的，找也找不到，只能看着空调干巴巴地流汗。也常常碰见，公司的空调上班的时候都开着，然后最后一位同事走的时候，想关空调，此时遥控器也不翼而飞，于是各种问同事，大伙知道空调遥控器在哪吗？这种类似的“问候”等等。另外，公司空调比较多的时候，走的时候需要一个空调一个空调检测有没有关了，不然就会造成浪费的情况。总之对我来说，空调遥控器就是一个神奇的东西，你想找的时候，就偏偏找不到。<br><br>&emsp;&emsp;基于以上的种种情况，于是我萌发了要做一个方便管理的空调控制器，这个控制器有以下2个特点；</p>
+<ol>
+<li>必须让每个同事都能轻易的对每个空调进行控制(那就是用手机控制啦，大家都有手机~)；</li>
+<li>必须满足远程关闭空调，因为如果当我们离开公司的时候，发现空调没关，可以远程关闭；</li>
+</ol>
+<a id="more"></a>
+
+<h2 id="二、方案选择"><a href="#二、方案选择" class="headerlink" title="二、方案选择"></a>二、方案选择</h2><p>&emsp;&emsp;基于空调遥控器的特点，我想到了机智云的Gokit，搭配机智云的平台，能够满足我的需求，(主要是手头刚好有几个Gokit哈哈~)；<br><br>&emsp;&emsp;那么怎么来做呢？根据经验所得，需要对这个工作拆分为几部分</p>
+<ol>
+<li>机智云平台数据点定义(啥是数据点，请到机智云官网查看);这里我订了两个核心功能，一个是开关，一个是温度调节;(当然，你也可以定义更多的数据点，如，模式，风向等等)；</li>
+<li>MCU开发，MCU开发需要细分为红外遥控器的协议解码和编码；<strong>解码</strong> 简单来说就是需要通过工具，来分析遥控器发出来的红外波形，什么波形对应着开，什么波形对应着光和温度设置。<strong>编码</strong> 就是要把我们下发的命令转换成和空调能识别的红外波形；</li>
+</ol>
+<h2 id="三、方案实施"><a href="#三、方案实施" class="headerlink" title="三、方案实施"></a>三、方案实施</h2><h3 id="1-数据点定义"><a href="#1-数据点定义" class="headerlink" title="1. 数据点定义"></a>1. 数据点定义</h3><p>&emsp;&emsp;很简单，两个数据点，温度设置和空调开关，如下图；</p>
+<p><img src="/images/pasted-47.png" alt="upload successful"></p>
+<h3 id="2-红外解码"><a href="#2-红外解码" class="headerlink" title="2. 红外解码"></a>2. 红外解码</h3><p>&emsp;&emsp; 对于红外解码，有两种方法，一种是找到空调厂商的红外协议，然后根据红外协议，直接编写就可以了，不过很不幸的是，我手头这款空调，我找了很久都没找到对应的空调协议，于是只能另辟途径。也就是第二种方法，红外波形拷贝。<br><br>&emsp;&emsp; 那么波形拷贝我采用的是，用逻辑分析仪对遥控器进行波形分析，然后使用红外波形拷贝的方法，把对应功能的波形拷贝下来。</p>
+<p>&emsp;&emsp;决定了使用红外波形拷贝，那么就需要先要搭建波形捕捉电路，翻开了压箱底多年的红外探头接收器和面板(⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄)，步骤如下。</p>
+<h4 id="2-1-硬件环境搭建"><a href="#2-1-硬件环境搭建" class="headerlink" title="2.1 硬件环境搭建"></a>2.1 硬件环境搭建</h4><h5 id="红外接收头型号-HS0038B"><a href="#红外接收头型号-HS0038B" class="headerlink" title="红外接收头型号 HS0038B"></a>红外接收头型号 <strong>HS0038B</strong></h5><p><img src="/images/pasted-33.png" alt="upload successful"></p>
+<h5 id="HS0038B-电路图搭建"><a href="#HS0038B-电路图搭建" class="headerlink" title="HS0038B 电路图搭建"></a>HS0038B 电路图搭建</h5><ul>
+<li>原理图<br><img src="/images/pasted-40.png" alt="upload successful"></li>
+<li>面包板搭建实物图<br><img src="/images/pasted-41.png" alt="upload successful"><br><img src="/images/pasted-42.png" alt="upload successful"></li>
+</ul>
+<h5 id="抓波形"><a href="#抓波形" class="headerlink" title="抓波形"></a>抓波形</h5><ul>
+<li>真实抓包红外码图<br><img src="/images/pasted-34.png" alt="upload successful"></li>
+<li><ul>
+<li>关<br><img src="/images/pasted-35.png" alt="upload successful"></li>
+</ul>
+</li>
+<li><ul>
+<li>开<br><img src="/images/pasted-36.png" alt="upload successful"></li>
+</ul>
+</li>
+<li><ul>
+<li>20度<br><img src="/images/pasted-37.png" alt="upload successful"></li>
+</ul>
+</li>
+<li><ul>
+<li>21度<br><img src="/images/pasted-38.png" alt="upload successful"></li>
+</ul>
+</li>
+<li><ul>
+<li>22度<br><img src="/images/pasted-39.png" alt="upload successful"></li>
+</ul>
+</li>
+</ul>
+<h5 id="红外解码程序编写"><a href="#红外解码程序编写" class="headerlink" title="红外解码程序编写"></a>红外解码程序编写</h5><p>&emsp;&emsp;对红外波形有一个大概的认识之后，就要编写MCU端的代码，把波形转成红外码。这里我的思路是，对STM32的某个IO，设置为输入下降沿捕捉，然后通过计算每一个高低电平的持续时间，进而把波形转成数组；具体的实现可以看代码,<strong>Talk is cheap, show me the code.（主要是懒(<em>/ω＼</em>)~）</strong></p>
+<h3 id="3-红外编码"><a href="#3-红外编码" class="headerlink" title="3. 红外编码"></a>3. 红外编码</h3><p>&emsp;&emsp;进过前面的红外拷贝之后，我存储了，几个功能点的红外码，分别低开关，和温度设置(16度到27度)；<br>这里简单说一下，红外的发送原理(主要是网上已经有很多这方面的教程了)，首先上面抓到的红外波形，并不是红外发送器真正发送的波形，红外发送的波形一般是要发送的命令“加”在一个38K 的一个波形上；因为接收端有一个波形过滤器，如果不是38K红外波形范围内会被过滤掉。所以一般会以38K的PWM作为一个红外载波；<br>&emsp;&emsp;那么发送的时候，我对STM32的PA5引脚做为输出PWM为38K的引脚，然后后根据机智云定义好的数据点，拿到对应的串口协议文档，进行命令提前，主要是APP控制和MCU状态上报，这两条协议，(<strong>当然还有进入WiFi配网和串口握手等，不过这些在MCU代码自动生成的时候已经帮我们实现好了</strong>)串口协议格式如下图</p>
+<p><img src="/images/pasted-48.png" alt="upload successful"><br><img src="/images/pasted-49.png" alt="upload successful"><br>那么后面的就是根据协议编程了。</p>
+<p>这里插播一条，我实现发送的时候，开始我想使用gokit上的红外来作为发送，不过后面发现发送的距离比较短，后面就自己焊接了红外发射头；<br>当时我对Gokit的改造如下，如果小伙伴要控制的距离不远的话，我想是可以的，具体我的改造如下:</p>
+<p><strong>Gokit引脚修改</strong></p>
+<p><img src="/images/pasted-43.png" alt="upload successful"><br><img src="/images/pasted-44.png" alt="upload successful"><br><img src="/images/pasted-45.png" alt="upload successful"><br><img src="/images/pasted-46.png" alt="upload successful"></p>
+<p><strong>我最后真实的红外发送搭建如下</strong><br><img src="/images/pasted-50.png" alt="upload successful"><br><img src="/images/pasted-51.png" alt="upload successful"></p>
+<h3 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h3><p>最后，我把手头几个Gokit 都接上了红外，这样就能开开心心开空调去啦~~~</p>
+<p><img src="/images/pasted-54.png" alt="upload successful"><br><img src="/images/pasted-52.png" alt="upload successful"><br><img src="/images/pasted-53.png" alt="upload successful"><br><img src="/images/pasted-55.png" alt="upload successful"></p>
+<h3 id="演示视频"><a href="#演示视频" class="headerlink" title="演示视频"></a>演示视频</h3><ul>
+<li>视频: <a href="https://www.bilibili.com/video/BV1WK4y1s7DA/">https://www.bilibili.com/video/BV1WK4y1s7DA/</a></li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://blog.csdn.net/qq_39690917/article/details/86713809">https://blog.csdn.net/qq_39690917/article/details/86713809</a></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>编辑器介绍</title>
+    <url>/2017/06/07/f348.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Sublime"><a href="#Sublime" class="headerlink" title="Sublime"></a>Sublime</h1><hr>
+<h2 id="Sublime-Text主题推荐：Seti-UI"><a href="#Sublime-Text主题推荐：Seti-UI" class="headerlink" title="Sublime Text主题推荐：Seti_UI"></a>Sublime Text主题推荐：Seti_UI</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><hr>
+<p>Seti_UI 这款主题最大的特点是能够显示各种文件类型的图标，小图标不仅看起来漂亮，而且大大增加了辨识度，能够轻松的找到对应的文件。</p>
+<a id="more"></a>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><hr>
+<p><strong>1. 安装</strong><br>在 Package Control 安装包命令行输入 Seti_UI 回车即可。</p>
+<p><strong>2. 手动安装</strong></p>
+<ul>
+<li><a href="https://github.com/ctf0/Seti_ST3/archive/master.zip">Download the .zip</a>.</li>
+<li>Unzip and rename the folder to Seti_UI</li>
+<li>Copy the folder into Packages directory, which you can find using the menu item Preferences -&gt; Browse Packages… in Sublime Text.</li>
+</ul>
+<p><strong>3. 启用</strong><br>在 Preferences -&gt; Settings -&gt; User 中加入：</p>
+<pre><code>&quot;theme&quot;: &quot;Seti.sublime-theme&quot;</code></pre>
+<p>或者</p>
+<pre><code>&quot;theme&quot;: &quot;Seti_orig.sublime-theme&quot;</code></pre>
+]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>IDE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>风过留痕，雁过留声</title>
+    <url>/2017/08/06/23d1.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="我不想让你知道"><a href="#我不想让你知道" class="headerlink" title="我不想让你知道"></a>我不想让你知道</h2><p>就不想让你知道~~</p>
+]]></content>
+      <categories>
+        <category>个人</category>
+      </categories>
+      <tags>
+        <tag>个人</tag>
       </tags>
   </entry>
   <entry>
