@@ -1,0 +1,1517 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="ESP8266系列-如何搭建自己平台的编译器, AlexLin">
+    <meta name="description" content="Write the code Change the world">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>ESP8266系列-如何搭建自己平台的编译器 | AlexLin</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">AlexLin</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">AlexLin</div>
+        <div class="logo-desc">
+            
+            Write the code Change the world
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">ESP8266系列-如何搭建自己平台的编译器</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/esp8266/">
+                                <span class="chip bg-color">esp8266</span>
+                            </a>
+                        
+                            <a href="/tags/gcc/">
+                                <span class="chip bg-color">gcc</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/esp8266/" class="post-category">
+                                esp8266
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2017-07-31
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    16 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <hr>
+<h3 id="为什么要搭建自己平台的编译器"><a href="#为什么要搭建自己平台的编译器" class="headerlink" title="为什么要搭建自己平台的编译器"></a>为什么要搭建自己平台的编译器</h3><p>在乐鑫的官网上已经有公布了编译好的编译器，:<a target="_blank" rel="noopener" href="http://bbs.espressif.com/viewtopic.php?f=57&amp;t=2">http://bbs.espressif.com/viewtopic.php?f=57&amp;t=2</a><br>但是这里的编译器只是适合32位系统上的；<br><img src="http://static.zybuluo.com/AlexLin/vp3gfy4adgs6ipmc6gftuaj2/image.png" alt="image.png-39.4kB"><br>若你的系统是64位的，或者你在其他的平台上，那么就得自己编译生成对应平台的编译器了；<br>下面以64位Ubuntu系统为例子，演示如何编译自己平台的esp8266编译器;</p>
+<a id="more"></a>
+
+<h3 id="Ubuntu-基本信息"><a href="#Ubuntu-基本信息" class="headerlink" title="Ubuntu 基本信息"></a>Ubuntu 基本信息</h3><pre class=" language-sh"><code class="language-sh">alex@alex-virtual-machine:/$ uname -a
+Linux alex-virtual-machine 3.16.0-30-generic #40~14.04.1-Ubuntu SMP Thu Jan 15 17:43:14 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
+alex@alex-virtual-machine:/$ gcc -v
+Using built-in specs.
+COLLECT_GCC=gcc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 4.8.4-2ubuntu1~14.04.3' --with-bugurl=file:///usr/share/doc/gcc-4.8/README.Bugs --enable-languages=c,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-4.8 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.8 --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --enable-gnu-unique-object --disable-libmudflap --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-4.8-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-4.8-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-4.8-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3)</code></pre>
+<h3 id="第一步，安装编译需要的软件包"><a href="#第一步，安装编译需要的软件包" class="headerlink" title="第一步，安装编译需要的软件包"></a>第一步，安装编译需要的软件包</h3><pre class=" language-sh"><code class="language-sh">sudo apt-get install git autoconf build-essential gperf bison flex texinfo libtool libncurses5-dev wget gawk libc6-dev-amd64 python-serial libexpat-dev</code></pre>
+<h3 id="第二步，下载编译器源码"><a href="#第二步，下载编译器源码" class="headerlink" title="第二步，下载编译器源码"></a>第二步，下载编译器源码</h3><pre class=" language-sh"><code class="language-sh"># 创建源码目录
+cd ~/
+mkdir esptool/buildTool
+cd esptool/buildTool
+# 下载源码
+git clone -b lx106 git://github.com/jcmvbkbc/crosstool-NG.git</code></pre>
+<blockquote>
+<p><strong>一定要注意下载的是 lx106 分支的代码，因为ESP8266内置Tensilical L106 32bit微处理器</strong></p>
+</blockquote>
+<h3 id="第三部，生成配置文件"><a href="#第三部，生成配置文件" class="headerlink" title="第三部，生成配置文件"></a>第三部，生成配置文件</h3><pre class=" language-sh"><code class="language-sh">cd crosstool-NG
+#生成.configure
+./bootstrap
+#将检查依赖文件包，并通过--prefix配置安装路径为当前目录
+#若有提示确实的依赖文件，解决方法：sudo apt-get install libtool
+./configure --prefix=`pwd`
+make
+make install
+./ct-ng xtensa-lx106-elf</code></pre>
+<p>运行过程日志</p>
+<pre class=" language-sh"><code class="language-sh">alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG$ ./bootstrap
+Running autoconf...
+Done. You may now run:
+    ./configure
+alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG$ ./configure --prefix=`pwd`
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for a sed that does not truncate output... /bin/sed
+checking whether sed understands -r -i -e... yes
+checking whether ln -s works... yes
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables...
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking how to run the C preprocessor... gcc -E
+checking for ranlib... ranlib
+checking for gobjcopy... no
+checking for objcopy... objcopy
+checking for absolute path to objcopy... /usr/bin/objcopy
+checking for gobjdump... no
+checking for objdump... objdump
+checking for absolute path to objdump... /usr/bin/objdump
+checking for greadelf... no
+checking for readelf... readelf
+checking for absolute path to readelf... /usr/bin/readelf
+checking for gperf... gperf
+checking for absolute path to gperf... /usr/bin/gperf
+checking for bison... bison
+checking for flex... flex
+checking for makeinfo... makeinfo
+checking for cut... cut
+checking for stat... stat
+checking for readlink... readlink
+checking for wget... wget
+checking for tar... tar
+checking for gzip... gzip
+checking for bzip2... bzip2
+checking for patch... /usr/bin/patch
+checking for bash >= 3.1... /bin/bash
+checking for GNU awk... /usr/bin/gawk
+checking for GNU make >= 3.80... /usr/bin/make
+checking whether /usr/bin/make sets $(MAKE)... yes
+checking for make 3.81... yes
+checking for GNU libtool >= 1.5.26... /usr/bin/libtool
+checking for GNU libtool >= 1.5.26... /usr/bin/libtool
+checking for GNU libtoolize >= 1.5.26... /usr/bin/libtoolize
+checking for GNU automake >= 1.10... /usr/bin/automake
+checking for xz... xz
+checking for cvs... no
+checking for svn... no
+checking for inline... inline
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for stdlib.h... (cached) yes
+checking for GNU libc compatible malloc... yes
+checking for stdlib.h... (cached) yes
+checking for GNU libc compatible realloc... yes
+checking for size_t... yes
+checking for working alloca.h... yes
+checking for alloca... yes
+checking libintl.h usability... yes
+checking libintl.h presence... yes
+checking for libintl.h... yes
+checking whether gettext is declared... yes
+checking ncurses/ncurses.h usability... no
+checking ncurses/ncurses.h presence... no
+checking for ncurses/ncurses.h... no
+checking ncurses/curses.h usability... no
+checking ncurses/curses.h presence... no
+checking for ncurses/curses.h... no
+checking ncursesw/curses.h usability... no
+checking ncursesw/curses.h presence... no
+checking for ncursesw/curses.h... no
+checking ncurses.h usability... yes
+checking ncurses.h presence... yes
+checking for ncurses.h... yes
+checking for library containing initscr... -lncurses
+configure: creating ./config.status
+config.status: creating Makefile
+alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG$ make
+  SED    'ct-ng'
+  SED    'scripts/crosstool-NG.sh'
+  SED    'scripts/saveSample.sh'
+  SED    'scripts/showTuple.sh'
+  GEN    'config/configure.in'
+  GEN    'paths.mk'
+  GEN    'paths.sh'
+  SED    'docs/ct-ng.1'
+  GZIP   'docs/ct-ng.1.gz'
+alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG$ make install
+  GEN    'config/configure.in'
+  GEN    'paths.mk'
+  GEN    'paths.sh'
+  INST    'ct-ng'
+  INSTDIR 'config/'
+  INSTDIR 'contrib/'
+  INSTDIR 'patches/'
+  INSTDIR 'scripts/'
+  INST    'steps.mk'
+  INST    'paths'
+  INSTDIR 'samples/'
+  INST    'kconfig/'
+  INST    'docs/*.txt'
+  INST    'ct-ng.1.gz'
+
+For auto-completion, do not forget to install 'ct-ng.comp' into
+your bash completion directory (usually /etc/bash_completion.d)
+alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG$ ./ct-ng xtensa-lx106-elf
+  CONF  config/config.in
+#
+# configuration saved
+#
+
+***********************************************************
+
+Initially reported by: Max Filippov <jcmvbkbc@gmail.com>
+URL: http://www.esp8266.com/viewtopic.php?f=9&t=224
+
+***********************************************************
+
+WARNING! This sample may enable experimental features.
+         Please be sure to review the configuration prior
+         to building and using your toolchain!
+Now, you have been warned!
+
+***********************************************************
+
+Now configured for "xtensa-lx106-elf"</code></pre>
+<h3 id="第四步，修改crosstool-NG配置-amp-编译"><a href="#第四步，修改crosstool-NG配置-amp-编译" class="headerlink" title="第四步，修改crosstool_NG配置&amp;编译"></a>第四步，修改crosstool_NG配置&amp;编译</h3><ul>
+<li>在crosstool-NG目录下执行./ct-ng menuconfig进行配置</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">./ct-ng menuconfig</code></pre>
+<p><img src="http://static.zybuluo.com/AlexLin/ulwtccvkik8a6t1m8861g9kt/image.png" alt="image.png-87.3kB"></p>
+<ul>
+<li> 配置多线程编译<br>“Paths and misc options”-&gt;“Number of parallel jobs”</li>
+</ul>
+<p><img src="http://static.zybuluo.com/AlexLin/kayiaw7ks1gph5eebwfv6i2w/image.png" alt="image.png-128.4kB"></p>
+<ul>
+<li>保存编译中间步骤<br>“Paths and misc options”-&gt;“Debug crosstool-NG”-&gt;“Save intermediate steps”</li>
+</ul>
+<p><img src="http://static.zybuluo.com/AlexLin/6f1aygjx6rtuolnell8m8g1b/image.png" alt="image.png-141.1kB"></p>
+<ul>
+<li>编译交叉编译工具(<strong>这个过程比较久，我编译了33分钟，要耐心等待~~~</strong>)</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">./ct-ng build</code></pre>
+<p>运行日志</p>
+<pre class=" language-sh"><code class="language-sh">alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG$ ./ct-ng build
+[INFO ]  Performing some trivial sanity checks
+[INFO ]  Build started 20170730.163954
+[INFO ]  Building environment variables
+[INFO ]  =================================================================
+[INFO ]  Retrieving needed toolchain components' tarballs
+[INFO ]  Retrieving needed toolchain components' tarballs: done in 0.15s (at 00:17)
+[INFO ]  =================================================================
+[INFO ]  Extracting and patching toolchain components
+[INFO ]  Extracting and patching toolchain components: done in 0.88s (at 00:18)
+[INFO ]  Saving state to restart at step 'libc_check_config'...
+[INFO ]  Saving state to restart at step 'companion_libs_for_build'...
+[INFO ]  Saving state to restart at step 'binutils_for_build'...
+[INFO ]  Saving state to restart at step 'companion_libs_for_host'...
+[INFO ]  =================================================================
+[INFO ]  Installing GMP for host
+[INFO ]  Installing GMP for host: done in 139.49s (at 02:38)
+[INFO ]  =================================================================
+[INFO ]  Installing MPFR for host
+[INFO ]  Installing MPFR for host: done in 51.10s (at 03:29)
+[INFO ]  =================================================================
+[INFO ]  Installing ISL for host
+[INFO ]  Installing ISL for host: done in 109.78s (at 05:19)
+[INFO ]  =================================================================
+[INFO ]  Installing CLooG for host
+[INFO ]  Installing CLooG for host: done in 19.59s (at 05:39)
+[INFO ]  =================================================================
+[INFO ]  Installing MPC for host
+[INFO ]  Installing MPC for host: done in 21.96s (at 06:01)
+[INFO ]  Saving state to restart at step 'binutils_for_host'...
+[INFO ]  =================================================================
+[INFO ]  Installing binutils for host
+[INFO ]  Installing binutils for host: done in 209.94s (at 09:32)
+[INFO ]  Saving state to restart at step 'cc_core_pass_1'...
+[INFO ]  Saving state to restart at step 'kernel_headers'...
+[INFO ]  Saving state to restart at step 'libc_start_files'...
+[INFO ]  Saving state to restart at step 'cc_core_pass_2'...
+[INFO ]  Saving state to restart at step 'libc'...
+[INFO ]  Saving state to restart at step 'cc_for_build'...
+[INFO ]  Saving state to restart at step 'cc_for_host'...
+[INFO ]  =================================================================
+[INFO ]  Installing final compiler
+[INFO ]  Installing final compiler: done in 965.90s (at 26:12)
+[INFO ]  Saving state to restart at step 'libelf_for_target'...
+[INFO ]  Saving state to restart at step 'binutils_for_target'...
+[INFO ]  Saving state to restart at step 'debug'...
+[INFO ]  =================================================================
+[INFO ]  Installing cross-gdb
+[INFO ]  Installing cross-gdb: done in 336.23s (at 32:36)
+[INFO ]  Saving state to restart at step 'test_suite'...
+[INFO ]  Saving state to restart at step 'finish'...
+[INFO ]  =================================================================
+[INFO ]  Cleaning-up the toolchain's directory
+[INFO ]    Stripping all toolchain executables
+[INFO ]  Cleaning-up the toolchain's directory: done in 2.31s (at 33:07)
+[INFO ]  Build completed at 20170730.171300
+[INFO ]  (elapsed: 33:06.05)
+[INFO ]  Finishing installation (may take a few seconds)...
+[33:07] / alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG$</code></pre>
+<p><strong>编译生成文件在根目录下的builds下，文件名为xtensa-lx106-elf</strong></p>
+<pre class=" language-sh"><code class="language-sh">alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ ls
+xtensa-lx106-elf</code></pre>
+<h3 id="第五步，添加esp8266-依赖头文件"><a href="#第五步，添加esp8266-依赖头文件" class="headerlink" title="第五步，添加esp8266 依赖头文件"></a>第五步，添加esp8266 依赖头文件</h3><pre class=" language-sh"><code class="language-sh">#编译ESP8266必须添加以下库文件，不然就会报找不到相应库（如： xtensa-lx106-elf/bin/../lib/gcc/xtensa-lx106-elf/4.8.2/../../../../xtensa-lx106-elf/bin/ld: cannot find -lhal）
+wget https://github.com/esp8266/esp8266-wiki/raw/master/libs/libc.a
+wget https://github.com/esp8266/esp8266-wiki/raw/master/libs/libhal.a
+wget https://github.com/esp8266/esp8266-wiki/raw/master/include.tgz
+## 设置可读可写可执行权限
+sudo chmod -R u+x+r+w xtensa-lx106-elf/
+sudo chmod 777 libc.a libhal.a
+cp libc.a libhal.a xtensa-lx106-elf/xtensa-lx106-elf/sysroot/lib/
+tar -xvf include.tgz
+sudo chmod 777 include/*
+sudo cp -rf include xtensa-lx106-elf/xtensa-lx106-elf/</code></pre>
+<p>过程日志</p>
+<pre class=" language-sh"><code class="language-sh">alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ wget https://github.com/esp8266/esp8266-wiki/raw/master/libs/libc.a
+--2017-07-30 17:19:01--  https://github.com/esp8266/esp8266-wiki/raw/master/libs/libc.a
+Resolving github.com (github.com)... 192.30.255.113, 192.30.255.112
+Connecting to github.com (github.com)|192.30.255.113|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://raw.githubusercontent.com/esp8266/esp8266-wiki/master/libs/libc.a [following]
+--2017-07-30 17:19:02--  https://raw.githubusercontent.com/esp8266/esp8266-wiki/master/libs/libc.a
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 151.101.72.133
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|151.101.72.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 2754022 (2.6M) [application/octet-stream]
+Saving to: ‘libc.a’
+
+100%[=====================================================================================================>] 2,754,022   4.78KB/s   in 7m 38s
+
+2017-07-30 17:26:41 (5.87 KB/s) - ‘libc.a’ saved [2754022/2754022]
+
+alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ wget https://github.com/esp8266/esp8266-wiki/raw/master/libs/libhal.a
+--2017-07-30 17:27:29--  https://github.com/esp8266/esp8266-wiki/raw/master/libs/libhal.a
+Resolving github.com (github.com)... 192.30.255.112, 192.30.255.113
+Connecting to github.com (github.com)|192.30.255.112|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://raw.githubusercontent.com/esp8266/esp8266-wiki/master/libs/libhal.a [following]
+--2017-07-30 17:27:30--  https://raw.githubusercontent.com/esp8266/esp8266-wiki/master/libs/libhal.a
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 151.101.72.133
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|151.101.72.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 347624 (339K) [application/octet-stream]
+Saving to: ‘libhal.a’
+
+100%[=====================================================================================================>] 347,624     15.1KB/s   in 24s
+
+2017-07-30 17:27:57 (13.9 KB/s) - ‘libhal.a’ saved [347624/347624]
+
+alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ wget https://github.com/esp8266/esp8266-wiki/raw/master/include.tgz
+--2017-07-30 17:28:07--  https://github.com/esp8266/esp8266-wiki/raw/master/include.tgz
+Resolving github.com (github.com)... 192.30.255.112, 192.30.255.113
+Connecting to github.com (github.com)|192.30.255.112|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://raw.githubusercontent.com/esp8266/esp8266-wiki/master/include.tgz [following]
+--2017-07-30 17:28:08--  https://raw.githubusercontent.com/esp8266/esp8266-wiki/master/include.tgz
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 151.101.72.133
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|151.101.72.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 979111 (956K) [application/octet-stream]
+Saving to: ‘include.tgz’
+
+100%[=====================================================================================================>] 979,111     75.2KB/s   in 10s
+
+2017-07-30 17:28:19 (93.5 KB/s) - ‘include.tgz’ saved [979111/979111]
+alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ ls
+include.tgz  libc.a  libhal.a  xtensa-lx106-elf
+alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ sudo chmod -R u+x+r+w xtensa-lx106-elf/
+alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ cp libc.a libhal.a xtensa-lx106-elf/xtensa-lx106-elf/sysroot/lib/
+alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ sudo chmod 777 include/*
+alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ sudo cp -rf include xtensa-lx106-elf/xtensa-lx106-elf/</code></pre>
+<h3 id="第六步，添加编译工具到环境变量"><a href="#第六步，添加编译工具到环境变量" class="headerlink" title="第六步，添加编译工具到环境变量"></a>第六步，添加编译工具到环境变量</h3><ul>
+<li>把生成的编译器工具下的bin路径添加到环境变量中</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ ls
+include  include.tgz  libc.a  libhal.a  xtensa-lx106-elf
+alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ echo "export PATH=~/esptool/buildTool/crosstool-NG/builds/xtensa-lx106-elf/bin:$PATH" >>~/.profile
+alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ source ~/.profile</code></pre>
+<h3 id="编译验证"><a href="#编译验证" class="headerlink" title="编译验证"></a>编译验证</h3><p>成功~<br><img src="http://static.zybuluo.com/AlexLin/j8khwtatkzace5rfnt527r7l/image.png" alt="image.png-67.8kB"></p>
+<h3 id="编译好编译工具"><a href="#编译好编译工具" class="headerlink" title="编译好编译工具"></a>编译好编译工具</h3><p>如果你不想走以上的流程，那么可以使用我编译好的，这个编译器可以在64位是Ubuntu1402上运行。</p>
+<p>下载链接：<a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1jHLNQTo">http://pan.baidu.com/s/1jHLNQTo</a> 密码：s70o</p>
+<p>下载完成之后，参考<strong>第六步</strong>，把工具添加到环境变量中去。</p>
+<p><strong>hope you like it~<br>by AlexLin</strong></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Alex.Lin</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://lxj-life.com/2017/0731e7ff.html">http://lxj-life.com/2017/0731e7ff.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Alex.Lin</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/esp8266/">
+                                    <span class="chip bg-color">esp8266</span>
+                                </a>
+                            
+                                <a href="/tags/gcc/">
+                                    <span class="chip bg-color">gcc</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/images/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/images/wechatpay.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2017/08015973.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Hexo自动备份教程">
+                        
+                        <span class="card-title">Hexo自动备份教程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2017-08-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Alex.Lin
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2017/070156f1.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="PC小技巧">
+                        
+                        <span class="card-title">PC小技巧</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Win7 开热点
+输入命令：netsh wlan set hostednetwork mode=allow ssid=livdran2012 key=100100100 。mode:是否启用虚拟WiFi网卡，改为disallow则为禁止。s
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-07-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PC%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">PC工具</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2020</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">Alex.Lin</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">58.2k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/ilxj" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:878329009@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=878329009" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 878329009" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":"hijiki","bottom":-30,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

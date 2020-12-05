@@ -1,0 +1,1500 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="tcpDump, AlexLin">
+    <meta name="description" content="Write the code Change the world">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>tcpDump | AlexLin</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">AlexLin</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">AlexLin</div>
+        <div class="logo-desc">
+            
+            Write the code Change the world
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">tcpDump</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/">
+                                <span class="chip bg-color">抓包工具</span>
+                            </a>
+                        
+                            <a href="/tags/tcp/">
+                                <span class="chip bg-color">tcp</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                工具
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2017-07-01
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    15 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <hr>
+<h2 id="Linux-混杂模式设置"><a href="#Linux-混杂模式设置" class="headerlink" title="Linux 混杂模式设置"></a>Linux 混杂模式设置</h2><p><strong>1. 查看网卡混杂模式状态</strong></p>
+<pre class=" language-SH"><code class="language-SH">alex@ubuntu:~$ ifconfig eth0
+
+eth0      Link encap:Ethernet  HWaddr 00:0c:29:01:02:03
+          inet addr:10.211.55.3  Bcast:10.211.55.255  Mask:255.255.255.0
+          inet6 addr: fdb2:2c26:f4e4:0:49c8:a8e5:be6:a7f9/64 Scope:Global
+          inet6 addr: fdb2:2c26:f4e4:0:20c:29ff:fe01:203/64 Scope:Global
+          inet6 addr: fe80::20c:29ff:fe01:203/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1735 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1780 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:1451555 (1.4 MB)  TX bytes:193802 (193.8 KB)</code></pre>
+<a id="more"></a>
+
+<p><strong>2. 启动混杂模式</strong><br>主要是这个:<strong>PROMISC</strong></p>
+<pre class=" language-yaml"><code class="language-yaml">alex@ubuntu<span class="token punctuation">:</span>~$ sudo ifconfig eth0 promisc
+alex@ubuntu<span class="token punctuation">:</span>~$ ifconfig eth0
+eth0      Link encap<span class="token punctuation">:</span>Ethernet  HWaddr 00<span class="token punctuation">:</span>0c<span class="token punctuation">:</span>29<span class="token punctuation">:</span><span class="token datetime number">01:02:03</span>
+          inet addr<span class="token punctuation">:</span>10.211.55.3  Bcast<span class="token punctuation">:</span>10.211.55.255  Mask<span class="token punctuation">:</span>255.255.255.0
+          inet6 addr<span class="token punctuation">:</span> fdb2<span class="token punctuation">:</span>2c26<span class="token punctuation">:</span>f4e4<span class="token punctuation">:</span>0<span class="token punctuation">:</span>49c8<span class="token punctuation">:</span>a8e5<span class="token punctuation">:</span>be6<span class="token punctuation">:</span>a7f9/64 Scope<span class="token punctuation">:</span>Global
+          inet6 addr<span class="token punctuation">:</span> fdb2<span class="token punctuation">:</span>2c26<span class="token punctuation">:</span>f4e4<span class="token punctuation">:</span>0<span class="token punctuation">:</span>20c<span class="token punctuation">:</span>29ff<span class="token punctuation">:</span>fe01<span class="token punctuation">:</span>203/64 Scope<span class="token punctuation">:</span>Global
+          inet6 addr<span class="token punctuation">:</span> fe80<span class="token punctuation">:</span><span class="token punctuation">:</span>20c<span class="token punctuation">:</span>29ff<span class="token punctuation">:</span>fe01<span class="token punctuation">:</span>203/64 Scope<span class="token punctuation">:</span>Link
+          UP BROADCAST RUNNING PROMISC MULTICAST  MTU<span class="token punctuation">:</span>1500  Metric<span class="token punctuation">:</span><span class="token number">1</span>
+          RX packets<span class="token punctuation">:</span>1742 errors<span class="token punctuation">:</span>0 dropped<span class="token punctuation">:</span>0 overruns<span class="token punctuation">:</span>0 frame<span class="token punctuation">:</span><span class="token number">0</span>
+          TX packets<span class="token punctuation">:</span>1782 errors<span class="token punctuation">:</span>0 dropped<span class="token punctuation">:</span>0 overruns<span class="token punctuation">:</span>0 carrier<span class="token punctuation">:</span><span class="token number">0</span>
+          collisions<span class="token punctuation">:</span>0 txqueuelen<span class="token punctuation">:</span><span class="token number">1000</span>
+          RX bytes<span class="token punctuation">:</span>1452336 (1.4 MB)  TX bytes<span class="token punctuation">:</span>194198 (194.1 KB)</code></pre>
+<p><strong>3. 关闭混杂模式</strong></p>
+<pre class=" language-shell"><code class="language-shell">alex@ubuntu:~$ sudo ifconfig eth0 -promisc
+alex@ubuntu:~$ ifconfig eth0
+eth0      Link encap:Ethernet  HWaddr 00:0c:29:01:02:03
+          inet addr:10.211.55.3  Bcast:10.211.55.255  Mask:255.255.255.0
+          inet6 addr: fdb2:2c26:f4e4:0:49c8:a8e5:be6:a7f9/64 Scope:Global
+          inet6 addr: fdb2:2c26:f4e4:0:20c:29ff:fe01:203/64 Scope:Global
+          inet6 addr: fe80::20c:29ff:fe01:203/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1766 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1796 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:1455202 (1.4 MB)  TX bytes:195410 (195.4 KB)</code></pre>
+<h2 id="TcpDump"><a href="#TcpDump" class="headerlink" title="TcpDump"></a>TcpDump</h2><blockquote>
+<ul>
+<li>tcpdump存在于基本的FreeBSD系统中，由于它需要将网络界面设置为混杂模式，普通用户不能正常执行，但具备root权限的用户可以直接执行它来获取网络上的信息。因此系统中存在网络分析工具主要不是对本机安全的威胁，而是对网络上的其他计算机的安全存在威胁。</li>
+</ul>
+</blockquote>
+<ul>
+<li>显然为了安全起见，不用作网络管理用途的计算机上不应该运行这一类的网络分析软件，为了屏蔽它们，可以屏蔽内核中的bpfilter伪设备。一般情况下网络硬件和TCP/IP堆栈不支持接收或发送与本计算机无关的数据包，为了接收这些数据包，就必须使用网卡的混杂模式，并绕过标准的TCP/IP堆栈才行。在FreeBSD下，这就需要内核支持伪设备bpfilter。因此，在内核中取消bpfilter支持，就能屏蔽tcpdump之类的网络分析工具。</li>
+<li>并且当网卡被设置为混杂模式时，系统会在控制台和日志文件中留下记录，提醒管理员留意这台系统是否被用作攻击同网络的其他计算机的跳板。<h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3></li>
+</ul>
+<p>tcpdump采用命令行方式，它的命令格式为：<br>    tcpdump [ -adeflnNOpqStvx ] [ -c 数量 ] [ -F 文件名 ]<br>　　　　　　　　　　[ -i 网络接口 ] [ -r 文件名] [ -s snaplen ]<br>　　　　　　　　　　[ -T 类型 ] [ -w 文件名 ] [表达式 ]
+　　　　　　　　　　</p>
+<h3 id="命令参数"><a href="#命令参数" class="headerlink" title="命令参数"></a>命令参数</h3><table>
+<thead>
+<tr>
+<th align="left">命令字</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-a</td>
+<td align="left">将网络地址和广播地址转变成名字；</td>
+</tr>
+<tr>
+<td align="left">-d</td>
+<td align="left">将匹配信息包的代码以人们能够理解的汇编格式给出；</td>
+</tr>
+<tr>
+<td align="left">-dd</td>
+<td align="left">将匹配信息包的代码以c语言程序段的格式给出；</td>
+</tr>
+<tr>
+<td align="left">-ddd</td>
+<td align="left">将匹配信息包的代码以十进制的形式给出；</td>
+</tr>
+<tr>
+<td align="left">-e</td>
+<td align="left">在输出行打印出数据链路层的头部信息；</td>
+</tr>
+<tr>
+<td align="left">-f</td>
+<td align="left">将外部的Internet地址以数字的形式打印出来；</td>
+</tr>
+<tr>
+<td align="left">-l</td>
+<td align="left">使标准输出变为缓冲行形式；</td>
+</tr>
+<tr>
+<td align="left">-n</td>
+<td align="left">不把网络地址转换成名字；</td>
+</tr>
+<tr>
+<td align="left">-t</td>
+<td align="left">在输出的每一行不打印时间戳；</td>
+</tr>
+<tr>
+<td align="left">-v</td>
+<td align="left">输出一个稍微详细的信息，例如在ip包中可以包括ttl和服务类型的信息；</td>
+</tr>
+<tr>
+<td align="left">-vv</td>
+<td align="left">输出详细的报文信息；</td>
+</tr>
+<tr>
+<td align="left">-c</td>
+<td align="left">在收到指定的包的数目后，tcpdump就会停止；</td>
+</tr>
+<tr>
+<td align="left">-F</td>
+<td align="left">从指定的文件中读取表达式,忽略其它的表达式；</td>
+</tr>
+<tr>
+<td align="left">-i</td>
+<td align="left">指定监听的网络接口；</td>
+</tr>
+<tr>
+<td align="left">-r</td>
+<td align="left">从指定的文件中读取包(这些包一般通过-w选项产生)；</td>
+</tr>
+<tr>
+<td align="left">-w</td>
+<td align="left">直接将包写入文件中，并不分析和打印出来；</td>
+</tr>
+<tr>
+<td align="left">-T</td>
+<td align="left">将监听到的包直接解释为指定的类型的报文，常见的类型有rpc （远程过程调用）和snmp（简单网络管理协议；）</td>
+</tr>
+<tr>
+<td align="left">-x</td>
+<td align="left">用 hex 显示报文的内容</td>
+</tr>
+<tr>
+<td align="left">-X</td>
+<td align="left">同时用 hex 和 ascii 显示报文的内容</td>
+</tr>
+<tr>
+<td align="left">-XX</td>
+<td align="left">同 -X，但同时显示以太网头部</td>
+</tr>
+<tr>
+<td align="left">-A</td>
+<td align="left">只使用 ascii 打印报文的全部数据，不要和 -X 一起使用</td>
+</tr>
+<tr>
+<td align="left">port xxx</td>
+<td align="left">指定端口xxx</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h3 id="tcpdump的表达式介绍"><a href="#tcpdump的表达式介绍" class="headerlink" title="tcpdump的表达式介绍"></a>tcpdump的表达式介绍</h3><blockquote>
+<p>表达式是一个正则表达式，tcpdump利用它作为过滤报文的条件，如果一个报文满足表达式的条件，则这个报文将会被捕获。如果没有给出任何条件，则网络上所有的信息包将会被截获。在表达式中一般如下几种类型的关键字。</p>
+</blockquote>
+<h4 id="第一种是关于类型的关键字"><a href="#第一种是关于类型的关键字" class="headerlink" title="第一种是关于类型的关键字"></a>第一种是关于类型的关键字</h4><p>主要包括host，net，port, 例如 host 210.27.48.2，指明210.27.48.2是一台主机，net 202.0.0.0 指明 202.0.0.0是一个网络地址，port 23指明端口号是23。如果没有指定类型，缺省的类型是host.</p>
+<h4 id="第二种是确定传输方向的关键字"><a href="#第二种是确定传输方向的关键字" class="headerlink" title="第二种是确定传输方向的关键字"></a>第二种是确定传输方向的关键字</h4><p>主要包括src , dst ,dst or src, dst and src,这些关键字指明了传输的方向。举例说明，src 210.27.48.2 ,指明ip包中源地址是210.27.48.2 , dst net202.0.0.0 指明目的网络地址是202.0.0.0 。如果没有指明方向关键字，则缺省是src or dst关键字。</p>
+<h4 id="第三种是协议的关键字"><a href="#第三种是协议的关键字" class="headerlink" title="第三种是协议的关键字"></a>第三种是协议的关键字</h4><p>主要包括fddi,ip,arp,rarp,tcp,udp等类型。Fddi指明是在FDDI(分布式光纤数据接口网络)上的特定的网络协议，实际上它是”ether”的别名，fddi和ether具有类似的源地址和目的地址，所以可以将fddi协议包当作ether的包进行处理和分析。其他的几个关键字就是指明了监听的包的协议内容。如果没有指定任何协议，则tcpdump将会监听所有协议的信息包。</p>
+<h4 id="其他关键字"><a href="#其他关键字" class="headerlink" title="其他关键字"></a>其他关键字</h4><p>除了这三种类型的关键字之外，其他重要的关键字如下：gateway,broadcast,less,greater,还有三种逻辑运算，取非运算是 ‘not ‘ ‘! ‘,与运算是’and’,’&amp;&amp;’;或运算 是’or’,’││’；这些关键字可以组合起来构成强大的组合条件来满足人们的需要，下面举几个例子来说明。</p>
+<ul>
+<li><p>A想要截获所有210.27.48.1 的主机收到的和发出的所有的数据包：</p>
+<pre><code>#tcpdump host 210.27.48.1</code></pre>
+</li>
+<li><p>B想要截获主机210.27.48.1 和主机210.27.48.2 或210.27.48.3的通信，使用命令：(在命令行中使用括号时，一定要添加’&#39;)</p>
+<pre><code>#tcpdump host 210.27.48.1 and \ (210.27.48.2 or 210.27.48.3 \)</code></pre>
+</li>
+<li><p>C如果想要获取主机210.27.48.1除了和主机210.27.48.2之外所有主机通信的ip包，使用命令：</p>
+<pre><code>#tcpdump ip host 210.27.48.1 and ! 210.27.48.2</code></pre>
+</li>
+<li><p>D如果想要获取主机210.27.48.1接收或发出的telnet包，使用如下命令：</p>
+<pre><code>#tcpdump tcp port 23 host 210.27.48.1</code></pre>
+</li>
+<li><p>E 对本机的udp 123 端口进行监视 123 为ntp的服务端口</p>
+<pre><code># tcpdump udp port 123</code></pre>
+</li>
+<li><p>F 系统将只对名为hostname的主机的通信数据包进行监视。主机名可以是本地主机，也可以是网络上的任何一台计算机。下面的命令可以读取主机hostname发送的所有数据：</p>
+<pre><code>#tcpdump -i eth0 src host hostname</code></pre>
+</li>
+<li><p>G 下面的命令可以监视所有送到主机hostname的数据包：</p>
+<pre><code>#tcpdump -i eth0 dst host hostname</code></pre>
+</li>
+<li><p>H 我们还可以监视通过指定网关的数据包：</p>
+<pre><code>#tcpdump -i eth0 gateway Gatewayname</code></pre>
+</li>
+<li><p>I 如果你还想监视编址到指定端口的TCP或UDP数据包，那么执行以下命令：</p>
+<pre><code>#tcpdump -i eth0 host hostname and port 80</code></pre>
+</li>
+<li><p>J 如果想要获取主机210.27.48.1除了和主机210.27.48.2之外所有主机通信的ip包，使用命令：</p>
+<pre><code>#tcpdump ip host 210.27.48.1 and ! 210.27.48.2</code></pre>
+</li>
+<li><p>K 想要截获主机210.27.48.1 和主机210.27.48.2 或210.27.48.3的通信，使用命令：</p>
+<pre><code>#tcpdump host 210.27.48.1 and \ (210.27.48.2 or 210.27.48.3 \)</code></pre>
+</li>
+<li><p>L 如果想要获取主机210.27.48.1除了和主机210.27.48.2之外所有主机通信的ip包，使用命令：</p>
+<pre><code>#tcpdump ip host 210.27.48.1 and ! 210.27.48.2</code></pre>
+</li>
+<li><p>M 如果想要获取主机210.27.48.1接收或发出的telnet包，使用如下命令：</p>
+<pre><code>#tcpdump tcp port 23 host 210.27.48.1</code></pre>
+</li>
+</ul>
+<h3 id="tcpdump的输出结果介绍"><a href="#tcpdump的输出结果介绍" class="headerlink" title="tcpdump的输出结果介绍"></a>tcpdump的输出结果介绍</h3><p>下面我们介绍几种典型的tcpdump命令的输出信息</p>
+<ul>
+<li><p>A,数据链路层头信息<br>使用命令:</p>
+<pre><code>#tcpdump --e host ice</code></pre>
+<p>ice 是一台装有linux的主机，她的MAC地址是0：90：27：58：AF：1A；<br>H219是一台装有SOLARIC的SUN工作站，它的MAC地址是8：0：20：79：5B：46；<br>上一条命令的输出结果如下所示：</p>
+<pre><code>21:50:12.847509 eth0 &lt; 8:0:20:79:5b:46 0:90:27:58:af:1a ip 60: h219.33357 &gt; ice.telne
+t 0:0(0) ack 22535 win 8760 (DF)</code></pre>
+<p>  分析：21：50：12是显示的时间， 847509是ID号，eth0 &lt;表示从网络接口eth0 接受该数据包，eth0&gt;表示从网络接口设备发送数据包, 8:0:20:79:5b:46是主机H219的MAC地址,它表明是从源地址H219发来的数据包.0:90:27:58:af:1a是主机ICE的MAC地址,表示该数据包的目的地址是ICE . ip 是表明该数据包是IP数据包,60是数据包的长度, h219.33357 &gt; ice.telnet表明该数据包是从主机H219的33357端口发往主机ICE的TELNET(23)端口. ack 22535表明对序列号是222535的包进行响应. win 8760表明发送窗口的大小是8760.</p>
+</li>
+<li><p>B,ARP包的TCPDUMP输出信息</p>
+</li>
+</ul>
+<p>使用命令:</p>
+<pre><code>#tcpdump arp</code></pre>
+<p>得到的输出结果是：</p>
+<pre><code>22:32:42.802509 eth0 &gt; arp who-has route tell ice (0:90:27:58:af:1a)
+22:32:42.802902 eth0 &lt; arp reply route is-at 0:90:27:12:10:66 (0:90:27:58:af:1a)</code></pre>
+<pre><code>分析: 22:32:42是时间戳, 802509是ID号, eth0 &gt;表明从主机发出该数据包, arp表明是ARP请求包,who-has route tell ice表明是主机ICE请求主机ROUTE的MAC地址。0:90:27:58:af:1a是主机ICE的MAC地址。</code></pre>
+<ul>
+<li>C,TCP包的输出信息</li>
+</ul>
+<p>用TCPDUMP捕获的TCP包的一般输出信息是：</p>
+<pre><code>src &gt; dst: flags data-seqno ack window urgent options</code></pre>
+<pre><code>src&gt; dst:表明从源地址到目的地址, flags是TCP包中的标志信息,S 是SYN标志, F (FIN), P (PUSH) , R(RST) &quot;.&quot; (没有标记); data-seqno是数据包中的数据的顺序号, ack是下次期望的顺序号,window是接收缓存的窗口大小, urgent表明数据包中是否有紧急指针. Options是选项.</code></pre>
+<ul>
+<li>D,UDP包的输出信息</li>
+</ul>
+<p>用TCPDUMP捕获的UDP包的一般输出信息是：</p>
+<pre><code>route.port1 &gt; ice.port2: udp lenth</code></pre>
+<pre><code>UDP十分简单，上面的输出行表明从主机ROUTE的port1端口发出的一个UDP数据包到主机ICE的port2端口，类型是UDP， 包的长度是lenth</code></pre>
+<h3 id="辅助工具"><a href="#辅助工具" class="headerlink" title="辅助工具"></a>辅助工具</h3><ul>
+<li><p>想查看TCP或者UDP端口使用情况，使用</p>
+<pre><code>#netstat -anp</code></pre>
+</li>
+<li><p>如果有些进程看不见，如只显示”-”，可以尝试</p>
+<pre><code>#sudo netstat -anp</code></pre>
+</li>
+<li><p>如果想看某个端口的信息，使用lsof命令，如：</p>
+<pre><code>#sudo lsof -i :631</code></pre>
+</li>
+</ul>
+<pre><code>-bash-3.00# netstat -tln</code></pre>
+<pre><code>netstat -tln #命令是用来查看linux的端口使用情况</code></pre>
+<ul>
+<li>启动ftp端口<pre><code># /xtc/init.d/vsftp start</code></pre>
+</li>
+</ul>
+<p>看文件/etc/services<br>netstat</p>
+<p>查看已经连接的服务端口（ESTABLISHED）</p>
+<ul>
+<li><p>查看所有的服务端口（LISTEN，ESTABLISHED）</p>
+<pre><code>netstat -a</code></pre>
+</li>
+<li><p>查看所有 的服务端口并显示对应的服务程序名</p>
+<pre><code>sudo netstat -ap</code></pre>
+</li>
+<li><p>nmap ＜扫描类型＞＜扫描参数＞<br>例如：</p>
+<pre><code>#nmap localhost
+#nmap -p 1024-65535 localhost
+#nmap -PT 192.168.1.127-245</code></pre>
+<p>当我们使用　netstat -apn　查看网络连接的时候，会发现很多类似下面的内容：</p>
+<pre><code>Proto Recv-Q Send-Q Local Address Foreign Address State PID/Program name
+</code></pre>
+</li>
+</ul>
+<p>tcp 0 52 218.104.81.152：7710 211.100.39.250：29488 ESTABLISHED 6111/1</p>
+<pre><code>
+显示这台服务器开放了7710端口，那么 这个端口属于哪个程序呢？我们可以使用　</code></pre>
+<p>lsof -i ：7710　</p>
+<pre><code>
+命令来查询：</code></pre>
+<p>COMMAND PID USER FD TYPE DEVICE SIZE NODE NAME</p>
+<p>sshd 1990 root 3u IPv4 4836 TCP *：7710 （LISTEN）</p>
+<pre><code>    这样，我们就知道了7710端口是属于sshd程序的。
+
+- 运行tcpdump命令出现错误信息排除</code></pre>
+<p>tcpdump: no suitable device found<br>tcpdump: no devices found /dev/bpf4: A file or directory in the path name does not exist.</p>
+<pre><code>
+解决方案 2种原因：
+1.权限不够，一般不经过处理，只用root用户能使用tcpdump
+2.缺省只能同时使用4个tcpdump，如用完，则报此类错。需要停掉多余的tcpdump
+
+### Ubuntu系统日志配置 /var/log/messages
+1. 问题描述
+　　今天需要查看Ubuntu系统的日志文件，但却没有找到/var/log/messages这个文件。网上搜素资料，说是要配置/etc/syslog.conf。syslog采用可配置的、统一的系统登记程序，随时从系统各处接受log请求，然后根据/etc/syslog.conf中的预先设定把log信息写入相应文件中、邮寄给特 定用户或者直接以消息的方式发往控制台。
+
+　　好吧，问题又来了。系统中依然没有/etc/syslog.conf，经过一番搜素，最后得到的结论是：在Ubuntu下对应的应该是/etc/rsyslog.conf和rsyslogd。
+
+2. 解决方案
+　　关于syslog.conf文件和syslog.d下文件功能解释可以参考下面这篇文章：
+　　http://www.linuxidc.com/Linux/2012-03/56434.htm
+　　通过查看rsyslog.conf文件，发现所有的配置文件都在/etc/rsyslog.d/文件夹下。
+</code></pre>
+<h1 id="etc-rsyslog-conf-Configuration-file-for-rsyslog"><a href="#etc-rsyslog-conf-Configuration-file-for-rsyslog" class="headerlink" title="/etc/rsyslog.conf Configuration file for rsyslog."></a>/etc/rsyslog.conf Configuration file for rsyslog.</h1><p>#</p>
+<h1 id="For-more-information-see"><a href="#For-more-information-see" class="headerlink" title="For more information see"></a>For more information see</h1><h1 id="usr-share-doc-rsyslog-doc-html-rsyslog-conf-html"><a href="#usr-share-doc-rsyslog-doc-html-rsyslog-conf-html" class="headerlink" title="/usr/share/doc/rsyslog-doc/html/rsyslog_conf.html"></a>/usr/share/doc/rsyslog-doc/html/rsyslog_conf.html</h1><p>#</p>
+<h1 id="Default-logging-rules-can-be-found-in-etc-rsyslog-d-50-default-conf"><a href="#Default-logging-rules-can-be-found-in-etc-rsyslog-d-50-default-conf" class="headerlink" title="Default logging rules can be found in /etc/rsyslog.d/50-default.conf"></a>Default logging rules can be found in /etc/rsyslog.d/50-default.conf</h1><p>… …<br>#</p>
+<h1 id="Include-all-config-files-in-etc-rsyslog-d"><a href="#Include-all-config-files-in-etc-rsyslog-d" class="headerlink" title="Include all config files in /etc/rsyslog.d/"></a>Include all config files in /etc/rsyslog.d/</h1><p>#<br>$IncludeConfig /etc/rsyslog.d/*.conf</p>
+<pre><code>
+用vim打开/etc/rsyslog.d/50-default.conf文件增加一行内容如下：
+</code></pre>
+<p>*.info;mail.none;authpriv.none;cron.none /var/log/messages</p>
+<p>```</p>
+<p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/yc_sunniwell/archive/2010/07/05/1771563.html">原文</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Alex.Lin</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://lxj-life.com/2017/0701154.html">http://lxj-life.com/2017/0701154.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Alex.Lin</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/">
+                                    <span class="chip bg-color">抓包工具</span>
+                                </a>
+                            
+                                <a href="/tags/tcp/">
+                                    <span class="chip bg-color">tcp</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/images/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/images/wechatpay.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2017/0701dc5b.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="WireShark网络抓包">
+                        
+                        <span class="card-title">WireShark网络抓包</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+WireShark入门一、 打开WireShark
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2017-07-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">抓包工具</span>
+                    </a>
+                    
+                    <a href="/tags/wireShark/">
+                        <span class="chip bg-color">wireShark</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2017/0607179d.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Linux之Socket关键">
+                        
+                        <span class="card-title">Linux之Socket关键</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一、Socket 属性设置函数int getsockopt(int sockfd, int level, int optname,void *optval, socklen_t *optlen);
+int setsockopt(int so
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-06-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Alex.Lin
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">网络</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2020</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">Alex.Lin</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">58.2k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/ilxj" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:878329009@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=878329009" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 878329009" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":"hijiki","bottom":-30,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
