@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Android系列之Android Studio 搭建</title>
-    <url>/2018/0506bcb6.html</url>
+    <url>/2018/05/06/bcb6.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h2><blockquote>
 <p>一切都是最好的安排和<code>wuli秀</code>一起学习Android，记录学习的一系列过程。<br>希望彼此都有进步~`let’s go ~`😘</p>
 </blockquote>
@@ -37,7 +37,7 @@
   </entry>
   <entry>
     <title>Android系列之各种疑难杂症处理</title>
-    <url>/2018/05067aeb.html</url>
+    <url>/2018/05/06/7aeb.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h2><blockquote>
 <p>各种疑难杂症登记和解决方法记录，小姐姐可以看O(∩_∩)O哈哈~</p>
 </blockquote>
@@ -67,7 +67,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-4.4-all.zip</c
   </entry>
   <entry>
     <title>Android系列之工具adb</title>
-    <url>/2018/1011b305.html</url>
+    <url>/2018/10/11/b305.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h2><hr>
 <blockquote>
 <p>首先说明一下，以下的内容都是我从网上找来的，仅仅作为笔记记录。</p>
@@ -433,7 +433,7 @@ Failure [INSTALL_FAILED_ALREADY_EXISTS]</code></pre>
   </entry>
   <entry>
     <title>COAP系列-lwm2m初识</title>
-    <url>/2018/01297f47.html</url>
+    <url>/2018/01/29/7f47.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Wakaama"><a href="#Wakaama" class="headerlink" title="Wakaama"></a>Wakaama</h2><hr>
 <h2 id="1-Source-Layout"><a href="#1-Source-Layout" class="headerlink" title="1. Source Layout"></a>1. Source Layout</h2><pre><code>-+- core                   (the LWM2M engine)
  |    |
@@ -503,7 +503,7 @@ Failure [INSTALL_FAILED_ALREADY_EXISTS]</code></pre>
   </entry>
   <entry>
     <title>COAP系列-入门介绍</title>
-    <url>/2017/1018fb1f.html</url>
+    <url>/2017/10/18/fb1f.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a href="http://coap.technology/">http://coap.technology/</a><br>WiKi<br><a href="https://en.wikipedia.org/wiki/Constrained_Application_Protocol">https://en.wikipedia.org/wiki/Constrained_Application_Protocol</a><br>开源库<br><a href="https://github.com/miri64/libcoap">https://github.com/miri64/libcoap</a></p>
 <h2 id="1-COAP-架构"><a href="#1-COAP-架构" class="headerlink" title="1. COAP 架构"></a>1. COAP 架构</h2><p>COAP运行于UDP协议之上,架构如下图</p>
 <p> <img src="http://upload-images.jianshu.io/upload_images/1736256-55f00669c46bccfd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="COAP 架构图"></p>
@@ -804,7 +804,7 @@ Failure [INSTALL_FAILED_ALREADY_EXISTS]</code></pre>
   </entry>
   <entry>
     <title>C语言之奇门遁甲术</title>
-    <url>/2019/0109b2a3.html</url>
+    <url>/2019/01/09/b2a3.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="C语言位操作与计算"><a href="#C语言位操作与计算" class="headerlink" title="C语言位操作与计算"></a>C语言位操作与计算</h2><hr>
 <blockquote>
 <p><strong>C语言中位取反是~，逻辑取反是</strong></p>
@@ -902,261 +902,8 @@ eqSign <span class="token operator">=</span> a <span class="token operator">^</s
       </tags>
   </entry>
   <entry>
-    <title>ESP8266系列-12F引脚说明</title>
-    <url>/2017/080653ce.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="ESP8266-12F-模组图"><a href="#ESP8266-12F-模组图" class="headerlink" title="ESP8266-12F 模组图"></a>ESP8266-12F 模组图</h2><p><img src="/images/pasted-14.png" alt="硬件模组图"><br><img src="/images/pasted-13.png" alt="esp12f管脚定义图"></p>
-<a id="more"></a>
-<h2 id="引脚说明"><a href="#引脚说明" class="headerlink" title="引脚说明"></a>引脚说明</h2><table>
-<thead>
-<tr>
-<th align="center">引脚编号</th>
-<th align="left">引脚名</th>
-<th align="left">引脚描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">1</td>
-<td align="left">RST</td>
-<td align="left">复位模组</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="left">ADC</td>
-<td align="left">A/D 转换结果。输入电压范围 0～1V，取值范围：0～1024</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="left">EN</td>
-<td align="left">芯片使能端，高电平有效</td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td align="left">IO16</td>
-<td align="left">GPIO16; 接到 RST 管脚时可做 deep sleep 的唤醒。</td>
-</tr>
-<tr>
-<td align="center">5</td>
-<td align="left">IO14</td>
-<td align="left">GPIO14; HSPI_CLK</td>
-</tr>
-<tr>
-<td align="center">6</td>
-<td align="left">IO12</td>
-<td align="left">GPIO12; HSPI_MISO</td>
-</tr>
-<tr>
-<td align="center">7</td>
-<td align="left">IO13</td>
-<td align="left">GPIO13; HSPI_MOSI; UART0_CTS</td>
-</tr>
-<tr>
-<td align="center">8</td>
-<td align="left">VCC</td>
-<td align="left">3.3V 供电</td>
-</tr>
-<tr>
-<td align="center">9</td>
-<td align="left">CS0</td>
-<td align="left">片选</td>
-</tr>
-<tr>
-<td align="center">10</td>
-<td align="left">MISO</td>
-<td align="left">从机输出主机输入</td>
-</tr>
-<tr>
-<td align="center">11</td>
-<td align="left">IO9</td>
-<td align="left">GPIO9</td>
-</tr>
-<tr>
-<td align="center">12</td>
-<td align="left">IO10</td>
-<td align="left">GBIO10</td>
-</tr>
-<tr>
-<td align="center">13</td>
-<td align="left">MOSI</td>
-<td align="left">主机输出从机输入</td>
-</tr>
-<tr>
-<td align="center">14</td>
-<td align="left">SCLK</td>
-<td align="left">时钟</td>
-</tr>
-<tr>
-<td align="center">15</td>
-<td align="left">GND</td>
-<td align="left">GND</td>
-</tr>
-<tr>
-<td align="center">16</td>
-<td align="left">IO15</td>
-<td align="left">GPIO15; MTDO; HSPICS; UART0_RTS</td>
-</tr>
-<tr>
-<td align="center">17</td>
-<td align="left">IO2</td>
-<td align="left">GPIO2; UART1_TXD</td>
-</tr>
-<tr>
-<td align="center">18</td>
-<td align="left">IO0</td>
-<td align="left">GPIO0</td>
-</tr>
-<tr>
-<td align="center">19</td>
-<td align="left">IO4</td>
-<td align="left">GPIO4</td>
-</tr>
-<tr>
-<td align="center">20</td>
-<td align="left">IO5</td>
-<td align="left">GPIO5</td>
-</tr>
-<tr>
-<td align="center">21</td>
-<td align="left">RXD</td>
-<td align="left">UART0_RXD; GPIO3</td>
-</tr>
-<tr>
-<td align="center">22</td>
-<td align="left">TXD</td>
-<td align="left">UART0_TXD; GPIO1</td>
-</tr>
-</tbody></table>
-<h2 id="接口说明"><a href="#接口说明" class="headerlink" title="接口说明"></a>接口说明</h2><table>
-<thead>
-<tr>
-<th align="center">引脚名</th>
-<th align="left">引脚</th>
-<th align="left">功能描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">HSPI 接</td>
-<td align="left">IO12(MISO),IO13(MOSI), IO14(CLK),IO15(CS)</td>
-<td align="left">可外接 4SPI Flash、显示屏和 MCU 等。</td>
-</tr>
-<tr>
-<td align="center">PWM  接</td>
-<td align="left">IO12(R), IO15(G),IO13(B)</td>
-<td align="left">demo 中提供 4 路 PWM (用户可自行扩展至 8 路)，可用来控制彩灯，蜂鸣器，继电器及电机等。</td>
-</tr>
-<tr>
-<td align="center">IR   接</td>
-<td align="left">IO14(IR_T), IO5(IR_R)</td>
-<td align="left">IR Remote Control4 接口由软件实现，接口使用 NEC 编码及调制解调，采用 38KHz 的调制载波。</td>
-</tr>
-<tr>
-<td align="center">ADC  接</td>
-<td align="left">TOUT</td>
-<td align="left">可于检测 VDD3P3 (Pin3,Pin4) 电源电压和 TOUT (Pin6)的输入电压(二者不可同时使用)。可用于传感器等应用。</td>
-</tr>
-<tr>
-<td align="center">I2C  接</td>
-<td align="left">IO14(SCL), IO2(SDA)</td>
-<td align="left">可外接传感器及显示屏等</td>
-</tr>
-<tr>
-<td align="center">UART 接</td>
-<td align="left">UART0: TXD(U0TXD),RXD(U0RXD), IO15(RTS),IO13(CTS),UART1: IO2(TXD)</td>
-<td align="left">可外接 UART 接口的设备。下载：U0TXD+U0RXD 或者 GPIO2+U0RXD通信(UART0)：U0TXD，U0RXD，MTDO(U0RTS)，MTCK(U0CTS) Debug: UART1_TXD(GPIO2)可作为 debug 信息的打印。</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="left">-</td>
-<td align="left">UART0 在 ESP8266EX 上电默认会输出一些打印信息。对此敏感的应用，可以使用 UART 的内部引脚交换功能，在初始化的时候，将U0TXD，U0RXD 分别与 U0RTS，U0CTS 交换。硬件上将 MTDO MTCK 连接到对应的 外部 MCU 的串进行通信。</td>
-</tr>
-<tr>
-<td align="center">I2S 接</td>
-<td align="left">I2S 输入：IO12 (I2SI_DATA) ;IO13 (I2SI_BCK );IO14 (I2SI_WS);</td>
-<td align="left">主要于音频采集、处理和传输。</td>
-</tr>
-<tr>
-<td align="center">I2S 接</td>
-<td align="left">I2S 输出：IO15 (I2SO_BCK );IO3 (I2SO_DATA);IO2 (I2SO_WS ).</td>
-<td align="left">主要于音频采集、处理和传输。</td>
-</tr>
-</tbody></table>
-<h2 id="ESP8266-SPI-说明"><a href="#ESP8266-SPI-说明" class="headerlink" title="ESP8266 SPI 说明"></a>ESP8266 SPI 说明</h2><p>ESP8266 有两组 SPI 通信模块命名分别为 SPI 与 HSPI。</p>
-<ul>
-<li>SPI 通常专于从外部 Flash 读取 CPU 程序代码。</li>
-<li>HSPI 则用于用户和 SPI 设备的通信操作。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>esp8266</category>
-      </categories>
-      <tags>
-        <tag>esp8266</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ESP8266系列-各个模组型号模组对比</title>
-    <url>/2017/08049fbf.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="烧录Flash-地址说明"><a href="#烧录Flash-地址说明" class="headerlink" title="烧录Flash 地址说明"></a>烧录Flash 地址说明</h2><table>
-<thead>
-<tr>
-<th align="center">文件名称</th>
-<th align="center">8Mbit烧录地址</th>
-<th align="center">16Mbit烧录地址</th>
-<th align="center">32Mbit烧录地址</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">boot.bin</td>
-<td align="center">0x00000</td>
-<td align="center">0x00000</td>
-<td align="center">0x00000</td>
-<td align="left">由乐鑫在 SDK 中提供，建议一直使用最新版本</td>
-</tr>
-<tr>
-<td align="center">user1.bin</td>
-<td align="center">0x01000</td>
-<td align="center">0x01000</td>
-<td align="center">0x01000</td>
-<td align="left">主程序，由代码编译生成</td>
-</tr>
-<tr>
-<td align="center">user2.bin</td>
-<td align="center">0x81000</td>
-<td align="center">0x81000</td>
-<td align="center">0x81000</td>
-<td align="left">主程序，由代码编译生成</td>
-</tr>
-<tr>
-<td align="center">esp_init_data_default.bin</td>
-<td align="center">0xFC000</td>
-<td align="center">0x1FC000</td>
-<td align="center">0x3FC000</td>
-<td align="left">由乐鑫在 SDK 中提供</td>
-</tr>
-<tr>
-<td align="center">blank.bin</td>
-<td align="center">0xFE000</td>
-<td align="center">0x1FE000</td>
-<td align="center">0x3FE000</td>
-<td align="left">由乐鑫在 SDK 中提供</td>
-</tr>
-</tbody></table>
-<a id="more"></a>
-
-<h2 id="硬件连接"><a href="#硬件连接" class="headerlink" title="硬件连接"></a>硬件连接</h2><p>ESP8266有运行模式、下载模式、测试模式的区别，进入下载模式可参考以下配置：</p>
-<p>|模式|CH_PD(EN)| RST |GPIO15|GPIO0|GPIO2|TXD0|<br>|:—:|:—:|<br>|UART 下载模式|高|高|低|低|高|高|<br>|Flash运行模式|高|高|低|高|高|高|<br>|Chip 测试模式|- |- |- | -| -|低|</p>
-<h2 id="模组对比"><a href="#模组对比" class="headerlink" title="模组对比"></a>模组对比</h2><p>![模组对比][1]<br>[1]: <a href="http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a></p>
-]]></content>
-      <categories>
-        <category>esp8266</category>
-      </categories>
-      <tags>
-        <tag>esp8266</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker系列-基础入门</title>
-    <url>/2017/1009e119.html</url>
+    <url>/2017/10/09/e119.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>[ TOP ]</p>
 <h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><hr>
 <p><a href="https://www.docker.com/">https://www.docker.com</a><br><a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
@@ -1393,8 +1140,261 @@ invalid reference format</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>ESP8266系列-12F引脚说明</title>
+    <url>/2017/08/06/53ce.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="ESP8266-12F-模组图"><a href="#ESP8266-12F-模组图" class="headerlink" title="ESP8266-12F 模组图"></a>ESP8266-12F 模组图</h2><p><img src="/images/pasted-14.png" alt="硬件模组图"><br><img src="/images/pasted-13.png" alt="esp12f管脚定义图"></p>
+<a id="more"></a>
+<h2 id="引脚说明"><a href="#引脚说明" class="headerlink" title="引脚说明"></a>引脚说明</h2><table>
+<thead>
+<tr>
+<th align="center">引脚编号</th>
+<th align="left">引脚名</th>
+<th align="left">引脚描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="left">RST</td>
+<td align="left">复位模组</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="left">ADC</td>
+<td align="left">A/D 转换结果。输入电压范围 0～1V，取值范围：0～1024</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="left">EN</td>
+<td align="left">芯片使能端，高电平有效</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="left">IO16</td>
+<td align="left">GPIO16; 接到 RST 管脚时可做 deep sleep 的唤醒。</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="left">IO14</td>
+<td align="left">GPIO14; HSPI_CLK</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="left">IO12</td>
+<td align="left">GPIO12; HSPI_MISO</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="left">IO13</td>
+<td align="left">GPIO13; HSPI_MOSI; UART0_CTS</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="left">VCC</td>
+<td align="left">3.3V 供电</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="left">CS0</td>
+<td align="left">片选</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="left">MISO</td>
+<td align="left">从机输出主机输入</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="left">IO9</td>
+<td align="left">GPIO9</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="left">IO10</td>
+<td align="left">GBIO10</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="left">MOSI</td>
+<td align="left">主机输出从机输入</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="left">SCLK</td>
+<td align="left">时钟</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="left">GND</td>
+<td align="left">GND</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="left">IO15</td>
+<td align="left">GPIO15; MTDO; HSPICS; UART0_RTS</td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="left">IO2</td>
+<td align="left">GPIO2; UART1_TXD</td>
+</tr>
+<tr>
+<td align="center">18</td>
+<td align="left">IO0</td>
+<td align="left">GPIO0</td>
+</tr>
+<tr>
+<td align="center">19</td>
+<td align="left">IO4</td>
+<td align="left">GPIO4</td>
+</tr>
+<tr>
+<td align="center">20</td>
+<td align="left">IO5</td>
+<td align="left">GPIO5</td>
+</tr>
+<tr>
+<td align="center">21</td>
+<td align="left">RXD</td>
+<td align="left">UART0_RXD; GPIO3</td>
+</tr>
+<tr>
+<td align="center">22</td>
+<td align="left">TXD</td>
+<td align="left">UART0_TXD; GPIO1</td>
+</tr>
+</tbody></table>
+<h2 id="接口说明"><a href="#接口说明" class="headerlink" title="接口说明"></a>接口说明</h2><table>
+<thead>
+<tr>
+<th align="center">引脚名</th>
+<th align="left">引脚</th>
+<th align="left">功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">HSPI 接</td>
+<td align="left">IO12(MISO),IO13(MOSI), IO14(CLK),IO15(CS)</td>
+<td align="left">可外接 4SPI Flash、显示屏和 MCU 等。</td>
+</tr>
+<tr>
+<td align="center">PWM  接</td>
+<td align="left">IO12(R), IO15(G),IO13(B)</td>
+<td align="left">demo 中提供 4 路 PWM (用户可自行扩展至 8 路)，可用来控制彩灯，蜂鸣器，继电器及电机等。</td>
+</tr>
+<tr>
+<td align="center">IR   接</td>
+<td align="left">IO14(IR_T), IO5(IR_R)</td>
+<td align="left">IR Remote Control4 接口由软件实现，接口使用 NEC 编码及调制解调，采用 38KHz 的调制载波。</td>
+</tr>
+<tr>
+<td align="center">ADC  接</td>
+<td align="left">TOUT</td>
+<td align="left">可于检测 VDD3P3 (Pin3,Pin4) 电源电压和 TOUT (Pin6)的输入电压(二者不可同时使用)。可用于传感器等应用。</td>
+</tr>
+<tr>
+<td align="center">I2C  接</td>
+<td align="left">IO14(SCL), IO2(SDA)</td>
+<td align="left">可外接传感器及显示屏等</td>
+</tr>
+<tr>
+<td align="center">UART 接</td>
+<td align="left">UART0: TXD(U0TXD),RXD(U0RXD), IO15(RTS),IO13(CTS),UART1: IO2(TXD)</td>
+<td align="left">可外接 UART 接口的设备。下载：U0TXD+U0RXD 或者 GPIO2+U0RXD通信(UART0)：U0TXD，U0RXD，MTDO(U0RTS)，MTCK(U0CTS) Debug: UART1_TXD(GPIO2)可作为 debug 信息的打印。</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="left">-</td>
+<td align="left">UART0 在 ESP8266EX 上电默认会输出一些打印信息。对此敏感的应用，可以使用 UART 的内部引脚交换功能，在初始化的时候，将U0TXD，U0RXD 分别与 U0RTS，U0CTS 交换。硬件上将 MTDO MTCK 连接到对应的 外部 MCU 的串进行通信。</td>
+</tr>
+<tr>
+<td align="center">I2S 接</td>
+<td align="left">I2S 输入：IO12 (I2SI_DATA) ;IO13 (I2SI_BCK );IO14 (I2SI_WS);</td>
+<td align="left">主要于音频采集、处理和传输。</td>
+</tr>
+<tr>
+<td align="center">I2S 接</td>
+<td align="left">I2S 输出：IO15 (I2SO_BCK );IO3 (I2SO_DATA);IO2 (I2SO_WS ).</td>
+<td align="left">主要于音频采集、处理和传输。</td>
+</tr>
+</tbody></table>
+<h2 id="ESP8266-SPI-说明"><a href="#ESP8266-SPI-说明" class="headerlink" title="ESP8266 SPI 说明"></a>ESP8266 SPI 说明</h2><p>ESP8266 有两组 SPI 通信模块命名分别为 SPI 与 HSPI。</p>
+<ul>
+<li>SPI 通常专于从外部 Flash 读取 CPU 程序代码。</li>
+<li>HSPI 则用于用户和 SPI 设备的通信操作。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>esp8266</category>
+      </categories>
+      <tags>
+        <tag>esp8266</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ESP8266系列-各个模组型号模组对比</title>
+    <url>/2017/08/04/9fbf.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="烧录Flash-地址说明"><a href="#烧录Flash-地址说明" class="headerlink" title="烧录Flash 地址说明"></a>烧录Flash 地址说明</h2><table>
+<thead>
+<tr>
+<th align="center">文件名称</th>
+<th align="center">8Mbit烧录地址</th>
+<th align="center">16Mbit烧录地址</th>
+<th align="center">32Mbit烧录地址</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">boot.bin</td>
+<td align="center">0x00000</td>
+<td align="center">0x00000</td>
+<td align="center">0x00000</td>
+<td align="left">由乐鑫在 SDK 中提供，建议一直使用最新版本</td>
+</tr>
+<tr>
+<td align="center">user1.bin</td>
+<td align="center">0x01000</td>
+<td align="center">0x01000</td>
+<td align="center">0x01000</td>
+<td align="left">主程序，由代码编译生成</td>
+</tr>
+<tr>
+<td align="center">user2.bin</td>
+<td align="center">0x81000</td>
+<td align="center">0x81000</td>
+<td align="center">0x81000</td>
+<td align="left">主程序，由代码编译生成</td>
+</tr>
+<tr>
+<td align="center">esp_init_data_default.bin</td>
+<td align="center">0xFC000</td>
+<td align="center">0x1FC000</td>
+<td align="center">0x3FC000</td>
+<td align="left">由乐鑫在 SDK 中提供</td>
+</tr>
+<tr>
+<td align="center">blank.bin</td>
+<td align="center">0xFE000</td>
+<td align="center">0x1FE000</td>
+<td align="center">0x3FE000</td>
+<td align="left">由乐鑫在 SDK 中提供</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+
+<h2 id="硬件连接"><a href="#硬件连接" class="headerlink" title="硬件连接"></a>硬件连接</h2><p>ESP8266有运行模式、下载模式、测试模式的区别，进入下载模式可参考以下配置：</p>
+<p>|模式|CH_PD(EN)| RST |GPIO15|GPIO0|GPIO2|TXD0|<br>|:—:|:—:|<br>|UART 下载模式|高|高|低|低|高|高|<br>|Flash运行模式|高|高|低|高|高|高|<br>|Chip 测试模式|- |- |- | -| -|低|</p>
+<h2 id="模组对比"><a href="#模组对比" class="headerlink" title="模组对比"></a>模组对比</h2><p>![模组对比][1]<br>[1]: <a href="http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a></p>
+]]></content>
+      <categories>
+        <category>esp8266</category>
+      </categories>
+      <tags>
+        <tag>esp8266</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ESP8266系列-资料收集</title>
-    <url>/2017/08061260.html</url>
+    <url>/2017/08/06/1260.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="ESP8266-通用系类"><a href="#ESP8266-通用系类" class="headerlink" title="ESP8266 通用系类"></a>ESP8266 通用系类</h2><p>安信可科技: <a href="http://wiki.ai-thinker.com/esp8266">http://wiki.ai-thinker.com/esp8266</a><br>Jack’s LAB: <a href="http://wiki.jackslab.org/ESP8266">http://wiki.jackslab.org/ESP8266</a><br>乐鑫论坛: <a href="http://bbs.espressif.com/index.php">http://bbs.espressif.com/index.php</a></p>
 <a id="more"></a>
 
@@ -1449,7 +1449,7 @@ invalid reference format</code></pre>
   </entry>
   <entry>
     <title>ESP8266系列-连接OLED模块</title>
-    <url>/2020/04098529.html</url>
+    <url>/2020/04/09/8529.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="OLED-屏幕介绍"><a href="#OLED-屏幕介绍" class="headerlink" title="OLED 屏幕介绍"></a>OLED 屏幕介绍</h2><ul>
 <li>芯片型号 <a href="https://wenku.baidu.com/view/6d6497a53d1ec5da50e2524de518964bce84d233.html">SSD1306</a></li>
 <li>分辨率 128*64</li>
@@ -1515,7 +1515,7 @@ invalid reference format</code></pre>
   </entry>
   <entry>
     <title>Github Blog 搭建入门</title>
-    <url>/2017/0326fc92.html</url>
+    <url>/2017/03/26/fc92.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
 <h2 id="GitHub-项目创建"><a href="#GitHub-项目创建" class="headerlink" title="GitHub 项目创建"></a>GitHub 项目创建</h2><ul>
 <li>创建一个跟你的用户名相同的项目，比如我的*<strong>github**<em>名称是</em></strong>ilxj*** 则项目名称为**<em>ilxj.github.io**</em></li>
@@ -1579,7 +1579,7 @@ type: &quot;tags&quot;
   </entry>
   <entry>
     <title>Hexo插件-Hexo Admin</title>
-    <url>/2017/08086e86.html</url>
+    <url>/2017/08/08/6e86.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Hexo-Admin"><a href="#Hexo-Admin" class="headerlink" title="Hexo Admin"></a>Hexo Admin</h2><p>官网链接:<a href="https://jaredforsyth.com/hexo-admin/">https://jaredforsyth.com/hexo-admin/</a></p>
 <blockquote>
 <p>插件可以直接在网页端创建、编辑markdown文章内容，并将内容发布到_posts里。<br>另外，对我而言，最方便的是可以很方便的给文章加标题、分类、打标签。</p>
@@ -1620,7 +1620,7 @@ undefined
   </entry>
   <entry>
     <title>Hexo添加Swiftype</title>
-    <url>/2017/08045fa1.html</url>
+    <url>/2017/08/04/5fa1.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-swiftype-搭建站内搜索"><a href="#1-swiftype-搭建站内搜索" class="headerlink" title="1.swiftype 搭建站内搜索"></a>1.swiftype 搭建站内搜索</h2><p>Swiftype站内搜索 ，<a href="https://swiftype.com/">官网</a></p>
 <h3 id="Swiftype-配置"><a href="#Swiftype-配置" class="headerlink" title="Swiftype 配置"></a>Swiftype 配置</h3><ol>
 <li>需要注册账号，目前只是支持企业邮箱注册</li>
@@ -1670,7 +1670,7 @@ search:
   </entry>
   <entry>
     <title>Hexo相关资源</title>
-    <url>/2017/0804ddcb.html</url>
+    <url>/2017/08/04/ddcb.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>中文网站 : <a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
 ]]></content>
       <categories>
@@ -1682,7 +1682,7 @@ search:
   </entry>
   <entry>
     <title>Hexo第三方评论插件引用</title>
-    <url>/2017/08016835.html</url>
+    <url>/2017/08/01/6835.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="第三方插件-友言"><a href="#第三方插件-友言" class="headerlink" title="第三方插件-友言"></a>第三方插件-友言</h2><blockquote>
 <p>友言已经暂停服务了，又不能用<br>因公司业务调整，非常遗憾的向大家宣布JiaThis公司决定自2018年4月30日起关闭旗下“友言”业务。<br>因为关停“友言”业务给您造成的不便，我们深表歉意。</p>
 </blockquote>
@@ -1701,7 +1701,7 @@ search:
   </entry>
   <entry>
     <title>IoT设备</title>
-    <url>/2018/0328b3f9.html</url>
+    <url>/2018/03/28/b3f9.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>明天要去干一件大事，不能丢某人的脸~🆙加油💪</p>
 <div align="center" >
 ![AVR][3]
@@ -1729,7 +1729,7 @@ search:
   </entry>
   <entry>
     <title>Linux之CoreDump</title>
-    <url>/2017/06067ad3.html</url>
+    <url>/2017/06/06/7ad3.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Core-Dump-定位"><a href="#Core-Dump-定位" class="headerlink" title="Core Dump 定位"></a>Core Dump 定位</h2><hr>
 <h3 id="打开CoreDump-功能"><a href="#打开CoreDump-功能" class="headerlink" title="打开CoreDump 功能"></a>打开CoreDump 功能</h3><ul>
 <li>在终端中输入命令 ulimit -c ，输出的结果为 0，说明默认是关闭 core dump 的，即当程序异常终止时，也不会生成 core dump 文件。</li>
@@ -1893,7 +1893,7 @@ alex@ubuntu:/media/psf/Home/myself/C$ addr2line -e demo 080483e9
   </entry>
   <entry>
     <title>Linux之kill命令</title>
-    <url>/2018/0223730d.html</url>
+    <url>/2018/02/23/730d.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Kill-命令列表"><a href="#Kill-命令列表" class="headerlink" title="Kill 命令列表"></a>Kill 命令列表</h2><hr>
 <pre><code>alex@ubuntu:~$ kill -l
  1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
@@ -1969,7 +1969,7 @@ SIGTERM 15  Termination (ANSI)</code></pre>
   </entry>
   <entry>
     <title>Linux之SSH</title>
-    <url>/2018/1218720f.html</url>
+    <url>/2018/12/18/720f.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
 <li><a href="https://linux.cn/article-5975-1.html">https://linux.cn/article-5975-1.html</a></li>
 </ul>
@@ -1982,7 +1982,7 @@ SIGTERM 15  Termination (ANSI)</code></pre>
   </entry>
   <entry>
     <title>Linux之Socket关键</title>
-    <url>/2017/0607179d.html</url>
+    <url>/2017/06/07/179d.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一、Socket-属性设置函数"><a href="#一、Socket-属性设置函数" class="headerlink" title="一、Socket 属性设置函数"></a>一、Socket 属性设置函数</h2><pre class=" language-C"><code class="language-C">int getsockopt(int sockfd, int level, int optname,void *optval, socklen_t *optlen);
 int setsockopt(int sockfd, int level, int optname,const void *optval, socklen_t optlen);</code></pre>
 <p>解释:*<em>setsockopt(int sockfd, int level, int optname,const void <em>optval, socklen_t optlen)</em></em></p>
@@ -2103,7 +2103,7 @@ Setsockopt(listenfd, SOL_TCP, TCP_KEEPCNT, (void *)&keepCount, sizeof(keepCount)
   </entry>
   <entry>
     <title>Linux之errno表</title>
-    <url>/2017/0607d8f4.html</url>
+    <url>/2017/06/07/d8f4.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="errno-错误表"><a href="#errno-错误表" class="headerlink" title="errno 错误表"></a>errno 错误表</h1><blockquote>
 <p>errno 是记录系统的最后一次<a href="http://baike.baidu.com/item/%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81">错误代码</a>。代码是一个int型的值，在errno.h中定义</p>
 </blockquote>
@@ -2685,7 +2685,7 @@ Setsockopt(listenfd, SOL_TCP, TCP_KEEPCNT, (void *)&keepCount, sizeof(keepCount)
   </entry>
   <entry>
     <title>Linux之shell&amp;Makefile</title>
-    <url>/2018/1104b0e7.html</url>
+    <url>/2018/11/04/b0e7.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="最简单的shell"><a href="#最简单的shell" class="headerlink" title="最简单的shell"></a>最简单的shell</h2><pre class=" language-sh"><code class="language-sh">#!/bin/bash
 echo "Hello World"</code></pre>
 <h2 id="Shell-变量"><a href="#Shell-变量" class="headerlink" title="Shell 变量"></a>Shell 变量</h2><blockquote>
@@ -3110,7 +3110,7 @@ files := $(foreach n,$(names),$(n).o)</code></pre>
   </entry>
   <entry>
     <title>Linux之实用技能</title>
-    <url>/2017/0606ef18.html</url>
+    <url>/2017/06/06/ef18.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="查看机器是多少位"><a href="#查看机器是多少位" class="headerlink" title="查看机器是多少位"></a>查看机器是多少位</h2><hr>
 <h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><pre class=" language-shell"><code class="language-shell">>>>$ getconf LONG_BIT
 >>>$ 64</code></pre>
@@ -3436,39 +3436,8 @@ usage: nc [-46CDdFhklNnrStUuvZz] [-I length] [-i interval] [-M ttl]
       </tags>
   </entry>
   <entry>
-    <title>Lua之 loadfile ,dofile, loadstring，require</title>
-    <url>/2017/03264bf8.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h3 id="loadfile——只编译，不运行"><a href="#loadfile——只编译，不运行" class="headerlink" title="loadfile——只编译，不运行"></a>loadfile——只编译，不运行</h3><p>    1.功能：载入文件但不执行代码块，对于相同的文件每次都会执行。只是编译代码，然后将编译结果作为一个函数返回<br>    2.调用：loadfile(“filename”)<br>    3.错误处理：不引发错误，只返回错误值但不处理错误,即返回nil和错误消息<br>    4.优点：调用一次之后可以多次调用返回的结果（即函数），<br>      即“多次调用”只需编译一次（注：这里的多次调用   是指多次调用返回的函数，而不是多次调用loadfile）</p>
-<a id="more"></a>
-
-<p><strong>dofile可如下定义：</strong></p>
-<pre class=" language-lua"><code class="language-lua">    <span class="token keyword">function</span> <span class="token function">dofile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span>
-    　　<span class="token keyword">local</span> f <span class="token operator">=</span> <span class="token function">assert</span><span class="token punctuation">(</span><span class="token function">loadfile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--调用loadfile（的返回结果）并可处理错误</span>
-    <span class="token keyword">return</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">end</span></code></pre>
-<p><code>注：加载了程序块并没有定义其中的函数。在Lua中，函数定义是一种赋值操作，是在运行时才完成的操作。 例如：一个文件test.lua中有一个函数 function foo(x) print(x) end ,执行如下代码： 　　　f = loadfile(test.lua) --加载程序块，此时还没有定义函数foo 　　　f() --运行加载的程序块，此时就定义了函数foo      foo(&quot;hello lua&quot;) --&gt;hello lua --经过上面的步骤才能调用foo    </code></p>
-<h3 id="dofile——执行"><a href="#dofile——执行" class="headerlink" title="dofile——执行"></a>dofile——执行</h3><pre><code>1.功能：载入文件并执行代码块，对于相同的文件每次都会执行
-2.调用：dofile(&quot;filename&quot;)
-3.错误处理：如果代码块中有错误则会引发错误
-4.优点：对简单任务而言，非常便捷
-5.缺点：每次载入文件时都会执行程序块</code></pre>
-<p>    6.定位：内置操作，辅助函数</p>
-<h3 id="require——我只执行一次"><a href="#require——我只执行一次" class="headerlink" title="require——我只执行一次"></a>require——我只执行一次</h3><pre><code>require和dofile有点像，不过又很不一样，require在第一次加载文件的时候，会执行里面的代码。
-但是，第二次之后，再次加载文件，则不会重复执行了。换句话说，它会保存已经加载过的文件，不会重复加载。</code></pre>
-<h3 id="loadstring"><a href="#loadstring" class="headerlink" title="loadstring"></a>loadstring</h3><pre><code>1.特点：功能强大，但开销大；
-2.典型用处：执行外部代码，如：用户的输入
-3.错误错里：代码中如果有语法错误就会返回nil
-4.理解：f = loadstring(&quot;i = i+1&quot;)  可理解为（但不完全是）f = function()  i = i+1  end 
-(注：这里的变量&quot;i&quot;是全局变量，不是指局部变量，如果没有定义全局变量&quot;i&quot;,调用f()则会报错！，即loadstring   不涉及词法域)</code></pre>
-]]></content>
-      <tags>
-        <tag>lua</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux之服务安装</title>
-    <url>/2017/06069372.html</url>
+    <url>/2017/06/06/9372.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="ssh-server-安装"><a href="#ssh-server-安装" class="headerlink" title="ssh-server 安装"></a>ssh-server 安装</h1><p><strong>SSH分客户端</strong></p>
 <pre><code>openssh-client</code></pre>
 <p><strong>服务端</strong></p>
@@ -3662,8 +3631,39 @@ Environment variables are:
       </tags>
   </entry>
   <entry>
+    <title>Lua之 loadfile ,dofile, loadstring，require</title>
+    <url>/2017/03/26/4bf8.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h3 id="loadfile——只编译，不运行"><a href="#loadfile——只编译，不运行" class="headerlink" title="loadfile——只编译，不运行"></a>loadfile——只编译，不运行</h3><p>    1.功能：载入文件但不执行代码块，对于相同的文件每次都会执行。只是编译代码，然后将编译结果作为一个函数返回<br>    2.调用：loadfile(“filename”)<br>    3.错误处理：不引发错误，只返回错误值但不处理错误,即返回nil和错误消息<br>    4.优点：调用一次之后可以多次调用返回的结果（即函数），<br>      即“多次调用”只需编译一次（注：这里的多次调用   是指多次调用返回的函数，而不是多次调用loadfile）</p>
+<a id="more"></a>
+
+<p><strong>dofile可如下定义：</strong></p>
+<pre class=" language-lua"><code class="language-lua">    <span class="token keyword">function</span> <span class="token function">dofile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span>
+    　　<span class="token keyword">local</span> f <span class="token operator">=</span> <span class="token function">assert</span><span class="token punctuation">(</span><span class="token function">loadfile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--调用loadfile（的返回结果）并可处理错误</span>
+    <span class="token keyword">return</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">end</span></code></pre>
+<p><code>注：加载了程序块并没有定义其中的函数。在Lua中，函数定义是一种赋值操作，是在运行时才完成的操作。 例如：一个文件test.lua中有一个函数 function foo(x) print(x) end ,执行如下代码： 　　　f = loadfile(test.lua) --加载程序块，此时还没有定义函数foo 　　　f() --运行加载的程序块，此时就定义了函数foo      foo(&quot;hello lua&quot;) --&gt;hello lua --经过上面的步骤才能调用foo    </code></p>
+<h3 id="dofile——执行"><a href="#dofile——执行" class="headerlink" title="dofile——执行"></a>dofile——执行</h3><pre><code>1.功能：载入文件并执行代码块，对于相同的文件每次都会执行
+2.调用：dofile(&quot;filename&quot;)
+3.错误处理：如果代码块中有错误则会引发错误
+4.优点：对简单任务而言，非常便捷
+5.缺点：每次载入文件时都会执行程序块</code></pre>
+<p>    6.定位：内置操作，辅助函数</p>
+<h3 id="require——我只执行一次"><a href="#require——我只执行一次" class="headerlink" title="require——我只执行一次"></a>require——我只执行一次</h3><pre><code>require和dofile有点像，不过又很不一样，require在第一次加载文件的时候，会执行里面的代码。
+但是，第二次之后，再次加载文件，则不会重复执行了。换句话说，它会保存已经加载过的文件，不会重复加载。</code></pre>
+<h3 id="loadstring"><a href="#loadstring" class="headerlink" title="loadstring"></a>loadstring</h3><pre><code>1.特点：功能强大，但开销大；
+2.典型用处：执行外部代码，如：用户的输入
+3.错误错里：代码中如果有语法错误就会返回nil
+4.理解：f = loadstring(&quot;i = i+1&quot;)  可理解为（但不完全是）f = function()  i = i+1  end 
+(注：这里的变量&quot;i&quot;是全局变量，不是指局部变量，如果没有定义全局变量&quot;i&quot;,调用f()则会报错！，即loadstring   不涉及词法域)</code></pre>
+]]></content>
+      <tags>
+        <tag>lua</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MarkDonw语法</title>
-    <url>/2017/06079530.html</url>
+    <url>/2017/06/07/9530.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>MarkDonw语法</p>
 <p>[TOC] 生成目录</p>
 <h2 id="生成目录"><a href="#生成目录" class="headerlink" title="生成目录"></a>生成目录</h2><pre><code> [TOC]     生成目录</code></pre>
@@ -3785,7 +3785,7 @@ $$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$
   </entry>
   <entry>
     <title>NB-IoT 记录</title>
-    <url>/2020/070926e6.html</url>
+    <url>/2020/07/09/26e6.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="NB状态"><a href="#NB状态" class="headerlink" title="NB状态"></a>NB状态</h2><ul>
 <li>DRX：Discontinuous Reception（不连续接收），为模块 Modem 的工作模式</li>
 <li>eDRX：extended DRX（扩展不连续接收），为模块 Modem 的工作模式。</li>
@@ -3817,7 +3817,7 @@ $$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$
   </entry>
   <entry>
     <title>OneNet OTA 操作笔记</title>
-    <url>/2020/091591bc.html</url>
+    <url>/2020/09/15/91bc.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="OneNet-OTA-M5311-笔记"><a href="#OneNet-OTA-M5311-笔记" class="headerlink" title="OneNet OTA M5311 笔记"></a>OneNet OTA M5311 笔记</h2><ul>
 <li>地址: <a href="https://open.iot.10086.cn/">https://open.iot.10086.cn/</a></li>
 </ul>
@@ -3836,7 +3836,7 @@ $$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$
   </entry>
   <entry>
     <title>OpenSSL 笔记</title>
-    <url>/2020/0708dfdf.html</url>
+    <url>/2020/07/08/dfdf.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="OpenSSL-官网"><a href="#OpenSSL-官网" class="headerlink" title="OpenSSL 官网"></a>OpenSSL 官网</h2><p><a href="https://www.openssl.org/">https://www.openssl.org/</a></p>
 <h2 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h2><ul>
 <li>安装包 : openssl-1.1.0f.tar.gz</li>
@@ -3858,7 +3858,7 @@ make install</code></pre>
   </entry>
   <entry>
     <title>PC小技巧</title>
-    <url>/2017/070156f1.html</url>
+    <url>/2017/07/01/56f1.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Win7-开热点"><a href="#Win7-开热点" class="headerlink" title="Win7 开热点"></a>Win7 开热点</h2><ol>
 <li>输入命令：<code>netsh wlan set hostednetwork mode=allow ssid=livdran2012 key=100100100</code> 。<br><code>mode:</code>是否启用虚拟WiFi网卡，改为disallow则为禁止。<br><code>ssid:</code>无线网名称，推荐最好用英文。（此处以livdran2012为例，可自由设置）<br><code>key:</code>无线网密码，限定八个以上字符。（此处以100100100为例，可自由设置）</li>
 </ol>
@@ -3885,7 +3885,7 @@ make install</code></pre>
   </entry>
   <entry>
     <title>Python基础使用技巧</title>
-    <url>/2020/0408b6de.html</url>
+    <url>/2020/04/08/b6de.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="依赖文件requirements生成和安装"><a href="#依赖文件requirements生成和安装" class="headerlink" title="依赖文件requirements生成和安装"></a>依赖文件requirements生成和安装</h2><ul>
 <li>生成</li>
 </ul>
@@ -3898,7 +3898,7 @@ make install</code></pre>
   </entry>
   <entry>
     <title>QT 笔记</title>
-    <url>/2020/05048182.html</url>
+    <url>/2020/05/04/8182.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><ul>
 <li> <a href="https://doc.qt.io/qt-5/index.html">官方文档</a></li>
 </ul>
@@ -3906,7 +3906,7 @@ make install</code></pre>
   </entry>
   <entry>
     <title>SI4432</title>
-    <url>/2017/0326760b.html</url>
+    <url>/2017/03/26/760b.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
 <h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="SPI方面"><a href="#SPI方面" class="headerlink" title="SPI方面"></a>SPI方面</h3><hr>
 <p><strong>1. 速率不要太高，SI4432手册上说不要大于10MHZ</strong>        <br><strong>2. MOSI、MOSO、SCK三个引脚配置为复用功能推挽输出</strong><br><strong>3.SPI的时钟极性配置为：同步时钟的空闲状态为 低电平</strong><br><strong>4.SPI的时钟的第2个跳变沿数据被采样。（SPI_CPHA）</strong><br><strong>5.片选信号软件控制自己定义一个IO空控制片选吧，方便.</strong></p>
@@ -3924,7 +3924,7 @@ make install</code></pre>
   </entry>
   <entry>
     <title>SPI协议</title>
-    <url>/2017/08171d58.html</url>
+    <url>/2017/08/17/1d58.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-一点基础介绍"><a href="#1-一点基础介绍" class="headerlink" title="1. 一点基础介绍"></a>1. 一点基础介绍</h2><blockquote>
 <p>SPI的通信原理很简单，它以主从方式工作，这种模式通常有一个主设备和一个或多个从设备，需要至少4根线，事实上3根也可以（单向传输时）。也是所有基于SPI的设备共有的，它们是MISO（数据输入），MOSI（数据输出），SCK（时钟），CS（片选）。</p>
 </blockquote>
@@ -4000,7 +4000,7 @@ make install</code></pre>
   </entry>
   <entry>
     <title>SSL握手过程</title>
-    <url>/2018/0326b45f.html</url>
+    <url>/2018/03/26/b45f.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div align="center">
 ![hand][1]
 </div>
@@ -4029,8 +4029,44 @@ make install</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>STM32 命名规则</title>
+    <url>/2017/03/26/eaab.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>以stm32f103c8t7xx为例子</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1736256-7d5b4a61ad2948ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="命名规范"></p>
+<a id="more"></a>
+
+<p>| Device |  description |<br>| ————- |<br>| STM32 |基于ARM?的32位微控制器产品类型。 |<br>| F |通用类型产品子系列 |<br>|Device subfamily|101 = 基本型 102 = USB基本型 103 = 增强型 105/107 = 互联型|<br>|Pin count| T=36 C=48 R=64 V=100 Z=144|<br>|Flash Size|6=32 8=64 B=128 C=256 D=384 E=512 |<br>|Package|H = BGA T = LQFP U = VFQFPN Y = WLCSP64|</p>
+<h2 id="STM32-产品类型和启动文件的选择"><a href="#STM32-产品类型和启动文件的选择" class="headerlink" title="STM32 产品类型和启动文件的选择"></a>STM32 产品类型和启动文件的选择</h2><pre><code>- startup_stm32f10x_ld_vl.s: for STM32 Low density Value line devices
+- startup_stm32f10x_ld.s: for STM32 Low density devices
+- startup_stm32f10x_md_vl.s: for STM32 Medium density Value line devices
+- startup_stm32f10x_md.s: for STM32 Medium density devices
+- startup_stm32f10x_hd.s: for STM32 High density devices
+- startup_stm32f10x_xl.s: for STM32 XL density devices
+- startup_stm32f10x_cl.s: for STM32 Connectivity line devices
+cl：互联型产品，stm32f105/107系列
+vl：超值型产品，stm32f100系列
+xl：超高密度产品，stm32f101/103系列
+ld：低密度产品，FLASH小于64K
+md：中等密度产品，FLASH=64 or 128
+hd：高密度产品，FLASH大于128</code></pre>
+<h2 id="STM32-Flash-页面大小划分"><a href="#STM32-Flash-页面大小划分" class="headerlink" title="STM32 Flash 页面大小划分"></a>STM32 Flash 页面大小划分</h2><p>STM32有4种Flash module organization，分别是：</p>
+<ul>
+<li>low-density devices(32KB，1KB/page)</li>
+<li>medium-density devices(128KB，1KB/page)</li>
+<li>high-density devices(512KB，2KB/page)</li>
+<li>connectivity line devices(256KB，2KB/page)</li>
+<li>XL-density(devices(1M，2KB/page)</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>STM32</tag>
+        <tag>ST</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>STM32---ADC</title>
-    <url>/2017/0326b2f4.html</url>
+    <url>/2017/03/26/b2f4.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
 <h2 id="引脚"><a href="#引脚" class="headerlink" title="引脚"></a>引脚</h2><p><img src="http://upload-images.jianshu.io/upload_images/1736256-98eeb51f671b5b77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="STM32 ADC 引脚"></p>
 <h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2><ol>
@@ -4073,44 +4109,8 @@ returnadc;//返回最近一次ADCx规则组的转换结果
       </tags>
   </entry>
   <entry>
-    <title>STM32 命名规则</title>
-    <url>/2017/0326eaab.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>以stm32f103c8t7xx为例子</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1736256-7d5b4a61ad2948ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="命名规范"></p>
-<a id="more"></a>
-
-<p>| Device |  description |<br>| ————- |<br>| STM32 |基于ARM?的32位微控制器产品类型。 |<br>| F |通用类型产品子系列 |<br>|Device subfamily|101 = 基本型 102 = USB基本型 103 = 增强型 105/107 = 互联型|<br>|Pin count| T=36 C=48 R=64 V=100 Z=144|<br>|Flash Size|6=32 8=64 B=128 C=256 D=384 E=512 |<br>|Package|H = BGA T = LQFP U = VFQFPN Y = WLCSP64|</p>
-<h2 id="STM32-产品类型和启动文件的选择"><a href="#STM32-产品类型和启动文件的选择" class="headerlink" title="STM32 产品类型和启动文件的选择"></a>STM32 产品类型和启动文件的选择</h2><pre><code>- startup_stm32f10x_ld_vl.s: for STM32 Low density Value line devices
-- startup_stm32f10x_ld.s: for STM32 Low density devices
-- startup_stm32f10x_md_vl.s: for STM32 Medium density Value line devices
-- startup_stm32f10x_md.s: for STM32 Medium density devices
-- startup_stm32f10x_hd.s: for STM32 High density devices
-- startup_stm32f10x_xl.s: for STM32 XL density devices
-- startup_stm32f10x_cl.s: for STM32 Connectivity line devices
-cl：互联型产品，stm32f105/107系列
-vl：超值型产品，stm32f100系列
-xl：超高密度产品，stm32f101/103系列
-ld：低密度产品，FLASH小于64K
-md：中等密度产品，FLASH=64 or 128
-hd：高密度产品，FLASH大于128</code></pre>
-<h2 id="STM32-Flash-页面大小划分"><a href="#STM32-Flash-页面大小划分" class="headerlink" title="STM32 Flash 页面大小划分"></a>STM32 Flash 页面大小划分</h2><p>STM32有4种Flash module organization，分别是：</p>
-<ul>
-<li>low-density devices(32KB，1KB/page)</li>
-<li>medium-density devices(128KB，1KB/page)</li>
-<li>high-density devices(512KB，2KB/page)</li>
-<li>connectivity line devices(256KB，2KB/page)</li>
-<li>XL-density(devices(1M，2KB/page)</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>STM32</tag>
-        <tag>ST</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>STM8 命名规则</title>
-    <url>/2017/03263ec7.html</url>
+    <url>/2017/03/26/3ec7.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
 <p><strong>STM8命名规则示列：STM8S005K6T6Cxxx</strong>代表的意义为： 超值型 STM8内核（可以理解为8位51增强型内核）MCU,LQFP-32封装，32KB FLASH容量，温度范围-40℃-85℃；（工业级）<br><strong>具体分解如下：</strong></p>
 <a id="more"></a>
@@ -4129,7 +4129,7 @@ hd：高密度产品，FLASH大于128</code></pre>
   </entry>
   <entry>
     <title>tcpDump</title>
-    <url>/2017/0701154.html</url>
+    <url>/2017/07/01/154.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
 <h2 id="Linux-混杂模式设置"><a href="#Linux-混杂模式设置" class="headerlink" title="Linux 混杂模式设置"></a>Linux 混杂模式设置</h2><p><strong>1. 查看网卡混杂模式状态</strong></p>
 <pre class=" language-SH"><code class="language-SH">alex@ubuntu:~$ ifconfig eth0
@@ -4444,74 +4444,8 @@ t 0:0(0) ack 22535 win 8760 (DF)</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Git之技能记录</title>
-    <url>/2018/02113432.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一-Git-功能预览图"><a href="#一-Git-功能预览图" class="headerlink" title="一. Git 功能预览图"></a>一. Git 功能预览图</h2><p><img src="http://upload-images.jianshu.io/upload_images/1736256-510243b84e2d36f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Git"></p>
-<a id="more"></a>
-
-<h2 id="二-tag"><a href="#二-tag" class="headerlink" title="二. tag"></a>二. tag</h2><ul>
-<li>列出所有tag</li>
-</ul>
-<pre><code>$ git tag -l</code></pre>
-<ul>
-<li>打tag</li>
-</ul>
-<pre><code>$ git tag &#39;tag&#39;</code></pre>
-<ul>
-<li>打tag 加注释</li>
-</ul>
-<pre><code>$ git tag -a [tag name] -m [message]</code></pre>
-<ul>
-<li>删除本地tag</li>
-</ul>
-<pre><code>$ git tag -d [tag]</code></pre>
-<ul>
-<li>删除远程tag</li>
-</ul>
-<pre><code>git push origin --delete tag &lt;tagname&gt;</code></pre>
-<ul>
-<li>查看tag信息</li>
-</ul>
-<pre><code>$ git show [tag]</code></pre>
-<ul>
-<li>提交指定tag</li>
-</ul>
-<pre><code>$ git push [remote] [tag]
-</code></pre>
-<p>例如，将v1.0标签推送到远程服务器上</p>
-<pre><code>$ git push origin v1.0</code></pre>
-<ul>
-<li>提交所有tag</li>
-</ul>
-<pre><code>$ git push [remote] --tags</code></pre>
-<h2 id="三-git-信息查询"><a href="#三-git-信息查询" class="headerlink" title="三. git 信息查询"></a>三. git 信息查询</h2><ul>
-<li>查看远程仓库信息</li>
-</ul>
-<pre><code>$ git remote -v</code></pre>
-<ul>
-<li>查看分支</li>
-</ul>
-<pre><code>$ git branch -a</code></pre>
-<ul>
-<li>查看分支合并图</li>
-</ul>
-<pre><code>git log --graph</code></pre>
-<h2 id="四-工程设置"><a href="#四-工程设置" class="headerlink" title="四. 工程设置"></a>四. 工程设置</h2><ul>
-<li>更新远程仓库</li>
-</ul>
-<pre><code>git remote set-url origin git@gitlab.gizwits.com:********.git</code></pre>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>WireShark网络抓包</title>
-    <url>/2017/0701dc5b.html</url>
+    <url>/2017/07/01/dc5b.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
 <h2 id="WireShark入门"><a href="#WireShark入门" class="headerlink" title="WireShark入门"></a>WireShark入门</h2><h3 id="一、-打开WireShark"><a href="#一、-打开WireShark" class="headerlink" title="一、 打开WireShark"></a>一、 打开WireShark</h3><p><img src="http://static.zybuluo.com/AlexLin/4224884og6inde3h2q5wcw6a/image.png" alt="WireShark启动界面"></p>
 <a id="more"></a>
@@ -4720,8 +4654,74 @@ TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)
       </tags>
   </entry>
   <entry>
+    <title>Git之技能记录</title>
+    <url>/2018/02/11/3432.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一-Git-功能预览图"><a href="#一-Git-功能预览图" class="headerlink" title="一. Git 功能预览图"></a>一. Git 功能预览图</h2><p><img src="http://upload-images.jianshu.io/upload_images/1736256-510243b84e2d36f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Git"></p>
+<a id="more"></a>
+
+<h2 id="二-tag"><a href="#二-tag" class="headerlink" title="二. tag"></a>二. tag</h2><ul>
+<li>列出所有tag</li>
+</ul>
+<pre><code>$ git tag -l</code></pre>
+<ul>
+<li>打tag</li>
+</ul>
+<pre><code>$ git tag &#39;tag&#39;</code></pre>
+<ul>
+<li>打tag 加注释</li>
+</ul>
+<pre><code>$ git tag -a [tag name] -m [message]</code></pre>
+<ul>
+<li>删除本地tag</li>
+</ul>
+<pre><code>$ git tag -d [tag]</code></pre>
+<ul>
+<li>删除远程tag</li>
+</ul>
+<pre><code>git push origin --delete tag &lt;tagname&gt;</code></pre>
+<ul>
+<li>查看tag信息</li>
+</ul>
+<pre><code>$ git show [tag]</code></pre>
+<ul>
+<li>提交指定tag</li>
+</ul>
+<pre><code>$ git push [remote] [tag]
+</code></pre>
+<p>例如，将v1.0标签推送到远程服务器上</p>
+<pre><code>$ git push origin v1.0</code></pre>
+<ul>
+<li>提交所有tag</li>
+</ul>
+<pre><code>$ git push [remote] --tags</code></pre>
+<h2 id="三-git-信息查询"><a href="#三-git-信息查询" class="headerlink" title="三. git 信息查询"></a>三. git 信息查询</h2><ul>
+<li>查看远程仓库信息</li>
+</ul>
+<pre><code>$ git remote -v</code></pre>
+<ul>
+<li>查看分支</li>
+</ul>
+<pre><code>$ git branch -a</code></pre>
+<ul>
+<li>查看分支合并图</li>
+</ul>
+<pre><code>git log --graph</code></pre>
+<h2 id="四-工程设置"><a href="#四-工程设置" class="headerlink" title="四. 工程设置"></a>四. 工程设置</h2><ul>
+<li>更新远程仓库</li>
+</ul>
+<pre><code>git remote set-url origin git@gitlab.gizwits.com:********.git</code></pre>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>golang之环境搭建</title>
-    <url>/2019/0908b098.html</url>
+    <url>/2019/09/08/b098.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h2 id="宿主机环境"><a href="#宿主机环境" class="headerlink" title="宿主机环境"></a>宿主机环境</h2><pre class=" language-SH"><code class="language-SH">Linux VM-133-112-ubuntu 4.15.0-54-generic #58-Ubuntu SMP Mon Jun 24 10:55:24 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux</code></pre>
 <ul>
 <li><a href="https://golang.org/dl/">安装包下载</a><pre class=" language-sh"><code class="language-sh">ubuntu@VM-133-112-ubuntu:~$ wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz</code></pre>
@@ -4811,7 +4811,7 @@ TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/2017/03263eeb.html</url>
+    <url>/2017/03/26/3eeb.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
 <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><a id="more"></a>
@@ -4827,8 +4827,14 @@ TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)
 ]]></content>
   </entry>
   <entry>
+    <title>Hexo自动备份教程</title>
+    <url>/2017/08/01/5973.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://notes.wanghao.work/2015-07-06-%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6.html">连接</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>linux 工具函数之网络工具函数</title>
-    <url>/2017/03267a56.html</url>
+    <url>/2017/03/26/7a56.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
 <p>**本地IP、子网掩码、网关、MAC地址 获取方法 **</p>
 <a id="more"></a>
@@ -5065,14 +5071,8 @@ TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)
       </tags>
   </entry>
   <entry>
-    <title>Hexo自动备份教程</title>
-    <url>/2017/08015973.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://notes.wanghao.work/2015-07-06-%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6.html">连接</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>macOS小技能</title>
-    <url>/2018/1210d7f9.html</url>
+    <url>/2018/12/10/d7f9.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="iTerm2"><a href="#iTerm2" class="headerlink" title="iTerm2"></a>iTerm2</h2><h3 id="iTerm2-SSH免密码远程连接服务器"><a href="#iTerm2-SSH免密码远程连接服务器" class="headerlink" title="iTerm2 SSH免密码远程连接服务器"></a>iTerm2 SSH免密码远程连接服务器</h3><pre class=" language-sh"><code class="language-sh">#!/usr/bin/expect
 
 set timeout 30
@@ -5105,7 +5105,7 @@ interact</code></pre>
   </entry>
   <entry>
     <title>Tool 记</title>
-    <url>/2017/0326bff4.html</url>
+    <url>/2017/03/26/bff4.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
 <h1 id="工具1–esptool"><a href="#工具1–esptool" class="headerlink" title="工具1–esptool"></a>工具1–esptool</h1><h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法:"></a>安装方法:</h2><p>1.超级简单按照方法</p>
 <pre class=" language-bash"><code class="language-bash"> $  pip <span class="token function">install</span> esptool</code></pre>
@@ -5138,7 +5138,7 @@ write_flash -fm qio -fs 32m -ff 40m 0x3fc000 ../bin/0x3fc000.bin</code></pre>
   </entry>
   <entry>
     <title>vscode配置</title>
-    <url>/2019/0826fc74.html</url>
+    <url>/2019/08/26/fc74.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Vscode终端Terminal显示zsh的字体设置"><a href="#Vscode终端Terminal显示zsh的字体设置" class="headerlink" title="Vscode终端Terminal显示zsh的字体设置"></a>Vscode终端Terminal显示zsh的字体设置</h2><ul>
 <li><p>没有设置之前的效果<br><img src="/images/zsh01.png" alt="zsh2"></p>
 </li>
@@ -5172,21 +5172,8 @@ write_flash -fm qio -fs 32m -ff 40m 0x3fc000 ../bin/0x3fc000.bin</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>win10子系统wsl</title>
-    <url>/2019/0821d9b0.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="子系统重启wsl"><a href="#子系统重启wsl" class="headerlink" title="子系统重启wsl"></a>子系统重启wsl</h2><p>管理员权限下:</p>
-<pre class=" language-sh"><code class="language-sh">net stop LxssManager
-net start LxssManager</code></pre>
-<h2 id="子系统在win10的默认位置"><a href="#子系统在win10的默认位置" class="headerlink" title="子系统在win10的默认位置"></a>子系统在win10的默认位置</h2><pre class=" language-sh"><code class="language-sh">C:\Users\87832\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState</code></pre>
-<p><img src="/images/pasted-1.png" alt="upload successful"></p>
-]]></content>
-      <tags>
-        <tag>win10</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>win10 实用工具.md</title>
-    <url>/2019/1106c142.html</url>
+    <url>/2019/11/06/c142.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="包管理工具-Scoop"><a href="#包管理工具-Scoop" class="headerlink" title="包管理工具 - Scoop"></a>包管理工具 - Scoop</h2><ul>
 <li><blockquote>
 <p>scoop 类似于Ubuntu下的<code>apt-get install</code><br> </p>
@@ -5265,8 +5252,21 @@ Creating shortcut for 7-Zip (7zFM.exe)
 ]]></content>
   </entry>
   <entry>
+    <title>win10子系统wsl</title>
+    <url>/2019/08/21/d9b0.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="子系统重启wsl"><a href="#子系统重启wsl" class="headerlink" title="子系统重启wsl"></a>子系统重启wsl</h2><p>管理员权限下:</p>
+<pre class=" language-sh"><code class="language-sh">net stop LxssManager
+net start LxssManager</code></pre>
+<h2 id="子系统在win10的默认位置"><a href="#子系统在win10的默认位置" class="headerlink" title="子系统在win10的默认位置"></a>子系统在win10的默认位置</h2><pre class=" language-sh"><code class="language-sh">C:\Users\87832\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState</code></pre>
+<p><img src="/images/pasted-1.png" alt="upload successful"></p>
+]]></content>
+      <tags>
+        <tag>win10</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>哈夫曼树&amp;哈夫曼编码</title>
-    <url>/2020/08123729.html</url>
+    <url>/2020/08/12/3729.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h2><blockquote>
 <p>哈夫曼树也叫最优二叉树（哈夫曼树）</p>
 </blockquote>
@@ -5315,31 +5315,8 @@ Creating shortcut for 7-Zip (7zFM.exe)
       </tags>
   </entry>
   <entry>
-    <title>基本算法之算法图解Book</title>
-    <url>/2018/0505d585.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="算法图解"><a href="#算法图解" class="headerlink" title="算法图解"></a>算法图解</h2><h3 id="内容简介-·-·-·-·-·-·"><a href="#内容简介-·-·-·-·-·-·" class="headerlink" title="内容简介  · · · · · ·"></a><font color=#115533>内容简介  · · · · · ·</font></h3><font color=#228B22>
-本书示例丰富，图文并茂，以让人容易理解的方式阐释了算法，旨在帮助程序员在日常项目中更好地发挥算法的能量。书中的前三章将帮助你打下基础，带你学习二分查找、大O表示法、两种基本的数据结构以及递归等。余下的篇幅将主要介绍应用广泛的算法，具体内容包括：面对具体问题时的解决技巧，比如，何时采用贪婪算法或动态规划；散列表的应用；图算法；K最近邻算法。
-</font>
-
-<h3 id="作者简介-·-·-·-·-·-·"><a href="#作者简介-·-·-·-·-·-·" class="headerlink" title="作者简介  · · · · · ·"></a><font color=#115533>作者简介  · · · · · ·</font></h3><font color=#228B22>
-Aditya Bhargava
-
-<p>软件工程师，兼具计算机科学和美术方面的教育背景，在adit.io撰写编程方面的博客。<br></font></p>
-<h3 id="豆瓣点评"><a href="#豆瓣点评" class="headerlink" title="豆瓣点评"></a><font color=#228B22><a href="https://book.douban.com/subject/26979890/">豆瓣点评</a></font></h3><a id="more"></a>
-
-<h2 id="书本"><a href="#书本" class="headerlink" title="书本"></a>书本</h2><embed src="https://gitee.com/alexlin/algorithms/raw/master/doc/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95.pdf" width="100%" height="950" type="application/pdf" align=center >
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>图解算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>基本算法之二叉树</title>
-    <url>/2018/0325b1e6.html</url>
+    <url>/2018/03/25/b1e6.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这几天忙于考<font color=#115533>PMP(Project Management Professional)</font>, 连续几个周末都在看书，终于在昨天考完试了，不知道能不能过，1个月后看吧，🙏~<br>言归正传，今天来学习了解一下二叉树。</p>
 <h2 id="什么是二叉树"><a href="#什么是二叉树" class="headerlink" title="什么是二叉树"></a>什么是二叉树</h2><div align=center>
 ![二叉树][1]
@@ -5462,7 +5439,7 @@ HXBL(root->rchild);
   </entry>
   <entry>
     <title>基本算法之平衡二叉树</title>
-    <url>/2018/0325646b.html</url>
+    <url>/2018/03/25/646b.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h2><p><a href="https://baike.baidu.com/item/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/10421057?fr=aladdin">摘自百度:</a></p>
 <blockquote>
 <p>平衡二叉搜索树（Self-balancing binary search tree）又被称为AVL树（有别于AVL算法），且具有以下性质：它是一 棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树，同时，平衡二叉树必定是二叉搜索树，反之则不一定。平衡二叉树的常用实现方法有<code>红黑树</code>、<code>AVL</code>、<code>替罪羊树</code>、<code>Treap</code>、<code>伸展树</code>等。 最小二叉平衡树的节点的公式如下 $F(n)=F(n-1)+F(n-2)+1$ 这个类似于一个递归的数列，可以参考Fibonacci(斐波那契)数列，1是根节点，F(n-1)是左子树的节点数量，F(n-2)是右子树的节点数量</p>
@@ -5575,8 +5552,31 @@ struct AVLNode
       </tags>
   </entry>
   <entry>
+    <title>基本算法之算法图解Book</title>
+    <url>/2018/05/05/d585.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="算法图解"><a href="#算法图解" class="headerlink" title="算法图解"></a>算法图解</h2><h3 id="内容简介-·-·-·-·-·-·"><a href="#内容简介-·-·-·-·-·-·" class="headerlink" title="内容简介  · · · · · ·"></a><font color=#115533>内容简介  · · · · · ·</font></h3><font color=#228B22>
+本书示例丰富，图文并茂，以让人容易理解的方式阐释了算法，旨在帮助程序员在日常项目中更好地发挥算法的能量。书中的前三章将帮助你打下基础，带你学习二分查找、大O表示法、两种基本的数据结构以及递归等。余下的篇幅将主要介绍应用广泛的算法，具体内容包括：面对具体问题时的解决技巧，比如，何时采用贪婪算法或动态规划；散列表的应用；图算法；K最近邻算法。
+</font>
+
+<h3 id="作者简介-·-·-·-·-·-·"><a href="#作者简介-·-·-·-·-·-·" class="headerlink" title="作者简介  · · · · · ·"></a><font color=#115533>作者简介  · · · · · ·</font></h3><font color=#228B22>
+Aditya Bhargava
+
+<p>软件工程师，兼具计算机科学和美术方面的教育背景，在adit.io撰写编程方面的博客。<br></font></p>
+<h3 id="豆瓣点评"><a href="#豆瓣点评" class="headerlink" title="豆瓣点评"></a><font color=#228B22><a href="https://book.douban.com/subject/26979890/">豆瓣点评</a></font></h3><a id="more"></a>
+
+<h2 id="书本"><a href="#书本" class="headerlink" title="书本"></a>书本</h2><embed src="https://gitee.com/alexlin/algorithms/raw/master/doc/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95.pdf" width="100%" height="950" type="application/pdf" align=center >
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>图解算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>实用网站</title>
-    <url>/2020/04226c49.html</url>
+    <url>/2020/04/22/6c49.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="搜索相关"><a href="#搜索相关" class="headerlink" title="搜索相关"></a>搜索相关</h2><ul>
 <li><a href="https://mijisou.com/">秘迹搜索</a><br><img src="/images/pasted-18.png" alt="upload successful"></li>
 </ul>
@@ -5613,7 +5613,7 @@ struct AVLNode
   </entry>
   <entry>
     <title>微信开发</title>
-    <url>/2017/04061051.html</url>
+    <url>/2017/04/06/1051.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="http://iot.weixin.qq.com/wiki/new/index.html?page=2-1">微信硬件平台</a><br><a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=2017118">小程序</a></p>
 <p>蛋疼的一天</p>
 ]]></content>
@@ -5624,7 +5624,7 @@ struct AVLNode
   </entry>
   <entry>
     <title>树莓派之Hexo环境搭建</title>
-    <url>/2019/01277c1e.html</url>
+    <url>/2019/01/27/7c1e.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="安装node-js-环境"><a href="#安装node-js-环境" class="headerlink" title="安装node.js 环境"></a>安装node.js 环境</h2><pre><code>pi@raspberrypi:~/workdir/node_js $ wget -qO- https://raw.github.com/creationix/nvm/v0.33.11/install.sh | sh
 
 =&gt; Downloading nvm from git to &#39;/home/pi/.nvm&#39;
@@ -5675,7 +5675,7 @@ added 225 packages from 431 contributors in 181.245s</code></pre>
   </entry>
   <entry>
     <title>汉枫系列-LPT230环境搭建</title>
-    <url>/2018/041797d9.html</url>
+    <url>/2018/04/17/97d9.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="MAC-下编译器下载"><a href="#MAC-下编译器下载" class="headerlink" title="MAC 下编译器下载"></a>MAC 下编译器下载</h2><blockquote>
 <p>Linux 环境类似；</p>
 </blockquote>
@@ -5692,8 +5692,57 @@ added 225 packages from 431 contributors in 181.245s</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>活成自己的样子</title>
+    <url>/2888/03/28/dbbb.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<blockquote>
+<p>我们总是拼尽全力… 想活成大家所期待的样子，以为那样就是最完美的。但其实，真正的成功，或许是不被他人绑架自己的梦想，全然按照自己的意愿过好这一生。</p>
+</blockquote>
+<p><img src="/images/pasted-15.png" alt="1"></p>
+<pre class=" language-sh"><code class="language-sh">==============================================================================================
+
+                                            _ooOoo_
+                                           o8888888o
+                                           88" . "88
+                                           (| -_- |)
+                                            O\ = /O
+                                        ____/`---'\____
+                                        .' \\|   |// `.
+                                       / \\||| : |||// \
+                                     / _||||| -:- |||||- \
+                                       | | \\\ - /// | |
+                                     | \_| ''\---/'' | |
+                                      \ .-\__ `-` ___/-. /
+                                   ___`. .' /--.--\ `. . __
+                                . '< `.___\_<|>_/___.' >'.
+                               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+                                 \ \ `-. \_ __\ /__ _/ .-` / /
+                         ======`-.____`-.___\_____/___.-`____.-'======
+                                            `=---='
+                         .............................................
+                            !Write the code!       Change the world!
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</code></pre>
+<iframe frameborder="no" border="0" autoPlay=true marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=28285910&auto=0&height=66"></iframe>
+
+<a id="more"></a>
+
+<p><embed src="http://player.hunantv.com/mgtv_v5_main/main.swf?play_type=1&video_id=3954767" autostart=false allowFullScreen="true" quality="high" width="900" height="498" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
+<!-- <div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","loop":true,"video":{"url":"http://devtest.qiniudn.com/若能绽放光芒.mp4","pic":"http://devtest.qiniudn.com/若能绽放光芒.png"},"danmaku":{"id":"9E2E3368B56CDBB4","api":"http://dplayer.daoapp.io","token":"tokendemo"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script> -->
+
+
+]]></content>
+      <categories>
+        <category>新奇</category>
+      </categories>
+      <tags>
+        <tag>新奇</tag>
+        <tag>音乐</tag>
+        <tag>🎵</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>红外遥控器制作</title>
-    <url>/2020/05103418.html</url>
+    <url>/2020/05/10/3418.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><p> &emsp;&emsp;端午节期间，广州的天气真的好热，恨不得整体泡在空调房里。这让我想起了在公司上班的时候，天气炎热，想开空调，却发现空调遥控器好像偏偏跟我们玩捉迷藏似的，找也找不到，只能看着空调干巴巴地流汗。也常常碰见，公司的空调上班的时候都开着，然后最后一位同事走的时候，想关空调，此时遥控器也不翼而飞，于是各种问同事，大伙知道空调遥控器在哪吗？这种类似的“问候”等等。另外，公司空调比较多的时候，走的时候需要一个空调一个空调检测有没有关了，不然就会造成浪费的情况。总之对我来说，空调遥控器就是一个神奇的东西，你想找的时候，就偏偏找不到。<br><br>&emsp;&emsp;基于以上的种种情况，于是我萌发了要做一个方便管理的空调控制器，这个控制器有以下2个特点；</p>
 <ol>
 <li>必须让每个同事都能轻易的对每个空调进行控制(那就是用手机控制啦，大家都有手机~)；</li>
@@ -5757,7 +5806,7 @@ added 225 packages from 431 contributors in 181.245s</code></pre>
   </entry>
   <entry>
     <title>编辑器介绍</title>
-    <url>/2017/0607f348.html</url>
+    <url>/2017/06/07/f348.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Sublime"><a href="#Sublime" class="headerlink" title="Sublime"></a>Sublime</h1><hr>
 <h2 id="Sublime-Text主题推荐：Seti-UI"><a href="#Sublime-Text主题推荐：Seti-UI" class="headerlink" title="Sublime Text主题推荐：Seti_UI"></a>Sublime Text主题推荐：Seti_UI</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><hr>
 <p>Seti_UI 这款主题最大的特点是能够显示各种文件类型的图标，小图标不仅看起来漂亮，而且大大增加了辨识度，能够轻松的找到对应的文件。</p>
@@ -5781,8 +5830,20 @@ added 225 packages from 431 contributors in 181.245s</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>风过留痕，雁过留声</title>
+    <url>/2017/08/06/23d1.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="我不想让你知道"><a href="#我不想让你知道" class="headerlink" title="我不想让你知道"></a>我不想让你知道</h2><p>就不想让你知道~~</p>
+]]></content>
+      <categories>
+        <category>个人</category>
+      </categories>
+      <tags>
+        <tag>个人</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ESP8266系列-如何搭建自己平台的编译器</title>
-    <url>/2017/0731e7ff.html</url>
+    <url>/2017/07/31/e7ff.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
 <h3 id="为什么要搭建自己平台的编译器"><a href="#为什么要搭建自己平台的编译器" class="headerlink" title="为什么要搭建自己平台的编译器"></a>为什么要搭建自己平台的编译器</h3><p>在乐鑫的官网上已经有公布了编译好的编译器，:<a href="http://bbs.espressif.com/viewtopic.php?f=57&amp;t=2">http://bbs.espressif.com/viewtopic.php?f=57&amp;t=2</a><br>但是这里的编译器只是适合32位系统上的；<br><img src="http://static.zybuluo.com/AlexLin/vp3gfy4adgs6ipmc6gftuaj2/image.png" alt="image.png-39.4kB"><br>若你的系统是64位的，或者你在其他的平台上，那么就得自己编译生成对应平台的编译器了；<br>下面以64位Ubuntu系统为例子，演示如何编译自己平台的esp8266编译器;</p>
 <a id="more"></a>
@@ -6131,69 +6192,8 @@ alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ source ~/.pro
       </tags>
   </entry>
   <entry>
-    <title>活成自己的样子</title>
-    <url>/2888/0328dbbb.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<blockquote>
-<p>我们总是拼尽全力… 想活成大家所期待的样子，以为那样就是最完美的。但其实，真正的成功，或许是不被他人绑架自己的梦想，全然按照自己的意愿过好这一生。</p>
-</blockquote>
-<p><img src="/images/pasted-15.png" alt="1"></p>
-<pre class=" language-sh"><code class="language-sh">==============================================================================================
-
-                                            _ooOoo_
-                                           o8888888o
-                                           88" . "88
-                                           (| -_- |)
-                                            O\ = /O
-                                        ____/`---'\____
-                                        .' \\|   |// `.
-                                       / \\||| : |||// \
-                                     / _||||| -:- |||||- \
-                                       | | \\\ - /// | |
-                                     | \_| ''\---/'' | |
-                                      \ .-\__ `-` ___/-. /
-                                   ___`. .' /--.--\ `. . __
-                                . '< `.___\_<|>_/___.' >'.
-                               | | : `- \`.;`\ _ /`;.`/ - ` : | |
-                                 \ \ `-. \_ __\ /__ _/ .-` / /
-                         ======`-.____`-.___\_____/___.-`____.-'======
-                                            `=---='
-                         .............................................
-                            !Write the code!       Change the world!
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</code></pre>
-<iframe frameborder="no" border="0" autoPlay=true marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=28285910&auto=0&height=66"></iframe>
-
-<a id="more"></a>
-
-<p><embed src="http://player.hunantv.com/mgtv_v5_main/main.swf?play_type=1&video_id=3954767" autostart=false allowFullScreen="true" quality="high" width="900" height="498" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
-<!-- <div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","loop":true,"video":{"url":"http://devtest.qiniudn.com/若能绽放光芒.mp4","pic":"http://devtest.qiniudn.com/若能绽放光芒.png"},"danmaku":{"id":"9E2E3368B56CDBB4","api":"http://dplayer.daoapp.io","token":"tokendemo"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script> -->
-
-
-]]></content>
-      <categories>
-        <category>新奇</category>
-      </categories>
-      <tags>
-        <tag>新奇</tag>
-        <tag>音乐</tag>
-        <tag>🎵</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>风过留痕，雁过留声</title>
-    <url>/2017/080623d1.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="我不想让你知道"><a href="#我不想让你知道" class="headerlink" title="我不想让你知道"></a>我不想让你知道</h2><p>就不想让你知道~~</p>
-]]></content>
-      <categories>
-        <category>个人</category>
-      </categories>
-      <tags>
-        <tag>个人</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CC1101笔记</title>
-    <url>/2017/0326dd22.html</url>
+    <url>/2017/03/26/dd22.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
 <h1 id="产品描述"><a href="#产品描述" class="headerlink" title="产品描述"></a>产品描述</h1><h2 id="工作频段"><a href="#工作频段" class="headerlink" title="工作频段"></a>工作频段</h2><p><strong>CC1100: **400-464 MHz and 800-928MHz <br>**CC1101:</strong> 387-464 MHz and 779-928MHz</p>
 <h2 id="芯片引脚"><a href="#芯片引脚" class="headerlink" title="芯片引脚"></a>芯片引脚</h2><p><img src="http://upload-images.jianshu.io/upload_images/1736256-bf9e764fcd560a78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="cc1101引脚"></p>
@@ -7324,7 +7324,7 @@ alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ source ~/.pro
   </entry>
   <entry>
     <title>树莓派之Zero-W-01</title>
-    <url>/2018/0902b2a5.html</url>
+    <url>/2018/09/02/b2a5.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="WiFi-相关"><a href="#WiFi-相关" class="headerlink" title="WiFi 相关"></a>WiFi 相关</h2><h3 id="iwlist-命令"><a href="#iwlist-命令" class="headerlink" title="iwlist 命令"></a>iwlist 命令</h3><hr>
 <blockquote>
 <p><strong>iwlist 命令：用于对/proc/net/wireless文件进行分析，得出无线网卡相关信息</strong></p>
