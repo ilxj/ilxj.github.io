@@ -902,68 +902,6 @@ eqSign <span class="token operator">=</span> a <span class="token operator">^</s
       </tags>
   </entry>
   <entry>
-    <title>ESP8266系列-各个模组型号模组对比</title>
-    <url>/2017/08049fbf.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="烧录Flash-地址说明"><a href="#烧录Flash-地址说明" class="headerlink" title="烧录Flash 地址说明"></a>烧录Flash 地址说明</h2><table>
-<thead>
-<tr>
-<th align="center">文件名称</th>
-<th align="center">8Mbit烧录地址</th>
-<th align="center">16Mbit烧录地址</th>
-<th align="center">32Mbit烧录地址</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">boot.bin</td>
-<td align="center">0x00000</td>
-<td align="center">0x00000</td>
-<td align="center">0x00000</td>
-<td align="left">由乐鑫在 SDK 中提供，建议一直使用最新版本</td>
-</tr>
-<tr>
-<td align="center">user1.bin</td>
-<td align="center">0x01000</td>
-<td align="center">0x01000</td>
-<td align="center">0x01000</td>
-<td align="left">主程序，由代码编译生成</td>
-</tr>
-<tr>
-<td align="center">user2.bin</td>
-<td align="center">0x81000</td>
-<td align="center">0x81000</td>
-<td align="center">0x81000</td>
-<td align="left">主程序，由代码编译生成</td>
-</tr>
-<tr>
-<td align="center">esp_init_data_default.bin</td>
-<td align="center">0xFC000</td>
-<td align="center">0x1FC000</td>
-<td align="center">0x3FC000</td>
-<td align="left">由乐鑫在 SDK 中提供</td>
-</tr>
-<tr>
-<td align="center">blank.bin</td>
-<td align="center">0xFE000</td>
-<td align="center">0x1FE000</td>
-<td align="center">0x3FE000</td>
-<td align="left">由乐鑫在 SDK 中提供</td>
-</tr>
-</tbody></table>
-<a id="more"></a>
-
-<h2 id="硬件连接"><a href="#硬件连接" class="headerlink" title="硬件连接"></a>硬件连接</h2><p>ESP8266有运行模式、下载模式、测试模式的区别，进入下载模式可参考以下配置：</p>
-<p>|模式|CH_PD(EN)| RST |GPIO15|GPIO0|GPIO2|TXD0|<br>|:—:|:—:|<br>|UART 下载模式|高|高|低|低|高|高|<br>|Flash运行模式|高|高|低|高|高|高|<br>|Chip 测试模式|- |- |- | -| -|低|</p>
-<h2 id="模组对比"><a href="#模组对比" class="headerlink" title="模组对比"></a>模组对比</h2><p>![模组对比][1]<br>[1]: <a href="http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a></p>
-]]></content>
-      <categories>
-        <category>esp8266</category>
-      </categories>
-      <tags>
-        <tag>esp8266</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ESP8266系列-12F引脚说明</title>
     <url>/2017/080653ce.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="ESP8266-12F-模组图"><a href="#ESP8266-12F-模组图" class="headerlink" title="ESP8266-12F 模组图"></a>ESP8266-12F 模组图</h2><p><img src="/images/pasted-14.png" alt="硬件模组图"><br><img src="/images/pasted-13.png" alt="esp12f管脚定义图"></p>
@@ -1146,6 +1084,68 @@ eqSign <span class="token operator">=</span> a <span class="token operator">^</s
 <li>SPI 通常专于从外部 Flash 读取 CPU 程序代码。</li>
 <li>HSPI 则用于用户和 SPI 设备的通信操作。</li>
 </ul>
+]]></content>
+      <categories>
+        <category>esp8266</category>
+      </categories>
+      <tags>
+        <tag>esp8266</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ESP8266系列-各个模组型号模组对比</title>
+    <url>/2017/08049fbf.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="烧录Flash-地址说明"><a href="#烧录Flash-地址说明" class="headerlink" title="烧录Flash 地址说明"></a>烧录Flash 地址说明</h2><table>
+<thead>
+<tr>
+<th align="center">文件名称</th>
+<th align="center">8Mbit烧录地址</th>
+<th align="center">16Mbit烧录地址</th>
+<th align="center">32Mbit烧录地址</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">boot.bin</td>
+<td align="center">0x00000</td>
+<td align="center">0x00000</td>
+<td align="center">0x00000</td>
+<td align="left">由乐鑫在 SDK 中提供，建议一直使用最新版本</td>
+</tr>
+<tr>
+<td align="center">user1.bin</td>
+<td align="center">0x01000</td>
+<td align="center">0x01000</td>
+<td align="center">0x01000</td>
+<td align="left">主程序，由代码编译生成</td>
+</tr>
+<tr>
+<td align="center">user2.bin</td>
+<td align="center">0x81000</td>
+<td align="center">0x81000</td>
+<td align="center">0x81000</td>
+<td align="left">主程序，由代码编译生成</td>
+</tr>
+<tr>
+<td align="center">esp_init_data_default.bin</td>
+<td align="center">0xFC000</td>
+<td align="center">0x1FC000</td>
+<td align="center">0x3FC000</td>
+<td align="left">由乐鑫在 SDK 中提供</td>
+</tr>
+<tr>
+<td align="center">blank.bin</td>
+<td align="center">0xFE000</td>
+<td align="center">0x1FE000</td>
+<td align="center">0x3FE000</td>
+<td align="left">由乐鑫在 SDK 中提供</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+
+<h2 id="硬件连接"><a href="#硬件连接" class="headerlink" title="硬件连接"></a>硬件连接</h2><p>ESP8266有运行模式、下载模式、测试模式的区别，进入下载模式可参考以下配置：</p>
+<p>|模式|CH_PD(EN)| RST |GPIO15|GPIO0|GPIO2|TXD0|<br>|:—:|:—:|<br>|UART 下载模式|高|高|低|低|高|高|<br>|Flash运行模式|高|高|低|高|高|高|<br>|Chip 测试模式|- |- |- | -| -|低|</p>
+<h2 id="模组对比"><a href="#模组对比" class="headerlink" title="模组对比"></a>模组对比</h2><p>![模组对比][1]<br>[1]: <a href="http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a></p>
 ]]></content>
       <categories>
         <category>esp8266</category>
@@ -1448,70 +1448,6 @@ invalid reference format</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Github Blog 搭建入门</title>
-    <url>/2017/0326fc92.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h2 id="GitHub-项目创建"><a href="#GitHub-项目创建" class="headerlink" title="GitHub 项目创建"></a>GitHub 项目创建</h2><ul>
-<li>创建一个跟你的用户名相同的项目，比如我的*<strong>github**<em>名称是</em></strong>ilxj*** 则项目名称为**<em>ilxj.github.io**</em></li>
-</ul>
-<h2 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h2><ul>
-<li>安装nodejs，下载直接安装就可以了: <a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a>.</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h2><ul>
-<li>安装配置hexo，安装命令:</li>
-</ul>
-<h3 id="淘宝cnpm"><a href="#淘宝cnpm" class="headerlink" title="淘宝cnpm"></a>淘宝cnpm</h3><p>网址:<a href="https://npm.taobao.org/">https://npm.taobao.org/</a></p>
-<pre class=" language-sh"><code class="language-sh">npm install -g hexo-cli
-# 若npm 安装有问题，可以更改为淘宝源,之后可以用 cnpm 代替 npm
-npm install -g cnpm --registry=https://registry.npm.taobao.org</code></pre>
-<ul>
-<li>在终端输入:</li>
-</ul>
-<pre class=" language-sh"><code class="language-sh"> $ hexo
- #显示如下则成功.</code></pre>
-<p> ![hexo][3]</p>
-<ul>
-<li>初始化博客</li>
-</ul>
-<pre class=" language-sh"><code class="language-sh"> #建立一个博客文件夹，并初始化博客，<folder>为文件夹的名称，可以随便起名字
- $ hexo init <folder>
- #进入博客文件夹，根据博客既定的dependencies配置安装所有的依赖包
- $ npm install
- # 部署所需的插件,加上--save比较好
- $ npm install hexo-deployer-git    --save</code></pre>
-<ul>
-<li>初始化完成之后，目录如下图<br>![hexo 初始化图][2]<h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><img src="http://upload-images.jianshu.io/upload_images/1736256-70632d39b4a81358.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="博客配置"></li>
-</ul>
-<h3 id="本地发布命令"><a href="#本地发布命令" class="headerlink" title="本地发布命令"></a>本地发布命令</h3><pre class=" language-bash"><code class="language-bash"> $ hexo server.
- <span class="token comment" spellcheck="true">#浏览器浏览:http://localhost:4000/</span></code></pre>
-<h3 id="GitHub-发布命令"><a href="#GitHub-发布命令" class="headerlink" title="GitHub 发布命令"></a>GitHub 发布命令</h3><pre class=" language-bash"><code class="language-bash"> $ hexo generate
- $ hexo deploy</code></pre>
-<p>这时候我们的博客已经部署到网上了，我们可以在浏览器地址输入栏输入我们的网址即可，如我的博客是:[ilxj.github.io][1]。</p>
-<h2 id="跨PC部署"><a href="#跨PC部署" class="headerlink" title="跨PC部署"></a>跨PC部署</h2><p>原理是一个仓库存部署工具，另外一个参考用来做发布仓库；</p>
-<h2 id="Hexo-主题"><a href="#Hexo-主题" class="headerlink" title="Hexo 主题"></a>Hexo 主题</h2><ul>
-<li>[官网 hexo 主题][4]</li>
-<li>[主题 github][5]</li>
-</ul>
-<h3 id="本博客主题是NEXT"><a href="#本博客主题是NEXT" class="headerlink" title="本博客主题是NEXT"></a>本博客主题是NEXT</h3><ul>
-<li>新建一个页面，命名为 tags 。命令如下：<pre><code>$ hexo new page tags</code></pre>
-</li>
-<li>初始化<br>编辑刚新建的页面，设置type为tags：</li>
-</ul>
-<pre><code>title: 标签
-date: 2014-12-22 12:39:04
-type: &quot;tags&quot;
-
----</code></pre>
-<p>[NEXT 参考][6]<br>[1]: <a href="http://lxj-life.com/">http://lxj-life.com/</a><br>[2]: <a href="http://upload-images.jianshu.io/upload_images/1736256-41e851da429e5a19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">http://upload-images.jianshu.io/upload_images/1736256-41e851da429e5a19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a><br>[3]: <a href="http://upload-images.jianshu.io/upload_images/1736256-808fd91a203124d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">http://upload-images.jianshu.io/upload_images/1736256-808fd91a203124d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a><br>[4]: <a href="https://hexo.io/themes/">https://hexo.io/themes/</a><br>[5]: <a href="https://github.com/hexojs/hexo/wiki/Themes">https://github.com/hexojs/hexo/wiki/Themes</a><br>[6]: <a href="http://theme-next.iissnan.com/getting-started.html">http://theme-next.iissnan.com/getting-started.html</a></p>
-]]></content>
-      <tags>
-        <tag>git</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ESP8266系列-连接OLED模块</title>
     <url>/2020/04098529.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="OLED-屏幕介绍"><a href="#OLED-屏幕介绍" class="headerlink" title="OLED 屏幕介绍"></a>OLED 屏幕介绍</h2><ul>
@@ -1576,6 +1512,70 @@ type: &quot;tags&quot;
 <li><a href="http://www.mculover666.cn/posts/3603126757/">http://www.mculover666.cn/posts/3603126757/</a>   (RT-Thread Oled)</li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Github Blog 搭建入门</title>
+    <url>/2017/0326fc92.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h2 id="GitHub-项目创建"><a href="#GitHub-项目创建" class="headerlink" title="GitHub 项目创建"></a>GitHub 项目创建</h2><ul>
+<li>创建一个跟你的用户名相同的项目，比如我的*<strong>github**<em>名称是</em></strong>ilxj*** 则项目名称为**<em>ilxj.github.io**</em></li>
+</ul>
+<h2 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h2><ul>
+<li>安装nodejs，下载直接安装就可以了: <a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a>.</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h2><ul>
+<li>安装配置hexo，安装命令:</li>
+</ul>
+<h3 id="淘宝cnpm"><a href="#淘宝cnpm" class="headerlink" title="淘宝cnpm"></a>淘宝cnpm</h3><p>网址:<a href="https://npm.taobao.org/">https://npm.taobao.org/</a></p>
+<pre class=" language-sh"><code class="language-sh">npm install -g hexo-cli
+# 若npm 安装有问题，可以更改为淘宝源,之后可以用 cnpm 代替 npm
+npm install -g cnpm --registry=https://registry.npm.taobao.org</code></pre>
+<ul>
+<li>在终端输入:</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh"> $ hexo
+ #显示如下则成功.</code></pre>
+<p> ![hexo][3]</p>
+<ul>
+<li>初始化博客</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh"> #建立一个博客文件夹，并初始化博客，<folder>为文件夹的名称，可以随便起名字
+ $ hexo init <folder>
+ #进入博客文件夹，根据博客既定的dependencies配置安装所有的依赖包
+ $ npm install
+ # 部署所需的插件,加上--save比较好
+ $ npm install hexo-deployer-git    --save</code></pre>
+<ul>
+<li>初始化完成之后，目录如下图<br>![hexo 初始化图][2]<h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><img src="http://upload-images.jianshu.io/upload_images/1736256-70632d39b4a81358.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="博客配置"></li>
+</ul>
+<h3 id="本地发布命令"><a href="#本地发布命令" class="headerlink" title="本地发布命令"></a>本地发布命令</h3><pre class=" language-bash"><code class="language-bash"> $ hexo server.
+ <span class="token comment" spellcheck="true">#浏览器浏览:http://localhost:4000/</span></code></pre>
+<h3 id="GitHub-发布命令"><a href="#GitHub-发布命令" class="headerlink" title="GitHub 发布命令"></a>GitHub 发布命令</h3><pre class=" language-bash"><code class="language-bash"> $ hexo generate
+ $ hexo deploy</code></pre>
+<p>这时候我们的博客已经部署到网上了，我们可以在浏览器地址输入栏输入我们的网址即可，如我的博客是:[ilxj.github.io][1]。</p>
+<h2 id="跨PC部署"><a href="#跨PC部署" class="headerlink" title="跨PC部署"></a>跨PC部署</h2><p>原理是一个仓库存部署工具，另外一个参考用来做发布仓库；</p>
+<h2 id="Hexo-主题"><a href="#Hexo-主题" class="headerlink" title="Hexo 主题"></a>Hexo 主题</h2><ul>
+<li>[官网 hexo 主题][4]</li>
+<li>[主题 github][5]</li>
+</ul>
+<h3 id="本博客主题是NEXT"><a href="#本博客主题是NEXT" class="headerlink" title="本博客主题是NEXT"></a>本博客主题是NEXT</h3><ul>
+<li>新建一个页面，命名为 tags 。命令如下：<pre><code>$ hexo new page tags</code></pre>
+</li>
+<li>初始化<br>编辑刚新建的页面，设置type为tags：</li>
+</ul>
+<pre><code>title: 标签
+date: 2014-12-22 12:39:04
+type: &quot;tags&quot;
+
+---</code></pre>
+<p>[NEXT 参考][6]<br>[1]: <a href="http://lxj-life.com/">http://lxj-life.com/</a><br>[2]: <a href="http://upload-images.jianshu.io/upload_images/1736256-41e851da429e5a19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">http://upload-images.jianshu.io/upload_images/1736256-41e851da429e5a19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a><br>[3]: <a href="http://upload-images.jianshu.io/upload_images/1736256-808fd91a203124d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">http://upload-images.jianshu.io/upload_images/1736256-808fd91a203124d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a><br>[4]: <a href="https://hexo.io/themes/">https://hexo.io/themes/</a><br>[5]: <a href="https://github.com/hexojs/hexo/wiki/Themes">https://github.com/hexojs/hexo/wiki/Themes</a><br>[6]: <a href="http://theme-next.iissnan.com/getting-started.html">http://theme-next.iissnan.com/getting-started.html</a></p>
+]]></content>
+      <tags>
+        <tag>git</tag>
+        <tag>hexo</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hexo插件-Hexo Admin</title>
@@ -3436,6 +3436,37 @@ usage: nc [-46CDdFhklNnrStUuvZz] [-I length] [-i interval] [-M ttl]
       </tags>
   </entry>
   <entry>
+    <title>Lua之 loadfile ,dofile, loadstring，require</title>
+    <url>/2017/03264bf8.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h3 id="loadfile——只编译，不运行"><a href="#loadfile——只编译，不运行" class="headerlink" title="loadfile——只编译，不运行"></a>loadfile——只编译，不运行</h3><p>    1.功能：载入文件但不执行代码块，对于相同的文件每次都会执行。只是编译代码，然后将编译结果作为一个函数返回<br>    2.调用：loadfile(“filename”)<br>    3.错误处理：不引发错误，只返回错误值但不处理错误,即返回nil和错误消息<br>    4.优点：调用一次之后可以多次调用返回的结果（即函数），<br>      即“多次调用”只需编译一次（注：这里的多次调用   是指多次调用返回的函数，而不是多次调用loadfile）</p>
+<a id="more"></a>
+
+<p><strong>dofile可如下定义：</strong></p>
+<pre class=" language-lua"><code class="language-lua">    <span class="token keyword">function</span> <span class="token function">dofile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span>
+    　　<span class="token keyword">local</span> f <span class="token operator">=</span> <span class="token function">assert</span><span class="token punctuation">(</span><span class="token function">loadfile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--调用loadfile（的返回结果）并可处理错误</span>
+    <span class="token keyword">return</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">end</span></code></pre>
+<p><code>注：加载了程序块并没有定义其中的函数。在Lua中，函数定义是一种赋值操作，是在运行时才完成的操作。 例如：一个文件test.lua中有一个函数 function foo(x) print(x) end ,执行如下代码： 　　　f = loadfile(test.lua) --加载程序块，此时还没有定义函数foo 　　　f() --运行加载的程序块，此时就定义了函数foo      foo(&quot;hello lua&quot;) --&gt;hello lua --经过上面的步骤才能调用foo    </code></p>
+<h3 id="dofile——执行"><a href="#dofile——执行" class="headerlink" title="dofile——执行"></a>dofile——执行</h3><pre><code>1.功能：载入文件并执行代码块，对于相同的文件每次都会执行
+2.调用：dofile(&quot;filename&quot;)
+3.错误处理：如果代码块中有错误则会引发错误
+4.优点：对简单任务而言，非常便捷
+5.缺点：每次载入文件时都会执行程序块</code></pre>
+<p>    6.定位：内置操作，辅助函数</p>
+<h3 id="require——我只执行一次"><a href="#require——我只执行一次" class="headerlink" title="require——我只执行一次"></a>require——我只执行一次</h3><pre><code>require和dofile有点像，不过又很不一样，require在第一次加载文件的时候，会执行里面的代码。
+但是，第二次之后，再次加载文件，则不会重复执行了。换句话说，它会保存已经加载过的文件，不会重复加载。</code></pre>
+<h3 id="loadstring"><a href="#loadstring" class="headerlink" title="loadstring"></a>loadstring</h3><pre><code>1.特点：功能强大，但开销大；
+2.典型用处：执行外部代码，如：用户的输入
+3.错误错里：代码中如果有语法错误就会返回nil
+4.理解：f = loadstring(&quot;i = i+1&quot;)  可理解为（但不完全是）f = function()  i = i+1  end 
+(注：这里的变量&quot;i&quot;是全局变量，不是指局部变量，如果没有定义全局变量&quot;i&quot;,调用f()则会报错！，即loadstring   不涉及词法域)</code></pre>
+]]></content>
+      <tags>
+        <tag>lua</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux之服务安装</title>
     <url>/2017/06069372.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="ssh-server-安装"><a href="#ssh-server-安装" class="headerlink" title="ssh-server 安装"></a>ssh-server 安装</h1><p><strong>SSH分客户端</strong></p>
@@ -3753,37 +3784,6 @@ $$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$
       </tags>
   </entry>
   <entry>
-    <title>Lua之 loadfile ,dofile, loadstring，require</title>
-    <url>/2017/03264bf8.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h3 id="loadfile——只编译，不运行"><a href="#loadfile——只编译，不运行" class="headerlink" title="loadfile——只编译，不运行"></a>loadfile——只编译，不运行</h3><p>    1.功能：载入文件但不执行代码块，对于相同的文件每次都会执行。只是编译代码，然后将编译结果作为一个函数返回<br>    2.调用：loadfile(“filename”)<br>    3.错误处理：不引发错误，只返回错误值但不处理错误,即返回nil和错误消息<br>    4.优点：调用一次之后可以多次调用返回的结果（即函数），<br>      即“多次调用”只需编译一次（注：这里的多次调用   是指多次调用返回的函数，而不是多次调用loadfile）</p>
-<a id="more"></a>
-
-<p><strong>dofile可如下定义：</strong></p>
-<pre class=" language-lua"><code class="language-lua">    <span class="token keyword">function</span> <span class="token function">dofile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span>
-    　　<span class="token keyword">local</span> f <span class="token operator">=</span> <span class="token function">assert</span><span class="token punctuation">(</span><span class="token function">loadfile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--调用loadfile（的返回结果）并可处理错误</span>
-    <span class="token keyword">return</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">end</span></code></pre>
-<p><code>注：加载了程序块并没有定义其中的函数。在Lua中，函数定义是一种赋值操作，是在运行时才完成的操作。 例如：一个文件test.lua中有一个函数 function foo(x) print(x) end ,执行如下代码： 　　　f = loadfile(test.lua) --加载程序块，此时还没有定义函数foo 　　　f() --运行加载的程序块，此时就定义了函数foo      foo(&quot;hello lua&quot;) --&gt;hello lua --经过上面的步骤才能调用foo    </code></p>
-<h3 id="dofile——执行"><a href="#dofile——执行" class="headerlink" title="dofile——执行"></a>dofile——执行</h3><pre><code>1.功能：载入文件并执行代码块，对于相同的文件每次都会执行
-2.调用：dofile(&quot;filename&quot;)
-3.错误处理：如果代码块中有错误则会引发错误
-4.优点：对简单任务而言，非常便捷
-5.缺点：每次载入文件时都会执行程序块</code></pre>
-<p>    6.定位：内置操作，辅助函数</p>
-<h3 id="require——我只执行一次"><a href="#require——我只执行一次" class="headerlink" title="require——我只执行一次"></a>require——我只执行一次</h3><pre><code>require和dofile有点像，不过又很不一样，require在第一次加载文件的时候，会执行里面的代码。
-但是，第二次之后，再次加载文件，则不会重复执行了。换句话说，它会保存已经加载过的文件，不会重复加载。</code></pre>
-<h3 id="loadstring"><a href="#loadstring" class="headerlink" title="loadstring"></a>loadstring</h3><pre><code>1.特点：功能强大，但开销大；
-2.典型用处：执行外部代码，如：用户的输入
-3.错误错里：代码中如果有语法错误就会返回nil
-4.理解：f = loadstring(&quot;i = i+1&quot;)  可理解为（但不完全是）f = function()  i = i+1  end 
-(注：这里的变量&quot;i&quot;是全局变量，不是指局部变量，如果没有定义全局变量&quot;i&quot;,调用f()则会报错！，即loadstring   不涉及词法域)</code></pre>
-]]></content>
-      <tags>
-        <tag>lua</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>NB-IoT 记录</title>
     <url>/2020/070926e6.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="NB状态"><a href="#NB状态" class="headerlink" title="NB状态"></a>NB状态</h2><ul>
@@ -3923,36 +3923,6 @@ make install</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>SSL握手过程</title>
-    <url>/2018/0326b45f.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div align="center">
-![hand][1]
-</div>
-
-<a id="more"></a>
-
-<h2 id="SSL-握手目的"><a href="#SSL-握手目的" class="headerlink" title="SSL 握手目的"></a>SSL 握手目的</h2><ol>
-<li>客户端与服务器需要就一组用于保护数据的算法达成一致；</li>
-<li>它们需要确立一组由那些算法所使用的加密密钥；</li>
-<li>握手还可以选择对客户端进行认证(单向/双向 认证)。</li>
-</ol>
-<h2 id="SSL-四次握手过程"><a href="#SSL-四次握手过程" class="headerlink" title="SSL 四次握手过程"></a>SSL 四次握手过程</h2><p>1、客户端请求建立SSL链接，并向服务端发送一个随机数–Client random和客户端支持的加密方法，比如RSA公钥加密，此时是明文传输。<br>2、服务端回复一种客户端支持的加密方法、一个随机数–Server random、授信的服务器证书和非对称加密的公钥。<br>3、客户端收到服务端的回复后利用服务端的公钥，加上新的随机数–Premaster secret 通过服务端下发的公钥及加密方法进行加密，发送给服务器。<br>4、服务端收到客户端的回复，利用已知的加解密方式进行解密，同时利用Client random、Server random和Premaster secret通过一定的算法生成HTTP链接数据传输的对称加密key – session key</p>
-<p><strong>此后通讯基于 sessionkey 对称加密进行</strong></p>
-<p>参考:</p>
-<ul>
-<li><a href="http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html">http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html</a></li>
-<li><a href="https://blog.csdn.net/zxk364961978/article/details/54809008">https://blog.csdn.net/zxk364961978/article/details/54809008</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>ssl</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SPI协议</title>
     <url>/2017/08171d58.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-一点基础介绍"><a href="#1-一点基础介绍" class="headerlink" title="1. 一点基础介绍"></a>1. 一点基础介绍</h2><blockquote>
@@ -4029,39 +3999,33 @@ make install</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>STM32 命名规则</title>
-    <url>/2017/0326eaab.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>以stm32f103c8t7xx为例子</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1736256-7d5b4a61ad2948ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="命名规范"></p>
+    <title>SSL握手过程</title>
+    <url>/2018/0326b45f.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div align="center">
+![hand][1]
+</div>
+
 <a id="more"></a>
 
-<p>| Device |  description |<br>| ————- |<br>| STM32 |基于ARM?的32位微控制器产品类型。 |<br>| F |通用类型产品子系列 |<br>|Device subfamily|101 = 基本型 102 = USB基本型 103 = 增强型 105/107 = 互联型|<br>|Pin count| T=36 C=48 R=64 V=100 Z=144|<br>|Flash Size|6=32 8=64 B=128 C=256 D=384 E=512 |<br>|Package|H = BGA T = LQFP U = VFQFPN Y = WLCSP64|</p>
-<h2 id="STM32-产品类型和启动文件的选择"><a href="#STM32-产品类型和启动文件的选择" class="headerlink" title="STM32 产品类型和启动文件的选择"></a>STM32 产品类型和启动文件的选择</h2><pre><code>- startup_stm32f10x_ld_vl.s: for STM32 Low density Value line devices
-- startup_stm32f10x_ld.s: for STM32 Low density devices
-- startup_stm32f10x_md_vl.s: for STM32 Medium density Value line devices
-- startup_stm32f10x_md.s: for STM32 Medium density devices
-- startup_stm32f10x_hd.s: for STM32 High density devices
-- startup_stm32f10x_xl.s: for STM32 XL density devices
-- startup_stm32f10x_cl.s: for STM32 Connectivity line devices
-cl：互联型产品，stm32f105/107系列
-vl：超值型产品，stm32f100系列
-xl：超高密度产品，stm32f101/103系列
-ld：低密度产品，FLASH小于64K
-md：中等密度产品，FLASH=64 or 128
-hd：高密度产品，FLASH大于128</code></pre>
-<h2 id="STM32-Flash-页面大小划分"><a href="#STM32-Flash-页面大小划分" class="headerlink" title="STM32 Flash 页面大小划分"></a>STM32 Flash 页面大小划分</h2><p>STM32有4种Flash module organization，分别是：</p>
+<h2 id="SSL-握手目的"><a href="#SSL-握手目的" class="headerlink" title="SSL 握手目的"></a>SSL 握手目的</h2><ol>
+<li>客户端与服务器需要就一组用于保护数据的算法达成一致；</li>
+<li>它们需要确立一组由那些算法所使用的加密密钥；</li>
+<li>握手还可以选择对客户端进行认证(单向/双向 认证)。</li>
+</ol>
+<h2 id="SSL-四次握手过程"><a href="#SSL-四次握手过程" class="headerlink" title="SSL 四次握手过程"></a>SSL 四次握手过程</h2><p>1、客户端请求建立SSL链接，并向服务端发送一个随机数–Client random和客户端支持的加密方法，比如RSA公钥加密，此时是明文传输。<br>2、服务端回复一种客户端支持的加密方法、一个随机数–Server random、授信的服务器证书和非对称加密的公钥。<br>3、客户端收到服务端的回复后利用服务端的公钥，加上新的随机数–Premaster secret 通过服务端下发的公钥及加密方法进行加密，发送给服务器。<br>4、服务端收到客户端的回复，利用已知的加解密方式进行解密，同时利用Client random、Server random和Premaster secret通过一定的算法生成HTTP链接数据传输的对称加密key – session key</p>
+<p><strong>此后通讯基于 sessionkey 对称加密进行</strong></p>
+<p>参考:</p>
 <ul>
-<li>low-density devices(32KB，1KB/page)</li>
-<li>medium-density devices(128KB，1KB/page)</li>
-<li>high-density devices(512KB，2KB/page)</li>
-<li>connectivity line devices(256KB，2KB/page)</li>
-<li>XL-density(devices(1M，2KB/page)</li>
+<li><a href="http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html">http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html</a></li>
+<li><a href="https://blog.csdn.net/zxk364961978/article/details/54809008">https://blog.csdn.net/zxk364961978/article/details/54809008</a></li>
 </ul>
 ]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
       <tags>
-        <tag>STM32</tag>
-        <tag>ST</tag>
+        <tag>算法</tag>
+        <tag>ssl</tag>
       </tags>
   </entry>
   <entry>
@@ -4109,213 +4073,39 @@ returnadc;//返回最近一次ADCx规则组的转换结果
       </tags>
   </entry>
   <entry>
-    <title>WireShark网络抓包</title>
-    <url>/2017/0701dc5b.html</url>
+    <title>STM32 命名规则</title>
+    <url>/2017/0326eaab.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h2 id="WireShark入门"><a href="#WireShark入门" class="headerlink" title="WireShark入门"></a>WireShark入门</h2><h3 id="一、-打开WireShark"><a href="#一、-打开WireShark" class="headerlink" title="一、 打开WireShark"></a>一、 打开WireShark</h3><p><img src="http://static.zybuluo.com/AlexLin/4224884og6inde3h2q5wcw6a/image.png" alt="WireShark启动界面"></p>
+<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>以stm32f103c8t7xx为例子</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1736256-7d5b4a61ad2948ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="命名规范"></p>
 <a id="more"></a>
-<h3 id="二、界面分区"><a href="#二、界面分区" class="headerlink" title="二、界面分区"></a>二、界面分区</h3><p><img src="http://static.zybuluo.com/AlexLin/zrfd5f3v3q3o8bjdjay8oxc1/image.png" alt="WireShark界面划分"></p>
-<h3 id="三、过滤规则语句"><a href="#三、过滤规则语句" class="headerlink" title="三、过滤规则语句"></a>三、过滤规则语句</h3><ul>
-<li><p> IP 过滤</p>
-<pre><code>ip.src eq 192.168.1.107 or ip.dst eq 192.168.1.107
-#或者
-ip.addr eq 192.168.1.107 // 都能显示来源IP和目标IP</code></pre>
-</li>
-<li><p> 过滤端口</p>
-<pre><code>tcp.port eq 80 // 不管端口是来源的还是目标的都显示
-tcp.port == 80
-tcp.port eq 2722
-tcp.port eq 80 or udp.port eq 80
-tcp.dstport == 80 // 只显tcp协议的目标端口80
-tcp.srcport == 80 // 只显tcp协议的来源端口80
-#端口范围
-tcp.port &gt;= 1 and tcp.port &lt;= 80</code></pre>
-</li>
-<li><p>协议过滤</p>
-<pre><code>tcp、udp、arp、icmp、http、smtp、ftp、dns、msnms、ip、ssl、oicq、bootp #等等.
-#排除
-#排除arp包
-!arp  或者  not arp</code></pre>
-</li>
-<li><p>mac 过滤</p>
-<pre><code>eth.dst == A0:00:00:04:C5:84 //过滤目标mac
-eth.src eq A0:00:00:04:C5:84 //过滤来源mac
-eth.dst==A0:00:00:04:C5:84
-eth.dst==A0-00-00-04-C5-84
-eth.addr eq A0:00:00:04:C5:84 //过滤来源MAC和目标MAC都等于A0:00:00:04:C5:84的MAC</code></pre>
-</li>
-<li><p>数据包长度过滤</p>
-<pre><code>udp.length == 26 #这个长度是指udp本身固定长度8加上udp下面那块数据包之和
-tcp.len &gt;= 7  #指的是ip数据包(tcp下面那块数据),不包括tcp本身
-ip.len == 94 #除了以太网头固定长度14,其它都算是ip.len,即从ip本身到最后
-frame.len == 119 #整个数据包长度,从eth开始到最后
-#数据包组成成员
-eth ---&gt; ip or arp ---&gt; tcp or udp ---&gt; data</code></pre>
-</li>
-<li><p>http模式过滤</p>
-<pre><code>http.request.method == &quot;GET&quot;
-http.request.method == &quot;POST&quot;
-http.request.uri == &quot;/img/logo-edu.gif&quot;
-http contains &quot;GET&quot;
-http contains &quot;HTTP/1.&quot;
-</code></pre>
-</li>
-</ul>
-<p>// GET包<br>http.request.method == “GET” &amp;&amp; http contains “Host: “<br>http.request.method == “GET” &amp;&amp; http contains “User-Agent: “<br>// POST包<br>http.request.method == “POST” &amp;&amp; http contains “Host: “<br>http.request.method == “POST” &amp;&amp; http contains “User-Agent: “<br>// 响应包<br>http contains “HTTP/1.1 200 OK” &amp;&amp; http contains “Content-Type: “<br>http contains “HTTP/1.0 200 OK” &amp;&amp; http contains “Content-Type: “</p>
-<pre><code>- 两种条件成立过滤</code></pre>
-<p>过滤两种条件时，使用and连接，<br>如过滤ip为192.168.101.8并且为http协议的，ip.src==192.168.101.8 and http。</p>
-<pre><code>- 域名过滤</code></pre>
-<p>http.host == “gizwits.com”</p>
-<pre><code>### 四、TCP包分析
 
-#### **一个TCP包由5部分组成分别是:**
-
-1. Frame:   物理层的数据帧概况
-2. Ethernet II: 数据链路层以太网帧头部信息
-3. Internet Protocol Version 4: 互联网层IP包头部信息
-4. Transmission Control Protocol:  传输层T的数据段头部信息，此处是mqtt
-5. Hypertext Transfer Protocol/Data:  应用层的信息，此处是mqtt协议
-
-#### **与之对应的网络七层协议图如下**
-![tcp数据层][3]
-#### OSI 参考模型与 TCP/IP分层模型
-![OSI 参考模型与 TCP/IP分层模型][5]
-
-#### **TCP 三次握手**
-**图片版本**
-![TCP三次握手][6]
-#### **WireShark抓包分析图**
-##### **第一次握手**
-代表客户端请求建立连接</code></pre>
-<p>SEQ=0<br>ACK=0<br>FLAGS = 0x0002 （SYN）</p>
-<pre><code>**WireShark第一次TCP握手图**
-![TCP 第一次握手][7]
-
-##### **第二次握手：**
-服务器发回确认包, 标志位为 SYN,ACK. 将确认序号(Acknowledgement Number)设置为客户的SEQ加1以.即ACK=SEQ+1</code></pre>
-<p>SEQ = 0<br>ACK = SEQ+1<br>FLAGS = 0X0012（SYN +ACK）</p>
-<pre><code>**WireShark第二次TCP握手图**
-![TCP 第二次握手][8]
-
-客户端再次发送确认包(ACK) SYN标志位为0,ACK标志位为1.并且把服务器发来ACK的序号字段+1,放确在SEQ字段中发送给对方.
-</code></pre>
-<p>SEQ =SEQ+1<br>ACK = 1;<br>FLAGS = 0X0001（ACK）</p>
-<pre><code>![TCP 第三次握手][9]
-
-#### **第四次挥手**
-第一次、A机器向B机器发起断开请求，其中FIN置位,且seq=x;此时A进入FIN_WAIT_1状态；
-第二次、B机器响应A的断开请求，ACK置位，且ACK值=x+1,且Seq=z;此时A进入FIN_WAIT_2状态(表示B同意A的断开请求)；
-第三次、B机器向A发起断开请求，其中FIN置为，且Seq=y;(此时B进入LAST_WAIT)
-第四次、A响应B的断开请求，ACK置位，ACK值位y+1;此时A进入TIME_WAIT，B收到ACK之后直接CLOSE；A在经过2MSL时间之后若没收到FIN信号则CLOSE;
-
-![upload successful](/images/pasted-107.png)
-
-
-
-### 五、WireShark 抓包异常情况分析
-
-#### 1. **tcp out-of-order**（tcp有问题）
-&gt;**原因:** 应该有很多原因。但是多半是网络拥塞，导致顺序包抵达时间不同，延时太长，或者包丢失，需要重新组合数据单元 因为他们可能是通过不同的路径到达你电脑上面的。
-
-#### 2. **tcp segment of a reassembled PDU**
-&gt;**原因:** 在连个连接建立的时候，SYN包里面会把彼此TCP最大的报文段长度，在局域网内一般都是**1460**.如果发送的包比最大的报文段长度长的话就要分片了，被分片出来的包，就会被标记了**“TCP segment of a reassembled PDU”**。TCP在发起连接的第一个报文的TCP头里通过MSS这个可选项告知对方本端能够接收的最大报文（当然，这个大小是TCP净荷的大小），以太网上这个值一般设置成1460，因为1460Byte净荷+20Byte TCP头+20Byte IP头 ＝ 1500字节，正好符合链路层最大报文的要求，被标记了的包的SEQ和ACK都和原来的包一致。
-#### 3. **Tcp previous segment lost（tcp先前的分片丢失）**
-&gt;一般是网络中的网络设备发生的拥塞了，触发了TCP的拥塞控制机制。它告诉发送方数据段丢失；
-（1）、“TCP Previous segment lost” errors are not “fatal” errors. They simply indicate that the sequence number in the arriving packet is higher than the next-expected sequence number, indicating that at least one segment was dropped/lost. The receiving station remedies this situation by sending duplicate ACKs for each additional packet it receives until the sender retransmits the missing packet(s). TCP is designed to recover from this situation, which is why the image is downloaded correctly despite having a (briefly) missing packet.
-If you are getting a large number of lost packets, then there is likely a communication problem between the sender and receiver. A common cause of this is un-matched duplex settings between the PC and the switch.
-We (our lab) recently upgraded to Ethereal 0.10.14 with WinPCap 3.1.  If I remember correctly, we had previously been using 0.10.2 with WinPCap 3.0.  However, since the upgrade we have been noticing several issues.
-The first issue is with “TCP Previous segment lost” and “TCP CHECKSUM INCORRECT” messages appearing in the Packet Listing window.  We do not remember seeing these in the previous version of Ethereal, or at least not nearly as many as we are seeing now.  For example, one task for the student instructional part of the lab involves visiting a website containing two images and observing the network activity.  After the two GET requests are sent for the images, it is not uncommon for one image to be returned with a typical 200 OK response packet, but the response packet for the other image will be displayed as “TCP Previous segment lost.”  However, both images are downloaded and displayed perfectly fine in the browser.  I would think that the segment lost error would mean the object wasn’t returned correctly and shouldn’t be able to be displayed, but apparently that is not the case.  (The cache had been cleared when this was performed, so it was not defaulting to a local copy of the image.)
-Another problem we’ve been noticing is that some packets simply aren’t displayed in the Packet Listing window, even when they are obviously received.  Using the same example as above, after the two GET requests are sent for the images, it is not uncommon for one image to be returned with a typical 200 OK response, but the other response will not appear.  Yet both images are successfully displayed in the browser.  Is this a problem with Ethereal not detecting the packets?
-I’m not sure how typical this is, but we seem to be experiencing these issues often with 0.10.14 while we never did with 0.10.2.  Could it also be an issue with WinPCap, and not necessarily Ethereal?  I’m just trying to find some answers as to why we are seeing a sudden abundance of TCP related errors and uncaptured packets.  Thanks.
-（2）、I have a network client application that runs fine while I am debugging (no TCP errors),
-but when I run the release version, it runs incredibly slow.  It runs as a series of
-transactions, where each transaction is a separate connection to the server.  Wireshark
-analysis has determined that about 50% of all transactions involve the series:
-TCP Previous Segment Lost
-
-#### 4. Tcpacked lost segment（tcp应答丢失）
-#### 5. Tcp window update（tcp窗口更新）
-#### 6. Tcp dup ack（tcp重复应答）
-&gt;1)当收到tcp out-of-order 信号时，可能发送该信号， 这个相同应答的意图是让对端知道一个分片被收到的时候出现问题，并且告诉它希望得到的序列号。
-2)由于TCP不知道重复的ACK是由丢失的段引起的还是仅仅是重新排序段，所以等待接收到少量的重复的ACK。 假设如果只有段的重新排序，则在重新排序的段被处理之前将只有一个或两个重复的ACK，然后将生成新的ACK。 如果在一行中接收到三个或更多个重复的ACK，则表明段已经丢失。 TCP然后执行似乎是丢失段的重传，而不等待重传定时器到期。
-
-#### 7. **Tcp keep alive**（tcp保持活动）
-&gt;在TCP中有一个Keep-alive的机制可以检测死连接，原理很简单，TCP会在空闲了一定时间后发送数据给对方：
- 1.如果主机可达，对方就会响应ACK应答，就认为是存活的。
- 2.如果可达，但应用程序退出，对方就发RST应答，发送TCP撤消连接。
- 3.如果可达，但应用程序崩溃，对方就发FIN消息。
- 4.如果对方主机不响应ack, rst，继续发送直到超时，就撤消连接。这个时间就是默认的二个小时。
-
-#### 8. **Tcp retransmission**（tcp重传）
-&gt;作为一个可靠的传输协议，传输控制协议（TCP）在发送主机需要从目标主机收到一个包时确认。If the sender does not receive that acknowledgment within a certain amount of time, it acts under the assumption that the packet did not reach its destination and retransmits the packet.如果发件人没有收到的时间内一定之金额，确认，它的行为假设下，该数据包没有到达其目的地，以及转发数据包。
-
-
-## TCP 状态分析
-TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)
-在TCP层，有个FLAGS字段，这个字段有以下几个标识：SYN, FIN, ACK, PSH, RST, URG.
-它们的含义是：
-
- 1. SYN(synchronous): 表示建立连接.
- 2. FIN(finish): 表示关闭连接.
- 3. ACK(acknowledgement): 表示响应.
- 4. PSH(push): 表示有DATA数据传输.
- 5. RST(reset): 表示连接重置.
- 6. URG(urgent):紧急.
- 7. SEQ(Sequence number):顺序号码
-
-## TCP 三次握手流程
-1. 主机A发送位码为syn＝1，随机产生seq number=1234567的数据包到服务器，主机B由SYN=1知道，A要求建立联机；
-2. 主机B收到请求后要确认联机信息，向A发送ack number=(主机A的seq+1)，syn=1，ack=1，随机产生seq=7654321的包；
-3. 主机A收到后检查ack number是否正确，即第一次发送的seq number+1，以及位码ack是否为1，若正确，主机A会再发送ack number=(主机B的seq+1)，ack=1，主机B收到后确认seq值与ack=1则连接建立成功。
-
-## 各种网络包头格式
-### 以太网头</code></pre>
-<p>// MAC地址长度<br>#define MAC_ADDRESS_LEN 6</p>
-<p>// 常用的以太网帧类型<br>#define ETHERNET_FRAME_IP       0x0800              // IP帧<br>#define ETHERNET_FRAME_ARP      0x0806              // ARP帧<br>#define ETHERNET_FRAME_RARP     0x8035              // RARP帧<br>#define ETHERNET_FRAME_IPv6     0x86DD              // IP6帧</p>
-<p>typedef struct _EthernetHeader      // 以太头<br>{<br>    UCHAR       DstMacAddr[MAC_ADDRESS_LEN];        // 目标MAC<br>    UCHAR       SrcMacAddr[MAC_ADDRESS_LEN];        // 源MAC<br>    USHORT      FrmType;                            // 类型<br>}EthernetHeader, *PEthernetHeader;</p>
-<pre><code>### TCP 包格式</code></pre>
-<h2 id="0-15-31"><a href="#0-15-31" class="headerlink" title="0                            15                              31"></a>0                            15                              31</h2><h2 id="source-port-destination-port"><a href="#source-port-destination-port" class="headerlink" title="|          source port          |       destination port        |"></a>|          source port          |       destination port        |</h2><table>
-<thead>
-<tr>
-<th>sequence number</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>acknowledgment number</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="HL-rsvd-C-E-U-A-P-R-S-F-window-size"><a href="#HL-rsvd-C-E-U-A-P-R-S-F-window-size" class="headerlink" title="|  HL   | rsvd  |C|E|U|A|P|R|S|F|        window size            |"></a>|  HL   | rsvd  |C|E|U|A|P|R|S|F|        window size            |</h2><h2 id="TCP-checksum-urgent-pointer"><a href="#TCP-checksum-urgent-pointer" class="headerlink" title="|         TCP checksum          |       urgent pointer          |"></a>|         TCP checksum          |       urgent pointer          |</h2><table>
-<thead>
-<tr>
-<th>Optional</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Data</td>
-</tr>
-</tbody></table>
-<hr>
-<p>// TCP头标志位掩码 OffFlag<br>#define TCP_HDR_LEN             0xF000              // TCP头长度&lt;双字的个数&gt;转化为字节数需要x4<br>#define TCP_URG_FLAG            0x0020              // URG标志<br>#define TCP_ACK_FLAG            0x0010              // ACK标志 应答1或请求0<br>#define TCP_PSH_FLAG            0x0008              // psh标志 以最快速度传输数据<br>#define TCP_RST_FLAG            0x0004              // RST标志 先断开连接,再重建连接<br>#define TCP_SYN_FLAG            0x0002              // SYN标志 用来建立连接<br>#define TCP_FIN_FLAG            0x0001              // FIN标志 发送方完成数据发送</p>
-<p>typedef struct _TcpHeader           // TCP头 20 BYTES<br>{<br>    USHORT      SrcPort;                            // 源端口<br>    USHORT      DstPort;                            // 目的端口<br>    ULONG       SeqNum;                             // 序号<br>    ULONG       AckNum;                             // 确认号<br>    USHORT      OffFlag;                            // 首部长度&lt;首部双字的个数&gt;+保留位+标志位<br>    USHORT      WndSize;                            // 窗口大小&lt;实现流量控制&gt;<br>    USHORT      Checksum;                           // 效验和<br>    USHORT      UrgPointer;                         // 紧急指针<br>}TcpHeader, *PTcpHeader;</p>
-<p>// OffFlag : 4位首部长度 + 6位保留位 + URG+ACK+PSH+RST+SYN+FIN</p>
-<p>typedef struct _TCPPACKET           // TCP封包 &lt;当ip中没有附加数据时&gt;<br>{<br>    EthernetHeader  Ehhdr;<br>    IPHeader        Iphdr;<br>    TcpHeader       Tcphdr;<br>}TCPPACKET, *PTCPPACKET;</p>
-<p>```</p>
-<p>SYN和ACK可能同时为1，它表示的就是建立连接之后的响应，<br>如果只是单个的一个SYN，它表示的只是建立连接。</p>
-<p>参考</p>
-<hr>
+<p>| Device |  description |<br>| ————- |<br>| STM32 |基于ARM?的32位微控制器产品类型。 |<br>| F |通用类型产品子系列 |<br>|Device subfamily|101 = 基本型 102 = USB基本型 103 = 增强型 105/107 = 互联型|<br>|Pin count| T=36 C=48 R=64 V=100 Z=144|<br>|Flash Size|6=32 8=64 B=128 C=256 D=384 E=512 |<br>|Package|H = BGA T = LQFP U = VFQFPN Y = WLCSP64|</p>
+<h2 id="STM32-产品类型和启动文件的选择"><a href="#STM32-产品类型和启动文件的选择" class="headerlink" title="STM32 产品类型和启动文件的选择"></a>STM32 产品类型和启动文件的选择</h2><pre><code>- startup_stm32f10x_ld_vl.s: for STM32 Low density Value line devices
+- startup_stm32f10x_ld.s: for STM32 Low density devices
+- startup_stm32f10x_md_vl.s: for STM32 Medium density Value line devices
+- startup_stm32f10x_md.s: for STM32 Medium density devices
+- startup_stm32f10x_hd.s: for STM32 High density devices
+- startup_stm32f10x_xl.s: for STM32 XL density devices
+- startup_stm32f10x_cl.s: for STM32 Connectivity line devices
+cl：互联型产品，stm32f105/107系列
+vl：超值型产品，stm32f100系列
+xl：超高密度产品，stm32f101/103系列
+ld：低密度产品，FLASH小于64K
+md：中等密度产品，FLASH=64 or 128
+hd：高密度产品，FLASH大于128</code></pre>
+<h2 id="STM32-Flash-页面大小划分"><a href="#STM32-Flash-页面大小划分" class="headerlink" title="STM32 Flash 页面大小划分"></a>STM32 Flash 页面大小划分</h2><p>STM32有4种Flash module organization，分别是：</p>
 <ul>
-<li><a href="http://bbs.pediy.com/thread-147644.htm">http://bbs.pediy.com/thread-147644.htm</a></li>
-<li><a href="http://www.yunsec.net/a/school/wlcs/agreement/2012/0317/10262.html">http://www.yunsec.net/a/school/wlcs/agreement/2012/0317/10262.html</a></li>
-<li><a href="http://www.9upk.com/article/2537.html">http://www.9upk.com/article/2537.html</a> （抓包工具教程）</li>
+<li>low-density devices(32KB，1KB/page)</li>
+<li>medium-density devices(128KB，1KB/page)</li>
+<li>high-density devices(512KB，2KB/page)</li>
+<li>connectivity line devices(256KB，2KB/page)</li>
+<li>XL-density(devices(1M，2KB/page)</li>
 </ul>
 ]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
       <tags>
-        <tag>抓包工具</tag>
-        <tag>wireShark</tag>
+        <tag>STM32</tag>
+        <tag>ST</tag>
       </tags>
   </entry>
   <entry>
@@ -4720,6 +4510,216 @@ t 0:0(0) ack 22535 win 8760 (DF)</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>WireShark网络抓包</title>
+    <url>/2017/0701dc5b.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h2 id="WireShark入门"><a href="#WireShark入门" class="headerlink" title="WireShark入门"></a>WireShark入门</h2><h3 id="一、-打开WireShark"><a href="#一、-打开WireShark" class="headerlink" title="一、 打开WireShark"></a>一、 打开WireShark</h3><p><img src="http://static.zybuluo.com/AlexLin/4224884og6inde3h2q5wcw6a/image.png" alt="WireShark启动界面"></p>
+<a id="more"></a>
+<h3 id="二、界面分区"><a href="#二、界面分区" class="headerlink" title="二、界面分区"></a>二、界面分区</h3><p><img src="http://static.zybuluo.com/AlexLin/zrfd5f3v3q3o8bjdjay8oxc1/image.png" alt="WireShark界面划分"></p>
+<h3 id="三、过滤规则语句"><a href="#三、过滤规则语句" class="headerlink" title="三、过滤规则语句"></a>三、过滤规则语句</h3><ul>
+<li><p> IP 过滤</p>
+<pre><code>ip.src eq 192.168.1.107 or ip.dst eq 192.168.1.107
+#或者
+ip.addr eq 192.168.1.107 // 都能显示来源IP和目标IP</code></pre>
+</li>
+<li><p> 过滤端口</p>
+<pre><code>tcp.port eq 80 // 不管端口是来源的还是目标的都显示
+tcp.port == 80
+tcp.port eq 2722
+tcp.port eq 80 or udp.port eq 80
+tcp.dstport == 80 // 只显tcp协议的目标端口80
+tcp.srcport == 80 // 只显tcp协议的来源端口80
+#端口范围
+tcp.port &gt;= 1 and tcp.port &lt;= 80</code></pre>
+</li>
+<li><p>协议过滤</p>
+<pre><code>tcp、udp、arp、icmp、http、smtp、ftp、dns、msnms、ip、ssl、oicq、bootp #等等.
+#排除
+#排除arp包
+!arp  或者  not arp</code></pre>
+</li>
+<li><p>mac 过滤</p>
+<pre><code>eth.dst == A0:00:00:04:C5:84 //过滤目标mac
+eth.src eq A0:00:00:04:C5:84 //过滤来源mac
+eth.dst==A0:00:00:04:C5:84
+eth.dst==A0-00-00-04-C5-84
+eth.addr eq A0:00:00:04:C5:84 //过滤来源MAC和目标MAC都等于A0:00:00:04:C5:84的MAC</code></pre>
+</li>
+<li><p>数据包长度过滤</p>
+<pre><code>udp.length == 26 #这个长度是指udp本身固定长度8加上udp下面那块数据包之和
+tcp.len &gt;= 7  #指的是ip数据包(tcp下面那块数据),不包括tcp本身
+ip.len == 94 #除了以太网头固定长度14,其它都算是ip.len,即从ip本身到最后
+frame.len == 119 #整个数据包长度,从eth开始到最后
+#数据包组成成员
+eth ---&gt; ip or arp ---&gt; tcp or udp ---&gt; data</code></pre>
+</li>
+<li><p>http模式过滤</p>
+<pre><code>http.request.method == &quot;GET&quot;
+http.request.method == &quot;POST&quot;
+http.request.uri == &quot;/img/logo-edu.gif&quot;
+http contains &quot;GET&quot;
+http contains &quot;HTTP/1.&quot;
+</code></pre>
+</li>
+</ul>
+<p>// GET包<br>http.request.method == “GET” &amp;&amp; http contains “Host: “<br>http.request.method == “GET” &amp;&amp; http contains “User-Agent: “<br>// POST包<br>http.request.method == “POST” &amp;&amp; http contains “Host: “<br>http.request.method == “POST” &amp;&amp; http contains “User-Agent: “<br>// 响应包<br>http contains “HTTP/1.1 200 OK” &amp;&amp; http contains “Content-Type: “<br>http contains “HTTP/1.0 200 OK” &amp;&amp; http contains “Content-Type: “</p>
+<pre><code>- 两种条件成立过滤</code></pre>
+<p>过滤两种条件时，使用and连接，<br>如过滤ip为192.168.101.8并且为http协议的，ip.src==192.168.101.8 and http。</p>
+<pre><code>- 域名过滤</code></pre>
+<p>http.host == “gizwits.com”</p>
+<pre><code>### 四、TCP包分析
+
+#### **一个TCP包由5部分组成分别是:**
+
+1. Frame:   物理层的数据帧概况
+2. Ethernet II: 数据链路层以太网帧头部信息
+3. Internet Protocol Version 4: 互联网层IP包头部信息
+4. Transmission Control Protocol:  传输层T的数据段头部信息，此处是mqtt
+5. Hypertext Transfer Protocol/Data:  应用层的信息，此处是mqtt协议
+
+#### **与之对应的网络七层协议图如下**
+![tcp数据层][3]
+#### OSI 参考模型与 TCP/IP分层模型
+![OSI 参考模型与 TCP/IP分层模型][5]
+
+#### **TCP 三次握手**
+**图片版本**
+![TCP三次握手][6]
+#### **WireShark抓包分析图**
+##### **第一次握手**
+代表客户端请求建立连接</code></pre>
+<p>SEQ=0<br>ACK=0<br>FLAGS = 0x0002 （SYN）</p>
+<pre><code>**WireShark第一次TCP握手图**
+![TCP 第一次握手][7]
+
+##### **第二次握手：**
+服务器发回确认包, 标志位为 SYN,ACK. 将确认序号(Acknowledgement Number)设置为客户的SEQ加1以.即ACK=SEQ+1</code></pre>
+<p>SEQ = 0<br>ACK = SEQ+1<br>FLAGS = 0X0012（SYN +ACK）</p>
+<pre><code>**WireShark第二次TCP握手图**
+![TCP 第二次握手][8]
+
+客户端再次发送确认包(ACK) SYN标志位为0,ACK标志位为1.并且把服务器发来ACK的序号字段+1,放确在SEQ字段中发送给对方.
+</code></pre>
+<p>SEQ =SEQ+1<br>ACK = 1;<br>FLAGS = 0X0001（ACK）</p>
+<pre><code>![TCP 第三次握手][9]
+
+#### **第四次挥手**
+第一次、A机器向B机器发起断开请求，其中FIN置位,且seq=x;此时A进入FIN_WAIT_1状态；
+第二次、B机器响应A的断开请求，ACK置位，且ACK值=x+1,且Seq=z;此时A进入FIN_WAIT_2状态(表示B同意A的断开请求)；
+第三次、B机器向A发起断开请求，其中FIN置为，且Seq=y;(此时B进入LAST_WAIT)
+第四次、A响应B的断开请求，ACK置位，ACK值位y+1;此时A进入TIME_WAIT，B收到ACK之后直接CLOSE；A在经过2MSL时间之后若没收到FIN信号则CLOSE;
+
+![upload successful](/images/pasted-107.png)
+
+
+
+### 五、WireShark 抓包异常情况分析
+
+#### 1. **tcp out-of-order**（tcp有问题）
+&gt;**原因:** 应该有很多原因。但是多半是网络拥塞，导致顺序包抵达时间不同，延时太长，或者包丢失，需要重新组合数据单元 因为他们可能是通过不同的路径到达你电脑上面的。
+
+#### 2. **tcp segment of a reassembled PDU**
+&gt;**原因:** 在连个连接建立的时候，SYN包里面会把彼此TCP最大的报文段长度，在局域网内一般都是**1460**.如果发送的包比最大的报文段长度长的话就要分片了，被分片出来的包，就会被标记了**“TCP segment of a reassembled PDU”**。TCP在发起连接的第一个报文的TCP头里通过MSS这个可选项告知对方本端能够接收的最大报文（当然，这个大小是TCP净荷的大小），以太网上这个值一般设置成1460，因为1460Byte净荷+20Byte TCP头+20Byte IP头 ＝ 1500字节，正好符合链路层最大报文的要求，被标记了的包的SEQ和ACK都和原来的包一致。
+#### 3. **Tcp previous segment lost（tcp先前的分片丢失）**
+&gt;一般是网络中的网络设备发生的拥塞了，触发了TCP的拥塞控制机制。它告诉发送方数据段丢失；
+（1）、“TCP Previous segment lost” errors are not “fatal” errors. They simply indicate that the sequence number in the arriving packet is higher than the next-expected sequence number, indicating that at least one segment was dropped/lost. The receiving station remedies this situation by sending duplicate ACKs for each additional packet it receives until the sender retransmits the missing packet(s). TCP is designed to recover from this situation, which is why the image is downloaded correctly despite having a (briefly) missing packet.
+If you are getting a large number of lost packets, then there is likely a communication problem between the sender and receiver. A common cause of this is un-matched duplex settings between the PC and the switch.
+We (our lab) recently upgraded to Ethereal 0.10.14 with WinPCap 3.1.  If I remember correctly, we had previously been using 0.10.2 with WinPCap 3.0.  However, since the upgrade we have been noticing several issues.
+The first issue is with “TCP Previous segment lost” and “TCP CHECKSUM INCORRECT” messages appearing in the Packet Listing window.  We do not remember seeing these in the previous version of Ethereal, or at least not nearly as many as we are seeing now.  For example, one task for the student instructional part of the lab involves visiting a website containing two images and observing the network activity.  After the two GET requests are sent for the images, it is not uncommon for one image to be returned with a typical 200 OK response packet, but the response packet for the other image will be displayed as “TCP Previous segment lost.”  However, both images are downloaded and displayed perfectly fine in the browser.  I would think that the segment lost error would mean the object wasn’t returned correctly and shouldn’t be able to be displayed, but apparently that is not the case.  (The cache had been cleared when this was performed, so it was not defaulting to a local copy of the image.)
+Another problem we’ve been noticing is that some packets simply aren’t displayed in the Packet Listing window, even when they are obviously received.  Using the same example as above, after the two GET requests are sent for the images, it is not uncommon for one image to be returned with a typical 200 OK response, but the other response will not appear.  Yet both images are successfully displayed in the browser.  Is this a problem with Ethereal not detecting the packets?
+I’m not sure how typical this is, but we seem to be experiencing these issues often with 0.10.14 while we never did with 0.10.2.  Could it also be an issue with WinPCap, and not necessarily Ethereal?  I’m just trying to find some answers as to why we are seeing a sudden abundance of TCP related errors and uncaptured packets.  Thanks.
+（2）、I have a network client application that runs fine while I am debugging (no TCP errors),
+but when I run the release version, it runs incredibly slow.  It runs as a series of
+transactions, where each transaction is a separate connection to the server.  Wireshark
+analysis has determined that about 50% of all transactions involve the series:
+TCP Previous Segment Lost
+
+#### 4. Tcpacked lost segment（tcp应答丢失）
+#### 5. Tcp window update（tcp窗口更新）
+#### 6. Tcp dup ack（tcp重复应答）
+&gt;1)当收到tcp out-of-order 信号时，可能发送该信号， 这个相同应答的意图是让对端知道一个分片被收到的时候出现问题，并且告诉它希望得到的序列号。
+2)由于TCP不知道重复的ACK是由丢失的段引起的还是仅仅是重新排序段，所以等待接收到少量的重复的ACK。 假设如果只有段的重新排序，则在重新排序的段被处理之前将只有一个或两个重复的ACK，然后将生成新的ACK。 如果在一行中接收到三个或更多个重复的ACK，则表明段已经丢失。 TCP然后执行似乎是丢失段的重传，而不等待重传定时器到期。
+
+#### 7. **Tcp keep alive**（tcp保持活动）
+&gt;在TCP中有一个Keep-alive的机制可以检测死连接，原理很简单，TCP会在空闲了一定时间后发送数据给对方：
+ 1.如果主机可达，对方就会响应ACK应答，就认为是存活的。
+ 2.如果可达，但应用程序退出，对方就发RST应答，发送TCP撤消连接。
+ 3.如果可达，但应用程序崩溃，对方就发FIN消息。
+ 4.如果对方主机不响应ack, rst，继续发送直到超时，就撤消连接。这个时间就是默认的二个小时。
+
+#### 8. **Tcp retransmission**（tcp重传）
+&gt;作为一个可靠的传输协议，传输控制协议（TCP）在发送主机需要从目标主机收到一个包时确认。If the sender does not receive that acknowledgment within a certain amount of time, it acts under the assumption that the packet did not reach its destination and retransmits the packet.如果发件人没有收到的时间内一定之金额，确认，它的行为假设下，该数据包没有到达其目的地，以及转发数据包。
+
+
+## TCP 状态分析
+TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)
+在TCP层，有个FLAGS字段，这个字段有以下几个标识：SYN, FIN, ACK, PSH, RST, URG.
+它们的含义是：
+
+ 1. SYN(synchronous): 表示建立连接.
+ 2. FIN(finish): 表示关闭连接.
+ 3. ACK(acknowledgement): 表示响应.
+ 4. PSH(push): 表示有DATA数据传输.
+ 5. RST(reset): 表示连接重置.
+ 6. URG(urgent):紧急.
+ 7. SEQ(Sequence number):顺序号码
+
+## TCP 三次握手流程
+1. 主机A发送位码为syn＝1，随机产生seq number=1234567的数据包到服务器，主机B由SYN=1知道，A要求建立联机；
+2. 主机B收到请求后要确认联机信息，向A发送ack number=(主机A的seq+1)，syn=1，ack=1，随机产生seq=7654321的包；
+3. 主机A收到后检查ack number是否正确，即第一次发送的seq number+1，以及位码ack是否为1，若正确，主机A会再发送ack number=(主机B的seq+1)，ack=1，主机B收到后确认seq值与ack=1则连接建立成功。
+
+## 各种网络包头格式
+### 以太网头</code></pre>
+<p>// MAC地址长度<br>#define MAC_ADDRESS_LEN 6</p>
+<p>// 常用的以太网帧类型<br>#define ETHERNET_FRAME_IP       0x0800              // IP帧<br>#define ETHERNET_FRAME_ARP      0x0806              // ARP帧<br>#define ETHERNET_FRAME_RARP     0x8035              // RARP帧<br>#define ETHERNET_FRAME_IPv6     0x86DD              // IP6帧</p>
+<p>typedef struct _EthernetHeader      // 以太头<br>{<br>    UCHAR       DstMacAddr[MAC_ADDRESS_LEN];        // 目标MAC<br>    UCHAR       SrcMacAddr[MAC_ADDRESS_LEN];        // 源MAC<br>    USHORT      FrmType;                            // 类型<br>}EthernetHeader, *PEthernetHeader;</p>
+<pre><code>### TCP 包格式</code></pre>
+<h2 id="0-15-31"><a href="#0-15-31" class="headerlink" title="0                            15                              31"></a>0                            15                              31</h2><h2 id="source-port-destination-port"><a href="#source-port-destination-port" class="headerlink" title="|          source port          |       destination port        |"></a>|          source port          |       destination port        |</h2><table>
+<thead>
+<tr>
+<th>sequence number</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>acknowledgment number</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="HL-rsvd-C-E-U-A-P-R-S-F-window-size"><a href="#HL-rsvd-C-E-U-A-P-R-S-F-window-size" class="headerlink" title="|  HL   | rsvd  |C|E|U|A|P|R|S|F|        window size            |"></a>|  HL   | rsvd  |C|E|U|A|P|R|S|F|        window size            |</h2><h2 id="TCP-checksum-urgent-pointer"><a href="#TCP-checksum-urgent-pointer" class="headerlink" title="|         TCP checksum          |       urgent pointer          |"></a>|         TCP checksum          |       urgent pointer          |</h2><table>
+<thead>
+<tr>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Data</td>
+</tr>
+</tbody></table>
+<hr>
+<p>// TCP头标志位掩码 OffFlag<br>#define TCP_HDR_LEN             0xF000              // TCP头长度&lt;双字的个数&gt;转化为字节数需要x4<br>#define TCP_URG_FLAG            0x0020              // URG标志<br>#define TCP_ACK_FLAG            0x0010              // ACK标志 应答1或请求0<br>#define TCP_PSH_FLAG            0x0008              // psh标志 以最快速度传输数据<br>#define TCP_RST_FLAG            0x0004              // RST标志 先断开连接,再重建连接<br>#define TCP_SYN_FLAG            0x0002              // SYN标志 用来建立连接<br>#define TCP_FIN_FLAG            0x0001              // FIN标志 发送方完成数据发送</p>
+<p>typedef struct _TcpHeader           // TCP头 20 BYTES<br>{<br>    USHORT      SrcPort;                            // 源端口<br>    USHORT      DstPort;                            // 目的端口<br>    ULONG       SeqNum;                             // 序号<br>    ULONG       AckNum;                             // 确认号<br>    USHORT      OffFlag;                            // 首部长度&lt;首部双字的个数&gt;+保留位+标志位<br>    USHORT      WndSize;                            // 窗口大小&lt;实现流量控制&gt;<br>    USHORT      Checksum;                           // 效验和<br>    USHORT      UrgPointer;                         // 紧急指针<br>}TcpHeader, *PTcpHeader;</p>
+<p>// OffFlag : 4位首部长度 + 6位保留位 + URG+ACK+PSH+RST+SYN+FIN</p>
+<p>typedef struct _TCPPACKET           // TCP封包 &lt;当ip中没有附加数据时&gt;<br>{<br>    EthernetHeader  Ehhdr;<br>    IPHeader        Iphdr;<br>    TcpHeader       Tcphdr;<br>}TCPPACKET, *PTCPPACKET;</p>
+<p>```</p>
+<p>SYN和ACK可能同时为1，它表示的就是建立连接之后的响应，<br>如果只是单个的一个SYN，它表示的只是建立连接。</p>
+<p>参考</p>
+<hr>
+<ul>
+<li><a href="http://bbs.pediy.com/thread-147644.htm">http://bbs.pediy.com/thread-147644.htm</a></li>
+<li><a href="http://www.yunsec.net/a/school/wlcs/agreement/2012/0317/10262.html">http://www.yunsec.net/a/school/wlcs/agreement/2012/0317/10262.html</a></li>
+<li><a href="http://www.9upk.com/article/2537.html">http://www.9upk.com/article/2537.html</a> （抓包工具教程）</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>抓包工具</tag>
+        <tag>wireShark</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>golang之环境搭建</title>
     <url>/2019/0908b098.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h2 id="宿主机环境"><a href="#宿主机环境" class="headerlink" title="宿主机环境"></a>宿主机环境</h2><pre class=" language-SH"><code class="language-SH">Linux VM-133-112-ubuntu 4.15.0-54-generic #58-Ubuntu SMP Mon Jun 24 10:55:24 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux</code></pre>
@@ -4824,12 +4824,6 @@ t 0:0(0) ack 22535 win 8760 (DF)</code></pre>
 <p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
 <p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Hexo自动备份教程</title>
-    <url>/2017/08015973.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://notes.wanghao.work/2015-07-06-%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6.html">连接</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -5071,6 +5065,12 @@ t 0:0(0) ack 22535 win 8760 (DF)</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>Hexo自动备份教程</title>
+    <url>/2017/08015973.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://notes.wanghao.work/2015-07-06-%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6.html">连接</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>macOS小技能</title>
     <url>/2018/1210d7f9.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="iTerm2"><a href="#iTerm2" class="headerlink" title="iTerm2"></a>iTerm2</h2><h3 id="iTerm2-SSH免密码远程连接服务器"><a href="#iTerm2-SSH免密码远程连接服务器" class="headerlink" title="iTerm2 SSH免密码远程连接服务器"></a>iTerm2 SSH免密码远程连接服务器</h3><pre class=" language-sh"><code class="language-sh">#!/usr/bin/expect
@@ -5101,6 +5101,39 @@ interact</code></pre>
       <tags>
         <tag>macOS</tag>
         <tag>uninx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Tool 记</title>
+    <url>/2017/0326bff4.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h1 id="工具1–esptool"><a href="#工具1–esptool" class="headerlink" title="工具1–esptool"></a>工具1–esptool</h1><h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法:"></a>安装方法:</h2><p>1.超级简单按照方法</p>
+<pre class=" language-bash"><code class="language-bash"> $  pip <span class="token function">install</span> esptool</code></pre>
+<p>2.源码安装方法.</p>
+<pre class=" language-bash"><code class="language-bash"> <span class="token comment" spellcheck="true"># 下载源码</span>
+ $ git@github.com:themadinventor/esptool.git
+ <span class="token comment" spellcheck="true">#安装依赖</span>
+ $ pip <span class="token function">install</span> pyserial, easy_install pyserial
+ <span class="token comment" spellcheck="true">#或者 depending on your platform.</span>
+ $ <span class="token function">apt-get</span> <span class="token function">install</span> python-serial</code></pre>
+<a id="more"></a>
+
+<h2 id="帮助说明"><a href="#帮助说明" class="headerlink" title="帮助说明"></a>帮助说明</h2><pre><code>esptool.py write_flash -h</code></pre>
+<h2 id="使用例子"><a href="#使用例子" class="headerlink" title="使用例子:"></a>使用例子:</h2><pre><code>sudo python esptool.py --port /dev/ttyUSB0 --baud 1500000 \
+write_flash -fm qio -fs 32m -ff 40m 0x3fc000 ../bin/0x3fc000.bin</code></pre>
+<h2 id="几个文件一起烧录"><a href="#几个文件一起烧录" class="headerlink" title="几个文件一起烧录"></a>几个文件一起烧录</h2><pre><code>sudo esptool.py --port /dev/tty.usbserial-DA00H0QE \
+--baud 1500000 write_flash -fm qio -fs 32m -ff 40m 0x00000 \
+../boot_v1.6.bin 0x01000 user1.4096.new.6.bin 0x3fc000 \
+../esp_init_data_default.bin 0x3fe000 ../blank.bin </code></pre>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>|关键字| 解释|<br>|—-|<br>|<strong>port</strong>|                 指定串口号|<br>|<strong>baud</strong>|               指定下载波特率<br>|<strong>write_flash</strong>|      烧写二进制文件到指定位置<br>|<strong>-fm</strong>|                  SPI Flash mode( ‘qio’, ‘qout’, ‘dio’, ‘dout’)<br>|<strong>-ff</strong>|                    SPI Flash frequency(‘40m’, ‘26m’, ‘20m’, ‘80m’)<br>|<strong>-fs</strong>|                   SPI Flash size in Mbit(4m’, ‘2m’, ‘8m’, ‘16m’, ‘32m’, ‘16m-c1’, ‘32m-c1’, ‘32m-c2’, ‘64m’, ‘128m’)<br>|<strong>0x3fc000</strong>|         指定烧录地址<br>|<strong>0x3fc000.bin</strong>|   对应的烧录文件</p>
+]]></content>
+      <categories>
+        <category>esp8266</category>
+      </categories>
+      <tags>
+        <tag>esp8266</tag>
+        <tag>WiFi</tag>
+        <tag>esptool</tag>
       </tags>
   </entry>
   <entry>
@@ -5139,39 +5172,6 @@ interact</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Tool 记</title>
-    <url>/2017/0326bff4.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h1 id="工具1–esptool"><a href="#工具1–esptool" class="headerlink" title="工具1–esptool"></a>工具1–esptool</h1><h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法:"></a>安装方法:</h2><p>1.超级简单按照方法</p>
-<pre class=" language-bash"><code class="language-bash"> $  pip <span class="token function">install</span> esptool</code></pre>
-<p>2.源码安装方法.</p>
-<pre class=" language-bash"><code class="language-bash"> <span class="token comment" spellcheck="true"># 下载源码</span>
- $ git@github.com:themadinventor/esptool.git
- <span class="token comment" spellcheck="true">#安装依赖</span>
- $ pip <span class="token function">install</span> pyserial, easy_install pyserial
- <span class="token comment" spellcheck="true">#或者 depending on your platform.</span>
- $ <span class="token function">apt-get</span> <span class="token function">install</span> python-serial</code></pre>
-<a id="more"></a>
-
-<h2 id="帮助说明"><a href="#帮助说明" class="headerlink" title="帮助说明"></a>帮助说明</h2><pre><code>esptool.py write_flash -h</code></pre>
-<h2 id="使用例子"><a href="#使用例子" class="headerlink" title="使用例子:"></a>使用例子:</h2><pre><code>sudo python esptool.py --port /dev/ttyUSB0 --baud 1500000 \
-write_flash -fm qio -fs 32m -ff 40m 0x3fc000 ../bin/0x3fc000.bin</code></pre>
-<h2 id="几个文件一起烧录"><a href="#几个文件一起烧录" class="headerlink" title="几个文件一起烧录"></a>几个文件一起烧录</h2><pre><code>sudo esptool.py --port /dev/tty.usbserial-DA00H0QE \
---baud 1500000 write_flash -fm qio -fs 32m -ff 40m 0x00000 \
-../boot_v1.6.bin 0x01000 user1.4096.new.6.bin 0x3fc000 \
-../esp_init_data_default.bin 0x3fe000 ../blank.bin </code></pre>
-<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>|关键字| 解释|<br>|—-|<br>|<strong>port</strong>|                 指定串口号|<br>|<strong>baud</strong>|               指定下载波特率<br>|<strong>write_flash</strong>|      烧写二进制文件到指定位置<br>|<strong>-fm</strong>|                  SPI Flash mode( ‘qio’, ‘qout’, ‘dio’, ‘dout’)<br>|<strong>-ff</strong>|                    SPI Flash frequency(‘40m’, ‘26m’, ‘20m’, ‘80m’)<br>|<strong>-fs</strong>|                   SPI Flash size in Mbit(4m’, ‘2m’, ‘8m’, ‘16m’, ‘32m’, ‘16m-c1’, ‘32m-c1’, ‘32m-c2’, ‘64m’, ‘128m’)<br>|<strong>0x3fc000</strong>|         指定烧录地址<br>|<strong>0x3fc000.bin</strong>|   对应的烧录文件</p>
-]]></content>
-      <categories>
-        <category>esp8266</category>
-      </categories>
-      <tags>
-        <tag>esp8266</tag>
-        <tag>WiFi</tag>
-        <tag>esptool</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>win10子系统wsl</title>
     <url>/2019/0821d9b0.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="子系统重启wsl"><a href="#子系统重启wsl" class="headerlink" title="子系统重启wsl"></a>子系统重启wsl</h2><p>管理员权限下:</p>
@@ -5182,6 +5182,159 @@ net start LxssManager</code></pre>
 ]]></content>
       <tags>
         <tag>win10</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>win10 实用工具.md</title>
+    <url>/2019/1106c142.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="包管理工具-Scoop"><a href="#包管理工具-Scoop" class="headerlink" title="包管理工具 - Scoop"></a>包管理工具 - Scoop</h2><ul>
+<li><blockquote>
+<p>scoop 类似于Ubuntu下的<code>apt-get install</code><br> </p>
+</blockquote>
+</li>
+<li><a href="https://scoop.sh/">官网</a><br></li>
+<li><strong>安装注意地方:</strong> 需要科学上网，不能下载不了<br></li>
+</ul>
+<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ol>
+<li>打开 <code>powershell</code>,输入下载安装命令</li>
+</ol>
+<pre class=" language-sh"><code class="language-sh">PS C:\Users\87832> iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+Initializing...
+Downloading scoop...
+Extracting...
+Creating shim...
+Downloading main bucket...
+Extracting...
+Adding ~\scoop\shims to your path.
+'lastupdate' has been set to '2019-11-06T11:20:35.0813495+08:00'
+Scoop was installed successfully!
+Type 'scoop help' for instructions.
+PS C:\Users\87832> scoop help</code></pre>
+<a id="more"></a>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><h5 id="安装7zip"><a href="#安装7zip" class="headerlink" title="安装7zip"></a>安装7zip</h5><pre class=" language-sh"><code class="language-sh">λscoop install 7zip
+Installing '7zip' (19.00) [64bit]
+7z1900-x64.msi (1.7 MB) [===========================================================] 100%
+Checking hash of 7z1900-x64.msi ... ok.
+Extracting 7z1900-x64.msi ... done.
+Linking ~\scoop\apps\7zip\current => ~\scoop\apps\7zip\19.00
+Creating shim for '7z'.
+Creating shortcut for 7-Zip (7zFM.exe)
+'7zip' (19.00) was installed successfully!</code></pre>
+<h2 id="文件搜索"><a href="#文件搜索" class="headerlink" title="文件搜索"></a>文件搜索</h2><ul>
+<li><a href="https://www.voidtools.com/zh-cn/">everything</a> </li>
+<li><a href="http://www.wox.one/">Wox</a></li>
+</ul>
+<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><h3 id="REST-Client"><a href="#REST-Client" class="headerlink" title="REST Client"></a>REST Client</h3><p>参考: <a href="https://blog.csdn.net/noArk/article/details/86748738">https://blog.csdn.net/noArk/article/details/86748738</a></p>
+<h3 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h3><p><a href="http://plantuml.com/zh/">http://plantuml.com/zh/</a></p>
+<h3 id="Window-Terminal-技巧"><a href="#Window-Terminal-技巧" class="headerlink" title="Window Terminal 技巧"></a>Window Terminal 技巧</h3><h4 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h4><table>
+<thead>
+<tr>
+<th align="left">快捷键</th>
+<th align="left">用处</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Ctrl+Alt+数字</td>
+<td align="left">切换打开的控制台</td>
+</tr>
+<tr>
+<td align="left">Ctrl+Shift+数字</td>
+<td align="left">打开新的控制台</td>
+</tr>
+<tr>
+<td align="left">Shift+Alt++/=</td>
+<td align="left">横向打开新控制台</td>
+</tr>
+<tr>
+<td align="left">Shift+Alt+_/-</td>
+<td align="left">纵向打开新控制台</td>
+</tr>
+<tr>
+<td align="left">Shift+Alt+方向键</td>
+<td align="left">控制控制台尺寸</td>
+</tr>
+<tr>
+<td align="left">Alt+方向键</td>
+<td align="left">在本标签内切换控制台</td>
+</tr>
+<tr>
+<td align="left">Ctrl+Shift+w</td>
+<td align="left">关闭当前控制台</td>
+</tr>
+</tbody></table>
+]]></content>
+  </entry>
+  <entry>
+    <title>哈夫曼树&amp;哈夫曼编码</title>
+    <url>/2020/08123729.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h2><blockquote>
+<p>哈夫曼树也叫最优二叉树（哈夫曼树）</p>
+</blockquote>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>  <a href="https://baike.baidu.com/item/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91/2305769?fr=aladdin">给定N个权值作为N个叶子结点，构造一棵二叉树，若该树的带权路径长度达到最小，称这样的二叉树为最优二叉树，也称为哈夫曼树(Huffman Tree)。哈夫曼树是带权路径长度最短的树，权值较大的结点离根较近。</a></p>
+<h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><table>
+<thead>
+<tr>
+<th align="left">名词</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">路径长度</td>
+<td align="left">根结点到第L层结点路径长度为L-1</td>
+</tr>
+<tr>
+<td align="left">树的带权路径长度（WPL）</td>
+<td align="left">树中所有叶子结点的带权路径长度之和<br><img src="/images/pasted-75.png" alt="upload successful"><br>其中，n表示叶子结点的数目，wi和li分别表示叶子结点ki的权值和树根结点到叶子结点ki之间的路径长度。</td>
+</tr>
+<tr>
+<td align="left"><img src="/images/pasted-76.png" alt="upload successful"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>|</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
+<li>哈夫曼树中权越大的叶子离根越近(WPL最小的二叉树)</li>
+<li>具有相同带权结点的哈夫曼树不惟一</li>
+<li>哈夫曼树的结点的度数为 0 或 2， 没有度为 1 的结点；</li>
+<li>包含 n 个叶子结点的哈夫曼树中共有 2n – 1 个结点。</li>
+<li>包含 n 棵树的森林要经过 n–1 次合并才能形成哈夫曼树，共产生 n–1 个新结点</li>
+</ol>
+<p><img src="/images/pasted-74.png" alt="upload successful"><br><img src="/images/pasted-62.png" alt="upload successful"><br><strong>WPL 最小的值所属的树即为哈夫曼树</strong></p>
+<p><img src="/images/pasted-65.png" alt="upload successful" title="hello"><br><img src="/images/pasted-63.png" alt="upload successful"><br><img src="/images/pasted-64.png" alt="upload successful"></p>
+<h2 id="哈夫曼创建"><a href="#哈夫曼创建" class="headerlink" title="哈夫曼创建"></a>哈夫曼创建</h2><p><img src="/images/pasted-66.png" alt="upload successful"><br>为什么数组buffTree[2n-1] 的大小是2n-1,是因为n个子节点构成的树节点最多的个数是2n-1个<br><img src="/images/pasted-67.png" alt="upload successful"></p>
+<p><img src="/images/pasted-68.png" alt="upload successful"></p>
+<p><img src="/images/pasted-69.png" alt="upload successful"></p>
+<h2 id="哈夫曼树编码"><a href="#哈夫曼树编码" class="headerlink" title="哈夫曼树编码"></a>哈夫曼树编码</h2><h3 id="前缀编码"><a href="#前缀编码" class="headerlink" title="前缀编码"></a>前缀编码</h3><p><img src="/images/pasted-70.png" alt="upload successful"></p>
+<p><img src="/images/pasted-71.png" alt="upload successful"></p>
+<p><img src="/images/pasted-72.png" alt="upload successful"></p>
+<p>特点:<br>权值越高的叶子节点越靠近根节点</p>
+<p><img src="/images/pasted-73.png" alt="upload successful"></p>
+]]></content>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基本算法之算法图解Book</title>
+    <url>/2018/0505d585.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="算法图解"><a href="#算法图解" class="headerlink" title="算法图解"></a>算法图解</h2><h3 id="内容简介-·-·-·-·-·-·"><a href="#内容简介-·-·-·-·-·-·" class="headerlink" title="内容简介  · · · · · ·"></a><font color=#115533>内容简介  · · · · · ·</font></h3><font color=#228B22>
+本书示例丰富，图文并茂，以让人容易理解的方式阐释了算法，旨在帮助程序员在日常项目中更好地发挥算法的能量。书中的前三章将帮助你打下基础，带你学习二分查找、大O表示法、两种基本的数据结构以及递归等。余下的篇幅将主要介绍应用广泛的算法，具体内容包括：面对具体问题时的解决技巧，比如，何时采用贪婪算法或动态规划；散列表的应用；图算法；K最近邻算法。
+</font>
+
+<h3 id="作者简介-·-·-·-·-·-·"><a href="#作者简介-·-·-·-·-·-·" class="headerlink" title="作者简介  · · · · · ·"></a><font color=#115533>作者简介  · · · · · ·</font></h3><font color=#228B22>
+Aditya Bhargava
+
+<p>软件工程师，兼具计算机科学和美术方面的教育背景，在adit.io撰写编程方面的博客。<br></font></p>
+<h3 id="豆瓣点评"><a href="#豆瓣点评" class="headerlink" title="豆瓣点评"></a><font color=#228B22><a href="https://book.douban.com/subject/26979890/">豆瓣点评</a></font></h3><a id="more"></a>
+
+<h2 id="书本"><a href="#书本" class="headerlink" title="书本"></a>书本</h2><embed src="https://gitee.com/alexlin/algorithms/raw/master/doc/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95.pdf" width="100%" height="950" type="application/pdf" align=center >
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>图解算法</tag>
       </tags>
   </entry>
   <entry>
@@ -5308,136 +5461,6 @@ HXBL(root->rchild);
       </tags>
   </entry>
   <entry>
-    <title>哈夫曼树&amp;哈夫曼编码</title>
-    <url>/2020/08123729.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h2><blockquote>
-<p>哈夫曼树也叫最优二叉树（哈夫曼树）</p>
-</blockquote>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>  <a href="https://baike.baidu.com/item/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91/2305769?fr=aladdin">给定N个权值作为N个叶子结点，构造一棵二叉树，若该树的带权路径长度达到最小，称这样的二叉树为最优二叉树，也称为哈夫曼树(Huffman Tree)。哈夫曼树是带权路径长度最短的树，权值较大的结点离根较近。</a></p>
-<h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><table>
-<thead>
-<tr>
-<th align="left">名词</th>
-<th align="left">解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">路径长度</td>
-<td align="left">根结点到第L层结点路径长度为L-1</td>
-</tr>
-<tr>
-<td align="left">树的带权路径长度（WPL）</td>
-<td align="left">树中所有叶子结点的带权路径长度之和<br><img src="/images/pasted-75.png" alt="upload successful"><br>其中，n表示叶子结点的数目，wi和li分别表示叶子结点ki的权值和树根结点到叶子结点ki之间的路径长度。</td>
-</tr>
-<tr>
-<td align="left"><img src="/images/pasted-76.png" alt="upload successful"></td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<p>|</p>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
-<li>哈夫曼树中权越大的叶子离根越近(WPL最小的二叉树)</li>
-<li>具有相同带权结点的哈夫曼树不惟一</li>
-<li>哈夫曼树的结点的度数为 0 或 2， 没有度为 1 的结点；</li>
-<li>包含 n 个叶子结点的哈夫曼树中共有 2n – 1 个结点。</li>
-<li>包含 n 棵树的森林要经过 n–1 次合并才能形成哈夫曼树，共产生 n–1 个新结点</li>
-</ol>
-<p><img src="/images/pasted-74.png" alt="upload successful"><br><img src="/images/pasted-62.png" alt="upload successful"><br><strong>WPL 最小的值所属的树即为哈夫曼树</strong></p>
-<p><img src="/images/pasted-65.png" alt="upload successful" title="hello"><br><img src="/images/pasted-63.png" alt="upload successful"><br><img src="/images/pasted-64.png" alt="upload successful"></p>
-<h2 id="哈夫曼创建"><a href="#哈夫曼创建" class="headerlink" title="哈夫曼创建"></a>哈夫曼创建</h2><p><img src="/images/pasted-66.png" alt="upload successful"><br>为什么数组buffTree[2n-1] 的大小是2n-1,是因为n个子节点构成的树节点最多的个数是2n-1个<br><img src="/images/pasted-67.png" alt="upload successful"></p>
-<p><img src="/images/pasted-68.png" alt="upload successful"></p>
-<p><img src="/images/pasted-69.png" alt="upload successful"></p>
-<h2 id="哈夫曼树编码"><a href="#哈夫曼树编码" class="headerlink" title="哈夫曼树编码"></a>哈夫曼树编码</h2><h3 id="前缀编码"><a href="#前缀编码" class="headerlink" title="前缀编码"></a>前缀编码</h3><p><img src="/images/pasted-70.png" alt="upload successful"></p>
-<p><img src="/images/pasted-71.png" alt="upload successful"></p>
-<p><img src="/images/pasted-72.png" alt="upload successful"></p>
-<p>特点:<br>权值越高的叶子节点越靠近根节点</p>
-<p><img src="/images/pasted-73.png" alt="upload successful"></p>
-]]></content>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>win10 实用工具.md</title>
-    <url>/2019/1106c142.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="包管理工具-Scoop"><a href="#包管理工具-Scoop" class="headerlink" title="包管理工具 - Scoop"></a>包管理工具 - Scoop</h2><ul>
-<li><blockquote>
-<p>scoop 类似于Ubuntu下的<code>apt-get install</code><br> </p>
-</blockquote>
-</li>
-<li><a href="https://scoop.sh/">官网</a><br></li>
-<li><strong>安装注意地方:</strong> 需要科学上网，不能下载不了<br></li>
-</ul>
-<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ol>
-<li>打开 <code>powershell</code>,输入下载安装命令</li>
-</ol>
-<pre class=" language-sh"><code class="language-sh">PS C:\Users\87832> iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
-Initializing...
-Downloading scoop...
-Extracting...
-Creating shim...
-Downloading main bucket...
-Extracting...
-Adding ~\scoop\shims to your path.
-'lastupdate' has been set to '2019-11-06T11:20:35.0813495+08:00'
-Scoop was installed successfully!
-Type 'scoop help' for instructions.
-PS C:\Users\87832> scoop help</code></pre>
-<a id="more"></a>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><h5 id="安装7zip"><a href="#安装7zip" class="headerlink" title="安装7zip"></a>安装7zip</h5><pre class=" language-sh"><code class="language-sh">λscoop install 7zip
-Installing '7zip' (19.00) [64bit]
-7z1900-x64.msi (1.7 MB) [===========================================================] 100%
-Checking hash of 7z1900-x64.msi ... ok.
-Extracting 7z1900-x64.msi ... done.
-Linking ~\scoop\apps\7zip\current => ~\scoop\apps\7zip\19.00
-Creating shim for '7z'.
-Creating shortcut for 7-Zip (7zFM.exe)
-'7zip' (19.00) was installed successfully!</code></pre>
-<h2 id="文件搜索"><a href="#文件搜索" class="headerlink" title="文件搜索"></a>文件搜索</h2><ul>
-<li><a href="https://www.voidtools.com/zh-cn/">everything</a> </li>
-<li><a href="http://www.wox.one/">Wox</a></li>
-</ul>
-<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><h3 id="REST-Client"><a href="#REST-Client" class="headerlink" title="REST Client"></a>REST Client</h3><p>参考: <a href="https://blog.csdn.net/noArk/article/details/86748738">https://blog.csdn.net/noArk/article/details/86748738</a></p>
-<h3 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h3><p><a href="http://plantuml.com/zh/">http://plantuml.com/zh/</a></p>
-<h3 id="Window-Terminal-技巧"><a href="#Window-Terminal-技巧" class="headerlink" title="Window Terminal 技巧"></a>Window Terminal 技巧</h3><h4 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h4><table>
-<thead>
-<tr>
-<th align="left">快捷键</th>
-<th align="left">用处</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Ctrl+Alt+数字</td>
-<td align="left">切换打开的控制台</td>
-</tr>
-<tr>
-<td align="left">Ctrl+Shift+数字</td>
-<td align="left">打开新的控制台</td>
-</tr>
-<tr>
-<td align="left">Shift+Alt++/=</td>
-<td align="left">横向打开新控制台</td>
-</tr>
-<tr>
-<td align="left">Shift+Alt+_/-</td>
-<td align="left">纵向打开新控制台</td>
-</tr>
-<tr>
-<td align="left">Shift+Alt+方向键</td>
-<td align="left">控制控制台尺寸</td>
-</tr>
-<tr>
-<td align="left">Alt+方向键</td>
-<td align="left">在本标签内切换控制台</td>
-</tr>
-<tr>
-<td align="left">Ctrl+Shift+w</td>
-<td align="left">关闭当前控制台</td>
-</tr>
-</tbody></table>
-]]></content>
-  </entry>
-  <entry>
     <title>基本算法之平衡二叉树</title>
     <url>/2018/0325646b.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h2><p><a href="https://baike.baidu.com/item/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/10421057?fr=aladdin">摘自百度:</a></p>
@@ -5552,40 +5575,6 @@ struct AVLNode
       </tags>
   </entry>
   <entry>
-    <title>基本算法之算法图解Book</title>
-    <url>/2018/0505d585.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="算法图解"><a href="#算法图解" class="headerlink" title="算法图解"></a>算法图解</h2><h3 id="内容简介-·-·-·-·-·-·"><a href="#内容简介-·-·-·-·-·-·" class="headerlink" title="内容简介  · · · · · ·"></a><font color=#115533>内容简介  · · · · · ·</font></h3><font color=#228B22>
-本书示例丰富，图文并茂，以让人容易理解的方式阐释了算法，旨在帮助程序员在日常项目中更好地发挥算法的能量。书中的前三章将帮助你打下基础，带你学习二分查找、大O表示法、两种基本的数据结构以及递归等。余下的篇幅将主要介绍应用广泛的算法，具体内容包括：面对具体问题时的解决技巧，比如，何时采用贪婪算法或动态规划；散列表的应用；图算法；K最近邻算法。
-</font>
-
-<h3 id="作者简介-·-·-·-·-·-·"><a href="#作者简介-·-·-·-·-·-·" class="headerlink" title="作者简介  · · · · · ·"></a><font color=#115533>作者简介  · · · · · ·</font></h3><font color=#228B22>
-Aditya Bhargava
-
-<p>软件工程师，兼具计算机科学和美术方面的教育背景，在adit.io撰写编程方面的博客。<br></font></p>
-<h3 id="豆瓣点评"><a href="#豆瓣点评" class="headerlink" title="豆瓣点评"></a><font color=#228B22><a href="https://book.douban.com/subject/26979890/">豆瓣点评</a></font></h3><a id="more"></a>
-
-<h2 id="书本"><a href="#书本" class="headerlink" title="书本"></a>书本</h2><embed src="https://gitee.com/alexlin/algorithms/raw/master/doc/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95.pdf" width="100%" height="950" type="application/pdf" align=center >
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>图解算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>微信开发</title>
-    <url>/2017/04061051.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="http://iot.weixin.qq.com/wiki/new/index.html?page=2-1">微信硬件平台</a><br><a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=2017118">小程序</a></p>
-<p>蛋疼的一天</p>
-]]></content>
-      <tags>
-        <tag>微信</tag>
-        <tag>硬件</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>实用网站</title>
     <url>/2020/04226c49.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="搜索相关"><a href="#搜索相关" class="headerlink" title="搜索相关"></a>搜索相关</h2><ul>
@@ -5623,52 +5612,14 @@ Aditya Bhargava
       </tags>
   </entry>
   <entry>
-    <title>活成自己的样子</title>
-    <url>/2888/0328dbbb.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<blockquote>
-<p>我们总是拼尽全力… 想活成大家所期待的样子，以为那样就是最完美的。但其实，真正的成功，或许是不被他人绑架自己的梦想，全然按照自己的意愿过好这一生。</p>
-</blockquote>
-<p><img src="/images/pasted-15.png" alt="1"></p>
-<pre class=" language-sh"><code class="language-sh">==============================================================================================
-
-                                            _ooOoo_
-                                           o8888888o
-                                           88" . "88
-                                           (| -_- |)
-                                            O\ = /O
-                                        ____/`---'\____
-                                        .' \\|   |// `.
-                                       / \\||| : |||// \
-                                     / _||||| -:- |||||- \
-                                       | | \\\ - /// | |
-                                     | \_| ''\---/'' | |
-                                      \ .-\__ `-` ___/-. /
-                                   ___`. .' /--.--\ `. . __
-                                . '< `.___\_<|>_/___.' >'.
-                               | | : `- \`.;`\ _ /`;.`/ - ` : | |
-                                 \ \ `-. \_ __\ /__ _/ .-` / /
-                         ======`-.____`-.___\_____/___.-`____.-'======
-                                            `=---='
-                         .............................................
-                            !Write the code!       Change the world!
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</code></pre>
-<iframe frameborder="no" border="0" autoPlay=true marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=28285910&auto=0&height=66"></iframe>
-
-<a id="more"></a>
-
-<p><embed src="http://player.hunantv.com/mgtv_v5_main/main.swf?play_type=1&video_id=3954767" autostart=false allowFullScreen="true" quality="high" width="900" height="498" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
-<!-- <div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","loop":true,"video":{"url":"http://devtest.qiniudn.com/若能绽放光芒.mp4","pic":"http://devtest.qiniudn.com/若能绽放光芒.png"},"danmaku":{"id":"9E2E3368B56CDBB4","api":"http://dplayer.daoapp.io","token":"tokendemo"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script> -->
-
-
+    <title>微信开发</title>
+    <url>/2017/04061051.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="http://iot.weixin.qq.com/wiki/new/index.html?page=2-1">微信硬件平台</a><br><a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=2017118">小程序</a></p>
+<p>蛋疼的一天</p>
 ]]></content>
-      <categories>
-        <category>新奇</category>
-      </categories>
       <tags>
-        <tag>新奇</tag>
-        <tag>音乐</tag>
-        <tag>🎵</tag>
+        <tag>微信</tag>
+        <tag>硬件</tag>
       </tags>
   </entry>
   <entry>
@@ -5738,6 +5689,95 @@ added 225 packages from 431 contributors in 181.245s</code></pre>
       <tags>
         <tag>lpt230</tag>
         <tag>gcc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>红外遥控器制作</title>
+    <url>/2020/05103418.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><p> &emsp;&emsp;端午节期间，广州的天气真的好热，恨不得整体泡在空调房里。这让我想起了在公司上班的时候，天气炎热，想开空调，却发现空调遥控器好像偏偏跟我们玩捉迷藏似的，找也找不到，只能看着空调干巴巴地流汗。也常常碰见，公司的空调上班的时候都开着，然后最后一位同事走的时候，想关空调，此时遥控器也不翼而飞，于是各种问同事，大伙知道空调遥控器在哪吗？这种类似的“问候”等等。另外，公司空调比较多的时候，走的时候需要一个空调一个空调检测有没有关了，不然就会造成浪费的情况。总之对我来说，空调遥控器就是一个神奇的东西，你想找的时候，就偏偏找不到。<br><br>&emsp;&emsp;基于以上的种种情况，于是我萌发了要做一个方便管理的空调控制器，这个控制器有以下2个特点；</p>
+<ol>
+<li>必须让每个同事都能轻易的对每个空调进行控制(那就是用手机控制啦，大家都有手机~)；</li>
+<li>必须满足远程关闭空调，因为如果当我们离开公司的时候，发现空调没关，可以远程关闭；</li>
+</ol>
+<a id="more"></a>
+
+<h2 id="二、方案选择"><a href="#二、方案选择" class="headerlink" title="二、方案选择"></a>二、方案选择</h2><p>&emsp;&emsp;基于空调遥控器的特点，我想到了机智云的Gokit，搭配机智云的平台，能够满足我的需求，(主要是手头刚好有几个Gokit哈哈~)；<br><br>&emsp;&emsp;那么怎么来做呢？根据经验所得，需要对这个工作拆分为几部分</p>
+<ol>
+<li>机智云平台数据点定义(啥是数据点，请到机智云官网查看);这里我订了两个核心功能，一个是开关，一个是温度调节;(当然，你也可以定义更多的数据点，如，模式，风向等等)；</li>
+<li>MCU开发，MCU开发需要细分为红外遥控器的协议解码和编码；<strong>解码</strong> 简单来说就是需要通过工具，来分析遥控器发出来的红外波形，什么波形对应着开，什么波形对应着光和温度设置。<strong>编码</strong> 就是要把我们下发的命令转换成和空调能识别的红外波形；</li>
+</ol>
+<h2 id="三、方案实施"><a href="#三、方案实施" class="headerlink" title="三、方案实施"></a>三、方案实施</h2><h3 id="1-数据点定义"><a href="#1-数据点定义" class="headerlink" title="1. 数据点定义"></a>1. 数据点定义</h3><p>&emsp;&emsp;很简单，两个数据点，温度设置和空调开关，如下图；</p>
+<p><img src="/images/pasted-47.png" alt="upload successful"></p>
+<h3 id="2-红外解码"><a href="#2-红外解码" class="headerlink" title="2. 红外解码"></a>2. 红外解码</h3><p>&emsp;&emsp; 对于红外解码，有两种方法，一种是找到空调厂商的红外协议，然后根据红外协议，直接编写就可以了，不过很不幸的是，我手头这款空调，我找了很久都没找到对应的空调协议，于是只能另辟途径。也就是第二种方法，红外波形拷贝。<br><br>&emsp;&emsp; 那么波形拷贝我采用的是，用逻辑分析仪对遥控器进行波形分析，然后使用红外波形拷贝的方法，把对应功能的波形拷贝下来。</p>
+<p>&emsp;&emsp;决定了使用红外波形拷贝，那么就需要先要搭建波形捕捉电路，翻开了压箱底多年的红外探头接收器和面板(⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄)，步骤如下。</p>
+<h4 id="2-1-硬件环境搭建"><a href="#2-1-硬件环境搭建" class="headerlink" title="2.1 硬件环境搭建"></a>2.1 硬件环境搭建</h4><h5 id="红外接收头型号-HS0038B"><a href="#红外接收头型号-HS0038B" class="headerlink" title="红外接收头型号 HS0038B"></a>红外接收头型号 <strong>HS0038B</strong></h5><p><img src="/images/pasted-33.png" alt="upload successful"></p>
+<h5 id="HS0038B-电路图搭建"><a href="#HS0038B-电路图搭建" class="headerlink" title="HS0038B 电路图搭建"></a>HS0038B 电路图搭建</h5><ul>
+<li>原理图<br><img src="/images/pasted-40.png" alt="upload successful"></li>
+<li>面包板搭建实物图<br><img src="/images/pasted-41.png" alt="upload successful"><br><img src="/images/pasted-42.png" alt="upload successful"></li>
+</ul>
+<h5 id="抓波形"><a href="#抓波形" class="headerlink" title="抓波形"></a>抓波形</h5><ul>
+<li>真实抓包红外码图<br><img src="/images/pasted-34.png" alt="upload successful"></li>
+<li><ul>
+<li>关<br><img src="/images/pasted-35.png" alt="upload successful"></li>
+</ul>
+</li>
+<li><ul>
+<li>开<br><img src="/images/pasted-36.png" alt="upload successful"></li>
+</ul>
+</li>
+<li><ul>
+<li>20度<br><img src="/images/pasted-37.png" alt="upload successful"></li>
+</ul>
+</li>
+<li><ul>
+<li>21度<br><img src="/images/pasted-38.png" alt="upload successful"></li>
+</ul>
+</li>
+<li><ul>
+<li>22度<br><img src="/images/pasted-39.png" alt="upload successful"></li>
+</ul>
+</li>
+</ul>
+<h5 id="红外解码程序编写"><a href="#红外解码程序编写" class="headerlink" title="红外解码程序编写"></a>红外解码程序编写</h5><p>&emsp;&emsp;对红外波形有一个大概的认识之后，就要编写MCU端的代码，把波形转成红外码。这里我的思路是，对STM32的某个IO，设置为输入下降沿捕捉，然后通过计算每一个高低电平的持续时间，进而把波形转成数组；具体的实现可以看代码,<strong>Talk is cheap, show me the code.（主要是懒(<em>/ω＼</em>)~）</strong></p>
+<h3 id="3-红外编码"><a href="#3-红外编码" class="headerlink" title="3. 红外编码"></a>3. 红外编码</h3><p>&emsp;&emsp;进过前面的红外拷贝之后，我存储了，几个功能点的红外码，分别低开关，和温度设置(16度到27度)；<br>这里简单说一下，红外的发送原理(主要是网上已经有很多这方面的教程了)，首先上面抓到的红外波形，并不是红外发送器真正发送的波形，红外发送的波形一般是要发送的命令“加”在一个38K 的一个波形上；因为接收端有一个波形过滤器，如果不是38K红外波形范围内会被过滤掉。所以一般会以38K的PWM作为一个红外载波；<br>&emsp;&emsp;那么发送的时候，我对STM32的PA5引脚做为输出PWM为38K的引脚，然后后根据机智云定义好的数据点，拿到对应的串口协议文档，进行命令提前，主要是APP控制和MCU状态上报，这两条协议，(<strong>当然还有进入WiFi配网和串口握手等，不过这些在MCU代码自动生成的时候已经帮我们实现好了</strong>)串口协议格式如下图</p>
+<p><img src="/images/pasted-48.png" alt="upload successful"><br><img src="/images/pasted-49.png" alt="upload successful"><br>那么后面的就是根据协议编程了。</p>
+<p>这里插播一条，我实现发送的时候，开始我想使用gokit上的红外来作为发送，不过后面发现发送的距离比较短，后面就自己焊接了红外发射头；<br>当时我对Gokit的改造如下，如果小伙伴要控制的距离不远的话，我想是可以的，具体我的改造如下:</p>
+<p><strong>Gokit引脚修改</strong></p>
+<p><img src="/images/pasted-43.png" alt="upload successful"><br><img src="/images/pasted-44.png" alt="upload successful"><br><img src="/images/pasted-45.png" alt="upload successful"><br><img src="/images/pasted-46.png" alt="upload successful"></p>
+<p><strong>我最后真实的红外发送搭建如下</strong><br><img src="/images/pasted-50.png" alt="upload successful"><br><img src="/images/pasted-51.png" alt="upload successful"></p>
+<h3 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h3><p>最后，我把手头几个Gokit 都接上了红外，这样就能开开心心开空调去啦~~~</p>
+<p><img src="/images/pasted-54.png" alt="upload successful"><br><img src="/images/pasted-52.png" alt="upload successful"><br><img src="/images/pasted-53.png" alt="upload successful"><br><img src="/images/pasted-55.png" alt="upload successful"></p>
+<h3 id="演示视频"><a href="#演示视频" class="headerlink" title="演示视频"></a>演示视频</h3><ul>
+<li>视频: <a href="https://www.bilibili.com/video/BV1WK4y1s7DA/">https://www.bilibili.com/video/BV1WK4y1s7DA/</a></li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://blog.csdn.net/qq_39690917/article/details/86713809">https://blog.csdn.net/qq_39690917/article/details/86713809</a></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>编辑器介绍</title>
+    <url>/2017/0607f348.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Sublime"><a href="#Sublime" class="headerlink" title="Sublime"></a>Sublime</h1><hr>
+<h2 id="Sublime-Text主题推荐：Seti-UI"><a href="#Sublime-Text主题推荐：Seti-UI" class="headerlink" title="Sublime Text主题推荐：Seti_UI"></a>Sublime Text主题推荐：Seti_UI</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><hr>
+<p>Seti_UI 这款主题最大的特点是能够显示各种文件类型的图标，小图标不仅看起来漂亮，而且大大增加了辨识度，能够轻松的找到对应的文件。</p>
+<a id="more"></a>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><hr>
+<p><strong>1. 安装</strong><br>在 Package Control 安装包命令行输入 Seti_UI 回车即可。</p>
+<p><strong>2. 手动安装</strong></p>
+<ul>
+<li><a href="https://github.com/ctf0/Seti_ST3/archive/master.zip">Download the .zip</a>.</li>
+<li>Unzip and rename the folder to Seti_UI</li>
+<li>Copy the folder into Packages directory, which you can find using the menu item Preferences -&gt; Browse Packages… in Sublime Text.</li>
+</ul>
+<p><strong>3. 启用</strong><br>在 Preferences -&gt; Settings -&gt; User 中加入：</p>
+<pre><code>&quot;theme&quot;: &quot;Seti.sublime-theme&quot;</code></pre>
+<p>或者</p>
+<pre><code>&quot;theme&quot;: &quot;Seti_orig.sublime-theme&quot;</code></pre>
+]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>IDE</tag>
       </tags>
   </entry>
   <entry>
@@ -6091,92 +6131,52 @@ alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ source ~/.pro
       </tags>
   </entry>
   <entry>
-    <title>红外遥控器制作</title>
-    <url>/2020/05103418.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><p> &emsp;&emsp;端午节期间，广州的天气真的好热，恨不得整体泡在空调房里。这让我想起了在公司上班的时候，天气炎热，想开空调，却发现空调遥控器好像偏偏跟我们玩捉迷藏似的，找也找不到，只能看着空调干巴巴地流汗。也常常碰见，公司的空调上班的时候都开着，然后最后一位同事走的时候，想关空调，此时遥控器也不翼而飞，于是各种问同事，大伙知道空调遥控器在哪吗？这种类似的“问候”等等。另外，公司空调比较多的时候，走的时候需要一个空调一个空调检测有没有关了，不然就会造成浪费的情况。总之对我来说，空调遥控器就是一个神奇的东西，你想找的时候，就偏偏找不到。<br><br>&emsp;&emsp;基于以上的种种情况，于是我萌发了要做一个方便管理的空调控制器，这个控制器有以下2个特点；</p>
-<ol>
-<li>必须让每个同事都能轻易的对每个空调进行控制(那就是用手机控制啦，大家都有手机~)；</li>
-<li>必须满足远程关闭空调，因为如果当我们离开公司的时候，发现空调没关，可以远程关闭；</li>
-</ol>
+    <title>活成自己的样子</title>
+    <url>/2888/0328dbbb.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<blockquote>
+<p>我们总是拼尽全力… 想活成大家所期待的样子，以为那样就是最完美的。但其实，真正的成功，或许是不被他人绑架自己的梦想，全然按照自己的意愿过好这一生。</p>
+</blockquote>
+<p><img src="/images/pasted-15.png" alt="1"></p>
+<pre class=" language-sh"><code class="language-sh">==============================================================================================
+
+                                            _ooOoo_
+                                           o8888888o
+                                           88" . "88
+                                           (| -_- |)
+                                            O\ = /O
+                                        ____/`---'\____
+                                        .' \\|   |// `.
+                                       / \\||| : |||// \
+                                     / _||||| -:- |||||- \
+                                       | | \\\ - /// | |
+                                     | \_| ''\---/'' | |
+                                      \ .-\__ `-` ___/-. /
+                                   ___`. .' /--.--\ `. . __
+                                . '< `.___\_<|>_/___.' >'.
+                               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+                                 \ \ `-. \_ __\ /__ _/ .-` / /
+                         ======`-.____`-.___\_____/___.-`____.-'======
+                                            `=---='
+                         .............................................
+                            !Write the code!       Change the world!
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</code></pre>
+<iframe frameborder="no" border="0" autoPlay=true marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=28285910&auto=0&height=66"></iframe>
+
 <a id="more"></a>
 
-<h2 id="二、方案选择"><a href="#二、方案选择" class="headerlink" title="二、方案选择"></a>二、方案选择</h2><p>&emsp;&emsp;基于空调遥控器的特点，我想到了机智云的Gokit，搭配机智云的平台，能够满足我的需求，(主要是手头刚好有几个Gokit哈哈~)；<br><br>&emsp;&emsp;那么怎么来做呢？根据经验所得，需要对这个工作拆分为几部分</p>
-<ol>
-<li>机智云平台数据点定义(啥是数据点，请到机智云官网查看);这里我订了两个核心功能，一个是开关，一个是温度调节;(当然，你也可以定义更多的数据点，如，模式，风向等等)；</li>
-<li>MCU开发，MCU开发需要细分为红外遥控器的协议解码和编码；<strong>解码</strong> 简单来说就是需要通过工具，来分析遥控器发出来的红外波形，什么波形对应着开，什么波形对应着光和温度设置。<strong>编码</strong> 就是要把我们下发的命令转换成和空调能识别的红外波形；</li>
-</ol>
-<h2 id="三、方案实施"><a href="#三、方案实施" class="headerlink" title="三、方案实施"></a>三、方案实施</h2><h3 id="1-数据点定义"><a href="#1-数据点定义" class="headerlink" title="1. 数据点定义"></a>1. 数据点定义</h3><p>&emsp;&emsp;很简单，两个数据点，温度设置和空调开关，如下图；</p>
-<p><img src="/images/pasted-47.png" alt="upload successful"></p>
-<h3 id="2-红外解码"><a href="#2-红外解码" class="headerlink" title="2. 红外解码"></a>2. 红外解码</h3><p>&emsp;&emsp; 对于红外解码，有两种方法，一种是找到空调厂商的红外协议，然后根据红外协议，直接编写就可以了，不过很不幸的是，我手头这款空调，我找了很久都没找到对应的空调协议，于是只能另辟途径。也就是第二种方法，红外波形拷贝。<br><br>&emsp;&emsp; 那么波形拷贝我采用的是，用逻辑分析仪对遥控器进行波形分析，然后使用红外波形拷贝的方法，把对应功能的波形拷贝下来。</p>
-<p>&emsp;&emsp;决定了使用红外波形拷贝，那么就需要先要搭建波形捕捉电路，翻开了压箱底多年的红外探头接收器和面板(⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄)，步骤如下。</p>
-<h4 id="2-1-硬件环境搭建"><a href="#2-1-硬件环境搭建" class="headerlink" title="2.1 硬件环境搭建"></a>2.1 硬件环境搭建</h4><h5 id="红外接收头型号-HS0038B"><a href="#红外接收头型号-HS0038B" class="headerlink" title="红外接收头型号 HS0038B"></a>红外接收头型号 <strong>HS0038B</strong></h5><p><img src="/images/pasted-33.png" alt="upload successful"></p>
-<h5 id="HS0038B-电路图搭建"><a href="#HS0038B-电路图搭建" class="headerlink" title="HS0038B 电路图搭建"></a>HS0038B 电路图搭建</h5><ul>
-<li>原理图<br><img src="/images/pasted-40.png" alt="upload successful"></li>
-<li>面包板搭建实物图<br><img src="/images/pasted-41.png" alt="upload successful"><br><img src="/images/pasted-42.png" alt="upload successful"></li>
-</ul>
-<h5 id="抓波形"><a href="#抓波形" class="headerlink" title="抓波形"></a>抓波形</h5><ul>
-<li>真实抓包红外码图<br><img src="/images/pasted-34.png" alt="upload successful"></li>
-<li><ul>
-<li>关<br><img src="/images/pasted-35.png" alt="upload successful"></li>
-</ul>
-</li>
-<li><ul>
-<li>开<br><img src="/images/pasted-36.png" alt="upload successful"></li>
-</ul>
-</li>
-<li><ul>
-<li>20度<br><img src="/images/pasted-37.png" alt="upload successful"></li>
-</ul>
-</li>
-<li><ul>
-<li>21度<br><img src="/images/pasted-38.png" alt="upload successful"></li>
-</ul>
-</li>
-<li><ul>
-<li>22度<br><img src="/images/pasted-39.png" alt="upload successful"></li>
-</ul>
-</li>
-</ul>
-<h5 id="红外解码程序编写"><a href="#红外解码程序编写" class="headerlink" title="红外解码程序编写"></a>红外解码程序编写</h5><p>&emsp;&emsp;对红外波形有一个大概的认识之后，就要编写MCU端的代码，把波形转成红外码。这里我的思路是，对STM32的某个IO，设置为输入下降沿捕捉，然后通过计算每一个高低电平的持续时间，进而把波形转成数组；具体的实现可以看代码,<strong>Talk is cheap, show me the code.（主要是懒(<em>/ω＼</em>)~）</strong></p>
-<h3 id="3-红外编码"><a href="#3-红外编码" class="headerlink" title="3. 红外编码"></a>3. 红外编码</h3><p>&emsp;&emsp;进过前面的红外拷贝之后，我存储了，几个功能点的红外码，分别低开关，和温度设置(16度到27度)；<br>这里简单说一下，红外的发送原理(主要是网上已经有很多这方面的教程了)，首先上面抓到的红外波形，并不是红外发送器真正发送的波形，红外发送的波形一般是要发送的命令“加”在一个38K 的一个波形上；因为接收端有一个波形过滤器，如果不是38K红外波形范围内会被过滤掉。所以一般会以38K的PWM作为一个红外载波；<br>&emsp;&emsp;那么发送的时候，我对STM32的PA5引脚做为输出PWM为38K的引脚，然后后根据机智云定义好的数据点，拿到对应的串口协议文档，进行命令提前，主要是APP控制和MCU状态上报，这两条协议，(<strong>当然还有进入WiFi配网和串口握手等，不过这些在MCU代码自动生成的时候已经帮我们实现好了</strong>)串口协议格式如下图</p>
-<p><img src="/images/pasted-48.png" alt="upload successful"><br><img src="/images/pasted-49.png" alt="upload successful"><br>那么后面的就是根据协议编程了。</p>
-<p>这里插播一条，我实现发送的时候，开始我想使用gokit上的红外来作为发送，不过后面发现发送的距离比较短，后面就自己焊接了红外发射头；<br>当时我对Gokit的改造如下，如果小伙伴要控制的距离不远的话，我想是可以的，具体我的改造如下:</p>
-<p><strong>Gokit引脚修改</strong></p>
-<p><img src="/images/pasted-43.png" alt="upload successful"><br><img src="/images/pasted-44.png" alt="upload successful"><br><img src="/images/pasted-45.png" alt="upload successful"><br><img src="/images/pasted-46.png" alt="upload successful"></p>
-<p><strong>我最后真实的红外发送搭建如下</strong><br><img src="/images/pasted-50.png" alt="upload successful"><br><img src="/images/pasted-51.png" alt="upload successful"></p>
-<h3 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h3><p>最后，我把手头几个Gokit 都接上了红外，这样就能开开心心开空调去啦~~~</p>
-<p><img src="/images/pasted-54.png" alt="upload successful"><br><img src="/images/pasted-52.png" alt="upload successful"><br><img src="/images/pasted-53.png" alt="upload successful"><br><img src="/images/pasted-55.png" alt="upload successful"></p>
-<h3 id="演示视频"><a href="#演示视频" class="headerlink" title="演示视频"></a>演示视频</h3><ul>
-<li>视频: <a href="https://www.bilibili.com/video/BV1WK4y1s7DA/">https://www.bilibili.com/video/BV1WK4y1s7DA/</a></li>
-</ul>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><a href="https://blog.csdn.net/qq_39690917/article/details/86713809">https://blog.csdn.net/qq_39690917/article/details/86713809</a></li>
-</ul>
+<p><embed src="http://player.hunantv.com/mgtv_v5_main/main.swf?play_type=1&video_id=3954767" autostart=false allowFullScreen="true" quality="high" width="900" height="498" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
+<!-- <div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","loop":true,"video":{"url":"http://devtest.qiniudn.com/若能绽放光芒.mp4","pic":"http://devtest.qiniudn.com/若能绽放光芒.png"},"danmaku":{"id":"9E2E3368B56CDBB4","api":"http://dplayer.daoapp.io","token":"tokendemo"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script> -->
+
+
 ]]></content>
-  </entry>
-  <entry>
-    <title>编辑器介绍</title>
-    <url>/2017/0607f348.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Sublime"><a href="#Sublime" class="headerlink" title="Sublime"></a>Sublime</h1><hr>
-<h2 id="Sublime-Text主题推荐：Seti-UI"><a href="#Sublime-Text主题推荐：Seti-UI" class="headerlink" title="Sublime Text主题推荐：Seti_UI"></a>Sublime Text主题推荐：Seti_UI</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><hr>
-<p>Seti_UI 这款主题最大的特点是能够显示各种文件类型的图标，小图标不仅看起来漂亮，而且大大增加了辨识度，能够轻松的找到对应的文件。</p>
-<a id="more"></a>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><hr>
-<p><strong>1. 安装</strong><br>在 Package Control 安装包命令行输入 Seti_UI 回车即可。</p>
-<p><strong>2. 手动安装</strong></p>
-<ul>
-<li><a href="https://github.com/ctf0/Seti_ST3/archive/master.zip">Download the .zip</a>.</li>
-<li>Unzip and rename the folder to Seti_UI</li>
-<li>Copy the folder into Packages directory, which you can find using the menu item Preferences -&gt; Browse Packages… in Sublime Text.</li>
-</ul>
-<p><strong>3. 启用</strong><br>在 Preferences -&gt; Settings -&gt; User 中加入：</p>
-<pre><code>&quot;theme&quot;: &quot;Seti.sublime-theme&quot;</code></pre>
-<p>或者</p>
-<pre><code>&quot;theme&quot;: &quot;Seti_orig.sublime-theme&quot;</code></pre>
-]]></content>
+      <categories>
+        <category>新奇</category>
+      </categories>
       <tags>
-        <tag>工具</tag>
-        <tag>IDE</tag>
+        <tag>新奇</tag>
+        <tag>音乐</tag>
+        <tag>🎵</tag>
       </tags>
   </entry>
   <entry>
