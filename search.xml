@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Android系列之各种疑难杂症处理</title>
+    <url>/2018/05/06/7aeb.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h2><blockquote>
+<p>各种疑难杂症登记和解决方法记录，小姐姐可以看O(∩_∩)O哈哈~</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="问题1"><a href="#问题1" class="headerlink" title="问题1."></a>问题1.</h2><p><code>gradle project sync failed.Basic functionality(e.g.editing,debugging) will not work properly.</code></p>
+<p><img src="https://gitee.com/alexlin/alexSource/raw/master/images/gradleFail.png" alt="gradle Fail"></p>
+<ul>
+<li><strong>解决方法:</strong><br>到项目下找到<code>gradle\wrapper\gradle-wrapper.properties</code> 然后下载里面<code>distributionUrl</code>指定内容;</li>
+</ul>
+<pre><code>#Sun May 06 22:16:52 CST 2018
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-4.4-all.zip</code></pre>
+<p>然后把 <code>distributionUrl=</code> 换成下载后的路径;<br>比如我的是这样:</p>
+<pre><code>distributionUrl=file:///Users/alex/.gradle/wrapper/dists/gradle-4.4-all/9br9xq1tocpiv8o6njlyu5op1/gradle-4.4-all.zip</code></pre>
+<p>然后再重试一下。有可能还有提醒<code>Could not download protobuf-java.jar (com.google.protobuf:protob</code> 这种错误，我试了好久好久才能下载完，怪家里的网络太糟糕😰~<br><strong>特别感谢<code>wili秀</code>一直的鼓励❤️</strong></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android系列之Android Studio 搭建</title>
     <url>/2018/05/06/bcb6.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h2><blockquote>
@@ -33,36 +63,6 @@
       <tags>
         <tag>Android</tag>
         <tag>Android Studio</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android系列之各种疑难杂症处理</title>
-    <url>/2018/05/06/7aeb.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h2><blockquote>
-<p>各种疑难杂症登记和解决方法记录，小姐姐可以看O(∩_∩)O哈哈~</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="问题1"><a href="#问题1" class="headerlink" title="问题1."></a>问题1.</h2><p><code>gradle project sync failed.Basic functionality(e.g.editing,debugging) will not work properly.</code></p>
-<p><img src="https://gitee.com/alexlin/alexSource/raw/master/images/gradleFail.png" alt="gradle Fail"></p>
-<ul>
-<li><strong>解决方法:</strong><br>到项目下找到<code>gradle\wrapper\gradle-wrapper.properties</code> 然后下载里面<code>distributionUrl</code>指定内容;</li>
-</ul>
-<pre><code>#Sun May 06 22:16:52 CST 2018
-distributionBase=GRADLE_USER_HOME
-distributionPath=wrapper/dists
-zipStoreBase=GRADLE_USER_HOME
-zipStorePath=wrapper/dists
-distributionUrl=https\://services.gradle.org/distributions/gradle-4.4-all.zip</code></pre>
-<p>然后把 <code>distributionUrl=</code> 换成下载后的路径;<br>比如我的是这样:</p>
-<pre><code>distributionUrl=file:///Users/alex/.gradle/wrapper/dists/gradle-4.4-all/9br9xq1tocpiv8o6njlyu5op1/gradle-4.4-all.zip</code></pre>
-<p>然后再重试一下。有可能还有提醒<code>Could not download protobuf-java.jar (com.google.protobuf:protob</code> 这种错误，我试了好久好久才能下载完，怪家里的网络太糟糕😰~<br><strong>特别感谢<code>wili秀</code>一直的鼓励❤️</strong></p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -803,167 +803,6 @@ Failure [INSTALL_FAILED_ALREADY_EXISTS]</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>C语言之奇门遁甲术</title>
-    <url>/2019/01/09/b2a3.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="C语言位操作与计算"><a href="#C语言位操作与计算" class="headerlink" title="C语言位操作与计算"></a>C语言位操作与计算</h2><hr>
-<blockquote>
-<p><strong>C语言中位取反是~，逻辑取反是</strong></p>
-</blockquote>
-<h3 id="布尔位运算符"><a href="#布尔位运算符" class="headerlink" title="布尔位运算符"></a>布尔位运算符</h3><table>
-<thead>
-<tr>
-<th align="left">运算符</th>
-<th align="left">意义</th>
-<th align="left">示例</th>
-<th align="left">对于每个位位置的结果（1=设定，0=清除）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">&amp;</td>
-<td align="left">位 AND</td>
-<td align="left">x&amp;y</td>
-<td align="left">如果 x 和 y 都为 1，则得到 1；如果 x 或 y 任何一个为 0，或都为0，则得到 0</td>
-</tr>
-<tr>
-<td align="left">I</td>
-<td align="left">位 OR</td>
-<td align="left">xIy</td>
-<td align="left">如果 x 或 y 为 1，或都为 1，则得到 1；如果 x 和 y 都为 0，则得到 0</td>
-</tr>
-<tr>
-<td align="left">^</td>
-<td align="left">位 XOR</td>
-<td align="left">x^y</td>
-<td align="left">如果 x 或 y 的值不同，则得到 1；如果两个值相同，则得到 0</td>
-</tr>
-<tr>
-<td align="left">~</td>
-<td align="left">位 NOT</td>
-<td align="left">（I的补码）~x</td>
-<td align="left">如果 x 为 0，则得到 1，如果 x 是 1，则得到 0</td>
-</tr>
-</tbody></table>
-<a id="more"></a>
-
-<h3 id="对某一位操作"><a href="#对某一位操作" class="headerlink" title="对某一位操作"></a>对某一位操作</h3><pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">define</span> set_bit(m,n)       m|=(1&lt;&lt;n)               </span><span class="token comment" spellcheck="true">//对某一位置一</span>
-<span class="token macro property">#<span class="token directive keyword">define</span> reset_bit(m,n)     m &amp;= ~( 1&lt;&lt;n )          </span><span class="token comment" spellcheck="true">//对某一位置零</span>
-<span class="token macro property">#<span class="token directive keyword">define</span> get_bit( m,n )     ((m) >> (n)&amp;1)          </span><span class="token comment" spellcheck="true">//获取的某一位的值</span>
-<span class="token macro property">#<span class="token directive keyword">define</span> reversebit(m,n)    m^=(1&lt;&lt;n)               </span><span class="token comment" spellcheck="true">//对某一位取反</span></code></pre>
-<h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><h4 id="1-如果乘上一个2的倍数数值，可以改用左移运算-Left-Shift-加速-300"><a href="#1-如果乘上一个2的倍数数值，可以改用左移运算-Left-Shift-加速-300" class="headerlink" title="1. 如果乘上一个2的倍数数值，可以改用左移运算(Left Shift) 加速 300%"></a>1. 如果乘上一个2的倍数数值，可以改用左移运算(Left Shift) 加速 300%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> x <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
-x <span class="token operator">=</span> x <span class="token operator">*</span> <span class="token number">64</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//改为:</span>
-x <span class="token operator">=</span> x <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 2 == 2</span>
-x <span class="token operator">=</span> x <span class="token operator">&lt;&lt;</span> <span class="token number">6</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 64 == 2*2*2*2*2*2</span></code></pre>
-<h4 id="2-如果除上一个-2-的倍数数值，可以改用右移运算加速-350"><a href="#2-如果除上一个-2-的倍数数值，可以改用右移运算加速-350" class="headerlink" title="2. 如果除上一个 2 的倍数数值，可以改用右移运算加速 350%"></a>2. 如果除上一个 2 的倍数数值，可以改用右移运算加速 350%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
-x <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">64</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//改为:</span>
-x <span class="token operator">=</span> x <span class="token operator">>></span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 2 == 2</span>
-x <span class="token operator">=</span> x <span class="token operator">>></span> <span class="token number">6</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 64 == 2*2*2*2*2*2</span></code></pre>
-<h4 id="3-数值转整数加速-10"><a href="#3-数值转整数加速-10" class="headerlink" title="3. 数值转整数加速 10%"></a>3. 数值转整数加速 10%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">1.232</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">//改为:</span>
-x <span class="token operator">=</span> <span class="token number">1.232</span> <span class="token operator">>></span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
-<h4 id="4-交换两个数值-swap-，使用-XOR-可以加速20"><a href="#4-交换两个数值-swap-，使用-XOR-可以加速20" class="headerlink" title="4. 交换两个数值(swap)，使用 XOR 可以加速20%"></a>4. 交换两个数值(swap)，使用 XOR 可以加速20%</h4><pre class=" language-c"><code class="language-c">var t<span class="token punctuation">:</span><span class="token keyword">int</span> <span class="token operator">=</span> a<span class="token punctuation">;</span>
-a <span class="token operator">=</span> b<span class="token punctuation">;</span>
-b <span class="token operator">=</span> t<span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//equals:</span>
-a <span class="token operator">=</span> a<span class="token operator">^</span>b<span class="token punctuation">;</span>
-b <span class="token operator">=</span> a<span class="token operator">^</span>b<span class="token punctuation">;</span>
-a <span class="token operator">=</span> a<span class="token operator">^</span>b<span class="token punctuation">;</span></code></pre>
-<h4 id="5-正负号转换，可以加入-300"><a href="#5-正负号转换，可以加入-300" class="headerlink" title="5. 正负号转换，可以加入 300%"></a>5. 正负号转换，可以加入 300%</h4><pre class=" language-c"><code class="language-c">i <span class="token operator">=</span> <span class="token operator">-</span>i<span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//改为</span>
-i <span class="token operator">=</span> <span class="token operator">~</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// NOT 写法</span>
-<span class="token comment" spellcheck="true">//或</span>
-i <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">^</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// XOR 写法</span></code></pre>
-<h4 id="6-取余数，如果除数为-2-的倍数，可利用-AND-运算加速-600"><a href="#6-取余数，如果除数为-2-的倍数，可利用-AND-运算加速-600" class="headerlink" title="6. 取余数，如果除数为 2 的倍数，可利用 AND 运算加速 600%"></a>6. 取余数，如果除数为 2 的倍数，可利用 AND 运算加速 600%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> <span class="token number">131</span> <span class="token operator">%</span> <span class="token number">4</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//equals:</span>
-x <span class="token operator">=</span> <span class="token number">131</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">4</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h4 id="7-利用-AND-运算检查整数是否为-2-的倍数，可以加速-600"><a href="#7-利用-AND-运算检查整数是否为-2-的倍数，可以加速-600" class="headerlink" title="7. 利用 AND 运算检查整数是否为 2 的倍数，可以加速 600%"></a>7. 利用 AND 运算检查整数是否为 2 的倍数，可以加速 600%</h4><pre class=" language-c"><code class="language-c">isEven <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//equals:</span>
-isEven <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
-<h4 id="8-加速-Math-abs-600-的写法1，写法2-又比写法1加速-20"><a href="#8-加速-Math-abs-600-的写法1，写法2-又比写法1加速-20" class="headerlink" title="8. 加速 Math.abs 600% 的写法1，写法2 又比写法1加速 20%"></a>8. 加速 Math.abs 600% 的写法1，写法2 又比写法1加速 20%</h4><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">//写法1</span>
-i <span class="token operator">=</span> x <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token operator">-</span>x <span class="token punctuation">:</span> x<span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">//写法2</span>
-
-i <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">^</span> <span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">//写法3</span>
-
-i<span class="token operator">=</span>x<span class="token operator">^</span><span class="token punctuation">(</span><span class="token operator">~</span><span class="token punctuation">(</span>x<span class="token operator">>></span><span class="token number">31</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token punctuation">(</span>x<span class="token operator">>></span><span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h4 id="9-比较两数值相乘之后是否拥有相同的符号，加速-35"><a href="#9-比较两数值相乘之后是否拥有相同的符号，加速-35" class="headerlink" title="9. 比较两数值相乘之后是否拥有相同的符号，加速 35%"></a>9. 比较两数值相乘之后是否拥有相同的符号，加速 35%</h4><pre class=" language-c"><code class="language-c">eqSign <span class="token operator">=</span> a <span class="token operator">*</span> b <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//equals:</span>
-eqSign <span class="token operator">=</span> a <span class="token operator">^</span> b <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
-]]></content>
-      <categories>
-        <category>C</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ESP8266系列-各个模组型号模组对比</title>
-    <url>/2017/08/04/9fbf.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="烧录Flash-地址说明"><a href="#烧录Flash-地址说明" class="headerlink" title="烧录Flash 地址说明"></a>烧录Flash 地址说明</h2><table>
-<thead>
-<tr>
-<th align="center">文件名称</th>
-<th align="center">8Mbit烧录地址</th>
-<th align="center">16Mbit烧录地址</th>
-<th align="center">32Mbit烧录地址</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">boot.bin</td>
-<td align="center">0x00000</td>
-<td align="center">0x00000</td>
-<td align="center">0x00000</td>
-<td align="left">由乐鑫在 SDK 中提供，建议一直使用最新版本</td>
-</tr>
-<tr>
-<td align="center">user1.bin</td>
-<td align="center">0x01000</td>
-<td align="center">0x01000</td>
-<td align="center">0x01000</td>
-<td align="left">主程序，由代码编译生成</td>
-</tr>
-<tr>
-<td align="center">user2.bin</td>
-<td align="center">0x81000</td>
-<td align="center">0x81000</td>
-<td align="center">0x81000</td>
-<td align="left">主程序，由代码编译生成</td>
-</tr>
-<tr>
-<td align="center">esp_init_data_default.bin</td>
-<td align="center">0xFC000</td>
-<td align="center">0x1FC000</td>
-<td align="center">0x3FC000</td>
-<td align="left">由乐鑫在 SDK 中提供</td>
-</tr>
-<tr>
-<td align="center">blank.bin</td>
-<td align="center">0xFE000</td>
-<td align="center">0x1FE000</td>
-<td align="center">0x3FE000</td>
-<td align="left">由乐鑫在 SDK 中提供</td>
-</tr>
-</tbody></table>
-<a id="more"></a>
-
-<h2 id="硬件连接"><a href="#硬件连接" class="headerlink" title="硬件连接"></a>硬件连接</h2><p>ESP8266有运行模式、下载模式、测试模式的区别，进入下载模式可参考以下配置：</p>
-<p>|模式|CH_PD(EN)| RST |GPIO15|GPIO0|GPIO2|TXD0|<br>|:—:|:—:|<br>|UART 下载模式|高|高|低|低|高|高|<br>|Flash运行模式|高|高|低|高|高|高|<br>|Chip 测试模式|- |- |- | -| -|低|</p>
-<h2 id="模组对比"><a href="#模组对比" class="headerlink" title="模组对比"></a>模组对比</h2><p>![模组对比][1]<br>[1]: <a href="http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a></p>
-]]></content>
-      <categories>
-        <category>esp8266</category>
-      </categories>
-      <tags>
-        <tag>esp8266</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker系列-基础入门</title>
     <url>/2017/10/09/e119.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>[ TOP ]</p>
@@ -1393,6 +1232,167 @@ invalid reference format</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>ESP8266系列-各个模组型号模组对比</title>
+    <url>/2017/08/04/9fbf.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="烧录Flash-地址说明"><a href="#烧录Flash-地址说明" class="headerlink" title="烧录Flash 地址说明"></a>烧录Flash 地址说明</h2><table>
+<thead>
+<tr>
+<th align="center">文件名称</th>
+<th align="center">8Mbit烧录地址</th>
+<th align="center">16Mbit烧录地址</th>
+<th align="center">32Mbit烧录地址</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">boot.bin</td>
+<td align="center">0x00000</td>
+<td align="center">0x00000</td>
+<td align="center">0x00000</td>
+<td align="left">由乐鑫在 SDK 中提供，建议一直使用最新版本</td>
+</tr>
+<tr>
+<td align="center">user1.bin</td>
+<td align="center">0x01000</td>
+<td align="center">0x01000</td>
+<td align="center">0x01000</td>
+<td align="left">主程序，由代码编译生成</td>
+</tr>
+<tr>
+<td align="center">user2.bin</td>
+<td align="center">0x81000</td>
+<td align="center">0x81000</td>
+<td align="center">0x81000</td>
+<td align="left">主程序，由代码编译生成</td>
+</tr>
+<tr>
+<td align="center">esp_init_data_default.bin</td>
+<td align="center">0xFC000</td>
+<td align="center">0x1FC000</td>
+<td align="center">0x3FC000</td>
+<td align="left">由乐鑫在 SDK 中提供</td>
+</tr>
+<tr>
+<td align="center">blank.bin</td>
+<td align="center">0xFE000</td>
+<td align="center">0x1FE000</td>
+<td align="center">0x3FE000</td>
+<td align="left">由乐鑫在 SDK 中提供</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+
+<h2 id="硬件连接"><a href="#硬件连接" class="headerlink" title="硬件连接"></a>硬件连接</h2><p>ESP8266有运行模式、下载模式、测试模式的区别，进入下载模式可参考以下配置：</p>
+<p>|模式|CH_PD(EN)| RST |GPIO15|GPIO0|GPIO2|TXD0|<br>|:—:|:—:|<br>|UART 下载模式|高|高|低|低|高|高|<br>|Flash运行模式|高|高|低|高|高|高|<br>|Chip 测试模式|- |- |- | -| -|低|</p>
+<h2 id="模组对比"><a href="#模组对比" class="headerlink" title="模组对比"></a>模组对比</h2><p>![模组对比][1]<br>[1]: <a href="http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a></p>
+]]></content>
+      <categories>
+        <category>esp8266</category>
+      </categories>
+      <tags>
+        <tag>esp8266</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C语言之奇门遁甲术</title>
+    <url>/2019/01/09/b2a3.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="C语言位操作与计算"><a href="#C语言位操作与计算" class="headerlink" title="C语言位操作与计算"></a>C语言位操作与计算</h2><hr>
+<blockquote>
+<p><strong>C语言中位取反是~，逻辑取反是</strong></p>
+</blockquote>
+<h3 id="布尔位运算符"><a href="#布尔位运算符" class="headerlink" title="布尔位运算符"></a>布尔位运算符</h3><table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">意义</th>
+<th align="left">示例</th>
+<th align="left">对于每个位位置的结果（1=设定，0=清除）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&amp;</td>
+<td align="left">位 AND</td>
+<td align="left">x&amp;y</td>
+<td align="left">如果 x 和 y 都为 1，则得到 1；如果 x 或 y 任何一个为 0，或都为0，则得到 0</td>
+</tr>
+<tr>
+<td align="left">I</td>
+<td align="left">位 OR</td>
+<td align="left">xIy</td>
+<td align="left">如果 x 或 y 为 1，或都为 1，则得到 1；如果 x 和 y 都为 0，则得到 0</td>
+</tr>
+<tr>
+<td align="left">^</td>
+<td align="left">位 XOR</td>
+<td align="left">x^y</td>
+<td align="left">如果 x 或 y 的值不同，则得到 1；如果两个值相同，则得到 0</td>
+</tr>
+<tr>
+<td align="left">~</td>
+<td align="left">位 NOT</td>
+<td align="left">（I的补码）~x</td>
+<td align="left">如果 x 为 0，则得到 1，如果 x 是 1，则得到 0</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+
+<h3 id="对某一位操作"><a href="#对某一位操作" class="headerlink" title="对某一位操作"></a>对某一位操作</h3><pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">define</span> set_bit(m,n)       m|=(1&lt;&lt;n)               </span><span class="token comment" spellcheck="true">//对某一位置一</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> reset_bit(m,n)     m &amp;= ~( 1&lt;&lt;n )          </span><span class="token comment" spellcheck="true">//对某一位置零</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> get_bit( m,n )     ((m) >> (n)&amp;1)          </span><span class="token comment" spellcheck="true">//获取的某一位的值</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> reversebit(m,n)    m^=(1&lt;&lt;n)               </span><span class="token comment" spellcheck="true">//对某一位取反</span></code></pre>
+<h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><h4 id="1-如果乘上一个2的倍数数值，可以改用左移运算-Left-Shift-加速-300"><a href="#1-如果乘上一个2的倍数数值，可以改用左移运算-Left-Shift-加速-300" class="headerlink" title="1. 如果乘上一个2的倍数数值，可以改用左移运算(Left Shift) 加速 300%"></a>1. 如果乘上一个2的倍数数值，可以改用左移运算(Left Shift) 加速 300%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> x <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+x <span class="token operator">=</span> x <span class="token operator">*</span> <span class="token number">64</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//改为:</span>
+x <span class="token operator">=</span> x <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 2 == 2</span>
+x <span class="token operator">=</span> x <span class="token operator">&lt;&lt;</span> <span class="token number">6</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 64 == 2*2*2*2*2*2</span></code></pre>
+<h4 id="2-如果除上一个-2-的倍数数值，可以改用右移运算加速-350"><a href="#2-如果除上一个-2-的倍数数值，可以改用右移运算加速-350" class="headerlink" title="2. 如果除上一个 2 的倍数数值，可以改用右移运算加速 350%"></a>2. 如果除上一个 2 的倍数数值，可以改用右移运算加速 350%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+x <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">64</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//改为:</span>
+x <span class="token operator">=</span> x <span class="token operator">>></span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 2 == 2</span>
+x <span class="token operator">=</span> x <span class="token operator">>></span> <span class="token number">6</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 64 == 2*2*2*2*2*2</span></code></pre>
+<h4 id="3-数值转整数加速-10"><a href="#3-数值转整数加速-10" class="headerlink" title="3. 数值转整数加速 10%"></a>3. 数值转整数加速 10%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">1.232</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//改为:</span>
+x <span class="token operator">=</span> <span class="token number">1.232</span> <span class="token operator">>></span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
+<h4 id="4-交换两个数值-swap-，使用-XOR-可以加速20"><a href="#4-交换两个数值-swap-，使用-XOR-可以加速20" class="headerlink" title="4. 交换两个数值(swap)，使用 XOR 可以加速20%"></a>4. 交换两个数值(swap)，使用 XOR 可以加速20%</h4><pre class=" language-c"><code class="language-c">var t<span class="token punctuation">:</span><span class="token keyword">int</span> <span class="token operator">=</span> a<span class="token punctuation">;</span>
+a <span class="token operator">=</span> b<span class="token punctuation">;</span>
+b <span class="token operator">=</span> t<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//equals:</span>
+a <span class="token operator">=</span> a<span class="token operator">^</span>b<span class="token punctuation">;</span>
+b <span class="token operator">=</span> a<span class="token operator">^</span>b<span class="token punctuation">;</span>
+a <span class="token operator">=</span> a<span class="token operator">^</span>b<span class="token punctuation">;</span></code></pre>
+<h4 id="5-正负号转换，可以加入-300"><a href="#5-正负号转换，可以加入-300" class="headerlink" title="5. 正负号转换，可以加入 300%"></a>5. 正负号转换，可以加入 300%</h4><pre class=" language-c"><code class="language-c">i <span class="token operator">=</span> <span class="token operator">-</span>i<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//改为</span>
+i <span class="token operator">=</span> <span class="token operator">~</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// NOT 写法</span>
+<span class="token comment" spellcheck="true">//或</span>
+i <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">^</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// XOR 写法</span></code></pre>
+<h4 id="6-取余数，如果除数为-2-的倍数，可利用-AND-运算加速-600"><a href="#6-取余数，如果除数为-2-的倍数，可利用-AND-运算加速-600" class="headerlink" title="6. 取余数，如果除数为 2 的倍数，可利用 AND 运算加速 600%"></a>6. 取余数，如果除数为 2 的倍数，可利用 AND 运算加速 600%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> <span class="token number">131</span> <span class="token operator">%</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//equals:</span>
+x <span class="token operator">=</span> <span class="token number">131</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">4</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="7-利用-AND-运算检查整数是否为-2-的倍数，可以加速-600"><a href="#7-利用-AND-运算检查整数是否为-2-的倍数，可以加速-600" class="headerlink" title="7. 利用 AND 运算检查整数是否为 2 的倍数，可以加速 600%"></a>7. 利用 AND 运算检查整数是否为 2 的倍数，可以加速 600%</h4><pre class=" language-c"><code class="language-c">isEven <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//equals:</span>
+isEven <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
+<h4 id="8-加速-Math-abs-600-的写法1，写法2-又比写法1加速-20"><a href="#8-加速-Math-abs-600-的写法1，写法2-又比写法1加速-20" class="headerlink" title="8. 加速 Math.abs 600% 的写法1，写法2 又比写法1加速 20%"></a>8. 加速 Math.abs 600% 的写法1，写法2 又比写法1加速 20%</h4><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">//写法1</span>
+i <span class="token operator">=</span> x <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token operator">-</span>x <span class="token punctuation">:</span> x<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//写法2</span>
+
+i <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">^</span> <span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//写法3</span>
+
+i<span class="token operator">=</span>x<span class="token operator">^</span><span class="token punctuation">(</span><span class="token operator">~</span><span class="token punctuation">(</span>x<span class="token operator">>></span><span class="token number">31</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token punctuation">(</span>x<span class="token operator">>></span><span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="9-比较两数值相乘之后是否拥有相同的符号，加速-35"><a href="#9-比较两数值相乘之后是否拥有相同的符号，加速-35" class="headerlink" title="9. 比较两数值相乘之后是否拥有相同的符号，加速 35%"></a>9. 比较两数值相乘之后是否拥有相同的符号，加速 35%</h4><pre class=" language-c"><code class="language-c">eqSign <span class="token operator">=</span> a <span class="token operator">*</span> b <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//equals:</span>
+eqSign <span class="token operator">=</span> a <span class="token operator">^</span> b <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
+]]></content>
+      <categories>
+        <category>C</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ESP8266系列-资料收集</title>
     <url>/2017/08/06/1260.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="ESP8266-通用系类"><a href="#ESP8266-通用系类" class="headerlink" title="ESP8266 通用系类"></a>ESP8266 通用系类</h2><p>安信可科技: <a href="http://wiki.ai-thinker.com/esp8266">http://wiki.ai-thinker.com/esp8266</a><br>Jack’s LAB: <a href="http://wiki.jackslab.org/ESP8266">http://wiki.jackslab.org/ESP8266</a><br>乐鑫论坛: <a href="http://bbs.espressif.com/index.php">http://bbs.espressif.com/index.php</a></p>
@@ -1445,113 +1445,6 @@ invalid reference format</code></pre>
       </categories>
       <tags>
         <tag>esp8266</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo插件-Hexo Admin</title>
-    <url>/2017/08/08/6e86.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Hexo-Admin"><a href="#Hexo-Admin" class="headerlink" title="Hexo Admin"></a>Hexo Admin</h2><p>官网链接:<a href="https://jaredforsyth.com/hexo-admin/">https://jaredforsyth.com/hexo-admin/</a></p>
-<blockquote>
-<p>插件可以直接在网页端创建、编辑markdown文章内容，并将内容发布到_posts里。<br>另外，对我而言，最方便的是可以很方便的给文章加标题、分类、打标签。</p>
-</blockquote>
-<h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h2><ol>
-<li>第一步:下载启动</li>
-</ol>
-<pre class=" language-sh"><code class="language-sh">npm install --save hexo-admin
-hexo server -d
-open http://localhost:4000/admin/</code></pre>
-<a id="more"></a>
-
-<ol start="2">
-<li>第二步：配置</li>
-</ol>
-<p>在Hexo 全局配置文件<strong>_config.yml</strong>最后添加类似如下内容</p>
-<pre class=" language-sh"><code class="language-sh">admin:
-  username: AlexLin
-  password_hash: be121740bf988b2225a313fa1f107ca1
-  secret: your admin password</code></pre>
-<p><strong><em>secret :</em></strong>你的后台管理密码</p>
-<p><strong><em>password_hash:</em></strong> 用密码生成的哈希串</p>
-<p>我的生成命令如下:</p>
-<pre class=" language-sh"><code class="language-sh">Alex@Alex-PC MINGW64 /e/work/myblog/gitBlog/hexo (master)
-$ node
-> const bcrypt = require('bcrypt-nodejs')
-undefined
-> bcrypt.hashSync('AlexLin666')
-'$2a$10$NVMZ2dYeOd5YRxNb7g3WJOBMzJfaXJ5I53QCy8Pw5IV.3Uoldz0wq'
-></code></pre>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Github Blog 搭建入门</title>
-    <url>/2017/03/26/fc92.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h2 id="GitHub-项目创建"><a href="#GitHub-项目创建" class="headerlink" title="GitHub 项目创建"></a>GitHub 项目创建</h2><ul>
-<li>创建一个跟你的用户名相同的项目，比如我的*<strong>github**<em>名称是</em></strong>ilxj*** 则项目名称为**<em>ilxj.github.io**</em></li>
-</ul>
-<h2 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h2><ul>
-<li>安装nodejs，下载直接安装就可以了: <a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a>.</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h2><ul>
-<li>安装配置hexo，安装命令:</li>
-</ul>
-<h3 id="淘宝cnpm"><a href="#淘宝cnpm" class="headerlink" title="淘宝cnpm"></a>淘宝cnpm</h3><p>网址:<a href="https://npm.taobao.org/">https://npm.taobao.org/</a></p>
-<pre class=" language-sh"><code class="language-sh">npm install -g hexo-cli
-# 若npm 安装有问题，可以更改为淘宝源,之后可以用 cnpm 代替 npm
-npm install -g cnpm --registry=https://registry.npm.taobao.org</code></pre>
-<ul>
-<li>在终端输入:</li>
-</ul>
-<pre class=" language-sh"><code class="language-sh"> $ hexo
- #显示如下则成功.</code></pre>
-<p> <img src="http://upload-images.jianshu.io/upload_images/1736256-808fd91a203124d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hexo"></p>
-<ul>
-<li>初始化博客</li>
-</ul>
-<pre class=" language-sh"><code class="language-sh"> #建立一个博客文件夹，并初始化博客，<folder>为文件夹的名称，可以随便起名字
- $ hexo init <folder>
- #进入博客文件夹，根据博客既定的dependencies配置安装所有的依赖包
- $ npm install
- # 部署所需的插件,加上--save比较好
- $ npm install hexo-deployer-git    --save</code></pre>
-<ul>
-<li>初始化完成之后，目录如下图<br><img src="http://upload-images.jianshu.io/upload_images/1736256-41e851da429e5a19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hexo 初始化图"><h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><img src="http://upload-images.jianshu.io/upload_images/1736256-70632d39b4a81358.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="博客配置"></li>
-</ul>
-<h3 id="本地发布命令"><a href="#本地发布命令" class="headerlink" title="本地发布命令"></a>本地发布命令</h3><pre class=" language-bash"><code class="language-bash"> $ hexo server.
- <span class="token comment" spellcheck="true">#浏览器浏览:http://localhost:4000/</span></code></pre>
-<h3 id="GitHub-发布命令"><a href="#GitHub-发布命令" class="headerlink" title="GitHub 发布命令"></a>GitHub 发布命令</h3><pre class=" language-bash"><code class="language-bash"> $ hexo generate
- $ hexo deploy</code></pre>
-<p>这时候我们的博客已经部署到网上了，我们可以在浏览器地址输入栏输入我们的网址即可，如我的博客是:<a href="http://lxj-life.com/">ilxj.github.io</a>。</p>
-<h2 id="跨PC部署"><a href="#跨PC部署" class="headerlink" title="跨PC部署"></a>跨PC部署</h2><p>原理是一个仓库存部署工具，另外一个参考用来做发布仓库；</p>
-<h2 id="Hexo-主题"><a href="#Hexo-主题" class="headerlink" title="Hexo 主题"></a>Hexo 主题</h2><ul>
-<li><a href="https://hexo.io/themes/">官网 hexo 主题</a></li>
-<li><a href="https://github.com/hexojs/hexo/wiki/Themes">主题 github</a></li>
-</ul>
-<h3 id="本博客主题是NEXT"><a href="#本博客主题是NEXT" class="headerlink" title="本博客主题是NEXT"></a>本博客主题是NEXT</h3><ul>
-<li>新建一个页面，命名为 tags 。命令如下：<pre><code>$ hexo new page tags</code></pre>
-</li>
-<li>初始化<br>编辑刚新建的页面，设置type为tags：</li>
-</ul>
-<pre><code>title: 标签
-date: 2014-12-22 12:39:04
-type: &quot;tags&quot;
-
----</code></pre>
-<p><a href="http://theme-next.iissnan.com/getting-started.html">NEXT 参考</a></p>
-<h2 id="CDN-免费加速"><a href="#CDN-免费加速" class="headerlink" title="CDN 免费加速"></a>CDN 免费加速</h2><p>官网: <a href="https://www.jsdelivr.com/?docs=gh">https://www.jsdelivr.com/?docs=gh</a><br>例子</p>
-<pre class=" language-sh"><code class="language-sh">https://cdn.jsdelivr.net/gh/github用户名/仓库@分支/images/pasted-15.png</code></pre>
-]]></content>
-      <tags>
-        <tag>hexo</tag>
-        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -1621,6 +1514,125 @@ type: &quot;tags&quot;
 ]]></content>
   </entry>
   <entry>
+    <title>Github Blog 搭建入门</title>
+    <url>/2017/03/26/fc92.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h2 id="GitHub-项目创建"><a href="#GitHub-项目创建" class="headerlink" title="GitHub 项目创建"></a>GitHub 项目创建</h2><ul>
+<li>创建一个跟你的用户名相同的项目，比如我的*<strong>github**<em>名称是</em></strong>ilxj*** 则项目名称为**<em>ilxj.github.io**</em></li>
+</ul>
+<h2 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h2><ul>
+<li>安装nodejs，下载直接安装就可以了: <a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a>.</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h2><ul>
+<li>安装配置hexo，安装命令:</li>
+</ul>
+<h3 id="淘宝cnpm"><a href="#淘宝cnpm" class="headerlink" title="淘宝cnpm"></a>淘宝cnpm</h3><p>网址:<a href="https://npm.taobao.org/">https://npm.taobao.org/</a></p>
+<pre class=" language-sh"><code class="language-sh">npm install -g hexo-cli
+# 若npm 安装有问题，可以更改为淘宝源,之后可以用 cnpm 代替 npm
+npm install -g cnpm --registry=https://registry.npm.taobao.org</code></pre>
+<ul>
+<li>在终端输入:</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh"> $ hexo
+ #显示如下则成功.</code></pre>
+<p> <img src="http://upload-images.jianshu.io/upload_images/1736256-808fd91a203124d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hexo"></p>
+<ul>
+<li>初始化博客</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh"> #建立一个博客文件夹，并初始化博客，<folder>为文件夹的名称，可以随便起名字
+ $ hexo init <folder>
+ #进入博客文件夹，根据博客既定的dependencies配置安装所有的依赖包
+ $ npm install
+ # 部署所需的插件,加上--save比较好
+ $ npm install hexo-deployer-git    --save</code></pre>
+<ul>
+<li>初始化完成之后，目录如下图<br><img src="http://upload-images.jianshu.io/upload_images/1736256-41e851da429e5a19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hexo 初始化图"><h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><img src="http://upload-images.jianshu.io/upload_images/1736256-70632d39b4a81358.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="博客配置"></li>
+</ul>
+<h3 id="本地发布命令"><a href="#本地发布命令" class="headerlink" title="本地发布命令"></a>本地发布命令</h3><pre class=" language-bash"><code class="language-bash"> $ hexo server.
+ <span class="token comment" spellcheck="true">#浏览器浏览:http://localhost:4000/</span></code></pre>
+<h3 id="GitHub-发布命令"><a href="#GitHub-发布命令" class="headerlink" title="GitHub 发布命令"></a>GitHub 发布命令</h3><pre class=" language-bash"><code class="language-bash"> $ hexo generate
+ $ hexo deploy</code></pre>
+<p>这时候我们的博客已经部署到网上了，我们可以在浏览器地址输入栏输入我们的网址即可，如我的博客是:<a href="http://lxj-life.com/">ilxj.github.io</a>。</p>
+<h2 id="跨PC部署"><a href="#跨PC部署" class="headerlink" title="跨PC部署"></a>跨PC部署</h2><p>原理是一个仓库存部署工具，另外一个参考用来做发布仓库；</p>
+<h2 id="Hexo-主题"><a href="#Hexo-主题" class="headerlink" title="Hexo 主题"></a>Hexo 主题</h2><ul>
+<li><a href="https://hexo.io/themes/">官网 hexo 主题</a></li>
+<li><a href="https://github.com/hexojs/hexo/wiki/Themes">主题 github</a></li>
+</ul>
+<h3 id="本博客主题是NEXT"><a href="#本博客主题是NEXT" class="headerlink" title="本博客主题是NEXT"></a>本博客主题是NEXT</h3><ul>
+<li>新建一个页面，命名为 tags 。命令如下：<pre><code>$ hexo new page tags</code></pre>
+</li>
+<li>初始化<br>编辑刚新建的页面，设置type为tags：</li>
+</ul>
+<pre><code>title: 标签
+date: 2014-12-22 12:39:04
+type: &quot;tags&quot;
+
+---</code></pre>
+<p><a href="http://theme-next.iissnan.com/getting-started.html">NEXT 参考</a></p>
+<h2 id="CDN-免费加速"><a href="#CDN-免费加速" class="headerlink" title="CDN 免费加速"></a>CDN 免费加速</h2><p>官网: <a href="https://www.jsdelivr.com/?docs=gh">https://www.jsdelivr.com/?docs=gh</a><br>例子</p>
+<pre class=" language-sh"><code class="language-sh">https://cdn.jsdelivr.net/gh/github用户名/仓库@分支/images/pasted-15.png</code></pre>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo插件-Hexo Admin</title>
+    <url>/2017/08/08/6e86.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Hexo-Admin"><a href="#Hexo-Admin" class="headerlink" title="Hexo Admin"></a>Hexo Admin</h2><p>官网链接:<a href="https://jaredforsyth.com/hexo-admin/">https://jaredforsyth.com/hexo-admin/</a></p>
+<blockquote>
+<p>插件可以直接在网页端创建、编辑markdown文章内容，并将内容发布到_posts里。<br>另外，对我而言，最方便的是可以很方便的给文章加标题、分类、打标签。</p>
+</blockquote>
+<h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h2><ol>
+<li>第一步:下载启动</li>
+</ol>
+<pre class=" language-sh"><code class="language-sh">npm install --save hexo-admin
+hexo server -d
+open http://localhost:4000/admin/</code></pre>
+<a id="more"></a>
+
+<ol start="2">
+<li>第二步：配置</li>
+</ol>
+<p>在Hexo 全局配置文件<strong>_config.yml</strong>最后添加类似如下内容</p>
+<pre class=" language-sh"><code class="language-sh">admin:
+  username: AlexLin
+  password_hash: be121740bf988b2225a313fa1f107ca1
+  secret: your admin password</code></pre>
+<p><strong><em>secret :</em></strong>你的后台管理密码</p>
+<p><strong><em>password_hash:</em></strong> 用密码生成的哈希串</p>
+<p>我的生成命令如下:</p>
+<pre class=" language-sh"><code class="language-sh">Alex@Alex-PC MINGW64 /e/work/myblog/gitBlog/hexo (master)
+$ node
+> const bcrypt = require('bcrypt-nodejs')
+undefined
+> bcrypt.hashSync('AlexLin666')
+'$2a$10$NVMZ2dYeOd5YRxNb7g3WJOBMzJfaXJ5I53QCy8Pw5IV.3Uoldz0wq'
+></code></pre>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo相关资源</title>
+    <url>/2017/08/04/ddcb.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>中文网站 : <a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo添加Swiftype</title>
     <url>/2017/08/04/5fa1.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-swiftype-搭建站内搜索"><a href="#1-swiftype-搭建站内搜索" class="headerlink" title="1.swiftype 搭建站内搜索"></a>1.swiftype 搭建站内搜索</h2><p>Swiftype站内搜索 ，<a href="https://swiftype.com/">官网</a></p>
@@ -1671,15 +1683,22 @@ search:
       </tags>
   </entry>
   <entry>
-    <title>Hexo相关资源</title>
-    <url>/2017/08/04/ddcb.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>中文网站 : <a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
+    <title>Hexo第三方评论插件引用</title>
+    <url>/2017/08/01/6835.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="第三方插件-友言"><a href="#第三方插件-友言" class="headerlink" title="第三方插件-友言"></a>第三方插件-友言</h2><blockquote>
+<p>友言已经暂停服务了，又不能用<br>因公司业务调整，非常遗憾的向大家宣布JiaThis公司决定自2018年4月30日起关闭旗下“友言”业务。<br>因为关停“友言”业务给您造成的不便，我们深表歉意。</p>
+</blockquote>
+<ul>
+<li><a href="http://www.uyan.cc/">友言官网</a></li>
+<li><a href="http://www.jianshu.com/p/4729e92fddbe">相关教程 1 </a></li>
+<li><a href="http://www.qtdebug.com/hexo-uyan/">相关教程 2 </a></li>
+</ul>
+<a id="more"></a>
+
 ]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
       <tags>
-        <tag>Hexo</tag>
+        <tag>hexo</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -1711,22 +1730,79 @@ search:
       </tags>
   </entry>
   <entry>
-    <title>Hexo第三方评论插件引用</title>
-    <url>/2017/08/01/6835.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="第三方插件-友言"><a href="#第三方插件-友言" class="headerlink" title="第三方插件-友言"></a>第三方插件-友言</h2><blockquote>
-<p>友言已经暂停服务了，又不能用<br>因公司业务调整，非常遗憾的向大家宣布JiaThis公司决定自2018年4月30日起关闭旗下“友言”业务。<br>因为关停“友言”业务给您造成的不便，我们深表歉意。</p>
-</blockquote>
-<ul>
-<li><a href="http://www.uyan.cc/">友言官网</a></li>
-<li><a href="http://www.jianshu.com/p/4729e92fddbe">相关教程 1 </a></li>
-<li><a href="http://www.qtdebug.com/hexo-uyan/">相关教程 2 </a></li>
-</ul>
+    <title>Linux之kill命令</title>
+    <url>/2018/02/23/730d.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Kill-命令列表"><a href="#Kill-命令列表" class="headerlink" title="Kill 命令列表"></a>Kill 命令列表</h2><hr>
+<pre><code>alex@ubuntu:~$ kill -l
+ 1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
+ 6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1
+11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM
+16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP
+21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ
+26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR
+31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
+38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
+43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
+48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
+53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
+58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
+63) SIGRTMAX-1  64) SIGRTMAX</code></pre>
 <a id="more"></a>
 
+<h3 id="Linux-Signals"><a href="#Linux-Signals" class="headerlink" title="Linux Signals"></a>Linux Signals</h3><p>Signals<br>Linux Signals are:</p>
+<pre><code>Signal_Name Number  Description
+SIGHUP       1      Hangup (POSIX)
+SIGINT       2      Terminal interrupt (ANSI)
+SIGQUIT      3      Terminal quit (POSIX)
+SIGILL       4      Illegal instruction (ANSI)
+SIGTRAP      5      Trace trap (POSIX)
+SIGIOT       6      IOT Trap (4.2 BSD)
+SIGBUS       7      BUS error (4.2 BSD)
+SIGFPE       8      Floating point exception (ANSI)
+SIGKILL      9      Kill(can&#39;t be caught or ignored) (POSIX)
+SIGUSR1      10     User defined signal 1 (POSIX)
+SIGSEGV      11     Invalid memory segment access (ANSI)
+SIGUSR2      12     User defined signal 2 (POSIX)
+SIGPIPE      13     Write on a pipe with no reader, Broken pipe (POSIX)
+SIGALRM      14     Alarm clock (POSIX)
+SIGTERM      15     Termination (ANSI)
+SIGSTKFLT    16     Stack fault
+SIGCHLD      17     Child process has stopped or exited, changed (POSIX)
+SIGCONT      18     Continue executing, if stopped (POSIX)
+SIGSTOP      19     Stop executing(can&#39;t be caught or ignored) (POSIX)
+SIGTSTP      20     Terminal stop signal (POSIX)
+SIGTTIN      21     Background process trying to read, from TTY (POSIX)
+SIGTTOU      22     Background process trying to write, to TTY (POSIX)
+SIGURG       23     Urgent condition on socket (4.2 BSD)
+SIGXCPU      24     CPU limit exceeded (4.2 BSD)
+SIGXFSZ      25     File size limit exceeded (4.2 BSD)
+SIGVTALRM    26     Virtual alarm clock (4.2 BSD)
+SIGPROF      27     Profiling alarm clock (4.2 BSD)
+SIGWINCH     28     Window size change (4.3 BSD, Sun)
+SIGIO        29     I/O now possible (4.2 BSD)
+SIGPWR       30     Power failure restart (System V)</code></pre>
+<h3 id="SIGKILL-9-和-SIGTERM-15-的区别"><a href="#SIGKILL-9-和-SIGTERM-15-的区别" class="headerlink" title="SIGKILL(9) 和 SIGTERM(15) 的区别"></a>SIGKILL(9) 和 SIGTERM(15) 的区别</h3><pre><code>SIGKILL 9   Kill(can&#39;t be caught or ignored) (POSIX)
+# 默认kill 发送信号量
+SIGTERM 15  Termination (ANSI)</code></pre>
+<p>SIGKILL 是强制终止进程，进程来不及释放资源<br>SIGTERM 是 <strong><em>优雅</em></strong> 的退出进程，进程接收到SIGTERM可以进行资源释放；</p>
+<h2 id="killall命令"><a href="#killall命令" class="headerlink" title="killall命令"></a>killall命令</h2><p>killall命令使用进程的名称来杀死进程，使用此指令可以杀死一组同名进程。<br>我们可以使用kill命令杀死指定进程PID的进程，如果要找到我们需要杀死的进程，我们还需要在之前使用ps等命令再配合grep来查找进程，而killall把这两个过程合二为一，是一个很好用的命令。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre><code>killall(选项)(参数)</code></pre>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><pre><code>-e：对长名称进行精确匹配；
+-l：忽略大小写的不同；
+-p：杀死进程所属的进程组；
+-i：交互式杀死进程，杀死进程前需要进行确认；
+-l：打印所有已知信号列表；
+-q：如果没有进程被杀死。则不输出任何信息；
+-r：使用正规表达式匹配要杀死的进程名称；
+-s：用指定的进程号代替默认信号“SIGTERM”；
+-u：杀死指定用户的进程。</code></pre>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>进程名称：指定要杀死的进程名称。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>杀死所有同名进程</p>
+<pre><code>killall vi</code></pre>
 ]]></content>
       <tags>
-        <tag>hexo</tag>
         <tag>工具</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -2021,82 +2097,6 @@ Setsockopt(listenfd, SOL_TCP, TCP_KEEPCNT, (void *)&keepCount, sizeof(keepCount)
 <li><a href="https://linux.cn/article-5975-1.html">https://linux.cn/article-5975-1.html</a></li>
 </ul>
 <pre class=" language-sh"><code class="language-sh">autossh -M 10109 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=false" -o "PasswordAuthentication=no" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -R ubuntu.lxj-life.com:10108:localhost:22 ubuntu@ubuntu.lxj-life.com</code></pre>
-]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux之kill命令</title>
-    <url>/2018/02/23/730d.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Kill-命令列表"><a href="#Kill-命令列表" class="headerlink" title="Kill 命令列表"></a>Kill 命令列表</h2><hr>
-<pre><code>alex@ubuntu:~$ kill -l
- 1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
- 6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1
-11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM
-16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP
-21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ
-26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR
-31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
-38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
-43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
-48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
-53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
-58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
-63) SIGRTMAX-1  64) SIGRTMAX</code></pre>
-<a id="more"></a>
-
-<h3 id="Linux-Signals"><a href="#Linux-Signals" class="headerlink" title="Linux Signals"></a>Linux Signals</h3><p>Signals<br>Linux Signals are:</p>
-<pre><code>Signal_Name Number  Description
-SIGHUP       1      Hangup (POSIX)
-SIGINT       2      Terminal interrupt (ANSI)
-SIGQUIT      3      Terminal quit (POSIX)
-SIGILL       4      Illegal instruction (ANSI)
-SIGTRAP      5      Trace trap (POSIX)
-SIGIOT       6      IOT Trap (4.2 BSD)
-SIGBUS       7      BUS error (4.2 BSD)
-SIGFPE       8      Floating point exception (ANSI)
-SIGKILL      9      Kill(can&#39;t be caught or ignored) (POSIX)
-SIGUSR1      10     User defined signal 1 (POSIX)
-SIGSEGV      11     Invalid memory segment access (ANSI)
-SIGUSR2      12     User defined signal 2 (POSIX)
-SIGPIPE      13     Write on a pipe with no reader, Broken pipe (POSIX)
-SIGALRM      14     Alarm clock (POSIX)
-SIGTERM      15     Termination (ANSI)
-SIGSTKFLT    16     Stack fault
-SIGCHLD      17     Child process has stopped or exited, changed (POSIX)
-SIGCONT      18     Continue executing, if stopped (POSIX)
-SIGSTOP      19     Stop executing(can&#39;t be caught or ignored) (POSIX)
-SIGTSTP      20     Terminal stop signal (POSIX)
-SIGTTIN      21     Background process trying to read, from TTY (POSIX)
-SIGTTOU      22     Background process trying to write, to TTY (POSIX)
-SIGURG       23     Urgent condition on socket (4.2 BSD)
-SIGXCPU      24     CPU limit exceeded (4.2 BSD)
-SIGXFSZ      25     File size limit exceeded (4.2 BSD)
-SIGVTALRM    26     Virtual alarm clock (4.2 BSD)
-SIGPROF      27     Profiling alarm clock (4.2 BSD)
-SIGWINCH     28     Window size change (4.3 BSD, Sun)
-SIGIO        29     I/O now possible (4.2 BSD)
-SIGPWR       30     Power failure restart (System V)</code></pre>
-<h3 id="SIGKILL-9-和-SIGTERM-15-的区别"><a href="#SIGKILL-9-和-SIGTERM-15-的区别" class="headerlink" title="SIGKILL(9) 和 SIGTERM(15) 的区别"></a>SIGKILL(9) 和 SIGTERM(15) 的区别</h3><pre><code>SIGKILL 9   Kill(can&#39;t be caught or ignored) (POSIX)
-# 默认kill 发送信号量
-SIGTERM 15  Termination (ANSI)</code></pre>
-<p>SIGKILL 是强制终止进程，进程来不及释放资源<br>SIGTERM 是 <strong><em>优雅</em></strong> 的退出进程，进程接收到SIGTERM可以进行资源释放；</p>
-<h2 id="killall命令"><a href="#killall命令" class="headerlink" title="killall命令"></a>killall命令</h2><p>killall命令使用进程的名称来杀死进程，使用此指令可以杀死一组同名进程。<br>我们可以使用kill命令杀死指定进程PID的进程，如果要找到我们需要杀死的进程，我们还需要在之前使用ps等命令再配合grep来查找进程，而killall把这两个过程合二为一，是一个很好用的命令。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre><code>killall(选项)(参数)</code></pre>
-<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><pre><code>-e：对长名称进行精确匹配；
--l：忽略大小写的不同；
--p：杀死进程所属的进程组；
--i：交互式杀死进程，杀死进程前需要进行确认；
--l：打印所有已知信号列表；
--q：如果没有进程被杀死。则不输出任何信息；
--r：使用正规表达式匹配要杀死的进程名称；
--s：用指定的进程号代替默认信号“SIGTERM”；
--u：杀死指定用户的进程。</code></pre>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>进程名称：指定要杀死的进程名称。</p>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>杀死所有同名进程</p>
-<pre><code>killall vi</code></pre>
 ]]></content>
       <tags>
         <tag>工具</tag>
@@ -3633,56 +3633,6 @@ Environment variables are:
       </tags>
   </entry>
   <entry>
-    <title>Lua之 loadfile ,dofile, loadstring，require</title>
-    <url>/2017/03/26/4bf8.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h3 id="loadfile——只编译，不运行"><a href="#loadfile——只编译，不运行" class="headerlink" title="loadfile——只编译，不运行"></a>loadfile——只编译，不运行</h3><p>    1.功能：载入文件但不执行代码块，对于相同的文件每次都会执行。只是编译代码，然后将编译结果作为一个函数返回<br>    2.调用：loadfile(“filename”)<br>    3.错误处理：不引发错误，只返回错误值但不处理错误,即返回nil和错误消息<br>    4.优点：调用一次之后可以多次调用返回的结果（即函数），<br>      即“多次调用”只需编译一次（注：这里的多次调用   是指多次调用返回的函数，而不是多次调用loadfile）</p>
-<a id="more"></a>
-
-<p><strong>dofile可如下定义：</strong></p>
-<pre class=" language-lua"><code class="language-lua">    <span class="token keyword">function</span> <span class="token function">dofile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span>
-    　　<span class="token keyword">local</span> f <span class="token operator">=</span> <span class="token function">assert</span><span class="token punctuation">(</span><span class="token function">loadfile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--调用loadfile（的返回结果）并可处理错误</span>
-    <span class="token keyword">return</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">end</span></code></pre>
-<p><code>注：加载了程序块并没有定义其中的函数。在Lua中，函数定义是一种赋值操作，是在运行时才完成的操作。 例如：一个文件test.lua中有一个函数 function foo(x) print(x) end ,执行如下代码： 　　　f = loadfile(test.lua) --加载程序块，此时还没有定义函数foo 　　　f() --运行加载的程序块，此时就定义了函数foo      foo(&quot;hello lua&quot;) --&gt;hello lua --经过上面的步骤才能调用foo    </code></p>
-<h3 id="dofile——执行"><a href="#dofile——执行" class="headerlink" title="dofile——执行"></a>dofile——执行</h3><pre><code>1.功能：载入文件并执行代码块，对于相同的文件每次都会执行
-2.调用：dofile(&quot;filename&quot;)
-3.错误处理：如果代码块中有错误则会引发错误
-4.优点：对简单任务而言，非常便捷
-5.缺点：每次载入文件时都会执行程序块</code></pre>
-<p>    6.定位：内置操作，辅助函数</p>
-<h3 id="require——我只执行一次"><a href="#require——我只执行一次" class="headerlink" title="require——我只执行一次"></a>require——我只执行一次</h3><pre><code>require和dofile有点像，不过又很不一样，require在第一次加载文件的时候，会执行里面的代码。
-但是，第二次之后，再次加载文件，则不会重复执行了。换句话说，它会保存已经加载过的文件，不会重复加载。</code></pre>
-<h3 id="loadstring"><a href="#loadstring" class="headerlink" title="loadstring"></a>loadstring</h3><pre><code>1.特点：功能强大，但开销大；
-2.典型用处：执行外部代码，如：用户的输入
-3.错误错里：代码中如果有语法错误就会返回nil
-4.理解：f = loadstring(&quot;i = i+1&quot;)  可理解为（但不完全是）f = function()  i = i+1  end 
-(注：这里的变量&quot;i&quot;是全局变量，不是指局部变量，如果没有定义全局变量&quot;i&quot;,调用f()则会报错！，即loadstring   不涉及词法域)</code></pre>
-]]></content>
-      <tags>
-        <tag>lua</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>OneNet OTA 操作笔记</title>
-    <url>/2020/09/15/91bc.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="OneNet-OTA-M5311-笔记"><a href="#OneNet-OTA-M5311-笔记" class="headerlink" title="OneNet OTA M5311 笔记"></a>OneNet OTA M5311 笔记</h2><ul>
-<li>地址: <a href="https://open.iot.10086.cn/">https://open.iot.10086.cn/</a></li>
-</ul>
-<h3 id="OneNet平台OTA设置"><a href="#OneNet平台OTA设置" class="headerlink" title="OneNet平台OTA设置"></a>OneNet平台OTA设置</h3><p>进入FOTA界面，选择添加FOTA群组,操作流程如下图:<br>第一步，创建FOTA群组；<br><img src="/images/pasted-82.png" alt="upload successful"></p>
-<a id="more"></a>
-<p><img src="/images/pasted-83.png" alt="upload successful"><br>第二步，添加关联设备<br><img src="/images/pasted-84.png" alt="upload successful"><br><img src="/images/pasted-85.png" alt="upload successful"></p>
-<p>第三步，添加当前设备固件包<br><img src="/images/pasted-93.png" alt="upload successful"><br><img src="/images/pasted-94.png" alt="upload successful"></p>
-<p>第四步，上传新的固件包，步骤同第三步；</p>
-<blockquote>
-<p>这里以上传<code>04030004</code>版本为例子<br><img src="/images/pasted-95.png" alt="upload successful"></p>
-</blockquote>
-<p>第五步，创建在线差分包<br><img src="/images/pasted-96.png" alt="upload successful"><br><img src="/images/pasted-97.png" alt="upload successful"><br><img src="/images/pasted-98.png" alt="upload successful"><br><strong>可以看到从04030003到04030004的差分包固生产成功了</strong><br><img src="/images/pasted-99.png" alt="upload successful"><br>第六步，固件测试验证<br><img src="/images/pasted-100.png" alt="upload successful"><br><img src="/images/pasted-101.png" alt="upload successful"><br><img src="/images/pasted-102.png" alt="upload successful"></p>
-<p>到此，平台端操作完成，关联的设备上电就会查询是否有升级包，若检测到升级包则能看到设备升级；</p>
-<h3 id="OTA时设备端关键日志"><a href="#OTA时设备端关键日志" class="headerlink" title="OTA时设备端关键日志"></a>OTA时设备端关键日志</h3><p><img src="/images/pasted-103.png" alt="upload successful"><br><img src="/images/pasted-104.png" alt="upload successful"><br>OneNet平台也可以看到一些OTA数据统计<br><img src="/images/pasted-105.png" alt="upload successful"></p>
-<h3 id="设备端M5311固件生产"><a href="#设备端M5311固件生产" class="headerlink" title="设备端M5311固件生产"></a>设备端M5311固件生产</h3>]]></content>
-  </entry>
-  <entry>
     <title>MarkDonw语法</title>
     <url>/2017/06/07/9530.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>MarkDonw语法</p>
@@ -3837,6 +3787,56 @@ $$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$
 ]]></content>
   </entry>
   <entry>
+    <title>Lua之 loadfile ,dofile, loadstring，require</title>
+    <url>/2017/03/26/4bf8.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h3 id="loadfile——只编译，不运行"><a href="#loadfile——只编译，不运行" class="headerlink" title="loadfile——只编译，不运行"></a>loadfile——只编译，不运行</h3><p>    1.功能：载入文件但不执行代码块，对于相同的文件每次都会执行。只是编译代码，然后将编译结果作为一个函数返回<br>    2.调用：loadfile(“filename”)<br>    3.错误处理：不引发错误，只返回错误值但不处理错误,即返回nil和错误消息<br>    4.优点：调用一次之后可以多次调用返回的结果（即函数），<br>      即“多次调用”只需编译一次（注：这里的多次调用   是指多次调用返回的函数，而不是多次调用loadfile）</p>
+<a id="more"></a>
+
+<p><strong>dofile可如下定义：</strong></p>
+<pre class=" language-lua"><code class="language-lua">    <span class="token keyword">function</span> <span class="token function">dofile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span>
+    　　<span class="token keyword">local</span> f <span class="token operator">=</span> <span class="token function">assert</span><span class="token punctuation">(</span><span class="token function">loadfile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--调用loadfile（的返回结果）并可处理错误</span>
+    <span class="token keyword">return</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">end</span></code></pre>
+<p><code>注：加载了程序块并没有定义其中的函数。在Lua中，函数定义是一种赋值操作，是在运行时才完成的操作。 例如：一个文件test.lua中有一个函数 function foo(x) print(x) end ,执行如下代码： 　　　f = loadfile(test.lua) --加载程序块，此时还没有定义函数foo 　　　f() --运行加载的程序块，此时就定义了函数foo      foo(&quot;hello lua&quot;) --&gt;hello lua --经过上面的步骤才能调用foo    </code></p>
+<h3 id="dofile——执行"><a href="#dofile——执行" class="headerlink" title="dofile——执行"></a>dofile——执行</h3><pre><code>1.功能：载入文件并执行代码块，对于相同的文件每次都会执行
+2.调用：dofile(&quot;filename&quot;)
+3.错误处理：如果代码块中有错误则会引发错误
+4.优点：对简单任务而言，非常便捷
+5.缺点：每次载入文件时都会执行程序块</code></pre>
+<p>    6.定位：内置操作，辅助函数</p>
+<h3 id="require——我只执行一次"><a href="#require——我只执行一次" class="headerlink" title="require——我只执行一次"></a>require——我只执行一次</h3><pre><code>require和dofile有点像，不过又很不一样，require在第一次加载文件的时候，会执行里面的代码。
+但是，第二次之后，再次加载文件，则不会重复执行了。换句话说，它会保存已经加载过的文件，不会重复加载。</code></pre>
+<h3 id="loadstring"><a href="#loadstring" class="headerlink" title="loadstring"></a>loadstring</h3><pre><code>1.特点：功能强大，但开销大；
+2.典型用处：执行外部代码，如：用户的输入
+3.错误错里：代码中如果有语法错误就会返回nil
+4.理解：f = loadstring(&quot;i = i+1&quot;)  可理解为（但不完全是）f = function()  i = i+1  end 
+(注：这里的变量&quot;i&quot;是全局变量，不是指局部变量，如果没有定义全局变量&quot;i&quot;,调用f()则会报错！，即loadstring   不涉及词法域)</code></pre>
+]]></content>
+      <tags>
+        <tag>lua</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OneNet OTA 操作笔记</title>
+    <url>/2020/09/15/91bc.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="OneNet-OTA-M5311-笔记"><a href="#OneNet-OTA-M5311-笔记" class="headerlink" title="OneNet OTA M5311 笔记"></a>OneNet OTA M5311 笔记</h2><ul>
+<li>地址: <a href="https://open.iot.10086.cn/">https://open.iot.10086.cn/</a></li>
+</ul>
+<h3 id="OneNet平台OTA设置"><a href="#OneNet平台OTA设置" class="headerlink" title="OneNet平台OTA设置"></a>OneNet平台OTA设置</h3><p>进入FOTA界面，选择添加FOTA群组,操作流程如下图:<br>第一步，创建FOTA群组；<br><img src="/images/pasted-82.png" alt="upload successful"></p>
+<a id="more"></a>
+<p><img src="/images/pasted-83.png" alt="upload successful"><br>第二步，添加关联设备<br><img src="/images/pasted-84.png" alt="upload successful"><br><img src="/images/pasted-85.png" alt="upload successful"></p>
+<p>第三步，添加当前设备固件包<br><img src="/images/pasted-93.png" alt="upload successful"><br><img src="/images/pasted-94.png" alt="upload successful"></p>
+<p>第四步，上传新的固件包，步骤同第三步；</p>
+<blockquote>
+<p>这里以上传<code>04030004</code>版本为例子<br><img src="/images/pasted-95.png" alt="upload successful"></p>
+</blockquote>
+<p>第五步，创建在线差分包<br><img src="/images/pasted-96.png" alt="upload successful"><br><img src="/images/pasted-97.png" alt="upload successful"><br><img src="/images/pasted-98.png" alt="upload successful"><br><strong>可以看到从04030003到04030004的差分包固生产成功了</strong><br><img src="/images/pasted-99.png" alt="upload successful"><br>第六步，固件测试验证<br><img src="/images/pasted-100.png" alt="upload successful"><br><img src="/images/pasted-101.png" alt="upload successful"><br><img src="/images/pasted-102.png" alt="upload successful"></p>
+<p>到此，平台端操作完成，关联的设备上电就会查询是否有升级包，若检测到升级包则能看到设备升级；</p>
+<h3 id="OTA时设备端关键日志"><a href="#OTA时设备端关键日志" class="headerlink" title="OTA时设备端关键日志"></a>OTA时设备端关键日志</h3><p><img src="/images/pasted-103.png" alt="upload successful"><br><img src="/images/pasted-104.png" alt="upload successful"><br>OneNet平台也可以看到一些OTA数据统计<br><img src="/images/pasted-105.png" alt="upload successful"></p>
+<h3 id="设备端M5311固件生产"><a href="#设备端M5311固件生产" class="headerlink" title="设备端M5311固件生产"></a>设备端M5311固件生产</h3>]]></content>
+  </entry>
+  <entry>
     <title>OpenSSL 笔记</title>
     <url>/2020/07/08/dfdf.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一些加密知识"><a href="#一些加密知识" class="headerlink" title="一些加密知识"></a>一些加密知识</h2><ul>
@@ -3911,90 +3911,6 @@ make install</code></pre>
 <li> <a href="https://doc.qt.io/qt-5/index.html">官方文档</a></li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>SI4432</title>
-    <url>/2017/03/26/760b.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="SPI方面"><a href="#SPI方面" class="headerlink" title="SPI方面"></a>SPI方面</h3><hr>
-<p><strong>1. 速率不要太高，SI4432手册上说不要大于10MHZ</strong>        <br><strong>2. MOSI、MOSO、SCK三个引脚配置为复用功能推挽输出</strong><br><strong>3.SPI的时钟极性配置为：同步时钟的空闲状态为 低电平</strong><br><strong>4.SPI的时钟的第2个跳变沿数据被采样。（SPI_CPHA）</strong><br><strong>5.片选信号软件控制自己定义一个IO空控制片选吧，方便.</strong></p>
-<a id="more"></a>
-
-<h3 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h3><hr>
-<p><strong>1. SI4432有3个GPIO，一般自己是不用的，但是依然要配置，因为这个和模块相关</strong><br><strong>2. 建议还是不要把SDN直接接地，毕竟发现异常后还可以将SDN拉高在置低来实现硬件复位 <em>(重要)</em></strong><br><strong>3. SI4432的SDN引脚，为高时：芯片停止工作。为低时：芯片允许工作。</strong></p>
-<h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3><hr>
-<p><strong>1. SPI配置好以后，向SI4432写数据注意地址最高位置1。 如：SPI1_ReadWriteByte(addr|0x80)</strong><br><strong>2.SI4432主要三个状态：接收状态、发送状态、挂起状态。发送和接收之间可以相互转换、但是转换之前需要先进入挂起状态然后至少15ms之后再进入发送或者接收状态。程序while（1）之前最好开始就配置为挂起状态：SI4432_WriteReg(0x07, 0x01);</strong><br><strong>3. 软件复位内部寄存器，不能立刻写入寄存器</strong><br><strong>4.某些寄存器写完之后，必须延时一段时间，才能继续写其他的寄存器，否则死机</strong></p>
-]]></content>
-      <tags>
-        <tag>SI4432</tag>
-        <tag>433MHZ</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>STM32 命名规则</title>
-    <url>/2017/03/26/eaab.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>以stm32f103c8t7xx为例子</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1736256-7d5b4a61ad2948ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="命名规范"></p>
-<a id="more"></a>
-
-<p>| Device |  description |<br>| ————- |<br>| STM32 |基于ARM?的32位微控制器产品类型。 |<br>| F |通用类型产品子系列 |<br>|Device subfamily|101 = 基本型 102 = USB基本型 103 = 增强型 105/107 = 互联型|<br>|Pin count| T=36 C=48 R=64 V=100 Z=144|<br>|Flash Size|6=32 8=64 B=128 C=256 D=384 E=512 |<br>|Package|H = BGA T = LQFP U = VFQFPN Y = WLCSP64|</p>
-<h2 id="STM32-产品类型和启动文件的选择"><a href="#STM32-产品类型和启动文件的选择" class="headerlink" title="STM32 产品类型和启动文件的选择"></a>STM32 产品类型和启动文件的选择</h2><pre><code>- startup_stm32f10x_ld_vl.s: for STM32 Low density Value line devices
-- startup_stm32f10x_ld.s: for STM32 Low density devices
-- startup_stm32f10x_md_vl.s: for STM32 Medium density Value line devices
-- startup_stm32f10x_md.s: for STM32 Medium density devices
-- startup_stm32f10x_hd.s: for STM32 High density devices
-- startup_stm32f10x_xl.s: for STM32 XL density devices
-- startup_stm32f10x_cl.s: for STM32 Connectivity line devices
-cl：互联型产品，stm32f105/107系列
-vl：超值型产品，stm32f100系列
-xl：超高密度产品，stm32f101/103系列
-ld：低密度产品，FLASH小于64K
-md：中等密度产品，FLASH=64 or 128
-hd：高密度产品，FLASH大于128</code></pre>
-<h2 id="STM32-Flash-页面大小划分"><a href="#STM32-Flash-页面大小划分" class="headerlink" title="STM32 Flash 页面大小划分"></a>STM32 Flash 页面大小划分</h2><p>STM32有4种Flash module organization，分别是：</p>
-<ul>
-<li>low-density devices(32KB，1KB/page)</li>
-<li>medium-density devices(128KB，1KB/page)</li>
-<li>high-density devices(512KB，2KB/page)</li>
-<li>connectivity line devices(256KB，2KB/page)</li>
-<li>XL-density(devices(1M，2KB/page)</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>STM32</tag>
-        <tag>ST</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SSL握手过程</title>
-    <url>/2018/03/26/b45f.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div align="center">
-![hand][1]
-</div>
-
-<a id="more"></a>
-
-<h2 id="SSL-握手目的"><a href="#SSL-握手目的" class="headerlink" title="SSL 握手目的"></a>SSL 握手目的</h2><ol>
-<li>客户端与服务器需要就一组用于保护数据的算法达成一致；</li>
-<li>它们需要确立一组由那些算法所使用的加密密钥；</li>
-<li>握手还可以选择对客户端进行认证(单向/双向 认证)。</li>
-</ol>
-<h2 id="SSL-四次握手过程"><a href="#SSL-四次握手过程" class="headerlink" title="SSL 四次握手过程"></a>SSL 四次握手过程</h2><p>1、客户端请求建立SSL链接，并向服务端发送一个随机数–Client random和客户端支持的加密方法，比如RSA公钥加密，此时是明文传输。<br>2、服务端回复一种客户端支持的加密方法、一个随机数–Server random、授信的服务器证书和非对称加密的公钥。<br>3、客户端收到服务端的回复后利用服务端的公钥，加上新的随机数–Premaster secret 通过服务端下发的公钥及加密方法进行加密，发送给服务器。<br>4、服务端收到客户端的回复，利用已知的加解密方式进行解密，同时利用Client random、Server random和Premaster secret通过一定的算法生成HTTP链接数据传输的对称加密key – session key</p>
-<p><strong>此后通讯基于 sessionkey 对称加密进行</strong></p>
-<p>参考:</p>
-<ul>
-<li><a href="http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html">http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html</a></li>
-<li><a href="https://blog.csdn.net/zxk364961978/article/details/54809008">https://blog.csdn.net/zxk364961978/article/details/54809008</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>ssl</tag>
-      </tags>
   </entry>
   <entry>
     <title>SPI协议</title>
@@ -4073,47 +3989,87 @@ hd：高密度产品，FLASH大于128</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>STM32---ADC</title>
-    <url>/2017/03/26/b2f4.html</url>
+    <title>SI4432</title>
+    <url>/2017/03/26/760b.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h2 id="引脚"><a href="#引脚" class="headerlink" title="引脚"></a>引脚</h2><p><img src="http://upload-images.jianshu.io/upload_images/1736256-98eeb51f671b5b77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="STM32 ADC 引脚"></p>
-<h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2><ol>
-<li><strong>ADC通常要与DMA一起使用 这里只是简单的用库配置ADC 不断扫描来实现ADC的应用。</strong></li>
-</ol>
-<p>** 首先配置GPIO与ADC的时钟：**</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="SPI方面"><a href="#SPI方面" class="headerlink" title="SPI方面"></a>SPI方面</h3><hr>
+<p><strong>1. 速率不要太高，SI4432手册上说不要大于10MHZ</strong>        <br><strong>2. MOSI、MOSO、SCK三个引脚配置为复用功能推挽输出</strong><br><strong>3.SPI的时钟极性配置为：同步时钟的空闲状态为 低电平</strong><br><strong>4.SPI的时钟的第2个跳变沿数据被采样。（SPI_CPHA）</strong><br><strong>5.片选信号软件控制自己定义一个IO空控制片选吧，方便.</strong></p>
 <a id="more"></a>
 
-<pre><code>ADC_InitTypeDef  ADC_InitStructure; 
-GPIO_InitTypeDef GPIO_InitStructure;
-RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1,ENABLE); 
-RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);
-GPIO_InitStructure.GPIO_Pin  =GPIO_Pin_1; 
-GPIO_InitStructure.GPIO_Mode =GPIO_Mode_AIN; 
-GPIO_Init(GPIOB,&amp;GPIO_InitStructure); //默认速度为两兆</code></pre>
-<p>2 .<strong>配置ADC的运行：</strong></p>
-<pre><code>ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;  //独立模式 
-ADC_InitStructure.ADC_ScanConvMode      =DISABLE;      //连续多通道模式 
-ADC_InitStructure.ADC_ContinuousConvMode =ENABLE;      //连续转换 
-ADC_InitStructure.ADC_ExternalTrigConv  = ADC_ExternalTrigConv_None; //转换不受外界决定
- ADC_InitStructure.ADC_DataAlign         =ADC_DataAlign_Right;   //右对齐 
-ADC_InitStructure.ADC_NbrOfChannel      =1;       //扫描通道数
- ADC_Init(ADC1,&amp;ADC_InitStructure);
- ADC_RegularChannelConfig(ADC1,ADC_Channel_9, 1,ADC_SampleTime_1Cycles5); //通道X,采样时间为1.5周期,1代表规则通道第1个这个1是啥意思我不太清楚只有是1的时候我的ADC才正常。
- ADC_Cmd  (ADC1,ENABLE);         //使能或者失能指定的ADC
- ADC_SoftwareStartConvCmd(ADC1,ENABLE); //使能或者失能指定的ADC的软件转换启动功能</code></pre>
-<p><strong>注意：为了能够正确地配置每一个ADC通道，用户在调用ADC_Init()之后，必须调用ADC_ChannelConfig()来配置每个所使用通道的转换次序和采样时间。</strong><br><strong>然后就是不停的读；</strong></p>
-<pre><code>u16 TestAdc(void) 
-&#123; 
-u16 adc; 
-while(ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC)==RESET); //检查制定ADC标志位置1与否 ADC_FLAG_EOC 转换结束标志位 
-adc=ADC_GetConversionValue(ADC1);
-returnadc;//返回最近一次ADCx规则组的转换结果
- &#125;</code></pre>
+<h3 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h3><hr>
+<p><strong>1. SI4432有3个GPIO，一般自己是不用的，但是依然要配置，因为这个和模块相关</strong><br><strong>2. 建议还是不要把SDN直接接地，毕竟发现异常后还可以将SDN拉高在置低来实现硬件复位 <em>(重要)</em></strong><br><strong>3. SI4432的SDN引脚，为高时：芯片停止工作。为低时：芯片允许工作。</strong></p>
+<h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3><hr>
+<p><strong>1. SPI配置好以后，向SI4432写数据注意地址最高位置1。 如：SPI1_ReadWriteByte(addr|0x80)</strong><br><strong>2.SI4432主要三个状态：接收状态、发送状态、挂起状态。发送和接收之间可以相互转换、但是转换之前需要先进入挂起状态然后至少15ms之后再进入发送或者接收状态。程序while（1）之前最好开始就配置为挂起状态：SI4432_WriteReg(0x07, 0x01);</strong><br><strong>3. 软件复位内部寄存器，不能立刻写入寄存器</strong><br><strong>4.某些寄存器写完之后，必须延时一段时间，才能继续写其他的寄存器，否则死机</strong></p>
+]]></content>
+      <tags>
+        <tag>SI4432</tag>
+        <tag>433MHZ</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SSL握手过程</title>
+    <url>/2018/03/26/b45f.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div align="center">
+![hand][1]
+</div>
+
+<a id="more"></a>
+
+<h2 id="SSL-握手目的"><a href="#SSL-握手目的" class="headerlink" title="SSL 握手目的"></a>SSL 握手目的</h2><ol>
+<li>客户端与服务器需要就一组用于保护数据的算法达成一致；</li>
+<li>它们需要确立一组由那些算法所使用的加密密钥；</li>
+<li>握手还可以选择对客户端进行认证(单向/双向 认证)。</li>
+</ol>
+<h2 id="SSL-四次握手过程"><a href="#SSL-四次握手过程" class="headerlink" title="SSL 四次握手过程"></a>SSL 四次握手过程</h2><p>1、客户端请求建立SSL链接，并向服务端发送一个随机数–Client random和客户端支持的加密方法，比如RSA公钥加密，此时是明文传输。<br>2、服务端回复一种客户端支持的加密方法、一个随机数–Server random、授信的服务器证书和非对称加密的公钥。<br>3、客户端收到服务端的回复后利用服务端的公钥，加上新的随机数–Premaster secret 通过服务端下发的公钥及加密方法进行加密，发送给服务器。<br>4、服务端收到客户端的回复，利用已知的加解密方式进行解密，同时利用Client random、Server random和Premaster secret通过一定的算法生成HTTP链接数据传输的对称加密key – session key</p>
+<p><strong>此后通讯基于 sessionkey 对称加密进行</strong></p>
+<p>参考:</p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html">http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html</a></li>
+<li><a href="https://blog.csdn.net/zxk364961978/article/details/54809008">https://blog.csdn.net/zxk364961978/article/details/54809008</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>ssl</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>STM32 命名规则</title>
+    <url>/2017/03/26/eaab.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>以stm32f103c8t7xx为例子</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1736256-7d5b4a61ad2948ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="命名规范"></p>
+<a id="more"></a>
+
+<p>| Device |  description |<br>| ————- |<br>| STM32 |基于ARM?的32位微控制器产品类型。 |<br>| F |通用类型产品子系列 |<br>|Device subfamily|101 = 基本型 102 = USB基本型 103 = 增强型 105/107 = 互联型|<br>|Pin count| T=36 C=48 R=64 V=100 Z=144|<br>|Flash Size|6=32 8=64 B=128 C=256 D=384 E=512 |<br>|Package|H = BGA T = LQFP U = VFQFPN Y = WLCSP64|</p>
+<h2 id="STM32-产品类型和启动文件的选择"><a href="#STM32-产品类型和启动文件的选择" class="headerlink" title="STM32 产品类型和启动文件的选择"></a>STM32 产品类型和启动文件的选择</h2><pre><code>- startup_stm32f10x_ld_vl.s: for STM32 Low density Value line devices
+- startup_stm32f10x_ld.s: for STM32 Low density devices
+- startup_stm32f10x_md_vl.s: for STM32 Medium density Value line devices
+- startup_stm32f10x_md.s: for STM32 Medium density devices
+- startup_stm32f10x_hd.s: for STM32 High density devices
+- startup_stm32f10x_xl.s: for STM32 XL density devices
+- startup_stm32f10x_cl.s: for STM32 Connectivity line devices
+cl：互联型产品，stm32f105/107系列
+vl：超值型产品，stm32f100系列
+xl：超高密度产品，stm32f101/103系列
+ld：低密度产品，FLASH小于64K
+md：中等密度产品，FLASH=64 or 128
+hd：高密度产品，FLASH大于128</code></pre>
+<h2 id="STM32-Flash-页面大小划分"><a href="#STM32-Flash-页面大小划分" class="headerlink" title="STM32 Flash 页面大小划分"></a>STM32 Flash 页面大小划分</h2><p>STM32有4种Flash module organization，分别是：</p>
+<ul>
+<li>low-density devices(32KB，1KB/page)</li>
+<li>medium-density devices(128KB，1KB/page)</li>
+<li>high-density devices(512KB，2KB/page)</li>
+<li>connectivity line devices(256KB，2KB/page)</li>
+<li>XL-density(devices(1M，2KB/page)</li>
+</ul>
 ]]></content>
       <tags>
         <tag>STM32</tag>
         <tag>ST</tag>
-        <tag>ADC</tag>
       </tags>
   </entry>
   <entry>
@@ -4133,216 +4089,6 @@ returnadc;//返回最近一次ADCx规则组的转换结果
       <tags>
         <tag>ST</tag>
         <tag>STM8</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>WireShark网络抓包</title>
-    <url>/2017/07/01/dc5b.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h2 id="WireShark入门"><a href="#WireShark入门" class="headerlink" title="WireShark入门"></a>WireShark入门</h2><h3 id="一、-打开WireShark"><a href="#一、-打开WireShark" class="headerlink" title="一、 打开WireShark"></a>一、 打开WireShark</h3><p><img src="http://static.zybuluo.com/AlexLin/4224884og6inde3h2q5wcw6a/image.png" alt="WireShark启动界面"></p>
-<a id="more"></a>
-<h3 id="二、界面分区"><a href="#二、界面分区" class="headerlink" title="二、界面分区"></a>二、界面分区</h3><p><img src="http://static.zybuluo.com/AlexLin/zrfd5f3v3q3o8bjdjay8oxc1/image.png" alt="WireShark界面划分"></p>
-<h3 id="三、过滤规则语句"><a href="#三、过滤规则语句" class="headerlink" title="三、过滤规则语句"></a>三、过滤规则语句</h3><ul>
-<li><p> IP 过滤</p>
-<pre><code>ip.src eq 192.168.1.107 or ip.dst eq 192.168.1.107
-#或者
-ip.addr eq 192.168.1.107 // 都能显示来源IP和目标IP</code></pre>
-</li>
-<li><p> 过滤端口</p>
-<pre><code>tcp.port eq 80 // 不管端口是来源的还是目标的都显示
-tcp.port == 80
-tcp.port eq 2722
-tcp.port eq 80 or udp.port eq 80
-tcp.dstport == 80 // 只显tcp协议的目标端口80
-tcp.srcport == 80 // 只显tcp协议的来源端口80
-#端口范围
-tcp.port &gt;= 1 and tcp.port &lt;= 80</code></pre>
-</li>
-<li><p>协议过滤</p>
-<pre><code>tcp、udp、arp、icmp、http、smtp、ftp、dns、msnms、ip、ssl、oicq、bootp #等等.
-#排除
-#排除arp包
-!arp  或者  not arp</code></pre>
-</li>
-<li><p>mac 过滤</p>
-<pre><code>eth.dst == A0:00:00:04:C5:84 //过滤目标mac
-eth.src eq A0:00:00:04:C5:84 //过滤来源mac
-eth.dst==A0:00:00:04:C5:84
-eth.dst==A0-00-00-04-C5-84
-eth.addr eq A0:00:00:04:C5:84 //过滤来源MAC和目标MAC都等于A0:00:00:04:C5:84的MAC</code></pre>
-</li>
-<li><p>数据包长度过滤</p>
-<pre><code>udp.length == 26 #这个长度是指udp本身固定长度8加上udp下面那块数据包之和
-tcp.len &gt;= 7  #指的是ip数据包(tcp下面那块数据),不包括tcp本身
-ip.len == 94 #除了以太网头固定长度14,其它都算是ip.len,即从ip本身到最后
-frame.len == 119 #整个数据包长度,从eth开始到最后
-#数据包组成成员
-eth ---&gt; ip or arp ---&gt; tcp or udp ---&gt; data</code></pre>
-</li>
-<li><p>http模式过滤</p>
-<pre><code>http.request.method == &quot;GET&quot;
-http.request.method == &quot;POST&quot;
-http.request.uri == &quot;/img/logo-edu.gif&quot;
-http contains &quot;GET&quot;
-http contains &quot;HTTP/1.&quot;
-</code></pre>
-</li>
-</ul>
-<p>// GET包<br>http.request.method == “GET” &amp;&amp; http contains “Host: “<br>http.request.method == “GET” &amp;&amp; http contains “User-Agent: “<br>// POST包<br>http.request.method == “POST” &amp;&amp; http contains “Host: “<br>http.request.method == “POST” &amp;&amp; http contains “User-Agent: “<br>// 响应包<br>http contains “HTTP/1.1 200 OK” &amp;&amp; http contains “Content-Type: “<br>http contains “HTTP/1.0 200 OK” &amp;&amp; http contains “Content-Type: “</p>
-<pre><code>- 两种条件成立过滤</code></pre>
-<p>过滤两种条件时，使用and连接，<br>如过滤ip为192.168.101.8并且为http协议的，ip.src==192.168.101.8 and http。</p>
-<pre><code>- 域名过滤</code></pre>
-<p>http.host == “gizwits.com”</p>
-<pre><code>### 四、TCP包分析
-
-#### **一个TCP包由5部分组成分别是:**
-
-1. Frame:   物理层的数据帧概况
-2. Ethernet II: 数据链路层以太网帧头部信息
-3. Internet Protocol Version 4: 互联网层IP包头部信息
-4. Transmission Control Protocol:  传输层T的数据段头部信息，此处是mqtt
-5. Hypertext Transfer Protocol/Data:  应用层的信息，此处是mqtt协议
-
-#### **与之对应的网络七层协议图如下**
-![tcp数据层][3]
-#### OSI 参考模型与 TCP/IP分层模型
-![OSI 参考模型与 TCP/IP分层模型][5]
-
-#### **TCP 三次握手**
-**图片版本**
-![TCP三次握手][6]
-#### **WireShark抓包分析图**
-##### **第一次握手**
-代表客户端请求建立连接</code></pre>
-<p>SEQ=0<br>ACK=0<br>FLAGS = 0x0002 （SYN）</p>
-<pre><code>**WireShark第一次TCP握手图**
-![TCP 第一次握手][7]
-
-##### **第二次握手：**
-服务器发回确认包, 标志位为 SYN,ACK. 将确认序号(Acknowledgement Number)设置为客户的SEQ加1以.即ACK=SEQ+1</code></pre>
-<p>SEQ = 0<br>ACK = SEQ+1<br>FLAGS = 0X0012（SYN +ACK）</p>
-<pre><code>**WireShark第二次TCP握手图**
-![TCP 第二次握手][8]
-
-客户端再次发送确认包(ACK) SYN标志位为0,ACK标志位为1.并且把服务器发来ACK的序号字段+1,放确在SEQ字段中发送给对方.
-</code></pre>
-<p>SEQ =SEQ+1<br>ACK = 1;<br>FLAGS = 0X0001（ACK）</p>
-<pre><code>![TCP 第三次握手][9]
-
-#### **第四次挥手**
-第一次、A机器向B机器发起断开请求，其中FIN置位,且seq=x;此时A进入FIN_WAIT_1状态；
-第二次、B机器响应A的断开请求，ACK置位，且ACK值=x+1,且Seq=z;此时A进入FIN_WAIT_2状态(表示B同意A的断开请求)；
-第三次、B机器向A发起断开请求，其中FIN置为，且Seq=y;(此时B进入LAST_WAIT)
-第四次、A响应B的断开请求，ACK置位，ACK值位y+1;此时A进入TIME_WAIT，B收到ACK之后直接CLOSE；A在经过2MSL时间之后若没收到FIN信号则CLOSE;
-
-![upload successful](/images/pasted-107.png)
-
-
-
-### 五、WireShark 抓包异常情况分析
-
-#### 1. **tcp out-of-order**（tcp有问题）
-&gt;**原因:** 应该有很多原因。但是多半是网络拥塞，导致顺序包抵达时间不同，延时太长，或者包丢失，需要重新组合数据单元 因为他们可能是通过不同的路径到达你电脑上面的。
-
-#### 2. **tcp segment of a reassembled PDU**
-&gt;**原因:** 在连个连接建立的时候，SYN包里面会把彼此TCP最大的报文段长度，在局域网内一般都是**1460**.如果发送的包比最大的报文段长度长的话就要分片了，被分片出来的包，就会被标记了**“TCP segment of a reassembled PDU”**。TCP在发起连接的第一个报文的TCP头里通过MSS这个可选项告知对方本端能够接收的最大报文（当然，这个大小是TCP净荷的大小），以太网上这个值一般设置成1460，因为1460Byte净荷+20Byte TCP头+20Byte IP头 ＝ 1500字节，正好符合链路层最大报文的要求，被标记了的包的SEQ和ACK都和原来的包一致。
-#### 3. **Tcp previous segment lost（tcp先前的分片丢失）**
-&gt;一般是网络中的网络设备发生的拥塞了，触发了TCP的拥塞控制机制。它告诉发送方数据段丢失；
-（1）、“TCP Previous segment lost” errors are not “fatal” errors. They simply indicate that the sequence number in the arriving packet is higher than the next-expected sequence number, indicating that at least one segment was dropped/lost. The receiving station remedies this situation by sending duplicate ACKs for each additional packet it receives until the sender retransmits the missing packet(s). TCP is designed to recover from this situation, which is why the image is downloaded correctly despite having a (briefly) missing packet.
-If you are getting a large number of lost packets, then there is likely a communication problem between the sender and receiver. A common cause of this is un-matched duplex settings between the PC and the switch.
-We (our lab) recently upgraded to Ethereal 0.10.14 with WinPCap 3.1.  If I remember correctly, we had previously been using 0.10.2 with WinPCap 3.0.  However, since the upgrade we have been noticing several issues.
-The first issue is with “TCP Previous segment lost” and “TCP CHECKSUM INCORRECT” messages appearing in the Packet Listing window.  We do not remember seeing these in the previous version of Ethereal, or at least not nearly as many as we are seeing now.  For example, one task for the student instructional part of the lab involves visiting a website containing two images and observing the network activity.  After the two GET requests are sent for the images, it is not uncommon for one image to be returned with a typical 200 OK response packet, but the response packet for the other image will be displayed as “TCP Previous segment lost.”  However, both images are downloaded and displayed perfectly fine in the browser.  I would think that the segment lost error would mean the object wasn’t returned correctly and shouldn’t be able to be displayed, but apparently that is not the case.  (The cache had been cleared when this was performed, so it was not defaulting to a local copy of the image.)
-Another problem we’ve been noticing is that some packets simply aren’t displayed in the Packet Listing window, even when they are obviously received.  Using the same example as above, after the two GET requests are sent for the images, it is not uncommon for one image to be returned with a typical 200 OK response, but the other response will not appear.  Yet both images are successfully displayed in the browser.  Is this a problem with Ethereal not detecting the packets?
-I’m not sure how typical this is, but we seem to be experiencing these issues often with 0.10.14 while we never did with 0.10.2.  Could it also be an issue with WinPCap, and not necessarily Ethereal?  I’m just trying to find some answers as to why we are seeing a sudden abundance of TCP related errors and uncaptured packets.  Thanks.
-（2）、I have a network client application that runs fine while I am debugging (no TCP errors),
-but when I run the release version, it runs incredibly slow.  It runs as a series of
-transactions, where each transaction is a separate connection to the server.  Wireshark
-analysis has determined that about 50% of all transactions involve the series:
-TCP Previous Segment Lost
-
-#### 4. Tcpacked lost segment（tcp应答丢失）
-#### 5. Tcp window update（tcp窗口更新）
-#### 6. Tcp dup ack（tcp重复应答）
-&gt;1)当收到tcp out-of-order 信号时，可能发送该信号， 这个相同应答的意图是让对端知道一个分片被收到的时候出现问题，并且告诉它希望得到的序列号。
-2)由于TCP不知道重复的ACK是由丢失的段引起的还是仅仅是重新排序段，所以等待接收到少量的重复的ACK。 假设如果只有段的重新排序，则在重新排序的段被处理之前将只有一个或两个重复的ACK，然后将生成新的ACK。 如果在一行中接收到三个或更多个重复的ACK，则表明段已经丢失。 TCP然后执行似乎是丢失段的重传，而不等待重传定时器到期。
-
-#### 7. **Tcp keep alive**（tcp保持活动）
-&gt;在TCP中有一个Keep-alive的机制可以检测死连接，原理很简单，TCP会在空闲了一定时间后发送数据给对方：
- 1.如果主机可达，对方就会响应ACK应答，就认为是存活的。
- 2.如果可达，但应用程序退出，对方就发RST应答，发送TCP撤消连接。
- 3.如果可达，但应用程序崩溃，对方就发FIN消息。
- 4.如果对方主机不响应ack, rst，继续发送直到超时，就撤消连接。这个时间就是默认的二个小时。
-
-#### 8. **Tcp retransmission**（tcp重传）
-&gt;作为一个可靠的传输协议，传输控制协议（TCP）在发送主机需要从目标主机收到一个包时确认。If the sender does not receive that acknowledgment within a certain amount of time, it acts under the assumption that the packet did not reach its destination and retransmits the packet.如果发件人没有收到的时间内一定之金额，确认，它的行为假设下，该数据包没有到达其目的地，以及转发数据包。
-
-
-## TCP 状态分析
-TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)
-在TCP层，有个FLAGS字段，这个字段有以下几个标识：SYN, FIN, ACK, PSH, RST, URG.
-它们的含义是：
-
- 1. SYN(synchronous): 表示建立连接.
- 2. FIN(finish): 表示关闭连接.
- 3. ACK(acknowledgement): 表示响应.
- 4. PSH(push): 表示有DATA数据传输.
- 5. RST(reset): 表示连接重置.
- 6. URG(urgent):紧急.
- 7. SEQ(Sequence number):顺序号码
-
-## TCP 三次握手流程
-1. 主机A发送位码为syn＝1，随机产生seq number=1234567的数据包到服务器，主机B由SYN=1知道，A要求建立联机；
-2. 主机B收到请求后要确认联机信息，向A发送ack number=(主机A的seq+1)，syn=1，ack=1，随机产生seq=7654321的包；
-3. 主机A收到后检查ack number是否正确，即第一次发送的seq number+1，以及位码ack是否为1，若正确，主机A会再发送ack number=(主机B的seq+1)，ack=1，主机B收到后确认seq值与ack=1则连接建立成功。
-
-## 各种网络包头格式
-### 以太网头</code></pre>
-<p>// MAC地址长度<br>#define MAC_ADDRESS_LEN 6</p>
-<p>// 常用的以太网帧类型<br>#define ETHERNET_FRAME_IP       0x0800              // IP帧<br>#define ETHERNET_FRAME_ARP      0x0806              // ARP帧<br>#define ETHERNET_FRAME_RARP     0x8035              // RARP帧<br>#define ETHERNET_FRAME_IPv6     0x86DD              // IP6帧</p>
-<p>typedef struct _EthernetHeader      // 以太头<br>{<br>    UCHAR       DstMacAddr[MAC_ADDRESS_LEN];        // 目标MAC<br>    UCHAR       SrcMacAddr[MAC_ADDRESS_LEN];        // 源MAC<br>    USHORT      FrmType;                            // 类型<br>}EthernetHeader, *PEthernetHeader;</p>
-<pre><code>### TCP 包格式</code></pre>
-<h2 id="0-15-31"><a href="#0-15-31" class="headerlink" title="0                            15                              31"></a>0                            15                              31</h2><h2 id="source-port-destination-port"><a href="#source-port-destination-port" class="headerlink" title="|          source port          |       destination port        |"></a>|          source port          |       destination port        |</h2><table>
-<thead>
-<tr>
-<th>sequence number</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>acknowledgment number</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="HL-rsvd-C-E-U-A-P-R-S-F-window-size"><a href="#HL-rsvd-C-E-U-A-P-R-S-F-window-size" class="headerlink" title="|  HL   | rsvd  |C|E|U|A|P|R|S|F|        window size            |"></a>|  HL   | rsvd  |C|E|U|A|P|R|S|F|        window size            |</h2><h2 id="TCP-checksum-urgent-pointer"><a href="#TCP-checksum-urgent-pointer" class="headerlink" title="|         TCP checksum          |       urgent pointer          |"></a>|         TCP checksum          |       urgent pointer          |</h2><table>
-<thead>
-<tr>
-<th>Optional</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Data</td>
-</tr>
-</tbody></table>
-<hr>
-<p>// TCP头标志位掩码 OffFlag<br>#define TCP_HDR_LEN             0xF000              // TCP头长度&lt;双字的个数&gt;转化为字节数需要x4<br>#define TCP_URG_FLAG            0x0020              // URG标志<br>#define TCP_ACK_FLAG            0x0010              // ACK标志 应答1或请求0<br>#define TCP_PSH_FLAG            0x0008              // psh标志 以最快速度传输数据<br>#define TCP_RST_FLAG            0x0004              // RST标志 先断开连接,再重建连接<br>#define TCP_SYN_FLAG            0x0002              // SYN标志 用来建立连接<br>#define TCP_FIN_FLAG            0x0001              // FIN标志 发送方完成数据发送</p>
-<p>typedef struct _TcpHeader           // TCP头 20 BYTES<br>{<br>    USHORT      SrcPort;                            // 源端口<br>    USHORT      DstPort;                            // 目的端口<br>    ULONG       SeqNum;                             // 序号<br>    ULONG       AckNum;                             // 确认号<br>    USHORT      OffFlag;                            // 首部长度&lt;首部双字的个数&gt;+保留位+标志位<br>    USHORT      WndSize;                            // 窗口大小&lt;实现流量控制&gt;<br>    USHORT      Checksum;                           // 效验和<br>    USHORT      UrgPointer;                         // 紧急指针<br>}TcpHeader, *PTcpHeader;</p>
-<p>// OffFlag : 4位首部长度 + 6位保留位 + URG+ACK+PSH+RST+SYN+FIN</p>
-<p>typedef struct _TCPPACKET           // TCP封包 &lt;当ip中没有附加数据时&gt;<br>{<br>    EthernetHeader  Ehhdr;<br>    IPHeader        Iphdr;<br>    TcpHeader       Tcphdr;<br>}TCPPACKET, *PTCPPACKET;</p>
-<p>```</p>
-<p>SYN和ACK可能同时为1，它表示的就是建立连接之后的响应，<br>如果只是单个的一个SYN，它表示的只是建立连接。</p>
-<p>参考</p>
-<hr>
-<ul>
-<li><a href="http://bbs.pediy.com/thread-147644.htm">http://bbs.pediy.com/thread-147644.htm</a></li>
-<li><a href="http://www.yunsec.net/a/school/wlcs/agreement/2012/0317/10262.html">http://www.yunsec.net/a/school/wlcs/agreement/2012/0317/10262.html</a></li>
-<li><a href="http://www.9upk.com/article/2537.html">http://www.9upk.com/article/2537.html</a> （抓包工具教程）</li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>抓包工具</tag>
-        <tag>wireShark</tag>
       </tags>
   </entry>
   <entry>
@@ -4662,69 +4408,257 @@ t 0:0(0) ack 22535 win 8760 (DF)</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Git之技能记录</title>
-    <url>/2018/02/11/3432.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一-Git-功能预览图"><a href="#一-Git-功能预览图" class="headerlink" title="一. Git 功能预览图"></a>一. Git 功能预览图</h2><p><img src="http://upload-images.jianshu.io/upload_images/1736256-510243b84e2d36f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Git"></p>
+    <title>STM32---ADC</title>
+    <url>/2017/03/26/b2f4.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h2 id="引脚"><a href="#引脚" class="headerlink" title="引脚"></a>引脚</h2><p><img src="http://upload-images.jianshu.io/upload_images/1736256-98eeb51f671b5b77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="STM32 ADC 引脚"></p>
+<h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2><ol>
+<li><strong>ADC通常要与DMA一起使用 这里只是简单的用库配置ADC 不断扫描来实现ADC的应用。</strong></li>
+</ol>
+<p>** 首先配置GPIO与ADC的时钟：**</p>
 <a id="more"></a>
 
-<h2 id="二-tag"><a href="#二-tag" class="headerlink" title="二. tag"></a>二. tag</h2><ul>
-<li>列出所有tag</li>
-</ul>
-<pre><code>$ git tag -l</code></pre>
-<ul>
-<li>打tag</li>
-</ul>
-<pre><code>$ git tag &#39;tag&#39;</code></pre>
-<ul>
-<li>打tag 加注释</li>
-</ul>
-<pre><code>$ git tag -a [tag name] -m [message]</code></pre>
-<ul>
-<li>删除本地tag</li>
-</ul>
-<pre><code>$ git tag -d [tag]</code></pre>
-<ul>
-<li>删除远程tag</li>
-</ul>
-<pre><code>git push origin --delete tag &lt;tagname&gt;</code></pre>
-<ul>
-<li>查看tag信息</li>
-</ul>
-<pre><code>$ git show [tag]</code></pre>
-<ul>
-<li>提交指定tag</li>
-</ul>
-<pre><code>$ git push [remote] [tag]
+<pre><code>ADC_InitTypeDef  ADC_InitStructure; 
+GPIO_InitTypeDef GPIO_InitStructure;
+RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1,ENABLE); 
+RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);
+GPIO_InitStructure.GPIO_Pin  =GPIO_Pin_1; 
+GPIO_InitStructure.GPIO_Mode =GPIO_Mode_AIN; 
+GPIO_Init(GPIOB,&amp;GPIO_InitStructure); //默认速度为两兆</code></pre>
+<p>2 .<strong>配置ADC的运行：</strong></p>
+<pre><code>ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;  //独立模式 
+ADC_InitStructure.ADC_ScanConvMode      =DISABLE;      //连续多通道模式 
+ADC_InitStructure.ADC_ContinuousConvMode =ENABLE;      //连续转换 
+ADC_InitStructure.ADC_ExternalTrigConv  = ADC_ExternalTrigConv_None; //转换不受外界决定
+ ADC_InitStructure.ADC_DataAlign         =ADC_DataAlign_Right;   //右对齐 
+ADC_InitStructure.ADC_NbrOfChannel      =1;       //扫描通道数
+ ADC_Init(ADC1,&amp;ADC_InitStructure);
+ ADC_RegularChannelConfig(ADC1,ADC_Channel_9, 1,ADC_SampleTime_1Cycles5); //通道X,采样时间为1.5周期,1代表规则通道第1个这个1是啥意思我不太清楚只有是1的时候我的ADC才正常。
+ ADC_Cmd  (ADC1,ENABLE);         //使能或者失能指定的ADC
+ ADC_SoftwareStartConvCmd(ADC1,ENABLE); //使能或者失能指定的ADC的软件转换启动功能</code></pre>
+<p><strong>注意：为了能够正确地配置每一个ADC通道，用户在调用ADC_Init()之后，必须调用ADC_ChannelConfig()来配置每个所使用通道的转换次序和采样时间。</strong><br><strong>然后就是不停的读；</strong></p>
+<pre><code>u16 TestAdc(void) 
+&#123; 
+u16 adc; 
+while(ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC)==RESET); //检查制定ADC标志位置1与否 ADC_FLAG_EOC 转换结束标志位 
+adc=ADC_GetConversionValue(ADC1);
+returnadc;//返回最近一次ADCx规则组的转换结果
+ &#125;</code></pre>
+]]></content>
+      <tags>
+        <tag>STM32</tag>
+        <tag>ST</tag>
+        <tag>ADC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WireShark网络抓包</title>
+    <url>/2017/07/01/dc5b.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h2 id="WireShark入门"><a href="#WireShark入门" class="headerlink" title="WireShark入门"></a>WireShark入门</h2><h3 id="一、-打开WireShark"><a href="#一、-打开WireShark" class="headerlink" title="一、 打开WireShark"></a>一、 打开WireShark</h3><p><img src="http://static.zybuluo.com/AlexLin/4224884og6inde3h2q5wcw6a/image.png" alt="WireShark启动界面"></p>
+<a id="more"></a>
+<h3 id="二、界面分区"><a href="#二、界面分区" class="headerlink" title="二、界面分区"></a>二、界面分区</h3><p><img src="http://static.zybuluo.com/AlexLin/zrfd5f3v3q3o8bjdjay8oxc1/image.png" alt="WireShark界面划分"></p>
+<h3 id="三、过滤规则语句"><a href="#三、过滤规则语句" class="headerlink" title="三、过滤规则语句"></a>三、过滤规则语句</h3><ul>
+<li><p> IP 过滤</p>
+<pre><code>ip.src eq 192.168.1.107 or ip.dst eq 192.168.1.107
+#或者
+ip.addr eq 192.168.1.107 // 都能显示来源IP和目标IP</code></pre>
+</li>
+<li><p> 过滤端口</p>
+<pre><code>tcp.port eq 80 // 不管端口是来源的还是目标的都显示
+tcp.port == 80
+tcp.port eq 2722
+tcp.port eq 80 or udp.port eq 80
+tcp.dstport == 80 // 只显tcp协议的目标端口80
+tcp.srcport == 80 // 只显tcp协议的来源端口80
+#端口范围
+tcp.port &gt;= 1 and tcp.port &lt;= 80</code></pre>
+</li>
+<li><p>协议过滤</p>
+<pre><code>tcp、udp、arp、icmp、http、smtp、ftp、dns、msnms、ip、ssl、oicq、bootp #等等.
+#排除
+#排除arp包
+!arp  或者  not arp</code></pre>
+</li>
+<li><p>mac 过滤</p>
+<pre><code>eth.dst == A0:00:00:04:C5:84 //过滤目标mac
+eth.src eq A0:00:00:04:C5:84 //过滤来源mac
+eth.dst==A0:00:00:04:C5:84
+eth.dst==A0-00-00-04-C5-84
+eth.addr eq A0:00:00:04:C5:84 //过滤来源MAC和目标MAC都等于A0:00:00:04:C5:84的MAC</code></pre>
+</li>
+<li><p>数据包长度过滤</p>
+<pre><code>udp.length == 26 #这个长度是指udp本身固定长度8加上udp下面那块数据包之和
+tcp.len &gt;= 7  #指的是ip数据包(tcp下面那块数据),不包括tcp本身
+ip.len == 94 #除了以太网头固定长度14,其它都算是ip.len,即从ip本身到最后
+frame.len == 119 #整个数据包长度,从eth开始到最后
+#数据包组成成员
+eth ---&gt; ip or arp ---&gt; tcp or udp ---&gt; data</code></pre>
+</li>
+<li><p>http模式过滤</p>
+<pre><code>http.request.method == &quot;GET&quot;
+http.request.method == &quot;POST&quot;
+http.request.uri == &quot;/img/logo-edu.gif&quot;
+http contains &quot;GET&quot;
+http contains &quot;HTTP/1.&quot;
 </code></pre>
-<p>例如，将v1.0标签推送到远程服务器上</p>
-<pre><code>$ git push origin v1.0</code></pre>
+</li>
+</ul>
+<p>// GET包<br>http.request.method == “GET” &amp;&amp; http contains “Host: “<br>http.request.method == “GET” &amp;&amp; http contains “User-Agent: “<br>// POST包<br>http.request.method == “POST” &amp;&amp; http contains “Host: “<br>http.request.method == “POST” &amp;&amp; http contains “User-Agent: “<br>// 响应包<br>http contains “HTTP/1.1 200 OK” &amp;&amp; http contains “Content-Type: “<br>http contains “HTTP/1.0 200 OK” &amp;&amp; http contains “Content-Type: “</p>
+<pre><code>- 两种条件成立过滤</code></pre>
+<p>过滤两种条件时，使用and连接，<br>如过滤ip为192.168.101.8并且为http协议的，ip.src==192.168.101.8 and http。</p>
+<pre><code>- 域名过滤</code></pre>
+<p>http.host == “gizwits.com”</p>
+<pre><code>### 四、TCP包分析
+
+#### **一个TCP包由5部分组成分别是:**
+
+1. Frame:   物理层的数据帧概况
+2. Ethernet II: 数据链路层以太网帧头部信息
+3. Internet Protocol Version 4: 互联网层IP包头部信息
+4. Transmission Control Protocol:  传输层T的数据段头部信息，此处是mqtt
+5. Hypertext Transfer Protocol/Data:  应用层的信息，此处是mqtt协议
+
+#### **与之对应的网络七层协议图如下**
+![tcp数据层][3]
+#### OSI 参考模型与 TCP/IP分层模型
+![OSI 参考模型与 TCP/IP分层模型][5]
+
+#### **TCP 三次握手**
+**图片版本**
+![TCP三次握手][6]
+#### **WireShark抓包分析图**
+##### **第一次握手**
+代表客户端请求建立连接</code></pre>
+<p>SEQ=0<br>ACK=0<br>FLAGS = 0x0002 （SYN）</p>
+<pre><code>**WireShark第一次TCP握手图**
+![TCP 第一次握手][7]
+
+##### **第二次握手：**
+服务器发回确认包, 标志位为 SYN,ACK. 将确认序号(Acknowledgement Number)设置为客户的SEQ加1以.即ACK=SEQ+1</code></pre>
+<p>SEQ = 0<br>ACK = SEQ+1<br>FLAGS = 0X0012（SYN +ACK）</p>
+<pre><code>**WireShark第二次TCP握手图**
+![TCP 第二次握手][8]
+
+客户端再次发送确认包(ACK) SYN标志位为0,ACK标志位为1.并且把服务器发来ACK的序号字段+1,放确在SEQ字段中发送给对方.
+</code></pre>
+<p>SEQ =SEQ+1<br>ACK = 1;<br>FLAGS = 0X0001（ACK）</p>
+<pre><code>![TCP 第三次握手][9]
+
+#### **第四次挥手**
+第一次、A机器向B机器发起断开请求，其中FIN置位,且seq=x;此时A进入FIN_WAIT_1状态；
+第二次、B机器响应A的断开请求，ACK置位，且ACK值=x+1,且Seq=z;此时A进入FIN_WAIT_2状态(表示B同意A的断开请求)；
+第三次、B机器向A发起断开请求，其中FIN置为，且Seq=y;(此时B进入LAST_WAIT)
+第四次、A响应B的断开请求，ACK置位，ACK值位y+1;此时A进入TIME_WAIT，B收到ACK之后直接CLOSE；A在经过2MSL时间之后若没收到FIN信号则CLOSE;
+
+![upload successful](/images/pasted-107.png)
+
+
+
+### 五、WireShark 抓包异常情况分析
+
+#### 1. **tcp out-of-order**（tcp有问题）
+&gt;**原因:** 应该有很多原因。但是多半是网络拥塞，导致顺序包抵达时间不同，延时太长，或者包丢失，需要重新组合数据单元 因为他们可能是通过不同的路径到达你电脑上面的。
+
+#### 2. **tcp segment of a reassembled PDU**
+&gt;**原因:** 在连个连接建立的时候，SYN包里面会把彼此TCP最大的报文段长度，在局域网内一般都是**1460**.如果发送的包比最大的报文段长度长的话就要分片了，被分片出来的包，就会被标记了**“TCP segment of a reassembled PDU”**。TCP在发起连接的第一个报文的TCP头里通过MSS这个可选项告知对方本端能够接收的最大报文（当然，这个大小是TCP净荷的大小），以太网上这个值一般设置成1460，因为1460Byte净荷+20Byte TCP头+20Byte IP头 ＝ 1500字节，正好符合链路层最大报文的要求，被标记了的包的SEQ和ACK都和原来的包一致。
+#### 3. **Tcp previous segment lost（tcp先前的分片丢失）**
+&gt;一般是网络中的网络设备发生的拥塞了，触发了TCP的拥塞控制机制。它告诉发送方数据段丢失；
+（1）、“TCP Previous segment lost” errors are not “fatal” errors. They simply indicate that the sequence number in the arriving packet is higher than the next-expected sequence number, indicating that at least one segment was dropped/lost. The receiving station remedies this situation by sending duplicate ACKs for each additional packet it receives until the sender retransmits the missing packet(s). TCP is designed to recover from this situation, which is why the image is downloaded correctly despite having a (briefly) missing packet.
+If you are getting a large number of lost packets, then there is likely a communication problem between the sender and receiver. A common cause of this is un-matched duplex settings between the PC and the switch.
+We (our lab) recently upgraded to Ethereal 0.10.14 with WinPCap 3.1.  If I remember correctly, we had previously been using 0.10.2 with WinPCap 3.0.  However, since the upgrade we have been noticing several issues.
+The first issue is with “TCP Previous segment lost” and “TCP CHECKSUM INCORRECT” messages appearing in the Packet Listing window.  We do not remember seeing these in the previous version of Ethereal, or at least not nearly as many as we are seeing now.  For example, one task for the student instructional part of the lab involves visiting a website containing two images and observing the network activity.  After the two GET requests are sent for the images, it is not uncommon for one image to be returned with a typical 200 OK response packet, but the response packet for the other image will be displayed as “TCP Previous segment lost.”  However, both images are downloaded and displayed perfectly fine in the browser.  I would think that the segment lost error would mean the object wasn’t returned correctly and shouldn’t be able to be displayed, but apparently that is not the case.  (The cache had been cleared when this was performed, so it was not defaulting to a local copy of the image.)
+Another problem we’ve been noticing is that some packets simply aren’t displayed in the Packet Listing window, even when they are obviously received.  Using the same example as above, after the two GET requests are sent for the images, it is not uncommon for one image to be returned with a typical 200 OK response, but the other response will not appear.  Yet both images are successfully displayed in the browser.  Is this a problem with Ethereal not detecting the packets?
+I’m not sure how typical this is, but we seem to be experiencing these issues often with 0.10.14 while we never did with 0.10.2.  Could it also be an issue with WinPCap, and not necessarily Ethereal?  I’m just trying to find some answers as to why we are seeing a sudden abundance of TCP related errors and uncaptured packets.  Thanks.
+（2）、I have a network client application that runs fine while I am debugging (no TCP errors),
+but when I run the release version, it runs incredibly slow.  It runs as a series of
+transactions, where each transaction is a separate connection to the server.  Wireshark
+analysis has determined that about 50% of all transactions involve the series:
+TCP Previous Segment Lost
+
+#### 4. Tcpacked lost segment（tcp应答丢失）
+#### 5. Tcp window update（tcp窗口更新）
+#### 6. Tcp dup ack（tcp重复应答）
+&gt;1)当收到tcp out-of-order 信号时，可能发送该信号， 这个相同应答的意图是让对端知道一个分片被收到的时候出现问题，并且告诉它希望得到的序列号。
+2)由于TCP不知道重复的ACK是由丢失的段引起的还是仅仅是重新排序段，所以等待接收到少量的重复的ACK。 假设如果只有段的重新排序，则在重新排序的段被处理之前将只有一个或两个重复的ACK，然后将生成新的ACK。 如果在一行中接收到三个或更多个重复的ACK，则表明段已经丢失。 TCP然后执行似乎是丢失段的重传，而不等待重传定时器到期。
+
+#### 7. **Tcp keep alive**（tcp保持活动）
+&gt;在TCP中有一个Keep-alive的机制可以检测死连接，原理很简单，TCP会在空闲了一定时间后发送数据给对方：
+ 1.如果主机可达，对方就会响应ACK应答，就认为是存活的。
+ 2.如果可达，但应用程序退出，对方就发RST应答，发送TCP撤消连接。
+ 3.如果可达，但应用程序崩溃，对方就发FIN消息。
+ 4.如果对方主机不响应ack, rst，继续发送直到超时，就撤消连接。这个时间就是默认的二个小时。
+
+#### 8. **Tcp retransmission**（tcp重传）
+&gt;作为一个可靠的传输协议，传输控制协议（TCP）在发送主机需要从目标主机收到一个包时确认。If the sender does not receive that acknowledgment within a certain amount of time, it acts under the assumption that the packet did not reach its destination and retransmits the packet.如果发件人没有收到的时间内一定之金额，确认，它的行为假设下，该数据包没有到达其目的地，以及转发数据包。
+
+
+## TCP 状态分析
+TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)
+在TCP层，有个FLAGS字段，这个字段有以下几个标识：SYN, FIN, ACK, PSH, RST, URG.
+它们的含义是：
+
+ 1. SYN(synchronous): 表示建立连接.
+ 2. FIN(finish): 表示关闭连接.
+ 3. ACK(acknowledgement): 表示响应.
+ 4. PSH(push): 表示有DATA数据传输.
+ 5. RST(reset): 表示连接重置.
+ 6. URG(urgent):紧急.
+ 7. SEQ(Sequence number):顺序号码
+
+## TCP 三次握手流程
+1. 主机A发送位码为syn＝1，随机产生seq number=1234567的数据包到服务器，主机B由SYN=1知道，A要求建立联机；
+2. 主机B收到请求后要确认联机信息，向A发送ack number=(主机A的seq+1)，syn=1，ack=1，随机产生seq=7654321的包；
+3. 主机A收到后检查ack number是否正确，即第一次发送的seq number+1，以及位码ack是否为1，若正确，主机A会再发送ack number=(主机B的seq+1)，ack=1，主机B收到后确认seq值与ack=1则连接建立成功。
+
+## 各种网络包头格式
+### 以太网头</code></pre>
+<p>// MAC地址长度<br>#define MAC_ADDRESS_LEN 6</p>
+<p>// 常用的以太网帧类型<br>#define ETHERNET_FRAME_IP       0x0800              // IP帧<br>#define ETHERNET_FRAME_ARP      0x0806              // ARP帧<br>#define ETHERNET_FRAME_RARP     0x8035              // RARP帧<br>#define ETHERNET_FRAME_IPv6     0x86DD              // IP6帧</p>
+<p>typedef struct _EthernetHeader      // 以太头<br>{<br>    UCHAR       DstMacAddr[MAC_ADDRESS_LEN];        // 目标MAC<br>    UCHAR       SrcMacAddr[MAC_ADDRESS_LEN];        // 源MAC<br>    USHORT      FrmType;                            // 类型<br>}EthernetHeader, *PEthernetHeader;</p>
+<pre><code>### TCP 包格式</code></pre>
+<h2 id="0-15-31"><a href="#0-15-31" class="headerlink" title="0                            15                              31"></a>0                            15                              31</h2><h2 id="source-port-destination-port"><a href="#source-port-destination-port" class="headerlink" title="|          source port          |       destination port        |"></a>|          source port          |       destination port        |</h2><table>
+<thead>
+<tr>
+<th>sequence number</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>acknowledgment number</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="HL-rsvd-C-E-U-A-P-R-S-F-window-size"><a href="#HL-rsvd-C-E-U-A-P-R-S-F-window-size" class="headerlink" title="|  HL   | rsvd  |C|E|U|A|P|R|S|F|        window size            |"></a>|  HL   | rsvd  |C|E|U|A|P|R|S|F|        window size            |</h2><h2 id="TCP-checksum-urgent-pointer"><a href="#TCP-checksum-urgent-pointer" class="headerlink" title="|         TCP checksum          |       urgent pointer          |"></a>|         TCP checksum          |       urgent pointer          |</h2><table>
+<thead>
+<tr>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Data</td>
+</tr>
+</tbody></table>
+<hr>
+<p>// TCP头标志位掩码 OffFlag<br>#define TCP_HDR_LEN             0xF000              // TCP头长度&lt;双字的个数&gt;转化为字节数需要x4<br>#define TCP_URG_FLAG            0x0020              // URG标志<br>#define TCP_ACK_FLAG            0x0010              // ACK标志 应答1或请求0<br>#define TCP_PSH_FLAG            0x0008              // psh标志 以最快速度传输数据<br>#define TCP_RST_FLAG            0x0004              // RST标志 先断开连接,再重建连接<br>#define TCP_SYN_FLAG            0x0002              // SYN标志 用来建立连接<br>#define TCP_FIN_FLAG            0x0001              // FIN标志 发送方完成数据发送</p>
+<p>typedef struct _TcpHeader           // TCP头 20 BYTES<br>{<br>    USHORT      SrcPort;                            // 源端口<br>    USHORT      DstPort;                            // 目的端口<br>    ULONG       SeqNum;                             // 序号<br>    ULONG       AckNum;                             // 确认号<br>    USHORT      OffFlag;                            // 首部长度&lt;首部双字的个数&gt;+保留位+标志位<br>    USHORT      WndSize;                            // 窗口大小&lt;实现流量控制&gt;<br>    USHORT      Checksum;                           // 效验和<br>    USHORT      UrgPointer;                         // 紧急指针<br>}TcpHeader, *PTcpHeader;</p>
+<p>// OffFlag : 4位首部长度 + 6位保留位 + URG+ACK+PSH+RST+SYN+FIN</p>
+<p>typedef struct _TCPPACKET           // TCP封包 &lt;当ip中没有附加数据时&gt;<br>{<br>    EthernetHeader  Ehhdr;<br>    IPHeader        Iphdr;<br>    TcpHeader       Tcphdr;<br>}TCPPACKET, *PTCPPACKET;</p>
+<p>```</p>
+<p>SYN和ACK可能同时为1，它表示的就是建立连接之后的响应，<br>如果只是单个的一个SYN，它表示的只是建立连接。</p>
+<p>参考</p>
+<hr>
 <ul>
-<li>提交所有tag</li>
+<li><a href="http://bbs.pediy.com/thread-147644.htm">http://bbs.pediy.com/thread-147644.htm</a></li>
+<li><a href="http://www.yunsec.net/a/school/wlcs/agreement/2012/0317/10262.html">http://www.yunsec.net/a/school/wlcs/agreement/2012/0317/10262.html</a></li>
+<li><a href="http://www.9upk.com/article/2537.html">http://www.9upk.com/article/2537.html</a> （抓包工具教程）</li>
 </ul>
-<pre><code>$ git push [remote] --tags</code></pre>
-<h2 id="三-git-信息查询"><a href="#三-git-信息查询" class="headerlink" title="三. git 信息查询"></a>三. git 信息查询</h2><ul>
-<li>查看远程仓库信息</li>
-</ul>
-<pre><code>$ git remote -v</code></pre>
-<ul>
-<li>查看分支</li>
-</ul>
-<pre><code>$ git branch -a</code></pre>
-<ul>
-<li>查看分支合并图</li>
-</ul>
-<pre><code>git log --graph</code></pre>
-<h2 id="四-工程设置"><a href="#四-工程设置" class="headerlink" title="四. 工程设置"></a>四. 工程设置</h2><ul>
-<li>更新远程仓库</li>
-</ul>
-<pre><code>git remote set-url origin git@gitlab.gizwits.com:********.git</code></pre>
 ]]></content>
       <categories>
         <category>工具</category>
       </categories>
       <tags>
-        <tag>git</tag>
-        <tag>工具</tag>
+        <tag>抓包工具</tag>
+        <tag>wireShark</tag>
       </tags>
   </entry>
   <entry>
@@ -4841,6 +4775,72 @@ t 0:0(0) ack 22535 win 8760 (DF)</code></pre>
 ]]></content>
   </entry>
   <entry>
+    <title>Git之技能记录</title>
+    <url>/2018/02/11/3432.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一-Git-功能预览图"><a href="#一-Git-功能预览图" class="headerlink" title="一. Git 功能预览图"></a>一. Git 功能预览图</h2><p><img src="http://upload-images.jianshu.io/upload_images/1736256-510243b84e2d36f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Git"></p>
+<a id="more"></a>
+
+<h2 id="二-tag"><a href="#二-tag" class="headerlink" title="二. tag"></a>二. tag</h2><ul>
+<li>列出所有tag</li>
+</ul>
+<pre><code>$ git tag -l</code></pre>
+<ul>
+<li>打tag</li>
+</ul>
+<pre><code>$ git tag &#39;tag&#39;</code></pre>
+<ul>
+<li>打tag 加注释</li>
+</ul>
+<pre><code>$ git tag -a [tag name] -m [message]</code></pre>
+<ul>
+<li>删除本地tag</li>
+</ul>
+<pre><code>$ git tag -d [tag]</code></pre>
+<ul>
+<li>删除远程tag</li>
+</ul>
+<pre><code>git push origin --delete tag &lt;tagname&gt;</code></pre>
+<ul>
+<li>查看tag信息</li>
+</ul>
+<pre><code>$ git show [tag]</code></pre>
+<ul>
+<li>提交指定tag</li>
+</ul>
+<pre><code>$ git push [remote] [tag]
+</code></pre>
+<p>例如，将v1.0标签推送到远程服务器上</p>
+<pre><code>$ git push origin v1.0</code></pre>
+<ul>
+<li>提交所有tag</li>
+</ul>
+<pre><code>$ git push [remote] --tags</code></pre>
+<h2 id="三-git-信息查询"><a href="#三-git-信息查询" class="headerlink" title="三. git 信息查询"></a>三. git 信息查询</h2><ul>
+<li>查看远程仓库信息</li>
+</ul>
+<pre><code>$ git remote -v</code></pre>
+<ul>
+<li>查看分支</li>
+</ul>
+<pre><code>$ git branch -a</code></pre>
+<ul>
+<li>查看分支合并图</li>
+</ul>
+<pre><code>git log --graph</code></pre>
+<h2 id="四-工程设置"><a href="#四-工程设置" class="headerlink" title="四. 工程设置"></a>四. 工程设置</h2><ul>
+<li>更新远程仓库</li>
+</ul>
+<pre><code>git remote set-url origin git@gitlab.gizwits.com:********.git</code></pre>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>macOS小技能</title>
     <url>/2018/12/10/d7f9.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="iTerm2"><a href="#iTerm2" class="headerlink" title="iTerm2"></a>iTerm2</h2><h3 id="iTerm2-SSH免密码远程连接服务器"><a href="#iTerm2-SSH免密码远程连接服务器" class="headerlink" title="iTerm2 SSH免密码远程连接服务器"></a>iTerm2 SSH免密码远程连接服务器</h3><pre class=" language-sh"><code class="language-sh">#!/usr/bin/expect
@@ -4871,6 +4871,39 @@ interact</code></pre>
       <tags>
         <tag>macOS</tag>
         <tag>uninx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Tool 记</title>
+    <url>/2017/03/26/bff4.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h1 id="工具1–esptool"><a href="#工具1–esptool" class="headerlink" title="工具1–esptool"></a>工具1–esptool</h1><h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法:"></a>安装方法:</h2><p>1.超级简单按照方法</p>
+<pre class=" language-bash"><code class="language-bash"> $  pip <span class="token function">install</span> esptool</code></pre>
+<p>2.源码安装方法.</p>
+<pre class=" language-bash"><code class="language-bash"> <span class="token comment" spellcheck="true"># 下载源码</span>
+ $ git@github.com:themadinventor/esptool.git
+ <span class="token comment" spellcheck="true">#安装依赖</span>
+ $ pip <span class="token function">install</span> pyserial, easy_install pyserial
+ <span class="token comment" spellcheck="true">#或者 depending on your platform.</span>
+ $ <span class="token function">apt-get</span> <span class="token function">install</span> python-serial</code></pre>
+<a id="more"></a>
+
+<h2 id="帮助说明"><a href="#帮助说明" class="headerlink" title="帮助说明"></a>帮助说明</h2><pre><code>esptool.py write_flash -h</code></pre>
+<h2 id="使用例子"><a href="#使用例子" class="headerlink" title="使用例子:"></a>使用例子:</h2><pre><code>sudo python esptool.py --port /dev/ttyUSB0 --baud 1500000 \
+write_flash -fm qio -fs 32m -ff 40m 0x3fc000 ../bin/0x3fc000.bin</code></pre>
+<h2 id="几个文件一起烧录"><a href="#几个文件一起烧录" class="headerlink" title="几个文件一起烧录"></a>几个文件一起烧录</h2><pre><code>sudo esptool.py --port /dev/tty.usbserial-DA00H0QE \
+--baud 1500000 write_flash -fm qio -fs 32m -ff 40m 0x00000 \
+../boot_v1.6.bin 0x01000 user1.4096.new.6.bin 0x3fc000 \
+../esp_init_data_default.bin 0x3fe000 ../blank.bin </code></pre>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>|关键字| 解释|<br>|—-|<br>|<strong>port</strong>|                 指定串口号|<br>|<strong>baud</strong>|               指定下载波特率<br>|<strong>write_flash</strong>|      烧写二进制文件到指定位置<br>|<strong>-fm</strong>|                  SPI Flash mode( ‘qio’, ‘qout’, ‘dio’, ‘dout’)<br>|<strong>-ff</strong>|                    SPI Flash frequency(‘40m’, ‘26m’, ‘20m’, ‘80m’)<br>|<strong>-fs</strong>|                   SPI Flash size in Mbit(4m’, ‘2m’, ‘8m’, ‘16m’, ‘32m’, ‘16m-c1’, ‘32m-c1’, ‘32m-c2’, ‘64m’, ‘128m’)<br>|<strong>0x3fc000</strong>|         指定烧录地址<br>|<strong>0x3fc000.bin</strong>|   对应的烧录文件</p>
+]]></content>
+      <categories>
+        <category>esp8266</category>
+      </categories>
+      <tags>
+        <tag>esp8266</tag>
+        <tag>WiFi</tag>
+        <tag>esptool</tag>
       </tags>
   </entry>
   <entry>
@@ -5147,39 +5180,6 @@ interact</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Tool 记</title>
-    <url>/2017/03/26/bff4.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h1 id="工具1–esptool"><a href="#工具1–esptool" class="headerlink" title="工具1–esptool"></a>工具1–esptool</h1><h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法:"></a>安装方法:</h2><p>1.超级简单按照方法</p>
-<pre class=" language-bash"><code class="language-bash"> $  pip <span class="token function">install</span> esptool</code></pre>
-<p>2.源码安装方法.</p>
-<pre class=" language-bash"><code class="language-bash"> <span class="token comment" spellcheck="true"># 下载源码</span>
- $ git@github.com:themadinventor/esptool.git
- <span class="token comment" spellcheck="true">#安装依赖</span>
- $ pip <span class="token function">install</span> pyserial, easy_install pyserial
- <span class="token comment" spellcheck="true">#或者 depending on your platform.</span>
- $ <span class="token function">apt-get</span> <span class="token function">install</span> python-serial</code></pre>
-<a id="more"></a>
-
-<h2 id="帮助说明"><a href="#帮助说明" class="headerlink" title="帮助说明"></a>帮助说明</h2><pre><code>esptool.py write_flash -h</code></pre>
-<h2 id="使用例子"><a href="#使用例子" class="headerlink" title="使用例子:"></a>使用例子:</h2><pre><code>sudo python esptool.py --port /dev/ttyUSB0 --baud 1500000 \
-write_flash -fm qio -fs 32m -ff 40m 0x3fc000 ../bin/0x3fc000.bin</code></pre>
-<h2 id="几个文件一起烧录"><a href="#几个文件一起烧录" class="headerlink" title="几个文件一起烧录"></a>几个文件一起烧录</h2><pre><code>sudo esptool.py --port /dev/tty.usbserial-DA00H0QE \
---baud 1500000 write_flash -fm qio -fs 32m -ff 40m 0x00000 \
-../boot_v1.6.bin 0x01000 user1.4096.new.6.bin 0x3fc000 \
-../esp_init_data_default.bin 0x3fe000 ../blank.bin </code></pre>
-<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>|关键字| 解释|<br>|—-|<br>|<strong>port</strong>|                 指定串口号|<br>|<strong>baud</strong>|               指定下载波特率<br>|<strong>write_flash</strong>|      烧写二进制文件到指定位置<br>|<strong>-fm</strong>|                  SPI Flash mode( ‘qio’, ‘qout’, ‘dio’, ‘dout’)<br>|<strong>-ff</strong>|                    SPI Flash frequency(‘40m’, ‘26m’, ‘20m’, ‘80m’)<br>|<strong>-fs</strong>|                   SPI Flash size in Mbit(4m’, ‘2m’, ‘8m’, ‘16m’, ‘32m’, ‘16m-c1’, ‘32m-c1’, ‘32m-c2’, ‘64m’, ‘128m’)<br>|<strong>0x3fc000</strong>|         指定烧录地址<br>|<strong>0x3fc000.bin</strong>|   对应的烧录文件</p>
-]]></content>
-      <categories>
-        <category>esp8266</category>
-      </categories>
-      <tags>
-        <tag>esp8266</tag>
-        <tag>WiFi</tag>
-        <tag>esptool</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>win10 实用工具.md</title>
     <url>/2019/11/06/c142.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="包管理工具-Scoop"><a href="#包管理工具-Scoop" class="headerlink" title="包管理工具 - Scoop"></a>包管理工具 - Scoop</h2><ul>
@@ -5446,6 +5446,29 @@ HXBL(root->rchild);
       </tags>
   </entry>
   <entry>
+    <title>基本算法之算法图解Book</title>
+    <url>/2018/05/05/d585.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="算法图解"><a href="#算法图解" class="headerlink" title="算法图解"></a>算法图解</h2><h3 id="内容简介-·-·-·-·-·-·"><a href="#内容简介-·-·-·-·-·-·" class="headerlink" title="内容简介  · · · · · ·"></a><font color=#115533>内容简介  · · · · · ·</font></h3><font color=#228B22>
+本书示例丰富，图文并茂，以让人容易理解的方式阐释了算法，旨在帮助程序员在日常项目中更好地发挥算法的能量。书中的前三章将帮助你打下基础，带你学习二分查找、大O表示法、两种基本的数据结构以及递归等。余下的篇幅将主要介绍应用广泛的算法，具体内容包括：面对具体问题时的解决技巧，比如，何时采用贪婪算法或动态规划；散列表的应用；图算法；K最近邻算法。
+</font>
+
+<h3 id="作者简介-·-·-·-·-·-·"><a href="#作者简介-·-·-·-·-·-·" class="headerlink" title="作者简介  · · · · · ·"></a><font color=#115533>作者简介  · · · · · ·</font></h3><font color=#228B22>
+Aditya Bhargava
+
+<p>软件工程师，兼具计算机科学和美术方面的教育背景，在adit.io撰写编程方面的博客。<br></font></p>
+<h3 id="豆瓣点评"><a href="#豆瓣点评" class="headerlink" title="豆瓣点评"></a><font color=#228B22><a href="https://book.douban.com/subject/26979890/">豆瓣点评</a></font></h3><a id="more"></a>
+
+<h2 id="书本"><a href="#书本" class="headerlink" title="书本"></a>书本</h2><embed src="https://gitee.com/alexlin/algorithms/raw/master/doc/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95.pdf" width="100%" height="950" type="application/pdf" align=center >
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>图解算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>基本算法之平衡二叉树</title>
     <url>/2018/03/25/646b.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h2><p><a href="https://baike.baidu.com/item/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/10421057?fr=aladdin">摘自百度:</a></p>
@@ -5557,29 +5580,6 @@ struct AVLNode
       <tags>
         <tag>算法</tag>
         <tag>二叉树</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>基本算法之算法图解Book</title>
-    <url>/2018/05/05/d585.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="算法图解"><a href="#算法图解" class="headerlink" title="算法图解"></a>算法图解</h2><h3 id="内容简介-·-·-·-·-·-·"><a href="#内容简介-·-·-·-·-·-·" class="headerlink" title="内容简介  · · · · · ·"></a><font color=#115533>内容简介  · · · · · ·</font></h3><font color=#228B22>
-本书示例丰富，图文并茂，以让人容易理解的方式阐释了算法，旨在帮助程序员在日常项目中更好地发挥算法的能量。书中的前三章将帮助你打下基础，带你学习二分查找、大O表示法、两种基本的数据结构以及递归等。余下的篇幅将主要介绍应用广泛的算法，具体内容包括：面对具体问题时的解决技巧，比如，何时采用贪婪算法或动态规划；散列表的应用；图算法；K最近邻算法。
-</font>
-
-<h3 id="作者简介-·-·-·-·-·-·"><a href="#作者简介-·-·-·-·-·-·" class="headerlink" title="作者简介  · · · · · ·"></a><font color=#115533>作者简介  · · · · · ·</font></h3><font color=#228B22>
-Aditya Bhargava
-
-<p>软件工程师，兼具计算机科学和美术方面的教育背景，在adit.io撰写编程方面的博客。<br></font></p>
-<h3 id="豆瓣点评"><a href="#豆瓣点评" class="headerlink" title="豆瓣点评"></a><font color=#228B22><a href="https://book.douban.com/subject/26979890/">豆瓣点评</a></font></h3><a id="more"></a>
-
-<h2 id="书本"><a href="#书本" class="headerlink" title="书本"></a>书本</h2><embed src="https://gitee.com/alexlin/algorithms/raw/master/doc/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95.pdf" width="100%" height="950" type="application/pdf" align=center >
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>图解算法</tag>
       </tags>
   </entry>
   <entry>
@@ -6097,95 +6097,6 @@ alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ source ~/.pro
         <tag>esp8266</tag>
         <tag>gcc</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>编辑器介绍</title>
-    <url>/2017/06/07/f348.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Sublime"><a href="#Sublime" class="headerlink" title="Sublime"></a>Sublime</h1><hr>
-<h2 id="Sublime-Text主题推荐：Seti-UI"><a href="#Sublime-Text主题推荐：Seti-UI" class="headerlink" title="Sublime Text主题推荐：Seti_UI"></a>Sublime Text主题推荐：Seti_UI</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><hr>
-<p>Seti_UI 这款主题最大的特点是能够显示各种文件类型的图标，小图标不仅看起来漂亮，而且大大增加了辨识度，能够轻松的找到对应的文件。</p>
-<a id="more"></a>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><hr>
-<p><strong>1. 安装</strong><br>在 Package Control 安装包命令行输入 Seti_UI 回车即可。</p>
-<p><strong>2. 手动安装</strong></p>
-<ul>
-<li><a href="https://github.com/ctf0/Seti_ST3/archive/master.zip">Download the .zip</a>.</li>
-<li>Unzip and rename the folder to Seti_UI</li>
-<li>Copy the folder into Packages directory, which you can find using the menu item Preferences -&gt; Browse Packages… in Sublime Text.</li>
-</ul>
-<p><strong>3. 启用</strong><br>在 Preferences -&gt; Settings -&gt; User 中加入：</p>
-<pre><code>&quot;theme&quot;: &quot;Seti.sublime-theme&quot;</code></pre>
-<p>或者</p>
-<pre><code>&quot;theme&quot;: &quot;Seti_orig.sublime-theme&quot;</code></pre>
-]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>IDE</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>红外遥控器制作</title>
-    <url>/2020/05/10/3418.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><p> &emsp;&emsp;端午节期间，广州的天气真的好热，恨不得整体泡在空调房里。这让我想起了在公司上班的时候，天气炎热，想开空调，却发现空调遥控器好像偏偏跟我们玩捉迷藏似的，找也找不到，只能看着空调干巴巴地流汗。也常常碰见，公司的空调上班的时候都开着，然后最后一位同事走的时候，想关空调，此时遥控器也不翼而飞，于是各种问同事，大伙知道空调遥控器在哪吗？这种类似的“问候”等等。另外，公司空调比较多的时候，走的时候需要一个空调一个空调检测有没有关了，不然就会造成浪费的情况。总之对我来说，空调遥控器就是一个神奇的东西，你想找的时候，就偏偏找不到。<br><br>&emsp;&emsp;基于以上的种种情况，于是我萌发了要做一个方便管理的空调控制器，这个控制器有以下2个特点；</p>
-<ol>
-<li>必须让每个同事都能轻易的对每个空调进行控制(那就是用手机控制啦，大家都有手机~)；</li>
-<li>必须满足远程关闭空调，因为如果当我们离开公司的时候，发现空调没关，可以远程关闭；</li>
-</ol>
-<a id="more"></a>
-
-<h2 id="二、方案选择"><a href="#二、方案选择" class="headerlink" title="二、方案选择"></a>二、方案选择</h2><p>&emsp;&emsp;基于空调遥控器的特点，我想到了机智云的Gokit，搭配机智云的平台，能够满足我的需求，(主要是手头刚好有几个Gokit哈哈~)；<br><br>&emsp;&emsp;那么怎么来做呢？根据经验所得，需要对这个工作拆分为几部分</p>
-<ol>
-<li>机智云平台数据点定义(啥是数据点，请到机智云官网查看);这里我订了两个核心功能，一个是开关，一个是温度调节;(当然，你也可以定义更多的数据点，如，模式，风向等等)；</li>
-<li>MCU开发，MCU开发需要细分为红外遥控器的协议解码和编码；<strong>解码</strong> 简单来说就是需要通过工具，来分析遥控器发出来的红外波形，什么波形对应着开，什么波形对应着光和温度设置。<strong>编码</strong> 就是要把我们下发的命令转换成和空调能识别的红外波形；</li>
-</ol>
-<h2 id="三、方案实施"><a href="#三、方案实施" class="headerlink" title="三、方案实施"></a>三、方案实施</h2><h3 id="1-数据点定义"><a href="#1-数据点定义" class="headerlink" title="1. 数据点定义"></a>1. 数据点定义</h3><p>&emsp;&emsp;很简单，两个数据点，温度设置和空调开关，如下图；</p>
-<p><img src="/images/pasted-47.png" alt="upload successful"></p>
-<h3 id="2-红外解码"><a href="#2-红外解码" class="headerlink" title="2. 红外解码"></a>2. 红外解码</h3><p>&emsp;&emsp; 对于红外解码，有两种方法，一种是找到空调厂商的红外协议，然后根据红外协议，直接编写就可以了，不过很不幸的是，我手头这款空调，我找了很久都没找到对应的空调协议，于是只能另辟途径。也就是第二种方法，红外波形拷贝。<br><br>&emsp;&emsp; 那么波形拷贝我采用的是，用逻辑分析仪对遥控器进行波形分析，然后使用红外波形拷贝的方法，把对应功能的波形拷贝下来。</p>
-<p>&emsp;&emsp;决定了使用红外波形拷贝，那么就需要先要搭建波形捕捉电路，翻开了压箱底多年的红外探头接收器和面板(⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄)，步骤如下。</p>
-<h4 id="2-1-硬件环境搭建"><a href="#2-1-硬件环境搭建" class="headerlink" title="2.1 硬件环境搭建"></a>2.1 硬件环境搭建</h4><h5 id="红外接收头型号-HS0038B"><a href="#红外接收头型号-HS0038B" class="headerlink" title="红外接收头型号 HS0038B"></a>红外接收头型号 <strong>HS0038B</strong></h5><p><img src="/images/pasted-33.png" alt="upload successful"></p>
-<h5 id="HS0038B-电路图搭建"><a href="#HS0038B-电路图搭建" class="headerlink" title="HS0038B 电路图搭建"></a>HS0038B 电路图搭建</h5><ul>
-<li>原理图<br><img src="/images/pasted-40.png" alt="upload successful"></li>
-<li>面包板搭建实物图<br><img src="/images/pasted-41.png" alt="upload successful"><br><img src="/images/pasted-42.png" alt="upload successful"></li>
-</ul>
-<h5 id="抓波形"><a href="#抓波形" class="headerlink" title="抓波形"></a>抓波形</h5><ul>
-<li>真实抓包红外码图<br><img src="/images/pasted-34.png" alt="upload successful"></li>
-<li><ul>
-<li>关<br><img src="/images/pasted-35.png" alt="upload successful"></li>
-</ul>
-</li>
-<li><ul>
-<li>开<br><img src="/images/pasted-36.png" alt="upload successful"></li>
-</ul>
-</li>
-<li><ul>
-<li>20度<br><img src="/images/pasted-37.png" alt="upload successful"></li>
-</ul>
-</li>
-<li><ul>
-<li>21度<br><img src="/images/pasted-38.png" alt="upload successful"></li>
-</ul>
-</li>
-<li><ul>
-<li>22度<br><img src="/images/pasted-39.png" alt="upload successful"></li>
-</ul>
-</li>
-</ul>
-<h5 id="红外解码程序编写"><a href="#红外解码程序编写" class="headerlink" title="红外解码程序编写"></a>红外解码程序编写</h5><p>&emsp;&emsp;对红外波形有一个大概的认识之后，就要编写MCU端的代码，把波形转成红外码。这里我的思路是，对STM32的某个IO，设置为输入下降沿捕捉，然后通过计算每一个高低电平的持续时间，进而把波形转成数组；具体的实现可以看代码,<strong>Talk is cheap, show me the code.（主要是懒(<em>/ω＼</em>)~）</strong></p>
-<h3 id="3-红外编码"><a href="#3-红外编码" class="headerlink" title="3. 红外编码"></a>3. 红外编码</h3><p>&emsp;&emsp;进过前面的红外拷贝之后，我存储了，几个功能点的红外码，分别低开关，和温度设置(16度到27度)；<br>这里简单说一下，红外的发送原理(主要是网上已经有很多这方面的教程了)，首先上面抓到的红外波形，并不是红外发送器真正发送的波形，红外发送的波形一般是要发送的命令“加”在一个38K 的一个波形上；因为接收端有一个波形过滤器，如果不是38K红外波形范围内会被过滤掉。所以一般会以38K的PWM作为一个红外载波；<br>&emsp;&emsp;那么发送的时候，我对STM32的PA5引脚做为输出PWM为38K的引脚，然后后根据机智云定义好的数据点，拿到对应的串口协议文档，进行命令提前，主要是APP控制和MCU状态上报，这两条协议，(<strong>当然还有进入WiFi配网和串口握手等，不过这些在MCU代码自动生成的时候已经帮我们实现好了</strong>)串口协议格式如下图</p>
-<p><img src="/images/pasted-48.png" alt="upload successful"><br><img src="/images/pasted-49.png" alt="upload successful"><br>那么后面的就是根据协议编程了。</p>
-<p>这里插播一条，我实现发送的时候，开始我想使用gokit上的红外来作为发送，不过后面发现发送的距离比较短，后面就自己焊接了红外发射头；<br>当时我对Gokit的改造如下，如果小伙伴要控制的距离不远的话，我想是可以的，具体我的改造如下:</p>
-<p><strong>Gokit引脚修改</strong></p>
-<p><img src="/images/pasted-43.png" alt="upload successful"><br><img src="/images/pasted-44.png" alt="upload successful"><br><img src="/images/pasted-45.png" alt="upload successful"><br><img src="/images/pasted-46.png" alt="upload successful"></p>
-<p><strong>我最后真实的红外发送搭建如下</strong><br><img src="/images/pasted-50.png" alt="upload successful"><br><img src="/images/pasted-51.png" alt="upload successful"></p>
-<h3 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h3><p>最后，我把手头几个Gokit 都接上了红外，这样就能开开心心开空调去啦~~~</p>
-<p><img src="/images/pasted-54.png" alt="upload successful"><br><img src="/images/pasted-52.png" alt="upload successful"><br><img src="/images/pasted-53.png" alt="upload successful"><br><img src="/images/pasted-55.png" alt="upload successful"></p>
-<h3 id="演示视频"><a href="#演示视频" class="headerlink" title="演示视频"></a>演示视频</h3><ul>
-<li>视频: <a href="https://www.bilibili.com/video/BV1WK4y1s7DA/">https://www.bilibili.com/video/BV1WK4y1s7DA/</a></li>
-</ul>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><a href="https://blog.csdn.net/qq_39690917/article/details/86713809">https://blog.csdn.net/qq_39690917/article/details/86713809</a></li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>风过留痕，雁过留声</title>
@@ -7329,6 +7240,95 @@ alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ source ~/.pro
         <tag>无线</tag>
         <tag>cc1101</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>编辑器介绍</title>
+    <url>/2017/06/07/f348.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Sublime"><a href="#Sublime" class="headerlink" title="Sublime"></a>Sublime</h1><hr>
+<h2 id="Sublime-Text主题推荐：Seti-UI"><a href="#Sublime-Text主题推荐：Seti-UI" class="headerlink" title="Sublime Text主题推荐：Seti_UI"></a>Sublime Text主题推荐：Seti_UI</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><hr>
+<p>Seti_UI 这款主题最大的特点是能够显示各种文件类型的图标，小图标不仅看起来漂亮，而且大大增加了辨识度，能够轻松的找到对应的文件。</p>
+<a id="more"></a>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><hr>
+<p><strong>1. 安装</strong><br>在 Package Control 安装包命令行输入 Seti_UI 回车即可。</p>
+<p><strong>2. 手动安装</strong></p>
+<ul>
+<li><a href="https://github.com/ctf0/Seti_ST3/archive/master.zip">Download the .zip</a>.</li>
+<li>Unzip and rename the folder to Seti_UI</li>
+<li>Copy the folder into Packages directory, which you can find using the menu item Preferences -&gt; Browse Packages… in Sublime Text.</li>
+</ul>
+<p><strong>3. 启用</strong><br>在 Preferences -&gt; Settings -&gt; User 中加入：</p>
+<pre><code>&quot;theme&quot;: &quot;Seti.sublime-theme&quot;</code></pre>
+<p>或者</p>
+<pre><code>&quot;theme&quot;: &quot;Seti_orig.sublime-theme&quot;</code></pre>
+]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>IDE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>红外遥控器制作</title>
+    <url>/2020/05/10/3418.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><p> &emsp;&emsp;端午节期间，广州的天气真的好热，恨不得整体泡在空调房里。这让我想起了在公司上班的时候，天气炎热，想开空调，却发现空调遥控器好像偏偏跟我们玩捉迷藏似的，找也找不到，只能看着空调干巴巴地流汗。也常常碰见，公司的空调上班的时候都开着，然后最后一位同事走的时候，想关空调，此时遥控器也不翼而飞，于是各种问同事，大伙知道空调遥控器在哪吗？这种类似的“问候”等等。另外，公司空调比较多的时候，走的时候需要一个空调一个空调检测有没有关了，不然就会造成浪费的情况。总之对我来说，空调遥控器就是一个神奇的东西，你想找的时候，就偏偏找不到。<br><br>&emsp;&emsp;基于以上的种种情况，于是我萌发了要做一个方便管理的空调控制器，这个控制器有以下2个特点；</p>
+<ol>
+<li>必须让每个同事都能轻易的对每个空调进行控制(那就是用手机控制啦，大家都有手机~)；</li>
+<li>必须满足远程关闭空调，因为如果当我们离开公司的时候，发现空调没关，可以远程关闭；</li>
+</ol>
+<a id="more"></a>
+
+<h2 id="二、方案选择"><a href="#二、方案选择" class="headerlink" title="二、方案选择"></a>二、方案选择</h2><p>&emsp;&emsp;基于空调遥控器的特点，我想到了机智云的Gokit，搭配机智云的平台，能够满足我的需求，(主要是手头刚好有几个Gokit哈哈~)；<br><br>&emsp;&emsp;那么怎么来做呢？根据经验所得，需要对这个工作拆分为几部分</p>
+<ol>
+<li>机智云平台数据点定义(啥是数据点，请到机智云官网查看);这里我订了两个核心功能，一个是开关，一个是温度调节;(当然，你也可以定义更多的数据点，如，模式，风向等等)；</li>
+<li>MCU开发，MCU开发需要细分为红外遥控器的协议解码和编码；<strong>解码</strong> 简单来说就是需要通过工具，来分析遥控器发出来的红外波形，什么波形对应着开，什么波形对应着光和温度设置。<strong>编码</strong> 就是要把我们下发的命令转换成和空调能识别的红外波形；</li>
+</ol>
+<h2 id="三、方案实施"><a href="#三、方案实施" class="headerlink" title="三、方案实施"></a>三、方案实施</h2><h3 id="1-数据点定义"><a href="#1-数据点定义" class="headerlink" title="1. 数据点定义"></a>1. 数据点定义</h3><p>&emsp;&emsp;很简单，两个数据点，温度设置和空调开关，如下图；</p>
+<p><img src="/images/pasted-47.png" alt="upload successful"></p>
+<h3 id="2-红外解码"><a href="#2-红外解码" class="headerlink" title="2. 红外解码"></a>2. 红外解码</h3><p>&emsp;&emsp; 对于红外解码，有两种方法，一种是找到空调厂商的红外协议，然后根据红外协议，直接编写就可以了，不过很不幸的是，我手头这款空调，我找了很久都没找到对应的空调协议，于是只能另辟途径。也就是第二种方法，红外波形拷贝。<br><br>&emsp;&emsp; 那么波形拷贝我采用的是，用逻辑分析仪对遥控器进行波形分析，然后使用红外波形拷贝的方法，把对应功能的波形拷贝下来。</p>
+<p>&emsp;&emsp;决定了使用红外波形拷贝，那么就需要先要搭建波形捕捉电路，翻开了压箱底多年的红外探头接收器和面板(⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄)，步骤如下。</p>
+<h4 id="2-1-硬件环境搭建"><a href="#2-1-硬件环境搭建" class="headerlink" title="2.1 硬件环境搭建"></a>2.1 硬件环境搭建</h4><h5 id="红外接收头型号-HS0038B"><a href="#红外接收头型号-HS0038B" class="headerlink" title="红外接收头型号 HS0038B"></a>红外接收头型号 <strong>HS0038B</strong></h5><p><img src="/images/pasted-33.png" alt="upload successful"></p>
+<h5 id="HS0038B-电路图搭建"><a href="#HS0038B-电路图搭建" class="headerlink" title="HS0038B 电路图搭建"></a>HS0038B 电路图搭建</h5><ul>
+<li>原理图<br><img src="/images/pasted-40.png" alt="upload successful"></li>
+<li>面包板搭建实物图<br><img src="/images/pasted-41.png" alt="upload successful"><br><img src="/images/pasted-42.png" alt="upload successful"></li>
+</ul>
+<h5 id="抓波形"><a href="#抓波形" class="headerlink" title="抓波形"></a>抓波形</h5><ul>
+<li>真实抓包红外码图<br><img src="/images/pasted-34.png" alt="upload successful"></li>
+<li><ul>
+<li>关<br><img src="/images/pasted-35.png" alt="upload successful"></li>
+</ul>
+</li>
+<li><ul>
+<li>开<br><img src="/images/pasted-36.png" alt="upload successful"></li>
+</ul>
+</li>
+<li><ul>
+<li>20度<br><img src="/images/pasted-37.png" alt="upload successful"></li>
+</ul>
+</li>
+<li><ul>
+<li>21度<br><img src="/images/pasted-38.png" alt="upload successful"></li>
+</ul>
+</li>
+<li><ul>
+<li>22度<br><img src="/images/pasted-39.png" alt="upload successful"></li>
+</ul>
+</li>
+</ul>
+<h5 id="红外解码程序编写"><a href="#红外解码程序编写" class="headerlink" title="红外解码程序编写"></a>红外解码程序编写</h5><p>&emsp;&emsp;对红外波形有一个大概的认识之后，就要编写MCU端的代码，把波形转成红外码。这里我的思路是，对STM32的某个IO，设置为输入下降沿捕捉，然后通过计算每一个高低电平的持续时间，进而把波形转成数组；具体的实现可以看代码,<strong>Talk is cheap, show me the code.（主要是懒(<em>/ω＼</em>)~）</strong></p>
+<h3 id="3-红外编码"><a href="#3-红外编码" class="headerlink" title="3. 红外编码"></a>3. 红外编码</h3><p>&emsp;&emsp;进过前面的红外拷贝之后，我存储了，几个功能点的红外码，分别低开关，和温度设置(16度到27度)；<br>这里简单说一下，红外的发送原理(主要是网上已经有很多这方面的教程了)，首先上面抓到的红外波形，并不是红外发送器真正发送的波形，红外发送的波形一般是要发送的命令“加”在一个38K 的一个波形上；因为接收端有一个波形过滤器，如果不是38K红外波形范围内会被过滤掉。所以一般会以38K的PWM作为一个红外载波；<br>&emsp;&emsp;那么发送的时候，我对STM32的PA5引脚做为输出PWM为38K的引脚，然后后根据机智云定义好的数据点，拿到对应的串口协议文档，进行命令提前，主要是APP控制和MCU状态上报，这两条协议，(<strong>当然还有进入WiFi配网和串口握手等，不过这些在MCU代码自动生成的时候已经帮我们实现好了</strong>)串口协议格式如下图</p>
+<p><img src="/images/pasted-48.png" alt="upload successful"><br><img src="/images/pasted-49.png" alt="upload successful"><br>那么后面的就是根据协议编程了。</p>
+<p>这里插播一条，我实现发送的时候，开始我想使用gokit上的红外来作为发送，不过后面发现发送的距离比较短，后面就自己焊接了红外发射头；<br>当时我对Gokit的改造如下，如果小伙伴要控制的距离不远的话，我想是可以的，具体我的改造如下:</p>
+<p><strong>Gokit引脚修改</strong></p>
+<p><img src="/images/pasted-43.png" alt="upload successful"><br><img src="/images/pasted-44.png" alt="upload successful"><br><img src="/images/pasted-45.png" alt="upload successful"><br><img src="/images/pasted-46.png" alt="upload successful"></p>
+<p><strong>我最后真实的红外发送搭建如下</strong><br><img src="/images/pasted-50.png" alt="upload successful"><br><img src="/images/pasted-51.png" alt="upload successful"></p>
+<h3 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h3><p>最后，我把手头几个Gokit 都接上了红外，这样就能开开心心开空调去啦~~~</p>
+<p><img src="/images/pasted-54.png" alt="upload successful"><br><img src="/images/pasted-52.png" alt="upload successful"><br><img src="/images/pasted-53.png" alt="upload successful"><br><img src="/images/pasted-55.png" alt="upload successful"></p>
+<h3 id="演示视频"><a href="#演示视频" class="headerlink" title="演示视频"></a>演示视频</h3><ul>
+<li>视频: <a href="https://www.bilibili.com/video/BV1WK4y1s7DA/">https://www.bilibili.com/video/BV1WK4y1s7DA/</a></li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://blog.csdn.net/qq_39690917/article/details/86713809">https://blog.csdn.net/qq_39690917/article/details/86713809</a></li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>树莓派之Zero-W-01</title>
