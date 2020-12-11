@@ -389,7 +389,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    215
+                    255
                 </div>
                 
 
@@ -416,7 +416,15 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="OpenSSL-官网"><a href="#OpenSSL-官网" class="headerlink" title="OpenSSL 官网"></a>OpenSSL 官网</h2><p><a target="_blank" rel="noopener" href="https://www.openssl.org/">https://www.openssl.org/</a></p>
+                <h2 id="一些加密知识"><a href="#一些加密知识" class="headerlink" title="一些加密知识"></a>一些加密知识</h2><ul>
+<li>摘要算法 : </li>
+<li>公钥算法</li>
+<li>数字签名</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html">http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html</a><br><a target="_blank" rel="noopener" href="http://www.jinbuguo.com/linux/openssl_install.html">http://www.jinbuguo.com/linux/openssl_install.html</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/zzhongcy/article/details/21990859">https://blog.csdn.net/zzhongcy/article/details/21990859</a></p>
+<a id="more"></a>
+
+<h2 id="OpenSSL-官网"><a href="#OpenSSL-官网" class="headerlink" title="OpenSSL 官网"></a>OpenSSL 官网</h2><p><a target="_blank" rel="noopener" href="https://www.openssl.org/">https://www.openssl.org/</a></p>
 <h2 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h2><ul>
 <li>安装包 : openssl-1.1.0f.tar.gz</li>
 </ul>
@@ -425,8 +433,6 @@
 ./config --prefix=/home/gagent/alexLam/gizwis_sdk/openssl_alexLin_20200702
 make
 make install</code></pre>
-<a id="more"></a>
-
 <p><strong>备注：</strong>运行./config –prefix=/usr/local/openssl (更多选项用./config –help 来查看),可用的选项有： no-mdc2、 no-cast no-rc2、 no-rc5、 no-ripemd、 no-rc4 no-des 、 no-md2、 no-md4、 no-idea 、no-aes、 no-bf、 no-err、 no-dsa、 no-dh、 no-ec、 no-hw、 no-asm、 no-krb5、 no-dso 、 no-threads 、no-zlib、 -DOPENSSL_NO_HASH_COMP、 -DOPENSSL_NO_ERR、 -DOPENSSL_NO_HW 、-DOPENSSL_NO_OCSP、 -DOPENSSL_NO_SHA256 和-DOPENSSL_NO_SHA512 等。去掉不必要的内容可以减少生成库的大小。 若要生成 debug 版本的库和可执行程序加-g 或者-g3(openssl 中有很多宏，需要调试学习最好加上-g3)。</p>
 <h2 id="OpenSSL-编程"><a href="#OpenSSL-编程" class="headerlink" title="OpenSSL 编程"></a>OpenSSL 编程</h2><h3 id="OpenSSL-服务端编写步骤"><a href="#OpenSSL-服务端编写步骤" class="headerlink" title="OpenSSL 服务端编写步骤"></a>OpenSSL 服务端编写步骤</h3><p><img src="/images/pasted-57.png" alt="upload successful"></p>
 <blockquote>
