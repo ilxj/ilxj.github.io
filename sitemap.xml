@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://lxj-life.com/2017/03/26/fc92.html</loc>
+    
+    <lastmod>2020-12-11</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://lxj-life.com/2888/03/28/dbbb.html</loc>
     
     <lastmod>2020-12-11</lastmod>
@@ -23,14 +30,14 @@
   </url>
   
   <url>
-    <loc>http://lxj-life.com/2017/08/06/23d1.html</loc>
+    <loc>http://lxj-life.com/2017/07/31/e7ff.html</loc>
     
     <lastmod>2020-12-05</lastmod>
     
   </url>
   
   <url>
-    <loc>http://lxj-life.com/2017/07/31/e7ff.html</loc>
+    <loc>http://lxj-life.com/2017/08/06/23d1.html</loc>
     
     <lastmod>2020-12-05</lastmod>
     
@@ -142,14 +149,14 @@
   </url>
   
   <url>
-    <loc>http://lxj-life.com/2017/03/26/bff4.html</loc>
+    <loc>http://lxj-life.com/2019/08/26/fc74.html</loc>
     
     <lastmod>2020-12-05</lastmod>
     
   </url>
   
   <url>
-    <loc>http://lxj-life.com/2019/08/26/fc74.html</loc>
+    <loc>http://lxj-life.com/2017/03/26/bff4.html</loc>
     
     <lastmod>2020-12-05</lastmod>
     
@@ -163,7 +170,7 @@
   </url>
   
   <url>
-    <loc>http://lxj-life.com/2019/09/08/b098.html</loc>
+    <loc>http://lxj-life.com/2017/08/01/5973.html</loc>
     
     <lastmod>2020-12-05</lastmod>
     
@@ -177,7 +184,7 @@
   </url>
   
   <url>
-    <loc>http://lxj-life.com/2017/08/01/5973.html</loc>
+    <loc>http://lxj-life.com/2019/09/08/b098.html</loc>
     
     <lastmod>2020-12-05</lastmod>
     
@@ -205,13 +212,6 @@
   </url>
   
   <url>
-    <loc>http://lxj-life.com/2017/08/17/1d58.html</loc>
-    
-    <lastmod>2020-12-05</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://lxj-life.com/2018/03/26/b45f.html</loc>
     
     <lastmod>2020-12-05</lastmod>
@@ -219,14 +219,21 @@
   </url>
   
   <url>
-    <loc>http://lxj-life.com/2017/03/26/eaab.html</loc>
+    <loc>http://lxj-life.com/2017/03/26/b2f4.html</loc>
     
     <lastmod>2020-12-05</lastmod>
     
   </url>
   
   <url>
-    <loc>http://lxj-life.com/2017/03/26/b2f4.html</loc>
+    <loc>http://lxj-life.com/2017/08/17/1d58.html</loc>
+    
+    <lastmod>2020-12-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lxj-life.com/2017/03/26/eaab.html</loc>
     
     <lastmod>2020-12-05</lastmod>
     
@@ -380,13 +387,6 @@
   </url>
   
   <url>
-    <loc>http://lxj-life.com/2017/08/06/1260.html</loc>
-    
-    <lastmod>2020-12-05</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://lxj-life.com/2020/04/09/8529.html</loc>
     
     <lastmod>2020-12-05</lastmod>
@@ -394,7 +394,7 @@
   </url>
   
   <url>
-    <loc>http://lxj-life.com/2017/03/26/fc92.html</loc>
+    <loc>http://lxj-life.com/2017/08/06/1260.html</loc>
     
     <lastmod>2020-12-05</lastmod>
     
@@ -648,6 +648,13 @@
   </url>
   
   <url>
+    <loc>http://lxj-life.com/tags/PC%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2020-12-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://lxj-life.com/tags/lua/</loc>
     <lastmod>2020-12-11</lastmod>
     <changefreq>daily</changefreq>
@@ -656,34 +663,6 @@
   
   <url>
     <loc>http://lxj-life.com/tags/markdown/</loc>
-    <lastmod>2020-12-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lxj-life.com/tags/PC%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2020-12-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lxj-life.com/tags/SI4432/</loc>
-    <lastmod>2020-12-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lxj-life.com/tags/433MHZ/</loc>
-    <lastmod>2020-12-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lxj-life.com/tags/SPI/</loc>
     <lastmod>2020-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -704,6 +683,20 @@
   </url>
   
   <url>
+    <loc>http://lxj-life.com/tags/SI4432/</loc>
+    <lastmod>2020-12-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lxj-life.com/tags/433MHZ/</loc>
+    <lastmod>2020-12-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://lxj-life.com/tags/ST/</loc>
     <lastmod>2020-12-11</lastmod>
     <changefreq>daily</changefreq>
@@ -712,6 +705,13 @@
   
   <url>
     <loc>http://lxj-life.com/tags/ADC/</loc>
+    <lastmod>2020-12-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lxj-life.com/tags/SPI/</loc>
     <lastmod>2020-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -767,20 +767,6 @@
   </url>
   
   <url>
-    <loc>http://lxj-life.com/tags/WiFi/</loc>
-    <lastmod>2020-12-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lxj-life.com/tags/esptool/</loc>
-    <lastmod>2020-12-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://lxj-life.com/tags/go/</loc>
     <lastmod>2020-12-11</lastmod>
     <changefreq>daily</changefreq>
@@ -789,6 +775,20 @@
   
   <url>
     <loc>http://lxj-life.com/tags/vscode/</loc>
+    <lastmod>2020-12-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lxj-life.com/tags/WiFi/</loc>
+    <lastmod>2020-12-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lxj-life.com/tags/esptool/</loc>
     <lastmod>2020-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -830,27 +830,6 @@
   </url>
   
   <url>
-    <loc>http://lxj-life.com/tags/raspberry/</loc>
-    <lastmod>2020-12-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lxj-life.com/tags/lpt230/</loc>
-    <lastmod>2020-12-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lxj-life.com/tags/gcc/</loc>
-    <lastmod>2020-12-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://lxj-life.com/tags/%E6%96%B0%E5%A5%87/</loc>
     <lastmod>2020-12-11</lastmod>
     <changefreq>daily</changefreq>
@@ -872,7 +851,21 @@
   </url>
   
   <url>
-    <loc>http://lxj-life.com/tags/IDE/</loc>
+    <loc>http://lxj-life.com/tags/raspberry/</loc>
+    <lastmod>2020-12-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lxj-life.com/tags/lpt230/</loc>
+    <lastmod>2020-12-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lxj-life.com/tags/gcc/</loc>
     <lastmod>2020-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -880,6 +873,13 @@
   
   <url>
     <loc>http://lxj-life.com/tags/%E4%B8%AA%E4%BA%BA/</loc>
+    <lastmod>2020-12-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lxj-life.com/tags/IDE/</loc>
     <lastmod>2020-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -979,14 +979,14 @@
   </url>
   
   <url>
-    <loc>http://lxj-life.com/categories/%E6%B1%89%E6%9E%AB/</loc>
+    <loc>http://lxj-life.com/categories/%E6%96%B0%E5%A5%87/</loc>
     <lastmod>2020-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://lxj-life.com/categories/%E6%96%B0%E5%A5%87/</loc>
+    <loc>http://lxj-life.com/categories/%E6%B1%89%E6%9E%AB/</loc>
     <lastmod>2020-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
