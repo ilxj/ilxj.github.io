@@ -284,7 +284,7 @@
 
 <script>
     // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+    var bannerUrl = "/medias/banner/" + new Date().getMinutes() + '.jpg';
     $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
 </script>
 
@@ -531,7 +531,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"Android","value":3},{"name":"协议","value":3},{"name":"C","value":1},{"name":"docker","value":1},{"name":"esp8266","value":5},{"name":"Hexo","value":3},{"name":"硬件设备","value":1},{"name":"工具","value":4},{"name":"算法","value":4},{"name":"golang","value":1},{"name":"macOS","value":1},{"name":"新奇","value":1},{"name":"汉枫","value":1},{"name":"个人","value":1},{"name":"射频","value":1}],
+                data: [{"name":"Android","value":3},{"name":"协议","value":3},{"name":"docker","value":1},{"name":"C","value":1},{"name":"esp8266","value":5},{"name":"Hexo","value":3},{"name":"硬件设备","value":1},{"name":"工具","value":4},{"name":"算法","value":4},{"name":"golang","value":1},{"name":"macOS","value":1},{"name":"汉枫","value":1},{"name":"新奇","value":1},{"name":"个人","value":1},{"name":"射频","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -555,7 +555,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["工具","Linux","esp8266","算法","hexo","Hexo","ST","STM32","Android","COAP"]
+                data: ["工具","Linux","esp8266","算法","hexo","Hexo","ST","Android","COAP","协议"]
             }
         ],
         yAxis: [
@@ -664,18 +664,6 @@
         <div class="tag-chips center-align">
             
             
-            <a href="/tags/STM32/">
-                <span class="chip center-align waves-effect waves-light chip-default">STM32</span>
-            </a>
-            
-            
-            
-            <a href="/tags/hexo/">
-                <span class="chip center-align waves-effect waves-light chip-default">hexo</span>
-            </a>
-            
-            
-            
             <a href="/tags/Android/">
                 <span class="chip center-align waves-effect waves-light chip-default">Android</span>
             </a>
@@ -712,14 +700,14 @@
             
             
             
-            <a href="/tags/C/">
-                <span class="chip center-align waves-effect waves-light chip-default">C</span>
+            <a href="/tags/docker/">
+                <span class="chip center-align waves-effect waves-light chip-default">docker</span>
             </a>
             
             
             
-            <a href="/tags/docker/">
-                <span class="chip center-align waves-effect waves-light chip-default">docker</span>
+            <a href="/tags/C/">
+                <span class="chip center-align waves-effect waves-light chip-default">C</span>
             </a>
             
             
@@ -736,6 +724,12 @@
             
             
             
+            <a href="/tags/hexo/">
+                <span class="chip center-align waves-effect waves-light chip-default">hexo</span>
+            </a>
+            
+            
+            
             <a href="/tags/Hexo/">
                 <span class="chip center-align waves-effect waves-light chip-default">Hexo</span>
             </a>
@@ -745,6 +739,8 @@
             <a href="/tags/%E5%B7%A5%E5%85%B7/">
                 <span class="chip center-align waves-effect waves-light chip-default">工具</span>
             </a>
+            
+            
             
             
             
@@ -760,16 +756,8 @@
             
             
             
-            
-            
             <a href="/tags/%E7%BD%91%E7%BB%9C/">
                 <span class="chip center-align waves-effect waves-light chip-default">网络</span>
-            </a>
-            
-            
-            
-            <a href="/tags/PC%E5%B7%A5%E5%85%B7/">
-                <span class="chip center-align waves-effect waves-light chip-default">PC工具</span>
             </a>
             
             
@@ -786,18 +774,6 @@
             
             
             
-            <a href="/tags/%E7%AE%97%E6%B3%95/">
-                <span class="chip center-align waves-effect waves-light chip-default">算法</span>
-            </a>
-            
-            
-            
-            <a href="/tags/ssl/">
-                <span class="chip center-align waves-effect waves-light chip-default">ssl</span>
-            </a>
-            
-            
-            
             <a href="/tags/SI4432/">
                 <span class="chip center-align waves-effect waves-light chip-default">SI4432</span>
             </a>
@@ -810,14 +786,38 @@
             
             
             
+            <a href="/tags/PC%E5%B7%A5%E5%85%B7/">
+                <span class="chip center-align waves-effect waves-light chip-default">PC工具</span>
+            </a>
+            
+            
+            
             <a href="/tags/ST/">
                 <span class="chip center-align waves-effect waves-light chip-default">ST</span>
             </a>
             
             
             
+            <a href="/tags/STM32/">
+                <span class="chip center-align waves-effect waves-light chip-default">STM32</span>
+            </a>
+            
+            
+            
             <a href="/tags/ADC/">
                 <span class="chip center-align waves-effect waves-light chip-default">ADC</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                <span class="chip center-align waves-effect waves-light chip-default">算法</span>
+            </a>
+            
+            
+            
+            <a href="/tags/ssl/">
+                <span class="chip center-align waves-effect waves-light chip-default">ssl</span>
             </a>
             
             
@@ -858,18 +858,6 @@
             
             
             
-            <a href="/tags/macOS/">
-                <span class="chip center-align waves-effect waves-light chip-default">macOS</span>
-            </a>
-            
-            
-            
-            <a href="/tags/uninx/">
-                <span class="chip center-align waves-effect waves-light chip-default">uninx</span>
-            </a>
-            
-            
-            
             <a href="/tags/go/">
                 <span class="chip center-align waves-effect waves-light chip-default">go</span>
             </a>
@@ -894,8 +882,14 @@
             
             
             
-            <a href="/tags/win10/">
-                <span class="chip center-align waves-effect waves-light chip-default">win10</span>
+            <a href="/tags/macOS/">
+                <span class="chip center-align waves-effect waves-light chip-default">macOS</span>
+            </a>
+            
+            
+            
+            <a href="/tags/uninx/">
+                <span class="chip center-align waves-effect waves-light chip-default">uninx</span>
             </a>
             
             
@@ -906,8 +900,14 @@
             
             
             
-            <a href="/tags/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95/">
-                <span class="chip center-align waves-effect waves-light chip-default">图解算法</span>
+            <a href="/tags/win10/">
+                <span class="chip center-align waves-effect waves-light chip-default">win10</span>
+            </a>
+            
+            
+            
+            <a href="/tags/raspberry/">
+                <span class="chip center-align waves-effect waves-light chip-default">raspberry</span>
             </a>
             
             
@@ -920,6 +920,24 @@
             
             <a href="/tags/%E7%A1%AC%E4%BB%B6/">
                 <span class="chip center-align waves-effect waves-light chip-default">硬件</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95/">
+                <span class="chip center-align waves-effect waves-light chip-default">图解算法</span>
+            </a>
+            
+            
+            
+            <a href="/tags/lpt230/">
+                <span class="chip center-align waves-effect waves-light chip-default">lpt230</span>
+            </a>
+            
+            
+            
+            <a href="/tags/gcc/">
+                <span class="chip center-align waves-effect waves-light chip-default">gcc</span>
             </a>
             
             
@@ -938,24 +956,6 @@
             
             <a href="/tags/%F0%9F%8E%B5/">
                 <span class="chip center-align waves-effect waves-light chip-default">🎵</span>
-            </a>
-            
-            
-            
-            <a href="/tags/raspberry/">
-                <span class="chip center-align waves-effect waves-light chip-default">raspberry</span>
-            </a>
-            
-            
-            
-            <a href="/tags/lpt230/">
-                <span class="chip center-align waves-effect waves-light chip-default">lpt230</span>
-            </a>
-            
-            
-            
-            <a href="/tags/gcc/">
-                <span class="chip center-align waves-effect waves-light chip-default">gcc</span>
             </a>
             
             
