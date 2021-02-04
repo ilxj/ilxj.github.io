@@ -301,14 +301,14 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/">66</a></span>
+    <span class="count"><a href="/">67</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">15</a></span>
+    <span class="count"><a href="/categories">16</a></span>
     <span class="name">分类</span>
 </div>
 
@@ -331,14 +331,14 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/">66</a></span>
+    <span class="count"><a href="/">67</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">15</a></span>
+    <span class="count"><a href="/categories">16</a></span>
     <span class="name">分类</span>
 </div>
 
@@ -479,7 +479,7 @@
         },
         xAxis: {
             type: 'category',
-            data: ["2019-12","2020-01","2020-02","2020-03","2020-04","2020-05","2020-06","2020-07","2020-08","2020-09","2020-10","2020-11","2020-12"]
+            data: ["2020-02","2020-03","2020-04","2020-05","2020-06","2020-07","2020-08","2020-09","2020-10","2020-11","2020-12","2021-01","2021-02"]
         },
         yAxis: {
             type: 'value',
@@ -489,7 +489,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,3,2,0,2,1,1,0,0,0],
+                data: [0,0,3,2,0,2,2,1,0,0,0,0,0],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -531,7 +531,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"Android","value":3},{"name":"协议","value":3},{"name":"C","value":1},{"name":"esp8266","value":5},{"name":"docker","value":1},{"name":"Hexo","value":3},{"name":"硬件设备","value":1},{"name":"工具","value":4},{"name":"算法","value":4},{"name":"golang","value":1},{"name":"macOS","value":1},{"name":"新奇","value":1},{"name":"汉枫","value":1},{"name":"个人","value":1},{"name":"射频","value":1}],
+                data: [{"name":"Android","value":3},{"name":"协议","value":3},{"name":"C","value":1},{"name":"docker","value":1},{"name":"esp8266","value":5},{"name":"Hexo","value":3},{"name":"硬件设备","value":1},{"name":"工具","value":4},{"name":"算法","value":4},{"name":"STM32","value":1},{"name":"golang","value":1},{"name":"macOS","value":1},{"name":"汉枫","value":1},{"name":"新奇","value":1},{"name":"个人","value":1},{"name":"射频","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -555,7 +555,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["工具","Linux","esp8266","算法","Hexo","hexo","ST","Android","COAP","协议"]
+                data: ["工具","Linux","esp8266","算法","hexo","Hexo","ST","STM32","Android","COAP"]
             }
         ],
         yAxis: [
@@ -568,7 +568,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [12,11,5,5,3,3,3,2,2,2],
+                data: [12,11,5,5,3,3,3,3,2,2],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -664,6 +664,12 @@
         <div class="tag-chips center-align">
             
             
+            <a href="/tags/hexo/">
+                <span class="chip center-align waves-effect waves-light chip-default">hexo</span>
+            </a>
+            
+            
+            
             <a href="/tags/Android/">
                 <span class="chip center-align waves-effect waves-light chip-default">Android</span>
             </a>
@@ -672,12 +678,6 @@
             
             <a href="/tags/Android-Studio/">
                 <span class="chip center-align waves-effect waves-light chip-default">Android Studio</span>
-            </a>
-            
-            
-            
-            <a href="/tags/Android%EF%BC%8Cadb/">
-                <span class="chip center-align waves-effect waves-light chip-default">Android，adb</span>
             </a>
             
             
@@ -700,20 +700,26 @@
             
             
             
+            <a href="/tags/Android%EF%BC%8Cadb/">
+                <span class="chip center-align waves-effect waves-light chip-default">Android，adb</span>
+            </a>
+            
+            
+            
             <a href="/tags/C/">
                 <span class="chip center-align waves-effect waves-light chip-default">C</span>
             </a>
             
             
             
-            <a href="/tags/esp8266/">
-                <span class="chip center-align waves-effect waves-light chip-default">esp8266</span>
+            <a href="/tags/docker/">
+                <span class="chip center-align waves-effect waves-light chip-default">docker</span>
             </a>
             
             
             
-            <a href="/tags/docker/">
-                <span class="chip center-align waves-effect waves-light chip-default">docker</span>
+            <a href="/tags/esp8266/">
+                <span class="chip center-align waves-effect waves-light chip-default">esp8266</span>
             </a>
             
             
@@ -730,8 +736,8 @@
             
             
             
-            <a href="/tags/hexo/">
-                <span class="chip center-align waves-effect waves-light chip-default">hexo</span>
+            <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                <span class="chip center-align waves-effect waves-light chip-default">工具</span>
             </a>
             
             
@@ -748,22 +754,10 @@
             
             
             
-            <a href="/tags/%E5%B7%A5%E5%85%B7/">
-                <span class="chip center-align waves-effect waves-light chip-default">工具</span>
-            </a>
-            
-            
-            
             
             
             <a href="/tags/%E7%BD%91%E7%BB%9C/">
                 <span class="chip center-align waves-effect waves-light chip-default">网络</span>
-            </a>
-            
-            
-            
-            <a href="/tags/markdown/">
-                <span class="chip center-align waves-effect waves-light chip-default">markdown</span>
             </a>
             
             
@@ -774,8 +768,20 @@
             
             
             
+            <a href="/tags/markdown/">
+                <span class="chip center-align waves-effect waves-light chip-default">markdown</span>
+            </a>
+            
+            
+            
             <a href="/tags/PC%E5%B7%A5%E5%85%B7/">
                 <span class="chip center-align waves-effect waves-light chip-default">PC工具</span>
+            </a>
+            
+            
+            
+            <a href="/tags/SPI/">
+                <span class="chip center-align waves-effect waves-light chip-default">SPI</span>
             </a>
             
             
@@ -788,12 +794,6 @@
             
             <a href="/tags/433MHZ/">
                 <span class="chip center-align waves-effect waves-light chip-default">433MHZ</span>
-            </a>
-            
-            
-            
-            <a href="/tags/SPI/">
-                <span class="chip center-align waves-effect waves-light chip-default">SPI</span>
             </a>
             
             
@@ -828,12 +828,6 @@
             
             
             
-            <a href="/tags/STM8/">
-                <span class="chip center-align waves-effect waves-light chip-default">STM8</span>
-            </a>
-            
-            
-            
             <a href="/tags/%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/">
                 <span class="chip center-align waves-effect waves-light chip-default">抓包工具</span>
             </a>
@@ -846,6 +840,12 @@
             
             
             
+            <a href="/tags/STM8/">
+                <span class="chip center-align waves-effect waves-light chip-default">STM8</span>
+            </a>
+            
+            
+            
             <a href="/tags/wireShark/">
                 <span class="chip center-align waves-effect waves-light chip-default">wireShark</span>
             </a>
@@ -854,18 +854,6 @@
             
             <a href="/tags/golang/">
                 <span class="chip center-align waves-effect waves-light chip-default">golang</span>
-            </a>
-            
-            
-            
-            <a href="/tags/go/">
-                <span class="chip center-align waves-effect waves-light chip-default">go</span>
-            </a>
-            
-            
-            
-            <a href="/tags/vscode/">
-                <span class="chip center-align waves-effect waves-light chip-default">vscode</span>
             </a>
             
             
@@ -894,14 +882,26 @@
             
             
             
-            <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
-                <span class="chip center-align waves-effect waves-light chip-default">二叉树</span>
+            <a href="/tags/go/">
+                <span class="chip center-align waves-effect waves-light chip-default">go</span>
+            </a>
+            
+            
+            
+            <a href="/tags/vscode/">
+                <span class="chip center-align waves-effect waves-light chip-default">vscode</span>
             </a>
             
             
             
             <a href="/tags/win10/">
                 <span class="chip center-align waves-effect waves-light chip-default">win10</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                <span class="chip center-align waves-effect waves-light chip-default">二叉树</span>
             </a>
             
             
@@ -930,6 +930,18 @@
             
             
             
+            <a href="/tags/lpt230/">
+                <span class="chip center-align waves-effect waves-light chip-default">lpt230</span>
+            </a>
+            
+            
+            
+            <a href="/tags/gcc/">
+                <span class="chip center-align waves-effect waves-light chip-default">gcc</span>
+            </a>
+            
+            
+            
             <a href="/tags/%E6%96%B0%E5%A5%87/">
                 <span class="chip center-align waves-effect waves-light chip-default">新奇</span>
             </a>
@@ -944,18 +956,6 @@
             
             <a href="/tags/%F0%9F%8E%B5/">
                 <span class="chip center-align waves-effect waves-light chip-default">🎵</span>
-            </a>
-            
-            
-            
-            <a href="/tags/lpt230/">
-                <span class="chip center-align waves-effect waves-light chip-default">lpt230</span>
-            </a>
-            
-            
-            
-            <a href="/tags/gcc/">
-                <span class="chip center-align waves-effect waves-light chip-default">gcc</span>
             </a>
             
             
@@ -1101,7 +1101,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2020</span>
+                <span id="year">2019-2021</span>
             
             <span id="year">2019</span>
             <a href="/about" target="_blank">Alex.Lin</a>
@@ -1110,7 +1110,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">58.2k</span>&nbsp;字
+                class="white-color">59.2k</span>&nbsp;字
             
             
             
