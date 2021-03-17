@@ -402,14 +402,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    225
+                    578
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -473,6 +473,58 @@
 <h3 id="02D-引脚图"><a href="#02D-引脚图" class="headerlink" title="02D 引脚图"></a>02D 引脚图</h3><p><img src="/images/pasted-16.png" alt="upload successful"></p>
 <h2 id="ESP8266-IDF-SDK-文档"><a href="#ESP8266-IDF-SDK-文档" class="headerlink" title="ESP8266 IDF-SDK 文档"></a>ESP8266 IDF-SDK 文档</h2><p><a target="_blank" rel="noopener" href="https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/api-reference/index.html">https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/api-reference/index.html</a></p>
 <h2 id="ESP8266-低功耗文档说明"><a href="#ESP8266-低功耗文档说明" class="headerlink" title="ESP8266 低功耗文档说明"></a>ESP8266 低功耗文档说明</h2><p><a target="_blank" rel="noopener" href="https://www.espressif.com/sites/default/files/documentation/9b-esp8266-low_power_solutions_cn.pdf">https://www.espressif.com/sites/default/files/documentation/9b-esp8266-low_power_solutions_cn.pdf</a></p>
+<h2 id="用脚本命令生成合成固件"><a href="#用脚本命令生成合成固件" class="headerlink" title="用脚本命令生成合成固件"></a>用脚本命令生成合成固件</h2><pre class=" language-sh"><code class="language-sh">if [ $GAT_FLASH_SIZE == 08Mbit ];then
+    echo "08Mbit"
+    BS_SIZE=1k
+    SPI_FLASH_SIZE=2
+    BOOT_ADDR_OFFSET=0k
+    PART_ADDR_OFFSET=12k
+    APP_ADDR_OFFSET=20k
+    OTADATA_ADDR_OFFSET=1000k
+    cp sdkconfig_08Mbit sdkconfig
+elif [ $GAT_FLASH_SIZE == 16Mbit ];then
+    echo "16Mbit"
+    BS_SIZE=2k
+    SPI_FLASH_SIZE=5
+    BOOT_ADDR_OFFSET=0k
+    PART_ADDR_OFFSET=32k
+    OTADATA_ADDR_OFFSET=40k
+    APP_ADDR_OFFSET=64k
+    cp sdkconfig_16Mbit sdkconfig
+elif [ $GAT_FLASH_SIZE == 32Mbit ];then
+    BS_SIZE=4k
+    SPI_FLASH_SIZE=6
+    BOOT_ADDR_OFFSET=0k
+    PART_ADDR_OFFSET=32k
+    OTADATA_ADDR_OFFSET=2100k
+    APP_ADDR_OFFSET=40k
+    cp sdkconfig_32Mbit sdkconfig
+    echo "32Mbit"
+else
+    echo "GAT_FLASH_SIZE must be one of [08Mbit|16Mbit|32Mbit]"
+    exit
+fi
+FLASH_MAX_ADDR=1024
+TARGET_DIR=build
+BOOT_BIN=bootloader/bootloader.bin
+OTA_DATA_BIN=ota_data_initial.bin
+PART_BIN=Partition_$&#123;GAT_FLASH_SIZE&#125;.bin
+COMBINE_BIN=$&#123;TARGET_NAME&#125;_combine.bin
+
+# spi mode(0=QIO, 1=QOUT, 2=DIO, 3=DOUT)
+SPI_MODE=3
+
+dd if=/dev/zero bs=$BS_SIZE count=$&#123;FLASH_MAX_ADDR&#125; | sed 's/\x00/\xff/g' > $&#123;TARGET_DIR&#125;/$&#123;COMBINE_BIN&#125;
+dd if=$&#123;TARGET_DIR&#125;/$&#123;BOOT_BIN&#125; ibs=$(wc -c < $&#123;TARGET_DIR&#125;/$&#123;BOOT_BIN&#125;) count=1 of=$&#123;TARGET_DIR&#125;/$&#123;COMBINE_BIN&#125; seek=$BOOT_ADDR_OFFSET obs=1 conv=notrunc
+dd if=$&#123;TARGET_DIR&#125;/$&#123;PART_BIN&#125; ibs=$(wc -c < $&#123;TARGET_DIR&#125;/$&#123;PART_BIN&#125;) count=1 of=$&#123;TARGET_DIR&#125;/$&#123;COMBINE_BIN&#125; seek=$PART_ADDR_OFFSET obs=1 conv=notrunc
+dd if=$&#123;TARGET_DIR&#125;/$&#123;OTA_DATA_BIN&#125; ibs=$(wc -c < $&#123;TARGET_DIR&#125;/$&#123;OTA_DATA_BIN&#125;) count=1 of=$&#123;TARGET_DIR&#125;/$&#123;COMBINE_BIN&#125; seek=$OTADATA_ADDR_OFFSET obs=1 conv=notrunc
+dd if=$&#123;TARGET_DIR&#125;/$&#123;TARGET_NAME&#125;.bin ibs=$(wc -c < $&#123;TARGET_DIR&#125;/$&#123;TARGET_NAME&#125;.bin) count=1 of=$&#123;TARGET_DIR&#125;/$&#123;COMBINE_BIN&#125; seek=$APP_ADDR_OFFSET obs=1 conv=notrunc
+echo 0$&#123;SPI_MODE&#125; | xxd -r -ps | dd of=$&#123;TARGET_DIR&#125;/$&#123;COMBINE_BIN&#125; seek=2 bs=1 count=1 conv=notrunc
+echo $&#123;SPI_FLASH_SIZE&#125;0 | xxd -r -ps | dd of=$&#123;TARGET_DIR&#125;/$&#123;COMBINE_BIN&#125; seek=3 bs=1 count=1 conv=notrunc</code></pre>
+<h2 id="其他有用命令"><a href="#其他有用命令" class="headerlink" title="其他有用命令"></a>其他有用命令</h2><ul>
+<li>生成汇编文件，用于定位问题<pre class=" language-sh"><code class="language-sh">xtensa-lx106-elf-objdump -S build/$&#123;TARGET_NAME&#125;.elf > build/$&#123;TARGET_NAME&#125;.S</code></pre>
+</li>
+</ul>
 
                 
             </div>
@@ -999,7 +1051,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">59.2k</span>&nbsp;字
+                class="white-color">59.6k</span>&nbsp;字
             
             
             
