@@ -389,7 +389,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    400
+                    359
                 </div>
                 
 
@@ -419,73 +419,73 @@
                 <h2 id="定义打印函数"><a href="#定义打印函数" class="headerlink" title="定义打印函数"></a>定义打印函数</h2><p>参考ESP8266的打印，定义如下打印函数</p>
 <a id="more"></a>
 
-<pre><code>#ifndef _A_LOG_H_
-#define _A_LOG_H_
-#include &quot;stdio.h&quot;
+<pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">ifndef</span> _A_LOG_H_</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> _A_LOG_H_</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"stdio.h"</span></span>
 
-#define Log(format, args...)  printf( format, ##args ) /*这个地方替换成平台相关的打印函数*/
+<span class="token macro property">#<span class="token directive keyword">define</span> Log(format, args...)  printf( format, ##args ) </span><span class="token comment" spellcheck="true">/*这个地方替换成平台相关的打印函数*/</span>
 
-#ifdef  LOG_COLOR_EANBLE
-#define LOG_COLOR_BLACK   &quot;30&quot;
-#define LOG_COLOR_RED     &quot;31&quot;
-#define LOG_COLOR_GREEN   &quot;32&quot;
-#define LOG_COLOR_BROWN   &quot;33&quot;
-#define LOG_COLOR_BLUE    &quot;34&quot;
-#define LOG_COLOR_PURPLE  &quot;35&quot;
-#define LOG_COLOR_CYAN    &quot;36&quot;
-#define LOG_COLOR(COLOR)  &quot;\033[0;&quot; COLOR &quot;m&quot;
-#define LOG_BOLD(COLOR)   &quot;\033[1;&quot; COLOR &quot;m&quot;
-#define LOG_RESET_COLOR   &quot;\033[0m&quot;
-#define LOG_COLOR_C       LOG_BOLD(LOG_COLOR_RED)
-#define LOG_COLOR_E       LOG_COLOR(LOG_COLOR_RED)
-#define LOG_COLOR_W       LOG_COLOR(LOG_COLOR_BROWN)
-#define LOG_COLOR_I       LOG_COLOR(LOG_COLOR_GREEN)
-#define LOG_COLOR_D       LOG_COLOR(LOG_COLOR_CYAN)
-#define LOG_COLOR_V
-#else
-#define LOG_COLOR_C
-#define LOG_COLOR_E
-#define LOG_COLOR_W
-#define LOG_COLOR_I
-#define LOG_COLOR_D
-#define LOG_COLOR_V
-#define LOG_RESET_COLOR
-#endif
+<span class="token macro property">#<span class="token directive keyword">ifdef</span>  LOG_COLOR_EANBLE</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_BLACK   "30"</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_RED     "31"</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_GREEN   "32"</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_BROWN   "33"</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_BLUE    "34"</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_PURPLE  "35"</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_CYAN    "36"</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR(COLOR)  "\033[0;" COLOR "m"</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_BOLD(COLOR)   "\033[1;" COLOR "m"</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_RESET_COLOR   "\033[0m"</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_C       LOG_BOLD(LOG_COLOR_RED)</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_E       LOG_COLOR(LOG_COLOR_RED)</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_W       LOG_COLOR(LOG_COLOR_BROWN)</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_I       LOG_COLOR(LOG_COLOR_GREEN)</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_D       LOG_COLOR(LOG_COLOR_CYAN)</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_V</span>
+<span class="token macro property">#<span class="token directive keyword">else</span></span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_C</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_E</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_W</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_I</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_D</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_COLOR_V</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_RESET_COLOR</span>
+<span class="token macro property">#<span class="token directive keyword">endif</span></span>
 
-typedef enum &#123;
-    LOG_NONE,       /*!&lt; No log output */
-    LOG_CRITICAL,   /*!&lt; Critical log*/
-    LOG_ERROR,      /*!&lt; errors, software module can not recover on its own */
-    LOG_WARN,       /*!&lt; Error conditions from which recovery measures have been taken */
-    LOG_INFO,       /*!&lt; Information messages which describe normal flow of events */
-    LOG_DEBUG,      /*!&lt; Extra information which is not necessary for normal use (values, pointers, sizes, etc). */
-    LOG_VERBOSE     /*!&lt; Bigger chunks of debugging information, or frequent messages which can potentially flood the output. */
-&#125;loglevel;
+<span class="token keyword">typedef</span> <span class="token keyword">enum</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    LOG_NONE<span class="token punctuation">,</span>       <span class="token comment" spellcheck="true">/*!&lt; No log output */</span>
+    LOG_CRITICAL<span class="token punctuation">,</span>   <span class="token comment" spellcheck="true">/*!&lt; Critical log*/</span>
+    LOG_ERROR<span class="token punctuation">,</span>      <span class="token comment" spellcheck="true">/*!&lt; errors, software module can not recover on its own */</span>
+    LOG_WARN<span class="token punctuation">,</span>       <span class="token comment" spellcheck="true">/*!&lt; Error conditions from which recovery measures have been taken */</span>
+    LOG_INFO<span class="token punctuation">,</span>       <span class="token comment" spellcheck="true">/*!&lt; Information messages which describe normal flow of events */</span>
+    LOG_DEBUG<span class="token punctuation">,</span>      <span class="token comment" spellcheck="true">/*!&lt; Extra information which is not necessary for normal use (values, pointers, sizes, etc). */</span>
+    LOG_VERBOSE     <span class="token comment" spellcheck="true">/*!&lt; Bigger chunks of debugging information, or frequent messages which can potentially flood the output. */</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>loglevel<span class="token punctuation">;</span>
 
-#define LOG_FORMAT(letter, format)  LOG_COLOR_ ## letter &quot;%-10.10s &quot;&quot;|%-04d | &quot; &quot;[&quot;#letter&quot;]&quot; &quot; [%s]&quot;  format LOG_RESET_COLOR
-#define LOG_IMPL(tag, format, log_level, log_tag_letter, ...) do &#123;   \
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_FORMAT(letter, format)  LOG_COLOR_ ## letter "%-10.10s ""|%-04d | " "["#letter"]" " [%s]"  format LOG_RESET_COLOR</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LOG_IMPL(tag, format, log_level, log_tag_letter, ...) do &amp;#123;   \
             Log(LOG_FORMAT(log_tag_letter, format),__FUNCTION__,__LINE__, tag, ##__VA_ARGS__); \
-        &#125;while(0)
+        &amp;#125;while(0)</span>
 
 
-#define logD( tag, format, ... )  LOG_IMPL( tag,format,LOG_DEBUG,   D,##__VA_ARGS__ )
-#define logI( tag, format, ... )  LOG_IMPL( tag,format,LOG_INFO,    I,##__VA_ARGS__ )
-#define logW( tag, format, ... )  LOG_IMPL( tag,format,LOG_WARN,    W,##__VA_ARGS__ )
-#define logE( tag, format, ... )  LOG_IMPL( tag,format,LOG_ERROR,   E,##__VA_ARGS__ )
-#define logC( tag, format, ... )  LOG_IMPL( tag,format,LOG_CRITICAL,C,##__VA_ARGS__ )
+<span class="token macro property">#<span class="token directive keyword">define</span> logD( tag, format, ... )  LOG_IMPL( tag,format,LOG_DEBUG,   D,##__VA_ARGS__ )</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> logI( tag, format, ... )  LOG_IMPL( tag,format,LOG_INFO,    I,##__VA_ARGS__ )</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> logW( tag, format, ... )  LOG_IMPL( tag,format,LOG_WARN,    W,##__VA_ARGS__ )</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> logE( tag, format, ... )  LOG_IMPL( tag,format,LOG_ERROR,   E,##__VA_ARGS__ )</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> logC( tag, format, ... )  LOG_IMPL( tag,format,LOG_CRITICAL,C,##__VA_ARGS__ )</span>
 
-#define logDump( tag,level,data,len  ) (&#123;if(len&gt;0)&#123;int i;Log(&quot;%-10.10s &quot; &quot;|%-04d | &quot; &quot;*********************** %04d **********************&quot;,__FUNCTION__,__LINE__,(int)len );\
+<span class="token macro property">#<span class="token directive keyword">define</span> logDump( tag,level,data,len  ) (&amp;#123;if(len>0)&amp;#123;int i;Log("%-10.10s " "|%-04d | " "*********************** %04d **********************",__FUNCTION__,__LINE__,(int)len );\
 for( i=0;i&lt;len;i++ )\
-&#123;\
+&amp;#123;\
     if( 0==i%20 ) \
-    &#123;\
-    Log(&quot;\r\n&quot;&quot;%-10.10s &quot; &quot;|%-04d | &quot;,__FUNCTION__,__LINE__);\
-    &#125;\
-    Log(&quot;%02x &quot;,*((unsigned char*)(data+i)) );\
-&#125;\
-Log(&quot;\r\n\r\n&quot;);&#125;\
-&#125;)
-#endif</code></pre>
+    &amp;#123;\
+    Log("\r\n""%-10.10s " "|%-04d | ",__FUNCTION__,__LINE__);\
+    &amp;#125;\
+    Log("%02x ",*((unsigned char*)(data+i)) );\
+&amp;#125;\
+Log("\r\n\r\n");&amp;#125;\
+&amp;#125;)</span>
+<span class="token macro property">#<span class="token directive keyword">endif</span></span></code></pre>
 
                 
             </div>
@@ -783,27 +783,24 @@ Log(&quot;\r\n\r\n&quot;);&#125;\
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/09/15/91bc.html">
+                <a href="/2021/03/09/ddee.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="OneNet OTA 操作笔记">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="小白学习-蓝牙-01-NRF51822环境搭建">
                         
-                        <span class="card-title">OneNet OTA 操作笔记</span>
+                        <span class="card-title">小白学习-蓝牙-01-NRF51822环境搭建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            OneNet OTA M5311 笔记
-地址: https://open.iot.10086.cn/
-
-OneNet平台OTA设置进入FOTA界面，选择添加FOTA群组,操作流程如下图:第一步，创建FOTA群组；
+                            这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-09
                             </span>
                         <span class="publish-author">
                             
@@ -812,6 +809,22 @@ OneNet平台OTA设置进入FOTA界面，选择添加FOTA群组,操作流程如�
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ble/">
+                        <span class="chip bg-color">ble</span>
+                    </a>
+                    
+                    <a href="/tags/nRF5/">
+                        <span class="chip bg-color">nRF5</span>
+                    </a>
+                    
+                    <a href="/tags/Nordic/">
+                        <span class="chip bg-color">Nordic</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1012,7 +1025,7 @@ OneNet平台OTA设置进入FOTA界面，选择添加FOTA群组,操作流程如�
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">60k</span>&nbsp;字
+                class="white-color">61.9k</span>&nbsp;字
             
             
             

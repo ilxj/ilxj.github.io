@@ -1,0 +1,1399 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="小白学习-蓝牙-01-NRF51822环境搭建, AlexLin">
+    <meta name="description" content="Write the code Change the world">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>小白学习-蓝牙-01-NRF51822环境搭建 | AlexLin</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">AlexLin</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">AlexLin</div>
+        <div class="logo-desc">
+            
+            Write the code Change the world
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">小白学习-蓝牙-01-NRF51822环境搭建</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/ble/">
+                                <span class="chip bg-color">ble</span>
+                            </a>
+                        
+                            <a href="/tags/nRF5/">
+                                <span class="chip bg-color">nRF5</span>
+                            </a>
+                        
+                            <a href="/tags/Nordic/">
+                                <span class="chip bg-color">Nordic</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-03-09
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.9k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    8 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="1-nRF-51822-xxAA-记录笔记"><a href="#1-nRF-51822-xxAA-记录笔记" class="headerlink" title="1. nRF-51822_xxAA 记录笔记"></a>1. nRF-51822_xxAA 记录笔记</h1><!-- TOC -->
+
+<ul>
+<li><a href="#1-nrf-51822_xxaa-%E8%AE%B0%E5%BD%95%E7%AC%94%E8%AE%B0">1. nRF-51822_xxAA 记录笔记</a><ul>
+<li><a href="#11-date2021-03-12">1.1. Date：2021-03-12</a></li>
+<li><a href="#12-sdk-%E8%AF%B4%E6%98%8E">1.2. SDK 说明</a><ul>
+<li><a href="#121-device-family-packnrf-mdk">1.2.1. Device family pack(nRF MDK)</a><ul>
+<li><a href="#1211-%E5%B7%A5%E7%A8%8B%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC%E6%9F%A5%E7%9C%8B">1.2.1.1. 工程依赖版本查看</a></li>
+</ul>
+</li>
+<li><a href="#122-%E5%A0%86%E6%A0%88%E8%B5%84%E6%BA%90%E4%BD%BF%E7%94%A8">1.2.2. 堆栈资源使用</a><ul>
+<li><a href="#1221-memory%E8%B5%84%E6%BA%90%E6%98%A0%E5%B0%84%E8%A1%A8">1.2.2.1. Memory资源映射表</a></li>
+<li><a href="#1222-s130%E5%8D%8F%E8%AE%AE%E6%A0%88%E8%B5%84%E4%BD%BF%E7%94%A8">1.2.2.2. S130协议栈资使用</a></li>
+<li><a href="#1223-%E8%B0%83%E7%94%A8%E6%A0%88%E5%92%8C%E5%A0%86">1.2.2.3. 调用栈和堆</a></li>
+<li><a href="#1224-keil-%E5%A0%86%E6%A0%88%E8%AE%BE%E7%BD%AE">1.2.2.4. Keil 堆栈设置</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#13-%E7%9B%B8%E5%85%B3%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80">1.3. 相关下载地址</a></li>
+<li><a href="#14-sdk%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83">1.4. SDK命名规范</a><ul>
+<li><a href="#141-softdevice%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E4%B8%80">1.4.1. Softdevice命名规则一</a></li>
+<li><a href="#142-softdevice%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E4%BA%8C">1.4.2. Softdevice命名规则二</a></li>
+</ul>
+</li>
+<li><a href="#15-%E5%AE%98%E6%96%B9%E6%9D%BF%E5%AD%90">1.5. 官方板子</a></li>
+<li><a href="#16-%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3">1.6. 官方文档</a></li>
+<li><a href="#17-date2021-03-13">1.7. Date：2021-03-13</a></li>
+<li><a href="#18-nrf51822-%E6%97%A5%E5%BF%97%E9%85%8D%E7%BD%AE">1.8. nRF51822 日志配置</a><ul>
+<li><a href="#181-%E4%BD%BF%E7%94%A8%E4%B8%B2%E5%8F%A3%E6%88%96j-link%E8%BE%93%E5%87%BA%E6%97%A5%E5%BF%97">1.8.1. 使用串口或j-link输出日志</a></li>
+<li><a href="#182-%E4%BD%BF%E7%94%A8printf%E5%87%BD%E6%95%B0%E4%BB%8E%E4%B8%B2%E5%8F%A3%E8%BE%93%E5%87%BA%E6%97%A5%E5%BF%97">1.8.2. 使用Printf函数从串口输出日志</a></li>
+</ul>
+</li>
+<li><a href="#19-vscode%E6%8F%92%E4%BB%B6-keil-assistant">1.9. VsCode插件-Keil Assistant</a><ul>
+<li><a href="#191-keil-assistant-%E9%85%8D%E7%BD%AE">1.9.1. Keil Assistant 配置</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BE%8B%E7%A8%8B%E5%88%86%E6%9E%90-experimental_ble_app_blinky">例程分析-experimental_ble_app_blinky</a></li>
+<li><a href="#2012-03-14">2012-03-14</a></li>
+<li><a href="#sdk%E4%BB%8B%E7%B4%B9nrf5_sdk_1230_d7731ad">SDK介紹(nRF5_SDK_12.3.0_d7731ad)</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<a id="more"></a>
+<h2 id="1-1-Date：2021-03-12"><a href="#1-1-Date：2021-03-12" class="headerlink" title="1.1. Date：2021-03-12"></a>1.1. Date：2021-03-12</h2><h2 id="1-2-SDK-说明"><a href="#1-2-SDK-说明" class="headerlink" title="1.2. SDK 说明"></a>1.2. SDK 说明</h2><p>Nordic 有两套独立的SDK,分别为<strong>开发SDK</strong>和**协议栈SDK(softdevice)**。<br>这两个SDK必须配套使用，每一个版本的SDK都包含了该版本支持的所有softdevice，请到SDK根目录\components\softdevice目录查看具体支持的softdevice类别和版本；</p>
+<h3 id="1-2-1-Device-family-pack-nRF-MDK"><a href="#1-2-1-Device-family-pack-nRF-MDK" class="headerlink" title="1.2.1. Device family pack(nRF MDK)"></a>1.2.1. Device family pack(nRF MDK)</h3><p>nRF MDK，必须和SDK配套使用，不同的SDK 对应不同的nRFMDK,从下载回来的SDK版本为:<strong>nRF5_SDK_12.3.0_d7731ad</strong>中的release_notes.txt 可以看到知道的nRF MDK,如下<br><img src="/images/mdk.jpg" alt="MDK"></p>
+<h4 id="1-2-1-1-工程依赖版本查看"><a href="#1-2-1-1-工程依赖版本查看" class="headerlink" title="1.2.1.1. 工程依赖版本查看"></a>1.2.1.1. 工程依赖版本查看</h4><p><img src="/images/%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC.jpg" alt="依赖版本"></p>
+<h3 id="1-2-2-堆栈资源使用"><a href="#1-2-2-堆栈资源使用" class="headerlink" title="1.2.2. 堆栈资源使用"></a>1.2.2. 堆栈资源使用</h3><p>通过官方在线文档查询: <a target="_blank" rel="noopener" href="https://infocenter.nordicsemi.com/index.jsp?topic=/com.nordic.infocenter.s130.sds/dita/softdevices/s130/mem_usage/mem_resource_reqs.html&amp;anchor=mem_resource_reqs__table_ayk_4lp_3r">https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.s130.sds%2Fdita%2Fsoftdevices%2Fs130%2Fmem_usage%2Fmem_resource_reqs.html&amp;anchor=mem_resource_reqs__table_ayk_4lp_3r</a></p>
+<h4 id="1-2-2-1-Memory资源映射表"><a href="#1-2-2-1-Memory资源映射表" class="headerlink" title="1.2.2.1. Memory资源映射表"></a>1.2.2.1. Memory资源映射表</h4><p><img src="/images/memory%E8%B5%84%E6%BA%90%E6%98%A0%E5%B0%84%E8%A1%A8.jpg" alt="memory资源映射表"></p>
+<h4 id="1-2-2-2-S130协议栈资使用"><a href="#1-2-2-2-S130协议栈资使用" class="headerlink" title="1.2.2.2. S130协议栈资使用"></a>1.2.2.2. S130协议栈资使用</h4><p><img src="/images/S130%E5%8D%8F%E8%AE%AE%E6%A0%88%E4%BD%BF%E7%94%A8.jpg" alt="S130协议栈使用"></p>
+<h4 id="1-2-2-3-调用栈和堆"><a href="#1-2-2-3-调用栈和堆" class="headerlink" title="1.2.2.3. 调用栈和堆"></a>1.2.2.3. 调用栈和堆</h4><ul>
+<li>S130的调用栈最大会使用<code>1536 bytes</code>,所以我们在编程的时候要留意应用层的栈使用；</li>
+<li>S130协议栈不使用堆空间<br><img src="/images/%E8%B0%83%E7%94%A8%E6%A0%88%E5%92%8C%E5%A0%86.jpg" alt="调用栈和堆"><h4 id="1-2-2-4-Keil-堆栈设置"><a href="#1-2-2-4-Keil-堆栈设置" class="headerlink" title="1.2.2.4. Keil 堆栈设置"></a>1.2.2.4. Keil 堆栈设置</h4>通过分析S130的堆栈使用情况，由于查看NRF51822的堆栈大小分别为 <code>256kB of Flash and 16kB of RAM</code>于是设置堆栈如下图:<br><img src="/images/keil%E5%A0%86%E6%A0%88%E8%AE%BE%E7%BD%AE.jpg" alt="keil堆栈设置"><table>
+<thead>
+<tr>
+<th align="left">Flash/RAM</th>
+<th align="left">起始地址</th>
+<th align="left">size</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Flash</td>
+<td align="left">0x1B000</td>
+<td align="left">0x25000</td>
+</tr>
+<tr>
+<td align="left">RAM</td>
+<td align="left">0x200013C8</td>
+<td align="left">0x2C38</td>
+</tr>
+<tr>
+<td align="left">RAM</td>
+<td align="left">0x20001FE8</td>
+<td align="left">0x2018</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="1-3-相关下载地址"><a href="#1-3-相关下载地址" class="headerlink" title="1.3. 相关下载地址"></a>1.3. 相关下载地址</h2><ul>
+<li>SDK 官网下载地址: <a target="_blank" rel="noopener" href="https://www.nordicsemi.com/Software-and-Tools/Software/nRF5-SDK/Download#infotabs">https://www.nordicsemi.com/Software-and-Tools/Software/nRF5-SDK/Download#infotabs</a></li>
+<li>调试工具桌面版nRF connect (同时支持Windows/MacOS/Linux平台): <a target="_blank" rel="noopener" href="https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Connect-for-desktop/Download#infotabs">https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Connect-for-desktop/Download#infotabs</a><h2 id="1-4-SDK命名规范"><a href="#1-4-SDK命名规范" class="headerlink" title="1.4. SDK命名规范"></a>1.4. SDK命名规范</h2><h3 id="1-4-1-Softdevice命名规则一"><a href="#1-4-1-Softdevice命名规则一" class="headerlink" title="1.4.1. Softdevice命名规则一"></a>1.4.1. Softdevice命名规则一</h3>Softdevice包括两种底层协议栈：BLE和ANT，BLE包括两种角色：central（又称master）和peripheral（又称slave），为此需要给这些不同类型的协议栈进行命名区分。协议栈命名格式为Sxyz，其中</li>
+<li>x – 表示协议栈的类型，1表示BLE协议栈，2表示ANT协议栈，3表示同时支持BLE和ANT</li>
+<li>y – 表示BLE角色，1表示从设备，2表示主设备，3表示同时支持主设备和从设备</li>
+<li>z – 表示芯片类型，0表示nRF51系列，2表示nRF52系列<br>比如S110，表示只支持从设备模式的nRF51 BLE协议栈<br>比如S130，表示既支持从设备模式又支持主设备模式的nRF51 BLE协议栈<br>比如S132，表示既支持从设备模式又支持主设备模式的nRF52 BLE协议栈<br>比如S212，表示nRF52 ANT协议栈<br>比如S332，表示nRF52既支持BLE协议栈又支持ANT协议栈，而且BLE协议栈既支持从设备模式又支持主设备模式<h3 id="1-4-2-Softdevice命名规则二"><a href="#1-4-2-Softdevice命名规则二" class="headerlink" title="1.4.2. Softdevice命名规则二"></a>1.4.2. Softdevice命名规则二</h3>大体上跟命名规则1相同，但是协议栈编号最后2位跟芯片型号一样，比如S140，代表这个协议栈专门用于nRF52840。由于52840 Flash空间很大，没有必要做各种细分的协议栈，S140协议栈是一个大而全的协议栈，包含蓝牙所有功能。</li>
+<li>Softdevice版本编号，从1.0.0开始编号，然后2.0.0，3.0.0，…S110最新版本是8.0.0，S130最新版本是2.0.1，S132/S140/S112最新版本是7.0.0。</li>
+<li>SDK和softdevice兼容性问题。不要查看兼容性表格，直接打开SDK，直接使用SDK里面的softdevice，肯定没有问题。比如S132 在SDK如下文件夹中：</li>
+<li><h2 id="1-5-官方板子"><a href="#1-5-官方板子" class="headerlink" title="1.5. 官方板子"></a>1.5. 官方板子</h2><table>
+<thead>
+<tr>
+<th align="left">板子</th>
+<th align="left">芯片</th>
+<th align="left">区别</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">PCA10001</td>
+<td align="left">nRF51822-QFAA</td>
+<td align="left">硬件和PCA10028一样</td>
+</tr>
+<tr>
+<td align="left">PCA10028</td>
+<td align="left">nRF51422-QFAC</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="1-6-官方文档"><a href="#1-6-官方文档" class="headerlink" title="1.6. 官方文档"></a>1.6. 官方文档</h2><ul>
+<li>在线帮助文档: <a target="_blank" rel="noopener" href="https://infocenter.nordicsemi.com/index.jsp?topic=/com.nordic.infocenter.sdk5.v15.3.0/examples.html&amp;cp=5_1_4">https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v15.3.0%2Fexamples.html&amp;cp=5_1_4</a><br><img src="/images/helpdoc.jpg" alt="helpdoc"><br><img src="/images/sdk_api.jpg" alt="sdk_api"></li>
+<li>BLE在线功耗计算工具 :</li>
+<li>Nordic Github : <a target="_blank" rel="noopener" href="https://github.com/NordicSemiconductor">https://github.com/NordicSemiconductor</a></li>
+</ul>
+<h2 id="1-7-Date：2021-03-13"><a href="#1-7-Date：2021-03-13" class="headerlink" title="1.7. Date：2021-03-13"></a>1.7. Date：2021-03-13</h2><h2 id="1-8-nRF51822-日志配置"><a href="#1-8-nRF51822-日志配置" class="headerlink" title="1.8. nRF51822 日志配置"></a>1.8. nRF51822 日志配置</h2><h3 id="1-8-1-使用串口或j-link输出日志"><a href="#1-8-1-使用串口或j-link输出日志" class="headerlink" title="1.8.1. 使用串口或j-link输出日志"></a>1.8.1. 使用串口或j-link输出日志</h3><p>可以设置串口或j-link 输出，同时还能配置日志颜色等参数。</p>
+<ul>
+<li><kbd>J-Link RTT Viewer 配置</kbd><br><img src="/images/jlink_rtt.jpg" alt="jlink_rtt"></li>
+<li><kbd>SDK Config 配置 配置</kbd><br><img src="/images/log_config.jpg" alt="log_config"></li>
+<li>下载固件查看日志，如图<kbd>J-Link RTT Viewer</kbd>显示 嘿嘿~<br><img src="/images/log.jpg" alt="log"></li>
+</ul>
+<h3 id="1-8-2-使用Printf函数从串口输出日志"><a href="#1-8-2-使用Printf函数从串口输出日志" class="headerlink" title="1.8.2. 使用Printf函数从串口输出日志"></a>1.8.2. 使用Printf函数从串口输出日志</h3><p>第一步、<br>需要把retarget.c 从SDK中拷贝出来(xx\nRF5_SDK\nRF5_SDK_12.3.0_d7731ad\components\libraries\uart\retarget.c)，放到工程下,因为默认重定义的fputc,函数不会打印，需要改为以下:<br>改前:</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">fputc</span><span class="token punctuation">(</span><span class="token keyword">int</span> ch<span class="token punctuation">,</span> FILE <span class="token operator">*</span> p_file<span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token function">UNUSED_PARAMETER</span><span class="token punctuation">(</span>p_file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">UNUSED_VARIABLE</span><span class="token punctuation">(</span><span class="token function">app_uart_put</span><span class="token punctuation">(</span><span class="token punctuation">(</span>uint8_t<span class="token punctuation">)</span>ch<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> ch<span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
+<p>改后:</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">fputc</span><span class="token punctuation">(</span><span class="token keyword">int</span> ch<span class="token punctuation">,</span> FILE <span class="token operator">*</span> p_file<span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token function">UNUSED_PARAMETER</span><span class="token punctuation">(</span>p_file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">app_uart_put</span><span class="token punctuation">(</span><span class="token punctuation">(</span>uint8_t<span class="token punctuation">)</span>ch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> ch<span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
+<p>第二步、<br>添加配置,在<code>sdk_config.h</code>中添加以下配置</p>
+<pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">ifndef</span> UART_ENABLED</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> UART_ENABLED 1</span>
+<span class="token macro property">#<span class="token directive keyword">endif</span></span>
+<span class="token comment" spellcheck="true">// &lt;q> APP_FIFO_ENABLED  - app_fifo - Software FIFO implementation</span>
+<span class="token macro property">#<span class="token directive keyword">ifndef</span> APP_FIFO_ENABLED</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> APP_FIFO_ENABLED 1</span>
+<span class="token macro property">#<span class="token directive keyword">endif</span></span>
+<span class="token comment" spellcheck="true">// &lt;e> APP_UART_ENABLED - app_uart - UART driver</span>
+<span class="token comment" spellcheck="true">//==========================================================</span>
+<span class="token macro property">#<span class="token directive keyword">ifndef</span> APP_UART_ENABLED</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> APP_UART_ENABLED 1</span>
+<span class="token macro property">#<span class="token directive keyword">endif</span></span>
+<span class="token comment" spellcheck="true">// &lt;q> RETARGET_ENABLED  - retarget - Retargeting stdio functions</span>
+<span class="token macro property">#<span class="token directive keyword">ifndef</span> RETARGET_ENABLED</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> RETARGET_ENABLED 1</span>
+<span class="token macro property">#<span class="token directive keyword">endif</span></span></code></pre>
+<p><img src="/images/printf_02.jpg" alt="printf_02"></p>
+<p>第三步、<br>添加如下文件: <code>nRF5_SDK\nRF5_SDK_12.3.0_d7731ad\components\libraries\uart\app_uart_fifo.c</code>,<code>nRF5_SDK_12.3.0_d7731ad\components\libraries\fifo\app_fifo.c</code>,<code>nRF5_SDK_12.3.0_d7731ad\examples\ble_peripheral\experimental_ble_app_blinky\retarget.c</code>.<br><img src="/images/printf_01.jpg" alt="printf_01"><br>第四步、初始串口<br>代码如下</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">uart_error_handle</span><span class="token punctuation">(</span>app_uart_evt_t <span class="token operator">*</span> p_event<span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>p_event<span class="token operator">-></span>evt_type <span class="token operator">==</span> APP_UART_COMMUNICATION_ERROR<span class="token punctuation">)</span>
+    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token function">APP_ERROR_HANDLER</span><span class="token punctuation">(</span>p_event<span class="token operator">-></span>data<span class="token punctuation">.</span>error_communication<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>p_event<span class="token operator">-></span>evt_type <span class="token operator">==</span> APP_UART_FIFO_ERROR<span class="token punctuation">)</span>
+    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token function">APP_ERROR_HANDLER</span><span class="token punctuation">(</span>p_event<span class="token operator">-></span>data<span class="token punctuation">.</span>error_code<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">openPrintf</span><span class="token punctuation">(</span> <span class="token keyword">void</span> <span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    ret_code_t err_code<span class="token punctuation">;</span>
+    <span class="token macro property">#<span class="token directive keyword">define</span> UART_TX_BUF_SIZE 256                         </span><span class="token comment" spellcheck="true">/**&lt; UART TX buffer size. */</span>
+    <span class="token macro property">#<span class="token directive keyword">define</span> UART_RX_BUF_SIZE 256                         </span><span class="token comment" spellcheck="true">/**&lt; UART RX buffer size. */</span>
+    <span class="token keyword">const</span> app_uart_comm_params_t comm_params <span class="token operator">=</span>
+      <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+          RX_PIN_NUMBER<span class="token punctuation">,</span>
+          TX_PIN_NUMBER<span class="token punctuation">,</span>
+          RTS_PIN_NUMBER<span class="token punctuation">,</span>
+          CTS_PIN_NUMBER<span class="token punctuation">,</span>
+          APP_UART_FLOW_CONTROL_ENABLED<span class="token punctuation">,</span>
+          false<span class="token punctuation">,</span>
+          UART_BAUDRATE_BAUDRATE_Baud115200
+      <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+
+    <span class="token function">APP_UART_FIFO_INIT</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>comm_params<span class="token punctuation">,</span>
+                         UART_RX_BUF_SIZE<span class="token punctuation">,</span>
+                         UART_TX_BUF_SIZE<span class="token punctuation">,</span>
+                         uart_error_handle<span class="token punctuation">,</span>
+                         APP_IRQ_PRIORITY_LOWEST<span class="token punctuation">,</span>
+                         err_code<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">APP_ERROR_CHECK</span><span class="token punctuation">(</span>err_code<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
+<h2 id="1-9-VsCode插件-Keil-Assistant"><a href="#1-9-VsCode插件-Keil-Assistant" class="headerlink" title="1.9. VsCode插件-Keil Assistant"></a>1.9. VsCode插件-Keil Assistant</h2><p>  忍受不了Keil这个IDE的界面和风格，寻思一款在VsCode的解决方法，终于得知有一物，名曰: <kbd>Keil Assistant</kbd>,可以完美解决我的痛点。[^RUNOOB]</p>
+<h3 id="1-9-1-Keil-Assistant-配置"><a href="#1-9-1-Keil-Assistant-配置" class="headerlink" title="1.9.1. Keil Assistant 配置"></a>1.9.1. Keil Assistant 配置</h3><p><strong>第一步、安装插件</strong><br><img src="/images/Keil%20Assistant%20.jpg" alt="Keil Assistant"><br><strong>第二部、配置插件</strong><br><strong>注意:</strong> 这个步骤只是配置<kbd>Keil</kbd>这个<code>IDE</code>能被插件识别到,工程具体的配置参数(如:芯片选型、IROM IRAM…)还需先用keil配置;<br><img src="/images/keil_config.jpg" alt="keill_config"><br><img src="/images/keil_config1.jpg" alt="keil_config1"><br><strong>第三步、编译下载</strong><br><img src="/images/build.jpg" alt="build"></p>
+<h2 id="例程分析-experimental-ble-app-blinky"><a href="#例程分析-experimental-ble-app-blinky" class="headerlink" title="例程分析-experimental_ble_app_blinky"></a>例程分析-experimental_ble_app_blinky</h2><h2 id="2012-03-14"><a href="#2012-03-14" class="headerlink" title="2012-03-14"></a>2012-03-14</h2><h2 id="SDK介紹-nRF5-SDK-12-3-0-d7731ad"><a href="#SDK介紹-nRF5-SDK-12-3-0-d7731ad" class="headerlink" title="SDK介紹(nRF5_SDK_12.3.0_d7731ad)"></a>SDK介紹(nRF5_SDK_12.3.0_d7731ad)</h2><pre class=" language-sh"><code class="language-sh">nRF5_SDK_12.3.0_d7731ad
+├── components                        # Nordic SDK 源码
+│   ├── ant                           # ANT相关代码
+│   ├── ble                           # BLE相关代码
+│   ├── boards                        # 开发板代码
+│   ├── device                        # SoC寄存器定义相关代码
+│   ├── drivers_ext                   # Nordic开发,但是使用的第三方设备
+│   ├── drivers_nrf                   # SoC开发的一些外设
+│   ├── libraries                     # 库以及一些源码
+│   ├── nfc                           # NFC相关
+│   ├── proprietary_rf                # Nordic私有2.4G代码
+│   ├── serialization                 # 串行接口相关代码
+│   ├── softdevice                    # 本SDK支持的协议栈(hex文件)，以及API和说明文档
+│   └── toolchain                     # 相关编译器对应的启动文件
+├── documentation                     # SDK 发布说明和各种说明，包含API SDK 等说明
+├── examples                          # 例程
+│   ├── ant                           #
+│   ├── ble_central                   #
+│   ├── ble_central_and_peripheral    #
+│   ├── ble_peripheral                # BLE从模式代码例程，包含两类，以ble_app_xxx:SDK稳定的例程；experimental_ble_app_xxx:一些新特性或者新例程，里面可能有bug或者步稳定，需要自己做稳定性测试；
+│   ├── crypto                        # 加密算法应用例程
+│   ├── dfu                           # boot loader 示例代码
+│   ├── dtm                           # DTM(Direct Test Mode)测试设备相关代码
+│   ├── multiprotocol                 # BLE,ANT,2.4G 同时工作例程
+│   ├── nfc                           # NFC例程
+│   ├── peripheral                    # 外设驱动例程
+│   └── proprietary_rf                # 私有2.4G例程
+├── external                          # 第三方库或者源码
+│   ├── cifra_AES128-EAX              #
+│   ├── fatfs                         #
+│   ├── freertos                      #
+│   ├── micro-ecc                     #
+│   ├── nano-pb                       #
+│   ├── nfc_adafruit_library          #
+│   ├── nrf_cc310                     #
+│   ├── protothreads                  #
+│   ├── rtx                           #
+│   ├── segger_rtt                    #
+│   └── tiny-AES128                   #
+└── svd                               #</code></pre>
+<p>[^RUNOOB]: 菜鸟教程 – 学的不仅是技术，更是梦想！！！</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Alex.Lin</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://lxj-life.com/2021/03/09/ddee.html">http://lxj-life.com/2021/03/09/ddee.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Alex.Lin</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/ble/">
+                                    <span class="chip bg-color">ble</span>
+                                </a>
+                            
+                                <a href="/tags/nRF5/">
+                                    <span class="chip bg-color">nRF5</span>
+                                </a>
+                            
+                                <a href="/tags/Nordic/">
+                                    <span class="chip bg-color">Nordic</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/images/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/images/wechatpay.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/03/17/f5b3.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="日志打印">
+                        
+                        <span class="card-title">日志打印</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-17
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Alex.Lin
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/09/15/91bc.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="OneNet OTA 操作笔记">
+                        
+                        <span class="card-title">OneNet OTA 操作笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            OneNet OTA M5311 笔记
+地址: https://open.iot.10086.cn/
+
+OneNet平台OTA设置进入FOTA界面，选择添加FOTA群组,操作流程如下图:第一步，创建FOTA群组；
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Alex.Lin
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">Alex.Lin</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">61.9k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/ilxj" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:878329009@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=878329009" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 878329009" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":"hijiki","bottom":-30,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
