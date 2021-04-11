@@ -368,12 +368,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%B7%A5%E5%85%B7/">
-                                <span class="chip bg-color">工具</span>
-                            </a>
-                        
                             <a href="/tags/Linux/">
                                 <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                                <span class="chip bg-color">工具</span>
                             </a>
                         
                     </div>
@@ -397,14 +397,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    11 分
                 </div>
                 
 
@@ -840,6 +840,141 @@ bar := $(foo:.o=.c)</code></pre>
 files := $(foreach n,$(names),$(n).o)</code></pre>
 <p>上面的例子中，$(name)中的单词会被挨个取出，并存到变量“n”中，“$(n).o”每次根据“$(n)”计算出一个值，这些值以空格分隔，最后作为foreach函数的返回，所以，$(files)的值是“a.o b.o c.o d.o”。</p>
 <p><strong>注意</strong>，foreach中的<var>;参数是一个临时的局部变量，foreach函数执行完后，参数<var>;的变量将不在作用，其作用域只在foreach函数当中。</p>
+<h3 id="例子一"><a href="#例子一" class="headerlink" title="例子一"></a>例子一</h3><ul>
+<li>makefile.md</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">#编译器管理
+CC = gcc
+RM = rm
+MV = mv
+AR = ar
+
+PLATFORM = linux
+ROOT_DIR = .
+# 定义main 函数的名称
+MAIN_FUNCTION ?= dsc_encode
+BUILD_TIME               = 2020
+BUILD_TIME              ?= $(shell date +%Y%m%d%H%M%S)
+TARGET_NAME = $(TARGET_DIR)/$(MAIN_FUNCTION)
+LIB_NAME   = $(TARGET_DIR)/lib$(MAIN_FUNCTION)
+
+
+
+#打印日志是否添加颜色
+# LOG_COLOR_EANBLE         = "Y"
+#目录管理
+TARGET_DIR=./target
+OBJS=./objs
+
+# 库文件路径
+CCODE_DIRS = $(ROOT_DIR)/Huffman \
+        $(ROOT_DIR)/list_struct \
+        $(ROOT_DIR)/netfun \
+        $(ROOT_DIR)/toolC  \
+        $(ROOT_DIR)/compress \
+        $(ROOT_DIR)/gcompress \
+        $(ROOT_DIR)/gzip \
+        $(ROOT_DIR)/mydiff \
+        $(ROOT_DIR)/crc
+
+
+
+
+CCODE_INC   += -I . -I include
+
+# 非库文件
+USER_DIRS =$(ROOT_DIR)/main
+USER_INCS = .
+# 入口函数文件
+MAIN_FILE = $(ROOT_DIR)/main/$(MAIN_FUNCTION).c
+
+HAL_DIRS =  $(ROOT_DIR)/HAL/common \
+            $(ROOT_DIR)/HAL/$(PLATFORM)/socket \
+            $(ROOT_DIR)/HAL/$(PLATFORM)/thread
+
+
+ifeq ($(LOG_COLOR_EANBLE),"Y")
+CFLAGS +=-DLOG_COLOR_EANBLE
+endif
+
+CFLAGS += -Wall -Wno-format-extra-args -Wno-int-to-pointer-cast -Wno-pointer-to-int-cast -Werror=implicit-int  -Werror=enum-compare -Werror=return-type -Werror=parentheses\
+            -Wno-implicit-function-declaration -Wformat=0 -Wno-comment -Werror \
+            -Wno-unused-variable -Wno-pointer-sign -Wno-unused-but-set-variable -Wno-unused-function -Wno-unused-value
+CFLAGS += -lrt -g -L/usr/lib64/  -lpthread -lm
+CFLAGS += -fPIC
+CFLAGS += -O0 -DBUILD_TIME=\"$(BUILD_TIME)\"
+CFLAGS += -D$(MAIN_FUNCTION)_main=main</code></pre>
+<ul>
+<li>makefile</li>
+</ul>
+<pre class=" language-make"><code class="language-make">include makefile.mk
+
+
+# 平台宏变量 -- 开始
+HAL_INC_DIR   = $(patsubst %,-I %,$(HAL_DIRS))
+HAL_INC_DIR  += $(HAL_INC)
+HAL_SRC_FILES = $(foreach N, $(HAL_DIRS),$(wildcard $(N)/*.c))  #获取所有.c文件
+HAL_COMPILE_FILES  = $(addprefix $(OBJS)/,$(HAL_SRC_FILES:.c=.o) ) #加上输出目录
+# 库宏变量 -- 结束
+
+# 库宏变量 -- 开始
+CCODE_UNIT_INC_DIR   = $(patsubst %,-I %,$(CCODE_DIRS))
+CCODE_UNIT_INC_DIR  += $(CCODE_INC)
+CCODE_UNIT_SRC_FILES = $(foreach N, $(CCODE_DIRS),$(wildcard $(N)/*.c)) #获取所有.c文件
+CCODE_COMPILE_FILES  = $(addprefix $(OBJS)/,$(CCODE_UNIT_SRC_FILES:.c=.o) ) #加上输出目录
+# 库宏变量 -- 结束
+
+# 用户变量 -- 开始
+USER_INC_DIR   = $(patsubst %,-I %,$(USER_DIRS))
+USER_INC_DIR   +=$(USER_INCS)
+USER_SRC_FILES = $(foreach N, $(USER_DIRS),$(wildcard $(N)/*.c))    #获取所有.c文件
+USER_COMPILE_FILES  = $(addprefix $(OBJS)/,$(USER_SRC_FILES:.c=.o) ) #加上输出目录
+# 用户变量 -- 结束
+
+
+
+target:CREATE_PATH
+    @echo "ccode Files :" $(CCODE_DIRS)
+    @echo "user Files  :" $(USER_DIRS)
+    @echo "CCODE_UNIT_INC_DIR   :" $(CCODE_UNIT_INC_DIR)
+    @echo "CCODE_UNIT_SRC_FILES :" $(CCODE_UNIT_SRC_FILES)
+    @echo "CCODE_COMPILE_FILES  :"$(CCODE_COMPILE_FILES)
+    @echo "HAL_INC_DIR          :" $(HAL_INC_DIR)
+    @echo "HAL_SRC_FILES        :" $(HAL_SRC_FILES)
+    @echo "HAL_COMPILE_FILES    :" $(HAL_COMPILE_FILES)
+    @make $(TARGET_NAME).bin
+    @make $(LIB_NAME).so
+
+    @echo "========================================== success =========================================="
+    @ls -lh $(TARGET_NAME).bin
+    @ls -lh $(LIB_NAME)*
+    @echo "============================================================================================="
+
+CREATE_PATH:
+    @echo "mkdir project dir " $(TARGET_DIR) $(OBJS)
+    @mkdir -p $(TARGET_DIR)
+    @mkdir -p $(OBJS)
+    @mkdir -p $(patsubst %,$(OBJS)/%,$(CCODE_DIRS) $(USER_DIRS) $(HAL_DIRS) )
+
+
+$(TARGET_NAME).bin:$(HAL_COMPILE_FILES) $(USER_COMPILE_FILES) $(LIB_NAME).a
+    $(CC) -o $@ $^ $(CFLAGS)
+
+
+$(LIB_NAME).a:$(CCODE_COMPILE_FILES)
+    $(AR) rcf $@ $^
+
+$(LIB_NAME).so:$(CCODE_COMPILE_FILES)
+    $(CC) -shared -o $@ $^
+
+#编译.o文件
+$(OBJS)/%.o: %.c
+    @echo "src:" $<
+    @echo "src obj:" $@
+    $(CC) -c $< -o $@  $(CFLAGS) $(CCODE_UNIT_INC_DIR) $(USER_INC_DIR) $(HAL_INC_DIR)
+
+clean:
+    $(RM) -rf $(OBJS) $(TARGET_DIR)</code></pre>
 
                 
             </div>
@@ -904,12 +1039,12 @@ files := $(foreach n,$(names),$(n).o)</code></pre>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%B7%A5%E5%85%B7/">
-                                    <span class="chip bg-color">工具</span>
-                                </a>
-                            
                                 <a href="/tags/Linux/">
                                     <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                                    <span class="chip bg-color">工具</span>
                                 </a>
                             
                         </div>
@@ -1384,7 +1519,7 @@ https://github.com/mzlogin/awesome-adb
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">61.9k</span>&nbsp;字
+                class="white-color">62.3k</span>&nbsp;字
             
             
             
