@@ -432,175 +432,6 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-4.4-all.zip</c
       </tags>
   </entry>
   <entry>
-    <title>COAP系列-lwm2m初识</title>
-    <url>/2018/01/29/7f47.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Wakaama"><a href="#Wakaama" class="headerlink" title="Wakaama"></a>Wakaama</h2><hr>
-<h2 id="1-Source-Layout"><a href="#1-Source-Layout" class="headerlink" title="1. Source Layout"></a>1. Source Layout</h2><pre><code>-+- core                   (the LWM2M engine)
- |    |
- |    +- er-coap-13        (Slightly modified Erbium&#39;s CoAP engine from
- |                          http://people.inf.ethz.ch/mkovatsc/erbium.php
- |
- +- tests                  (test cases)
- |
- +- examples
-      |
-      +- bootstrap_server  (a command-line LWM2M bootstrap server)
-      |
-      +- client            (a command-line LWM2M client with several test objects)
-      |
-      +- lightclient       (a very simple command-line LWM2M client with several test objects)
-      |
-      +- server            (a command-line LWM2M server)
-      |
-      +- shared            (utility functions for connection handling and command-
-                            line interface)</code></pre>
-<a id="more"></a>
-
-<h2 id="2-Compiling"><a href="#2-Compiling" class="headerlink" title="2.Compiling"></a>2.Compiling</h2><p>Wakaama is not a library but files to be built with an application. Wakaama uses CMake &gt;= 3. Look at examples/server/CMakeLists.txt for an example of how to include it. Several compilation switches are used:</p>
-<ul>
-<li>LWM2M_BIG_ENDIAN if your target platform uses big-endian format.</li>
-<li>LWM2M_LITTLE_ENDIAN if your target platform uses little-endian format.</li>
-<li>LWM2M_CLIENT_MODE to enable LWM2M Client interfaces.</li>
-<li>LWM2M_SERVER_MODE to enable LWM2M Server interfaces.</li>
-<li>LWM2M_BOOTSTRAP_SERVER_MODE to enable LWM2M Bootstrap Server interfaces.</li>
-<li>LWM2M_BOOTSTRAP to enable LWM2M Bootstrap support in a LWM2M Client.</li>
-<li>LWM2M_SUPPORT_JSON to enable JSON payload support (implicit when defining - LWM2M_SERVER_MODE)</li>
-<li>LWM2M_OLD_CONTENT_FORMAT_SUPPORT to support the deprecated content format values for TLV and JSON.</li>
-</ul>
-<h2 id="3-基础知识"><a href="#3-基础知识" class="headerlink" title="3.基础知识"></a>3.基础知识</h2><p>通过URI访问LWM2M实体</p>
-<pre><code>/&lt;object id&gt;[/&lt;object instance id&gt;][/&lt;resource id&gt;]</code></pre>
-<p>在LWM2M中，合法的URI应当像如下格式（注意，不能以/结尾）：</p>
-<pre><code>/&lt;object id&gt;[/&lt;object instance id&gt;][/&lt;resource id&gt;]
-
-# legal example
-/0
-/0/0
-/0/1
-/0/1/1
-1
-2
-3
-4
-5
-6
-7</code></pre>
-<p>URI分别标识了访问资源的object id、object instance id、resource id，后两个id是可选的。</p>
-<p>Depending on your platform, you need to define LWM2M_BIG_ENDIAN or LWM2M_LITTLE_ENDIAN. LWM2M_CLIENT_MODE and LWM2M_SERVER_MODE can be defined at the same time.</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><a href="http://www.eclipse.org/wakaama/">wakaama</a></li>
-<li><a href="https://github.com/eclipse/wakaama">github</a></li>
-<li><a href="http://blog.csdn.net/github_39603316/article/details/76014609">Blog</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>协议</category>
-      </categories>
-      <tags>
-        <tag>COAP</tag>
-        <tag>lwm2m</tag>
-        <tag>协议</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C语言之奇门遁甲术</title>
-    <url>/2019/01/09/b2a3.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="C语言位操作与计算"><a href="#C语言位操作与计算" class="headerlink" title="C语言位操作与计算"></a>C语言位操作与计算</h2><hr>
-<blockquote>
-<p><strong>C语言中位取反是~，逻辑取反是</strong></p>
-</blockquote>
-<h3 id="布尔位运算符"><a href="#布尔位运算符" class="headerlink" title="布尔位运算符"></a>布尔位运算符</h3><table>
-<thead>
-<tr>
-<th align="left">运算符</th>
-<th align="left">意义</th>
-<th align="left">示例</th>
-<th align="left">对于每个位位置的结果（1=设定，0=清除）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">&amp;</td>
-<td align="left">位 AND</td>
-<td align="left">x&amp;y</td>
-<td align="left">如果 x 和 y 都为 1，则得到 1；如果 x 或 y 任何一个为 0，或都为0，则得到 0</td>
-</tr>
-<tr>
-<td align="left">I</td>
-<td align="left">位 OR</td>
-<td align="left">xIy</td>
-<td align="left">如果 x 或 y 为 1，或都为 1，则得到 1；如果 x 和 y 都为 0，则得到 0</td>
-</tr>
-<tr>
-<td align="left">^</td>
-<td align="left">位 XOR</td>
-<td align="left">x^y</td>
-<td align="left">如果 x 或 y 的值不同，则得到 1；如果两个值相同，则得到 0</td>
-</tr>
-<tr>
-<td align="left">~</td>
-<td align="left">位 NOT</td>
-<td align="left">（I的补码）~x</td>
-<td align="left">如果 x 为 0，则得到 1，如果 x 是 1，则得到 0</td>
-</tr>
-</tbody></table>
-<a id="more"></a>
-
-<h3 id="对某一位操作"><a href="#对某一位操作" class="headerlink" title="对某一位操作"></a>对某一位操作</h3><pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">define</span> set_bit(m,n)       m|=(1&lt;&lt;n)               </span><span class="token comment" spellcheck="true">//对某一位置一</span>
-<span class="token macro property">#<span class="token directive keyword">define</span> reset_bit(m,n)     m &amp;= ~( 1&lt;&lt;n )          </span><span class="token comment" spellcheck="true">//对某一位置零</span>
-<span class="token macro property">#<span class="token directive keyword">define</span> get_bit( m,n )     ((m) >> (n)&amp;1)          </span><span class="token comment" spellcheck="true">//获取的某一位的值</span>
-<span class="token macro property">#<span class="token directive keyword">define</span> reversebit(m,n)    m^=(1&lt;&lt;n)               </span><span class="token comment" spellcheck="true">//对某一位取反</span></code></pre>
-<h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><h4 id="1-如果乘上一个2的倍数数值，可以改用左移运算-Left-Shift-加速-300"><a href="#1-如果乘上一个2的倍数数值，可以改用左移运算-Left-Shift-加速-300" class="headerlink" title="1. 如果乘上一个2的倍数数值，可以改用左移运算(Left Shift) 加速 300%"></a>1. 如果乘上一个2的倍数数值，可以改用左移运算(Left Shift) 加速 300%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> x <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
-x <span class="token operator">=</span> x <span class="token operator">*</span> <span class="token number">64</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//改为:</span>
-x <span class="token operator">=</span> x <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 2 == 2</span>
-x <span class="token operator">=</span> x <span class="token operator">&lt;&lt;</span> <span class="token number">6</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 64 == 2*2*2*2*2*2</span></code></pre>
-<h4 id="2-如果除上一个-2-的倍数数值，可以改用右移运算加速-350"><a href="#2-如果除上一个-2-的倍数数值，可以改用右移运算加速-350" class="headerlink" title="2. 如果除上一个 2 的倍数数值，可以改用右移运算加速 350%"></a>2. 如果除上一个 2 的倍数数值，可以改用右移运算加速 350%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
-x <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">64</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//改为:</span>
-x <span class="token operator">=</span> x <span class="token operator">>></span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 2 == 2</span>
-x <span class="token operator">=</span> x <span class="token operator">>></span> <span class="token number">6</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 64 == 2*2*2*2*2*2</span></code></pre>
-<h4 id="3-数值转整数加速-10"><a href="#3-数值转整数加速-10" class="headerlink" title="3. 数值转整数加速 10%"></a>3. 数值转整数加速 10%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">1.232</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">//改为:</span>
-x <span class="token operator">=</span> <span class="token number">1.232</span> <span class="token operator">>></span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
-<h4 id="4-交换两个数值-swap-，使用-XOR-可以加速20"><a href="#4-交换两个数值-swap-，使用-XOR-可以加速20" class="headerlink" title="4. 交换两个数值(swap)，使用 XOR 可以加速20%"></a>4. 交换两个数值(swap)，使用 XOR 可以加速20%</h4><pre class=" language-c"><code class="language-c">var t<span class="token punctuation">:</span><span class="token keyword">int</span> <span class="token operator">=</span> a<span class="token punctuation">;</span>
-a <span class="token operator">=</span> b<span class="token punctuation">;</span>
-b <span class="token operator">=</span> t<span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//equals:</span>
-a <span class="token operator">=</span> a<span class="token operator">^</span>b<span class="token punctuation">;</span>
-b <span class="token operator">=</span> a<span class="token operator">^</span>b<span class="token punctuation">;</span>
-a <span class="token operator">=</span> a<span class="token operator">^</span>b<span class="token punctuation">;</span></code></pre>
-<h4 id="5-正负号转换，可以加入-300"><a href="#5-正负号转换，可以加入-300" class="headerlink" title="5. 正负号转换，可以加入 300%"></a>5. 正负号转换，可以加入 300%</h4><pre class=" language-c"><code class="language-c">i <span class="token operator">=</span> <span class="token operator">-</span>i<span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//改为</span>
-i <span class="token operator">=</span> <span class="token operator">~</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// NOT 写法</span>
-<span class="token comment" spellcheck="true">//或</span>
-i <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">^</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// XOR 写法</span></code></pre>
-<h4 id="6-取余数，如果除数为-2-的倍数，可利用-AND-运算加速-600"><a href="#6-取余数，如果除数为-2-的倍数，可利用-AND-运算加速-600" class="headerlink" title="6. 取余数，如果除数为 2 的倍数，可利用 AND 运算加速 600%"></a>6. 取余数，如果除数为 2 的倍数，可利用 AND 运算加速 600%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> <span class="token number">131</span> <span class="token operator">%</span> <span class="token number">4</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//equals:</span>
-x <span class="token operator">=</span> <span class="token number">131</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">4</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h4 id="7-利用-AND-运算检查整数是否为-2-的倍数，可以加速-600"><a href="#7-利用-AND-运算检查整数是否为-2-的倍数，可以加速-600" class="headerlink" title="7. 利用 AND 运算检查整数是否为 2 的倍数，可以加速 600%"></a>7. 利用 AND 运算检查整数是否为 2 的倍数，可以加速 600%</h4><pre class=" language-c"><code class="language-c">isEven <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//equals:</span>
-isEven <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
-<h4 id="8-加速-Math-abs-600-的写法1，写法2-又比写法1加速-20"><a href="#8-加速-Math-abs-600-的写法1，写法2-又比写法1加速-20" class="headerlink" title="8. 加速 Math.abs 600% 的写法1，写法2 又比写法1加速 20%"></a>8. 加速 Math.abs 600% 的写法1，写法2 又比写法1加速 20%</h4><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">//写法1</span>
-i <span class="token operator">=</span> x <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token operator">-</span>x <span class="token punctuation">:</span> x<span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">//写法2</span>
-
-i <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">^</span> <span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">//写法3</span>
-
-i<span class="token operator">=</span>x<span class="token operator">^</span><span class="token punctuation">(</span><span class="token operator">~</span><span class="token punctuation">(</span>x<span class="token operator">>></span><span class="token number">31</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token punctuation">(</span>x<span class="token operator">>></span><span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h4 id="9-比较两数值相乘之后是否拥有相同的符号，加速-35"><a href="#9-比较两数值相乘之后是否拥有相同的符号，加速-35" class="headerlink" title="9. 比较两数值相乘之后是否拥有相同的符号，加速 35%"></a>9. 比较两数值相乘之后是否拥有相同的符号，加速 35%</h4><pre class=" language-c"><code class="language-c">eqSign <span class="token operator">=</span> a <span class="token operator">*</span> b <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//equals:</span>
-eqSign <span class="token operator">=</span> a <span class="token operator">^</span> b <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
-]]></content>
-      <categories>
-        <category>C</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>COAP系列-入门介绍</title>
     <url>/2017/10/18/fb1f.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a href="http://coap.technology/">http://coap.technology/</a><br>WiKi<br><a href="https://en.wikipedia.org/wiki/Constrained_Application_Protocol">https://en.wikipedia.org/wiki/Constrained_Application_Protocol</a><br>开源库<br><a href="https://github.com/miri64/libcoap">https://github.com/miri64/libcoap</a></p>
@@ -902,6 +733,175 @@ eqSign <span class="token operator">=</span> a <span class="token operator">^</s
       </tags>
   </entry>
   <entry>
+    <title>COAP系列-lwm2m初识</title>
+    <url>/2018/01/29/7f47.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Wakaama"><a href="#Wakaama" class="headerlink" title="Wakaama"></a>Wakaama</h2><hr>
+<h2 id="1-Source-Layout"><a href="#1-Source-Layout" class="headerlink" title="1. Source Layout"></a>1. Source Layout</h2><pre><code>-+- core                   (the LWM2M engine)
+ |    |
+ |    +- er-coap-13        (Slightly modified Erbium&#39;s CoAP engine from
+ |                          http://people.inf.ethz.ch/mkovatsc/erbium.php
+ |
+ +- tests                  (test cases)
+ |
+ +- examples
+      |
+      +- bootstrap_server  (a command-line LWM2M bootstrap server)
+      |
+      +- client            (a command-line LWM2M client with several test objects)
+      |
+      +- lightclient       (a very simple command-line LWM2M client with several test objects)
+      |
+      +- server            (a command-line LWM2M server)
+      |
+      +- shared            (utility functions for connection handling and command-
+                            line interface)</code></pre>
+<a id="more"></a>
+
+<h2 id="2-Compiling"><a href="#2-Compiling" class="headerlink" title="2.Compiling"></a>2.Compiling</h2><p>Wakaama is not a library but files to be built with an application. Wakaama uses CMake &gt;= 3. Look at examples/server/CMakeLists.txt for an example of how to include it. Several compilation switches are used:</p>
+<ul>
+<li>LWM2M_BIG_ENDIAN if your target platform uses big-endian format.</li>
+<li>LWM2M_LITTLE_ENDIAN if your target platform uses little-endian format.</li>
+<li>LWM2M_CLIENT_MODE to enable LWM2M Client interfaces.</li>
+<li>LWM2M_SERVER_MODE to enable LWM2M Server interfaces.</li>
+<li>LWM2M_BOOTSTRAP_SERVER_MODE to enable LWM2M Bootstrap Server interfaces.</li>
+<li>LWM2M_BOOTSTRAP to enable LWM2M Bootstrap support in a LWM2M Client.</li>
+<li>LWM2M_SUPPORT_JSON to enable JSON payload support (implicit when defining - LWM2M_SERVER_MODE)</li>
+<li>LWM2M_OLD_CONTENT_FORMAT_SUPPORT to support the deprecated content format values for TLV and JSON.</li>
+</ul>
+<h2 id="3-基础知识"><a href="#3-基础知识" class="headerlink" title="3.基础知识"></a>3.基础知识</h2><p>通过URI访问LWM2M实体</p>
+<pre><code>/&lt;object id&gt;[/&lt;object instance id&gt;][/&lt;resource id&gt;]</code></pre>
+<p>在LWM2M中，合法的URI应当像如下格式（注意，不能以/结尾）：</p>
+<pre><code>/&lt;object id&gt;[/&lt;object instance id&gt;][/&lt;resource id&gt;]
+
+# legal example
+/0
+/0/0
+/0/1
+/0/1/1
+1
+2
+3
+4
+5
+6
+7</code></pre>
+<p>URI分别标识了访问资源的object id、object instance id、resource id，后两个id是可选的。</p>
+<p>Depending on your platform, you need to define LWM2M_BIG_ENDIAN or LWM2M_LITTLE_ENDIAN. LWM2M_CLIENT_MODE and LWM2M_SERVER_MODE can be defined at the same time.</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://www.eclipse.org/wakaama/">wakaama</a></li>
+<li><a href="https://github.com/eclipse/wakaama">github</a></li>
+<li><a href="http://blog.csdn.net/github_39603316/article/details/76014609">Blog</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>协议</category>
+      </categories>
+      <tags>
+        <tag>COAP</tag>
+        <tag>协议</tag>
+        <tag>lwm2m</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C语言之奇门遁甲术</title>
+    <url>/2019/01/09/b2a3.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="C语言位操作与计算"><a href="#C语言位操作与计算" class="headerlink" title="C语言位操作与计算"></a>C语言位操作与计算</h2><hr>
+<blockquote>
+<p><strong>C语言中位取反是~，逻辑取反是</strong></p>
+</blockquote>
+<h3 id="布尔位运算符"><a href="#布尔位运算符" class="headerlink" title="布尔位运算符"></a>布尔位运算符</h3><table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">意义</th>
+<th align="left">示例</th>
+<th align="left">对于每个位位置的结果（1=设定，0=清除）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&amp;</td>
+<td align="left">位 AND</td>
+<td align="left">x&amp;y</td>
+<td align="left">如果 x 和 y 都为 1，则得到 1；如果 x 或 y 任何一个为 0，或都为0，则得到 0</td>
+</tr>
+<tr>
+<td align="left">I</td>
+<td align="left">位 OR</td>
+<td align="left">xIy</td>
+<td align="left">如果 x 或 y 为 1，或都为 1，则得到 1；如果 x 和 y 都为 0，则得到 0</td>
+</tr>
+<tr>
+<td align="left">^</td>
+<td align="left">位 XOR</td>
+<td align="left">x^y</td>
+<td align="left">如果 x 或 y 的值不同，则得到 1；如果两个值相同，则得到 0</td>
+</tr>
+<tr>
+<td align="left">~</td>
+<td align="left">位 NOT</td>
+<td align="left">（I的补码）~x</td>
+<td align="left">如果 x 为 0，则得到 1，如果 x 是 1，则得到 0</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+
+<h3 id="对某一位操作"><a href="#对某一位操作" class="headerlink" title="对某一位操作"></a>对某一位操作</h3><pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">define</span> set_bit(m,n)       m|=(1&lt;&lt;n)               </span><span class="token comment" spellcheck="true">//对某一位置一</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> reset_bit(m,n)     m &amp;= ~( 1&lt;&lt;n )          </span><span class="token comment" spellcheck="true">//对某一位置零</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> get_bit( m,n )     ((m) >> (n)&amp;1)          </span><span class="token comment" spellcheck="true">//获取的某一位的值</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> reversebit(m,n)    m^=(1&lt;&lt;n)               </span><span class="token comment" spellcheck="true">//对某一位取反</span></code></pre>
+<h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><h4 id="1-如果乘上一个2的倍数数值，可以改用左移运算-Left-Shift-加速-300"><a href="#1-如果乘上一个2的倍数数值，可以改用左移运算-Left-Shift-加速-300" class="headerlink" title="1. 如果乘上一个2的倍数数值，可以改用左移运算(Left Shift) 加速 300%"></a>1. 如果乘上一个2的倍数数值，可以改用左移运算(Left Shift) 加速 300%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> x <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+x <span class="token operator">=</span> x <span class="token operator">*</span> <span class="token number">64</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//改为:</span>
+x <span class="token operator">=</span> x <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 2 == 2</span>
+x <span class="token operator">=</span> x <span class="token operator">&lt;&lt;</span> <span class="token number">6</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 64 == 2*2*2*2*2*2</span></code></pre>
+<h4 id="2-如果除上一个-2-的倍数数值，可以改用右移运算加速-350"><a href="#2-如果除上一个-2-的倍数数值，可以改用右移运算加速-350" class="headerlink" title="2. 如果除上一个 2 的倍数数值，可以改用右移运算加速 350%"></a>2. 如果除上一个 2 的倍数数值，可以改用右移运算加速 350%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+x <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">64</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//改为:</span>
+x <span class="token operator">=</span> x <span class="token operator">>></span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 2 == 2</span>
+x <span class="token operator">=</span> x <span class="token operator">>></span> <span class="token number">6</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 64 == 2*2*2*2*2*2</span></code></pre>
+<h4 id="3-数值转整数加速-10"><a href="#3-数值转整数加速-10" class="headerlink" title="3. 数值转整数加速 10%"></a>3. 数值转整数加速 10%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">1.232</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//改为:</span>
+x <span class="token operator">=</span> <span class="token number">1.232</span> <span class="token operator">>></span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
+<h4 id="4-交换两个数值-swap-，使用-XOR-可以加速20"><a href="#4-交换两个数值-swap-，使用-XOR-可以加速20" class="headerlink" title="4. 交换两个数值(swap)，使用 XOR 可以加速20%"></a>4. 交换两个数值(swap)，使用 XOR 可以加速20%</h4><pre class=" language-c"><code class="language-c">var t<span class="token punctuation">:</span><span class="token keyword">int</span> <span class="token operator">=</span> a<span class="token punctuation">;</span>
+a <span class="token operator">=</span> b<span class="token punctuation">;</span>
+b <span class="token operator">=</span> t<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//equals:</span>
+a <span class="token operator">=</span> a<span class="token operator">^</span>b<span class="token punctuation">;</span>
+b <span class="token operator">=</span> a<span class="token operator">^</span>b<span class="token punctuation">;</span>
+a <span class="token operator">=</span> a<span class="token operator">^</span>b<span class="token punctuation">;</span></code></pre>
+<h4 id="5-正负号转换，可以加入-300"><a href="#5-正负号转换，可以加入-300" class="headerlink" title="5. 正负号转换，可以加入 300%"></a>5. 正负号转换，可以加入 300%</h4><pre class=" language-c"><code class="language-c">i <span class="token operator">=</span> <span class="token operator">-</span>i<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//改为</span>
+i <span class="token operator">=</span> <span class="token operator">~</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// NOT 写法</span>
+<span class="token comment" spellcheck="true">//或</span>
+i <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">^</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// XOR 写法</span></code></pre>
+<h4 id="6-取余数，如果除数为-2-的倍数，可利用-AND-运算加速-600"><a href="#6-取余数，如果除数为-2-的倍数，可利用-AND-运算加速-600" class="headerlink" title="6. 取余数，如果除数为 2 的倍数，可利用 AND 运算加速 600%"></a>6. 取余数，如果除数为 2 的倍数，可利用 AND 运算加速 600%</h4><pre class=" language-c"><code class="language-c">x <span class="token operator">=</span> <span class="token number">131</span> <span class="token operator">%</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//equals:</span>
+x <span class="token operator">=</span> <span class="token number">131</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">4</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="7-利用-AND-运算检查整数是否为-2-的倍数，可以加速-600"><a href="#7-利用-AND-运算检查整数是否为-2-的倍数，可以加速-600" class="headerlink" title="7. 利用 AND 运算检查整数是否为 2 的倍数，可以加速 600%"></a>7. 利用 AND 运算检查整数是否为 2 的倍数，可以加速 600%</h4><pre class=" language-c"><code class="language-c">isEven <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//equals:</span>
+isEven <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
+<h4 id="8-加速-Math-abs-600-的写法1，写法2-又比写法1加速-20"><a href="#8-加速-Math-abs-600-的写法1，写法2-又比写法1加速-20" class="headerlink" title="8. 加速 Math.abs 600% 的写法1，写法2 又比写法1加速 20%"></a>8. 加速 Math.abs 600% 的写法1，写法2 又比写法1加速 20%</h4><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">//写法1</span>
+i <span class="token operator">=</span> x <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token operator">-</span>x <span class="token punctuation">:</span> x<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//写法2</span>
+
+i <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">^</span> <span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//写法3</span>
+
+i<span class="token operator">=</span>x<span class="token operator">^</span><span class="token punctuation">(</span><span class="token operator">~</span><span class="token punctuation">(</span>x<span class="token operator">>></span><span class="token number">31</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token punctuation">(</span>x<span class="token operator">>></span><span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="9-比较两数值相乘之后是否拥有相同的符号，加速-35"><a href="#9-比较两数值相乘之后是否拥有相同的符号，加速-35" class="headerlink" title="9. 比较两数值相乘之后是否拥有相同的符号，加速 35%"></a>9. 比较两数值相乘之后是否拥有相同的符号，加速 35%</h4><pre class=" language-c"><code class="language-c">eqSign <span class="token operator">=</span> a <span class="token operator">*</span> b <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//equals:</span>
+eqSign <span class="token operator">=</span> a <span class="token operator">^</span> b <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
+]]></content>
+      <categories>
+        <category>C</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker系列-基础入门</title>
     <url>/2017/10/09/e119.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>[ TOP ]</p>
@@ -1140,68 +1140,6 @@ invalid reference format</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>ESP8266系列-各个模组型号模组对比</title>
-    <url>/2017/08/04/9fbf.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="烧录Flash-地址说明"><a href="#烧录Flash-地址说明" class="headerlink" title="烧录Flash 地址说明"></a>烧录Flash 地址说明</h2><table>
-<thead>
-<tr>
-<th align="center">文件名称</th>
-<th align="center">8Mbit烧录地址</th>
-<th align="center">16Mbit烧录地址</th>
-<th align="center">32Mbit烧录地址</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">boot.bin</td>
-<td align="center">0x00000</td>
-<td align="center">0x00000</td>
-<td align="center">0x00000</td>
-<td align="left">由乐鑫在 SDK 中提供，建议一直使用最新版本</td>
-</tr>
-<tr>
-<td align="center">user1.bin</td>
-<td align="center">0x01000</td>
-<td align="center">0x01000</td>
-<td align="center">0x01000</td>
-<td align="left">主程序，由代码编译生成</td>
-</tr>
-<tr>
-<td align="center">user2.bin</td>
-<td align="center">0x81000</td>
-<td align="center">0x81000</td>
-<td align="center">0x81000</td>
-<td align="left">主程序，由代码编译生成</td>
-</tr>
-<tr>
-<td align="center">esp_init_data_default.bin</td>
-<td align="center">0xFC000</td>
-<td align="center">0x1FC000</td>
-<td align="center">0x3FC000</td>
-<td align="left">由乐鑫在 SDK 中提供</td>
-</tr>
-<tr>
-<td align="center">blank.bin</td>
-<td align="center">0xFE000</td>
-<td align="center">0x1FE000</td>
-<td align="center">0x3FE000</td>
-<td align="left">由乐鑫在 SDK 中提供</td>
-</tr>
-</tbody></table>
-<a id="more"></a>
-
-<h2 id="硬件连接"><a href="#硬件连接" class="headerlink" title="硬件连接"></a>硬件连接</h2><p>ESP8266有运行模式、下载模式、测试模式的区别，进入下载模式可参考以下配置：</p>
-<p>|模式|CH_PD(EN)| RST |GPIO15|GPIO0|GPIO2|TXD0|<br>|:—:|:—:|<br>|UART 下载模式|高|高|低|低|高|高|<br>|Flash运行模式|高|高|低|高|高|高|<br>|Chip 测试模式|- |- |- | -| -|低|</p>
-<h2 id="模组对比"><a href="#模组对比" class="headerlink" title="模组对比"></a>模组对比</h2><p>![模组对比][1]<br>[1]: <a href="http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a></p>
-]]></content>
-      <categories>
-        <category>esp8266</category>
-      </categories>
-      <tags>
-        <tag>esp8266</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ESP8266系列-12F引脚说明</title>
     <url>/2017/08/06/53ce.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="ESP8266-12F-模组图"><a href="#ESP8266-12F-模组图" class="headerlink" title="ESP8266-12F 模组图"></a>ESP8266-12F 模组图</h2><p><img src="/images/pasted-14.png" alt="硬件模组图"><br><img src="/images/pasted-13.png" alt="esp12f管脚定义图"></p>
@@ -1393,70 +1331,66 @@ invalid reference format</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>ESP8266系列-连接OLED模块</title>
-    <url>/2020/04/09/8529.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="OLED-屏幕介绍"><a href="#OLED-屏幕介绍" class="headerlink" title="OLED 屏幕介绍"></a>OLED 屏幕介绍</h2><ul>
-<li>芯片型号 <a href="https://wenku.baidu.com/view/6d6497a53d1ec5da50e2524de518964bce84d233.html">SSD1306</a></li>
-<li>分辨率 128*64</li>
-<li>供电范围 直流 3.3-5v</li>
-<li>体积 27<em>27</em>2mm</li>
-<li>尺寸 <img src="/images/pasted-10.png" alt="upload successful"></li>
-<li>SPI 4线接法 <img src="/images/pasted-11.png" alt="upload successful"></li>
-<li>IIC 接法 <img src="/images/pasted-12.png" alt="upload successful"></li>
-</ul>
-<h3 id="OLED与ESP8266-4线SPI接线"><a href="#OLED与ESP8266-4线SPI接线" class="headerlink" title="OLED与ESP8266 4线SPI接线"></a>OLED与ESP8266 4线SPI接线</h3><table>
+    <title>ESP8266系列-各个模组型号模组对比</title>
+    <url>/2017/08/04/9fbf.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="烧录Flash-地址说明"><a href="#烧录Flash-地址说明" class="headerlink" title="烧录Flash 地址说明"></a>烧录Flash 地址说明</h2><table>
 <thead>
 <tr>
-<th align="left">ESP8266</th>
-<th align="left">OLED</th>
+<th align="center">文件名称</th>
+<th align="center">8Mbit烧录地址</th>
+<th align="center">16Mbit烧录地址</th>
+<th align="center">32Mbit烧录地址</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">IO_12</td>
-<td align="left">DC</td>
+<td align="center">boot.bin</td>
+<td align="center">0x00000</td>
+<td align="center">0x00000</td>
+<td align="center">0x00000</td>
+<td align="left">由乐鑫在 SDK 中提供，建议一直使用最新版本</td>
 </tr>
 <tr>
-<td align="left">IO_13</td>
-<td align="left">DIN(MOSI)</td>
+<td align="center">user1.bin</td>
+<td align="center">0x01000</td>
+<td align="center">0x01000</td>
+<td align="center">0x01000</td>
+<td align="left">主程序，由代码编译生成</td>
 </tr>
 <tr>
-<td align="left">IO_14</td>
-<td align="left">CLK</td>
+<td align="center">user2.bin</td>
+<td align="center">0x81000</td>
+<td align="center">0x81000</td>
+<td align="center">0x81000</td>
+<td align="left">主程序，由代码编译生成</td>
 </tr>
 <tr>
-<td align="left">IO_15</td>
-<td align="left">RST</td>
+<td align="center">esp_init_data_default.bin</td>
+<td align="center">0xFC000</td>
+<td align="center">0x1FC000</td>
+<td align="center">0x3FC000</td>
+<td align="left">由乐鑫在 SDK 中提供</td>
 </tr>
 <tr>
-<td align="left">GND</td>
-<td align="left">CS</td>
+<td align="center">blank.bin</td>
+<td align="center">0xFE000</td>
+<td align="center">0x1FE000</td>
+<td align="center">0x3FE000</td>
+<td align="left">由乐鑫在 SDK 中提供</td>
 </tr>
 </tbody></table>
-<h2 id="ESP8266-SPI"><a href="#ESP8266-SPI" class="headerlink" title="ESP8266 SPI"></a>ESP8266 SPI</h2><p><img src="/images/pasted-17.png" alt="upload successful"></p>
-<h2 id="U8g2库"><a href="#U8g2库" class="headerlink" title="U8g2库"></a>U8g2库</h2><p><a href="https://github.com/olikraus/u8g2/wiki/u8g2reference">官方api说明</a></p>
-<ul>
-<li>u8g2_SetFontMode<br>```c<br>/*<br>set one of:<br>  U8G2_FONT_MODE_TRANSPARENT<br>  U8G2_FONT_MODE_SOLID<br>  U8G2_FONT_MODE_NONE<br>This has been changed for the new font procedures  </li>
-</ul>
-<p>*/<br>void u8g2_SetFontMode(u8g2_t *u8g2, uint8_t is_transparent)</p>
-<pre><code>**说明:**定义字形和字符串绘制函数是否写入背景色（模式0 / solid，is_transparent = 0）或不写入背景颜色（模式1 /透明，is_transparent = 1）。 默认模式为0（字符的背景颜色被覆盖）。
+<a id="more"></a>
 
-- u8g2_SetFontDirection</code></pre>
-<p>void u8g2_SetFontDirection(u8g2_t *u8g2, uint8_t dir)</p>
-<p>```</p>
-<h2 id="取模软件"><a href="#取模软件" class="headerlink" title="取模软件"></a>取模软件</h2><ul>
-<li><a href="https://tools.clz.me/">https://tools.clz.me/</a></li>
-<li><a href="https://github.com/coloz/image-to-bitmap-array">https://github.com/coloz/image-to-bitmap-array</a></li>
-</ul>
-<h2 id="天气获取API"><a href="#天气获取API" class="headerlink" title="天气获取API"></a>天气获取API</h2><p><a href="http://wthrcdn.etouch.cn/WeatherApi?city=%E5%B9%BF%E5%B7%9E">http://wthrcdn.etouch.cn/WeatherApi?city=%E5%B9%BF%E5%B7%9E</a></p>
-<h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><ul>
-<li><a href="https://www.jianshu.com/p/404907770c90">https://www.jianshu.com/p/404907770c90</a></li>
-<li><a href="https://www.cnblogs.com/huan-huan/p/8528307.html">https://www.cnblogs.com/huan-huan/p/8528307.html</a></li>
-<li><a href="https://mbb.eet-china.com/forum/topic/74077_1_1.html">https://mbb.eet-china.com/forum/topic/74077_1_1.html</a></li>
-<li><a href="https://blog.csdn.net/dpjcn1990/article/details/92831760">https://blog.csdn.net/dpjcn1990/article/details/92831760</a></li>
-<li><a href="https://blog.csdn.net/notMine/article/details/79317782">https://blog.csdn.net/notMine/article/details/79317782</a></li>
-<li><a href="http://www.mculover666.cn/posts/3603126757/">http://www.mculover666.cn/posts/3603126757/</a>   (RT-Thread Oled)</li>
-</ul>
+<h2 id="硬件连接"><a href="#硬件连接" class="headerlink" title="硬件连接"></a>硬件连接</h2><p>ESP8266有运行模式、下载模式、测试模式的区别，进入下载模式可参考以下配置：</p>
+<p>|模式|CH_PD(EN)| RST |GPIO15|GPIO0|GPIO2|TXD0|<br>|:—:|:—:|<br>|UART 下载模式|高|高|低|低|高|高|<br>|Flash运行模式|高|高|低|高|高|高|<br>|Chip 测试模式|- |- |- | -| -|低|</p>
+<h2 id="模组对比"><a href="#模组对比" class="headerlink" title="模组对比"></a>模组对比</h2><p>![模组对比][1]<br>[1]: <a href="http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a></p>
 ]]></content>
+      <categories>
+        <category>esp8266</category>
+      </categories>
+      <tags>
+        <tag>esp8266</tag>
+      </tags>
   </entry>
   <entry>
     <title>Github Blog 搭建入门</title>
@@ -1523,6 +1457,72 @@ type: &quot;tags&quot;
         <tag>hexo</tag>
         <tag>git</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>ESP8266系列-连接OLED模块</title>
+    <url>/2020/04/09/8529.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="OLED-屏幕介绍"><a href="#OLED-屏幕介绍" class="headerlink" title="OLED 屏幕介绍"></a>OLED 屏幕介绍</h2><ul>
+<li>芯片型号 <a href="https://wenku.baidu.com/view/6d6497a53d1ec5da50e2524de518964bce84d233.html">SSD1306</a></li>
+<li>分辨率 128*64</li>
+<li>供电范围 直流 3.3-5v</li>
+<li>体积 27<em>27</em>2mm</li>
+<li>尺寸 <img src="/images/pasted-10.png" alt="upload successful"></li>
+<li>SPI 4线接法 <img src="/images/pasted-11.png" alt="upload successful"></li>
+<li>IIC 接法 <img src="/images/pasted-12.png" alt="upload successful"></li>
+</ul>
+<h3 id="OLED与ESP8266-4线SPI接线"><a href="#OLED与ESP8266-4线SPI接线" class="headerlink" title="OLED与ESP8266 4线SPI接线"></a>OLED与ESP8266 4线SPI接线</h3><table>
+<thead>
+<tr>
+<th align="left">ESP8266</th>
+<th align="left">OLED</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">IO_12</td>
+<td align="left">DC</td>
+</tr>
+<tr>
+<td align="left">IO_13</td>
+<td align="left">DIN(MOSI)</td>
+</tr>
+<tr>
+<td align="left">IO_14</td>
+<td align="left">CLK</td>
+</tr>
+<tr>
+<td align="left">IO_15</td>
+<td align="left">RST</td>
+</tr>
+<tr>
+<td align="left">GND</td>
+<td align="left">CS</td>
+</tr>
+</tbody></table>
+<h2 id="ESP8266-SPI"><a href="#ESP8266-SPI" class="headerlink" title="ESP8266 SPI"></a>ESP8266 SPI</h2><p><img src="/images/pasted-17.png" alt="upload successful"></p>
+<h2 id="U8g2库"><a href="#U8g2库" class="headerlink" title="U8g2库"></a>U8g2库</h2><p><a href="https://github.com/olikraus/u8g2/wiki/u8g2reference">官方api说明</a></p>
+<ul>
+<li>u8g2_SetFontMode<br>```c<br>/*<br>set one of:<br>  U8G2_FONT_MODE_TRANSPARENT<br>  U8G2_FONT_MODE_SOLID<br>  U8G2_FONT_MODE_NONE<br>This has been changed for the new font procedures  </li>
+</ul>
+<p>*/<br>void u8g2_SetFontMode(u8g2_t *u8g2, uint8_t is_transparent)</p>
+<pre><code>**说明:**定义字形和字符串绘制函数是否写入背景色（模式0 / solid，is_transparent = 0）或不写入背景颜色（模式1 /透明，is_transparent = 1）。 默认模式为0（字符的背景颜色被覆盖）。
+
+- u8g2_SetFontDirection</code></pre>
+<p>void u8g2_SetFontDirection(u8g2_t *u8g2, uint8_t dir)</p>
+<p>```</p>
+<h2 id="取模软件"><a href="#取模软件" class="headerlink" title="取模软件"></a>取模软件</h2><ul>
+<li><a href="https://tools.clz.me/">https://tools.clz.me/</a></li>
+<li><a href="https://github.com/coloz/image-to-bitmap-array">https://github.com/coloz/image-to-bitmap-array</a></li>
+</ul>
+<h2 id="天气获取API"><a href="#天气获取API" class="headerlink" title="天气获取API"></a>天气获取API</h2><p><a href="http://wthrcdn.etouch.cn/WeatherApi?city=%E5%B9%BF%E5%B7%9E">http://wthrcdn.etouch.cn/WeatherApi?city=%E5%B9%BF%E5%B7%9E</a></p>
+<h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><ul>
+<li><a href="https://www.jianshu.com/p/404907770c90">https://www.jianshu.com/p/404907770c90</a></li>
+<li><a href="https://www.cnblogs.com/huan-huan/p/8528307.html">https://www.cnblogs.com/huan-huan/p/8528307.html</a></li>
+<li><a href="https://mbb.eet-china.com/forum/topic/74077_1_1.html">https://mbb.eet-china.com/forum/topic/74077_1_1.html</a></li>
+<li><a href="https://blog.csdn.net/dpjcn1990/article/details/92831760">https://blog.csdn.net/dpjcn1990/article/details/92831760</a></li>
+<li><a href="https://blog.csdn.net/notMine/article/details/79317782">https://blog.csdn.net/notMine/article/details/79317782</a></li>
+<li><a href="http://www.mculover666.cn/posts/3603126757/">http://www.mculover666.cn/posts/3603126757/</a>   (RT-Thread Oled)</li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>ESP8266系列-资料收集</title>
@@ -1632,6 +1632,37 @@ echo $&#123;SPI_FLASH_SIZE&#125;0 | xxd -r -ps | dd of=$&#123;TARGET_DIR&#125;/$
       </tags>
   </entry>
   <entry>
+    <title>Hexo相关资源</title>
+    <url>/2017/08/04/ddcb.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>中文网站 : <a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo第三方评论插件引用</title>
+    <url>/2017/08/01/6835.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="第三方插件-友言"><a href="#第三方插件-友言" class="headerlink" title="第三方插件-友言"></a>第三方插件-友言</h2><blockquote>
+<p>友言已经暂停服务了，又不能用<br>因公司业务调整，非常遗憾的向大家宣布JiaThis公司决定自2018年4月30日起关闭旗下“友言”业务。<br>因为关停“友言”业务给您造成的不便，我们深表歉意。</p>
+</blockquote>
+<ul>
+<li><a href="http://www.uyan.cc/">友言官网</a></li>
+<li><a href="http://www.jianshu.com/p/4729e92fddbe">相关教程 1 </a></li>
+<li><a href="http://www.qtdebug.com/hexo-uyan/">相关教程 2 </a></li>
+</ul>
+<a id="more"></a>
+
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo插件-Hexo Admin</title>
     <url>/2017/08/08/6e86.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Hexo-Admin"><a href="#Hexo-Admin" class="headerlink" title="Hexo Admin"></a>Hexo Admin</h2><p>官网链接:<a href="https://jaredforsyth.com/hexo-admin/">https://jaredforsyth.com/hexo-admin/</a></p>
@@ -1664,37 +1695,6 @@ undefined
 > bcrypt.hashSync('AlexLin666')
 '$2a$10$NVMZ2dYeOd5YRxNb7g3WJOBMzJfaXJ5I53QCy8Pw5IV.3Uoldz0wq'
 ></code></pre>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo第三方评论插件引用</title>
-    <url>/2017/08/01/6835.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="第三方插件-友言"><a href="#第三方插件-友言" class="headerlink" title="第三方插件-友言"></a>第三方插件-友言</h2><blockquote>
-<p>友言已经暂停服务了，又不能用<br>因公司业务调整，非常遗憾的向大家宣布JiaThis公司决定自2018年4月30日起关闭旗下“友言”业务。<br>因为关停“友言”业务给您造成的不便，我们深表歉意。</p>
-</blockquote>
-<ul>
-<li><a href="http://www.uyan.cc/">友言官网</a></li>
-<li><a href="http://www.jianshu.com/p/4729e92fddbe">相关教程 1 </a></li>
-<li><a href="http://www.qtdebug.com/hexo-uyan/">相关教程 2 </a></li>
-</ul>
-<a id="more"></a>
-
-]]></content>
-      <tags>
-        <tag>hexo</tag>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo相关资源</title>
-    <url>/2017/08/04/ddcb.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>中文网站 : <a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
 ]]></content>
       <categories>
         <category>Hexo</category>
@@ -1751,6 +1751,19 @@ search:
       </categories>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux之SSH</title>
+    <url>/2018/12/18/720f.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
+<li><a href="https://linux.cn/article-5975-1.html">https://linux.cn/article-5975-1.html</a></li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">autossh -M 10109 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=false" -o "PasswordAuthentication=no" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -R ubuntu.lxj-life.com:10108:localhost:22 ubuntu@ubuntu.lxj-life.com</code></pre>
+]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1946,95 +1959,6 @@ alex@ubuntu:/media/psf/Home/myself/C$ addr2line -e demo 080483e9
       </tags>
   </entry>
   <entry>
-    <title>Linux之kill命令</title>
-    <url>/2018/02/23/730d.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Kill-命令列表"><a href="#Kill-命令列表" class="headerlink" title="Kill 命令列表"></a>Kill 命令列表</h2><hr>
-<pre><code>alex@ubuntu:~$ kill -l
- 1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
- 6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1
-11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM
-16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP
-21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ
-26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR
-31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
-38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
-43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
-48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
-53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
-58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
-63) SIGRTMAX-1  64) SIGRTMAX</code></pre>
-<a id="more"></a>
-
-<h3 id="Linux-Signals"><a href="#Linux-Signals" class="headerlink" title="Linux Signals"></a>Linux Signals</h3><p>Signals<br>Linux Signals are:</p>
-<pre><code>Signal_Name Number  Description
-SIGHUP       1      Hangup (POSIX)
-SIGINT       2      Terminal interrupt (ANSI)
-SIGQUIT      3      Terminal quit (POSIX)
-SIGILL       4      Illegal instruction (ANSI)
-SIGTRAP      5      Trace trap (POSIX)
-SIGIOT       6      IOT Trap (4.2 BSD)
-SIGBUS       7      BUS error (4.2 BSD)
-SIGFPE       8      Floating point exception (ANSI)
-SIGKILL      9      Kill(can&#39;t be caught or ignored) (POSIX)
-SIGUSR1      10     User defined signal 1 (POSIX)
-SIGSEGV      11     Invalid memory segment access (ANSI)
-SIGUSR2      12     User defined signal 2 (POSIX)
-SIGPIPE      13     Write on a pipe with no reader, Broken pipe (POSIX)
-SIGALRM      14     Alarm clock (POSIX)
-SIGTERM      15     Termination (ANSI)
-SIGSTKFLT    16     Stack fault
-SIGCHLD      17     Child process has stopped or exited, changed (POSIX)
-SIGCONT      18     Continue executing, if stopped (POSIX)
-SIGSTOP      19     Stop executing(can&#39;t be caught or ignored) (POSIX)
-SIGTSTP      20     Terminal stop signal (POSIX)
-SIGTTIN      21     Background process trying to read, from TTY (POSIX)
-SIGTTOU      22     Background process trying to write, to TTY (POSIX)
-SIGURG       23     Urgent condition on socket (4.2 BSD)
-SIGXCPU      24     CPU limit exceeded (4.2 BSD)
-SIGXFSZ      25     File size limit exceeded (4.2 BSD)
-SIGVTALRM    26     Virtual alarm clock (4.2 BSD)
-SIGPROF      27     Profiling alarm clock (4.2 BSD)
-SIGWINCH     28     Window size change (4.3 BSD, Sun)
-SIGIO        29     I/O now possible (4.2 BSD)
-SIGPWR       30     Power failure restart (System V)</code></pre>
-<h3 id="SIGKILL-9-和-SIGTERM-15-的区别"><a href="#SIGKILL-9-和-SIGTERM-15-的区别" class="headerlink" title="SIGKILL(9) 和 SIGTERM(15) 的区别"></a>SIGKILL(9) 和 SIGTERM(15) 的区别</h3><pre><code>SIGKILL 9   Kill(can&#39;t be caught or ignored) (POSIX)
-# 默认kill 发送信号量
-SIGTERM 15  Termination (ANSI)</code></pre>
-<p>SIGKILL 是强制终止进程，进程来不及释放资源<br>SIGTERM 是 <strong><em>优雅</em></strong> 的退出进程，进程接收到SIGTERM可以进行资源释放；</p>
-<h2 id="killall命令"><a href="#killall命令" class="headerlink" title="killall命令"></a>killall命令</h2><p>killall命令使用进程的名称来杀死进程，使用此指令可以杀死一组同名进程。<br>我们可以使用kill命令杀死指定进程PID的进程，如果要找到我们需要杀死的进程，我们还需要在之前使用ps等命令再配合grep来查找进程，而killall把这两个过程合二为一，是一个很好用的命令。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre><code>killall(选项)(参数)</code></pre>
-<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><pre><code>-e：对长名称进行精确匹配；
--l：忽略大小写的不同；
--p：杀死进程所属的进程组；
--i：交互式杀死进程，杀死进程前需要进行确认；
--l：打印所有已知信号列表；
--q：如果没有进程被杀死。则不输出任何信息；
--r：使用正规表达式匹配要杀死的进程名称；
--s：用指定的进程号代替默认信号“SIGTERM”；
--u：杀死指定用户的进程。</code></pre>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>进程名称：指定要杀死的进程名称。</p>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>杀死所有同名进程</p>
-<pre><code>killall vi</code></pre>
-]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux之SSH</title>
-    <url>/2018/12/18/720f.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
-<li><a href="https://linux.cn/article-5975-1.html">https://linux.cn/article-5975-1.html</a></li>
-</ul>
-<pre class=" language-sh"><code class="language-sh">autossh -M 10109 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=false" -o "PasswordAuthentication=no" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -R ubuntu.lxj-life.com:10108:localhost:22 ubuntu@ubuntu.lxj-life.com</code></pre>
-]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux之Socket关键</title>
     <url>/2017/06/07/179d.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一、Socket-属性设置函数"><a href="#一、Socket-属性设置函数" class="headerlink" title="一、Socket 属性设置函数"></a>一、Socket 属性设置函数</h2><pre class=" language-C"><code class="language-C">int getsockopt(int sockfd, int level, int optname,void *optval, socklen_t *optlen);
@@ -2153,6 +2077,82 @@ Setsockopt(listenfd, SOL_TCP, TCP_KEEPCNT, (void *)&keepCount, sizeof(keepCount)
       <tags>
         <tag>Linux</tag>
         <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux之kill命令</title>
+    <url>/2018/02/23/730d.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Kill-命令列表"><a href="#Kill-命令列表" class="headerlink" title="Kill 命令列表"></a>Kill 命令列表</h2><hr>
+<pre><code>alex@ubuntu:~$ kill -l
+ 1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
+ 6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1
+11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM
+16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP
+21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ
+26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR
+31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
+38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
+43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
+48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
+53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
+58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
+63) SIGRTMAX-1  64) SIGRTMAX</code></pre>
+<a id="more"></a>
+
+<h3 id="Linux-Signals"><a href="#Linux-Signals" class="headerlink" title="Linux Signals"></a>Linux Signals</h3><p>Signals<br>Linux Signals are:</p>
+<pre><code>Signal_Name Number  Description
+SIGHUP       1      Hangup (POSIX)
+SIGINT       2      Terminal interrupt (ANSI)
+SIGQUIT      3      Terminal quit (POSIX)
+SIGILL       4      Illegal instruction (ANSI)
+SIGTRAP      5      Trace trap (POSIX)
+SIGIOT       6      IOT Trap (4.2 BSD)
+SIGBUS       7      BUS error (4.2 BSD)
+SIGFPE       8      Floating point exception (ANSI)
+SIGKILL      9      Kill(can&#39;t be caught or ignored) (POSIX)
+SIGUSR1      10     User defined signal 1 (POSIX)
+SIGSEGV      11     Invalid memory segment access (ANSI)
+SIGUSR2      12     User defined signal 2 (POSIX)
+SIGPIPE      13     Write on a pipe with no reader, Broken pipe (POSIX)
+SIGALRM      14     Alarm clock (POSIX)
+SIGTERM      15     Termination (ANSI)
+SIGSTKFLT    16     Stack fault
+SIGCHLD      17     Child process has stopped or exited, changed (POSIX)
+SIGCONT      18     Continue executing, if stopped (POSIX)
+SIGSTOP      19     Stop executing(can&#39;t be caught or ignored) (POSIX)
+SIGTSTP      20     Terminal stop signal (POSIX)
+SIGTTIN      21     Background process trying to read, from TTY (POSIX)
+SIGTTOU      22     Background process trying to write, to TTY (POSIX)
+SIGURG       23     Urgent condition on socket (4.2 BSD)
+SIGXCPU      24     CPU limit exceeded (4.2 BSD)
+SIGXFSZ      25     File size limit exceeded (4.2 BSD)
+SIGVTALRM    26     Virtual alarm clock (4.2 BSD)
+SIGPROF      27     Profiling alarm clock (4.2 BSD)
+SIGWINCH     28     Window size change (4.3 BSD, Sun)
+SIGIO        29     I/O now possible (4.2 BSD)
+SIGPWR       30     Power failure restart (System V)</code></pre>
+<h3 id="SIGKILL-9-和-SIGTERM-15-的区别"><a href="#SIGKILL-9-和-SIGTERM-15-的区别" class="headerlink" title="SIGKILL(9) 和 SIGTERM(15) 的区别"></a>SIGKILL(9) 和 SIGTERM(15) 的区别</h3><pre><code>SIGKILL 9   Kill(can&#39;t be caught or ignored) (POSIX)
+# 默认kill 发送信号量
+SIGTERM 15  Termination (ANSI)</code></pre>
+<p>SIGKILL 是强制终止进程，进程来不及释放资源<br>SIGTERM 是 <strong><em>优雅</em></strong> 的退出进程，进程接收到SIGTERM可以进行资源释放；</p>
+<h2 id="killall命令"><a href="#killall命令" class="headerlink" title="killall命令"></a>killall命令</h2><p>killall命令使用进程的名称来杀死进程，使用此指令可以杀死一组同名进程。<br>我们可以使用kill命令杀死指定进程PID的进程，如果要找到我们需要杀死的进程，我们还需要在之前使用ps等命令再配合grep来查找进程，而killall把这两个过程合二为一，是一个很好用的命令。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre><code>killall(选项)(参数)</code></pre>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><pre><code>-e：对长名称进行精确匹配；
+-l：忽略大小写的不同；
+-p：杀死进程所属的进程组；
+-i：交互式杀死进程，杀死进程前需要进行确认；
+-l：打印所有已知信号列表；
+-q：如果没有进程被杀死。则不输出任何信息；
+-r：使用正规表达式匹配要杀死的进程名称；
+-s：用指定的进程号代替默认信号“SIGTERM”；
+-u：杀死指定用户的进程。</code></pre>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>进程名称：指定要杀死的进程名称。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>杀死所有同名进程</p>
+<pre><code>killall vi</code></pre>
+]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -3163,6 +3163,201 @@ files := $(foreach n,$(names),$(n).o)</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>Linux之服务安装</title>
+    <url>/2017/06/06/9372.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="ssh-server-安装"><a href="#ssh-server-安装" class="headerlink" title="ssh-server 安装"></a>ssh-server 安装</h1><p><strong>SSH分客户端</strong></p>
+<pre><code>openssh-client</code></pre>
+<p><strong>服务端</strong></p>
+<pre><code>openssh-server</code></pre>
+<a id="more"></a>
+<p>如果你只是想登陆别的机器的SSH只需要安装<strong>openssh-client</strong>__(Ubutntu有默认安装，如果没有则 <strong>sudo apt-get install openssh-client</strong>)__，如果要使本机开放SSH服务就需要安装<strong>openssh-server</strong>。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>我这里使用命令安装服务端SSH。</p>
+<pre><code>sudo apt-get install openssh-server</code></pre>
+<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><p>然后使用命令确认sshserver是否启动了：</p>
+<pre><code>ps -e |grep ssh</code></pre>
+<p>如果看到sshd那说明ssh-server已经启动了。</p>
+<pre><code>alex@ubuntu:~$ ps -e | grep ssh
+ 2284 ?        00:00:00 ssh-agent
+ 8743 ?        00:00:00 sshd</code></pre>
+<p>如果没有则可以这样启动：</p>
+<pre><code>sudo /etc/init.d/ssh start
+#或者
+service ssh start</code></pre>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>配置文件位于**/etc/ssh/sshd_config**，在这里可以定义SSH的服务端口，默认端口是22。<br>然后重启SSH服务：</p>
+<pre><code>sudo /etc/init.d/ssh stop
+sudo /etc/init.d/ssh start</code></pre>
+<h2 id="开机自启动配置"><a href="#开机自启动配置" class="headerlink" title="开机自启动配置"></a>开机自启动配置</h2><p>设置开机自动启动ssh服务：<br>Ubuntu中配置openssh-server开机自动启动打开/etc/rc.local文件，添加如下语句：</p>
+<pre><code>/etc/init.d/ssh start</code></pre>
+<h2 id="ssh-文件传输"><a href="#ssh-文件传输" class="headerlink" title="ssh 文件传输"></a>ssh 文件传输</h2><ul>
+<li><p>上传</p>
+<pre><code>scp /path/file（这部分为本地的路径） user（远端目标用户名）@host（远端目标IP）:/pathorfile（文件存储路径）</code></pre>
+</li>
+<li><p>下载</p>
+</li>
+<li><ul>
+<li>下载单独文件</li>
+</ul>
+</li>
+</ul>
+<pre><code>scp user（远端用户名）@host（远端IP）:/path/file（下载文件在远端的路径） localpathorfile（本地文件存放路径）</code></pre>
+<ul>
+<li><ul>
+<li>下载整个文件夹</li>
+</ul>
+</li>
+</ul>
+<pre><code>scp -P 2233 -r root@xxx.xxx.xxx.xxx:/data/gagent/log_gagent/00BSJ26M_0403000A_20190610170053  .</code></pre>
+<ul>
+<li>查看目录或文件</li>
+</ul>
+<pre><code>ssh user@host command ls &quot;/path/*.tgz&quot;</code></pre>
+<h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><p><img src="https://upload-images.jianshu.io/upload_images/1736256-5f5382792923eb5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ssh"></p>
+<p>如上图，实现Company下的PC 通过ssh 访问到Home(A) 里的PC.实际上是在公网上一台主机Server(B)做SSH转发，在A上做SSH方向代理实现；</p>
+<p>A服务器用户名: <em><em>gagent</em></em><br>B服务器用户名: <em><em>ubuntu</em></em></p>
+<h3 id="反向代理第一步-ssh-参数解析"><a href="#反向代理第一步-ssh-参数解析" class="headerlink" title="反向代理第一步:ssh 参数解析"></a>反向代理第一步:ssh 参数解析</h3><pre><code>-f 后台执行ssh指令
+-C 允许压缩数据
+-N 不执行远程指令
+-R 将远程主机(服务器)的某个端口转发到本地端指定机器的指定端口
+-L 将本地机(客户机)的某个端口转发到远端指定机器的指定端口
+-p 指定远程主机的端口</code></pre>
+<ul>
+<li><p>反向代理</p>
+<pre><code>ssh -fCNR</code></pre>
+</li>
+<li><p>正向代理</p>
+<pre><code>ssh -fCNL</code></pre>
+</li>
+</ul>
+<h3 id="反向代理第二步-服务配置"><a href="#反向代理第二步-服务配置" class="headerlink" title="反向代理第二步:服务配置"></a>反向代理第二步:服务配置</h3><ul>
+<li><p>首先，在A上面搭建A到B的反向代理配置 指令为:</p>
+<pre><code>ssh -fCNR [B机器IP或省略]:[B机器端口]:[A机器的IP]:[A机器端口] [登陆B机器的用户名@服务器IP]</code></pre>
+<p>  在这里我使用了B机器的7280端口，用来月A通讯。以及A机器的22端口，用来与B通讯，( [B机器端口]&lt;&lt;====&gt;&gt;[A机器端口] )按照上面的指令就是这样子的操作<br>  实例</p>
+<pre><code>ssh -fCNR 7280:localhost:22 ubuntu@123.123.123.123</code></pre>
+<p>  在A检验是否已经启动了可以使用ps aux | grep ssh指令来查看：<br>  <img src="https://upload-images.jianshu.io/upload_images/1736256-338f78770105f37a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ssh f"><br>  在B上检测反向代理是否生效，看到7280端口启动则表明生效</p>
+<pre><code>ubuntu@VM-133-112-ubuntu:~$ netstat -tnl | grep 127.0.0.1
+tcp        0      0 127.0.0.1:7280          0.0.0.0:*               LISTEN</code></pre>
+<p>  以上都成功则可以可从公网服务器B反向登录回家庭服务器A了</p>
+<pre><code>ssh gagent@127.0.0.1 -p 7280</code></pre>
+</li>
+<li><p>第二，在B机器上搭建正向代理到A的配置，用来在B上转发数据到A 指令为:</p>
+<pre><code>ssh -fCNL [A机器IP或省略]:[A机器端口]:[B机器的IP]:[B机器端口] [登陆B机器的用户名@B机器的IP]</code></pre>
+<p>  按照第一步那里输入的指令，这里的B机器的端口和上面的B机器的端口是一致的，端口1234的也是B机器的。<br>  实例</p>
+<pre><code>ssh -fCNL *:1234:localhost:7280 localhost</code></pre>
+<p>  *<em>解释:**在此1234端口为本地转发端口，负责和外网进行通信，并将数据转发的7280这个端口，实现了可以从其他机器访问的功能。同时，</em>号表示可以接受任何IP的访问。</p>
+</li>
+<li><p>第三，在C机器上ssh到A机器</p>
+<pre><code>ssh -p1234 gagent@123.123.123.123</code></pre>
+<p>  **解释:**在此-p参数为指定登陆的IP，我们在上面指定了__1234__端口为转发端口，故用__1234__端口登陆，然后__gagent__是内网A机器的用户名，__123.123.123.123__为外网B机器的IP地址。</p>
+</li>
+</ul>
+<hr>
+<h3 id="反向代理第三步-稳定性加强"><a href="#反向代理第三步-稳定性加强" class="headerlink" title="反向代理第三步:稳定性加强"></a>反向代理第三步:稳定性加强</h3><ul>
+<li><p>ssh每次重连都需要键入密码，故在此首先设置免密码登陆到内网A<br>在内网的机器A上面执行：</p>
+<ul>
+<li>1 生产 ssh-keygen(如果已经有了key 可以跳过此步骤)</li>
+</ul>
+<pre><code>  gagent@ubuntu:~$ ssh-keygen
+  Generating public/private rsa key pair.
+  Enter file in which to save the key (/home/gagent/.ssh/id_rsa):
+  Enter passphrase (empty for no passphrase):
+  Enter same passphrase again:
+  Your identification has been saved in /home/gagent/.ssh/id_rsa.
+  Your public key has been saved in /home/gagent/.ssh/id_rsa.pub.
+  The key fingerprint is:
+  **:**:**:**:**:**:**:**:**:**:**:**:**:**:**:** gagent@ubuntu
+  The key&#39;s randomart image is:
+  +--[ RSA 2048]----+
+  |           . ... |
+  |      + . . . .. |
+  |     o o .       |
+  |      . .        |
+  |     ..   a      |
+  | . ..      d     |
+  |  o.+o =  d      |
+  |   ..+  .        |
+  |    o.           |
+  +-----------------+</code></pre>
+<ul>
+<li>2 复制ssh-keygen到 B</li>
+</ul>
+<pre><code># ssh-copy-id 外网用户名@外网IP
+ssh-copy-id ubuntu@123.123.123.123</code></pre>
+<blockquote>
+<p>然后提醒你可以直接登录服务器B了，不用输入密码，效果如下:</p>
+</blockquote>
+<pre><code>  gagent@ubuntu:~$ ssh-copy-id   ubuntu@123.123.123.123
+  /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+  /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+  ubuntu@123.123.123.123&#39;s password:
+
+  Number of key(s) added: 1
+
+  Now try logging into the machine, with:   &quot;ssh &#39;ubuntu@123.123.123.123&#39;&quot;
+  and check to make sure that only the key(s) you wanted were added.
+
+  gagent@ubuntu:~$ ssh ubuntu@123.123.123.123
+  Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-91-generic x86_64)</code></pre>
+</li>
+<li><p>用autossh建立稳定隧道<br>由于A和B不稳定，容易发生断开事件，所以需要工具在断开之后自动ssh到B机器，于是就用到了<strong>autossh</strong>;</p>
+<ul>
+<li><p>1 工具安装说明</p>
+<pre><code># 安装
+sudo apt-get install autossh</code></pre>
+<p>用法如下:</p>
+<pre><code>gagent@ubuntu:~$ autossh --help
+/usr/lib/autossh/autossh: invalid option -- &#39;-&#39;
+usage: autossh [-V] [-M monitor_port[:echo_port]] [-f] [SSH_OPTIONS]
+
+    -M specifies monitor port. Overrides the environment
+       variable AUTOSSH_PORT. 0 turns monitoring loop off.
+       Alternatively, a port for an echo service on the remote
+       machine may be specified. (Normally port 7.)
+    -f run in background (autossh handles this, and does not
+       pass it to ssh.)
+    -V print autossh version and exit.
+
+Environment variables are:
+    AUTOSSH_GATETIME    - how long must an ssh session be established
+                          before we decide it really was established
+                          (in seconds). Default is 30 seconds; use of -f
+                          flag sets this to 0.
+    AUTOSSH_LOGFILE     - file to log to (default is to use the syslog
+                          facility)
+    AUTOSSH_LOGLEVEL    - level of log verbosity
+    AUTOSSH_MAXLIFETIME - set the maximum time to live (seconds)
+    AUTOSSH_MAXSTART    - max times to restart (default is no limit)
+    AUTOSSH_MESSAGE     - message to append to echo string (max 64 bytes)
+    AUTOSSH_PATH        - path to ssh if not default
+    AUTOSSH_PIDFILE     - write pid to this file
+    AUTOSSH_POLL        - how often to check the connection (seconds)
+    AUTOSSH_FIRST_POLL  - time before first connection check (seconds)
+    AUTOSSH_PORT        - port to use for monitor connection
+    AUTOSSH_DEBUG       - turn logging to maximum verbosity and log to
+                          stderr</code></pre>
+<ul>
+<li>2 实际操作<pre><code>autossh -M 7281 -fCNR 7280:localhost:22 root@123.123.123.123</code></pre>
+解释:<blockquote>
+<p>_<em>autossh</em>_的参数与ssh的参数是一致的，但是不同的是，在隧道断开的时候，autossh会自动重新连接而ssh不会。另外不同的是我们需要指出的-M参数，这个参数指定一个端口，这个端口是外网的B机器用来接收内网A机器的信息，如果隧道不正常而返回给A机器让他实现重新连接</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>设置A机器启动的时候自动ssh到B</p>
+</li>
+</ul>
+<p>修改启动文件</p>
+<pre><code>vi /etc/rc.d/rc.local</code></pre>
+<p>添加内容:</p>
+<pre><code>autossh -M 7281 -fCNR 7280:localhost:22 root@123.123.123.123</code></pre>
+]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux之实用技能</title>
     <url>/2017/06/06/ef18.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="查看机器是多少位"><a href="#查看机器是多少位" class="headerlink" title="查看机器是多少位"></a>查看机器是多少位</h2><hr>
@@ -3490,231 +3685,35 @@ usage: nc [-46CDdFhklNnrStUuvZz] [-I length] [-i interval] [-M ttl]
       </tags>
   </entry>
   <entry>
-    <title>Linux之服务安装</title>
-    <url>/2017/06/06/9372.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="ssh-server-安装"><a href="#ssh-server-安装" class="headerlink" title="ssh-server 安装"></a>ssh-server 安装</h1><p><strong>SSH分客户端</strong></p>
-<pre><code>openssh-client</code></pre>
-<p><strong>服务端</strong></p>
-<pre><code>openssh-server</code></pre>
+    <title>Lua之 loadfile ,dofile, loadstring，require</title>
+    <url>/2017/03/26/4bf8.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h3 id="loadfile——只编译，不运行"><a href="#loadfile——只编译，不运行" class="headerlink" title="loadfile——只编译，不运行"></a>loadfile——只编译，不运行</h3><p>    1.功能：载入文件但不执行代码块，对于相同的文件每次都会执行。只是编译代码，然后将编译结果作为一个函数返回<br>    2.调用：loadfile(“filename”)<br>    3.错误处理：不引发错误，只返回错误值但不处理错误,即返回nil和错误消息<br>    4.优点：调用一次之后可以多次调用返回的结果（即函数），<br>      即“多次调用”只需编译一次（注：这里的多次调用   是指多次调用返回的函数，而不是多次调用loadfile）</p>
 <a id="more"></a>
-<p>如果你只是想登陆别的机器的SSH只需要安装<strong>openssh-client</strong>__(Ubutntu有默认安装，如果没有则 <strong>sudo apt-get install openssh-client</strong>)__，如果要使本机开放SSH服务就需要安装<strong>openssh-server</strong>。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>我这里使用命令安装服务端SSH。</p>
-<pre><code>sudo apt-get install openssh-server</code></pre>
-<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><p>然后使用命令确认sshserver是否启动了：</p>
-<pre><code>ps -e |grep ssh</code></pre>
-<p>如果看到sshd那说明ssh-server已经启动了。</p>
-<pre><code>alex@ubuntu:~$ ps -e | grep ssh
- 2284 ?        00:00:00 ssh-agent
- 8743 ?        00:00:00 sshd</code></pre>
-<p>如果没有则可以这样启动：</p>
-<pre><code>sudo /etc/init.d/ssh start
-#或者
-service ssh start</code></pre>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>配置文件位于**/etc/ssh/sshd_config**，在这里可以定义SSH的服务端口，默认端口是22。<br>然后重启SSH服务：</p>
-<pre><code>sudo /etc/init.d/ssh stop
-sudo /etc/init.d/ssh start</code></pre>
-<h2 id="开机自启动配置"><a href="#开机自启动配置" class="headerlink" title="开机自启动配置"></a>开机自启动配置</h2><p>设置开机自动启动ssh服务：<br>Ubuntu中配置openssh-server开机自动启动打开/etc/rc.local文件，添加如下语句：</p>
-<pre><code>/etc/init.d/ssh start</code></pre>
-<h2 id="ssh-文件传输"><a href="#ssh-文件传输" class="headerlink" title="ssh 文件传输"></a>ssh 文件传输</h2><ul>
-<li><p>上传</p>
-<pre><code>scp /path/file（这部分为本地的路径） user（远端目标用户名）@host（远端目标IP）:/pathorfile（文件存储路径）</code></pre>
-</li>
-<li><p>下载</p>
-</li>
-<li><ul>
-<li>下载单独文件</li>
-</ul>
-</li>
-</ul>
-<pre><code>scp user（远端用户名）@host（远端IP）:/path/file（下载文件在远端的路径） localpathorfile（本地文件存放路径）</code></pre>
-<ul>
-<li><ul>
-<li>下载整个文件夹</li>
-</ul>
-</li>
-</ul>
-<pre><code>scp -P 2233 -r root@xxx.xxx.xxx.xxx:/data/gagent/log_gagent/00BSJ26M_0403000A_20190610170053  .</code></pre>
-<ul>
-<li>查看目录或文件</li>
-</ul>
-<pre><code>ssh user@host command ls &quot;/path/*.tgz&quot;</code></pre>
-<h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><p><img src="https://upload-images.jianshu.io/upload_images/1736256-5f5382792923eb5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ssh"></p>
-<p>如上图，实现Company下的PC 通过ssh 访问到Home(A) 里的PC.实际上是在公网上一台主机Server(B)做SSH转发，在A上做SSH方向代理实现；</p>
-<p>A服务器用户名: <em><em>gagent</em></em><br>B服务器用户名: <em><em>ubuntu</em></em></p>
-<h3 id="反向代理第一步-ssh-参数解析"><a href="#反向代理第一步-ssh-参数解析" class="headerlink" title="反向代理第一步:ssh 参数解析"></a>反向代理第一步:ssh 参数解析</h3><pre><code>-f 后台执行ssh指令
--C 允许压缩数据
--N 不执行远程指令
--R 将远程主机(服务器)的某个端口转发到本地端指定机器的指定端口
--L 将本地机(客户机)的某个端口转发到远端指定机器的指定端口
--p 指定远程主机的端口</code></pre>
-<ul>
-<li><p>反向代理</p>
-<pre><code>ssh -fCNR</code></pre>
-</li>
-<li><p>正向代理</p>
-<pre><code>ssh -fCNL</code></pre>
-</li>
-</ul>
-<h3 id="反向代理第二步-服务配置"><a href="#反向代理第二步-服务配置" class="headerlink" title="反向代理第二步:服务配置"></a>反向代理第二步:服务配置</h3><ul>
-<li><p>首先，在A上面搭建A到B的反向代理配置 指令为:</p>
-<pre><code>ssh -fCNR [B机器IP或省略]:[B机器端口]:[A机器的IP]:[A机器端口] [登陆B机器的用户名@服务器IP]</code></pre>
-<p>  在这里我使用了B机器的7280端口，用来月A通讯。以及A机器的22端口，用来与B通讯，( [B机器端口]&lt;&lt;====&gt;&gt;[A机器端口] )按照上面的指令就是这样子的操作<br>  实例</p>
-<pre><code>ssh -fCNR 7280:localhost:22 ubuntu@123.123.123.123</code></pre>
-<p>  在A检验是否已经启动了可以使用ps aux | grep ssh指令来查看：<br>  <img src="https://upload-images.jianshu.io/upload_images/1736256-338f78770105f37a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ssh f"><br>  在B上检测反向代理是否生效，看到7280端口启动则表明生效</p>
-<pre><code>ubuntu@VM-133-112-ubuntu:~$ netstat -tnl | grep 127.0.0.1
-tcp        0      0 127.0.0.1:7280          0.0.0.0:*               LISTEN</code></pre>
-<p>  以上都成功则可以可从公网服务器B反向登录回家庭服务器A了</p>
-<pre><code>ssh gagent@127.0.0.1 -p 7280</code></pre>
-</li>
-<li><p>第二，在B机器上搭建正向代理到A的配置，用来在B上转发数据到A 指令为:</p>
-<pre><code>ssh -fCNL [A机器IP或省略]:[A机器端口]:[B机器的IP]:[B机器端口] [登陆B机器的用户名@B机器的IP]</code></pre>
-<p>  按照第一步那里输入的指令，这里的B机器的端口和上面的B机器的端口是一致的，端口1234的也是B机器的。<br>  实例</p>
-<pre><code>ssh -fCNL *:1234:localhost:7280 localhost</code></pre>
-<p>  *<em>解释:**在此1234端口为本地转发端口，负责和外网进行通信，并将数据转发的7280这个端口，实现了可以从其他机器访问的功能。同时，</em>号表示可以接受任何IP的访问。</p>
-</li>
-<li><p>第三，在C机器上ssh到A机器</p>
-<pre><code>ssh -p1234 gagent@123.123.123.123</code></pre>
-<p>  **解释:**在此-p参数为指定登陆的IP，我们在上面指定了__1234__端口为转发端口，故用__1234__端口登陆，然后__gagent__是内网A机器的用户名，__123.123.123.123__为外网B机器的IP地址。</p>
-</li>
-</ul>
-<hr>
-<h3 id="反向代理第三步-稳定性加强"><a href="#反向代理第三步-稳定性加强" class="headerlink" title="反向代理第三步:稳定性加强"></a>反向代理第三步:稳定性加强</h3><ul>
-<li><p>ssh每次重连都需要键入密码，故在此首先设置免密码登陆到内网A<br>在内网的机器A上面执行：</p>
-<ul>
-<li>1 生产 ssh-keygen(如果已经有了key 可以跳过此步骤)</li>
-</ul>
-<pre><code>  gagent@ubuntu:~$ ssh-keygen
-  Generating public/private rsa key pair.
-  Enter file in which to save the key (/home/gagent/.ssh/id_rsa):
-  Enter passphrase (empty for no passphrase):
-  Enter same passphrase again:
-  Your identification has been saved in /home/gagent/.ssh/id_rsa.
-  Your public key has been saved in /home/gagent/.ssh/id_rsa.pub.
-  The key fingerprint is:
-  **:**:**:**:**:**:**:**:**:**:**:**:**:**:**:** gagent@ubuntu
-  The key&#39;s randomart image is:
-  +--[ RSA 2048]----+
-  |           . ... |
-  |      + . . . .. |
-  |     o o .       |
-  |      . .        |
-  |     ..   a      |
-  | . ..      d     |
-  |  o.+o =  d      |
-  |   ..+  .        |
-  |    o.           |
-  +-----------------+</code></pre>
-<ul>
-<li>2 复制ssh-keygen到 B</li>
-</ul>
-<pre><code># ssh-copy-id 外网用户名@外网IP
-ssh-copy-id ubuntu@123.123.123.123</code></pre>
-<blockquote>
-<p>然后提醒你可以直接登录服务器B了，不用输入密码，效果如下:</p>
-</blockquote>
-<pre><code>  gagent@ubuntu:~$ ssh-copy-id   ubuntu@123.123.123.123
-  /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
-  /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
-  ubuntu@123.123.123.123&#39;s password:
 
-  Number of key(s) added: 1
-
-  Now try logging into the machine, with:   &quot;ssh &#39;ubuntu@123.123.123.123&#39;&quot;
-  and check to make sure that only the key(s) you wanted were added.
-
-  gagent@ubuntu:~$ ssh ubuntu@123.123.123.123
-  Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-91-generic x86_64)</code></pre>
-</li>
-<li><p>用autossh建立稳定隧道<br>由于A和B不稳定，容易发生断开事件，所以需要工具在断开之后自动ssh到B机器，于是就用到了<strong>autossh</strong>;</p>
-<ul>
-<li><p>1 工具安装说明</p>
-<pre><code># 安装
-sudo apt-get install autossh</code></pre>
-<p>用法如下:</p>
-<pre><code>gagent@ubuntu:~$ autossh --help
-/usr/lib/autossh/autossh: invalid option -- &#39;-&#39;
-usage: autossh [-V] [-M monitor_port[:echo_port]] [-f] [SSH_OPTIONS]
-
-    -M specifies monitor port. Overrides the environment
-       variable AUTOSSH_PORT. 0 turns monitoring loop off.
-       Alternatively, a port for an echo service on the remote
-       machine may be specified. (Normally port 7.)
-    -f run in background (autossh handles this, and does not
-       pass it to ssh.)
-    -V print autossh version and exit.
-
-Environment variables are:
-    AUTOSSH_GATETIME    - how long must an ssh session be established
-                          before we decide it really was established
-                          (in seconds). Default is 30 seconds; use of -f
-                          flag sets this to 0.
-    AUTOSSH_LOGFILE     - file to log to (default is to use the syslog
-                          facility)
-    AUTOSSH_LOGLEVEL    - level of log verbosity
-    AUTOSSH_MAXLIFETIME - set the maximum time to live (seconds)
-    AUTOSSH_MAXSTART    - max times to restart (default is no limit)
-    AUTOSSH_MESSAGE     - message to append to echo string (max 64 bytes)
-    AUTOSSH_PATH        - path to ssh if not default
-    AUTOSSH_PIDFILE     - write pid to this file
-    AUTOSSH_POLL        - how often to check the connection (seconds)
-    AUTOSSH_FIRST_POLL  - time before first connection check (seconds)
-    AUTOSSH_PORT        - port to use for monitor connection
-    AUTOSSH_DEBUG       - turn logging to maximum verbosity and log to
-                          stderr</code></pre>
-<ul>
-<li>2 实际操作<pre><code>autossh -M 7281 -fCNR 7280:localhost:22 root@123.123.123.123</code></pre>
-解释:<blockquote>
-<p>_<em>autossh</em>_的参数与ssh的参数是一致的，但是不同的是，在隧道断开的时候，autossh会自动重新连接而ssh不会。另外不同的是我们需要指出的-M参数，这个参数指定一个端口，这个端口是外网的B机器用来接收内网A机器的信息，如果隧道不正常而返回给A机器让他实现重新连接</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>设置A机器启动的时候自动ssh到B</p>
-</li>
-</ul>
-<p>修改启动文件</p>
-<pre><code>vi /etc/rc.d/rc.local</code></pre>
-<p>添加内容:</p>
-<pre><code>autossh -M 7281 -fCNR 7280:localhost:22 root@123.123.123.123</code></pre>
+<p><strong>dofile可如下定义：</strong></p>
+<pre class=" language-lua"><code class="language-lua">    <span class="token keyword">function</span> <span class="token function">dofile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span>
+    　　<span class="token keyword">local</span> f <span class="token operator">=</span> <span class="token function">assert</span><span class="token punctuation">(</span><span class="token function">loadfile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--调用loadfile（的返回结果）并可处理错误</span>
+    <span class="token keyword">return</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">end</span></code></pre>
+<p><code>注：加载了程序块并没有定义其中的函数。在Lua中，函数定义是一种赋值操作，是在运行时才完成的操作。 例如：一个文件test.lua中有一个函数 function foo(x) print(x) end ,执行如下代码： 　　　f = loadfile(test.lua) --加载程序块，此时还没有定义函数foo 　　　f() --运行加载的程序块，此时就定义了函数foo      foo(&quot;hello lua&quot;) --&gt;hello lua --经过上面的步骤才能调用foo    </code></p>
+<h3 id="dofile——执行"><a href="#dofile——执行" class="headerlink" title="dofile——执行"></a>dofile——执行</h3><pre><code>1.功能：载入文件并执行代码块，对于相同的文件每次都会执行
+2.调用：dofile(&quot;filename&quot;)
+3.错误处理：如果代码块中有错误则会引发错误
+4.优点：对简单任务而言，非常便捷
+5.缺点：每次载入文件时都会执行程序块</code></pre>
+<p>    6.定位：内置操作，辅助函数</p>
+<h3 id="require——我只执行一次"><a href="#require——我只执行一次" class="headerlink" title="require——我只执行一次"></a>require——我只执行一次</h3><pre><code>require和dofile有点像，不过又很不一样，require在第一次加载文件的时候，会执行里面的代码。
+但是，第二次之后，再次加载文件，则不会重复执行了。换句话说，它会保存已经加载过的文件，不会重复加载。</code></pre>
+<h3 id="loadstring"><a href="#loadstring" class="headerlink" title="loadstring"></a>loadstring</h3><pre><code>1.特点：功能强大，但开销大；
+2.典型用处：执行外部代码，如：用户的输入
+3.错误错里：代码中如果有语法错误就会返回nil
+4.理解：f = loadstring(&quot;i = i+1&quot;)  可理解为（但不完全是）f = function()  i = i+1  end 
+(注：这里的变量&quot;i&quot;是全局变量，不是指局部变量，如果没有定义全局变量&quot;i&quot;,调用f()则会报错！，即loadstring   不涉及词法域)</code></pre>
 ]]></content>
       <tags>
-        <tag>工具</tag>
-        <tag>Linux</tag>
+        <tag>lua</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>NB-IoT 记录</title>
-    <url>/2020/07/09/26e6.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="NB状态"><a href="#NB状态" class="headerlink" title="NB状态"></a>NB状态</h2><ul>
-<li>DRX：Discontinuous Reception（不连续接收），为模块 Modem 的工作模式</li>
-<li>eDRX：extended DRX（扩展不连续接收），为模块 Modem 的工作模式。</li>
-<li>PSM：Power Saving Mode（省电模式），为模块 Modem 的工作模式。</li>
-</ul>
-<h2 id="PSM-模式状态转化"><a href="#PSM-模式状态转化" class="headerlink" title="PSM 模式状态转化"></a>PSM 模式状态转化</h2><p><img src="/images/pasted-59.png" alt="upload successful"></p>
-<blockquote>
-<p>在 PSM 模式下，终端不再监听寻呼，但终端还是注册在网络中；因此，要发送数据时不需要重新连接或建立 PDN 连接。在模块 Modem 进入 PSM 模式后，仍然可以主动发送上行数据到平台。</p>
-</blockquote>
-<h2 id="eDRX-模式状态转化"><a href="#eDRX-模式状态转化" class="headerlink" title="eDRX 模式状态转化"></a>eDRX 模式状态转化</h2><p><img src="/images/pasted-60.png" alt="upload successful"></p>
-<h2 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h2><p><img src="/images/pasted-61.png" alt="upload successful"></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://zhuanlan.zhihu.com/p/93913704">https://zhuanlan.zhihu.com/p/93913704</a></li>
-</ul>
-<h2 id="T3324-和-T3412-设置"><a href="#T3324-和-T3412-设置" class="headerlink" title="T3324 和 T3412 设置"></a>T3324 和 T3412 设置</h2><p>从M5311模组说明手册查到说明如下:<br></p>
-<h3 id="T3324"><a href="#T3324" class="headerlink" title="T3324"></a>T3324</h3><p>T3324的设置和 <strong>GPRS Timer 2<br>IE in 3GPP TS 24.008 Table 10.5.163/3GPP TS 24.008. See also 3GPP TS 23.682, 3GPP TS<br>23.060 and 3GPP TS 23.401. The default value, if available, is manufacturer specific</strong>有关<br></p>
-<p>Timer value (octet 2)<br><br>Bits 5 to 1 represent the binary coded timer value.<br><br>Bits 6 to 8 defines the timer value unit for the GPRS<br><br>Bits<br></p>
-<p>|8|7|6|说明|<br>|:–|:–|:–|<br>|0 |0 |0 |value is incremented in multiples of 2 seconds<br>|0 |0 |1 |value is incremented in multiples of 1 minute<br>|0 |1 |0 |value is incremented in multiples of decihours<br>|1 |1 |1 |value indicates that the timer is deactivated.</p>
-<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><blockquote>
-<p>“00100100” = 4 minutes</p>
-</blockquote>
-<h3 id="T3412-TAU"><a href="#T3412-TAU" class="headerlink" title="T3412 (TAU)"></a>T3412 (TAU)</h3><p>T3412(<strong>TAU</strong>)的设置和<strong>GPRS Timer 3 IE in 3GPP TS 24.008 Table<br>10.5.163a/3GPP TS 24.008. See also 3GPP TS 23.682 and 3GPP TS 23.401. The default<br>value, if available, is manufacturer specific.</strong> 有关;<br>摘录重要点如下:<br></p>
-<p>GPRS Timer 3 value (octet 3)<br><br>Bits 5 to 1 represent the binary coded timer value.<br><br>Bits 6 to 8 defines the timer value unit for the GPRS timer as follows:<br><br>Bits<br></p>
-<p>|8|7|6|说明|<br>|:–|:–|:–|<br>|0 |0 |0 |value is incremented in multiples of 10 minutes|<br>|0 |0 |1 |value is incremented in multiples of 1 hour|<br>|0 |1 |0 |value is incremented in multiples of 10 hours|<br>|0 |1 |1 |value is incremented in multiples of 2 seconds|<br>|1 |0 |0 |value is incremented in multiples of 30 seconds|<br>|1 |0 |1 |value is incremented in multiples of 1 minute|<br>|1 |1 |0 |value is incremented in multiples of 320 hours (NOTE)|<br>|1 |1 |1 |value indicates that the timer is deactivated.|<br><strong>NOTE:</strong> This timer value unit is only applicable to the T3312 extended value IE<br>and T3412 extended value IE (see 3GPP TS 24.301 [120]). If it is<br>received in an integrity protected message, value shall be interpreted as<br>multiples of 320 hours. Otherwise value shall be interpreted as multiples of 1 hour.</p>
-<h4 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h4><blockquote>
-<p>“01000111” = 70 hours</p>
-</blockquote>
-]]></content>
   </entry>
   <entry>
     <title>MarkDonw语法</title>
@@ -3839,35 +3838,36 @@ $$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$
       </tags>
   </entry>
   <entry>
-    <title>Lua之 loadfile ,dofile, loadstring，require</title>
-    <url>/2017/03/26/4bf8.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h3 id="loadfile——只编译，不运行"><a href="#loadfile——只编译，不运行" class="headerlink" title="loadfile——只编译，不运行"></a>loadfile——只编译，不运行</h3><p>    1.功能：载入文件但不执行代码块，对于相同的文件每次都会执行。只是编译代码，然后将编译结果作为一个函数返回<br>    2.调用：loadfile(“filename”)<br>    3.错误处理：不引发错误，只返回错误值但不处理错误,即返回nil和错误消息<br>    4.优点：调用一次之后可以多次调用返回的结果（即函数），<br>      即“多次调用”只需编译一次（注：这里的多次调用   是指多次调用返回的函数，而不是多次调用loadfile）</p>
-<a id="more"></a>
-
-<p><strong>dofile可如下定义：</strong></p>
-<pre class=" language-lua"><code class="language-lua">    <span class="token keyword">function</span> <span class="token function">dofile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span>
-    　　<span class="token keyword">local</span> f <span class="token operator">=</span> <span class="token function">assert</span><span class="token punctuation">(</span><span class="token function">loadfile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--调用loadfile（的返回结果）并可处理错误</span>
-    <span class="token keyword">return</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">end</span></code></pre>
-<p><code>注：加载了程序块并没有定义其中的函数。在Lua中，函数定义是一种赋值操作，是在运行时才完成的操作。 例如：一个文件test.lua中有一个函数 function foo(x) print(x) end ,执行如下代码： 　　　f = loadfile(test.lua) --加载程序块，此时还没有定义函数foo 　　　f() --运行加载的程序块，此时就定义了函数foo      foo(&quot;hello lua&quot;) --&gt;hello lua --经过上面的步骤才能调用foo    </code></p>
-<h3 id="dofile——执行"><a href="#dofile——执行" class="headerlink" title="dofile——执行"></a>dofile——执行</h3><pre><code>1.功能：载入文件并执行代码块，对于相同的文件每次都会执行
-2.调用：dofile(&quot;filename&quot;)
-3.错误处理：如果代码块中有错误则会引发错误
-4.优点：对简单任务而言，非常便捷
-5.缺点：每次载入文件时都会执行程序块</code></pre>
-<p>    6.定位：内置操作，辅助函数</p>
-<h3 id="require——我只执行一次"><a href="#require——我只执行一次" class="headerlink" title="require——我只执行一次"></a>require——我只执行一次</h3><pre><code>require和dofile有点像，不过又很不一样，require在第一次加载文件的时候，会执行里面的代码。
-但是，第二次之后，再次加载文件，则不会重复执行了。换句话说，它会保存已经加载过的文件，不会重复加载。</code></pre>
-<h3 id="loadstring"><a href="#loadstring" class="headerlink" title="loadstring"></a>loadstring</h3><pre><code>1.特点：功能强大，但开销大；
-2.典型用处：执行外部代码，如：用户的输入
-3.错误错里：代码中如果有语法错误就会返回nil
-4.理解：f = loadstring(&quot;i = i+1&quot;)  可理解为（但不完全是）f = function()  i = i+1  end 
-(注：这里的变量&quot;i&quot;是全局变量，不是指局部变量，如果没有定义全局变量&quot;i&quot;,调用f()则会报错！，即loadstring   不涉及词法域)</code></pre>
+    <title>NB-IoT 记录</title>
+    <url>/2020/07/09/26e6.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="NB状态"><a href="#NB状态" class="headerlink" title="NB状态"></a>NB状态</h2><ul>
+<li>DRX：Discontinuous Reception（不连续接收），为模块 Modem 的工作模式</li>
+<li>eDRX：extended DRX（扩展不连续接收），为模块 Modem 的工作模式。</li>
+<li>PSM：Power Saving Mode（省电模式），为模块 Modem 的工作模式。</li>
+</ul>
+<h2 id="PSM-模式状态转化"><a href="#PSM-模式状态转化" class="headerlink" title="PSM 模式状态转化"></a>PSM 模式状态转化</h2><p><img src="/images/pasted-59.png" alt="upload successful"></p>
+<blockquote>
+<p>在 PSM 模式下，终端不再监听寻呼，但终端还是注册在网络中；因此，要发送数据时不需要重新连接或建立 PDN 连接。在模块 Modem 进入 PSM 模式后，仍然可以主动发送上行数据到平台。</p>
+</blockquote>
+<h2 id="eDRX-模式状态转化"><a href="#eDRX-模式状态转化" class="headerlink" title="eDRX 模式状态转化"></a>eDRX 模式状态转化</h2><p><img src="/images/pasted-60.png" alt="upload successful"></p>
+<h2 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h2><p><img src="/images/pasted-61.png" alt="upload successful"></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/93913704">https://zhuanlan.zhihu.com/p/93913704</a></li>
+</ul>
+<h2 id="T3324-和-T3412-设置"><a href="#T3324-和-T3412-设置" class="headerlink" title="T3324 和 T3412 设置"></a>T3324 和 T3412 设置</h2><p>从M5311模组说明手册查到说明如下:<br></p>
+<h3 id="T3324"><a href="#T3324" class="headerlink" title="T3324"></a>T3324</h3><p>T3324的设置和 <strong>GPRS Timer 2<br>IE in 3GPP TS 24.008 Table 10.5.163/3GPP TS 24.008. See also 3GPP TS 23.682, 3GPP TS<br>23.060 and 3GPP TS 23.401. The default value, if available, is manufacturer specific</strong>有关<br></p>
+<p>Timer value (octet 2)<br><br>Bits 5 to 1 represent the binary coded timer value.<br><br>Bits 6 to 8 defines the timer value unit for the GPRS<br><br>Bits<br></p>
+<p>|8|7|6|说明|<br>|:–|:–|:–|<br>|0 |0 |0 |value is incremented in multiples of 2 seconds<br>|0 |0 |1 |value is incremented in multiples of 1 minute<br>|0 |1 |0 |value is incremented in multiples of decihours<br>|1 |1 |1 |value indicates that the timer is deactivated.</p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><blockquote>
+<p>“00100100” = 4 minutes</p>
+</blockquote>
+<h3 id="T3412-TAU"><a href="#T3412-TAU" class="headerlink" title="T3412 (TAU)"></a>T3412 (TAU)</h3><p>T3412(<strong>TAU</strong>)的设置和<strong>GPRS Timer 3 IE in 3GPP TS 24.008 Table<br>10.5.163a/3GPP TS 24.008. See also 3GPP TS 23.682 and 3GPP TS 23.401. The default<br>value, if available, is manufacturer specific.</strong> 有关;<br>摘录重要点如下:<br></p>
+<p>GPRS Timer 3 value (octet 3)<br><br>Bits 5 to 1 represent the binary coded timer value.<br><br>Bits 6 to 8 defines the timer value unit for the GPRS timer as follows:<br><br>Bits<br></p>
+<p>|8|7|6|说明|<br>|:–|:–|:–|<br>|0 |0 |0 |value is incremented in multiples of 10 minutes|<br>|0 |0 |1 |value is incremented in multiples of 1 hour|<br>|0 |1 |0 |value is incremented in multiples of 10 hours|<br>|0 |1 |1 |value is incremented in multiples of 2 seconds|<br>|1 |0 |0 |value is incremented in multiples of 30 seconds|<br>|1 |0 |1 |value is incremented in multiples of 1 minute|<br>|1 |1 |0 |value is incremented in multiples of 320 hours (NOTE)|<br>|1 |1 |1 |value indicates that the timer is deactivated.|<br><strong>NOTE:</strong> This timer value unit is only applicable to the T3312 extended value IE<br>and T3412 extended value IE (see 3GPP TS 24.301 [120]). If it is<br>received in an integrity protected message, value shall be interpreted as<br>multiples of 320 hours. Otherwise value shall be interpreted as multiples of 1 hour.</p>
+<h4 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h4><blockquote>
+<p>“01000111” = 70 hours</p>
+</blockquote>
 ]]></content>
-      <tags>
-        <tag>lua</tag>
-      </tags>
   </entry>
   <entry>
     <title>OneNet OTA 操作笔记</title>
@@ -3887,6 +3887,54 @@ $$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$
 <p>到此，平台端操作完成，关联的设备上电就会查询是否有升级包，若检测到升级包则能看到设备升级；</p>
 <h3 id="OTA时设备端关键日志"><a href="#OTA时设备端关键日志" class="headerlink" title="OTA时设备端关键日志"></a>OTA时设备端关键日志</h3><p><img src="/images/pasted-103.png" alt="upload successful"><br><img src="/images/pasted-104.png" alt="upload successful"><br>OneNet平台也可以看到一些OTA数据统计<br><img src="/images/pasted-105.png" alt="upload successful"></p>
 <h3 id="设备端M5311固件生产"><a href="#设备端M5311固件生产" class="headerlink" title="设备端M5311固件生产"></a>设备端M5311固件生产</h3>]]></content>
+  </entry>
+  <entry>
+    <title>PC小技巧</title>
+    <url>/2017/07/01/56f1.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Win7-开热点"><a href="#Win7-开热点" class="headerlink" title="Win7 开热点"></a>Win7 开热点</h2><ol>
+<li>输入命令：<code>netsh wlan set hostednetwork mode=allow ssid=livdran2012 key=100100100</code> 。<br><code>mode:</code>是否启用虚拟WiFi网卡，改为disallow则为禁止。<br><code>ssid:</code>无线网名称，推荐最好用英文。（此处以livdran2012为例，可自由设置）<br><code>key:</code>无线网密码，限定八个以上字符。（此处以100100100为例，可自由设置）</li>
+</ol>
+<a id="more"></a>
+
+<ol start="2">
+<li>运行成功后，打开网络和共享中心，点击左侧更改适配器设置。</li>
+<li>进入适配器设置就会发现多出了一个网卡为“Microsoft Virtual WiFi Miniport Adapter”的无线网络连接2。若没有，则尝试更新无线网卡驱动。<br>为方便起见，可将无线网络连接2重命名为**”VirtualWiFi”**。</li>
+<li>在网络连接里， 右键单击已连接到Internet的网络连接，选择“属性”→“共享”，勾上“允许其他网络用户通过此计算机的Internet连接来连接(N)”并选择“虚拟WiFi”。<br>确定之后，提供共享的网卡图标旁会出现“共享的”字样，表示“宽带连接”已共享至**”VirtualWiFi”**<br><img src="http://static.zybuluo.com/AlexLin/7tftyoeqj79obckwcylz4ret/image.png" alt="网络共享"><br><img src="http://static.zybuluo.com/AlexLin/e0ca3mszpdbqmzp7vhvut012/image.png" alt="共享标志"></li>
+<li>继续命令行输入:<code>netsh wlan start hostednetwork</code>，按回车键运行。<br>最后，虚拟WiFi的红叉消失，WiFi基站已组建好并启动，用支持WiFi的设备搜索到自己建立的无线网络（如例中livdran2012）,输入自己设置的密码（如例中100100100），即可共享上网了。</li>
+</ol>
+<h2 id="Win7-启动项设置"><a href="#Win7-启动项设置" class="headerlink" title="Win7 启动项设置"></a>Win7 启动项设置</h2><ol>
+<li>在开始的搜索框里面输入 **<code>msconfig 命令</code>**，回车打开</li>
+<li>在弹出来的窗口选<strong>有选择的启动</strong><br><img src="http://upload-images.jianshu.io/upload_images/1736256-39a2ce5363e6346e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="启动项"></li>
+<li>要启动的打钩，不需要的不打钩<br><img src="http://upload-images.jianshu.io/upload_images/1736256-f35ab7cd8ddb24a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="启动项"></li>
+</ol>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>PC工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python基础使用技巧</title>
+    <url>/2020/04/08/b6de.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="依赖文件requirements生成和安装"><a href="#依赖文件requirements生成和安装" class="headerlink" title="依赖文件requirements生成和安装"></a>依赖文件requirements生成和安装</h2><ul>
+<li>生成</li>
+</ul>
+<pre class=" language-py"><code class="language-py">pip freeze > requirements.txt</code></pre>
+<ul>
+<li>安装</li>
+</ul>
+<pre class=" language-py"><code class="language-py">pip install -r requirements.txt</code></pre>
+]]></content>
+  </entry>
+  <entry>
+    <title>QT 笔记</title>
+    <url>/2020/05/04/8182.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><ul>
+<li> <a href="https://doc.qt.io/qt-5/index.html">官方文档</a></li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>OpenSSL 笔记</title>
@@ -3917,41 +3965,6 @@ make install</code></pre>
 ]]></content>
   </entry>
   <entry>
-    <title>PC小技巧</title>
-    <url>/2017/07/01/56f1.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Win7-开热点"><a href="#Win7-开热点" class="headerlink" title="Win7 开热点"></a>Win7 开热点</h2><ol>
-<li>输入命令：<code>netsh wlan set hostednetwork mode=allow ssid=livdran2012 key=100100100</code> 。<br><code>mode:</code>是否启用虚拟WiFi网卡，改为disallow则为禁止。<br><code>ssid:</code>无线网名称，推荐最好用英文。（此处以livdran2012为例，可自由设置）<br><code>key:</code>无线网密码，限定八个以上字符。（此处以100100100为例，可自由设置）</li>
-</ol>
-<a id="more"></a>
-
-<ol start="2">
-<li>运行成功后，打开网络和共享中心，点击左侧更改适配器设置。</li>
-<li>进入适配器设置就会发现多出了一个网卡为“Microsoft Virtual WiFi Miniport Adapter”的无线网络连接2。若没有，则尝试更新无线网卡驱动。<br>为方便起见，可将无线网络连接2重命名为**”VirtualWiFi”**。</li>
-<li>在网络连接里， 右键单击已连接到Internet的网络连接，选择“属性”→“共享”，勾上“允许其他网络用户通过此计算机的Internet连接来连接(N)”并选择“虚拟WiFi”。<br>确定之后，提供共享的网卡图标旁会出现“共享的”字样，表示“宽带连接”已共享至**”VirtualWiFi”**<br><img src="http://static.zybuluo.com/AlexLin/7tftyoeqj79obckwcylz4ret/image.png" alt="网络共享"><br><img src="http://static.zybuluo.com/AlexLin/e0ca3mszpdbqmzp7vhvut012/image.png" alt="共享标志"></li>
-<li>继续命令行输入:<code>netsh wlan start hostednetwork</code>，按回车键运行。<br>最后，虚拟WiFi的红叉消失，WiFi基站已组建好并启动，用支持WiFi的设备搜索到自己建立的无线网络（如例中livdran2012）,输入自己设置的密码（如例中100100100），即可共享上网了。</li>
-</ol>
-<h2 id="Win7-启动项设置"><a href="#Win7-启动项设置" class="headerlink" title="Win7 启动项设置"></a>Win7 启动项设置</h2><ol>
-<li>在开始的搜索框里面输入 **<code>msconfig 命令</code>**，回车打开</li>
-<li>在弹出来的窗口选<strong>有选择的启动</strong><br><img src="http://upload-images.jianshu.io/upload_images/1736256-39a2ce5363e6346e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="启动项"></li>
-<li>要启动的打钩，不需要的不打钩<br><img src="http://upload-images.jianshu.io/upload_images/1736256-f35ab7cd8ddb24a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="启动项"></li>
-</ol>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>PC工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>QT 笔记</title>
-    <url>/2020/05/04/8182.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><ul>
-<li> <a href="https://doc.qt.io/qt-5/index.html">官方文档</a></li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>SI4432</title>
     <url>/2017/03/26/760b.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
@@ -3970,17 +3983,34 @@ make install</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Python基础使用技巧</title>
-    <url>/2020/04/08/b6de.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="依赖文件requirements生成和安装"><a href="#依赖文件requirements生成和安装" class="headerlink" title="依赖文件requirements生成和安装"></a>依赖文件requirements生成和安装</h2><ul>
-<li>生成</li>
-</ul>
-<pre class=" language-py"><code class="language-py">pip freeze > requirements.txt</code></pre>
+    <title>SSL握手过程</title>
+    <url>/2018/03/26/b45f.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div align="center">
+![hand][1]
+</div>
+
+<a id="more"></a>
+
+<h2 id="SSL-握手目的"><a href="#SSL-握手目的" class="headerlink" title="SSL 握手目的"></a>SSL 握手目的</h2><ol>
+<li>客户端与服务器需要就一组用于保护数据的算法达成一致；</li>
+<li>它们需要确立一组由那些算法所使用的加密密钥；</li>
+<li>握手还可以选择对客户端进行认证(单向/双向 认证)。</li>
+</ol>
+<h2 id="SSL-四次握手过程"><a href="#SSL-四次握手过程" class="headerlink" title="SSL 四次握手过程"></a>SSL 四次握手过程</h2><p>1、客户端请求建立SSL链接，并向服务端发送一个随机数–Client random和客户端支持的加密方法，比如RSA公钥加密，此时是明文传输。<br>2、服务端回复一种客户端支持的加密方法、一个随机数–Server random、授信的服务器证书和非对称加密的公钥。<br>3、客户端收到服务端的回复后利用服务端的公钥，加上新的随机数–Premaster secret 通过服务端下发的公钥及加密方法进行加密，发送给服务器。<br>4、服务端收到客户端的回复，利用已知的加解密方式进行解密，同时利用Client random、Server random和Premaster secret通过一定的算法生成HTTP链接数据传输的对称加密key – session key</p>
+<p><strong>此后通讯基于 sessionkey 对称加密进行</strong></p>
+<p>参考:</p>
 <ul>
-<li>安装</li>
+<li><a href="http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html">http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html</a></li>
+<li><a href="https://blog.csdn.net/zxk364961978/article/details/54809008">https://blog.csdn.net/zxk364961978/article/details/54809008</a></li>
 </ul>
-<pre class=" language-py"><code class="language-py">pip install -r requirements.txt</code></pre>
 ]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>ssl</tag>
+      </tags>
   </entry>
   <entry>
     <title>SPI协议</title>
@@ -4059,6 +4089,169 @@ make install</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>STM32 命名规则</title>
+    <url>/2017/03/26/eaab.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>以stm32f103c8t7xx为例子</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1736256-7d5b4a61ad2948ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="命名规范"></p>
+<a id="more"></a>
+
+<p>| Device |  description |<br>| ————- |<br>| STM32 |基于ARM?的32位微控制器产品类型。 |<br>| F |通用类型产品子系列 |<br>|Device subfamily|101 = 基本型 102 = USB基本型 103 = 增强型 105/107 = 互联型|<br>|Pin count| T=36 C=48 R=64 V=100 Z=144|<br>|Flash Size|6=32 8=64 B=128 C=256 D=384 E=512 |<br>|Package|H = BGA T = LQFP U = VFQFPN Y = WLCSP64|</p>
+<h2 id="STM32-产品类型和启动文件的选择"><a href="#STM32-产品类型和启动文件的选择" class="headerlink" title="STM32 产品类型和启动文件的选择"></a>STM32 产品类型和启动文件的选择</h2><pre><code>- startup_stm32f10x_ld_vl.s: for STM32 Low density Value line devices
+- startup_stm32f10x_ld.s: for STM32 Low density devices
+- startup_stm32f10x_md_vl.s: for STM32 Medium density Value line devices
+- startup_stm32f10x_md.s: for STM32 Medium density devices
+- startup_stm32f10x_hd.s: for STM32 High density devices
+- startup_stm32f10x_xl.s: for STM32 XL density devices
+- startup_stm32f10x_cl.s: for STM32 Connectivity line devices
+cl：互联型产品，stm32f105/107系列
+vl：超值型产品，stm32f100系列
+xl：超高密度产品，stm32f101/103系列
+ld：低密度产品，FLASH小于64K
+md：中等密度产品，FLASH=64 or 128
+hd：高密度产品，FLASH大于128</code></pre>
+<h2 id="STM32-Flash-页面大小划分"><a href="#STM32-Flash-页面大小划分" class="headerlink" title="STM32 Flash 页面大小划分"></a>STM32 Flash 页面大小划分</h2><p>STM32有4种Flash module organization，分别是：</p>
+<ul>
+<li>low-density devices(32KB，1KB/page)</li>
+<li>medium-density devices(128KB，1KB/page)</li>
+<li>high-density devices(512KB，2KB/page)</li>
+<li>connectivity line devices(256KB，2KB/page)</li>
+<li>XL-density(devices(1M，2KB/page)</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>ST</tag>
+        <tag>STM32</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>STM32CubeIDE使用笔记</title>
+    <url>/2020/08/07/e305.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="STM32时钟源-HSI-HSE-LSI-LSE-PLL"><a href="#STM32时钟源-HSI-HSE-LSI-LSE-PLL" class="headerlink" title="STM32时钟源(HSI/HSE/LSI/LSE/PLL)"></a>STM32时钟源(HSI/HSE/LSI/LSE/PLL)</h2><ol>
+<li><strong>HSI</strong> 是高速内部时钟，RC振荡器，频率为8MHz;</li>
+<li><strong>HSE</strong> 是高速外部时钟，可接石英/陶瓷谐振器，或者接外部时钟源，频率范围为4MHz~16MHz</li>
+<li><strong>LSI</strong> 是低速内部时钟，RC振荡器，频率为40kHz;</li>
+<li><strong>LSE</strong> 是低速外部时钟，接频率为32.768kHz的石英晶体;</li>
+<li><strong>PLL</strong> 为锁相环倍频输出，其时钟输入源可选择为HSI/2、HSE或者HSE/2。倍频可选择为2~16倍，但是其输出频率最大不得超过72MHz。</li>
+</ol>
+<blockquote>
+<p><strong>注意:</strong><br>其中40kHz的LSI(低速内部时钟)供独立看门狗IWDG使用，另外它还可以被选择为实时时钟RTC的时钟源。另外，实时时钟RTC的时钟源还可以选择LSE(低速外部时钟)，或者是HSE(高速外部时钟)的128分频。RTC的时钟源通过RTCSEL[1:0]来选择。</p>
+</blockquote>
+<h3 id="SYSCLK时钟"><a href="#SYSCLK时钟" class="headerlink" title="SYSCLK时钟"></a>SYSCLK时钟</h3><blockquote>
+<p><strong>SYSCLK</strong>系统时钟最大频率为72MHz，它是供STM32中绝大部分部件工作的时钟源;</p>
+</blockquote>
+<ol>
+<li>送给AHB总线、内核、内存和DMA使用的HCLK时钟；</li>
+<li>分频后送给STM32芯片的系统定时器时钟（<code>Systick=Sysclk/8=9Mhz</code>），直接调用  <code>void sysTickTimerInit ( void )</code>  选择时钟源 <code>SysTick_CLKSourceConfig ( SysTick_CLKSource_HCLK_Div8 )</code>   即可使能；</li>
+<li>直接送给Cortex的自由运行时钟(free running clock)FCLK。【<strong>注：</strong>FCLK 为处理器的自由振荡的处理器时钟，用来采样中断和为调试模块计时。在处理器休眠时，通过FCLK 保证可以采样到中断和跟踪休眠事件。 Cortex-M3内核的“自由运行时钟(free running clock)”FCLK。<strong>“自由”</strong>表现在它不来自系统时钟HCLK，因此在系统时钟停止时FCLK 也继续运行。FCLK和HCLK 互相同步。FCLK 是一个自由振荡的HCLK。FCLK 和HCLK 应该互相平衡，保证进入Cortex-M3 时的延迟相同。】；</li>
+<li>送给APB1分频器。APB1分频器可选择1、2、4、8、16分频，其输出一路供APB1外设使用(PCLK1，最大频率36MHz)，另一路送给定时器(Timer)2、3、4倍频器使用。该倍频器可选择1或者2倍频，时钟输出供定时器2、3、4使用；</li>
+<li>送给APB2分频器。APB2分频器可选择1、2、4、8、16分频， 其输出一路供APB2外设使用(PCLK2，最大频率72MHz)，另一路送给定时器(Timer)1倍频器使用。该倍频器可选择1或者2倍频，时钟输出 供定时器1使用。另外，APB2分频器还有一路输出供ADC分频器使用，分频后送给ADC模块使用。ADC分频器可选择为2、4、6、8分频；</li>
+</ol>
+<p><strong>备注:</strong></p>
+<ul>
+<li>FCLK为供给CPU内核的时钟信号，我们所说的cpu主频为XXXXMHz，就是指的这个时钟信号，相应的，1/Fclk即为cpu时钟周期</li>
+<li>HCLK为优秀的高性能总线（AHB bus peripherals）供给时钟信号（AHB为advanced high-performance bus）；HCLK ：AHB总线时钟，由系统时钟SYSCLK 分频得到，一般不分频，等于系统时钟，HCLK是高速外设时钟，是<strong>给外部设备的，比如内存，flash</strong>。</li>
+<li>PCLK为优秀的高性能外设总线（APB bus peripherals）供给时钟信号（其中APB为advanced peripherals bus）；</li>
+</ul>
+<h2 id="总线—APB和AHB"><a href="#总线—APB和AHB" class="headerlink" title="总线—APB和AHB"></a>总线—APB和AHB</h2><ul>
+<li><strong>APB</strong> Advanced Peripheral Bus的缩写，这是一种外围总线；</li>
+</ul>
+<h3 id="APB1总线外设"><a href="#APB1总线外设" class="headerlink" title="APB1总线外设"></a>APB1总线外设</h3><ul>
+<li>定时器TIM2到TIM7；</li>
+<li>RTC；</li>
+<li>WDT看门狗；</li>
+<li>SPI2 、SPI3；</li>
+<li>USART2、USART3；</li>
+<li>UART4、UART5；</li>
+<li>I2C1，I2C2；</li>
+<li>USB./CAN共享的512字节SRAM；</li>
+<li>bXCAN1、bXCAN2；</li>
+<li>后备寄存器BKP；</li>
+<li>电源控制PWR；</li>
+<li>DAC</li>
+</ul>
+<h3 id="APB2总线外设"><a href="#APB2总线外设" class="headerlink" title="APB2总线外设"></a>APB2总线外设</h3><ul>
+<li>USART1；</li>
+<li>高级控制定时器TIM1和TIM8；</li>
+<li>模数转换器ADC1、ADC2、ADC3；</li>
+<li>SPI1；</li>
+<li>外部中断EXTI；</li>
+<li>复用IO，AFIO；</li>
+<li>通用IO：GPIOA~G；</li>
+</ul>
+<h3 id="AHB外设"><a href="#AHB外设" class="headerlink" title="AHB外设"></a>AHB外设</h3><ul>
+<li><p><strong>AHB</strong> Advanced High performance Bus的缩写，译作高级高性能总线，这是一种“系统总线”。</p>
+</li>
+<li><p>Flash 存储器；</p>
+</li>
+<li><p>DMA；</p>
+</li>
+<li><p>复位和时钟控制；</p>
+</li>
+<li><p>CRC;</p>
+</li>
+<li><p>以太网；</p>
+</li>
+<li><p>SDIO；</p>
+</li>
+</ul>
+<h3 id="串口"><a href="#串口" class="headerlink" title="串口"></a>串口</h3><ul>
+<li>USART1 串口模式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">模式</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Sigle Wire(Half-Duplex)</td>
+<td align="left">半双工</td>
+</tr>
+<tr>
+<td align="left">Asynchronous</td>
+<td align="left">异步</td>
+</tr>
+<tr>
+<td align="left">synchronous</td>
+<td align="left">同步</td>
+</tr>
+<tr>
+<td align="left">SmartCard</td>
+<td align="left">智能卡</td>
+</tr>
+<tr>
+<td align="left">lrDA</td>
+<td align="left">红外线数据协会) SIR ENDEC 规范</td>
+</tr>
+<tr>
+<td align="left">LIN</td>
+<td align="left">支持局域互连网络</td>
+</tr>
+<tr>
+<td align="left">Multiprocessor Communication</td>
+<td align="left">多机串口通信</td>
+</tr>
+</tbody></table>
+<h2 id="CubeIDE-Debug设置"><a href="#CubeIDE-Debug设置" class="headerlink" title="CubeIDE Debug设置"></a>CubeIDE Debug设置</h2><ol>
+<li>设置调试器(这里以ST-LINK为例子)<br><img src="/images/pasted-108.png" alt="upload successful"></li>
+<li>出现以下提示，需要下载对应的ST-Link Server<br><img src="/images/pasted-109.png" alt="upload successful"></li>
+<li>升级ST-Link 固件<br><img src="/images/pasted-110.png" alt="upload successful"><br><img src="/images/pasted-111.png" alt="upload successful"><br><img src="/images/pasted-112.png" alt="upload successful"></li>
+<li>设置SW 调试引脚，不然不能在线调试(这个细节我被坑了┭┮﹏┭┮)<br><img src="/images/pasted-113.png" alt="upload successful"></li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.waveshare.net/study/article-629-1.html">https://www.waveshare.net/study/article-629-1.html</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>STM32</category>
+      </categories>
+      <tags>
+        <tag>STM32</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>STM32---ADC</title>
     <url>/2017/03/26/b2f4.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
@@ -4100,72 +4293,6 @@ returnadc;//返回最近一次ADCx规则组的转换结果
         <tag>ST</tag>
         <tag>STM32</tag>
         <tag>ADC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>STM32 命名规则</title>
-    <url>/2017/03/26/eaab.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>以stm32f103c8t7xx为例子</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1736256-7d5b4a61ad2948ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="命名规范"></p>
-<a id="more"></a>
-
-<p>| Device |  description |<br>| ————- |<br>| STM32 |基于ARM?的32位微控制器产品类型。 |<br>| F |通用类型产品子系列 |<br>|Device subfamily|101 = 基本型 102 = USB基本型 103 = 增强型 105/107 = 互联型|<br>|Pin count| T=36 C=48 R=64 V=100 Z=144|<br>|Flash Size|6=32 8=64 B=128 C=256 D=384 E=512 |<br>|Package|H = BGA T = LQFP U = VFQFPN Y = WLCSP64|</p>
-<h2 id="STM32-产品类型和启动文件的选择"><a href="#STM32-产品类型和启动文件的选择" class="headerlink" title="STM32 产品类型和启动文件的选择"></a>STM32 产品类型和启动文件的选择</h2><pre><code>- startup_stm32f10x_ld_vl.s: for STM32 Low density Value line devices
-- startup_stm32f10x_ld.s: for STM32 Low density devices
-- startup_stm32f10x_md_vl.s: for STM32 Medium density Value line devices
-- startup_stm32f10x_md.s: for STM32 Medium density devices
-- startup_stm32f10x_hd.s: for STM32 High density devices
-- startup_stm32f10x_xl.s: for STM32 XL density devices
-- startup_stm32f10x_cl.s: for STM32 Connectivity line devices
-cl：互联型产品，stm32f105/107系列
-vl：超值型产品，stm32f100系列
-xl：超高密度产品，stm32f101/103系列
-ld：低密度产品，FLASH小于64K
-md：中等密度产品，FLASH=64 or 128
-hd：高密度产品，FLASH大于128</code></pre>
-<h2 id="STM32-Flash-页面大小划分"><a href="#STM32-Flash-页面大小划分" class="headerlink" title="STM32 Flash 页面大小划分"></a>STM32 Flash 页面大小划分</h2><p>STM32有4种Flash module organization，分别是：</p>
-<ul>
-<li>low-density devices(32KB，1KB/page)</li>
-<li>medium-density devices(128KB，1KB/page)</li>
-<li>high-density devices(512KB，2KB/page)</li>
-<li>connectivity line devices(256KB，2KB/page)</li>
-<li>XL-density(devices(1M，2KB/page)</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>ST</tag>
-        <tag>STM32</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SSL握手过程</title>
-    <url>/2018/03/26/b45f.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div align="center">
-![hand][1]
-</div>
-
-<a id="more"></a>
-
-<h2 id="SSL-握手目的"><a href="#SSL-握手目的" class="headerlink" title="SSL 握手目的"></a>SSL 握手目的</h2><ol>
-<li>客户端与服务器需要就一组用于保护数据的算法达成一致；</li>
-<li>它们需要确立一组由那些算法所使用的加密密钥；</li>
-<li>握手还可以选择对客户端进行认证(单向/双向 认证)。</li>
-</ol>
-<h2 id="SSL-四次握手过程"><a href="#SSL-四次握手过程" class="headerlink" title="SSL 四次握手过程"></a>SSL 四次握手过程</h2><p>1、客户端请求建立SSL链接，并向服务端发送一个随机数–Client random和客户端支持的加密方法，比如RSA公钥加密，此时是明文传输。<br>2、服务端回复一种客户端支持的加密方法、一个随机数–Server random、授信的服务器证书和非对称加密的公钥。<br>3、客户端收到服务端的回复后利用服务端的公钥，加上新的随机数–Premaster secret 通过服务端下发的公钥及加密方法进行加密，发送给服务器。<br>4、服务端收到客户端的回复，利用已知的加解密方式进行解密，同时利用Client random、Server random和Premaster secret通过一定的算法生成HTTP链接数据传输的对称加密key – session key</p>
-<p><strong>此后通讯基于 sessionkey 对称加密进行</strong></p>
-<p>参考:</p>
-<ul>
-<li><a href="http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html">http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html</a></li>
-<li><a href="https://blog.csdn.net/zxk364961978/article/details/54809008">https://blog.csdn.net/zxk364961978/article/details/54809008</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>ssl</tag>
       </tags>
   </entry>
   <entry>
@@ -4485,133 +4612,6 @@ t 0:0(0) ack 22535 win 8760 (DF)</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>STM32CubeIDE使用笔记</title>
-    <url>/2020/08/07/e305.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="STM32时钟源-HSI-HSE-LSI-LSE-PLL"><a href="#STM32时钟源-HSI-HSE-LSI-LSE-PLL" class="headerlink" title="STM32时钟源(HSI/HSE/LSI/LSE/PLL)"></a>STM32时钟源(HSI/HSE/LSI/LSE/PLL)</h2><ol>
-<li><strong>HSI</strong> 是高速内部时钟，RC振荡器，频率为8MHz;</li>
-<li><strong>HSE</strong> 是高速外部时钟，可接石英/陶瓷谐振器，或者接外部时钟源，频率范围为4MHz~16MHz</li>
-<li><strong>LSI</strong> 是低速内部时钟，RC振荡器，频率为40kHz;</li>
-<li><strong>LSE</strong> 是低速外部时钟，接频率为32.768kHz的石英晶体;</li>
-<li><strong>PLL</strong> 为锁相环倍频输出，其时钟输入源可选择为HSI/2、HSE或者HSE/2。倍频可选择为2~16倍，但是其输出频率最大不得超过72MHz。</li>
-</ol>
-<blockquote>
-<p><strong>注意:</strong><br>其中40kHz的LSI(低速内部时钟)供独立看门狗IWDG使用，另外它还可以被选择为实时时钟RTC的时钟源。另外，实时时钟RTC的时钟源还可以选择LSE(低速外部时钟)，或者是HSE(高速外部时钟)的128分频。RTC的时钟源通过RTCSEL[1:0]来选择。</p>
-</blockquote>
-<h3 id="SYSCLK时钟"><a href="#SYSCLK时钟" class="headerlink" title="SYSCLK时钟"></a>SYSCLK时钟</h3><blockquote>
-<p><strong>SYSCLK</strong>系统时钟最大频率为72MHz，它是供STM32中绝大部分部件工作的时钟源;</p>
-</blockquote>
-<ol>
-<li>送给AHB总线、内核、内存和DMA使用的HCLK时钟；</li>
-<li>分频后送给STM32芯片的系统定时器时钟（<code>Systick=Sysclk/8=9Mhz</code>），直接调用  <code>void sysTickTimerInit ( void )</code>  选择时钟源 <code>SysTick_CLKSourceConfig ( SysTick_CLKSource_HCLK_Div8 )</code>   即可使能；</li>
-<li>直接送给Cortex的自由运行时钟(free running clock)FCLK。【<strong>注：</strong>FCLK 为处理器的自由振荡的处理器时钟，用来采样中断和为调试模块计时。在处理器休眠时，通过FCLK 保证可以采样到中断和跟踪休眠事件。 Cortex-M3内核的“自由运行时钟(free running clock)”FCLK。<strong>“自由”</strong>表现在它不来自系统时钟HCLK，因此在系统时钟停止时FCLK 也继续运行。FCLK和HCLK 互相同步。FCLK 是一个自由振荡的HCLK。FCLK 和HCLK 应该互相平衡，保证进入Cortex-M3 时的延迟相同。】；</li>
-<li>送给APB1分频器。APB1分频器可选择1、2、4、8、16分频，其输出一路供APB1外设使用(PCLK1，最大频率36MHz)，另一路送给定时器(Timer)2、3、4倍频器使用。该倍频器可选择1或者2倍频，时钟输出供定时器2、3、4使用；</li>
-<li>送给APB2分频器。APB2分频器可选择1、2、4、8、16分频， 其输出一路供APB2外设使用(PCLK2，最大频率72MHz)，另一路送给定时器(Timer)1倍频器使用。该倍频器可选择1或者2倍频，时钟输出 供定时器1使用。另外，APB2分频器还有一路输出供ADC分频器使用，分频后送给ADC模块使用。ADC分频器可选择为2、4、6、8分频；</li>
-</ol>
-<p><strong>备注:</strong></p>
-<ul>
-<li>FCLK为供给CPU内核的时钟信号，我们所说的cpu主频为XXXXMHz，就是指的这个时钟信号，相应的，1/Fclk即为cpu时钟周期</li>
-<li>HCLK为优秀的高性能总线（AHB bus peripherals）供给时钟信号（AHB为advanced high-performance bus）；HCLK ：AHB总线时钟，由系统时钟SYSCLK 分频得到，一般不分频，等于系统时钟，HCLK是高速外设时钟，是<strong>给外部设备的，比如内存，flash</strong>。</li>
-<li>PCLK为优秀的高性能外设总线（APB bus peripherals）供给时钟信号（其中APB为advanced peripherals bus）；</li>
-</ul>
-<h2 id="总线—APB和AHB"><a href="#总线—APB和AHB" class="headerlink" title="总线—APB和AHB"></a>总线—APB和AHB</h2><ul>
-<li><strong>APB</strong> Advanced Peripheral Bus的缩写，这是一种外围总线；</li>
-</ul>
-<h3 id="APB1总线外设"><a href="#APB1总线外设" class="headerlink" title="APB1总线外设"></a>APB1总线外设</h3><ul>
-<li>定时器TIM2到TIM7；</li>
-<li>RTC；</li>
-<li>WDT看门狗；</li>
-<li>SPI2 、SPI3；</li>
-<li>USART2、USART3；</li>
-<li>UART4、UART5；</li>
-<li>I2C1，I2C2；</li>
-<li>USB./CAN共享的512字节SRAM；</li>
-<li>bXCAN1、bXCAN2；</li>
-<li>后备寄存器BKP；</li>
-<li>电源控制PWR；</li>
-<li>DAC</li>
-</ul>
-<h3 id="APB2总线外设"><a href="#APB2总线外设" class="headerlink" title="APB2总线外设"></a>APB2总线外设</h3><ul>
-<li>USART1；</li>
-<li>高级控制定时器TIM1和TIM8；</li>
-<li>模数转换器ADC1、ADC2、ADC3；</li>
-<li>SPI1；</li>
-<li>外部中断EXTI；</li>
-<li>复用IO，AFIO；</li>
-<li>通用IO：GPIOA~G；</li>
-</ul>
-<h3 id="AHB外设"><a href="#AHB外设" class="headerlink" title="AHB外设"></a>AHB外设</h3><ul>
-<li><p><strong>AHB</strong> Advanced High performance Bus的缩写，译作高级高性能总线，这是一种“系统总线”。</p>
-</li>
-<li><p>Flash 存储器；</p>
-</li>
-<li><p>DMA；</p>
-</li>
-<li><p>复位和时钟控制；</p>
-</li>
-<li><p>CRC;</p>
-</li>
-<li><p>以太网；</p>
-</li>
-<li><p>SDIO；</p>
-</li>
-</ul>
-<h3 id="串口"><a href="#串口" class="headerlink" title="串口"></a>串口</h3><ul>
-<li>USART1 串口模式</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">模式</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Sigle Wire(Half-Duplex)</td>
-<td align="left">半双工</td>
-</tr>
-<tr>
-<td align="left">Asynchronous</td>
-<td align="left">异步</td>
-</tr>
-<tr>
-<td align="left">synchronous</td>
-<td align="left">同步</td>
-</tr>
-<tr>
-<td align="left">SmartCard</td>
-<td align="left">智能卡</td>
-</tr>
-<tr>
-<td align="left">lrDA</td>
-<td align="left">红外线数据协会) SIR ENDEC 规范</td>
-</tr>
-<tr>
-<td align="left">LIN</td>
-<td align="left">支持局域互连网络</td>
-</tr>
-<tr>
-<td align="left">Multiprocessor Communication</td>
-<td align="left">多机串口通信</td>
-</tr>
-</tbody></table>
-<h2 id="CubeIDE-Debug设置"><a href="#CubeIDE-Debug设置" class="headerlink" title="CubeIDE Debug设置"></a>CubeIDE Debug设置</h2><ol>
-<li>设置调试器(这里以ST-LINK为例子)<br><img src="/images/pasted-108.png" alt="upload successful"></li>
-<li>出现以下提示，需要下载对应的ST-Link Server<br><img src="/images/pasted-109.png" alt="upload successful"></li>
-<li>升级ST-Link 固件<br><img src="/images/pasted-110.png" alt="upload successful"><br><img src="/images/pasted-111.png" alt="upload successful"><br><img src="/images/pasted-112.png" alt="upload successful"></li>
-<li>设置SW 调试引脚，不然不能在线调试(这个细节我被坑了┭┮﹏┭┮)<br><img src="/images/pasted-113.png" alt="upload successful"></li>
-</ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://www.waveshare.net/study/article-629-1.html">https://www.waveshare.net/study/article-629-1.html</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>STM32</category>
-      </categories>
-      <tags>
-        <tag>STM32</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>STM8 命名规则</title>
     <url>/2017/03/26/3ec7.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
@@ -4628,72 +4628,6 @@ t 0:0(0) ack 22535 win 8760 (DF)</code></pre>
       <tags>
         <tag>ST</tag>
         <tag>STM8</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git之技能记录</title>
-    <url>/2018/02/11/3432.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一-Git-功能预览图"><a href="#一-Git-功能预览图" class="headerlink" title="一. Git 功能预览图"></a>一. Git 功能预览图</h2><p><img src="http://upload-images.jianshu.io/upload_images/1736256-510243b84e2d36f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Git"></p>
-<a id="more"></a>
-
-<h2 id="二-tag"><a href="#二-tag" class="headerlink" title="二. tag"></a>二. tag</h2><ul>
-<li>列出所有tag</li>
-</ul>
-<pre><code>$ git tag -l</code></pre>
-<ul>
-<li>打tag</li>
-</ul>
-<pre><code>$ git tag &#39;tag&#39;</code></pre>
-<ul>
-<li>打tag 加注释</li>
-</ul>
-<pre><code>$ git tag -a [tag name] -m [message]</code></pre>
-<ul>
-<li>删除本地tag</li>
-</ul>
-<pre><code>$ git tag -d [tag]</code></pre>
-<ul>
-<li>删除远程tag</li>
-</ul>
-<pre><code>git push origin --delete tag &lt;tagname&gt;</code></pre>
-<ul>
-<li>查看tag信息</li>
-</ul>
-<pre><code>$ git show [tag]</code></pre>
-<ul>
-<li>提交指定tag</li>
-</ul>
-<pre><code>$ git push [remote] [tag]
-</code></pre>
-<p>例如，将v1.0标签推送到远程服务器上</p>
-<pre><code>$ git push origin v1.0</code></pre>
-<ul>
-<li>提交所有tag</li>
-</ul>
-<pre><code>$ git push [remote] --tags</code></pre>
-<h2 id="三-git-信息查询"><a href="#三-git-信息查询" class="headerlink" title="三. git 信息查询"></a>三. git 信息查询</h2><ul>
-<li>查看远程仓库信息</li>
-</ul>
-<pre><code>$ git remote -v</code></pre>
-<ul>
-<li>查看分支</li>
-</ul>
-<pre><code>$ git branch -a</code></pre>
-<ul>
-<li>查看分支合并图</li>
-</ul>
-<pre><code>git log --graph</code></pre>
-<h2 id="四-工程设置"><a href="#四-工程设置" class="headerlink" title="四. 工程设置"></a>四. 工程设置</h2><ul>
-<li>更新远程仓库</li>
-</ul>
-<pre><code>git remote set-url origin git@gitlab.gizwits.com:********.git</code></pre>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -4907,23 +4841,6 @@ TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2017/03/26/3eeb.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><a id="more"></a>
-
-<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>golang之环境搭建</title>
     <url>/2019/09/08/b098.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h2 id="宿主机环境"><a href="#宿主机环境" class="headerlink" title="宿主机环境"></a>宿主机环境</h2><pre class=" language-SH"><code class="language-SH">Linux VM-133-112-ubuntu 4.15.0-54-generic #58-Ubuntu SMP Mon Jun 24 10:55:24 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux</code></pre>
@@ -5012,6 +4929,95 @@ TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)
       <tags>
         <tag>golang</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2017/03/26/3eeb.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><a id="more"></a>
+
+<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Git之技能记录</title>
+    <url>/2018/02/11/3432.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一-Git-功能预览图"><a href="#一-Git-功能预览图" class="headerlink" title="一. Git 功能预览图"></a>一. Git 功能预览图</h2><p><img src="http://upload-images.jianshu.io/upload_images/1736256-510243b84e2d36f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Git"></p>
+<a id="more"></a>
+
+<h2 id="二-tag"><a href="#二-tag" class="headerlink" title="二. tag"></a>二. tag</h2><ul>
+<li>列出所有tag</li>
+</ul>
+<pre><code>$ git tag -l</code></pre>
+<ul>
+<li>打tag</li>
+</ul>
+<pre><code>$ git tag &#39;tag&#39;</code></pre>
+<ul>
+<li>打tag 加注释</li>
+</ul>
+<pre><code>$ git tag -a [tag name] -m [message]</code></pre>
+<ul>
+<li>删除本地tag</li>
+</ul>
+<pre><code>$ git tag -d [tag]</code></pre>
+<ul>
+<li>删除远程tag</li>
+</ul>
+<pre><code>git push origin --delete tag &lt;tagname&gt;</code></pre>
+<ul>
+<li>查看tag信息</li>
+</ul>
+<pre><code>$ git show [tag]</code></pre>
+<ul>
+<li>提交指定tag</li>
+</ul>
+<pre><code>$ git push [remote] [tag]
+</code></pre>
+<p>例如，将v1.0标签推送到远程服务器上</p>
+<pre><code>$ git push origin v1.0</code></pre>
+<ul>
+<li>提交所有tag</li>
+</ul>
+<pre><code>$ git push [remote] --tags</code></pre>
+<h2 id="三-git-信息查询"><a href="#三-git-信息查询" class="headerlink" title="三. git 信息查询"></a>三. git 信息查询</h2><ul>
+<li>查看远程仓库信息</li>
+</ul>
+<pre><code>$ git remote -v</code></pre>
+<ul>
+<li>查看分支</li>
+</ul>
+<pre><code>$ git branch -a</code></pre>
+<ul>
+<li>查看分支合并图</li>
+</ul>
+<pre><code>git log --graph</code></pre>
+<h2 id="四-工程设置"><a href="#四-工程设置" class="headerlink" title="四. 工程设置"></a>四. 工程设置</h2><ul>
+<li>更新远程仓库</li>
+</ul>
+<pre><code>git remote set-url origin git@gitlab.gizwits.com:********.git</code></pre>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo自动备份教程</title>
+    <url>/2017/08/01/5973.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://notes.wanghao.work/2015-07-06-%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6.html">连接</a></p>
+]]></content>
   </entry>
   <entry>
     <title>linux 工具函数之网络工具函数</title>
@@ -5252,45 +5258,6 @@ TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)
       </tags>
   </entry>
   <entry>
-    <title>Hexo自动备份教程</title>
-    <url>/2017/08/01/5973.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://notes.wanghao.work/2015-07-06-%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6.html">连接</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>macOS小技能</title>
-    <url>/2018/12/10/d7f9.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="iTerm2"><a href="#iTerm2" class="headerlink" title="iTerm2"></a>iTerm2</h2><h3 id="iTerm2-SSH免密码远程连接服务器"><a href="#iTerm2-SSH免密码远程连接服务器" class="headerlink" title="iTerm2 SSH免密码远程连接服务器"></a>iTerm2 SSH免密码远程连接服务器</h3><pre class=" language-sh"><code class="language-sh">#!/usr/bin/expect
-
-set timeout 30
-spawn ssh -p [lindex $argv 0] [lindex $argv 1]@[lindex $argv 2]
-expect &#123;
-        "(yes/no)?"
-        &#123;send "yes\n";exp_continue&#125;
-        "password:"
-        &#123;send "[lindex $argv 3]\n"&#125;
-&#125;
-expect "~"
-send "clear\n"
-interact</code></pre>
-<a id="more"></a>
-<p>解说<br>这里<code>[lindex argv0]</code>，<code>[lindexargv0]</code>，<code>[lindexargv 1]</code>， <code>[lindex argv2]</code>，<code>[lindexargv2]</code>，<code>[lindexargv 3]</code>分别代表着4个参数。分别是：端口号、用户名、服务器地址、密码。</p>
-<h3 id="iTerm2-界面设置如下"><a href="#iTerm2-界面设置如下" class="headerlink" title="iTerm2 界面设置如下"></a>iTerm2 界面设置如下</h3><p><img src="https://upload-images.jianshu.io/upload_images/1736256-40764b317275b7a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iTerm2"></p>
-<h3 id="SSH-免密登陆到服务器"><a href="#SSH-免密登陆到服务器" class="headerlink" title="SSH 免密登陆到服务器"></a>SSH 免密登陆到服务器</h3><ol>
-<li>拷贝公钥到服务器<pre><code>scp -p ~/.ssh/id_rsa.pub ubuntu@10.10.10.10:/home/ubuntu/.ssh/authorized_keys</code></pre>
-</li>
-<li>ssh 配置文件设置<br><br> <code>/Users/alex/.ssh/config</code><br>设置如下<br><img src="/images/ssh_config.png" alt="ssh_config"></li>
-</ol>
-]]></content>
-      <categories>
-        <category>macOS</category>
-      </categories>
-      <tags>
-        <tag>macOS</tag>
-        <tag>uninx</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Tool 记</title>
     <url>/2017/03/26/bff4.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
@@ -5324,51 +5291,36 @@ write_flash -fm qio -fs 32m -ff 40m 0x3fc000 ../bin/0x3fc000.bin</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>vscode配置</title>
-    <url>/2019/08/26/fc74.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Vscode终端Terminal显示zsh的字体设置"><a href="#Vscode终端Terminal显示zsh的字体设置" class="headerlink" title="Vscode终端Terminal显示zsh的字体设置"></a>Vscode终端Terminal显示zsh的字体设置</h2><ul>
-<li><p>没有设置之前的效果<br><img src="/images/zsh01.png" alt="zsh2"></p>
-</li>
-<li><p>安装<a href="https://github.com/powerline/fonts/blob/master/Meslo%20Slashed/Meslo%20LG%20M%20Regular%20for%20Powerline.ttf">Meslo LG M for Powerline</a> 后，配置VsCode<br><br><img src="/images/Meslo.png" alt="Meslo"></p>
-</li>
-<li><p>安装后效果<br><img src="/images/zsh02.png" alt="zsh2"></p>
-</li>
-</ul>
-<a id="more"></a>
+    <title>macOS小技能</title>
+    <url>/2018/12/10/d7f9.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="iTerm2"><a href="#iTerm2" class="headerlink" title="iTerm2"></a>iTerm2</h2><h3 id="iTerm2-SSH免密码远程连接服务器"><a href="#iTerm2-SSH免密码远程连接服务器" class="headerlink" title="iTerm2 SSH免密码远程连接服务器"></a>iTerm2 SSH免密码远程连接服务器</h3><pre class=" language-sh"><code class="language-sh">#!/usr/bin/expect
 
-<h2 id="vscode-配置同步"><a href="#vscode-配置同步" class="headerlink" title="vscode 配置同步"></a>vscode 配置同步</h2><ul>
-<li><strong>安装插件 <code>sync</code></strong><br><img src="/images/pasted-2.png" alt="upload successful"></li>
-<li><strong>登录<code>github</code>账号获取<code>token</code></strong><br><img src="/images/pasted-3.png" alt="upload successful"><br><img src="/images/pasted-4.png" alt="upload successful"></li>
-<li><strong>上传配置</strong><br><br>快捷键: <code>shift+alt+u</code> 在弹出来的框里面填入<code>token</code>,然后再输出哪里能看到生成一个<code>GitHub Gist</code><br>用于另外一台机器下载配置；</li>
-<li><strong>下载配置</strong> <br><br>填入gist id,如下图<br><img src="/images/pasted-6.png" alt="upload successful"><br><br>快捷键:<code>shift+alt+d</code> 下载配置<br><img src="/images/pasted-7.png" alt="upload successful"></li>
-</ul>
-<h2 id="头文件配置"><a href="#头文件配置" class="headerlink" title="头文件配置"></a>头文件配置</h2><ul>
-<li><p>安装插件 : <code>C/C++ for Visual Studio Code</code><br><img src="/images/pasted-8.png" alt="upload successful"></p>
+set timeout 30
+spawn ssh -p [lindex $argv 0] [lindex $argv 1]@[lindex $argv 2]
+expect &#123;
+        "(yes/no)?"
+        &#123;send "yes\n";exp_continue&#125;
+        "password:"
+        &#123;send "[lindex $argv 3]\n"&#125;
+&#125;
+expect "~"
+send "clear\n"
+interact</code></pre>
+<a id="more"></a>
+<p>解说<br>这里<code>[lindex argv0]</code>，<code>[lindexargv0]</code>，<code>[lindexargv 1]</code>， <code>[lindex argv2]</code>，<code>[lindexargv2]</code>，<code>[lindexargv 3]</code>分别代表着4个参数。分别是：端口号、用户名、服务器地址、密码。</p>
+<h3 id="iTerm2-界面设置如下"><a href="#iTerm2-界面设置如下" class="headerlink" title="iTerm2 界面设置如下"></a>iTerm2 界面设置如下</h3><p><img src="https://upload-images.jianshu.io/upload_images/1736256-40764b317275b7a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iTerm2"></p>
+<h3 id="SSH-免密登陆到服务器"><a href="#SSH-免密登陆到服务器" class="headerlink" title="SSH 免密登陆到服务器"></a>SSH 免密登陆到服务器</h3><ol>
+<li>拷贝公钥到服务器<pre><code>scp -p ~/.ssh/id_rsa.pub ubuntu@10.10.10.10:/home/ubuntu/.ssh/authorized_keys</code></pre>
 </li>
-<li><p>配置 : <code>IntelliSense</code><br></p>
-<blockquote>
-<p>安装完成之后，打开你的包含c++的文件夹，将会生成一个.vscode文件夹，所有的配置将在这个文件夹中进行配置。</p>
-</blockquote>
-</li>
-</ul>
-<p>ctrl+shift+P打开Command Palette,运行C/Cpp: Edit configurations…生成c_cpp_properties.json：<br><br><strong>比如我的配置文件如下:</strong><br><img src="/images/pasted-9.png" alt="upload successful"></p>
+<li>ssh 配置文件设置<br><br> <code>/Users/alex/.ssh/config</code><br>设置如下<br><img src="/images/ssh_config.png" alt="ssh_config"></li>
+</ol>
 ]]></content>
+      <categories>
+        <category>macOS</category>
+      </categories>
       <tags>
-        <tag>go</tag>
-        <tag>vscode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>win10子系统wsl</title>
-    <url>/2019/08/21/d9b0.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="子系统重启wsl"><a href="#子系统重启wsl" class="headerlink" title="子系统重启wsl"></a>子系统重启wsl</h2><p>管理员权限下:</p>
-<pre class=" language-sh"><code class="language-sh">net stop LxssManager
-net start LxssManager</code></pre>
-<h2 id="子系统在win10的默认位置"><a href="#子系统在win10的默认位置" class="headerlink" title="子系统在win10的默认位置"></a>子系统在win10的默认位置</h2><pre class=" language-sh"><code class="language-sh">C:\Users\87832\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState</code></pre>
-<p><img src="/images/pasted-1.png" alt="upload successful"></p>
-]]></content>
-      <tags>
-        <tag>win10</tag>
+        <tag>macOS</tag>
+        <tag>uninx</tag>
       </tags>
   </entry>
   <entry>
@@ -5452,6 +5404,54 @@ Creating shortcut for 7-Zip (7zFM.exe)
 ]]></content>
   </entry>
   <entry>
+    <title>vscode配置</title>
+    <url>/2019/08/26/fc74.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Vscode终端Terminal显示zsh的字体设置"><a href="#Vscode终端Terminal显示zsh的字体设置" class="headerlink" title="Vscode终端Terminal显示zsh的字体设置"></a>Vscode终端Terminal显示zsh的字体设置</h2><ul>
+<li><p>没有设置之前的效果<br><img src="/images/zsh01.png" alt="zsh2"></p>
+</li>
+<li><p>安装<a href="https://github.com/powerline/fonts/blob/master/Meslo%20Slashed/Meslo%20LG%20M%20Regular%20for%20Powerline.ttf">Meslo LG M for Powerline</a> 后，配置VsCode<br><br><img src="/images/Meslo.png" alt="Meslo"></p>
+</li>
+<li><p>安装后效果<br><img src="/images/zsh02.png" alt="zsh2"></p>
+</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="vscode-配置同步"><a href="#vscode-配置同步" class="headerlink" title="vscode 配置同步"></a>vscode 配置同步</h2><ul>
+<li><strong>安装插件 <code>sync</code></strong><br><img src="/images/pasted-2.png" alt="upload successful"></li>
+<li><strong>登录<code>github</code>账号获取<code>token</code></strong><br><img src="/images/pasted-3.png" alt="upload successful"><br><img src="/images/pasted-4.png" alt="upload successful"></li>
+<li><strong>上传配置</strong><br><br>快捷键: <code>shift+alt+u</code> 在弹出来的框里面填入<code>token</code>,然后再输出哪里能看到生成一个<code>GitHub Gist</code><br>用于另外一台机器下载配置；</li>
+<li><strong>下载配置</strong> <br><br>填入gist id,如下图<br><img src="/images/pasted-6.png" alt="upload successful"><br><br>快捷键:<code>shift+alt+d</code> 下载配置<br><img src="/images/pasted-7.png" alt="upload successful"></li>
+</ul>
+<h2 id="头文件配置"><a href="#头文件配置" class="headerlink" title="头文件配置"></a>头文件配置</h2><ul>
+<li><p>安装插件 : <code>C/C++ for Visual Studio Code</code><br><img src="/images/pasted-8.png" alt="upload successful"></p>
+</li>
+<li><p>配置 : <code>IntelliSense</code><br></p>
+<blockquote>
+<p>安装完成之后，打开你的包含c++的文件夹，将会生成一个.vscode文件夹，所有的配置将在这个文件夹中进行配置。</p>
+</blockquote>
+</li>
+</ul>
+<p>ctrl+shift+P打开Command Palette,运行C/Cpp: Edit configurations…生成c_cpp_properties.json：<br><br><strong>比如我的配置文件如下:</strong><br><img src="/images/pasted-9.png" alt="upload successful"></p>
+]]></content>
+      <tags>
+        <tag>go</tag>
+        <tag>vscode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>win10子系统wsl</title>
+    <url>/2019/08/21/d9b0.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="子系统重启wsl"><a href="#子系统重启wsl" class="headerlink" title="子系统重启wsl"></a>子系统重启wsl</h2><p>管理员权限下:</p>
+<pre class=" language-sh"><code class="language-sh">net stop LxssManager
+net start LxssManager</code></pre>
+<h2 id="子系统在win10的默认位置"><a href="#子系统在win10的默认位置" class="headerlink" title="子系统在win10的默认位置"></a>子系统在win10的默认位置</h2><pre class=" language-sh"><code class="language-sh">C:\Users\87832\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState</code></pre>
+<p><img src="/images/pasted-1.png" alt="upload successful"></p>
+]]></content>
+      <tags>
+        <tag>win10</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>哈夫曼树&amp;哈夫曼编码</title>
     <url>/2020/08/12/3729.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h2><blockquote>
@@ -5499,143 +5499,6 @@ Creating shortcut for 7-Zip (7zFM.exe)
 ]]></content>
       <tags>
         <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>基本算法之算法图解Book</title>
-    <url>/2018/05/05/d585.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="算法图解"><a href="#算法图解" class="headerlink" title="算法图解"></a>算法图解</h2><h3 id="内容简介-·-·-·-·-·-·"><a href="#内容简介-·-·-·-·-·-·" class="headerlink" title="内容简介  · · · · · ·"></a><font color=#115533>内容简介  · · · · · ·</font></h3><font color=#228B22>
-本书示例丰富，图文并茂，以让人容易理解的方式阐释了算法，旨在帮助程序员在日常项目中更好地发挥算法的能量。书中的前三章将帮助你打下基础，带你学习二分查找、大O表示法、两种基本的数据结构以及递归等。余下的篇幅将主要介绍应用广泛的算法，具体内容包括：面对具体问题时的解决技巧，比如，何时采用贪婪算法或动态规划；散列表的应用；图算法；K最近邻算法。
-</font>
-
-<h3 id="作者简介-·-·-·-·-·-·"><a href="#作者简介-·-·-·-·-·-·" class="headerlink" title="作者简介  · · · · · ·"></a><font color=#115533>作者简介  · · · · · ·</font></h3><font color=#228B22>
-Aditya Bhargava
-
-<p>软件工程师，兼具计算机科学和美术方面的教育背景，在adit.io撰写编程方面的博客。<br></font></p>
-<h3 id="豆瓣点评"><a href="#豆瓣点评" class="headerlink" title="豆瓣点评"></a><font color=#228B22><a href="https://book.douban.com/subject/26979890/">豆瓣点评</a></font></h3><a id="more"></a>
-
-<h2 id="书本"><a href="#书本" class="headerlink" title="书本"></a>书本</h2><embed src="https://gitee.com/alexlin/algorithms/raw/master/doc/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95.pdf" width="100%" height="950" type="application/pdf" align=center >
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>图解算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>基本算法之平衡二叉树</title>
-    <url>/2018/03/25/646b.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h2><p><a href="https://baike.baidu.com/item/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/10421057?fr=aladdin">摘自百度:</a></p>
-<blockquote>
-<p>平衡二叉搜索树（Self-balancing binary search tree）又被称为AVL树（有别于AVL算法），且具有以下性质：它是一 棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树，同时，平衡二叉树必定是二叉搜索树，反之则不一定。平衡二叉树的常用实现方法有<code>红黑树</code>、<code>AVL</code>、<code>替罪羊树</code>、<code>Treap</code>、<code>伸展树</code>等。 最小二叉平衡树的节点的公式如下 $F(n)=F(n-1)+F(n-2)+1$ 这个类似于一个递归的数列，可以参考Fibonacci(斐波那契)数列，1是根节点，F(n-1)是左子树的节点数量，F(n-2)是右子树的节点数量</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="AVL树"><a href="#AVL树" class="headerlink" title="AVL树"></a>AVL树</h2><p><a href="https://baike.baidu.com/item/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/10421057?fr=aladdin">还是摘自百度</a></p>
-<blockquote>
-<p>AVL是最先发明的自平衡二叉查找树算法。在AVL中任何节点的两个儿子子树的高度最大差别为一，所以它也被称为高度平衡树，n个结点的AVL树最大深度约1.44log2n。查找、插入和删除在平均和最坏情况下都是O（log n）。增加和删除可能需要通过一次或多次树旋转来重新平衡这个树。</p>
-</blockquote>
-<p>根据AVL树的定义，AVL树中的任意结点的平衡因子只可能是-1（右子树高于左子树）、0或者1（左子树高于右子树），在某些图中也会表示为绝对高度差，即0，1，2这种形式，请注意理解。</p>
-<pre><code>BalanceFactor = height(left-sutree) − height(right-sutree)</code></pre>
-<div align=center>
-![AVL树][2]
-</div>
-
-<h3 id="AVL平衡二叉树结构定义"><a href="#AVL平衡二叉树结构定义" class="headerlink" title="AVL平衡二叉树结构定义"></a>AVL平衡二叉树结构定义</h3><pre class=" language-C"><code class="language-C">typedef struct AVLNode *Tree;
-typedef int ElementType;
-struct AVLNode
-&#123;
-    int depth; //深度，这里计算每个结点的深度，通过深度的比较可得出是否平衡
-    Tree parent; //该结点的父节点，方便操作
-    ElementType val; //结点值
-    Tree lchild;
-    Tree rchild;
-    AVLNode(int val=0) //默认构造函数
-    &#123;
-        parent=NULL;
-        depth=0;
-        lchild=rchild=NULL;
-        this->val=val;
-    &#125;
-&#125;;</code></pre>
-<h3 id="AVL平衡二叉树操作"><a href="#AVL平衡二叉树操作" class="headerlink" title="AVL平衡二叉树操作"></a>AVL平衡二叉树操作</h3><blockquote>
-<p>平衡的调整共有四种情况：分别为<code>LL</code>,<code>LR</code>,<code>RR</code>,<code>RL</code>。<br>当父节点的左子树和右子树的高度之差不能大于1，也就是说不能高过1层，否则该树就失衡了，就要对树进行操作</p>
-</blockquote>
-<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>我们可以记录当前节点的高度，比如空节点是-1，叶子节点是0，非叶子节点的height往根节点递增，比如在下图<br>中我们认为树的高度为h=2。</p>
-<div align=center>
-![AVL][3]
-</div>
-
-<h4 id="AVL树的插入时的失衡与调整"><a href="#AVL树的插入时的失衡与调整" class="headerlink" title="AVL树的插入时的失衡与调整"></a>AVL树的插入时的失衡与调整</h4><ul>
-<li><p>失衡与调整方向</p>
-<blockquote>
-<p>平衡二叉树的失衡调整主要是通过旋转<strong>最小失衡子树</strong>来实现的。(然后你要问啥是<em><em><font color="red">最小失衡子树</font></em></em> 了？🤷‍ 😶  。。。 )</p>
-</blockquote>
-</li>
-<li><p>最小失衡子树</p>
-<blockquote>
-<p>在新插入的结点向上查找，以第一个平衡因子的绝对值超过1的结点为根的子树称为最小不平衡子树。也就是说，一棵失衡的树，是有可能有多棵子树同时失衡的，如下。而这个时候，我们只要调整最小的不平衡子树，就能够将不平衡的树调整为平衡的树。</p>
-</blockquote>
-</li>
-</ul>
-<p><strong>例子1</strong> 在图A中。2结点（左子树树高-右子树树高）的绝对值=2。同理，3结点的平衡因子也为2.此时同时存在了两棵不平衡子树，而以3为根的树是最小的不平衡子树。我们只要将其以3为中心，将最小不平衡树向左旋转，即可得到平衡二叉树，如图B。</p>
-<div align="center">
-![val balance][4]
-</div>
-
-<p><strong>例子2</strong></p>
-<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><p><a href="https://baike.baidu.com/item/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/10421057?fr=aladdin">又摘自百度</a></p>
-<blockquote>
-<p>红黑树是一种自平衡二叉查找树，是在计算机科学中用到的一种数据结构，典型的用途是实现关联数组。它是在1972年由Rudolf Bayer发明的，他称之为”对称二叉B树”，它现代的名字是在 Leo J. Guibas 和 Robert Sedgewick 于1978年写的一篇论文中获得的。它是复杂的，但它的操作有着良好的最坏情况运行时间，并且在实践中是高效的: 它可以在O(log n)时间内做查找，插入和删除，这里的n是树中元素的数目。</p>
-</blockquote>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
-<li>所有节点的颜色是红色或者黑色；(很有道理的样子，🙄🙄🙄🙄🙄🙄)</li>
-<li>根节点是黑色；</li>
-<li>所有的叶子节点是黑色（叶子节点包含NULL）；</li>
-<li>每个红色的节点都有两个黑色的子节点(即红节点的儿子和父亲都必须为黑)；</li>
-<li>从任意节点出发，其到叶子节点树尾NULL结点的每一条路径上都包含相同数目的黑色节点</li>
-</ol>
-<div align="center">
-![rbT][5]
-</div>
-
-<h3 id="树的旋转知识"><a href="#树的旋转知识" class="headerlink" title="树的旋转知识"></a>树的旋转知识</h3><blockquote>
-<p>当我们在对红黑树进行插入和删除等操作时，对树做了修改，那么可能会违背红黑树的性质。<br>为了保持红黑树的性质，我们可以通过对树进行旋转，即修改树种某些节点的颜色及指针结构，以达到对红黑树进行插入、删除节点等操作时，红黑树依然能保持它特有的性质（如上文所述的，五点性质）。</p>
-</blockquote>
-<ul>
-<li>左旋<blockquote>
-<p>当在某个节点pivot上，做左旋操作时，我们假设它的右孩子y不是NIL[T]，pivot可以为树内任意左孩子而不是NIL[T]的节点。<br>左旋以pivot到y之间的链为“支轴”进行，它使y成为该孩子树新的根，而y的左孩子b则成为pivot的右孩子。</p>
-</blockquote>
-</li>
-</ul>
-<div align="center">
-![rgTl][6]
-</div>
-
-<ul>
-<li>右旋</li>
-</ul>
-<div align="center">
-![rgTr][7]
-</div>
-
-
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://blog.csdn.net/u014634338/article/details/42465089">https://blog.csdn.net/u014634338/article/details/42465089</a></li>
-<li><a href="https://www.cnblogs.com/huangxincheng/archive/2012/07/22/2603956.html">https://www.cnblogs.com/huangxincheng/archive/2012/07/22/2603956.html</a></li>
-<li><a href="https://blog.csdn.net/Sun_TTTT/article/details/65445754">https://blog.csdn.net/Sun_TTTT/article/details/65445754</a></li>
-<li><a href="https://github.com/julycoding/The-Art-Of-Programming-By-July/blob/master/ebook/zh/03.01.md">https://github.com/julycoding/The-Art-Of-Programming-By-July/blob/master/ebook/zh/03.01.md</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>二叉树</tag>
       </tags>
   </entry>
   <entry>
@@ -5796,6 +5659,143 @@ HXBL(root->rchild);
 ]]></content>
       <tags>
         <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基本算法之算法图解Book</title>
+    <url>/2018/05/05/d585.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="算法图解"><a href="#算法图解" class="headerlink" title="算法图解"></a>算法图解</h2><h3 id="内容简介-·-·-·-·-·-·"><a href="#内容简介-·-·-·-·-·-·" class="headerlink" title="内容简介  · · · · · ·"></a><font color=#115533>内容简介  · · · · · ·</font></h3><font color=#228B22>
+本书示例丰富，图文并茂，以让人容易理解的方式阐释了算法，旨在帮助程序员在日常项目中更好地发挥算法的能量。书中的前三章将帮助你打下基础，带你学习二分查找、大O表示法、两种基本的数据结构以及递归等。余下的篇幅将主要介绍应用广泛的算法，具体内容包括：面对具体问题时的解决技巧，比如，何时采用贪婪算法或动态规划；散列表的应用；图算法；K最近邻算法。
+</font>
+
+<h3 id="作者简介-·-·-·-·-·-·"><a href="#作者简介-·-·-·-·-·-·" class="headerlink" title="作者简介  · · · · · ·"></a><font color=#115533>作者简介  · · · · · ·</font></h3><font color=#228B22>
+Aditya Bhargava
+
+<p>软件工程师，兼具计算机科学和美术方面的教育背景，在adit.io撰写编程方面的博客。<br></font></p>
+<h3 id="豆瓣点评"><a href="#豆瓣点评" class="headerlink" title="豆瓣点评"></a><font color=#228B22><a href="https://book.douban.com/subject/26979890/">豆瓣点评</a></font></h3><a id="more"></a>
+
+<h2 id="书本"><a href="#书本" class="headerlink" title="书本"></a>书本</h2><embed src="https://gitee.com/alexlin/algorithms/raw/master/doc/%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95.pdf" width="100%" height="950" type="application/pdf" align=center >
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>图解算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基本算法之平衡二叉树</title>
+    <url>/2018/03/25/646b.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h2><p><a href="https://baike.baidu.com/item/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/10421057?fr=aladdin">摘自百度:</a></p>
+<blockquote>
+<p>平衡二叉搜索树（Self-balancing binary search tree）又被称为AVL树（有别于AVL算法），且具有以下性质：它是一 棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树，同时，平衡二叉树必定是二叉搜索树，反之则不一定。平衡二叉树的常用实现方法有<code>红黑树</code>、<code>AVL</code>、<code>替罪羊树</code>、<code>Treap</code>、<code>伸展树</code>等。 最小二叉平衡树的节点的公式如下 $F(n)=F(n-1)+F(n-2)+1$ 这个类似于一个递归的数列，可以参考Fibonacci(斐波那契)数列，1是根节点，F(n-1)是左子树的节点数量，F(n-2)是右子树的节点数量</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="AVL树"><a href="#AVL树" class="headerlink" title="AVL树"></a>AVL树</h2><p><a href="https://baike.baidu.com/item/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/10421057?fr=aladdin">还是摘自百度</a></p>
+<blockquote>
+<p>AVL是最先发明的自平衡二叉查找树算法。在AVL中任何节点的两个儿子子树的高度最大差别为一，所以它也被称为高度平衡树，n个结点的AVL树最大深度约1.44log2n。查找、插入和删除在平均和最坏情况下都是O（log n）。增加和删除可能需要通过一次或多次树旋转来重新平衡这个树。</p>
+</blockquote>
+<p>根据AVL树的定义，AVL树中的任意结点的平衡因子只可能是-1（右子树高于左子树）、0或者1（左子树高于右子树），在某些图中也会表示为绝对高度差，即0，1，2这种形式，请注意理解。</p>
+<pre><code>BalanceFactor = height(left-sutree) − height(right-sutree)</code></pre>
+<div align=center>
+![AVL树][2]
+</div>
+
+<h3 id="AVL平衡二叉树结构定义"><a href="#AVL平衡二叉树结构定义" class="headerlink" title="AVL平衡二叉树结构定义"></a>AVL平衡二叉树结构定义</h3><pre class=" language-C"><code class="language-C">typedef struct AVLNode *Tree;
+typedef int ElementType;
+struct AVLNode
+&#123;
+    int depth; //深度，这里计算每个结点的深度，通过深度的比较可得出是否平衡
+    Tree parent; //该结点的父节点，方便操作
+    ElementType val; //结点值
+    Tree lchild;
+    Tree rchild;
+    AVLNode(int val=0) //默认构造函数
+    &#123;
+        parent=NULL;
+        depth=0;
+        lchild=rchild=NULL;
+        this->val=val;
+    &#125;
+&#125;;</code></pre>
+<h3 id="AVL平衡二叉树操作"><a href="#AVL平衡二叉树操作" class="headerlink" title="AVL平衡二叉树操作"></a>AVL平衡二叉树操作</h3><blockquote>
+<p>平衡的调整共有四种情况：分别为<code>LL</code>,<code>LR</code>,<code>RR</code>,<code>RL</code>。<br>当父节点的左子树和右子树的高度之差不能大于1，也就是说不能高过1层，否则该树就失衡了，就要对树进行操作</p>
+</blockquote>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>我们可以记录当前节点的高度，比如空节点是-1，叶子节点是0，非叶子节点的height往根节点递增，比如在下图<br>中我们认为树的高度为h=2。</p>
+<div align=center>
+![AVL][3]
+</div>
+
+<h4 id="AVL树的插入时的失衡与调整"><a href="#AVL树的插入时的失衡与调整" class="headerlink" title="AVL树的插入时的失衡与调整"></a>AVL树的插入时的失衡与调整</h4><ul>
+<li><p>失衡与调整方向</p>
+<blockquote>
+<p>平衡二叉树的失衡调整主要是通过旋转<strong>最小失衡子树</strong>来实现的。(然后你要问啥是<em><em><font color="red">最小失衡子树</font></em></em> 了？🤷‍ 😶  。。。 )</p>
+</blockquote>
+</li>
+<li><p>最小失衡子树</p>
+<blockquote>
+<p>在新插入的结点向上查找，以第一个平衡因子的绝对值超过1的结点为根的子树称为最小不平衡子树。也就是说，一棵失衡的树，是有可能有多棵子树同时失衡的，如下。而这个时候，我们只要调整最小的不平衡子树，就能够将不平衡的树调整为平衡的树。</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>例子1</strong> 在图A中。2结点（左子树树高-右子树树高）的绝对值=2。同理，3结点的平衡因子也为2.此时同时存在了两棵不平衡子树，而以3为根的树是最小的不平衡子树。我们只要将其以3为中心，将最小不平衡树向左旋转，即可得到平衡二叉树，如图B。</p>
+<div align="center">
+![val balance][4]
+</div>
+
+<p><strong>例子2</strong></p>
+<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><p><a href="https://baike.baidu.com/item/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/10421057?fr=aladdin">又摘自百度</a></p>
+<blockquote>
+<p>红黑树是一种自平衡二叉查找树，是在计算机科学中用到的一种数据结构，典型的用途是实现关联数组。它是在1972年由Rudolf Bayer发明的，他称之为”对称二叉B树”，它现代的名字是在 Leo J. Guibas 和 Robert Sedgewick 于1978年写的一篇论文中获得的。它是复杂的，但它的操作有着良好的最坏情况运行时间，并且在实践中是高效的: 它可以在O(log n)时间内做查找，插入和删除，这里的n是树中元素的数目。</p>
+</blockquote>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
+<li>所有节点的颜色是红色或者黑色；(很有道理的样子，🙄🙄🙄🙄🙄🙄)</li>
+<li>根节点是黑色；</li>
+<li>所有的叶子节点是黑色（叶子节点包含NULL）；</li>
+<li>每个红色的节点都有两个黑色的子节点(即红节点的儿子和父亲都必须为黑)；</li>
+<li>从任意节点出发，其到叶子节点树尾NULL结点的每一条路径上都包含相同数目的黑色节点</li>
+</ol>
+<div align="center">
+![rbT][5]
+</div>
+
+<h3 id="树的旋转知识"><a href="#树的旋转知识" class="headerlink" title="树的旋转知识"></a>树的旋转知识</h3><blockquote>
+<p>当我们在对红黑树进行插入和删除等操作时，对树做了修改，那么可能会违背红黑树的性质。<br>为了保持红黑树的性质，我们可以通过对树进行旋转，即修改树种某些节点的颜色及指针结构，以达到对红黑树进行插入、删除节点等操作时，红黑树依然能保持它特有的性质（如上文所述的，五点性质）。</p>
+</blockquote>
+<ul>
+<li>左旋<blockquote>
+<p>当在某个节点pivot上，做左旋操作时，我们假设它的右孩子y不是NIL[T]，pivot可以为树内任意左孩子而不是NIL[T]的节点。<br>左旋以pivot到y之间的链为“支轴”进行，它使y成为该孩子树新的根，而y的左孩子b则成为pivot的右孩子。</p>
+</blockquote>
+</li>
+</ul>
+<div align="center">
+![rgTl][6]
+</div>
+
+<ul>
+<li>右旋</li>
+</ul>
+<div align="center">
+![rgTr][7]
+</div>
+
+
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://blog.csdn.net/u014634338/article/details/42465089">https://blog.csdn.net/u014634338/article/details/42465089</a></li>
+<li><a href="https://www.cnblogs.com/huangxincheng/archive/2012/07/22/2603956.html">https://www.cnblogs.com/huangxincheng/archive/2012/07/22/2603956.html</a></li>
+<li><a href="https://blog.csdn.net/Sun_TTTT/article/details/65445754">https://blog.csdn.net/Sun_TTTT/article/details/65445754</a></li>
+<li><a href="https://github.com/julycoding/The-Art-Of-Programming-By-July/blob/master/ebook/zh/03.01.md">https://github.com/julycoding/The-Art-Of-Programming-By-July/blob/master/ebook/zh/03.01.md</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>二叉树</tag>
       </tags>
   </entry>
   <entry>
@@ -6040,17 +6040,6 @@ HXBL(root->rchild);
       </tags>
   </entry>
   <entry>
-    <title>微信开发</title>
-    <url>/2017/04/06/1051.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="http://iot.weixin.qq.com/wiki/new/index.html?page=2-1">微信硬件平台</a><br><a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=2017118">小程序</a></p>
-<p>蛋疼的一天</p>
-]]></content>
-      <tags>
-        <tag>微信</tag>
-        <tag>硬件</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>日志打印</title>
     <url>/2021/03/17/f5b3.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="定义打印函数"><a href="#定义打印函数" class="headerlink" title="定义打印函数"></a>定义打印函数</h2><p>参考ESP8266的打印，定义如下打印函数</p>
@@ -6126,6 +6115,17 @@ Log("\r\n\r\n");&amp;#125;\
 ]]></content>
   </entry>
   <entry>
+    <title>微信开发</title>
+    <url>/2017/04/06/1051.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="http://iot.weixin.qq.com/wiki/new/index.html?page=2-1">微信硬件平台</a><br><a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=2017118">小程序</a></p>
+<p>蛋疼的一天</p>
+]]></content>
+      <tags>
+        <tag>微信</tag>
+        <tag>硬件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>汉枫系列-LPT230环境搭建</title>
     <url>/2018/04/17/97d9.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="MAC-下编译器下载"><a href="#MAC-下编译器下载" class="headerlink" title="MAC 下编译器下载"></a>MAC 下编译器下载</h2><blockquote>
@@ -6142,119 +6142,6 @@ Log("\r\n\r\n");&amp;#125;\
         <tag>lpt230</tag>
         <tag>gcc</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>活成自己的样子</title>
-    <url>/2888/03/28/dbbb.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<blockquote>
-<p>我们总是拼尽全力… 想活成大家所期待的样子，以为那样就是最完美的。但其实，真正的成功，或许是不被他人绑架自己的梦想，全然按照自己的意愿过好这一生。</p>
-</blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/ilxj/ilxj.github.io@master/images/pasted-15.png" alt="1"></p>
-<pre class=" language-sh"><code class="language-sh">==============================================================================================
-
-                                            _ooOoo_
-                                           o8888888o
-                                           88" . "88
-                                           (| -_- |)
-                                            O\ = /O
-                                        ____/`---'\____
-                                        .' \\|   |// `.
-                                       / \\||| : |||// \
-                                     / _||||| -:- |||||- \
-                                       | | \\\ - /// | |
-                                     | \_| ''\---/'' | |
-                                      \ .-\__ `-` ___/-. /
-                                   ___`. .' /--.--\ `. . __
-                                . '< `.___\_<|>_/___.' >'.
-                               | | : `- \`.;`\ _ /`;.`/ - ` : | |
-                                 \ \ `-. \_ __\ /__ _/ .-` / /
-                         ======`-.____`-.___\_____/___.-`____.-'======
-                                            `=---='
-                         .............................................
-                            !Write the code!       Change the world!
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</code></pre>
-<iframe frameborder="no" border="0" autoPlay=true marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=28285910&auto=0&height=66"></iframe>
-
-<a id="more"></a>
-
-<p><embed src="http://player.hunantv.com/mgtv_v5_main/main.swf?play_type=1&video_id=3954767" autostart=false allowFullScreen="true" quality="high" width="900" height="498" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
-<!-- <div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","loop":true,"video":{"url":"http://devtest.qiniudn.com/若能绽放光芒.mp4","pic":"http://devtest.qiniudn.com/若能绽放光芒.png"},"danmaku":{"id":"9E2E3368B56CDBB4","api":"http://dplayer.daoapp.io","token":"tokendemo"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script> -->
-
-
-]]></content>
-      <categories>
-        <category>新奇</category>
-      </categories>
-      <tags>
-        <tag>新奇</tag>
-        <tag>音乐</tag>
-        <tag>🎵</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>红外遥控器制作</title>
-    <url>/2020/05/10/3418.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><p> &emsp;&emsp;端午节期间，广州的天气真的好热，恨不得整体泡在空调房里。这让我想起了在公司上班的时候，天气炎热，想开空调，却发现空调遥控器好像偏偏跟我们玩捉迷藏似的，找也找不到，只能看着空调干巴巴地流汗。也常常碰见，公司的空调上班的时候都开着，然后最后一位同事走的时候，想关空调，此时遥控器也不翼而飞，于是各种问同事，大伙知道空调遥控器在哪吗？这种类似的“问候”等等。另外，公司空调比较多的时候，走的时候需要一个空调一个空调检测有没有关了，不然就会造成浪费的情况。总之对我来说，空调遥控器就是一个神奇的东西，你想找的时候，就偏偏找不到。<br><br>&emsp;&emsp;基于以上的种种情况，于是我萌发了要做一个方便管理的空调控制器，这个控制器有以下2个特点；</p>
-<ol>
-<li>必须让每个同事都能轻易的对每个空调进行控制(那就是用手机控制啦，大家都有手机~)；</li>
-<li>必须满足远程关闭空调，因为如果当我们离开公司的时候，发现空调没关，可以远程关闭；</li>
-</ol>
-<a id="more"></a>
-
-<h2 id="二、方案选择"><a href="#二、方案选择" class="headerlink" title="二、方案选择"></a>二、方案选择</h2><p>&emsp;&emsp;基于空调遥控器的特点，我想到了机智云的Gokit，搭配机智云的平台，能够满足我的需求，(主要是手头刚好有几个Gokit哈哈~)；<br><br>&emsp;&emsp;那么怎么来做呢？根据经验所得，需要对这个工作拆分为几部分</p>
-<ol>
-<li>机智云平台数据点定义(啥是数据点，请到机智云官网查看);这里我订了两个核心功能，一个是开关，一个是温度调节;(当然，你也可以定义更多的数据点，如，模式，风向等等)；</li>
-<li>MCU开发，MCU开发需要细分为红外遥控器的协议解码和编码；<strong>解码</strong> 简单来说就是需要通过工具，来分析遥控器发出来的红外波形，什么波形对应着开，什么波形对应着光和温度设置。<strong>编码</strong> 就是要把我们下发的命令转换成和空调能识别的红外波形；</li>
-</ol>
-<h2 id="三、方案实施"><a href="#三、方案实施" class="headerlink" title="三、方案实施"></a>三、方案实施</h2><h3 id="1-数据点定义"><a href="#1-数据点定义" class="headerlink" title="1. 数据点定义"></a>1. 数据点定义</h3><p>&emsp;&emsp;很简单，两个数据点，温度设置和空调开关，如下图；</p>
-<p><img src="/images/pasted-47.png" alt="upload successful"></p>
-<h3 id="2-红外解码"><a href="#2-红外解码" class="headerlink" title="2. 红外解码"></a>2. 红外解码</h3><p>&emsp;&emsp; 对于红外解码，有两种方法，一种是找到空调厂商的红外协议，然后根据红外协议，直接编写就可以了，不过很不幸的是，我手头这款空调，我找了很久都没找到对应的空调协议，于是只能另辟途径。也就是第二种方法，红外波形拷贝。<br><br>&emsp;&emsp; 那么波形拷贝我采用的是，用逻辑分析仪对遥控器进行波形分析，然后使用红外波形拷贝的方法，把对应功能的波形拷贝下来。</p>
-<p>&emsp;&emsp;决定了使用红外波形拷贝，那么就需要先要搭建波形捕捉电路，翻开了压箱底多年的红外探头接收器和面板(⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄)，步骤如下。</p>
-<h4 id="2-1-硬件环境搭建"><a href="#2-1-硬件环境搭建" class="headerlink" title="2.1 硬件环境搭建"></a>2.1 硬件环境搭建</h4><h5 id="红外接收头型号-HS0038B"><a href="#红外接收头型号-HS0038B" class="headerlink" title="红外接收头型号 HS0038B"></a>红外接收头型号 <strong>HS0038B</strong></h5><p><img src="/images/pasted-33.png" alt="upload successful"></p>
-<h5 id="HS0038B-电路图搭建"><a href="#HS0038B-电路图搭建" class="headerlink" title="HS0038B 电路图搭建"></a>HS0038B 电路图搭建</h5><ul>
-<li>原理图<br><img src="/images/pasted-40.png" alt="upload successful"></li>
-<li>面包板搭建实物图<br><img src="/images/pasted-41.png" alt="upload successful"><br><img src="/images/pasted-42.png" alt="upload successful"></li>
-</ul>
-<h5 id="抓波形"><a href="#抓波形" class="headerlink" title="抓波形"></a>抓波形</h5><ul>
-<li>真实抓包红外码图<br><img src="/images/pasted-34.png" alt="upload successful"></li>
-<li><ul>
-<li>关<br><img src="/images/pasted-35.png" alt="upload successful"></li>
-</ul>
-</li>
-<li><ul>
-<li>开<br><img src="/images/pasted-36.png" alt="upload successful"></li>
-</ul>
-</li>
-<li><ul>
-<li>20度<br><img src="/images/pasted-37.png" alt="upload successful"></li>
-</ul>
-</li>
-<li><ul>
-<li>21度<br><img src="/images/pasted-38.png" alt="upload successful"></li>
-</ul>
-</li>
-<li><ul>
-<li>22度<br><img src="/images/pasted-39.png" alt="upload successful"></li>
-</ul>
-</li>
-</ul>
-<h5 id="红外解码程序编写"><a href="#红外解码程序编写" class="headerlink" title="红外解码程序编写"></a>红外解码程序编写</h5><p>&emsp;&emsp;对红外波形有一个大概的认识之后，就要编写MCU端的代码，把波形转成红外码。这里我的思路是，对STM32的某个IO，设置为输入下降沿捕捉，然后通过计算每一个高低电平的持续时间，进而把波形转成数组；具体的实现可以看代码,<strong>Talk is cheap, show me the code.（主要是懒(<em>/ω＼</em>)~）</strong></p>
-<h3 id="3-红外编码"><a href="#3-红外编码" class="headerlink" title="3. 红外编码"></a>3. 红外编码</h3><p>&emsp;&emsp;进过前面的红外拷贝之后，我存储了，几个功能点的红外码，分别低开关，和温度设置(16度到27度)；<br>这里简单说一下，红外的发送原理(主要是网上已经有很多这方面的教程了)，首先上面抓到的红外波形，并不是红外发送器真正发送的波形，红外发送的波形一般是要发送的命令“加”在一个38K 的一个波形上；因为接收端有一个波形过滤器，如果不是38K红外波形范围内会被过滤掉。所以一般会以38K的PWM作为一个红外载波；<br>&emsp;&emsp;那么发送的时候，我对STM32的PA5引脚做为输出PWM为38K的引脚，然后后根据机智云定义好的数据点，拿到对应的串口协议文档，进行命令提前，主要是APP控制和MCU状态上报，这两条协议，(<strong>当然还有进入WiFi配网和串口握手等，不过这些在MCU代码自动生成的时候已经帮我们实现好了</strong>)串口协议格式如下图</p>
-<p><img src="/images/pasted-48.png" alt="upload successful"><br><img src="/images/pasted-49.png" alt="upload successful"><br>那么后面的就是根据协议编程了。</p>
-<p>这里插播一条，我实现发送的时候，开始我想使用gokit上的红外来作为发送，不过后面发现发送的距离比较短，后面就自己焊接了红外发射头；<br>当时我对Gokit的改造如下，如果小伙伴要控制的距离不远的话，我想是可以的，具体我的改造如下:</p>
-<p><strong>Gokit引脚修改</strong></p>
-<p><img src="/images/pasted-43.png" alt="upload successful"><br><img src="/images/pasted-44.png" alt="upload successful"><br><img src="/images/pasted-45.png" alt="upload successful"><br><img src="/images/pasted-46.png" alt="upload successful"></p>
-<p><strong>我最后真实的红外发送搭建如下</strong><br><img src="/images/pasted-50.png" alt="upload successful"><br><img src="/images/pasted-51.png" alt="upload successful"></p>
-<h3 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h3><p>最后，我把手头几个Gokit 都接上了红外，这样就能开开心心开空调去啦~~~</p>
-<p><img src="/images/pasted-54.png" alt="upload successful"><br><img src="/images/pasted-52.png" alt="upload successful"><br><img src="/images/pasted-53.png" alt="upload successful"><br><img src="/images/pasted-55.png" alt="upload successful"></p>
-<h3 id="演示视频"><a href="#演示视频" class="headerlink" title="演示视频"></a>演示视频</h3><ul>
-<li>视频: <a href="https://www.bilibili.com/video/BV1WK4y1s7DA/">https://www.bilibili.com/video/BV1WK4y1s7DA/</a></li>
-</ul>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><a href="https://blog.csdn.net/qq_39690917/article/details/86713809">https://blog.csdn.net/qq_39690917/article/details/86713809</a></li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>树莓派之Hexo环境搭建</title>
@@ -6333,6 +6220,70 @@ added 225 packages from 431 contributors in 181.245s</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>红外遥控器制作</title>
+    <url>/2020/05/10/3418.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><p> &emsp;&emsp;端午节期间，广州的天气真的好热，恨不得整体泡在空调房里。这让我想起了在公司上班的时候，天气炎热，想开空调，却发现空调遥控器好像偏偏跟我们玩捉迷藏似的，找也找不到，只能看着空调干巴巴地流汗。也常常碰见，公司的空调上班的时候都开着，然后最后一位同事走的时候，想关空调，此时遥控器也不翼而飞，于是各种问同事，大伙知道空调遥控器在哪吗？这种类似的“问候”等等。另外，公司空调比较多的时候，走的时候需要一个空调一个空调检测有没有关了，不然就会造成浪费的情况。总之对我来说，空调遥控器就是一个神奇的东西，你想找的时候，就偏偏找不到。<br><br>&emsp;&emsp;基于以上的种种情况，于是我萌发了要做一个方便管理的空调控制器，这个控制器有以下2个特点；</p>
+<ol>
+<li>必须让每个同事都能轻易的对每个空调进行控制(那就是用手机控制啦，大家都有手机~)；</li>
+<li>必须满足远程关闭空调，因为如果当我们离开公司的时候，发现空调没关，可以远程关闭；</li>
+</ol>
+<a id="more"></a>
+
+<h2 id="二、方案选择"><a href="#二、方案选择" class="headerlink" title="二、方案选择"></a>二、方案选择</h2><p>&emsp;&emsp;基于空调遥控器的特点，我想到了机智云的Gokit，搭配机智云的平台，能够满足我的需求，(主要是手头刚好有几个Gokit哈哈~)；<br><br>&emsp;&emsp;那么怎么来做呢？根据经验所得，需要对这个工作拆分为几部分</p>
+<ol>
+<li>机智云平台数据点定义(啥是数据点，请到机智云官网查看);这里我订了两个核心功能，一个是开关，一个是温度调节;(当然，你也可以定义更多的数据点，如，模式，风向等等)；</li>
+<li>MCU开发，MCU开发需要细分为红外遥控器的协议解码和编码；<strong>解码</strong> 简单来说就是需要通过工具，来分析遥控器发出来的红外波形，什么波形对应着开，什么波形对应着光和温度设置。<strong>编码</strong> 就是要把我们下发的命令转换成和空调能识别的红外波形；</li>
+</ol>
+<h2 id="三、方案实施"><a href="#三、方案实施" class="headerlink" title="三、方案实施"></a>三、方案实施</h2><h3 id="1-数据点定义"><a href="#1-数据点定义" class="headerlink" title="1. 数据点定义"></a>1. 数据点定义</h3><p>&emsp;&emsp;很简单，两个数据点，温度设置和空调开关，如下图；</p>
+<p><img src="/images/pasted-47.png" alt="upload successful"></p>
+<h3 id="2-红外解码"><a href="#2-红外解码" class="headerlink" title="2. 红外解码"></a>2. 红外解码</h3><p>&emsp;&emsp; 对于红外解码，有两种方法，一种是找到空调厂商的红外协议，然后根据红外协议，直接编写就可以了，不过很不幸的是，我手头这款空调，我找了很久都没找到对应的空调协议，于是只能另辟途径。也就是第二种方法，红外波形拷贝。<br><br>&emsp;&emsp; 那么波形拷贝我采用的是，用逻辑分析仪对遥控器进行波形分析，然后使用红外波形拷贝的方法，把对应功能的波形拷贝下来。</p>
+<p>&emsp;&emsp;决定了使用红外波形拷贝，那么就需要先要搭建波形捕捉电路，翻开了压箱底多年的红外探头接收器和面板(⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄)，步骤如下。</p>
+<h4 id="2-1-硬件环境搭建"><a href="#2-1-硬件环境搭建" class="headerlink" title="2.1 硬件环境搭建"></a>2.1 硬件环境搭建</h4><h5 id="红外接收头型号-HS0038B"><a href="#红外接收头型号-HS0038B" class="headerlink" title="红外接收头型号 HS0038B"></a>红外接收头型号 <strong>HS0038B</strong></h5><p><img src="/images/pasted-33.png" alt="upload successful"></p>
+<h5 id="HS0038B-电路图搭建"><a href="#HS0038B-电路图搭建" class="headerlink" title="HS0038B 电路图搭建"></a>HS0038B 电路图搭建</h5><ul>
+<li>原理图<br><img src="/images/pasted-40.png" alt="upload successful"></li>
+<li>面包板搭建实物图<br><img src="/images/pasted-41.png" alt="upload successful"><br><img src="/images/pasted-42.png" alt="upload successful"></li>
+</ul>
+<h5 id="抓波形"><a href="#抓波形" class="headerlink" title="抓波形"></a>抓波形</h5><ul>
+<li>真实抓包红外码图<br><img src="/images/pasted-34.png" alt="upload successful"></li>
+<li><ul>
+<li>关<br><img src="/images/pasted-35.png" alt="upload successful"></li>
+</ul>
+</li>
+<li><ul>
+<li>开<br><img src="/images/pasted-36.png" alt="upload successful"></li>
+</ul>
+</li>
+<li><ul>
+<li>20度<br><img src="/images/pasted-37.png" alt="upload successful"></li>
+</ul>
+</li>
+<li><ul>
+<li>21度<br><img src="/images/pasted-38.png" alt="upload successful"></li>
+</ul>
+</li>
+<li><ul>
+<li>22度<br><img src="/images/pasted-39.png" alt="upload successful"></li>
+</ul>
+</li>
+</ul>
+<h5 id="红外解码程序编写"><a href="#红外解码程序编写" class="headerlink" title="红外解码程序编写"></a>红外解码程序编写</h5><p>&emsp;&emsp;对红外波形有一个大概的认识之后，就要编写MCU端的代码，把波形转成红外码。这里我的思路是，对STM32的某个IO，设置为输入下降沿捕捉，然后通过计算每一个高低电平的持续时间，进而把波形转成数组；具体的实现可以看代码,<strong>Talk is cheap, show me the code.（主要是懒(<em>/ω＼</em>)~）</strong></p>
+<h3 id="3-红外编码"><a href="#3-红外编码" class="headerlink" title="3. 红外编码"></a>3. 红外编码</h3><p>&emsp;&emsp;进过前面的红外拷贝之后，我存储了，几个功能点的红外码，分别低开关，和温度设置(16度到27度)；<br>这里简单说一下，红外的发送原理(主要是网上已经有很多这方面的教程了)，首先上面抓到的红外波形，并不是红外发送器真正发送的波形，红外发送的波形一般是要发送的命令“加”在一个38K 的一个波形上；因为接收端有一个波形过滤器，如果不是38K红外波形范围内会被过滤掉。所以一般会以38K的PWM作为一个红外载波；<br>&emsp;&emsp;那么发送的时候，我对STM32的PA5引脚做为输出PWM为38K的引脚，然后后根据机智云定义好的数据点，拿到对应的串口协议文档，进行命令提前，主要是APP控制和MCU状态上报，这两条协议，(<strong>当然还有进入WiFi配网和串口握手等，不过这些在MCU代码自动生成的时候已经帮我们实现好了</strong>)串口协议格式如下图</p>
+<p><img src="/images/pasted-48.png" alt="upload successful"><br><img src="/images/pasted-49.png" alt="upload successful"><br>那么后面的就是根据协议编程了。</p>
+<p>这里插播一条，我实现发送的时候，开始我想使用gokit上的红外来作为发送，不过后面发现发送的距离比较短，后面就自己焊接了红外发射头；<br>当时我对Gokit的改造如下，如果小伙伴要控制的距离不远的话，我想是可以的，具体我的改造如下:</p>
+<p><strong>Gokit引脚修改</strong></p>
+<p><img src="/images/pasted-43.png" alt="upload successful"><br><img src="/images/pasted-44.png" alt="upload successful"><br><img src="/images/pasted-45.png" alt="upload successful"><br><img src="/images/pasted-46.png" alt="upload successful"></p>
+<p><strong>我最后真实的红外发送搭建如下</strong><br><img src="/images/pasted-50.png" alt="upload successful"><br><img src="/images/pasted-51.png" alt="upload successful"></p>
+<h3 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h3><p>最后，我把手头几个Gokit 都接上了红外，这样就能开开心心开空调去啦~~~</p>
+<p><img src="/images/pasted-54.png" alt="upload successful"><br><img src="/images/pasted-52.png" alt="upload successful"><br><img src="/images/pasted-53.png" alt="upload successful"><br><img src="/images/pasted-55.png" alt="upload successful"></p>
+<h3 id="演示视频"><a href="#演示视频" class="headerlink" title="演示视频"></a>演示视频</h3><ul>
+<li>视频: <a href="https://www.bilibili.com/video/BV1WK4y1s7DA/">https://www.bilibili.com/video/BV1WK4y1s7DA/</a></li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://blog.csdn.net/qq_39690917/article/details/86713809">https://blog.csdn.net/qq_39690917/article/details/86713809</a></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>风过留痕，雁过留声</title>
     <url>/2017/08/06/23d1.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="我不想让你知道"><a href="#我不想让你知道" class="headerlink" title="我不想让你知道"></a>我不想让你知道</h2><p>就不想让你知道~~</p>
@@ -6342,6 +6293,55 @@ added 225 packages from 431 contributors in 181.245s</code></pre>
       </categories>
       <tags>
         <tag>个人</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>活成自己的样子</title>
+    <url>/2888/03/28/dbbb.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<blockquote>
+<p>我们总是拼尽全力… 想活成大家所期待的样子，以为那样就是最完美的。但其实，真正的成功，或许是不被他人绑架自己的梦想，全然按照自己的意愿过好这一生。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/ilxj/ilxj.github.io@master/images/pasted-15.png" alt="1"></p>
+<pre class=" language-sh"><code class="language-sh">==============================================================================================
+
+                                            _ooOoo_
+                                           o8888888o
+                                           88" . "88
+                                           (| -_- |)
+                                            O\ = /O
+                                        ____/`---'\____
+                                        .' \\|   |// `.
+                                       / \\||| : |||// \
+                                     / _||||| -:- |||||- \
+                                       | | \\\ - /// | |
+                                     | \_| ''\---/'' | |
+                                      \ .-\__ `-` ___/-. /
+                                   ___`. .' /--.--\ `. . __
+                                . '< `.___\_<|>_/___.' >'.
+                               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+                                 \ \ `-. \_ __\ /__ _/ .-` / /
+                         ======`-.____`-.___\_____/___.-`____.-'======
+                                            `=---='
+                         .............................................
+                            !Write the code!       Change the world!
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</code></pre>
+<iframe frameborder="no" border="0" autoPlay=true marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=28285910&auto=0&height=66"></iframe>
+
+<a id="more"></a>
+
+<p><embed src="http://player.hunantv.com/mgtv_v5_main/main.swf?play_type=1&video_id=3954767" autostart=false allowFullScreen="true" quality="high" width="900" height="498" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
+<!-- <div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","loop":true,"video":{"url":"http://devtest.qiniudn.com/若能绽放光芒.mp4","pic":"http://devtest.qiniudn.com/若能绽放光芒.png"},"danmaku":{"id":"9E2E3368B56CDBB4","api":"http://dplayer.daoapp.io","token":"tokendemo"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script> -->
+
+
+]]></content>
+      <categories>
+        <category>新奇</category>
+      </categories>
+      <tags>
+        <tag>新奇</tag>
+        <tag>音乐</tag>
+        <tag>🎵</tag>
       </tags>
   </entry>
   <entry>
