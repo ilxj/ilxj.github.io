@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Android系列之各种疑难杂症处理</title>
+    <url>/2018/05/06/7aeb.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h2><blockquote>
+<p>各种疑难杂症登记和解决方法记录，大家可以看O(∩_∩)O哈哈~</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="问题1"><a href="#问题1" class="headerlink" title="问题1."></a>问题1.</h2><p><code>gradle project sync failed.Basic functionality(e.g.editing,debugging) will not work properly.</code></p>
+<p><img src="https://gitee.com/alexlin/alexSource/raw/master/images/gradleFail.png" alt="gradle Fail"></p>
+<ul>
+<li><strong>解决方法:</strong><br>到项目下找到<code>gradle\wrapper\gradle-wrapper.properties</code> 然后下载里面<code>distributionUrl</code>指定内容;</li>
+</ul>
+<pre><code>#Sun May 06 22:16:52 CST 2018
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-4.4-all.zip</code></pre>
+<p>然后把 <code>distributionUrl=</code> 换成下载后的路径;<br>比如我的是这样:</p>
+<pre><code>distributionUrl=file:///Users/alex/.gradle/wrapper/dists/gradle-4.4-all/9br9xq1tocpiv8o6njlyu5op1/gradle-4.4-all.zip</code></pre>
+<p>然后再重试一下。有可能还有提醒<code>Could not download protobuf-java.jar (com.google.protobuf:protob</code> 这种错误，我试了好久好久才能下载完，怪家里的网络太糟糕😰~</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android系列之Android Studio 搭建</title>
     <url>/2018/05/06/bcb6.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h2><blockquote>
@@ -36,33 +66,304 @@
       </tags>
   </entry>
   <entry>
-    <title>Android系列之各种疑难杂症处理</title>
-    <url>/2018/05/06/7aeb.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h2><blockquote>
-<p>各种疑难杂症登记和解决方法记录，大家可以看O(∩_∩)O哈哈~</p>
-</blockquote>
+    <title>COAP系列-入门介绍</title>
+    <url>/2017/10/18/fb1f.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a href="http://coap.technology/">http://coap.technology/</a><br>WiKi<br><a href="https://en.wikipedia.org/wiki/Constrained_Application_Protocol">https://en.wikipedia.org/wiki/Constrained_Application_Protocol</a><br>开源库<br><a href="https://github.com/miri64/libcoap">https://github.com/miri64/libcoap</a></p>
+<h2 id="1-COAP-架构"><a href="#1-COAP-架构" class="headerlink" title="1. COAP 架构"></a>1. COAP 架构</h2><p>COAP运行于UDP协议之上,架构如下图</p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/1736256-55f00669c46bccfd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="COAP 架构图"></p>
 <a id="more"></a>
 
-<h2 id="问题1"><a href="#问题1" class="headerlink" title="问题1."></a>问题1.</h2><p><code>gradle project sync failed.Basic functionality(e.g.editing,debugging) will not work properly.</code></p>
-<p><img src="https://gitee.com/alexlin/alexSource/raw/master/images/gradleFail.png" alt="gradle Fail"></p>
+<h3 id="2-消息类型"><a href="#2-消息类型" class="headerlink" title="2. 消息类型"></a>2. 消息类型</h3><p>CoAP协议共有4中不同的消息类型。</p>
 <ul>
-<li><strong>解决方法:</strong><br>到项目下找到<code>gradle\wrapper\gradle-wrapper.properties</code> 然后下载里面<code>distributionUrl</code>指定内容;</li>
+<li>CON——需要被确认的请求，如果CON请求被发送，那么对方必须做出响应。</li>
+<li>NON——不需要被确认的请求，如果NON请求被发送，那么对方不必做出回应。</li>
+<li>ACK——应答消息，接受到CON消息的响应。</li>
+<li>RST——复位消息，当接收者接受到的消息包含一个错误，接收者解析消息或者不再关心发送者发送的内容，那么复位消息将会被发送。</li>
 </ul>
-<pre><code>#Sun May 06 22:16:52 CST 2018
-distributionBase=GRADLE_USER_HOME
-distributionPath=wrapper/dists
-zipStoreBase=GRADLE_USER_HOME
-zipStorePath=wrapper/dists
-distributionUrl=https\://services.gradle.org/distributions/gradle-4.4-all.zip</code></pre>
-<p>然后把 <code>distributionUrl=</code> 换成下载后的路径;<br>比如我的是这样:</p>
-<pre><code>distributionUrl=file:///Users/alex/.gradle/wrapper/dists/gradle-4.4-all/9br9xq1tocpiv8o6njlyu5op1/gradle-4.4-all.zip</code></pre>
-<p>然后再重试一下。有可能还有提醒<code>Could not download protobuf-java.jar (com.google.protobuf:protob</code> 这种错误，我试了好久好久才能下载完，怪家里的网络太糟糕😰~</p>
+<h3 id="3-COAP-消息格式"><a href="#3-COAP-消息格式" class="headerlink" title="3. COAP 消息格式"></a>3. COAP 消息格式</h3><ul>
+<li>一个COAP消息最小为4个字节；</li>
+<li>CoAP协议总是以“头”的形式出现在负载之前，而负载和CoAP头之间使用单字节0xFF分离；</li>
+<li>具体格式如下图<br><img src="http://upload-images.jianshu.io/upload_images/1736256-34c6ef619d17ae78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="COAP 消息格式"></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">字段</th>
+<th align="left">长度</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ver</td>
+<td align="left">2bit</td>
+<td align="left">版本号</td>
+</tr>
+<tr>
+<td align="left">Type</td>
+<td align="left">2bit</td>
+<td align="left">消息类型:CON/NON/ACK/RST</td>
+</tr>
+<tr>
+<td align="left">TKL(TokenLength)</td>
+<td align="left">4bit</td>
+<td align="left">标识符长度CoAP协议中具有两种功能相似的标识符，一种为MessageID(报文编号)，一种为Token(标识符)。其中每个报文均包含消息编号，但是标识符对于报文来说是<strong>非必须</strong>的</td>
+</tr>
+<tr>
+<td align="left">Code</td>
+<td align="left">8bit</td>
+<td align="left">功能码/响应码:前3位一部分，后5位一部分;为了方便描述它被写成了c.dd结构。其中0.XX表示CoAP请求的某种方法，而2.XX、4.XX或5.XX则表示CoAP响应的某种具体表现(具体Code见下面👇)。</td>
+</tr>
+<tr>
+<td align="left">Message ID</td>
+<td align="left">16bit</td>
+<td align="left">报文编号,用于重复消息检测，匹配消息类型等</td>
+</tr>
+<tr>
+<td align="left">Token</td>
+<td align="left">nBit</td>
+<td align="left">标识符具体内容，通过TKL指定Token长度</td>
+</tr>
+<tr>
+<td align="left">Option</td>
+<td align="left">nBit</td>
+<td align="left">报文选项，通过报文选项可设定CoAP主机，CoAP URI，CoAP请求参数和负载媒体类型等等。</td>
+</tr>
+</tbody></table>
+<h4 id="3-1-COAP-Code-字段"><a href="#3-1-COAP-Code-字段" class="headerlink" title="3.1 COAP Code 字段"></a>3.1 COAP Code 字段</h4><p>请求字段</p>
+<ul>
+<li>Req:0.xx</li>
+</ul>
+<hr>
+<p>响应字段</p>
+<ul>
+<li>Success : 2.xx</li>
+<li>Client Error : 4.xx</li>
+<li>Server Error : 5.xx</li>
+</ul>
+<hr>
+<h5 id="3-1-1-请求消息类型"><a href="#3-1-1-请求消息类型" class="headerlink" title="3.1.1 请求消息类型 "></a>3.1.1 请求消息类型 </h5><table>
+<thead>
+<tr>
+<th align="left">Code码</th>
+<th align="left">方法</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0.01</td>
+<td align="left">GET</td>
+<td align="left">用于获得某资源</td>
+</tr>
+<tr>
+<td align="left">0.02</td>
+<td align="left">POST</td>
+<td align="left">用于创建某资源</td>
+</tr>
+<tr>
+<td align="left">0.03</td>
+<td align="left">PUT</td>
+<td align="left">用于更新某资源</td>
+</tr>
+<tr>
+<td align="left">0.04</td>
+<td align="left">DELETE</td>
+<td align="left">用于删除某资源</td>
+</tr>
+</tbody></table>
+<h5 id="3-1-2-响应消息类型"><a href="#3-1-2-响应消息类型" class="headerlink" title="3.1.2 响应消息类型  "></a>3.1.2 响应消息类型  </h5><ul>
+<li><strong>Success 2.xx</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Code码</th>
+<th align="left">方法</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">2.01</td>
+<td align="left">Created</td>
+<td align="left">回复POST或者PUT。</td>
+</tr>
+<tr>
+<td align="left">2.02</td>
+<td align="left">Deleted</td>
+<td align="left">回复DELETE，有些情况下的POST。</td>
+</tr>
+<tr>
+<td align="left">2.03</td>
+<td align="left">Valid</td>
+<td align="left">表示响应是有效的所以，Response必须带ETag Option。</td>
+</tr>
+<tr>
+<td align="left">2.04</td>
+<td align="left">Changed</td>
+<td align="left">回复POST和PUT。</td>
+</tr>
+<tr>
+<td align="left">2.05</td>
+<td align="left">Content</td>
+<td align="left">回复GET。</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>Client Error 4.xx</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Code码</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">4.00</td>
+<td align="left">Bad Resuest.</td>
+</tr>
+<tr>
+<td align="left">4.01</td>
+<td align="left">Unauthorized</td>
+</tr>
+<tr>
+<td align="left">4.02</td>
+<td align="left">Bad Option</td>
+</tr>
+<tr>
+<td align="left">4.03</td>
+<td align="left">Forbidden</td>
+</tr>
+<tr>
+<td align="left">4.04</td>
+<td align="left">Not Found</td>
+</tr>
+<tr>
+<td align="left">4.05</td>
+<td align="left">Method Not Allowed</td>
+</tr>
+<tr>
+<td align="left">4.06</td>
+<td align="left">Not Acceptable</td>
+</tr>
+<tr>
+<td align="left">4.12</td>
+<td align="left">Precondition Failed</td>
+</tr>
+<tr>
+<td align="left">4.13</td>
+<td align="left">Request Entity Too Large</td>
+</tr>
+<tr>
+<td align="left">4.15</td>
+<td align="left">Unsupported Content-Format</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>Server Error 5.xx</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Code码</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">5.00</td>
+<td align="left">Internal Server Error</td>
+</tr>
+<tr>
+<td align="left">5.01</td>
+<td align="left">Not Implemented</td>
+</tr>
+<tr>
+<td align="left">5.02</td>
+<td align="left">Bad Gateway</td>
+</tr>
+<tr>
+<td align="left">5.03</td>
+<td align="left">Service Unavailable</td>
+</tr>
+<tr>
+<td align="left">5.04</td>
+<td align="left">Gateway Timeout</td>
+</tr>
+<tr>
+<td align="left">5.05</td>
+<td align="left">Proxying Not Supported</td>
+</tr>
+</tbody></table>
+<h4 id="3-2-COAP-Option-字段"><a href="#3-2-COAP-Option-字段" class="headerlink" title="3.2 COAP Option 字段"></a>3.2 COAP Option 字段</h4><p>每个Optoin由以下三部分组成</p>
+<ul>
+<li><strong>OptionDelta :</strong> 表示Option的增量，当前的Option的具体编号等于之前所有Option Delta的总和。</li>
+<li><strong>OptionLength :</strong>  表示Option Value的具体长度</li>
+<li><strong>OptionValue :</strong> 表示Option具体内容</li>
+</ul>
+<p><strong>Opton的数据可以跟随多个，每个的格式都一致</strong><br><strong>例子:</strong></p>
+<ul>
+<li>第一个Option Delta=11，表示该Option表示Uri-Path(11)</li>
+<li>第二个Option Delta=1，表示该Option=1+11，表示Content-Format(12)</li>
+<li>第三个Option Delta=3，表示该Option=3+1+11，表示Uri-Query(15)<br>CoAP采用这样的方式表示多个Option，而每种Option都可以在HTTP协议中找到对应项。</li>
+</ul>
+<h5 id="3-2-1-Option-格式"><a href="#3-2-1-Option-格式" class="headerlink" title="3.2.1 Option 格式"></a>3.2.1 Option 格式</h5><p><img src="http://upload-images.jianshu.io/upload_images/1736256-de231b37e70545d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Option 格式图"></p>
+<p>CoAP中所有的Option都采用编号的方式，这些Option及编号的定义如下图所示<br><img src="http://upload-images.jianshu.io/upload_images/1736256-2c26b5c2d652ef37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><strong>Option之中的各个字段的含义如下：</strong></p>
+<p><strong>【Option Delta】</strong></p>
+<ul>
+<li>Option Delta：4-bit无符号整型。值0-12代表option delta。其它3个值作为特殊情况保留：</li>
+<li>当值为<strong>13</strong>：有一个8-bit无符号整型（extended）跟随在第一个字节之后，本option的实际delta是这个8-bit值加13。</li>
+<li>当值为<strong>14</strong>：有一个16-bit无符号整型（网络字节序）（extended）跟随在第一个字节之后，本option的实际delta是这个16-bit值加269。</li>
+<li>当值为<strong>15</strong>：为payload标识符而保留。如果这个字段被设置为值15，但这个字节不是payload标识符，那么必须当作消息格式错误来处理。</li>
+</ul>
+<p><strong>【Option Length】</strong></p>
+<ul>
+<li>Option Length：4-bit无符号整数。值0-12代表这个option值的长度，单位是字节。其它3个值是特殊保留的：</li>
+<li>当值为13：有一个8-bit无符号整型跟随在第一个字节之后，本option的实际长度是这个8-bit值加13。</li>
+<li>当值为14：一个16-bit无符号整型（网络字节序）跟随在第一个字节之后，本option的实际长度是这个16-bit值加269。</li>
+<li>当值为15：保留为将来使用。如果这个字段被设置为值15，必须当作消息格式错误来处理。</li>
+</ul>
+<p><strong>【Option value】</strong></p>
+<ul>
+<li>Option Value：共option Length个字节。option Value字段的长度和格式取决于具体的option，有可能定义变长的值。</li>
+</ul>
+<p><strong>【Option value的格式】</strong></p>
+<ul>
+<li>Empty：长度为0。</li>
+<li>Opaque：一个（用户自定义的）字节序列。</li>
+<li>Uint：一个非负的整数，以网络字节序表现，由option Length字段指定其长度。<br>option有可能指定字节数的范围。如果有选择的话，发送者应该用尽可能少的字节数表示这个整数，如省略开头为的0的字节。例如，数字0用空的option值来表示（0长度字节序列），数字1用一个单字节表示，MSB first（高位优先）下为0b00000001。接收端必须能够处理0开头的值。<br>实现注意：在一些高受限的、模板化的实现（比如由硬件实现）下，允许发送者使用固定长度的option。</li>
+<li>String：Unicode字符串，使用UTF-8<a href="http://tools.ietf.org/pdf/rfc3629.pdf">[RFC3629]</a>编码，使用Net-Unicode格式<a href="http://tools.ietf.org/pdf/rfc5198">[RFC5198]</a>。</li>
+</ul>
+<p><strong>注意 :</strong> 在CoAP协议中，所有使用UTF-8编码的字符串可以不需要经过标准化转换而被直接使用，或者作为用户自定义的字节序列比较，除非该Unicode字符串是从CoAP协议之外的资源中引入的。注意，所有的ASCII（不作为特殊控制字符使用）字符都是合法的UTF-8 Net-Unicode字符串。</p>
+<h3 id="4-COAP-观察者模式"><a href="#4-COAP-观察者模式" class="headerlink" title="4. COAP 观察者模式"></a>4. COAP 观察者模式</h3><hr>
+<p>当你需要去监控某个传感器例如温度或湿度等。在这种情况下，CoAP客户端并不需要不停的查询CoAP服务器端的数据变化情况。<br>CoAP客户端可以发送一个观察请求到服务器端。从该时间点开始计算，服务器便会记住客户端的连接信息，一旦温度发生变化，服务器将会把新结果发送给客户端。<br>如果客户端不在希望获得温度检测结果，那么客户端将会发送一个RST复位请求，此时服务器便会清除与客户端的连接信息。</p>
+<h3 id="5-CoAP块传输"><a href="#5-CoAP块传输" class="headerlink" title="5. CoAP块传输"></a>5. CoAP块传输</h3><hr>
+<p>CoAP协议的特点是传输的内容小巧精简，但是在某些情况下不得不传输较大的数据。在这种情况下可以使用CoAP协议中的某个选项设定分块传输的大小，那么无论是服务器或客户端可完成分片和组装这两个动作。</p>
+<h2 id="COAP-总结"><a href="#COAP-总结" class="headerlink" title="COAP 总结"></a>COAP 总结</h2><hr>
+<h3 id="适合运行于小设备"><a href="#适合运行于小设备" class="headerlink" title="适合运行于小设备"></a>适合运行于小设备</h3><ul>
+<li><strong>小设备：</strong>256KB Flash 32KB RAM 20MHz主频….的设备</li>
+</ul>
+<h3 id="特点总结"><a href="#特点总结" class="headerlink" title="特点总结"></a>特点总结</h3><ol>
+<li>满足资源受限的网络需求。</li>
+<li>无状态HTTP映射，可以通过HTTP代理实现访问CoAP资源，或者在CoAP智商构建HTTP接口。</li>
+<li>使用UDP实现可靠IP单播和最大努力IP多播。</li>
+<li>异步消息交换</li>
+<li>很小的消息头载荷及解析复杂度。</li>
+<li>支持URI和内容类型(Content-type).</li>
+<li>支持代理和缓存.</li>
+<li>内建资源发现.</li>
+<li>可以使用DTLS作为安全加密层。</li>
+<li>资源消耗低，所需RAM和ROM资源均小于10KB。</li>
+<li>其双层(事务层，请求/响应层)处理方式可支持异步通信.</li>
+<li>支持观察模式。</li>
+<li>支持块传输</li>
+</ol>
 ]]></content>
       <categories>
-        <category>Android</category>
+        <category>协议</category>
       </categories>
       <tags>
-        <tag>Android</tag>
+        <tag>COAP</tag>
+        <tag>协议</tag>
       </tags>
   </entry>
   <entry>
@@ -432,307 +733,6 @@ Failure [INSTALL_FAILED_ALREADY_EXISTS]</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>COAP系列-入门介绍</title>
-    <url>/2017/10/18/fb1f.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a href="http://coap.technology/">http://coap.technology/</a><br>WiKi<br><a href="https://en.wikipedia.org/wiki/Constrained_Application_Protocol">https://en.wikipedia.org/wiki/Constrained_Application_Protocol</a><br>开源库<br><a href="https://github.com/miri64/libcoap">https://github.com/miri64/libcoap</a></p>
-<h2 id="1-COAP-架构"><a href="#1-COAP-架构" class="headerlink" title="1. COAP 架构"></a>1. COAP 架构</h2><p>COAP运行于UDP协议之上,架构如下图</p>
-<p> <img src="http://upload-images.jianshu.io/upload_images/1736256-55f00669c46bccfd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="COAP 架构图"></p>
-<a id="more"></a>
-
-<h3 id="2-消息类型"><a href="#2-消息类型" class="headerlink" title="2. 消息类型"></a>2. 消息类型</h3><p>CoAP协议共有4中不同的消息类型。</p>
-<ul>
-<li>CON——需要被确认的请求，如果CON请求被发送，那么对方必须做出响应。</li>
-<li>NON——不需要被确认的请求，如果NON请求被发送，那么对方不必做出回应。</li>
-<li>ACK——应答消息，接受到CON消息的响应。</li>
-<li>RST——复位消息，当接收者接受到的消息包含一个错误，接收者解析消息或者不再关心发送者发送的内容，那么复位消息将会被发送。</li>
-</ul>
-<h3 id="3-COAP-消息格式"><a href="#3-COAP-消息格式" class="headerlink" title="3. COAP 消息格式"></a>3. COAP 消息格式</h3><ul>
-<li>一个COAP消息最小为4个字节；</li>
-<li>CoAP协议总是以“头”的形式出现在负载之前，而负载和CoAP头之间使用单字节0xFF分离；</li>
-<li>具体格式如下图<br><img src="http://upload-images.jianshu.io/upload_images/1736256-34c6ef619d17ae78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="COAP 消息格式"></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">字段</th>
-<th align="left">长度</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">ver</td>
-<td align="left">2bit</td>
-<td align="left">版本号</td>
-</tr>
-<tr>
-<td align="left">Type</td>
-<td align="left">2bit</td>
-<td align="left">消息类型:CON/NON/ACK/RST</td>
-</tr>
-<tr>
-<td align="left">TKL(TokenLength)</td>
-<td align="left">4bit</td>
-<td align="left">标识符长度CoAP协议中具有两种功能相似的标识符，一种为MessageID(报文编号)，一种为Token(标识符)。其中每个报文均包含消息编号，但是标识符对于报文来说是<strong>非必须</strong>的</td>
-</tr>
-<tr>
-<td align="left">Code</td>
-<td align="left">8bit</td>
-<td align="left">功能码/响应码:前3位一部分，后5位一部分;为了方便描述它被写成了c.dd结构。其中0.XX表示CoAP请求的某种方法，而2.XX、4.XX或5.XX则表示CoAP响应的某种具体表现(具体Code见下面👇)。</td>
-</tr>
-<tr>
-<td align="left">Message ID</td>
-<td align="left">16bit</td>
-<td align="left">报文编号,用于重复消息检测，匹配消息类型等</td>
-</tr>
-<tr>
-<td align="left">Token</td>
-<td align="left">nBit</td>
-<td align="left">标识符具体内容，通过TKL指定Token长度</td>
-</tr>
-<tr>
-<td align="left">Option</td>
-<td align="left">nBit</td>
-<td align="left">报文选项，通过报文选项可设定CoAP主机，CoAP URI，CoAP请求参数和负载媒体类型等等。</td>
-</tr>
-</tbody></table>
-<h4 id="3-1-COAP-Code-字段"><a href="#3-1-COAP-Code-字段" class="headerlink" title="3.1 COAP Code 字段"></a>3.1 COAP Code 字段</h4><p>请求字段</p>
-<ul>
-<li>Req:0.xx</li>
-</ul>
-<hr>
-<p>响应字段</p>
-<ul>
-<li>Success : 2.xx</li>
-<li>Client Error : 4.xx</li>
-<li>Server Error : 5.xx</li>
-</ul>
-<hr>
-<h5 id="3-1-1-请求消息类型"><a href="#3-1-1-请求消息类型" class="headerlink" title="3.1.1 请求消息类型 "></a>3.1.1 请求消息类型 </h5><table>
-<thead>
-<tr>
-<th align="left">Code码</th>
-<th align="left">方法</th>
-<th align="left">解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">0.01</td>
-<td align="left">GET</td>
-<td align="left">用于获得某资源</td>
-</tr>
-<tr>
-<td align="left">0.02</td>
-<td align="left">POST</td>
-<td align="left">用于创建某资源</td>
-</tr>
-<tr>
-<td align="left">0.03</td>
-<td align="left">PUT</td>
-<td align="left">用于更新某资源</td>
-</tr>
-<tr>
-<td align="left">0.04</td>
-<td align="left">DELETE</td>
-<td align="left">用于删除某资源</td>
-</tr>
-</tbody></table>
-<h5 id="3-1-2-响应消息类型"><a href="#3-1-2-响应消息类型" class="headerlink" title="3.1.2 响应消息类型  "></a>3.1.2 响应消息类型  </h5><ul>
-<li><strong>Success 2.xx</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">Code码</th>
-<th align="left">方法</th>
-<th align="left">解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">2.01</td>
-<td align="left">Created</td>
-<td align="left">回复POST或者PUT。</td>
-</tr>
-<tr>
-<td align="left">2.02</td>
-<td align="left">Deleted</td>
-<td align="left">回复DELETE，有些情况下的POST。</td>
-</tr>
-<tr>
-<td align="left">2.03</td>
-<td align="left">Valid</td>
-<td align="left">表示响应是有效的所以，Response必须带ETag Option。</td>
-</tr>
-<tr>
-<td align="left">2.04</td>
-<td align="left">Changed</td>
-<td align="left">回复POST和PUT。</td>
-</tr>
-<tr>
-<td align="left">2.05</td>
-<td align="left">Content</td>
-<td align="left">回复GET。</td>
-</tr>
-</tbody></table>
-<ul>
-<li><strong>Client Error 4.xx</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">Code码</th>
-<th align="left">解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">4.00</td>
-<td align="left">Bad Resuest.</td>
-</tr>
-<tr>
-<td align="left">4.01</td>
-<td align="left">Unauthorized</td>
-</tr>
-<tr>
-<td align="left">4.02</td>
-<td align="left">Bad Option</td>
-</tr>
-<tr>
-<td align="left">4.03</td>
-<td align="left">Forbidden</td>
-</tr>
-<tr>
-<td align="left">4.04</td>
-<td align="left">Not Found</td>
-</tr>
-<tr>
-<td align="left">4.05</td>
-<td align="left">Method Not Allowed</td>
-</tr>
-<tr>
-<td align="left">4.06</td>
-<td align="left">Not Acceptable</td>
-</tr>
-<tr>
-<td align="left">4.12</td>
-<td align="left">Precondition Failed</td>
-</tr>
-<tr>
-<td align="left">4.13</td>
-<td align="left">Request Entity Too Large</td>
-</tr>
-<tr>
-<td align="left">4.15</td>
-<td align="left">Unsupported Content-Format</td>
-</tr>
-</tbody></table>
-<ul>
-<li><strong>Server Error 5.xx</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">Code码</th>
-<th align="left">解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">5.00</td>
-<td align="left">Internal Server Error</td>
-</tr>
-<tr>
-<td align="left">5.01</td>
-<td align="left">Not Implemented</td>
-</tr>
-<tr>
-<td align="left">5.02</td>
-<td align="left">Bad Gateway</td>
-</tr>
-<tr>
-<td align="left">5.03</td>
-<td align="left">Service Unavailable</td>
-</tr>
-<tr>
-<td align="left">5.04</td>
-<td align="left">Gateway Timeout</td>
-</tr>
-<tr>
-<td align="left">5.05</td>
-<td align="left">Proxying Not Supported</td>
-</tr>
-</tbody></table>
-<h4 id="3-2-COAP-Option-字段"><a href="#3-2-COAP-Option-字段" class="headerlink" title="3.2 COAP Option 字段"></a>3.2 COAP Option 字段</h4><p>每个Optoin由以下三部分组成</p>
-<ul>
-<li><strong>OptionDelta :</strong> 表示Option的增量，当前的Option的具体编号等于之前所有Option Delta的总和。</li>
-<li><strong>OptionLength :</strong>  表示Option Value的具体长度</li>
-<li><strong>OptionValue :</strong> 表示Option具体内容</li>
-</ul>
-<p><strong>Opton的数据可以跟随多个，每个的格式都一致</strong><br><strong>例子:</strong></p>
-<ul>
-<li>第一个Option Delta=11，表示该Option表示Uri-Path(11)</li>
-<li>第二个Option Delta=1，表示该Option=1+11，表示Content-Format(12)</li>
-<li>第三个Option Delta=3，表示该Option=3+1+11，表示Uri-Query(15)<br>CoAP采用这样的方式表示多个Option，而每种Option都可以在HTTP协议中找到对应项。</li>
-</ul>
-<h5 id="3-2-1-Option-格式"><a href="#3-2-1-Option-格式" class="headerlink" title="3.2.1 Option 格式"></a>3.2.1 Option 格式</h5><p><img src="http://upload-images.jianshu.io/upload_images/1736256-de231b37e70545d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Option 格式图"></p>
-<p>CoAP中所有的Option都采用编号的方式，这些Option及编号的定义如下图所示<br><img src="http://upload-images.jianshu.io/upload_images/1736256-2c26b5c2d652ef37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p><strong>Option之中的各个字段的含义如下：</strong></p>
-<p><strong>【Option Delta】</strong></p>
-<ul>
-<li>Option Delta：4-bit无符号整型。值0-12代表option delta。其它3个值作为特殊情况保留：</li>
-<li>当值为<strong>13</strong>：有一个8-bit无符号整型（extended）跟随在第一个字节之后，本option的实际delta是这个8-bit值加13。</li>
-<li>当值为<strong>14</strong>：有一个16-bit无符号整型（网络字节序）（extended）跟随在第一个字节之后，本option的实际delta是这个16-bit值加269。</li>
-<li>当值为<strong>15</strong>：为payload标识符而保留。如果这个字段被设置为值15，但这个字节不是payload标识符，那么必须当作消息格式错误来处理。</li>
-</ul>
-<p><strong>【Option Length】</strong></p>
-<ul>
-<li>Option Length：4-bit无符号整数。值0-12代表这个option值的长度，单位是字节。其它3个值是特殊保留的：</li>
-<li>当值为13：有一个8-bit无符号整型跟随在第一个字节之后，本option的实际长度是这个8-bit值加13。</li>
-<li>当值为14：一个16-bit无符号整型（网络字节序）跟随在第一个字节之后，本option的实际长度是这个16-bit值加269。</li>
-<li>当值为15：保留为将来使用。如果这个字段被设置为值15，必须当作消息格式错误来处理。</li>
-</ul>
-<p><strong>【Option value】</strong></p>
-<ul>
-<li>Option Value：共option Length个字节。option Value字段的长度和格式取决于具体的option，有可能定义变长的值。</li>
-</ul>
-<p><strong>【Option value的格式】</strong></p>
-<ul>
-<li>Empty：长度为0。</li>
-<li>Opaque：一个（用户自定义的）字节序列。</li>
-<li>Uint：一个非负的整数，以网络字节序表现，由option Length字段指定其长度。<br>option有可能指定字节数的范围。如果有选择的话，发送者应该用尽可能少的字节数表示这个整数，如省略开头为的0的字节。例如，数字0用空的option值来表示（0长度字节序列），数字1用一个单字节表示，MSB first（高位优先）下为0b00000001。接收端必须能够处理0开头的值。<br>实现注意：在一些高受限的、模板化的实现（比如由硬件实现）下，允许发送者使用固定长度的option。</li>
-<li>String：Unicode字符串，使用UTF-8<a href="http://tools.ietf.org/pdf/rfc3629.pdf">[RFC3629]</a>编码，使用Net-Unicode格式<a href="http://tools.ietf.org/pdf/rfc5198">[RFC5198]</a>。</li>
-</ul>
-<p><strong>注意 :</strong> 在CoAP协议中，所有使用UTF-8编码的字符串可以不需要经过标准化转换而被直接使用，或者作为用户自定义的字节序列比较，除非该Unicode字符串是从CoAP协议之外的资源中引入的。注意，所有的ASCII（不作为特殊控制字符使用）字符都是合法的UTF-8 Net-Unicode字符串。</p>
-<h3 id="4-COAP-观察者模式"><a href="#4-COAP-观察者模式" class="headerlink" title="4. COAP 观察者模式"></a>4. COAP 观察者模式</h3><hr>
-<p>当你需要去监控某个传感器例如温度或湿度等。在这种情况下，CoAP客户端并不需要不停的查询CoAP服务器端的数据变化情况。<br>CoAP客户端可以发送一个观察请求到服务器端。从该时间点开始计算，服务器便会记住客户端的连接信息，一旦温度发生变化，服务器将会把新结果发送给客户端。<br>如果客户端不在希望获得温度检测结果，那么客户端将会发送一个RST复位请求，此时服务器便会清除与客户端的连接信息。</p>
-<h3 id="5-CoAP块传输"><a href="#5-CoAP块传输" class="headerlink" title="5. CoAP块传输"></a>5. CoAP块传输</h3><hr>
-<p>CoAP协议的特点是传输的内容小巧精简，但是在某些情况下不得不传输较大的数据。在这种情况下可以使用CoAP协议中的某个选项设定分块传输的大小，那么无论是服务器或客户端可完成分片和组装这两个动作。</p>
-<h2 id="COAP-总结"><a href="#COAP-总结" class="headerlink" title="COAP 总结"></a>COAP 总结</h2><hr>
-<h3 id="适合运行于小设备"><a href="#适合运行于小设备" class="headerlink" title="适合运行于小设备"></a>适合运行于小设备</h3><ul>
-<li><strong>小设备：</strong>256KB Flash 32KB RAM 20MHz主频….的设备</li>
-</ul>
-<h3 id="特点总结"><a href="#特点总结" class="headerlink" title="特点总结"></a>特点总结</h3><ol>
-<li>满足资源受限的网络需求。</li>
-<li>无状态HTTP映射，可以通过HTTP代理实现访问CoAP资源，或者在CoAP智商构建HTTP接口。</li>
-<li>使用UDP实现可靠IP单播和最大努力IP多播。</li>
-<li>异步消息交换</li>
-<li>很小的消息头载荷及解析复杂度。</li>
-<li>支持URI和内容类型(Content-type).</li>
-<li>支持代理和缓存.</li>
-<li>内建资源发现.</li>
-<li>可以使用DTLS作为安全加密层。</li>
-<li>资源消耗低，所需RAM和ROM资源均小于10KB。</li>
-<li>其双层(事务层，请求/响应层)处理方式可支持异步通信.</li>
-<li>支持观察模式。</li>
-<li>支持块传输</li>
-</ol>
-]]></content>
-      <categories>
-        <category>协议</category>
-      </categories>
-      <tags>
-        <tag>COAP</tag>
-        <tag>协议</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>COAP系列-lwm2m初识</title>
     <url>/2018/01/29/7f47.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Wakaama"><a href="#Wakaama" class="headerlink" title="Wakaama"></a>Wakaama</h2><hr>
@@ -899,197 +899,6 @@ eqSign <span class="token operator">=</span> a <span class="token operator">^</s
       </categories>
       <tags>
         <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ESP8266系列-12F引脚说明</title>
-    <url>/2017/08/06/53ce.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="ESP8266-12F-模组图"><a href="#ESP8266-12F-模组图" class="headerlink" title="ESP8266-12F 模组图"></a>ESP8266-12F 模组图</h2><p><img src="/images/pasted-14.png" alt="硬件模组图"><br><img src="/images/pasted-13.png" alt="esp12f管脚定义图"></p>
-<a id="more"></a>
-<h2 id="引脚说明"><a href="#引脚说明" class="headerlink" title="引脚说明"></a>引脚说明</h2><table>
-<thead>
-<tr>
-<th align="center">引脚编号</th>
-<th align="left">引脚名</th>
-<th align="left">引脚描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">1</td>
-<td align="left">RST</td>
-<td align="left">复位模组</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="left">ADC</td>
-<td align="left">A/D 转换结果。输入电压范围 0～1V，取值范围：0～1024</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="left">EN</td>
-<td align="left">芯片使能端，高电平有效</td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td align="left">IO16</td>
-<td align="left">GPIO16; 接到 RST 管脚时可做 deep sleep 的唤醒。</td>
-</tr>
-<tr>
-<td align="center">5</td>
-<td align="left">IO14</td>
-<td align="left">GPIO14; HSPI_CLK</td>
-</tr>
-<tr>
-<td align="center">6</td>
-<td align="left">IO12</td>
-<td align="left">GPIO12; HSPI_MISO</td>
-</tr>
-<tr>
-<td align="center">7</td>
-<td align="left">IO13</td>
-<td align="left">GPIO13; HSPI_MOSI; UART0_CTS</td>
-</tr>
-<tr>
-<td align="center">8</td>
-<td align="left">VCC</td>
-<td align="left">3.3V 供电</td>
-</tr>
-<tr>
-<td align="center">9</td>
-<td align="left">CS0</td>
-<td align="left">片选</td>
-</tr>
-<tr>
-<td align="center">10</td>
-<td align="left">MISO</td>
-<td align="left">从机输出主机输入</td>
-</tr>
-<tr>
-<td align="center">11</td>
-<td align="left">IO9</td>
-<td align="left">GPIO9</td>
-</tr>
-<tr>
-<td align="center">12</td>
-<td align="left">IO10</td>
-<td align="left">GBIO10</td>
-</tr>
-<tr>
-<td align="center">13</td>
-<td align="left">MOSI</td>
-<td align="left">主机输出从机输入</td>
-</tr>
-<tr>
-<td align="center">14</td>
-<td align="left">SCLK</td>
-<td align="left">时钟</td>
-</tr>
-<tr>
-<td align="center">15</td>
-<td align="left">GND</td>
-<td align="left">GND</td>
-</tr>
-<tr>
-<td align="center">16</td>
-<td align="left">IO15</td>
-<td align="left">GPIO15; MTDO; HSPICS; UART0_RTS</td>
-</tr>
-<tr>
-<td align="center">17</td>
-<td align="left">IO2</td>
-<td align="left">GPIO2; UART1_TXD</td>
-</tr>
-<tr>
-<td align="center">18</td>
-<td align="left">IO0</td>
-<td align="left">GPIO0</td>
-</tr>
-<tr>
-<td align="center">19</td>
-<td align="left">IO4</td>
-<td align="left">GPIO4</td>
-</tr>
-<tr>
-<td align="center">20</td>
-<td align="left">IO5</td>
-<td align="left">GPIO5</td>
-</tr>
-<tr>
-<td align="center">21</td>
-<td align="left">RXD</td>
-<td align="left">UART0_RXD; GPIO3</td>
-</tr>
-<tr>
-<td align="center">22</td>
-<td align="left">TXD</td>
-<td align="left">UART0_TXD; GPIO1</td>
-</tr>
-</tbody></table>
-<h2 id="接口说明"><a href="#接口说明" class="headerlink" title="接口说明"></a>接口说明</h2><table>
-<thead>
-<tr>
-<th align="center">引脚名</th>
-<th align="left">引脚</th>
-<th align="left">功能描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">HSPI 接</td>
-<td align="left">IO12(MISO),IO13(MOSI), IO14(CLK),IO15(CS)</td>
-<td align="left">可外接 4SPI Flash、显示屏和 MCU 等。</td>
-</tr>
-<tr>
-<td align="center">PWM  接</td>
-<td align="left">IO12(R), IO15(G),IO13(B)</td>
-<td align="left">demo 中提供 4 路 PWM (用户可自行扩展至 8 路)，可用来控制彩灯，蜂鸣器，继电器及电机等。</td>
-</tr>
-<tr>
-<td align="center">IR   接</td>
-<td align="left">IO14(IR_T), IO5(IR_R)</td>
-<td align="left">IR Remote Control4 接口由软件实现，接口使用 NEC 编码及调制解调，采用 38KHz 的调制载波。</td>
-</tr>
-<tr>
-<td align="center">ADC  接</td>
-<td align="left">TOUT</td>
-<td align="left">可于检测 VDD3P3 (Pin3,Pin4) 电源电压和 TOUT (Pin6)的输入电压(二者不可同时使用)。可用于传感器等应用。</td>
-</tr>
-<tr>
-<td align="center">I2C  接</td>
-<td align="left">IO14(SCL), IO2(SDA)</td>
-<td align="left">可外接传感器及显示屏等</td>
-</tr>
-<tr>
-<td align="center">UART 接</td>
-<td align="left">UART0: TXD(U0TXD),RXD(U0RXD), IO15(RTS),IO13(CTS),UART1: IO2(TXD)</td>
-<td align="left">可外接 UART 接口的设备。下载：U0TXD+U0RXD 或者 GPIO2+U0RXD通信(UART0)：U0TXD，U0RXD，MTDO(U0RTS)，MTCK(U0CTS) Debug: UART1_TXD(GPIO2)可作为 debug 信息的打印。</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="left">-</td>
-<td align="left">UART0 在 ESP8266EX 上电默认会输出一些打印信息。对此敏感的应用，可以使用 UART 的内部引脚交换功能，在初始化的时候，将U0TXD，U0RXD 分别与 U0RTS，U0CTS 交换。硬件上将 MTDO MTCK 连接到对应的 外部 MCU 的串进行通信。</td>
-</tr>
-<tr>
-<td align="center">I2S 接</td>
-<td align="left">I2S 输入：IO12 (I2SI_DATA) ;IO13 (I2SI_BCK );IO14 (I2SI_WS);</td>
-<td align="left">主要于音频采集、处理和传输。</td>
-</tr>
-<tr>
-<td align="center">I2S 接</td>
-<td align="left">I2S 输出：IO15 (I2SO_BCK );IO3 (I2SO_DATA);IO2 (I2SO_WS ).</td>
-<td align="left">主要于音频采集、处理和传输。</td>
-</tr>
-</tbody></table>
-<h2 id="ESP8266-SPI-说明"><a href="#ESP8266-SPI-说明" class="headerlink" title="ESP8266 SPI 说明"></a>ESP8266 SPI 说明</h2><p>ESP8266 有两组 SPI 通信模块命名分别为 SPI 与 HSPI。</p>
-<ul>
-<li>SPI 通常专于从外部 Flash 读取 CPU 程序代码。</li>
-<li>HSPI 则用于用户和 SPI 设备的通信操作。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>esp8266</category>
-      </categories>
-      <tags>
-        <tag>esp8266</tag>
       </tags>
   </entry>
   <entry>
@@ -1393,69 +1202,194 @@ invalid reference format</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Github Blog 搭建入门</title>
-    <url>/2017/03/26/fc92.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h2 id="GitHub-项目创建"><a href="#GitHub-项目创建" class="headerlink" title="GitHub 项目创建"></a>GitHub 项目创建</h2><ul>
-<li>创建一个跟你的用户名相同的项目，比如我的*<strong>github**<em>名称是</em></strong>ilxj*** 则项目名称为**<em>ilxj.github.io**</em></li>
-</ul>
-<h2 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h2><ul>
-<li>安装nodejs，下载直接安装就可以了: <a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a>.</li>
-</ul>
+    <title>ESP8266系列-12F引脚说明</title>
+    <url>/2017/08/06/53ce.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="ESP8266-12F-模组图"><a href="#ESP8266-12F-模组图" class="headerlink" title="ESP8266-12F 模组图"></a>ESP8266-12F 模组图</h2><p><img src="/images/pasted-14.png" alt="硬件模组图"><br><img src="/images/pasted-13.png" alt="esp12f管脚定义图"></p>
 <a id="more"></a>
-
-<h2 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h2><ul>
-<li>安装配置hexo，安装命令:</li>
-</ul>
-<h3 id="淘宝cnpm"><a href="#淘宝cnpm" class="headerlink" title="淘宝cnpm"></a>淘宝cnpm</h3><p>网址:<a href="https://npm.taobao.org/">https://npm.taobao.org/</a></p>
-<pre class=" language-sh"><code class="language-sh">npm install -g hexo-cli
-# 若npm 安装有问题，可以更改为淘宝源,之后可以用 cnpm 代替 npm
-npm install -g cnpm --registry=https://registry.npm.taobao.org</code></pre>
+<h2 id="引脚说明"><a href="#引脚说明" class="headerlink" title="引脚说明"></a>引脚说明</h2><table>
+<thead>
+<tr>
+<th align="center">引脚编号</th>
+<th align="left">引脚名</th>
+<th align="left">引脚描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="left">RST</td>
+<td align="left">复位模组</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="left">ADC</td>
+<td align="left">A/D 转换结果。输入电压范围 0～1V，取值范围：0～1024</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="left">EN</td>
+<td align="left">芯片使能端，高电平有效</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="left">IO16</td>
+<td align="left">GPIO16; 接到 RST 管脚时可做 deep sleep 的唤醒。</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="left">IO14</td>
+<td align="left">GPIO14; HSPI_CLK</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="left">IO12</td>
+<td align="left">GPIO12; HSPI_MISO</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="left">IO13</td>
+<td align="left">GPIO13; HSPI_MOSI; UART0_CTS</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="left">VCC</td>
+<td align="left">3.3V 供电</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="left">CS0</td>
+<td align="left">片选</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="left">MISO</td>
+<td align="left">从机输出主机输入</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="left">IO9</td>
+<td align="left">GPIO9</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="left">IO10</td>
+<td align="left">GBIO10</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="left">MOSI</td>
+<td align="left">主机输出从机输入</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="left">SCLK</td>
+<td align="left">时钟</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="left">GND</td>
+<td align="left">GND</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="left">IO15</td>
+<td align="left">GPIO15; MTDO; HSPICS; UART0_RTS</td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="left">IO2</td>
+<td align="left">GPIO2; UART1_TXD</td>
+</tr>
+<tr>
+<td align="center">18</td>
+<td align="left">IO0</td>
+<td align="left">GPIO0</td>
+</tr>
+<tr>
+<td align="center">19</td>
+<td align="left">IO4</td>
+<td align="left">GPIO4</td>
+</tr>
+<tr>
+<td align="center">20</td>
+<td align="left">IO5</td>
+<td align="left">GPIO5</td>
+</tr>
+<tr>
+<td align="center">21</td>
+<td align="left">RXD</td>
+<td align="left">UART0_RXD; GPIO3</td>
+</tr>
+<tr>
+<td align="center">22</td>
+<td align="left">TXD</td>
+<td align="left">UART0_TXD; GPIO1</td>
+</tr>
+</tbody></table>
+<h2 id="接口说明"><a href="#接口说明" class="headerlink" title="接口说明"></a>接口说明</h2><table>
+<thead>
+<tr>
+<th align="center">引脚名</th>
+<th align="left">引脚</th>
+<th align="left">功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">HSPI 接</td>
+<td align="left">IO12(MISO),IO13(MOSI), IO14(CLK),IO15(CS)</td>
+<td align="left">可外接 4SPI Flash、显示屏和 MCU 等。</td>
+</tr>
+<tr>
+<td align="center">PWM  接</td>
+<td align="left">IO12(R), IO15(G),IO13(B)</td>
+<td align="left">demo 中提供 4 路 PWM (用户可自行扩展至 8 路)，可用来控制彩灯，蜂鸣器，继电器及电机等。</td>
+</tr>
+<tr>
+<td align="center">IR   接</td>
+<td align="left">IO14(IR_T), IO5(IR_R)</td>
+<td align="left">IR Remote Control4 接口由软件实现，接口使用 NEC 编码及调制解调，采用 38KHz 的调制载波。</td>
+</tr>
+<tr>
+<td align="center">ADC  接</td>
+<td align="left">TOUT</td>
+<td align="left">可于检测 VDD3P3 (Pin3,Pin4) 电源电压和 TOUT (Pin6)的输入电压(二者不可同时使用)。可用于传感器等应用。</td>
+</tr>
+<tr>
+<td align="center">I2C  接</td>
+<td align="left">IO14(SCL), IO2(SDA)</td>
+<td align="left">可外接传感器及显示屏等</td>
+</tr>
+<tr>
+<td align="center">UART 接</td>
+<td align="left">UART0: TXD(U0TXD),RXD(U0RXD), IO15(RTS),IO13(CTS),UART1: IO2(TXD)</td>
+<td align="left">可外接 UART 接口的设备。下载：U0TXD+U0RXD 或者 GPIO2+U0RXD通信(UART0)：U0TXD，U0RXD，MTDO(U0RTS)，MTCK(U0CTS) Debug: UART1_TXD(GPIO2)可作为 debug 信息的打印。</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="left">-</td>
+<td align="left">UART0 在 ESP8266EX 上电默认会输出一些打印信息。对此敏感的应用，可以使用 UART 的内部引脚交换功能，在初始化的时候，将U0TXD，U0RXD 分别与 U0RTS，U0CTS 交换。硬件上将 MTDO MTCK 连接到对应的 外部 MCU 的串进行通信。</td>
+</tr>
+<tr>
+<td align="center">I2S 接</td>
+<td align="left">I2S 输入：IO12 (I2SI_DATA) ;IO13 (I2SI_BCK );IO14 (I2SI_WS);</td>
+<td align="left">主要于音频采集、处理和传输。</td>
+</tr>
+<tr>
+<td align="center">I2S 接</td>
+<td align="left">I2S 输出：IO15 (I2SO_BCK );IO3 (I2SO_DATA);IO2 (I2SO_WS ).</td>
+<td align="left">主要于音频采集、处理和传输。</td>
+</tr>
+</tbody></table>
+<h2 id="ESP8266-SPI-说明"><a href="#ESP8266-SPI-说明" class="headerlink" title="ESP8266 SPI 说明"></a>ESP8266 SPI 说明</h2><p>ESP8266 有两组 SPI 通信模块命名分别为 SPI 与 HSPI。</p>
 <ul>
-<li>在终端输入:</li>
+<li>SPI 通常专于从外部 Flash 读取 CPU 程序代码。</li>
+<li>HSPI 则用于用户和 SPI 设备的通信操作。</li>
 </ul>
-<pre class=" language-sh"><code class="language-sh"> $ hexo
- #显示如下则成功.</code></pre>
-<p> <img src="http://upload-images.jianshu.io/upload_images/1736256-808fd91a203124d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hexo"></p>
-<ul>
-<li>初始化博客</li>
-</ul>
-<pre class=" language-sh"><code class="language-sh"> #建立一个博客文件夹，并初始化博客，<folder>为文件夹的名称，可以随便起名字
- $ hexo init <folder>
- #进入博客文件夹，根据博客既定的dependencies配置安装所有的依赖包
- $ npm install
- # 部署所需的插件,加上--save比较好
- $ npm install hexo-deployer-git    --save</code></pre>
-<ul>
-<li>初始化完成之后，目录如下图<br><img src="http://upload-images.jianshu.io/upload_images/1736256-41e851da429e5a19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hexo 初始化图"><h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><img src="http://upload-images.jianshu.io/upload_images/1736256-70632d39b4a81358.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="博客配置"></li>
-</ul>
-<h3 id="本地发布命令"><a href="#本地发布命令" class="headerlink" title="本地发布命令"></a>本地发布命令</h3><pre class=" language-bash"><code class="language-bash"> $ hexo server.
- <span class="token comment" spellcheck="true">#浏览器浏览:http://localhost:4000/</span></code></pre>
-<h3 id="GitHub-发布命令"><a href="#GitHub-发布命令" class="headerlink" title="GitHub 发布命令"></a>GitHub 发布命令</h3><pre class=" language-bash"><code class="language-bash"> $ hexo generate
- $ hexo deploy</code></pre>
-<p>这时候我们的博客已经部署到网上了，我们可以在浏览器地址输入栏输入我们的网址即可，如我的博客是:<a href="http://lxj-life.com/">ilxj.github.io</a>。</p>
-<h2 id="跨PC部署"><a href="#跨PC部署" class="headerlink" title="跨PC部署"></a>跨PC部署</h2><p>原理是一个仓库存部署工具，另外一个参考用来做发布仓库；</p>
-<h2 id="Hexo-主题"><a href="#Hexo-主题" class="headerlink" title="Hexo 主题"></a>Hexo 主题</h2><ul>
-<li><a href="https://hexo.io/themes/">官网 hexo 主题</a></li>
-<li><a href="https://github.com/hexojs/hexo/wiki/Themes">主题 github</a></li>
-</ul>
-<h3 id="本博客主题是NEXT"><a href="#本博客主题是NEXT" class="headerlink" title="本博客主题是NEXT"></a>本博客主题是NEXT</h3><ul>
-<li>新建一个页面，命名为 tags 。命令如下：<pre><code>$ hexo new page tags</code></pre>
-</li>
-<li>初始化<br>编辑刚新建的页面，设置type为tags：</li>
-</ul>
-<pre><code>title: 标签
-date: 2014-12-22 12:39:04
-type: &quot;tags&quot;
-
----</code></pre>
-<p><a href="http://theme-next.iissnan.com/getting-started.html">NEXT 参考</a></p>
-<h2 id="CDN-免费加速"><a href="#CDN-免费加速" class="headerlink" title="CDN 免费加速"></a>CDN 免费加速</h2><p>官网: <a href="https://www.jsdelivr.com/?docs=gh">https://www.jsdelivr.com/?docs=gh</a><br>例子</p>
-<pre class=" language-sh"><code class="language-sh">https://cdn.jsdelivr.net/gh/github用户名/仓库@分支/images/pasted-15.png</code></pre>
 ]]></content>
+      <categories>
+        <category>esp8266</category>
+      </categories>
       <tags>
-        <tag>hexo</tag>
-        <tag>git</tag>
+        <tag>esp8266</tag>
       </tags>
   </entry>
   <entry>
@@ -1673,6 +1607,72 @@ undefined
       </tags>
   </entry>
   <entry>
+    <title>Github Blog 搭建入门</title>
+    <url>/2017/03/26/fc92.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h2 id="GitHub-项目创建"><a href="#GitHub-项目创建" class="headerlink" title="GitHub 项目创建"></a>GitHub 项目创建</h2><ul>
+<li>创建一个跟你的用户名相同的项目，比如我的*<strong>github**<em>名称是</em></strong>ilxj*** 则项目名称为**<em>ilxj.github.io**</em></li>
+</ul>
+<h2 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h2><ul>
+<li>安装nodejs，下载直接安装就可以了: <a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a>.</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h2><ul>
+<li>安装配置hexo，安装命令:</li>
+</ul>
+<h3 id="淘宝cnpm"><a href="#淘宝cnpm" class="headerlink" title="淘宝cnpm"></a>淘宝cnpm</h3><p>网址:<a href="https://npm.taobao.org/">https://npm.taobao.org/</a></p>
+<pre class=" language-sh"><code class="language-sh">npm install -g hexo-cli
+# 若npm 安装有问题，可以更改为淘宝源,之后可以用 cnpm 代替 npm
+npm install -g cnpm --registry=https://registry.npm.taobao.org</code></pre>
+<ul>
+<li>在终端输入:</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh"> $ hexo
+ #显示如下则成功.</code></pre>
+<p> <img src="http://upload-images.jianshu.io/upload_images/1736256-808fd91a203124d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hexo"></p>
+<ul>
+<li>初始化博客</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh"> #建立一个博客文件夹，并初始化博客，<folder>为文件夹的名称，可以随便起名字
+ $ hexo init <folder>
+ #进入博客文件夹，根据博客既定的dependencies配置安装所有的依赖包
+ $ npm install
+ # 部署所需的插件,加上--save比较好
+ $ npm install hexo-deployer-git    --save</code></pre>
+<ul>
+<li>初始化完成之后，目录如下图<br><img src="http://upload-images.jianshu.io/upload_images/1736256-41e851da429e5a19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hexo 初始化图"><h2 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h2><img src="http://upload-images.jianshu.io/upload_images/1736256-70632d39b4a81358.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="博客配置"></li>
+</ul>
+<h3 id="本地发布命令"><a href="#本地发布命令" class="headerlink" title="本地发布命令"></a>本地发布命令</h3><pre class=" language-bash"><code class="language-bash"> $ hexo server.
+ <span class="token comment" spellcheck="true">#浏览器浏览:http://localhost:4000/</span></code></pre>
+<h3 id="GitHub-发布命令"><a href="#GitHub-发布命令" class="headerlink" title="GitHub 发布命令"></a>GitHub 发布命令</h3><pre class=" language-bash"><code class="language-bash"> $ hexo generate
+ $ hexo deploy</code></pre>
+<p>这时候我们的博客已经部署到网上了，我们可以在浏览器地址输入栏输入我们的网址即可，如我的博客是:<a href="http://lxj-life.com/">ilxj.github.io</a>。</p>
+<h2 id="跨PC部署"><a href="#跨PC部署" class="headerlink" title="跨PC部署"></a>跨PC部署</h2><p>原理是一个仓库存部署工具，另外一个参考用来做发布仓库；</p>
+<h2 id="Hexo-主题"><a href="#Hexo-主题" class="headerlink" title="Hexo 主题"></a>Hexo 主题</h2><ul>
+<li><a href="https://hexo.io/themes/">官网 hexo 主题</a></li>
+<li><a href="https://github.com/hexojs/hexo/wiki/Themes">主题 github</a></li>
+</ul>
+<h3 id="本博客主题是NEXT"><a href="#本博客主题是NEXT" class="headerlink" title="本博客主题是NEXT"></a>本博客主题是NEXT</h3><ul>
+<li>新建一个页面，命名为 tags 。命令如下：<pre><code>$ hexo new page tags</code></pre>
+</li>
+<li>初始化<br>编辑刚新建的页面，设置type为tags：</li>
+</ul>
+<pre><code>title: 标签
+date: 2014-12-22 12:39:04
+type: &quot;tags&quot;
+
+---</code></pre>
+<p><a href="http://theme-next.iissnan.com/getting-started.html">NEXT 参考</a></p>
+<h2 id="CDN-免费加速"><a href="#CDN-免费加速" class="headerlink" title="CDN 免费加速"></a>CDN 免费加速</h2><p>官网: <a href="https://www.jsdelivr.com/?docs=gh">https://www.jsdelivr.com/?docs=gh</a><br>例子</p>
+<pre class=" language-sh"><code class="language-sh">https://cdn.jsdelivr.net/gh/github用户名/仓库@分支/images/pasted-15.png</code></pre>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo添加Swiftype</title>
     <url>/2017/08/04/5fa1.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-swiftype-搭建站内搜索"><a href="#1-swiftype-搭建站内搜索" class="headerlink" title="1.swiftype 搭建站内搜索"></a>1.swiftype 搭建站内搜索</h2><p>Swiftype站内搜索 ，<a href="https://swiftype.com/">官网</a></p>
@@ -1723,25 +1723,6 @@ search:
       </tags>
   </entry>
   <entry>
-    <title>Hexo第三方评论插件引用</title>
-    <url>/2017/08/01/6835.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="第三方插件-友言"><a href="#第三方插件-友言" class="headerlink" title="第三方插件-友言"></a>第三方插件-友言</h2><blockquote>
-<p>友言已经暂停服务了，又不能用<br>因公司业务调整，非常遗憾的向大家宣布JiaThis公司决定自2018年4月30日起关闭旗下“友言”业务。<br>因为关停“友言”业务给您造成的不便，我们深表歉意。</p>
-</blockquote>
-<ul>
-<li><a href="http://www.uyan.cc/">友言官网</a></li>
-<li><a href="http://www.jianshu.com/p/4729e92fddbe">相关教程 1 </a></li>
-<li><a href="http://www.qtdebug.com/hexo-uyan/">相关教程 2 </a></li>
-</ul>
-<a id="more"></a>
-
-]]></content>
-      <tags>
-        <tag>hexo</tag>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo相关资源</title>
     <url>/2017/08/04/ddcb.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>中文网站 : <a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
@@ -1779,6 +1760,101 @@ search:
       <tags>
         <tag>智能硬件</tag>
         <tag>IoT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo第三方评论插件引用</title>
+    <url>/2017/08/01/6835.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="第三方插件-友言"><a href="#第三方插件-友言" class="headerlink" title="第三方插件-友言"></a>第三方插件-友言</h2><blockquote>
+<p>友言已经暂停服务了，又不能用<br>因公司业务调整，非常遗憾的向大家宣布JiaThis公司决定自2018年4月30日起关闭旗下“友言”业务。<br>因为关停“友言”业务给您造成的不便，我们深表歉意。</p>
+</blockquote>
+<ul>
+<li><a href="http://www.uyan.cc/">友言官网</a></li>
+<li><a href="http://www.jianshu.com/p/4729e92fddbe">相关教程 1 </a></li>
+<li><a href="http://www.qtdebug.com/hexo-uyan/">相关教程 2 </a></li>
+</ul>
+<a id="more"></a>
+
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux之kill命令</title>
+    <url>/2018/02/23/730d.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Kill-命令列表"><a href="#Kill-命令列表" class="headerlink" title="Kill 命令列表"></a>Kill 命令列表</h2><hr>
+<pre><code>alex@ubuntu:~$ kill -l
+ 1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
+ 6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1
+11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM
+16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP
+21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ
+26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR
+31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
+38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
+43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
+48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
+53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
+58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
+63) SIGRTMAX-1  64) SIGRTMAX</code></pre>
+<a id="more"></a>
+
+<h3 id="Linux-Signals"><a href="#Linux-Signals" class="headerlink" title="Linux Signals"></a>Linux Signals</h3><p>Signals<br>Linux Signals are:</p>
+<pre><code>Signal_Name Number  Description
+SIGHUP       1      Hangup (POSIX)
+SIGINT       2      Terminal interrupt (ANSI)
+SIGQUIT      3      Terminal quit (POSIX)
+SIGILL       4      Illegal instruction (ANSI)
+SIGTRAP      5      Trace trap (POSIX)
+SIGIOT       6      IOT Trap (4.2 BSD)
+SIGBUS       7      BUS error (4.2 BSD)
+SIGFPE       8      Floating point exception (ANSI)
+SIGKILL      9      Kill(can&#39;t be caught or ignored) (POSIX)
+SIGUSR1      10     User defined signal 1 (POSIX)
+SIGSEGV      11     Invalid memory segment access (ANSI)
+SIGUSR2      12     User defined signal 2 (POSIX)
+SIGPIPE      13     Write on a pipe with no reader, Broken pipe (POSIX)
+SIGALRM      14     Alarm clock (POSIX)
+SIGTERM      15     Termination (ANSI)
+SIGSTKFLT    16     Stack fault
+SIGCHLD      17     Child process has stopped or exited, changed (POSIX)
+SIGCONT      18     Continue executing, if stopped (POSIX)
+SIGSTOP      19     Stop executing(can&#39;t be caught or ignored) (POSIX)
+SIGTSTP      20     Terminal stop signal (POSIX)
+SIGTTIN      21     Background process trying to read, from TTY (POSIX)
+SIGTTOU      22     Background process trying to write, to TTY (POSIX)
+SIGURG       23     Urgent condition on socket (4.2 BSD)
+SIGXCPU      24     CPU limit exceeded (4.2 BSD)
+SIGXFSZ      25     File size limit exceeded (4.2 BSD)
+SIGVTALRM    26     Virtual alarm clock (4.2 BSD)
+SIGPROF      27     Profiling alarm clock (4.2 BSD)
+SIGWINCH     28     Window size change (4.3 BSD, Sun)
+SIGIO        29     I/O now possible (4.2 BSD)
+SIGPWR       30     Power failure restart (System V)</code></pre>
+<h3 id="SIGKILL-9-和-SIGTERM-15-的区别"><a href="#SIGKILL-9-和-SIGTERM-15-的区别" class="headerlink" title="SIGKILL(9) 和 SIGTERM(15) 的区别"></a>SIGKILL(9) 和 SIGTERM(15) 的区别</h3><pre><code>SIGKILL 9   Kill(can&#39;t be caught or ignored) (POSIX)
+# 默认kill 发送信号量
+SIGTERM 15  Termination (ANSI)</code></pre>
+<p>SIGKILL 是强制终止进程，进程来不及释放资源<br>SIGTERM 是 <strong><em>优雅</em></strong> 的退出进程，进程接收到SIGTERM可以进行资源释放；</p>
+<h2 id="killall命令"><a href="#killall命令" class="headerlink" title="killall命令"></a>killall命令</h2><p>killall命令使用进程的名称来杀死进程，使用此指令可以杀死一组同名进程。<br>我们可以使用kill命令杀死指定进程PID的进程，如果要找到我们需要杀死的进程，我们还需要在之前使用ps等命令再配合grep来查找进程，而killall把这两个过程合二为一，是一个很好用的命令。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre><code>killall(选项)(参数)</code></pre>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><pre><code>-e：对长名称进行精确匹配；
+-l：忽略大小写的不同；
+-p：杀死进程所属的进程组；
+-i：交互式杀死进程，杀死进程前需要进行确认；
+-l：打印所有已知信号列表；
+-q：如果没有进程被杀死。则不输出任何信息；
+-r：使用正规表达式匹配要杀死的进程名称；
+-s：用指定的进程号代替默认信号“SIGTERM”；
+-u：杀死指定用户的进程。</code></pre>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>进程名称：指定要杀死的进程名称。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>杀死所有同名进程</p>
+<pre><code>killall vi</code></pre>
+]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1946,95 +2022,6 @@ alex@ubuntu:/media/psf/Home/myself/C$ addr2line -e demo 080483e9
       </tags>
   </entry>
   <entry>
-    <title>Linux之SSH</title>
-    <url>/2018/12/18/720f.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
-<li><a href="https://linux.cn/article-5975-1.html">https://linux.cn/article-5975-1.html</a></li>
-</ul>
-<pre class=" language-sh"><code class="language-sh">autossh -M 10109 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=false" -o "PasswordAuthentication=no" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -R ubuntu.lxj-life.com:10108:localhost:22 ubuntu@ubuntu.lxj-life.com</code></pre>
-]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux之kill命令</title>
-    <url>/2018/02/23/730d.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Kill-命令列表"><a href="#Kill-命令列表" class="headerlink" title="Kill 命令列表"></a>Kill 命令列表</h2><hr>
-<pre><code>alex@ubuntu:~$ kill -l
- 1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
- 6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1
-11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM
-16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP
-21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ
-26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR
-31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
-38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
-43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
-48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
-53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
-58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
-63) SIGRTMAX-1  64) SIGRTMAX</code></pre>
-<a id="more"></a>
-
-<h3 id="Linux-Signals"><a href="#Linux-Signals" class="headerlink" title="Linux Signals"></a>Linux Signals</h3><p>Signals<br>Linux Signals are:</p>
-<pre><code>Signal_Name Number  Description
-SIGHUP       1      Hangup (POSIX)
-SIGINT       2      Terminal interrupt (ANSI)
-SIGQUIT      3      Terminal quit (POSIX)
-SIGILL       4      Illegal instruction (ANSI)
-SIGTRAP      5      Trace trap (POSIX)
-SIGIOT       6      IOT Trap (4.2 BSD)
-SIGBUS       7      BUS error (4.2 BSD)
-SIGFPE       8      Floating point exception (ANSI)
-SIGKILL      9      Kill(can&#39;t be caught or ignored) (POSIX)
-SIGUSR1      10     User defined signal 1 (POSIX)
-SIGSEGV      11     Invalid memory segment access (ANSI)
-SIGUSR2      12     User defined signal 2 (POSIX)
-SIGPIPE      13     Write on a pipe with no reader, Broken pipe (POSIX)
-SIGALRM      14     Alarm clock (POSIX)
-SIGTERM      15     Termination (ANSI)
-SIGSTKFLT    16     Stack fault
-SIGCHLD      17     Child process has stopped or exited, changed (POSIX)
-SIGCONT      18     Continue executing, if stopped (POSIX)
-SIGSTOP      19     Stop executing(can&#39;t be caught or ignored) (POSIX)
-SIGTSTP      20     Terminal stop signal (POSIX)
-SIGTTIN      21     Background process trying to read, from TTY (POSIX)
-SIGTTOU      22     Background process trying to write, to TTY (POSIX)
-SIGURG       23     Urgent condition on socket (4.2 BSD)
-SIGXCPU      24     CPU limit exceeded (4.2 BSD)
-SIGXFSZ      25     File size limit exceeded (4.2 BSD)
-SIGVTALRM    26     Virtual alarm clock (4.2 BSD)
-SIGPROF      27     Profiling alarm clock (4.2 BSD)
-SIGWINCH     28     Window size change (4.3 BSD, Sun)
-SIGIO        29     I/O now possible (4.2 BSD)
-SIGPWR       30     Power failure restart (System V)</code></pre>
-<h3 id="SIGKILL-9-和-SIGTERM-15-的区别"><a href="#SIGKILL-9-和-SIGTERM-15-的区别" class="headerlink" title="SIGKILL(9) 和 SIGTERM(15) 的区别"></a>SIGKILL(9) 和 SIGTERM(15) 的区别</h3><pre><code>SIGKILL 9   Kill(can&#39;t be caught or ignored) (POSIX)
-# 默认kill 发送信号量
-SIGTERM 15  Termination (ANSI)</code></pre>
-<p>SIGKILL 是强制终止进程，进程来不及释放资源<br>SIGTERM 是 <strong><em>优雅</em></strong> 的退出进程，进程接收到SIGTERM可以进行资源释放；</p>
-<h2 id="killall命令"><a href="#killall命令" class="headerlink" title="killall命令"></a>killall命令</h2><p>killall命令使用进程的名称来杀死进程，使用此指令可以杀死一组同名进程。<br>我们可以使用kill命令杀死指定进程PID的进程，如果要找到我们需要杀死的进程，我们还需要在之前使用ps等命令再配合grep来查找进程，而killall把这两个过程合二为一，是一个很好用的命令。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre><code>killall(选项)(参数)</code></pre>
-<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><pre><code>-e：对长名称进行精确匹配；
--l：忽略大小写的不同；
--p：杀死进程所属的进程组；
--i：交互式杀死进程，杀死进程前需要进行确认；
--l：打印所有已知信号列表；
--q：如果没有进程被杀死。则不输出任何信息；
--r：使用正规表达式匹配要杀死的进程名称；
--s：用指定的进程号代替默认信号“SIGTERM”；
--u：杀死指定用户的进程。</code></pre>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>进程名称：指定要杀死的进程名称。</p>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>杀死所有同名进程</p>
-<pre><code>killall vi</code></pre>
-]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux之Socket关键</title>
     <url>/2017/06/07/179d.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一、Socket-属性设置函数"><a href="#一、Socket-属性设置函数" class="headerlink" title="一、Socket 属性设置函数"></a>一、Socket 属性设置函数</h2><pre class=" language-C"><code class="language-C">int getsockopt(int sockfd, int level, int optname,void *optval, socklen_t *optlen);
@@ -2153,333 +2140,6 @@ Setsockopt(listenfd, SOL_TCP, TCP_KEEPCNT, (void *)&keepCount, sizeof(keepCount)
       <tags>
         <tag>Linux</tag>
         <tag>网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux之实用技能</title>
-    <url>/2017/06/06/ef18.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="查看机器是多少位"><a href="#查看机器是多少位" class="headerlink" title="查看机器是多少位"></a>查看机器是多少位</h2><hr>
-<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><pre class=" language-shell"><code class="language-shell">>>>$ getconf LONG_BIT
->>>$ 64</code></pre>
-<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><pre class=" language-shell"><code class="language-shell">>>>$ uname -a
->>>$ Linux alex-virtual-machine 3.16.0-30-generic #40~14.04.1-Ubuntu SMP Thu Jan 15 17:43:14 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
-</code></pre>
-<a id="more"></a>
-
-<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><pre class=" language-shell"><code class="language-shell">>>>$ uname -p
->>>$ x86_64</code></pre>
-<h2 id="实用命令"><a href="#实用命令" class="headerlink" title="实用命令"></a>实用命令</h2><table>
-<thead>
-<tr>
-<th align="center">命令</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">wc</td>
-<td>统计文本中行数、字数、字符数</td>
-</tr>
-<tr>
-<td align="center">stat</td>
-<td>显示指定文件的详细信息，比ls更详细</td>
-</tr>
-<tr>
-<td align="center">who</td>
-<td>显示在线登陆用户</td>
-</tr>
-<tr>
-<td align="center">whoami</td>
-<td>显示当前操作用户</td>
-</tr>
-<tr>
-<td align="center">hostname</td>
-<td>显示主机名</td>
-</tr>
-<tr>
-<td align="center">uname</td>
-<td>显示系统信息</td>
-</tr>
-<tr>
-<td align="center">top</td>
-<td>动态显示当前耗费资源最多进程信息</td>
-</tr>
-<tr>
-<td align="center">ps</td>
-<td>显示瞬间进程状态 ps -aux</td>
-</tr>
-<tr>
-<td align="center">du</td>
-<td>查看目录大小 du -h /home带有单位显示目录信息</td>
-</tr>
-<tr>
-<td align="center">df</td>
-<td>查看磁盘大小 df -h 带有单位显示磁盘信息</td>
-</tr>
-</tbody></table>
-<h2 id="Linux-代码文件大小、行数、字节数统计"><a href="#Linux-代码文件大小、行数、字节数统计" class="headerlink" title="Linux 代码文件大小、行数、字节数统计"></a>Linux 代码文件大小、行数、字节数统计</h2><h3 id="命令解释"><a href="#命令解释" class="headerlink" title="命令解释"></a>命令解释</h3><p><strong><em>语法：wc [选项] 文件…</em></strong></p>
-<blockquote>
-<p>说明：该命令统计给定文件中的字节数、字数、行数。如果没有给出文件名，则从标准输入读取。wc同时也给出所有指定文件的总统计数。字是由空格字符区分开的最大字符串。</p>
-</blockquote>
-<p>该命令各选项含义如下：</p>
-<ul>
-<li>- c 统计字节数。</li>
-<li>- l 统计行数。</li>
-<li>- w 统计字数。</li>
-</ul>
-<p>这些选项可以组合使用。</p>
-<p>输出列的顺序和数目不受选项的顺序和数目的影响。</p>
-<p>总是按下述顺序显示并且每项最多一列。</p>
-<p>行数、字数、字节数、文件名</p>
-<p>如果命令行中没有文件名，则输出中不出现文件名。</p>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><h4 id="查看某个文件"><a href="#查看某个文件" class="headerlink" title="查看某个文件"></a>查看某个文件</h4><pre class=" language-shell"><code class="language-shell">Alex@alex:blog(master *)$wc -lcw package.json
-      24      44     618 package.json</code></pre>
-<h4 id="查看某目录下的所有文件-包括子目录"><a href="#查看某目录下的所有文件-包括子目录" class="headerlink" title="查看某目录下的所有文件(包括子目录)"></a>查看某目录下的所有文件(包括子目录)</h4><h5 id="查看blog-目录下命名后缀是html-文件所有的数量"><a href="#查看blog-目录下命名后缀是html-文件所有的数量" class="headerlink" title="查看blog 目录下命名后缀是html 文件所有的数量"></a>查看blog 目录下命名后缀是html 文件所有的数量</h5><pre class=" language-shell"><code class="language-shell">Alex@alex:blog$find blog/ -name "*.html"|wc -l
-     199</code></pre>
-<h4 id="目录下所有md文件代码行数"><a href="#目录下所有md文件代码行数" class="headerlink" title="目录下所有md文件代码行数"></a>目录下所有md文件代码行数</h4><pre><code>find blog/ -name &quot;*.md&quot; |xargs cat|wc -l</code></pre>
-<p>或</p>
-<pre><code> wc -l `find ./ -name &quot;*.md&quot;`|tail -n1</code></pre>
-<h4 id="统计当前目录下文件个数"><a href="#统计当前目录下文件个数" class="headerlink" title="统计当前目录下文件个数"></a>统计当前目录下文件个数</h4><pre><code>ls -l |grep &quot;^-&quot;|wc -l</code></pre>
-<h4 id="统计当前文件夹下目录的个数"><a href="#统计当前文件夹下目录的个数" class="headerlink" title="统计当前文件夹下目录的个数"></a>统计当前文件夹下目录的个数</h4><pre><code>ls -l |grep &quot;^d&quot;|wc -l</code></pre>
-<h4 id="统计当前文件夹下文件的个数，包括子文件夹里的"><a href="#统计当前文件夹下文件的个数，包括子文件夹里的" class="headerlink" title="统计当前文件夹下文件的个数，包括子文件夹里的"></a>统计当前文件夹下文件的个数，包括子文件夹里的</h4><pre><code>ls -lR|grep &quot;^-&quot;|wc -l</code></pre>
-<h4 id="统计文件夹下目录的个数，包括子文件夹里的"><a href="#统计文件夹下目录的个数，包括子文件夹里的" class="headerlink" title="统计文件夹下目录的个数，包括子文件夹里的"></a>统计文件夹下目录的个数，包括子文件夹里的</h4><pre><code>ls -lR|grep &quot;^d&quot;|wc -l</code></pre>
-<h2 id="查看磁盘或文件夹大小"><a href="#查看磁盘或文件夹大小" class="headerlink" title="查看磁盘或文件夹大小"></a>查看磁盘或文件夹大小</h2><h3 id="显示磁盘分区上可以使用的磁盘空间"><a href="#显示磁盘分区上可以使用的磁盘空间" class="headerlink" title="显示磁盘分区上可以使用的磁盘空间"></a>显示磁盘分区上可以使用的磁盘空间</h3><pre class=" language-SH"><code class="language-SH">[root@QPDCCJK02 data]# df -h
-Filesystem      Size  Used Avail Use% Mounted on
-/dev/vda1        20G  8.9G  9.9G  48% /
-/dev/vdb1        20G  9.2G  9.4G  50% /data</code></pre>
-<h3 id="查看当前目录大小"><a href="#查看当前目录大小" class="headerlink" title="查看当前目录大小"></a>查看当前目录大小</h3><pre><code>[root@QPDCCJK02 data]# du -sh 
-9.2G    .</code></pre>
-<h3 id="查看当前目录及其下级目录大小"><a href="#查看当前目录及其下级目录大小" class="headerlink" title="查看当前目录及其下级目录大小"></a>查看当前目录及其下级目录大小</h3><blockquote>
-<p>du -lh –max-depth=<strong>x</strong>(x:值为1.2.3.4.5…表示显示多少级)</p>
-</blockquote>
-<pre><code>[root@QPDCCJK02 data]# du -lh --max-depth=1
-536M    ./jac_workspace
-3.3G    ./docker-bk
-15M     ./deploy
-44M     ./workspace
-407M    ./test-lf-log-backup
-1.5M    ./gagent_QA
-45M     ./wwwroot
-8.0K    ./gagent_Batch
-4.9G    ./gagent
-16K     ./lost+found
-12M     ./gagent_Dev</code></pre>
-<h3 id="查看指定目录大小"><a href="#查看指定目录大小" class="headerlink" title="查看指定目录大小"></a>查看指定目录大小</h3><pre><code>[root@QPDCCJK02 data]# du -sh gagent
-4.9G    gagent</code></pre>
-<h2 id="性能分析工具-TOP命令"><a href="#性能分析工具-TOP命令" class="headerlink" title="性能分析工具 TOP命令"></a>性能分析工具 TOP命令</h2><blockquote>
-<p>TOP命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况</p>
-</blockquote>
-<p><strong>命令格式：</strong><br>top [-] [d] [p] [q] [c] [C] [S]    [n]</p>
-<p><strong>查看某个用户下的所有进程</strong></p>
-<pre><code>alex@alex-virtual-machine:/mnt/hgfs/gagent/working/demo$ top -u alex
-
-PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND
-2763 alex      20   0 80420  16m  10m S   10  1.6   0:11.69 unity-panel-ser
-2865 alex      20   0 62216 4160 3268 S    6  0.4   0:05.54 hud-service
-2617 alex      20   0  4544 2144  632 S    4  0.2   0:05.30 dbus-daemon
-2646 alex      20   0  134m  12m 9884 S    2  1.2   0:09.35 metacity
-2667 alex      20   0  107m  22m  17m S    2  2.3   0:09.72 unity-2d-panel
-2679 alex      20   0 49608 8884 6936 S    2  0.9   0:02.26 bamfdaemon
-2681 alex      20   0  104m  13m  10m S    2  1.4   0:02.65 nm-apple</code></pre>
-<p><strong>查看单独某个进程</strong></p>
-<pre><code>alex@alex-virtual-machine:/mnt/hgfs/gagent/working/demo$ ps -a
-  PID TTY          TIME CMD
- 9463 pts/1    00:00:00 gizwits
- 9471 pts/2    00:00:00 ps
-alex@alex-virtual-machine:/mnt/hgfs/gagent/working/demo$ top -p 9463
-PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND
-9463 alex      20   0 30424 1152  944 S    2  0.1   0:00.74 gizwits</code></pre>
-<p><strong>说明</strong></p>
-<table>
-<thead>
-<tr>
-<th align="center">名称</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">PID</td>
-<td>进程的ID</td>
-</tr>
-<tr>
-<td align="center">USER</td>
-<td>进程所有者</td>
-</tr>
-<tr>
-<td align="center">PR</td>
-<td>进程的优先级别，越小越优先被执行</td>
-</tr>
-<tr>
-<td align="center">NInice</td>
-<td>值</td>
-</tr>
-<tr>
-<td align="center">VIRT</td>
-<td>进程占用的虚拟内存</td>
-</tr>
-<tr>
-<td align="center">RES</td>
-<td>进程占用的物理内存</td>
-</tr>
-<tr>
-<td align="center">SHR</td>
-<td>进程使用的共享内存</td>
-</tr>
-<tr>
-<td align="center">S</td>
-<td>进程的状态。S表示休眠，R表示正在运行，Z表示僵死状态，N表示该进程优先值为负数</td>
-</tr>
-<tr>
-<td align="center">%CPU</td>
-<td>进程占用CPU的使用率</td>
-</tr>
-<tr>
-<td align="center">%MEM</td>
-<td>进程使用的物理内存和总内存的百分比</td>
-</tr>
-<tr>
-<td align="center">TIME+</td>
-<td>该进程启动后占用的总的CPU时间，即占用CPU使用时间的累加值。</td>
-</tr>
-<tr>
-<td align="center">COMMAND</td>
-<td>进程启动命令名称</td>
-</tr>
-</tbody></table>
-<h2 id="运行日志输出到终端和保存起来"><a href="#运行日志输出到终端和保存起来" class="headerlink" title="运行日志输出到终端和保存起来"></a>运行日志输出到终端和保存起来</h2><hr>
-<pre><code># 运行targe 目标，且同时把日志输出到终端和保存到文件log.txt
-&gt;&gt;&gt;$ ./targe | tee log.txt</code></pre>
-<h2 id="tree-命令"><a href="#tree-命令" class="headerlink" title="tree 命令"></a>tree 命令</h2><hr>
-<p>此命令可以用树🌲形状显示目录结构；</p>
-<h3 id="mac-下安装"><a href="#mac-下安装" class="headerlink" title="mac 下安装"></a>mac 下安装</h3><pre><code>brew install tree</code></pre>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre><code>tree(选项)(参数)</code></pre>
-<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><pre><code>-a：显示所有文件和目录；
--A：使用ASNI绘图字符显示树状图而非以ASCII字符组合；
--C：在文件和目录清单加上色彩，便于区分各种类型；
--d：先是目录名称而非内容；
--D：列出文件或目录的更改时间；
--f：在每个文件或目录之前，显示完整的相对路径名称；
--F：在执行文件，目录，Socket，符号连接，管道名称名称，各自加上&quot;*&quot;，&quot;/&quot;，&quot;@&quot;，&quot;|&quot;号；
--g：列出文件或目录的所属群组名称，没有对应的名称时，则显示群组识别码；
--i：不以阶梯状列出文件和目录名称；
--l：&lt;范本样式&gt; 不显示符号范本样式的文件或目录名称；
--l：如遇到性质为符号连接的目录，直接列出该连接所指向的原始目录；
--n：不在文件和目录清单加上色彩；
--N：直接列出文件和目录名称，包括控制字符；
--p：列出权限标示；
--P：&lt;范本样式&gt; 只显示符合范本样式的文件和目录名称；
--q：用“？”号取代控制字符，列出文件和目录名称；
--s：列出文件和目录大小；
--t：用文件和目录的更改时间排序；
--u：列出文件或目录的拥有者名称，没有对应的名称时，则显示用户识别码；
--x：将范围局限在现行的文件系统中，若指定目录下的某些子目录，其存放于另一个文件系统上，则将该目录予以排除在寻找范围外。</code></pre>
-<h2 id="查看socket-端口占用情况"><a href="#查看socket-端口占用情况" class="headerlink" title="查看socket 端口占用情况"></a>查看socket 端口占用情况</h2><p><strong><code>netstat -tunlp |grep 端口号</code></strong></p>
-<p><strong>说明</strong></p>
-<blockquote>
-<p>-t (tcp) 仅显示tcp相关选项<br>                                 -u (udp)仅显示udp相关选项<br>                                 -n 拒绝显示别名，能显示数字的全部转化为数字<br>                                 -l 仅列出在Listen(监听)的服务状态<br>                                 -p 显示建立相关链接的程序名</p>
-</blockquote>
-<h2 id="显示命令执行时的参数"><a href="#显示命令执行时的参数" class="headerlink" title="显示命令执行时的参数"></a>显示命令执行时的参数</h2><pre><code>ps -aux | grep CMD</code></pre>
-<h2 id="ubuntu-防火墙"><a href="#ubuntu-防火墙" class="headerlink" title="ubuntu 防火墙"></a>ubuntu 防火墙</h2><pre class=" language-sh"><code class="language-sh"># 查看状态
-sudo ufw status  
-# 开启
-sudo ufw enable  
-# 默认关闭外部访问
-sudo ufw default deny 
-# 新增端口
-sudo ufw allow 8080  
-# 删除端口
-sudo ufw delete allow 8080
-# 允许特定来源的ip地址访问
-sudo ufw allow from 192.168.1.1</code></pre>
-<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><ul>
-<li>删除目录下大小为0的文件</li>
-</ul>
-<pre class=" language-SH"><code class="language-SH"> find ./ -name "*" -type f -size 0c | xargs -n 1 rm -f</code></pre>
-<ul>
-<li>删除当前目录下面所有 test 文件夹下面的文件 </li>
-</ul>
-<pre class=" language-SH"><code class="language-SH"> find ./ -name "test" -type d -exec rm -rf &#123;&#125; ;</code></pre>
-<ul>
-<li>删除文件夹下面的所有的.py文件</li>
-</ul>
-<pre><code>find ./ -name &#39;.py&#39; -exec rm -rf &#123;&#125; ;</code></pre>
-<ul>
-<li>显示当前路径下，大于50M的文件</li>
-</ul>
-<pre><code>find ./ -size +50M</code></pre>
-<ul>
-<li>删除当前路径下，大于50M的文件</li>
-</ul>
-<pre><code>find ./ -size +50M -exec rm &#123;&#125; \;</code></pre>
-<h2 id="Linux-下测试TCP-UDP-连通性"><a href="#Linux-下测试TCP-UDP-连通性" class="headerlink" title="Linux 下测试TCP/UDP 连通性"></a>Linux 下测试TCP/UDP 连通性</h2><p><strong>通过netcat软件实现</strong></p>
-<ul>
-<li>Ubuntu 安装 <code>apt install netcat</code></li>
-<li>CentOS 安装 <code>yum install nc</code> </li>
-</ul>
-<p><strong>测试方法</strong></p>
-<ul>
-<li>服务器<pre class=" language-sh"><code class="language-sh"> ubuntu@VM-133-112-ubuntu:~$ nc -l -u 1885</code></pre>
-</li>
-<li>客户端<pre class=" language-sh"><code class="language-sh"> alexlin@DESKTOP-2Q06681:/mnt/e/work/gagent/GAgent_HFX30$ nc -u ubuntu.xxxxxx.com 1885</code></pre>
-<img src="/images/nc.gif" alt="nc"></li>
-</ul>
-<p><strong>Help</strong></p>
-<pre class=" language-sh"><code class="language-sh">ubuntu@VM-133-112-ubuntu:~$ nc -help
-OpenBSD netcat (Debian patchlevel 1.187-1ubuntu0.1)
-usage: nc [-46CDdFhklNnrStUuvZz] [-I length] [-i interval] [-M ttl]
-          [-m minttl] [-O length] [-P proxy_username] [-p source_port]
-          [-q seconds] [-s source] [-T keyword] [-V rtable] [-W recvlimit] [-w timeout]
-          [-X proxy_protocol] [-x proxy_address[:port]]           [destination] [port]
-        Command Summary:
-                -4              Use IPv4
-                -6              Use IPv6
-                -b              Allow broadcast
-                -C              Send CRLF as line-ending
-                -D              Enable the debug socket option
-                -d              Detach from stdin
-                -F              Pass socket fd
-                -h              This help text
-                -I length       TCP receive buffer length
-                -i interval     Delay interval for lines sent, ports scanned
-                -k              Keep inbound sockets open for multiple connects
-                -l              Listen mode, for inbound connects
-                -M ttl          Outgoing TTL / Hop Limit
-                -m minttl       Minimum incoming TTL / Hop Limit
-                -N              Shutdown the network socket after EOF on stdin
-                -n              Suppress name/port resolutions
-                -O length       TCP send buffer length
-                -P proxyuser    Username for proxy authentication
-                -p port         Specify local port for remote connects
-                -q secs         quit after EOF on stdin and delay of secs
-                -r              Randomize remote ports
-                -S              Enable the TCP MD5 signature option
-                -s source       Local source address
-                -T keyword      TOS value
-                -t              Answer TELNET negotiation
-                -U              Use UNIX domain socket
-                -u              UDP mode
-                -V rtable       Specify alternate routing table
-                -v              Verbose
-                -W recvlimit    Terminate after receiving a number of packets
-                -w timeout      Timeout for connects and final net reads
-                -X proto        Proxy protocol: "4", "5" (SOCKS) or "connect"
-                -x addr[:port]  Specify proxy address and port
-                -Z              DCCP mode
-                -z              Zero-I/O mode [used for scanning]
-        Port numbers can be individual or ranges: lo-hi [inclusive]</code></pre>
-<h2 id="dos2unix批量转换方法"><a href="#dos2unix批量转换方法" class="headerlink" title="dos2unix批量转换方法"></a>dos2unix批量转换方法</h2><pre><code>find /apps/cws -name &quot;*.sh&quot; -exec dos2unix &#123;&#125; \;       （注意：一定要有&#123;&#125;，标示参数；以“\;”结尾； &#123;&#125; 和\之间一定要有一个空格）</code></pre>
-<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><h3 id="删除指定目录下10天前产生的文件"><a href="#删除指定目录下10天前产生的文件" class="headerlink" title="删除指定目录下10天前产生的文件"></a>删除指定目录下10天前产生的文件</h3><pre><code>find . -mtime +10 -name &quot;*.*&quot; -exec rm -rf &#123;&#125; \;</code></pre>
-<p><strong>解释<br></strong><br>-mtime：标准语句写法<br><br>＋10：查找10天前的文件，这里用数字代表天数，＋30表示查找30天前的文件<br><br>“<em>.</em>“：希望查找的数据类型，”<em>.jpg”表示查找扩展名为jpg的所有文件，”</em>“表示查找所有文件<br><br>-exec：固定写法<br><br>rm -rf：强制删除文件，包括目录<br><br>{} ; ：固定写法，一对大括号+空格+\+;<br></p>
-<h2 id="库文件查看工具"><a href="#库文件查看工具" class="headerlink" title="库文件查看工具"></a>库文件查看工具</h2><h3 id="linux下查看程序的动态库依赖-so"><a href="#linux下查看程序的动态库依赖-so" class="headerlink" title="linux下查看程序的动态库依赖(so)"></a>linux下查看程序的动态库依赖(so)</h3><pre><code>ldd xxx</code></pre>
-<p>例子如下，左边是依赖库名称，右边是依赖库位置(若存在则为路径，不存在则输出<code>not found</code>)<br>    <img src="/images/pasted-106.png" alt="upload successful"></p>
-<h3 id="查看库文件-a-包含的函数和变量"><a href="#查看库文件-a-包含的函数和变量" class="headerlink" title="查看库文件(.a)包含的函数和变量"></a>查看库文件(.a)包含的函数和变量</h3><pre class=" language-sh"><code class="language-sh">nm xxx.a</code></pre>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li><a href="http://www.comptechdoc.org/os/linux/programming/c/linux_pgc.html">http://www.comptechdoc.org/os/linux/programming/c/linux_pgc.html</a></li>
-<li><a href="http://man.linuxde.net/">Linux在线man</a></li>
-</ol>
-]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -3625,6 +3285,468 @@ clean:
       </tags>
   </entry>
   <entry>
+    <title>Linux之SSH</title>
+    <url>/2018/12/18/720f.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
+<li><a href="https://linux.cn/article-5975-1.html">https://linux.cn/article-5975-1.html</a></li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">autossh -M 10109 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=false" -o "PasswordAuthentication=no" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -R ubuntu.lxj-life.com:10108:localhost:22 ubuntu@ubuntu.lxj-life.com</code></pre>
+]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux之实用技能</title>
+    <url>/2017/06/06/ef18.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="查看机器是多少位"><a href="#查看机器是多少位" class="headerlink" title="查看机器是多少位"></a>查看机器是多少位</h2><hr>
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><pre class=" language-shell"><code class="language-shell">>>>$ getconf LONG_BIT
+>>>$ 64</code></pre>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><pre class=" language-shell"><code class="language-shell">>>>$ uname -a
+>>>$ Linux alex-virtual-machine 3.16.0-30-generic #40~14.04.1-Ubuntu SMP Thu Jan 15 17:43:14 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
+</code></pre>
+<a id="more"></a>
+
+<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><pre class=" language-shell"><code class="language-shell">>>>$ uname -p
+>>>$ x86_64</code></pre>
+<h2 id="实用命令"><a href="#实用命令" class="headerlink" title="实用命令"></a>实用命令</h2><table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">wc</td>
+<td>统计文本中行数、字数、字符数</td>
+</tr>
+<tr>
+<td align="center">stat</td>
+<td>显示指定文件的详细信息，比ls更详细</td>
+</tr>
+<tr>
+<td align="center">who</td>
+<td>显示在线登陆用户</td>
+</tr>
+<tr>
+<td align="center">whoami</td>
+<td>显示当前操作用户</td>
+</tr>
+<tr>
+<td align="center">hostname</td>
+<td>显示主机名</td>
+</tr>
+<tr>
+<td align="center">uname</td>
+<td>显示系统信息</td>
+</tr>
+<tr>
+<td align="center">top</td>
+<td>动态显示当前耗费资源最多进程信息</td>
+</tr>
+<tr>
+<td align="center">ps</td>
+<td>显示瞬间进程状态 ps -aux</td>
+</tr>
+<tr>
+<td align="center">du</td>
+<td>查看目录大小 du -h /home带有单位显示目录信息</td>
+</tr>
+<tr>
+<td align="center">df</td>
+<td>查看磁盘大小 df -h 带有单位显示磁盘信息</td>
+</tr>
+</tbody></table>
+<h2 id="Linux-代码文件大小、行数、字节数统计"><a href="#Linux-代码文件大小、行数、字节数统计" class="headerlink" title="Linux 代码文件大小、行数、字节数统计"></a>Linux 代码文件大小、行数、字节数统计</h2><h3 id="命令解释"><a href="#命令解释" class="headerlink" title="命令解释"></a>命令解释</h3><p><strong><em>语法：wc [选项] 文件…</em></strong></p>
+<blockquote>
+<p>说明：该命令统计给定文件中的字节数、字数、行数。如果没有给出文件名，则从标准输入读取。wc同时也给出所有指定文件的总统计数。字是由空格字符区分开的最大字符串。</p>
+</blockquote>
+<p>该命令各选项含义如下：</p>
+<ul>
+<li>- c 统计字节数。</li>
+<li>- l 统计行数。</li>
+<li>- w 统计字数。</li>
+</ul>
+<p>这些选项可以组合使用。</p>
+<p>输出列的顺序和数目不受选项的顺序和数目的影响。</p>
+<p>总是按下述顺序显示并且每项最多一列。</p>
+<p>行数、字数、字节数、文件名</p>
+<p>如果命令行中没有文件名，则输出中不出现文件名。</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><h4 id="查看某个文件"><a href="#查看某个文件" class="headerlink" title="查看某个文件"></a>查看某个文件</h4><pre class=" language-shell"><code class="language-shell">Alex@alex:blog(master *)$wc -lcw package.json
+      24      44     618 package.json</code></pre>
+<h4 id="查看某目录下的所有文件-包括子目录"><a href="#查看某目录下的所有文件-包括子目录" class="headerlink" title="查看某目录下的所有文件(包括子目录)"></a>查看某目录下的所有文件(包括子目录)</h4><h5 id="查看blog-目录下命名后缀是html-文件所有的数量"><a href="#查看blog-目录下命名后缀是html-文件所有的数量" class="headerlink" title="查看blog 目录下命名后缀是html 文件所有的数量"></a>查看blog 目录下命名后缀是html 文件所有的数量</h5><pre class=" language-shell"><code class="language-shell">Alex@alex:blog$find blog/ -name "*.html"|wc -l
+     199</code></pre>
+<h4 id="目录下所有md文件代码行数"><a href="#目录下所有md文件代码行数" class="headerlink" title="目录下所有md文件代码行数"></a>目录下所有md文件代码行数</h4><pre><code>find blog/ -name &quot;*.md&quot; |xargs cat|wc -l</code></pre>
+<p>或</p>
+<pre><code> wc -l `find ./ -name &quot;*.md&quot;`|tail -n1</code></pre>
+<h4 id="统计当前目录下文件个数"><a href="#统计当前目录下文件个数" class="headerlink" title="统计当前目录下文件个数"></a>统计当前目录下文件个数</h4><pre><code>ls -l |grep &quot;^-&quot;|wc -l</code></pre>
+<h4 id="统计当前文件夹下目录的个数"><a href="#统计当前文件夹下目录的个数" class="headerlink" title="统计当前文件夹下目录的个数"></a>统计当前文件夹下目录的个数</h4><pre><code>ls -l |grep &quot;^d&quot;|wc -l</code></pre>
+<h4 id="统计当前文件夹下文件的个数，包括子文件夹里的"><a href="#统计当前文件夹下文件的个数，包括子文件夹里的" class="headerlink" title="统计当前文件夹下文件的个数，包括子文件夹里的"></a>统计当前文件夹下文件的个数，包括子文件夹里的</h4><pre><code>ls -lR|grep &quot;^-&quot;|wc -l</code></pre>
+<h4 id="统计文件夹下目录的个数，包括子文件夹里的"><a href="#统计文件夹下目录的个数，包括子文件夹里的" class="headerlink" title="统计文件夹下目录的个数，包括子文件夹里的"></a>统计文件夹下目录的个数，包括子文件夹里的</h4><pre><code>ls -lR|grep &quot;^d&quot;|wc -l</code></pre>
+<h2 id="查看磁盘或文件夹大小"><a href="#查看磁盘或文件夹大小" class="headerlink" title="查看磁盘或文件夹大小"></a>查看磁盘或文件夹大小</h2><h3 id="显示磁盘分区上可以使用的磁盘空间"><a href="#显示磁盘分区上可以使用的磁盘空间" class="headerlink" title="显示磁盘分区上可以使用的磁盘空间"></a>显示磁盘分区上可以使用的磁盘空间</h3><pre class=" language-SH"><code class="language-SH">[root@QPDCCJK02 data]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda1        20G  8.9G  9.9G  48% /
+/dev/vdb1        20G  9.2G  9.4G  50% /data</code></pre>
+<h3 id="查看当前目录大小"><a href="#查看当前目录大小" class="headerlink" title="查看当前目录大小"></a>查看当前目录大小</h3><pre><code>[root@QPDCCJK02 data]# du -sh 
+9.2G    .</code></pre>
+<h3 id="查看当前目录及其下级目录大小"><a href="#查看当前目录及其下级目录大小" class="headerlink" title="查看当前目录及其下级目录大小"></a>查看当前目录及其下级目录大小</h3><blockquote>
+<p>du -lh –max-depth=<strong>x</strong>(x:值为1.2.3.4.5…表示显示多少级)</p>
+</blockquote>
+<pre><code>[root@QPDCCJK02 data]# du -lh --max-depth=1
+536M    ./jac_workspace
+3.3G    ./docker-bk
+15M     ./deploy
+44M     ./workspace
+407M    ./test-lf-log-backup
+1.5M    ./gagent_QA
+45M     ./wwwroot
+8.0K    ./gagent_Batch
+4.9G    ./gagent
+16K     ./lost+found
+12M     ./gagent_Dev</code></pre>
+<h3 id="查看指定目录大小"><a href="#查看指定目录大小" class="headerlink" title="查看指定目录大小"></a>查看指定目录大小</h3><pre><code>[root@QPDCCJK02 data]# du -sh gagent
+4.9G    gagent</code></pre>
+<h2 id="性能分析工具-TOP命令"><a href="#性能分析工具-TOP命令" class="headerlink" title="性能分析工具 TOP命令"></a>性能分析工具 TOP命令</h2><blockquote>
+<p>TOP命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况</p>
+</blockquote>
+<p><strong>命令格式：</strong><br>top [-] [d] [p] [q] [c] [C] [S]    [n]</p>
+<p><strong>查看某个用户下的所有进程</strong></p>
+<pre><code>alex@alex-virtual-machine:/mnt/hgfs/gagent/working/demo$ top -u alex
+
+PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND
+2763 alex      20   0 80420  16m  10m S   10  1.6   0:11.69 unity-panel-ser
+2865 alex      20   0 62216 4160 3268 S    6  0.4   0:05.54 hud-service
+2617 alex      20   0  4544 2144  632 S    4  0.2   0:05.30 dbus-daemon
+2646 alex      20   0  134m  12m 9884 S    2  1.2   0:09.35 metacity
+2667 alex      20   0  107m  22m  17m S    2  2.3   0:09.72 unity-2d-panel
+2679 alex      20   0 49608 8884 6936 S    2  0.9   0:02.26 bamfdaemon
+2681 alex      20   0  104m  13m  10m S    2  1.4   0:02.65 nm-apple</code></pre>
+<p><strong>查看单独某个进程</strong></p>
+<pre><code>alex@alex-virtual-machine:/mnt/hgfs/gagent/working/demo$ ps -a
+  PID TTY          TIME CMD
+ 9463 pts/1    00:00:00 gizwits
+ 9471 pts/2    00:00:00 ps
+alex@alex-virtual-machine:/mnt/hgfs/gagent/working/demo$ top -p 9463
+PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND
+9463 alex      20   0 30424 1152  944 S    2  0.1   0:00.74 gizwits</code></pre>
+<p><strong>说明</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">PID</td>
+<td>进程的ID</td>
+</tr>
+<tr>
+<td align="center">USER</td>
+<td>进程所有者</td>
+</tr>
+<tr>
+<td align="center">PR</td>
+<td>进程的优先级别，越小越优先被执行</td>
+</tr>
+<tr>
+<td align="center">NInice</td>
+<td>值</td>
+</tr>
+<tr>
+<td align="center">VIRT</td>
+<td>进程占用的虚拟内存</td>
+</tr>
+<tr>
+<td align="center">RES</td>
+<td>进程占用的物理内存</td>
+</tr>
+<tr>
+<td align="center">SHR</td>
+<td>进程使用的共享内存</td>
+</tr>
+<tr>
+<td align="center">S</td>
+<td>进程的状态。S表示休眠，R表示正在运行，Z表示僵死状态，N表示该进程优先值为负数</td>
+</tr>
+<tr>
+<td align="center">%CPU</td>
+<td>进程占用CPU的使用率</td>
+</tr>
+<tr>
+<td align="center">%MEM</td>
+<td>进程使用的物理内存和总内存的百分比</td>
+</tr>
+<tr>
+<td align="center">TIME+</td>
+<td>该进程启动后占用的总的CPU时间，即占用CPU使用时间的累加值。</td>
+</tr>
+<tr>
+<td align="center">COMMAND</td>
+<td>进程启动命令名称</td>
+</tr>
+</tbody></table>
+<h2 id="运行日志输出到终端和保存起来"><a href="#运行日志输出到终端和保存起来" class="headerlink" title="运行日志输出到终端和保存起来"></a>运行日志输出到终端和保存起来</h2><hr>
+<pre><code># 运行targe 目标，且同时把日志输出到终端和保存到文件log.txt
+&gt;&gt;&gt;$ ./targe | tee log.txt</code></pre>
+<h2 id="tree-命令"><a href="#tree-命令" class="headerlink" title="tree 命令"></a>tree 命令</h2><hr>
+<p>此命令可以用树🌲形状显示目录结构；</p>
+<h3 id="mac-下安装"><a href="#mac-下安装" class="headerlink" title="mac 下安装"></a>mac 下安装</h3><pre><code>brew install tree</code></pre>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre><code>tree(选项)(参数)</code></pre>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><pre><code>-a：显示所有文件和目录；
+-A：使用ASNI绘图字符显示树状图而非以ASCII字符组合；
+-C：在文件和目录清单加上色彩，便于区分各种类型；
+-d：先是目录名称而非内容；
+-D：列出文件或目录的更改时间；
+-f：在每个文件或目录之前，显示完整的相对路径名称；
+-F：在执行文件，目录，Socket，符号连接，管道名称名称，各自加上&quot;*&quot;，&quot;/&quot;，&quot;@&quot;，&quot;|&quot;号；
+-g：列出文件或目录的所属群组名称，没有对应的名称时，则显示群组识别码；
+-i：不以阶梯状列出文件和目录名称；
+-l：&lt;范本样式&gt; 不显示符号范本样式的文件或目录名称；
+-l：如遇到性质为符号连接的目录，直接列出该连接所指向的原始目录；
+-n：不在文件和目录清单加上色彩；
+-N：直接列出文件和目录名称，包括控制字符；
+-p：列出权限标示；
+-P：&lt;范本样式&gt; 只显示符合范本样式的文件和目录名称；
+-q：用“？”号取代控制字符，列出文件和目录名称；
+-s：列出文件和目录大小；
+-t：用文件和目录的更改时间排序；
+-u：列出文件或目录的拥有者名称，没有对应的名称时，则显示用户识别码；
+-x：将范围局限在现行的文件系统中，若指定目录下的某些子目录，其存放于另一个文件系统上，则将该目录予以排除在寻找范围外。</code></pre>
+<h2 id="查看socket-端口占用情况"><a href="#查看socket-端口占用情况" class="headerlink" title="查看socket 端口占用情况"></a>查看socket 端口占用情况</h2><p><strong><code>netstat -tunlp |grep 端口号</code></strong></p>
+<p><strong>说明</strong></p>
+<blockquote>
+<p>-t (tcp) 仅显示tcp相关选项<br>                                 -u (udp)仅显示udp相关选项<br>                                 -n 拒绝显示别名，能显示数字的全部转化为数字<br>                                 -l 仅列出在Listen(监听)的服务状态<br>                                 -p 显示建立相关链接的程序名</p>
+</blockquote>
+<h2 id="显示命令执行时的参数"><a href="#显示命令执行时的参数" class="headerlink" title="显示命令执行时的参数"></a>显示命令执行时的参数</h2><pre><code>ps -aux | grep CMD</code></pre>
+<h2 id="ubuntu-防火墙"><a href="#ubuntu-防火墙" class="headerlink" title="ubuntu 防火墙"></a>ubuntu 防火墙</h2><pre class=" language-sh"><code class="language-sh"># 查看状态
+sudo ufw status  
+# 开启
+sudo ufw enable  
+# 默认关闭外部访问
+sudo ufw default deny 
+# 新增端口
+sudo ufw allow 8080  
+# 删除端口
+sudo ufw delete allow 8080
+# 允许特定来源的ip地址访问
+sudo ufw allow from 192.168.1.1</code></pre>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><ul>
+<li>删除目录下大小为0的文件</li>
+</ul>
+<pre class=" language-SH"><code class="language-SH"> find ./ -name "*" -type f -size 0c | xargs -n 1 rm -f</code></pre>
+<ul>
+<li>删除当前目录下面所有 test 文件夹下面的文件 </li>
+</ul>
+<pre class=" language-SH"><code class="language-SH"> find ./ -name "test" -type d -exec rm -rf &#123;&#125; ;</code></pre>
+<ul>
+<li>删除文件夹下面的所有的.py文件</li>
+</ul>
+<pre><code>find ./ -name &#39;.py&#39; -exec rm -rf &#123;&#125; ;</code></pre>
+<ul>
+<li>显示当前路径下，大于50M的文件</li>
+</ul>
+<pre><code>find ./ -size +50M</code></pre>
+<ul>
+<li>删除当前路径下，大于50M的文件</li>
+</ul>
+<pre><code>find ./ -size +50M -exec rm &#123;&#125; \;</code></pre>
+<h2 id="Linux-下测试TCP-UDP-连通性"><a href="#Linux-下测试TCP-UDP-连通性" class="headerlink" title="Linux 下测试TCP/UDP 连通性"></a>Linux 下测试TCP/UDP 连通性</h2><p><strong>通过netcat软件实现</strong></p>
+<ul>
+<li>Ubuntu 安装 <code>apt install netcat</code></li>
+<li>CentOS 安装 <code>yum install nc</code> </li>
+</ul>
+<p><strong>测试方法</strong></p>
+<ul>
+<li>服务器<pre class=" language-sh"><code class="language-sh"> ubuntu@VM-133-112-ubuntu:~$ nc -l -u 1885</code></pre>
+</li>
+<li>客户端<pre class=" language-sh"><code class="language-sh"> alexlin@DESKTOP-2Q06681:/mnt/e/work/gagent/GAgent_HFX30$ nc -u ubuntu.xxxxxx.com 1885</code></pre>
+<img src="/images/nc.gif" alt="nc"></li>
+</ul>
+<p><strong>Help</strong></p>
+<pre class=" language-sh"><code class="language-sh">ubuntu@VM-133-112-ubuntu:~$ nc -help
+OpenBSD netcat (Debian patchlevel 1.187-1ubuntu0.1)
+usage: nc [-46CDdFhklNnrStUuvZz] [-I length] [-i interval] [-M ttl]
+          [-m minttl] [-O length] [-P proxy_username] [-p source_port]
+          [-q seconds] [-s source] [-T keyword] [-V rtable] [-W recvlimit] [-w timeout]
+          [-X proxy_protocol] [-x proxy_address[:port]]           [destination] [port]
+        Command Summary:
+                -4              Use IPv4
+                -6              Use IPv6
+                -b              Allow broadcast
+                -C              Send CRLF as line-ending
+                -D              Enable the debug socket option
+                -d              Detach from stdin
+                -F              Pass socket fd
+                -h              This help text
+                -I length       TCP receive buffer length
+                -i interval     Delay interval for lines sent, ports scanned
+                -k              Keep inbound sockets open for multiple connects
+                -l              Listen mode, for inbound connects
+                -M ttl          Outgoing TTL / Hop Limit
+                -m minttl       Minimum incoming TTL / Hop Limit
+                -N              Shutdown the network socket after EOF on stdin
+                -n              Suppress name/port resolutions
+                -O length       TCP send buffer length
+                -P proxyuser    Username for proxy authentication
+                -p port         Specify local port for remote connects
+                -q secs         quit after EOF on stdin and delay of secs
+                -r              Randomize remote ports
+                -S              Enable the TCP MD5 signature option
+                -s source       Local source address
+                -T keyword      TOS value
+                -t              Answer TELNET negotiation
+                -U              Use UNIX domain socket
+                -u              UDP mode
+                -V rtable       Specify alternate routing table
+                -v              Verbose
+                -W recvlimit    Terminate after receiving a number of packets
+                -w timeout      Timeout for connects and final net reads
+                -X proto        Proxy protocol: "4", "5" (SOCKS) or "connect"
+                -x addr[:port]  Specify proxy address and port
+                -Z              DCCP mode
+                -z              Zero-I/O mode [used for scanning]
+        Port numbers can be individual or ranges: lo-hi [inclusive]</code></pre>
+<h2 id="dos2unix批量转换方法"><a href="#dos2unix批量转换方法" class="headerlink" title="dos2unix批量转换方法"></a>dos2unix批量转换方法</h2><pre><code>find /apps/cws -name &quot;*.sh&quot; -exec dos2unix &#123;&#125; \;       （注意：一定要有&#123;&#125;，标示参数；以“\;”结尾； &#123;&#125; 和\之间一定要有一个空格）</code></pre>
+<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><h3 id="删除指定目录下10天前产生的文件"><a href="#删除指定目录下10天前产生的文件" class="headerlink" title="删除指定目录下10天前产生的文件"></a>删除指定目录下10天前产生的文件</h3><pre><code>find . -mtime +10 -name &quot;*.*&quot; -exec rm -rf &#123;&#125; \;</code></pre>
+<p><strong>解释<br></strong><br>-mtime：标准语句写法<br><br>＋10：查找10天前的文件，这里用数字代表天数，＋30表示查找30天前的文件<br><br>“<em>.</em>“：希望查找的数据类型，”<em>.jpg”表示查找扩展名为jpg的所有文件，”</em>“表示查找所有文件<br><br>-exec：固定写法<br><br>rm -rf：强制删除文件，包括目录<br><br>{} ; ：固定写法，一对大括号+空格+\+;<br></p>
+<h2 id="库文件查看工具"><a href="#库文件查看工具" class="headerlink" title="库文件查看工具"></a>库文件查看工具</h2><h3 id="linux下查看程序的动态库依赖-so"><a href="#linux下查看程序的动态库依赖-so" class="headerlink" title="linux下查看程序的动态库依赖(so)"></a>linux下查看程序的动态库依赖(so)</h3><pre><code>ldd xxx</code></pre>
+<p>例子如下，左边是依赖库名称，右边是依赖库位置(若存在则为路径，不存在则输出<code>not found</code>)<br>    <img src="/images/pasted-106.png" alt="upload successful"></p>
+<h3 id="查看库文件-a-包含的函数和变量"><a href="#查看库文件-a-包含的函数和变量" class="headerlink" title="查看库文件(.a)包含的函数和变量"></a>查看库文件(.a)包含的函数和变量</h3><pre class=" language-sh"><code class="language-sh">nm xxx.a</code></pre>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="http://www.comptechdoc.org/os/linux/programming/c/linux_pgc.html">http://www.comptechdoc.org/os/linux/programming/c/linux_pgc.html</a></li>
+<li><a href="http://man.linuxde.net/">Linux在线man</a></li>
+</ol>
+]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MarkDonw语法</title>
+    <url>/2017/06/07/9530.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>MarkDonw语法</p>
+<p>[TOC] 生成目录</p>
+<h2 id="生成目录"><a href="#生成目录" class="headerlink" title="生成目录"></a>生成目录</h2><pre><code> [TOC]     生成目录</code></pre>
+<h2 id="嵌套列表"><a href="#嵌套列表" class="headerlink" title="嵌套列表"></a>嵌套列表</h2><p>-+*可循环使用，但符号之后的空格不能少，符号之前的空格也不能少</p>
+<pre><code>- 嵌套列表1
+ + 嵌套列表2
+ + 嵌套列表3
+  - 嵌套列表4
+   * 嵌套列表5
+- 嵌套列表6</code></pre>
+<ul>
+<li>嵌套列表1</li>
+</ul>
+<ul>
+<li>嵌套列表2</li>
+<li>嵌套列表3</li>
+</ul>
+<ul>
+<li>嵌套列表4</li>
+</ul>
+<ul>
+<li>嵌套列表5</li>
+</ul>
+<ul>
+<li>嵌套列表6</li>
+</ul>
+<h2 id="图片链接"><a href="#图片链接" class="headerlink" title="图片链接"></a>图片链接</h2><pre><code>![GitHub Mark](http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png &quot;GitHub Mark&quot;)</code></pre>
+<p><img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Mark" title="GitHub Mark"></p>
+<h2 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h2><pre><code>\\ 反斜杠
+
+\` 反引号
+
+\* 星号
+
+\_ 下划线
+
+\&#123;\&#125; 大括号
+
+\[\] 中括号
+
+\(\) 小括号
+
+\# 井号
+
+\+ 加号
+
+\- 减号
+
+\. 英文句号
+
+\! 感叹号</code></pre>
+<p>\ 反斜杠</p>
+<p>` 反引号</p>
+<p>* 星号</p>
+<p>_ 下划线</p>
+<p>{} 大括号</p>
+<p>[] 中括号</p>
+<p>() 小括号</p>
+<p># 井号</p>
+<p>+ 加号</p>
+<p>- 减号</p>
+<p>. 英文句号</p>
+<p>! 感叹号</p>
+<h2 id="段落缩进（空格）"><a href="#段落缩进（空格）" class="headerlink" title="段落缩进（空格）"></a>段落缩进（空格）</h2><pre><code>半方大的空白&amp;ensp;或&amp;#8194;看，飞碟
+全方大的空白&amp;emsp;或&amp;#8195;看，飞碟
+不断行的空白格&amp;nbsp;或&amp;#160;看，飞碟
+&amp;emsp;&amp;emsp;段落从此开始。</code></pre>
+<h2 id="字体、字号、颜色"><a href="#字体、字号、颜色" class="headerlink" title="字体、字号、颜色"></a>字体、字号、颜色</h2><pre><code>&lt;font face=&quot;黑体&quot;&gt;我是黑体字&lt;/font&gt;
+&lt;font face=&quot;微软雅黑&quot;&gt;我是微软雅黑&lt;/font&gt;
+&lt;font face=&quot;STCAIYUN&quot;&gt;我是华文彩云&lt;/font&gt;
+&lt;font color=#0099ff size=12 face=&quot;黑体&quot;&gt;黑体&lt;/font&gt;
+&lt;font color=#00ffff size=3&gt;null&lt;/font&gt;
+&lt;font color=gray size=5&gt;gray&lt;/font&gt;</code></pre>
+<h2 id="行内标签"><a href="#行内标签" class="headerlink" title="行内标签"></a>行内标签</h2><pre><code>快捷键 `Ctrl + D` 来收藏本页</code></pre>
+<p>快捷键 <code>Ctrl + D</code> 来收藏本页</p>
+<h2 id="数学公式支持"><a href="#数学公式支持" class="headerlink" title="数学公式支持"></a>数学公式支持</h2><p><code>next</code>主题为例子</p>
+<ul>
+<li>打开根目录下<code>_config.yml</code> , 添加<code>mathjax: true</code>;</li>
+<li>在主题目录下<code>_config.yml</code> , 打开使能<pre><code># MathJax Support
+mathjax:
+enable: true
+per_page: true
+cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML</code></pre>
+</li>
+<li>在需要数学公式的文章头部添加支持<code>mathjax: true</code><pre><code></code></pre>
+</li>
+</ul>
+<hr>
+<p>title: 基本算法之二叉树<br>date: 2018-03-25 15:06:11<br>tags: [算法,二叉树]<br>categories: [算法]<br>mathjax: true<br>Author: AlexLin</p>
+<hr>
+<pre><code>
+#### $ 表示行内公式：
+
+质能守恒方程可以用一个很简洁的方程式 `$E=mc^2$` 来表达：$E=mc^2$。
+
+#### $$ 表示整行公式：
+
+`$$\sum_&#123;i=1&#125;^n a_i=0$$`
+$$\sum_&#123;i=1&#125;^n a_i=0$$
+
+`$$f(x_1,x_2,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2$$`
+$$f(x_1,x_2,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2$$
+`$$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$`
+$$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$
+</code></pre>
+<p>$$ i\hbar\frac{\partial \psi}{\partial t}= \frac{-\hbar^2}{2m}\left(\frac{\partial^2}{\partial x^2}+ \frac{\partial^2}{\partial y^2}+ \frac{\partial^2}{\partial z^2}\right) \psi + V \psi.$$</p>
+<p>```<br>$$ i\hbar\frac{\partial \psi}{\partial t}= \frac{-\hbar^2}{2m}\left(\frac{\partial^2}{\partial x^2}+ \frac{\partial^2}{\partial y^2}+ \frac{\partial^2}{\partial z^2}\right) \psi + V \psi.$$</p>
+<p>更多语法:<a href="https://www.mathjax.org/">https://www.mathjax.org/</a>、<a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference</a></p>
+<h2 id="Html-Color"><a href="#Html-Color" class="headerlink" title="Html Color"></a>Html Color</h2><p>[COLOR][1]</p>
+<div align=center>
+![color][2]
+</div>
+[1]: https://html-color-codes.info/
+[2]: https://upload-images.jianshu.io/upload_images/1736256-b729fdf4393a7989.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240 (color)]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux之服务安装</title>
     <url>/2017/06/06/9372.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="ssh-server-安装"><a href="#ssh-server-安装" class="headerlink" title="ssh-server 安装"></a>ssh-server 安装</h1><p><strong>SSH分客户端</strong></p>
@@ -3820,128 +3942,6 @@ Environment variables are:
       </tags>
   </entry>
   <entry>
-    <title>MarkDonw语法</title>
-    <url>/2017/06/07/9530.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>MarkDonw语法</p>
-<p>[TOC] 生成目录</p>
-<h2 id="生成目录"><a href="#生成目录" class="headerlink" title="生成目录"></a>生成目录</h2><pre><code> [TOC]     生成目录</code></pre>
-<h2 id="嵌套列表"><a href="#嵌套列表" class="headerlink" title="嵌套列表"></a>嵌套列表</h2><p>-+*可循环使用，但符号之后的空格不能少，符号之前的空格也不能少</p>
-<pre><code>- 嵌套列表1
- + 嵌套列表2
- + 嵌套列表3
-  - 嵌套列表4
-   * 嵌套列表5
-- 嵌套列表6</code></pre>
-<ul>
-<li>嵌套列表1</li>
-</ul>
-<ul>
-<li>嵌套列表2</li>
-<li>嵌套列表3</li>
-</ul>
-<ul>
-<li>嵌套列表4</li>
-</ul>
-<ul>
-<li>嵌套列表5</li>
-</ul>
-<ul>
-<li>嵌套列表6</li>
-</ul>
-<h2 id="图片链接"><a href="#图片链接" class="headerlink" title="图片链接"></a>图片链接</h2><pre><code>![GitHub Mark](http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png &quot;GitHub Mark&quot;)</code></pre>
-<p><img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Mark" title="GitHub Mark"></p>
-<h2 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h2><pre><code>\\ 反斜杠
-
-\` 反引号
-
-\* 星号
-
-\_ 下划线
-
-\&#123;\&#125; 大括号
-
-\[\] 中括号
-
-\(\) 小括号
-
-\# 井号
-
-\+ 加号
-
-\- 减号
-
-\. 英文句号
-
-\! 感叹号</code></pre>
-<p>\ 反斜杠</p>
-<p>` 反引号</p>
-<p>* 星号</p>
-<p>_ 下划线</p>
-<p>{} 大括号</p>
-<p>[] 中括号</p>
-<p>() 小括号</p>
-<p># 井号</p>
-<p>+ 加号</p>
-<p>- 减号</p>
-<p>. 英文句号</p>
-<p>! 感叹号</p>
-<h2 id="段落缩进（空格）"><a href="#段落缩进（空格）" class="headerlink" title="段落缩进（空格）"></a>段落缩进（空格）</h2><pre><code>半方大的空白&amp;ensp;或&amp;#8194;看，飞碟
-全方大的空白&amp;emsp;或&amp;#8195;看，飞碟
-不断行的空白格&amp;nbsp;或&amp;#160;看，飞碟
-&amp;emsp;&amp;emsp;段落从此开始。</code></pre>
-<h2 id="字体、字号、颜色"><a href="#字体、字号、颜色" class="headerlink" title="字体、字号、颜色"></a>字体、字号、颜色</h2><pre><code>&lt;font face=&quot;黑体&quot;&gt;我是黑体字&lt;/font&gt;
-&lt;font face=&quot;微软雅黑&quot;&gt;我是微软雅黑&lt;/font&gt;
-&lt;font face=&quot;STCAIYUN&quot;&gt;我是华文彩云&lt;/font&gt;
-&lt;font color=#0099ff size=12 face=&quot;黑体&quot;&gt;黑体&lt;/font&gt;
-&lt;font color=#00ffff size=3&gt;null&lt;/font&gt;
-&lt;font color=gray size=5&gt;gray&lt;/font&gt;</code></pre>
-<h2 id="行内标签"><a href="#行内标签" class="headerlink" title="行内标签"></a>行内标签</h2><pre><code>快捷键 `Ctrl + D` 来收藏本页</code></pre>
-<p>快捷键 <code>Ctrl + D</code> 来收藏本页</p>
-<h2 id="数学公式支持"><a href="#数学公式支持" class="headerlink" title="数学公式支持"></a>数学公式支持</h2><p><code>next</code>主题为例子</p>
-<ul>
-<li>打开根目录下<code>_config.yml</code> , 添加<code>mathjax: true</code>;</li>
-<li>在主题目录下<code>_config.yml</code> , 打开使能<pre><code># MathJax Support
-mathjax:
-enable: true
-per_page: true
-cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML</code></pre>
-</li>
-<li>在需要数学公式的文章头部添加支持<code>mathjax: true</code><pre><code></code></pre>
-</li>
-</ul>
-<hr>
-<p>title: 基本算法之二叉树<br>date: 2018-03-25 15:06:11<br>tags: [算法,二叉树]<br>categories: [算法]<br>mathjax: true<br>Author: AlexLin</p>
-<hr>
-<pre><code>
-#### $ 表示行内公式：
-
-质能守恒方程可以用一个很简洁的方程式 `$E=mc^2$` 来表达：$E=mc^2$。
-
-#### $$ 表示整行公式：
-
-`$$\sum_&#123;i=1&#125;^n a_i=0$$`
-$$\sum_&#123;i=1&#125;^n a_i=0$$
-
-`$$f(x_1,x_2,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2$$`
-$$f(x_1,x_2,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2$$
-`$$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$`
-$$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$
-</code></pre>
-<p>$$ i\hbar\frac{\partial \psi}{\partial t}= \frac{-\hbar^2}{2m}\left(\frac{\partial^2}{\partial x^2}+ \frac{\partial^2}{\partial y^2}+ \frac{\partial^2}{\partial z^2}\right) \psi + V \psi.$$</p>
-<p>```<br>$$ i\hbar\frac{\partial \psi}{\partial t}= \frac{-\hbar^2}{2m}\left(\frac{\partial^2}{\partial x^2}+ \frac{\partial^2}{\partial y^2}+ \frac{\partial^2}{\partial z^2}\right) \psi + V \psi.$$</p>
-<p>更多语法:<a href="https://www.mathjax.org/">https://www.mathjax.org/</a>、<a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference</a></p>
-<h2 id="Html-Color"><a href="#Html-Color" class="headerlink" title="Html Color"></a>Html Color</h2><p>[COLOR][1]</p>
-<div align=center>
-![color][2]
-</div>
-[1]: https://html-color-codes.info/
-[2]: https://upload-images.jianshu.io/upload_images/1736256-b729fdf4393a7989.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240 (color)]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>NB-IoT 记录</title>
     <url>/2020/07/09/26e6.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="NB状态"><a href="#NB状态" class="headerlink" title="NB状态"></a>NB状态</h2><ul>
@@ -3972,25 +3972,6 @@ $$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$
 <p>“01000111” = 70 hours</p>
 </blockquote>
 ]]></content>
-  </entry>
-  <entry>
-    <title>OneNet OTA 操作笔记</title>
-    <url>/2020/09/15/91bc.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="OneNet-OTA-M5311-笔记"><a href="#OneNet-OTA-M5311-笔记" class="headerlink" title="OneNet OTA M5311 笔记"></a>OneNet OTA M5311 笔记</h2><ul>
-<li>地址: <a href="https://open.iot.10086.cn/">https://open.iot.10086.cn/</a></li>
-</ul>
-<h3 id="OneNet平台OTA设置"><a href="#OneNet平台OTA设置" class="headerlink" title="OneNet平台OTA设置"></a>OneNet平台OTA设置</h3><p>进入FOTA界面，选择添加FOTA群组,操作流程如下图:<br>第一步，创建FOTA群组；<br><img src="/images/pasted-82.png" alt="upload successful"></p>
-<a id="more"></a>
-<p><img src="/images/pasted-83.png" alt="upload successful"><br>第二步，添加关联设备<br><img src="/images/pasted-84.png" alt="upload successful"><br><img src="/images/pasted-85.png" alt="upload successful"></p>
-<p>第三步，添加当前设备固件包<br><img src="/images/pasted-93.png" alt="upload successful"><br><img src="/images/pasted-94.png" alt="upload successful"></p>
-<p>第四步，上传新的固件包，步骤同第三步；</p>
-<blockquote>
-<p>这里以上传<code>04030004</code>版本为例子<br><img src="/images/pasted-95.png" alt="upload successful"></p>
-</blockquote>
-<p>第五步，创建在线差分包<br><img src="/images/pasted-96.png" alt="upload successful"><br><img src="/images/pasted-97.png" alt="upload successful"><br><img src="/images/pasted-98.png" alt="upload successful"><br><strong>可以看到从04030003到04030004的差分包固生产成功了</strong><br><img src="/images/pasted-99.png" alt="upload successful"><br>第六步，固件测试验证<br><img src="/images/pasted-100.png" alt="upload successful"><br><img src="/images/pasted-101.png" alt="upload successful"><br><img src="/images/pasted-102.png" alt="upload successful"></p>
-<p>到此，平台端操作完成，关联的设备上电就会查询是否有升级包，若检测到升级包则能看到设备升级；</p>
-<h3 id="OTA时设备端关键日志"><a href="#OTA时设备端关键日志" class="headerlink" title="OTA时设备端关键日志"></a>OTA时设备端关键日志</h3><p><img src="/images/pasted-103.png" alt="upload successful"><br><img src="/images/pasted-104.png" alt="upload successful"><br>OneNet平台也可以看到一些OTA数据统计<br><img src="/images/pasted-105.png" alt="upload successful"></p>
-<h3 id="设备端M5311固件生产"><a href="#设备端M5311固件生产" class="headerlink" title="设备端M5311固件生产"></a>设备端M5311固件生产</h3>]]></content>
   </entry>
   <entry>
     <title>Lua之 loadfile ,dofile, loadstring，require</title>
@@ -4024,32 +4005,23 @@ $$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$
       </tags>
   </entry>
   <entry>
-    <title>OpenSSL 笔记</title>
-    <url>/2020/07/08/dfdf.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一些加密知识"><a href="#一些加密知识" class="headerlink" title="一些加密知识"></a>一些加密知识</h2><ul>
-<li>摘要算法 : </li>
-<li>公钥算法</li>
-<li>数字签名</li>
+    <title>OneNet OTA 操作笔记</title>
+    <url>/2020/09/15/91bc.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="OneNet-OTA-M5311-笔记"><a href="#OneNet-OTA-M5311-笔记" class="headerlink" title="OneNet OTA M5311 笔记"></a>OneNet OTA M5311 笔记</h2><ul>
+<li>地址: <a href="https://open.iot.10086.cn/">https://open.iot.10086.cn/</a></li>
 </ul>
-<p><a href="http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html">http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html</a><br><a href="http://www.jinbuguo.com/linux/openssl_install.html">http://www.jinbuguo.com/linux/openssl_install.html</a><br><a href="https://blog.csdn.net/zzhongcy/article/details/21990859">https://blog.csdn.net/zzhongcy/article/details/21990859</a></p>
+<h3 id="OneNet平台OTA设置"><a href="#OneNet平台OTA设置" class="headerlink" title="OneNet平台OTA设置"></a>OneNet平台OTA设置</h3><p>进入FOTA界面，选择添加FOTA群组,操作流程如下图:<br>第一步，创建FOTA群组；<br><img src="/images/pasted-82.png" alt="upload successful"></p>
 <a id="more"></a>
-
-<h2 id="OpenSSL-官网"><a href="#OpenSSL-官网" class="headerlink" title="OpenSSL 官网"></a>OpenSSL 官网</h2><p><a href="https://www.openssl.org/">https://www.openssl.org/</a></p>
-<h2 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h2><ul>
-<li>安装包 : openssl-1.1.0f.tar.gz</li>
-</ul>
-<pre class=" language-sh"><code class="language-sh">tar -xzf openssl-1.1.0f.tar.gz
-# 配置安装路径和生成makefile
-./config --prefix=/home/gagent/alexLam/gizwis_sdk/openssl_alexLin_20200702
-make
-make install</code></pre>
-<p><strong>备注：</strong>运行./config –prefix=/usr/local/openssl (更多选项用./config –help 来查看),可用的选项有： no-mdc2、 no-cast no-rc2、 no-rc5、 no-ripemd、 no-rc4 no-des 、 no-md2、 no-md4、 no-idea 、no-aes、 no-bf、 no-err、 no-dsa、 no-dh、 no-ec、 no-hw、 no-asm、 no-krb5、 no-dso 、 no-threads 、no-zlib、 -DOPENSSL_NO_HASH_COMP、 -DOPENSSL_NO_ERR、 -DOPENSSL_NO_HW 、-DOPENSSL_NO_OCSP、 -DOPENSSL_NO_SHA256 和-DOPENSSL_NO_SHA512 等。去掉不必要的内容可以减少生成库的大小。 若要生成 debug 版本的库和可执行程序加-g 或者-g3(openssl 中有很多宏，需要调试学习最好加上-g3)。</p>
-<h2 id="OpenSSL-编程"><a href="#OpenSSL-编程" class="headerlink" title="OpenSSL 编程"></a>OpenSSL 编程</h2><h3 id="OpenSSL-服务端编写步骤"><a href="#OpenSSL-服务端编写步骤" class="headerlink" title="OpenSSL 服务端编写步骤"></a>OpenSSL 服务端编写步骤</h3><p><img src="/images/pasted-57.png" alt="upload successful"></p>
+<p><img src="/images/pasted-83.png" alt="upload successful"><br>第二步，添加关联设备<br><img src="/images/pasted-84.png" alt="upload successful"><br><img src="/images/pasted-85.png" alt="upload successful"></p>
+<p>第三步，添加当前设备固件包<br><img src="/images/pasted-93.png" alt="upload successful"><br><img src="/images/pasted-94.png" alt="upload successful"></p>
+<p>第四步，上传新的固件包，步骤同第三步；</p>
 <blockquote>
-<p><strong>绿色的胃普通socket 操作，其他的为ssl 操作。</strong></p>
+<p>这里以上传<code>04030004</code>版本为例子<br><img src="/images/pasted-95.png" alt="upload successful"></p>
 </blockquote>
-<h3 id="OpenSSL-客户端编写步骤"><a href="#OpenSSL-客户端编写步骤" class="headerlink" title="OpenSSL 客户端编写步骤"></a>OpenSSL 客户端编写步骤</h3><p><img src="/images/pasted-58.png" alt="upload successful"></p>
-]]></content>
+<p>第五步，创建在线差分包<br><img src="/images/pasted-96.png" alt="upload successful"><br><img src="/images/pasted-97.png" alt="upload successful"><br><img src="/images/pasted-98.png" alt="upload successful"><br><strong>可以看到从04030003到04030004的差分包固生产成功了</strong><br><img src="/images/pasted-99.png" alt="upload successful"><br>第六步，固件测试验证<br><img src="/images/pasted-100.png" alt="upload successful"><br><img src="/images/pasted-101.png" alt="upload successful"><br><img src="/images/pasted-102.png" alt="upload successful"></p>
+<p>到此，平台端操作完成，关联的设备上电就会查询是否有升级包，若检测到升级包则能看到设备升级；</p>
+<h3 id="OTA时设备端关键日志"><a href="#OTA时设备端关键日志" class="headerlink" title="OTA时设备端关键日志"></a>OTA时设备端关键日志</h3><p><img src="/images/pasted-103.png" alt="upload successful"><br><img src="/images/pasted-104.png" alt="upload successful"><br>OneNet平台也可以看到一些OTA数据统计<br><img src="/images/pasted-105.png" alt="upload successful"></p>
+<h3 id="设备端M5311固件生产"><a href="#设备端M5311固件生产" class="headerlink" title="设备端M5311固件生产"></a>设备端M5311固件生产</h3>]]></content>
   </entry>
   <entry>
     <title>PC小技巧</title>
@@ -4090,6 +4062,77 @@ make install</code></pre>
 </ul>
 <pre class=" language-py"><code class="language-py">pip install -r requirements.txt</code></pre>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Qt打包发布</title>
+    <url>/2022/06/25/d67d.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="打包步骤"><a href="#打包步骤" class="headerlink" title="打包步骤"></a>打包步骤</h2><ol>
+<li>把当前Qt项目下的编译输出exe文件和引用的第三方库，如<code>dll</code>文件拷贝到新创建的目录下;</li>
+<li>打开对应的终端,如下<br>  <img src="/images/Qt-1.png" alt="Qt"></li>
+<li>进入到第一步的目录下，然后执行命令： <code>windeployqt xxx.exe</code><br> <img src="/images/Qt-2.png" alt="Qt"></li>
+<li>打开QT程序打包工具<code>Enigma Virtual Box</code><img src="/images/Qt-3.png" alt="Enigma Virtual Box"></li>
+<li>设置如下<br><img src="/images/Qt-4.png" alt="Qt"><br><img src="/images/Qt-5.png" alt="Qt"></li>
+<li>成功打包后如同<br><img src="/images/Qt-6.png" alt="Qt"></li>
+<li>然后再目录下发现有文件:<code>xxx_boxed.exe</code>即为独立可执行文件；</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Qt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OpenSSL 笔记</title>
+    <url>/2020/07/08/dfdf.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一些加密知识"><a href="#一些加密知识" class="headerlink" title="一些加密知识"></a>一些加密知识</h2><ul>
+<li>摘要算法 : </li>
+<li>公钥算法</li>
+<li>数字签名</li>
+</ul>
+<p><a href="http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html">http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html</a><br><a href="http://www.jinbuguo.com/linux/openssl_install.html">http://www.jinbuguo.com/linux/openssl_install.html</a><br><a href="https://blog.csdn.net/zzhongcy/article/details/21990859">https://blog.csdn.net/zzhongcy/article/details/21990859</a></p>
+<a id="more"></a>
+
+<h2 id="OpenSSL-官网"><a href="#OpenSSL-官网" class="headerlink" title="OpenSSL 官网"></a>OpenSSL 官网</h2><p><a href="https://www.openssl.org/">https://www.openssl.org/</a></p>
+<h2 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h2><ul>
+<li>安装包 : openssl-1.1.0f.tar.gz</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">tar -xzf openssl-1.1.0f.tar.gz
+# 配置安装路径和生成makefile
+./config --prefix=/home/gagent/alexLam/gizwis_sdk/openssl_alexLin_20200702
+make
+make install</code></pre>
+<p><strong>备注：</strong>运行./config –prefix=/usr/local/openssl (更多选项用./config –help 来查看),可用的选项有： no-mdc2、 no-cast no-rc2、 no-rc5、 no-ripemd、 no-rc4 no-des 、 no-md2、 no-md4、 no-idea 、no-aes、 no-bf、 no-err、 no-dsa、 no-dh、 no-ec、 no-hw、 no-asm、 no-krb5、 no-dso 、 no-threads 、no-zlib、 -DOPENSSL_NO_HASH_COMP、 -DOPENSSL_NO_ERR、 -DOPENSSL_NO_HW 、-DOPENSSL_NO_OCSP、 -DOPENSSL_NO_SHA256 和-DOPENSSL_NO_SHA512 等。去掉不必要的内容可以减少生成库的大小。 若要生成 debug 版本的库和可执行程序加-g 或者-g3(openssl 中有很多宏，需要调试学习最好加上-g3)。</p>
+<h2 id="OpenSSL-编程"><a href="#OpenSSL-编程" class="headerlink" title="OpenSSL 编程"></a>OpenSSL 编程</h2><h3 id="OpenSSL-服务端编写步骤"><a href="#OpenSSL-服务端编写步骤" class="headerlink" title="OpenSSL 服务端编写步骤"></a>OpenSSL 服务端编写步骤</h3><p><img src="/images/pasted-57.png" alt="upload successful"></p>
+<blockquote>
+<p><strong>绿色的胃普通socket 操作，其他的为ssl 操作。</strong></p>
+</blockquote>
+<h3 id="OpenSSL-客户端编写步骤"><a href="#OpenSSL-客户端编写步骤" class="headerlink" title="OpenSSL 客户端编写步骤"></a>OpenSSL 客户端编写步骤</h3><p><img src="/images/pasted-58.png" alt="upload successful"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>QT 笔记</title>
+    <url>/2020/05/04/8182.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><ul>
+<li> <a href="https://doc.qt.io/qt-5/index.html">官方文档</a></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>SI4432</title>
+    <url>/2017/03/26/760b.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="SPI方面"><a href="#SPI方面" class="headerlink" title="SPI方面"></a>SPI方面</h3><hr>
+<p><strong>1. 速率不要太高，SI4432手册上说不要大于10MHZ</strong>        <br><strong>2. MOSI、MOSO、SCK三个引脚配置为复用功能推挽输出</strong><br><strong>3.SPI的时钟极性配置为：同步时钟的空闲状态为 低电平</strong><br><strong>4.SPI的时钟的第2个跳变沿数据被采样。（SPI_CPHA）</strong><br><strong>5.片选信号软件控制自己定义一个IO空控制片选吧，方便.</strong></p>
+<a id="more"></a>
+
+<h3 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h3><hr>
+<p><strong>1. SI4432有3个GPIO，一般自己是不用的，但是依然要配置，因为这个和模块相关</strong><br><strong>2. 建议还是不要把SDN直接接地，毕竟发现异常后还可以将SDN拉高在置低来实现硬件复位 <em>(重要)</em></strong><br><strong>3. SI4432的SDN引脚，为高时：芯片停止工作。为低时：芯片允许工作。</strong></p>
+<h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3><hr>
+<p><strong>1. SPI配置好以后，向SI4432写数据注意地址最高位置1。 如：SPI1_ReadWriteByte(addr|0x80)</strong><br><strong>2.SI4432主要三个状态：接收状态、发送状态、挂起状态。发送和接收之间可以相互转换、但是转换之前需要先进入挂起状态然后至少15ms之后再进入发送或者接收状态。程序while（1）之前最好开始就配置为挂起状态：SI4432_WriteReg(0x07, 0x01);</strong><br><strong>3. 软件复位内部寄存器，不能立刻写入寄存器</strong><br><strong>4.某些寄存器写完之后，必须延时一段时间，才能继续写其他的寄存器，否则死机</strong></p>
+]]></content>
+      <tags>
+        <tag>SI4432</tag>
+        <tag>433MHZ</tag>
+      </tags>
   </entry>
   <entry>
     <title>SPI协议</title>
@@ -4168,32 +4211,6 @@ make install</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>QT 笔记</title>
-    <url>/2020/05/04/8182.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><ul>
-<li> <a href="https://doc.qt.io/qt-5/index.html">官方文档</a></li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>SI4432</title>
-    <url>/2017/03/26/760b.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="SPI方面"><a href="#SPI方面" class="headerlink" title="SPI方面"></a>SPI方面</h3><hr>
-<p><strong>1. 速率不要太高，SI4432手册上说不要大于10MHZ</strong>        <br><strong>2. MOSI、MOSO、SCK三个引脚配置为复用功能推挽输出</strong><br><strong>3.SPI的时钟极性配置为：同步时钟的空闲状态为 低电平</strong><br><strong>4.SPI的时钟的第2个跳变沿数据被采样。（SPI_CPHA）</strong><br><strong>5.片选信号软件控制自己定义一个IO空控制片选吧，方便.</strong></p>
-<a id="more"></a>
-
-<h3 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h3><hr>
-<p><strong>1. SI4432有3个GPIO，一般自己是不用的，但是依然要配置，因为这个和模块相关</strong><br><strong>2. 建议还是不要把SDN直接接地，毕竟发现异常后还可以将SDN拉高在置低来实现硬件复位 <em>(重要)</em></strong><br><strong>3. SI4432的SDN引脚，为高时：芯片停止工作。为低时：芯片允许工作。</strong></p>
-<h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3><hr>
-<p><strong>1. SPI配置好以后，向SI4432写数据注意地址最高位置1。 如：SPI1_ReadWriteByte(addr|0x80)</strong><br><strong>2.SI4432主要三个状态：接收状态、发送状态、挂起状态。发送和接收之间可以相互转换、但是转换之前需要先进入挂起状态然后至少15ms之后再进入发送或者接收状态。程序while（1）之前最好开始就配置为挂起状态：SI4432_WriteReg(0x07, 0x01);</strong><br><strong>3. 软件复位内部寄存器，不能立刻写入寄存器</strong><br><strong>4.某些寄存器写完之后，必须延时一段时间，才能继续写其他的寄存器，否则死机</strong></p>
-]]></content>
-      <tags>
-        <tag>SI4432</tag>
-        <tag>433MHZ</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SSL握手过程</title>
     <url>/2018/03/26/b45f.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div align="center">
@@ -4221,6 +4238,42 @@ make install</code></pre>
       <tags>
         <tag>算法</tag>
         <tag>ssl</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>STM32 命名规则</title>
+    <url>/2017/03/26/eaab.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>以stm32f103c8t7xx为例子</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1736256-7d5b4a61ad2948ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="命名规范"></p>
+<a id="more"></a>
+
+<p>| Device |  description |<br>| ————- |<br>| STM32 |基于ARM?的32位微控制器产品类型。 |<br>| F |通用类型产品子系列 |<br>|Device subfamily|101 = 基本型 102 = USB基本型 103 = 增强型 105/107 = 互联型|<br>|Pin count| T=36 C=48 R=64 V=100 Z=144|<br>|Flash Size|6=32 8=64 B=128 C=256 D=384 E=512 |<br>|Package|H = BGA T = LQFP U = VFQFPN Y = WLCSP64|</p>
+<h2 id="STM32-产品类型和启动文件的选择"><a href="#STM32-产品类型和启动文件的选择" class="headerlink" title="STM32 产品类型和启动文件的选择"></a>STM32 产品类型和启动文件的选择</h2><pre><code>- startup_stm32f10x_ld_vl.s: for STM32 Low density Value line devices
+- startup_stm32f10x_ld.s: for STM32 Low density devices
+- startup_stm32f10x_md_vl.s: for STM32 Medium density Value line devices
+- startup_stm32f10x_md.s: for STM32 Medium density devices
+- startup_stm32f10x_hd.s: for STM32 High density devices
+- startup_stm32f10x_xl.s: for STM32 XL density devices
+- startup_stm32f10x_cl.s: for STM32 Connectivity line devices
+cl：互联型产品，stm32f105/107系列
+vl：超值型产品，stm32f100系列
+xl：超高密度产品，stm32f101/103系列
+ld：低密度产品，FLASH小于64K
+md：中等密度产品，FLASH=64 or 128
+hd：高密度产品，FLASH大于128</code></pre>
+<h2 id="STM32-Flash-页面大小划分"><a href="#STM32-Flash-页面大小划分" class="headerlink" title="STM32 Flash 页面大小划分"></a>STM32 Flash 页面大小划分</h2><p>STM32有4种Flash module organization，分别是：</p>
+<ul>
+<li>low-density devices(32KB，1KB/page)</li>
+<li>medium-density devices(128KB，1KB/page)</li>
+<li>high-density devices(512KB，2KB/page)</li>
+<li>connectivity line devices(256KB，2KB/page)</li>
+<li>XL-density(devices(1M，2KB/page)</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>ST</tag>
+        <tag>STM32</tag>
       </tags>
   </entry>
   <entry>
@@ -4265,61 +4318,6 @@ returnadc;//返回最近一次ADCx规则组的转换结果
         <tag>ST</tag>
         <tag>STM32</tag>
         <tag>ADC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>STM32 命名规则</title>
-    <url>/2017/03/26/eaab.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>以stm32f103c8t7xx为例子</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1736256-7d5b4a61ad2948ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="命名规范"></p>
-<a id="more"></a>
-
-<p>| Device |  description |<br>| ————- |<br>| STM32 |基于ARM?的32位微控制器产品类型。 |<br>| F |通用类型产品子系列 |<br>|Device subfamily|101 = 基本型 102 = USB基本型 103 = 增强型 105/107 = 互联型|<br>|Pin count| T=36 C=48 R=64 V=100 Z=144|<br>|Flash Size|6=32 8=64 B=128 C=256 D=384 E=512 |<br>|Package|H = BGA T = LQFP U = VFQFPN Y = WLCSP64|</p>
-<h2 id="STM32-产品类型和启动文件的选择"><a href="#STM32-产品类型和启动文件的选择" class="headerlink" title="STM32 产品类型和启动文件的选择"></a>STM32 产品类型和启动文件的选择</h2><pre><code>- startup_stm32f10x_ld_vl.s: for STM32 Low density Value line devices
-- startup_stm32f10x_ld.s: for STM32 Low density devices
-- startup_stm32f10x_md_vl.s: for STM32 Medium density Value line devices
-- startup_stm32f10x_md.s: for STM32 Medium density devices
-- startup_stm32f10x_hd.s: for STM32 High density devices
-- startup_stm32f10x_xl.s: for STM32 XL density devices
-- startup_stm32f10x_cl.s: for STM32 Connectivity line devices
-cl：互联型产品，stm32f105/107系列
-vl：超值型产品，stm32f100系列
-xl：超高密度产品，stm32f101/103系列
-ld：低密度产品，FLASH小于64K
-md：中等密度产品，FLASH=64 or 128
-hd：高密度产品，FLASH大于128</code></pre>
-<h2 id="STM32-Flash-页面大小划分"><a href="#STM32-Flash-页面大小划分" class="headerlink" title="STM32 Flash 页面大小划分"></a>STM32 Flash 页面大小划分</h2><p>STM32有4种Flash module organization，分别是：</p>
-<ul>
-<li>low-density devices(32KB，1KB/page)</li>
-<li>medium-density devices(128KB，1KB/page)</li>
-<li>high-density devices(512KB，2KB/page)</li>
-<li>connectivity line devices(256KB，2KB/page)</li>
-<li>XL-density(devices(1M，2KB/page)</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>ST</tag>
-        <tag>STM32</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>STM8 命名规则</title>
-    <url>/2017/03/26/3ec7.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<p><strong>STM8命名规则示列：STM8S005K6T6Cxxx</strong>代表的意义为： 超值型 STM8内核（可以理解为8位51增强型内核）MCU,LQFP-32封装，32KB FLASH容量，温度范围-40℃-85℃；（工业级）<br><strong>具体分解如下：</strong></p>
-<a id="more"></a>
-
-<p>|<strong>STM8</strong>|<strong>S</strong>|<strong>005</strong>|<strong>K</strong>|<strong>6</strong>|<strong>T</strong>|<strong>6</strong>|<strong>C</strong>|<strong>XXX</strong>|<br>|-|-|<br>|1|2|3|4|5|6|7|8|9</p>
-<p><strong>1.产品系列:</strong><br>STM8单片机包括以下几个系列：<br>STM8： 8位MCU； STM8A：8位自动MCU； STM8T：8位触摸感应MCU； STM8TL：8位触摸感应低电压MCU；<br><strong>2.产品类型:</strong><br>S：标准型； L：低电压型；<br><strong>3.产品子系列：</strong><br>005：超值型STM8S005X，速度16MHz； 051：超低压ULTRA串口； 052：带LCD； 007：ARM3超值型，速度24 MHz； 00x：超值型； 003：子系列； 105：基本型STM8S1005X； 10X：基本型； 103：子系列； 207：中间层的外围设定; 208：所有层的外围设定; 903：903子系列; 151：超低压ULTRA串口; 152：超低压ULTRA串口带LCD; 101：子系列；<br><strong>4.管脚数</strong><br>F：20PIN；G：28PIN；K：32PIN；S：44PIN；C：48PIN；R：64PIN；M：80PIN；<br><strong>5.Flash存存容量</strong><br>1：2KB flash；（小容量）; 2：4KB flash；（小容量）; 3：8KB flash；（小容量）; 4：16KB flash；（小容量）; 6：32KB flash；（小容量）; 8：64KB flash；（中容量）; B：128KB flash；（中容量）; C：256KB flash；（大容量）; D：384KB flash；（大容量）; E：512KB flash；（大容量）; F：768KB flash；（大容量）; G：1MKB flash；（大容量）<br><strong>6.封装</strong><br>T：LQFP； P：TSSOP； U：UFQFPN； B：SDIP； M：SO； Y：WLCSP；<br><strong>7.温度范围</strong><br>3：-40℃-125℃；（工业级）; 6：-40℃-85℃；（工业级）; 7：-40℃-105℃；（工业级）<br><strong>8.包装尺寸</strong><br>无特性：0.5mm；C：0.8mm; A：0.55mm的UFQFPN；Blank：0.5mm或0.65mm;<br>低压101系列的A：COMP_REF可变；Blank：COMP_REF不可变;<br>低压162系列的D：VDD的范围为1.8V-3.6V，且BOR使能； Blank：VDD的范围为1.8V-3.6V，且BOR不使能;<br><strong>9.包装方式：</strong><br>TR：带卷；无特性：盘装；</p>
-<hr>
-<p><img src="http://upload-images.jianshu.io/upload_images/1736256-f177ef8447b808f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="STM8 MCU 选型列表"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1736256-d448c89177176b7e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="STM8L101F3P6"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1736256-37063209962e156c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="原理图"></p>
-]]></content>
-      <tags>
-        <tag>ST</tag>
-        <tag>STM8</tag>
       </tags>
   </entry>
   <entry>
@@ -4447,6 +4445,325 @@ hd：高密度产品，FLASH大于128</code></pre>
       </categories>
       <tags>
         <tag>STM32</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>STM8 命名规则</title>
+    <url>/2017/03/26/3ec7.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<p><strong>STM8命名规则示列：STM8S005K6T6Cxxx</strong>代表的意义为： 超值型 STM8内核（可以理解为8位51增强型内核）MCU,LQFP-32封装，32KB FLASH容量，温度范围-40℃-85℃；（工业级）<br><strong>具体分解如下：</strong></p>
+<a id="more"></a>
+
+<p>|<strong>STM8</strong>|<strong>S</strong>|<strong>005</strong>|<strong>K</strong>|<strong>6</strong>|<strong>T</strong>|<strong>6</strong>|<strong>C</strong>|<strong>XXX</strong>|<br>|-|-|<br>|1|2|3|4|5|6|7|8|9</p>
+<p><strong>1.产品系列:</strong><br>STM8单片机包括以下几个系列：<br>STM8： 8位MCU； STM8A：8位自动MCU； STM8T：8位触摸感应MCU； STM8TL：8位触摸感应低电压MCU；<br><strong>2.产品类型:</strong><br>S：标准型； L：低电压型；<br><strong>3.产品子系列：</strong><br>005：超值型STM8S005X，速度16MHz； 051：超低压ULTRA串口； 052：带LCD； 007：ARM3超值型，速度24 MHz； 00x：超值型； 003：子系列； 105：基本型STM8S1005X； 10X：基本型； 103：子系列； 207：中间层的外围设定; 208：所有层的外围设定; 903：903子系列; 151：超低压ULTRA串口; 152：超低压ULTRA串口带LCD; 101：子系列；<br><strong>4.管脚数</strong><br>F：20PIN；G：28PIN；K：32PIN；S：44PIN；C：48PIN；R：64PIN；M：80PIN；<br><strong>5.Flash存存容量</strong><br>1：2KB flash；（小容量）; 2：4KB flash；（小容量）; 3：8KB flash；（小容量）; 4：16KB flash；（小容量）; 6：32KB flash；（小容量）; 8：64KB flash；（中容量）; B：128KB flash；（中容量）; C：256KB flash；（大容量）; D：384KB flash；（大容量）; E：512KB flash；（大容量）; F：768KB flash；（大容量）; G：1MKB flash；（大容量）<br><strong>6.封装</strong><br>T：LQFP； P：TSSOP； U：UFQFPN； B：SDIP； M：SO； Y：WLCSP；<br><strong>7.温度范围</strong><br>3：-40℃-125℃；（工业级）; 6：-40℃-85℃；（工业级）; 7：-40℃-105℃；（工业级）<br><strong>8.包装尺寸</strong><br>无特性：0.5mm；C：0.8mm; A：0.55mm的UFQFPN；Blank：0.5mm或0.65mm;<br>低压101系列的A：COMP_REF可变；Blank：COMP_REF不可变;<br>低压162系列的D：VDD的范围为1.8V-3.6V，且BOR使能； Blank：VDD的范围为1.8V-3.6V，且BOR不使能;<br><strong>9.包装方式：</strong><br>TR：带卷；无特性：盘装；</p>
+<hr>
+<p><img src="http://upload-images.jianshu.io/upload_images/1736256-f177ef8447b808f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="STM8 MCU 选型列表"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1736256-d448c89177176b7e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="STM8L101F3P6"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1736256-37063209962e156c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="原理图"></p>
+]]></content>
+      <tags>
+        <tag>ST</tag>
+        <tag>STM8</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WireShark网络抓包</title>
+    <url>/2017/07/01/dc5b.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h2 id="WireShark入门"><a href="#WireShark入门" class="headerlink" title="WireShark入门"></a>WireShark入门</h2><h3 id="一、-打开WireShark"><a href="#一、-打开WireShark" class="headerlink" title="一、 打开WireShark"></a>一、 打开WireShark</h3><p><img src="http://static.zybuluo.com/AlexLin/4224884og6inde3h2q5wcw6a/image.png" alt="WireShark启动界面"></p>
+<a id="more"></a>
+<h3 id="二、界面分区"><a href="#二、界面分区" class="headerlink" title="二、界面分区"></a>二、界面分区</h3><p><img src="http://static.zybuluo.com/AlexLin/zrfd5f3v3q3o8bjdjay8oxc1/image.png" alt="WireShark界面划分"></p>
+<h3 id="三、过滤规则语句"><a href="#三、过滤规则语句" class="headerlink" title="三、过滤规则语句"></a>三、过滤规则语句</h3><ul>
+<li><p> IP 过滤</p>
+<pre><code>ip.src eq 192.168.1.107 or ip.dst eq 192.168.1.107
+#或者
+ip.addr eq 192.168.1.107 // 都能显示来源IP和目标IP</code></pre>
+</li>
+<li><p> 过滤端口</p>
+<pre><code>tcp.port eq 80 // 不管端口是来源的还是目标的都显示
+tcp.port == 80
+tcp.port eq 2722
+tcp.port eq 80 or udp.port eq 80
+tcp.dstport == 80 // 只显tcp协议的目标端口80
+tcp.srcport == 80 // 只显tcp协议的来源端口80
+#端口范围
+tcp.port &gt;= 1 and tcp.port &lt;= 80</code></pre>
+</li>
+<li><p>协议过滤</p>
+<pre><code>tcp、udp、arp、icmp、http、smtp、ftp、dns、msnms、ip、ssl、oicq、bootp #等等.
+#排除
+#排除arp包
+!arp  或者  not arp</code></pre>
+</li>
+<li><p>mac 过滤</p>
+<pre><code>eth.dst == A0:00:00:04:C5:84 //过滤目标mac
+eth.src eq A0:00:00:04:C5:84 //过滤来源mac
+eth.dst==A0:00:00:04:C5:84
+eth.dst==A0-00-00-04-C5-84
+eth.addr eq A0:00:00:04:C5:84 //过滤来源MAC和目标MAC都等于A0:00:00:04:C5:84的MAC</code></pre>
+</li>
+<li><p>数据包长度过滤</p>
+<pre><code>udp.length == 26 #这个长度是指udp本身固定长度8加上udp下面那块数据包之和
+tcp.len &gt;= 7  #指的是ip数据包(tcp下面那块数据),不包括tcp本身
+ip.len == 94 #除了以太网头固定长度14,其它都算是ip.len,即从ip本身到最后
+frame.len == 119 #整个数据包长度,从eth开始到最后
+#数据包组成成员
+eth ---&gt; ip or arp ---&gt; tcp or udp ---&gt; data</code></pre>
+</li>
+<li><p>http模式过滤</p>
+<pre><code>http.request.method == &quot;GET&quot;
+http.request.method == &quot;POST&quot;
+http.request.uri == &quot;/img/logo-edu.gif&quot;
+http contains &quot;GET&quot;
+http contains &quot;HTTP/1.&quot;
+</code></pre>
+</li>
+</ul>
+<p>// GET包<br>http.request.method == “GET” &amp;&amp; http contains “Host: “<br>http.request.method == “GET” &amp;&amp; http contains “User-Agent: “<br>// POST包<br>http.request.method == “POST” &amp;&amp; http contains “Host: “<br>http.request.method == “POST” &amp;&amp; http contains “User-Agent: “<br>// 响应包<br>http contains “HTTP/1.1 200 OK” &amp;&amp; http contains “Content-Type: “<br>http contains “HTTP/1.0 200 OK” &amp;&amp; http contains “Content-Type: “</p>
+<pre><code>- 两种条件成立过滤</code></pre>
+<p>过滤两种条件时，使用and连接，<br>如过滤ip为192.168.101.8并且为http协议的，ip.src==192.168.101.8 and http。</p>
+<pre><code>- 域名过滤</code></pre>
+<p>http.host == “gizwits.com”</p>
+<pre><code>### 四、TCP包分析
+
+#### **一个TCP包由5部分组成分别是:**
+
+1. Frame:   物理层的数据帧概况
+2. Ethernet II: 数据链路层以太网帧头部信息
+3. Internet Protocol Version 4: 互联网层IP包头部信息
+4. Transmission Control Protocol:  传输层T的数据段头部信息，此处是mqtt
+5. Hypertext Transfer Protocol/Data:  应用层的信息，此处是mqtt协议
+
+#### **与之对应的网络七层协议图如下**
+![tcp数据层][3]
+#### OSI 参考模型与 TCP/IP分层模型
+![OSI 参考模型与 TCP/IP分层模型][5]
+
+#### **TCP 三次握手**
+**图片版本**
+![TCP三次握手][6]
+#### **WireShark抓包分析图**
+##### **第一次握手**
+代表客户端请求建立连接</code></pre>
+<p>SEQ=0<br>ACK=0<br>FLAGS = 0x0002 （SYN）</p>
+<pre><code>**WireShark第一次TCP握手图**
+![TCP 第一次握手][7]
+
+##### **第二次握手：**
+服务器发回确认包, 标志位为 SYN,ACK. 将确认序号(Acknowledgement Number)设置为客户的SEQ加1以.即ACK=SEQ+1</code></pre>
+<p>SEQ = 0<br>ACK = SEQ+1<br>FLAGS = 0X0012（SYN +ACK）</p>
+<pre><code>**WireShark第二次TCP握手图**
+![TCP 第二次握手][8]
+
+客户端再次发送确认包(ACK) SYN标志位为0,ACK标志位为1.并且把服务器发来ACK的序号字段+1,放确在SEQ字段中发送给对方.
+</code></pre>
+<p>SEQ =SEQ+1<br>ACK = 1;<br>FLAGS = 0X0001（ACK）</p>
+<pre><code>![TCP 第三次握手][9]
+
+#### **第四次挥手**
+第一次、A机器向B机器发起断开请求，其中FIN置位,且seq=x;此时A进入FIN_WAIT_1状态；
+第二次、B机器响应A的断开请求，ACK置位，且ACK值=x+1,且Seq=z;此时A进入FIN_WAIT_2状态(表示B同意A的断开请求)；
+第三次、B机器向A发起断开请求，其中FIN置为，且Seq=y;(此时B进入LAST_WAIT)
+第四次、A响应B的断开请求，ACK置位，ACK值位y+1;此时A进入TIME_WAIT，B收到ACK之后直接CLOSE；A在经过2MSL时间之后若没收到FIN信号则CLOSE;
+
+![upload successful](/images/pasted-107.png)
+
+
+
+### 五、WireShark 抓包异常情况分析
+
+#### 1. **tcp out-of-order**（tcp有问题）
+&gt;**原因:** 应该有很多原因。但是多半是网络拥塞，导致顺序包抵达时间不同，延时太长，或者包丢失，需要重新组合数据单元 因为他们可能是通过不同的路径到达你电脑上面的。
+
+#### 2. **tcp segment of a reassembled PDU**
+&gt;**原因:** 在连个连接建立的时候，SYN包里面会把彼此TCP最大的报文段长度，在局域网内一般都是**1460**.如果发送的包比最大的报文段长度长的话就要分片了，被分片出来的包，就会被标记了**“TCP segment of a reassembled PDU”**。TCP在发起连接的第一个报文的TCP头里通过MSS这个可选项告知对方本端能够接收的最大报文（当然，这个大小是TCP净荷的大小），以太网上这个值一般设置成1460，因为1460Byte净荷+20Byte TCP头+20Byte IP头 ＝ 1500字节，正好符合链路层最大报文的要求，被标记了的包的SEQ和ACK都和原来的包一致。
+#### 3. **Tcp previous segment lost（tcp先前的分片丢失）**
+&gt;一般是网络中的网络设备发生的拥塞了，触发了TCP的拥塞控制机制。它告诉发送方数据段丢失；
+（1）、“TCP Previous segment lost” errors are not “fatal” errors. They simply indicate that the sequence number in the arriving packet is higher than the next-expected sequence number, indicating that at least one segment was dropped/lost. The receiving station remedies this situation by sending duplicate ACKs for each additional packet it receives until the sender retransmits the missing packet(s). TCP is designed to recover from this situation, which is why the image is downloaded correctly despite having a (briefly) missing packet.
+If you are getting a large number of lost packets, then there is likely a communication problem between the sender and receiver. A common cause of this is un-matched duplex settings between the PC and the switch.
+We (our lab) recently upgraded to Ethereal 0.10.14 with WinPCap 3.1.  If I remember correctly, we had previously been using 0.10.2 with WinPCap 3.0.  However, since the upgrade we have been noticing several issues.
+The first issue is with “TCP Previous segment lost” and “TCP CHECKSUM INCORRECT” messages appearing in the Packet Listing window.  We do not remember seeing these in the previous version of Ethereal, or at least not nearly as many as we are seeing now.  For example, one task for the student instructional part of the lab involves visiting a website containing two images and observing the network activity.  After the two GET requests are sent for the images, it is not uncommon for one image to be returned with a typical 200 OK response packet, but the response packet for the other image will be displayed as “TCP Previous segment lost.”  However, both images are downloaded and displayed perfectly fine in the browser.  I would think that the segment lost error would mean the object wasn’t returned correctly and shouldn’t be able to be displayed, but apparently that is not the case.  (The cache had been cleared when this was performed, so it was not defaulting to a local copy of the image.)
+Another problem we’ve been noticing is that some packets simply aren’t displayed in the Packet Listing window, even when they are obviously received.  Using the same example as above, after the two GET requests are sent for the images, it is not uncommon for one image to be returned with a typical 200 OK response, but the other response will not appear.  Yet both images are successfully displayed in the browser.  Is this a problem with Ethereal not detecting the packets?
+I’m not sure how typical this is, but we seem to be experiencing these issues often with 0.10.14 while we never did with 0.10.2.  Could it also be an issue with WinPCap, and not necessarily Ethereal?  I’m just trying to find some answers as to why we are seeing a sudden abundance of TCP related errors and uncaptured packets.  Thanks.
+（2）、I have a network client application that runs fine while I am debugging (no TCP errors),
+but when I run the release version, it runs incredibly slow.  It runs as a series of
+transactions, where each transaction is a separate connection to the server.  Wireshark
+analysis has determined that about 50% of all transactions involve the series:
+TCP Previous Segment Lost
+
+#### 4. Tcpacked lost segment（tcp应答丢失）
+#### 5. Tcp window update（tcp窗口更新）
+#### 6. Tcp dup ack（tcp重复应答）
+&gt;1)当收到tcp out-of-order 信号时，可能发送该信号， 这个相同应答的意图是让对端知道一个分片被收到的时候出现问题，并且告诉它希望得到的序列号。
+2)由于TCP不知道重复的ACK是由丢失的段引起的还是仅仅是重新排序段，所以等待接收到少量的重复的ACK。 假设如果只有段的重新排序，则在重新排序的段被处理之前将只有一个或两个重复的ACK，然后将生成新的ACK。 如果在一行中接收到三个或更多个重复的ACK，则表明段已经丢失。 TCP然后执行似乎是丢失段的重传，而不等待重传定时器到期。
+
+#### 7. **Tcp keep alive**（tcp保持活动）
+&gt;在TCP中有一个Keep-alive的机制可以检测死连接，原理很简单，TCP会在空闲了一定时间后发送数据给对方：
+ 1.如果主机可达，对方就会响应ACK应答，就认为是存活的。
+ 2.如果可达，但应用程序退出，对方就发RST应答，发送TCP撤消连接。
+ 3.如果可达，但应用程序崩溃，对方就发FIN消息。
+ 4.如果对方主机不响应ack, rst，继续发送直到超时，就撤消连接。这个时间就是默认的二个小时。
+
+#### 8. **Tcp retransmission**（tcp重传）
+&gt;作为一个可靠的传输协议，传输控制协议（TCP）在发送主机需要从目标主机收到一个包时确认。If the sender does not receive that acknowledgment within a certain amount of time, it acts under the assumption that the packet did not reach its destination and retransmits the packet.如果发件人没有收到的时间内一定之金额，确认，它的行为假设下，该数据包没有到达其目的地，以及转发数据包。
+
+
+## TCP 状态分析
+TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)
+在TCP层，有个FLAGS字段，这个字段有以下几个标识：SYN, FIN, ACK, PSH, RST, URG.
+它们的含义是：
+
+ 1. SYN(synchronous): 表示建立连接.
+ 2. FIN(finish): 表示关闭连接.
+ 3. ACK(acknowledgement): 表示响应.
+ 4. PSH(push): 表示有DATA数据传输.
+ 5. RST(reset): 表示连接重置.
+ 6. URG(urgent):紧急.
+ 7. SEQ(Sequence number):顺序号码
+
+## TCP 三次握手流程
+1. 主机A发送位码为syn＝1，随机产生seq number=1234567的数据包到服务器，主机B由SYN=1知道，A要求建立联机；
+2. 主机B收到请求后要确认联机信息，向A发送ack number=(主机A的seq+1)，syn=1，ack=1，随机产生seq=7654321的包；
+3. 主机A收到后检查ack number是否正确，即第一次发送的seq number+1，以及位码ack是否为1，若正确，主机A会再发送ack number=(主机B的seq+1)，ack=1，主机B收到后确认seq值与ack=1则连接建立成功。
+
+## 各种网络包头格式
+### 以太网头</code></pre>
+<p>// MAC地址长度<br>#define MAC_ADDRESS_LEN 6</p>
+<p>// 常用的以太网帧类型<br>#define ETHERNET_FRAME_IP       0x0800              // IP帧<br>#define ETHERNET_FRAME_ARP      0x0806              // ARP帧<br>#define ETHERNET_FRAME_RARP     0x8035              // RARP帧<br>#define ETHERNET_FRAME_IPv6     0x86DD              // IP6帧</p>
+<p>typedef struct _EthernetHeader      // 以太头<br>{<br>    UCHAR       DstMacAddr[MAC_ADDRESS_LEN];        // 目标MAC<br>    UCHAR       SrcMacAddr[MAC_ADDRESS_LEN];        // 源MAC<br>    USHORT      FrmType;                            // 类型<br>}EthernetHeader, *PEthernetHeader;</p>
+<pre><code>### TCP 包格式</code></pre>
+<h2 id="0-15-31"><a href="#0-15-31" class="headerlink" title="0                            15                              31"></a>0                            15                              31</h2><h2 id="source-port-destination-port"><a href="#source-port-destination-port" class="headerlink" title="|          source port          |       destination port        |"></a>|          source port          |       destination port        |</h2><table>
+<thead>
+<tr>
+<th>sequence number</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>acknowledgment number</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="HL-rsvd-C-E-U-A-P-R-S-F-window-size"><a href="#HL-rsvd-C-E-U-A-P-R-S-F-window-size" class="headerlink" title="|  HL   | rsvd  |C|E|U|A|P|R|S|F|        window size            |"></a>|  HL   | rsvd  |C|E|U|A|P|R|S|F|        window size            |</h2><h2 id="TCP-checksum-urgent-pointer"><a href="#TCP-checksum-urgent-pointer" class="headerlink" title="|         TCP checksum          |       urgent pointer          |"></a>|         TCP checksum          |       urgent pointer          |</h2><table>
+<thead>
+<tr>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Data</td>
+</tr>
+</tbody></table>
+<hr>
+<p>// TCP头标志位掩码 OffFlag<br>#define TCP_HDR_LEN             0xF000              // TCP头长度&lt;双字的个数&gt;转化为字节数需要x4<br>#define TCP_URG_FLAG            0x0020              // URG标志<br>#define TCP_ACK_FLAG            0x0010              // ACK标志 应答1或请求0<br>#define TCP_PSH_FLAG            0x0008              // psh标志 以最快速度传输数据<br>#define TCP_RST_FLAG            0x0004              // RST标志 先断开连接,再重建连接<br>#define TCP_SYN_FLAG            0x0002              // SYN标志 用来建立连接<br>#define TCP_FIN_FLAG            0x0001              // FIN标志 发送方完成数据发送</p>
+<p>typedef struct _TcpHeader           // TCP头 20 BYTES<br>{<br>    USHORT      SrcPort;                            // 源端口<br>    USHORT      DstPort;                            // 目的端口<br>    ULONG       SeqNum;                             // 序号<br>    ULONG       AckNum;                             // 确认号<br>    USHORT      OffFlag;                            // 首部长度&lt;首部双字的个数&gt;+保留位+标志位<br>    USHORT      WndSize;                            // 窗口大小&lt;实现流量控制&gt;<br>    USHORT      Checksum;                           // 效验和<br>    USHORT      UrgPointer;                         // 紧急指针<br>}TcpHeader, *PTcpHeader;</p>
+<p>// OffFlag : 4位首部长度 + 6位保留位 + URG+ACK+PSH+RST+SYN+FIN</p>
+<p>typedef struct _TCPPACKET           // TCP封包 &lt;当ip中没有附加数据时&gt;<br>{<br>    EthernetHeader  Ehhdr;<br>    IPHeader        Iphdr;<br>    TcpHeader       Tcphdr;<br>}TCPPACKET, *PTCPPACKET;</p>
+<p>```</p>
+<p>SYN和ACK可能同时为1，它表示的就是建立连接之后的响应，<br>如果只是单个的一个SYN，它表示的只是建立连接。</p>
+<p>参考</p>
+<hr>
+<ul>
+<li><a href="http://bbs.pediy.com/thread-147644.htm">http://bbs.pediy.com/thread-147644.htm</a></li>
+<li><a href="http://www.yunsec.net/a/school/wlcs/agreement/2012/0317/10262.html">http://www.yunsec.net/a/school/wlcs/agreement/2012/0317/10262.html</a></li>
+<li><a href="http://www.9upk.com/article/2537.html">http://www.9upk.com/article/2537.html</a> （抓包工具教程）</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>抓包工具</tag>
+        <tag>wireShark</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>golang之环境搭建</title>
+    <url>/2019/09/08/b098.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h2 id="宿主机环境"><a href="#宿主机环境" class="headerlink" title="宿主机环境"></a>宿主机环境</h2><pre class=" language-SH"><code class="language-SH">Linux VM-133-112-ubuntu 4.15.0-54-generic #58-Ubuntu SMP Mon Jun 24 10:55:24 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux</code></pre>
+<ul>
+<li><a href="https://golang.org/dl/">安装包下载</a><pre class=" language-sh"><code class="language-sh">ubuntu@VM-133-112-ubuntu:~$ wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz</code></pre>
+</li>
+<li>解压压缩包到指定目录: <code>/usr/local</code><pre class=" language-sh"><code class="language-sh"> ubuntu@VM-133-112-ubuntu:~/golang$ sudo tar -C /usr/local/ -xzf go1.13.linux-amd64.tar.gz </code></pre>
+</li>
+<li>设置环境变量<pre class=" language-sh"><code class="language-sh">export PATH=$PATH:/usr/local/go/bin</code></pre>
+</li>
+<li><strong>go env</strong> 命令正常输出即环境搭建成功；</li>
+</ul>
+<h3 id="项目结构组织"><a href="#项目结构组织" class="headerlink" title="项目结构组织"></a>项目结构组织</h3><ul>
+<li>指定<code>GOPATH</code>,项目的构建基于此变量，此变量指定项目路径，多个项目用<code>;</code>分隔</li>
+<li>Golang项目目录下一般有三个子目录：<ul>
+<li>src存放源代码</li>
+<li>pkg编译后生成的文件</li>
+<li>bin编译后生成的可执行文件</li>
+</ul>
+</li>
+</ul>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><pre class=" language-go"><code class="language-go"><span class="token operator">&lt;</span>proj<span class="token operator">></span>
+   <span class="token operator">|</span><span class="token operator">--</span><span class="token operator">&lt;</span>src<span class="token operator">></span>
+       <span class="token operator">|</span><span class="token operator">--</span><span class="token operator">&lt;</span>a<span class="token operator">></span>
+           <span class="token operator">|</span><span class="token operator">--</span><span class="token operator">&lt;</span>a1<span class="token operator">></span>
+               <span class="token operator">|</span><span class="token operator">--</span>al<span class="token punctuation">.</span><span class="token keyword">go</span>
+           <span class="token operator">|</span><span class="token operator">--</span><span class="token operator">&lt;</span>a2<span class="token operator">></span>
+               <span class="token operator">|</span><span class="token operator">--</span>a2<span class="token punctuation">.</span><span class="token keyword">go</span>
+       <span class="token operator">|</span><span class="token operator">--</span><span class="token operator">&lt;</span>b<span class="token operator">></span>
+           <span class="token operator">|</span><span class="token operator">--</span>b1<span class="token punctuation">.</span><span class="token keyword">go</span>
+           <span class="token operator">|</span><span class="token operator">--</span>b2<span class="token punctuation">.</span><span class="token keyword">go</span>
+       <span class="token operator">|</span><span class="token operator">--</span><span class="token operator">&lt;</span>c<span class="token operator">></span>
+           <span class="token operator">|</span><span class="token operator">--</span>c<span class="token punctuation">.</span><span class="token keyword">go</span>
+   <span class="token operator">|</span><span class="token operator">--</span><span class="token operator">&lt;</span>pkg<span class="token operator">></span>
+   <span class="token operator">|</span><span class="token operator">--</span><span class="token operator">&lt;</span>bin<span class="token operator">></span></code></pre>
+<h2 id="关键字（-25个-）"><a href="#关键字（-25个-）" class="headerlink" title="关键字（_25个_）"></a>关键字（_25个_）</h2><table>
+<thead>
+<tr>
+<th align="left">关键字</th>
+<th align="left">关键字</th>
+<th align="left">关键字</th>
+<th align="left">关键字</th>
+<th align="left">关键字</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">break</td>
+<td align="left">default</td>
+<td align="left">func</td>
+<td align="left">interface</td>
+<td align="left">select</td>
+</tr>
+<tr>
+<td align="left">case</td>
+<td align="left">defer</td>
+<td align="left">go</td>
+<td align="left">map</td>
+<td align="left">struct</td>
+</tr>
+<tr>
+<td align="left">chan</td>
+<td align="left">else</td>
+<td align="left">goto</td>
+<td align="left">package</td>
+<td align="left">switch</td>
+</tr>
+<tr>
+<td align="left">const</td>
+<td align="left">fallthrough</td>
+<td align="left">if</td>
+<td align="left">range</td>
+<td align="left">type</td>
+</tr>
+<tr>
+<td align="left">continue</td>
+<td align="left">for</td>
+<td align="left">import</td>
+<td align="left">return</td>
+<td align="left">var</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>golang</tag>
       </tags>
   </entry>
   <entry>
@@ -4748,306 +5065,6 @@ tcpdump: no devices found /dev/bpf4: A <span class="token function">file</span> 
       </tags>
   </entry>
   <entry>
-    <title>golang之环境搭建</title>
-    <url>/2019/09/08/b098.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h2 id="宿主机环境"><a href="#宿主机环境" class="headerlink" title="宿主机环境"></a>宿主机环境</h2><pre class=" language-SH"><code class="language-SH">Linux VM-133-112-ubuntu 4.15.0-54-generic #58-Ubuntu SMP Mon Jun 24 10:55:24 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux</code></pre>
-<ul>
-<li><a href="https://golang.org/dl/">安装包下载</a><pre class=" language-sh"><code class="language-sh">ubuntu@VM-133-112-ubuntu:~$ wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz</code></pre>
-</li>
-<li>解压压缩包到指定目录: <code>/usr/local</code><pre class=" language-sh"><code class="language-sh"> ubuntu@VM-133-112-ubuntu:~/golang$ sudo tar -C /usr/local/ -xzf go1.13.linux-amd64.tar.gz </code></pre>
-</li>
-<li>设置环境变量<pre class=" language-sh"><code class="language-sh">export PATH=$PATH:/usr/local/go/bin</code></pre>
-</li>
-<li><strong>go env</strong> 命令正常输出即环境搭建成功；</li>
-</ul>
-<h3 id="项目结构组织"><a href="#项目结构组织" class="headerlink" title="项目结构组织"></a>项目结构组织</h3><ul>
-<li>指定<code>GOPATH</code>,项目的构建基于此变量，此变量指定项目路径，多个项目用<code>;</code>分隔</li>
-<li>Golang项目目录下一般有三个子目录：<ul>
-<li>src存放源代码</li>
-<li>pkg编译后生成的文件</li>
-<li>bin编译后生成的可执行文件</li>
-</ul>
-</li>
-</ul>
-<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><pre class=" language-go"><code class="language-go"><span class="token operator">&lt;</span>proj<span class="token operator">></span>
-   <span class="token operator">|</span><span class="token operator">--</span><span class="token operator">&lt;</span>src<span class="token operator">></span>
-       <span class="token operator">|</span><span class="token operator">--</span><span class="token operator">&lt;</span>a<span class="token operator">></span>
-           <span class="token operator">|</span><span class="token operator">--</span><span class="token operator">&lt;</span>a1<span class="token operator">></span>
-               <span class="token operator">|</span><span class="token operator">--</span>al<span class="token punctuation">.</span><span class="token keyword">go</span>
-           <span class="token operator">|</span><span class="token operator">--</span><span class="token operator">&lt;</span>a2<span class="token operator">></span>
-               <span class="token operator">|</span><span class="token operator">--</span>a2<span class="token punctuation">.</span><span class="token keyword">go</span>
-       <span class="token operator">|</span><span class="token operator">--</span><span class="token operator">&lt;</span>b<span class="token operator">></span>
-           <span class="token operator">|</span><span class="token operator">--</span>b1<span class="token punctuation">.</span><span class="token keyword">go</span>
-           <span class="token operator">|</span><span class="token operator">--</span>b2<span class="token punctuation">.</span><span class="token keyword">go</span>
-       <span class="token operator">|</span><span class="token operator">--</span><span class="token operator">&lt;</span>c<span class="token operator">></span>
-           <span class="token operator">|</span><span class="token operator">--</span>c<span class="token punctuation">.</span><span class="token keyword">go</span>
-   <span class="token operator">|</span><span class="token operator">--</span><span class="token operator">&lt;</span>pkg<span class="token operator">></span>
-   <span class="token operator">|</span><span class="token operator">--</span><span class="token operator">&lt;</span>bin<span class="token operator">></span></code></pre>
-<h2 id="关键字（-25个-）"><a href="#关键字（-25个-）" class="headerlink" title="关键字（_25个_）"></a>关键字（_25个_）</h2><table>
-<thead>
-<tr>
-<th align="left">关键字</th>
-<th align="left">关键字</th>
-<th align="left">关键字</th>
-<th align="left">关键字</th>
-<th align="left">关键字</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">break</td>
-<td align="left">default</td>
-<td align="left">func</td>
-<td align="left">interface</td>
-<td align="left">select</td>
-</tr>
-<tr>
-<td align="left">case</td>
-<td align="left">defer</td>
-<td align="left">go</td>
-<td align="left">map</td>
-<td align="left">struct</td>
-</tr>
-<tr>
-<td align="left">chan</td>
-<td align="left">else</td>
-<td align="left">goto</td>
-<td align="left">package</td>
-<td align="left">switch</td>
-</tr>
-<tr>
-<td align="left">const</td>
-<td align="left">fallthrough</td>
-<td align="left">if</td>
-<td align="left">range</td>
-<td align="left">type</td>
-</tr>
-<tr>
-<td align="left">continue</td>
-<td align="left">for</td>
-<td align="left">import</td>
-<td align="left">return</td>
-<td align="left">var</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>golang</category>
-      </categories>
-      <tags>
-        <tag>golang</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>WireShark网络抓包</title>
-    <url>/2017/07/01/dc5b.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h2 id="WireShark入门"><a href="#WireShark入门" class="headerlink" title="WireShark入门"></a>WireShark入门</h2><h3 id="一、-打开WireShark"><a href="#一、-打开WireShark" class="headerlink" title="一、 打开WireShark"></a>一、 打开WireShark</h3><p><img src="http://static.zybuluo.com/AlexLin/4224884og6inde3h2q5wcw6a/image.png" alt="WireShark启动界面"></p>
-<a id="more"></a>
-<h3 id="二、界面分区"><a href="#二、界面分区" class="headerlink" title="二、界面分区"></a>二、界面分区</h3><p><img src="http://static.zybuluo.com/AlexLin/zrfd5f3v3q3o8bjdjay8oxc1/image.png" alt="WireShark界面划分"></p>
-<h3 id="三、过滤规则语句"><a href="#三、过滤规则语句" class="headerlink" title="三、过滤规则语句"></a>三、过滤规则语句</h3><ul>
-<li><p> IP 过滤</p>
-<pre><code>ip.src eq 192.168.1.107 or ip.dst eq 192.168.1.107
-#或者
-ip.addr eq 192.168.1.107 // 都能显示来源IP和目标IP</code></pre>
-</li>
-<li><p> 过滤端口</p>
-<pre><code>tcp.port eq 80 // 不管端口是来源的还是目标的都显示
-tcp.port == 80
-tcp.port eq 2722
-tcp.port eq 80 or udp.port eq 80
-tcp.dstport == 80 // 只显tcp协议的目标端口80
-tcp.srcport == 80 // 只显tcp协议的来源端口80
-#端口范围
-tcp.port &gt;= 1 and tcp.port &lt;= 80</code></pre>
-</li>
-<li><p>协议过滤</p>
-<pre><code>tcp、udp、arp、icmp、http、smtp、ftp、dns、msnms、ip、ssl、oicq、bootp #等等.
-#排除
-#排除arp包
-!arp  或者  not arp</code></pre>
-</li>
-<li><p>mac 过滤</p>
-<pre><code>eth.dst == A0:00:00:04:C5:84 //过滤目标mac
-eth.src eq A0:00:00:04:C5:84 //过滤来源mac
-eth.dst==A0:00:00:04:C5:84
-eth.dst==A0-00-00-04-C5-84
-eth.addr eq A0:00:00:04:C5:84 //过滤来源MAC和目标MAC都等于A0:00:00:04:C5:84的MAC</code></pre>
-</li>
-<li><p>数据包长度过滤</p>
-<pre><code>udp.length == 26 #这个长度是指udp本身固定长度8加上udp下面那块数据包之和
-tcp.len &gt;= 7  #指的是ip数据包(tcp下面那块数据),不包括tcp本身
-ip.len == 94 #除了以太网头固定长度14,其它都算是ip.len,即从ip本身到最后
-frame.len == 119 #整个数据包长度,从eth开始到最后
-#数据包组成成员
-eth ---&gt; ip or arp ---&gt; tcp or udp ---&gt; data</code></pre>
-</li>
-<li><p>http模式过滤</p>
-<pre><code>http.request.method == &quot;GET&quot;
-http.request.method == &quot;POST&quot;
-http.request.uri == &quot;/img/logo-edu.gif&quot;
-http contains &quot;GET&quot;
-http contains &quot;HTTP/1.&quot;
-</code></pre>
-</li>
-</ul>
-<p>// GET包<br>http.request.method == “GET” &amp;&amp; http contains “Host: “<br>http.request.method == “GET” &amp;&amp; http contains “User-Agent: “<br>// POST包<br>http.request.method == “POST” &amp;&amp; http contains “Host: “<br>http.request.method == “POST” &amp;&amp; http contains “User-Agent: “<br>// 响应包<br>http contains “HTTP/1.1 200 OK” &amp;&amp; http contains “Content-Type: “<br>http contains “HTTP/1.0 200 OK” &amp;&amp; http contains “Content-Type: “</p>
-<pre><code>- 两种条件成立过滤</code></pre>
-<p>过滤两种条件时，使用and连接，<br>如过滤ip为192.168.101.8并且为http协议的，ip.src==192.168.101.8 and http。</p>
-<pre><code>- 域名过滤</code></pre>
-<p>http.host == “gizwits.com”</p>
-<pre><code>### 四、TCP包分析
-
-#### **一个TCP包由5部分组成分别是:**
-
-1. Frame:   物理层的数据帧概况
-2. Ethernet II: 数据链路层以太网帧头部信息
-3. Internet Protocol Version 4: 互联网层IP包头部信息
-4. Transmission Control Protocol:  传输层T的数据段头部信息，此处是mqtt
-5. Hypertext Transfer Protocol/Data:  应用层的信息，此处是mqtt协议
-
-#### **与之对应的网络七层协议图如下**
-![tcp数据层][3]
-#### OSI 参考模型与 TCP/IP分层模型
-![OSI 参考模型与 TCP/IP分层模型][5]
-
-#### **TCP 三次握手**
-**图片版本**
-![TCP三次握手][6]
-#### **WireShark抓包分析图**
-##### **第一次握手**
-代表客户端请求建立连接</code></pre>
-<p>SEQ=0<br>ACK=0<br>FLAGS = 0x0002 （SYN）</p>
-<pre><code>**WireShark第一次TCP握手图**
-![TCP 第一次握手][7]
-
-##### **第二次握手：**
-服务器发回确认包, 标志位为 SYN,ACK. 将确认序号(Acknowledgement Number)设置为客户的SEQ加1以.即ACK=SEQ+1</code></pre>
-<p>SEQ = 0<br>ACK = SEQ+1<br>FLAGS = 0X0012（SYN +ACK）</p>
-<pre><code>**WireShark第二次TCP握手图**
-![TCP 第二次握手][8]
-
-客户端再次发送确认包(ACK) SYN标志位为0,ACK标志位为1.并且把服务器发来ACK的序号字段+1,放确在SEQ字段中发送给对方.
-</code></pre>
-<p>SEQ =SEQ+1<br>ACK = 1;<br>FLAGS = 0X0001（ACK）</p>
-<pre><code>![TCP 第三次握手][9]
-
-#### **第四次挥手**
-第一次、A机器向B机器发起断开请求，其中FIN置位,且seq=x;此时A进入FIN_WAIT_1状态；
-第二次、B机器响应A的断开请求，ACK置位，且ACK值=x+1,且Seq=z;此时A进入FIN_WAIT_2状态(表示B同意A的断开请求)；
-第三次、B机器向A发起断开请求，其中FIN置为，且Seq=y;(此时B进入LAST_WAIT)
-第四次、A响应B的断开请求，ACK置位，ACK值位y+1;此时A进入TIME_WAIT，B收到ACK之后直接CLOSE；A在经过2MSL时间之后若没收到FIN信号则CLOSE;
-
-![upload successful](/images/pasted-107.png)
-
-
-
-### 五、WireShark 抓包异常情况分析
-
-#### 1. **tcp out-of-order**（tcp有问题）
-&gt;**原因:** 应该有很多原因。但是多半是网络拥塞，导致顺序包抵达时间不同，延时太长，或者包丢失，需要重新组合数据单元 因为他们可能是通过不同的路径到达你电脑上面的。
-
-#### 2. **tcp segment of a reassembled PDU**
-&gt;**原因:** 在连个连接建立的时候，SYN包里面会把彼此TCP最大的报文段长度，在局域网内一般都是**1460**.如果发送的包比最大的报文段长度长的话就要分片了，被分片出来的包，就会被标记了**“TCP segment of a reassembled PDU”**。TCP在发起连接的第一个报文的TCP头里通过MSS这个可选项告知对方本端能够接收的最大报文（当然，这个大小是TCP净荷的大小），以太网上这个值一般设置成1460，因为1460Byte净荷+20Byte TCP头+20Byte IP头 ＝ 1500字节，正好符合链路层最大报文的要求，被标记了的包的SEQ和ACK都和原来的包一致。
-#### 3. **Tcp previous segment lost（tcp先前的分片丢失）**
-&gt;一般是网络中的网络设备发生的拥塞了，触发了TCP的拥塞控制机制。它告诉发送方数据段丢失；
-（1）、“TCP Previous segment lost” errors are not “fatal” errors. They simply indicate that the sequence number in the arriving packet is higher than the next-expected sequence number, indicating that at least one segment was dropped/lost. The receiving station remedies this situation by sending duplicate ACKs for each additional packet it receives until the sender retransmits the missing packet(s). TCP is designed to recover from this situation, which is why the image is downloaded correctly despite having a (briefly) missing packet.
-If you are getting a large number of lost packets, then there is likely a communication problem between the sender and receiver. A common cause of this is un-matched duplex settings between the PC and the switch.
-We (our lab) recently upgraded to Ethereal 0.10.14 with WinPCap 3.1.  If I remember correctly, we had previously been using 0.10.2 with WinPCap 3.0.  However, since the upgrade we have been noticing several issues.
-The first issue is with “TCP Previous segment lost” and “TCP CHECKSUM INCORRECT” messages appearing in the Packet Listing window.  We do not remember seeing these in the previous version of Ethereal, or at least not nearly as many as we are seeing now.  For example, one task for the student instructional part of the lab involves visiting a website containing two images and observing the network activity.  After the two GET requests are sent for the images, it is not uncommon for one image to be returned with a typical 200 OK response packet, but the response packet for the other image will be displayed as “TCP Previous segment lost.”  However, both images are downloaded and displayed perfectly fine in the browser.  I would think that the segment lost error would mean the object wasn’t returned correctly and shouldn’t be able to be displayed, but apparently that is not the case.  (The cache had been cleared when this was performed, so it was not defaulting to a local copy of the image.)
-Another problem we’ve been noticing is that some packets simply aren’t displayed in the Packet Listing window, even when they are obviously received.  Using the same example as above, after the two GET requests are sent for the images, it is not uncommon for one image to be returned with a typical 200 OK response, but the other response will not appear.  Yet both images are successfully displayed in the browser.  Is this a problem with Ethereal not detecting the packets?
-I’m not sure how typical this is, but we seem to be experiencing these issues often with 0.10.14 while we never did with 0.10.2.  Could it also be an issue with WinPCap, and not necessarily Ethereal?  I’m just trying to find some answers as to why we are seeing a sudden abundance of TCP related errors and uncaptured packets.  Thanks.
-（2）、I have a network client application that runs fine while I am debugging (no TCP errors),
-but when I run the release version, it runs incredibly slow.  It runs as a series of
-transactions, where each transaction is a separate connection to the server.  Wireshark
-analysis has determined that about 50% of all transactions involve the series:
-TCP Previous Segment Lost
-
-#### 4. Tcpacked lost segment（tcp应答丢失）
-#### 5. Tcp window update（tcp窗口更新）
-#### 6. Tcp dup ack（tcp重复应答）
-&gt;1)当收到tcp out-of-order 信号时，可能发送该信号， 这个相同应答的意图是让对端知道一个分片被收到的时候出现问题，并且告诉它希望得到的序列号。
-2)由于TCP不知道重复的ACK是由丢失的段引起的还是仅仅是重新排序段，所以等待接收到少量的重复的ACK。 假设如果只有段的重新排序，则在重新排序的段被处理之前将只有一个或两个重复的ACK，然后将生成新的ACK。 如果在一行中接收到三个或更多个重复的ACK，则表明段已经丢失。 TCP然后执行似乎是丢失段的重传，而不等待重传定时器到期。
-
-#### 7. **Tcp keep alive**（tcp保持活动）
-&gt;在TCP中有一个Keep-alive的机制可以检测死连接，原理很简单，TCP会在空闲了一定时间后发送数据给对方：
- 1.如果主机可达，对方就会响应ACK应答，就认为是存活的。
- 2.如果可达，但应用程序退出，对方就发RST应答，发送TCP撤消连接。
- 3.如果可达，但应用程序崩溃，对方就发FIN消息。
- 4.如果对方主机不响应ack, rst，继续发送直到超时，就撤消连接。这个时间就是默认的二个小时。
-
-#### 8. **Tcp retransmission**（tcp重传）
-&gt;作为一个可靠的传输协议，传输控制协议（TCP）在发送主机需要从目标主机收到一个包时确认。If the sender does not receive that acknowledgment within a certain amount of time, it acts under the assumption that the packet did not reach its destination and retransmits the packet.如果发件人没有收到的时间内一定之金额，确认，它的行为假设下，该数据包没有到达其目的地，以及转发数据包。
-
-
-## TCP 状态分析
-TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)
-在TCP层，有个FLAGS字段，这个字段有以下几个标识：SYN, FIN, ACK, PSH, RST, URG.
-它们的含义是：
-
- 1. SYN(synchronous): 表示建立连接.
- 2. FIN(finish): 表示关闭连接.
- 3. ACK(acknowledgement): 表示响应.
- 4. PSH(push): 表示有DATA数据传输.
- 5. RST(reset): 表示连接重置.
- 6. URG(urgent):紧急.
- 7. SEQ(Sequence number):顺序号码
-
-## TCP 三次握手流程
-1. 主机A发送位码为syn＝1，随机产生seq number=1234567的数据包到服务器，主机B由SYN=1知道，A要求建立联机；
-2. 主机B收到请求后要确认联机信息，向A发送ack number=(主机A的seq+1)，syn=1，ack=1，随机产生seq=7654321的包；
-3. 主机A收到后检查ack number是否正确，即第一次发送的seq number+1，以及位码ack是否为1，若正确，主机A会再发送ack number=(主机B的seq+1)，ack=1，主机B收到后确认seq值与ack=1则连接建立成功。
-
-## 各种网络包头格式
-### 以太网头</code></pre>
-<p>// MAC地址长度<br>#define MAC_ADDRESS_LEN 6</p>
-<p>// 常用的以太网帧类型<br>#define ETHERNET_FRAME_IP       0x0800              // IP帧<br>#define ETHERNET_FRAME_ARP      0x0806              // ARP帧<br>#define ETHERNET_FRAME_RARP     0x8035              // RARP帧<br>#define ETHERNET_FRAME_IPv6     0x86DD              // IP6帧</p>
-<p>typedef struct _EthernetHeader      // 以太头<br>{<br>    UCHAR       DstMacAddr[MAC_ADDRESS_LEN];        // 目标MAC<br>    UCHAR       SrcMacAddr[MAC_ADDRESS_LEN];        // 源MAC<br>    USHORT      FrmType;                            // 类型<br>}EthernetHeader, *PEthernetHeader;</p>
-<pre><code>### TCP 包格式</code></pre>
-<h2 id="0-15-31"><a href="#0-15-31" class="headerlink" title="0                            15                              31"></a>0                            15                              31</h2><h2 id="source-port-destination-port"><a href="#source-port-destination-port" class="headerlink" title="|          source port          |       destination port        |"></a>|          source port          |       destination port        |</h2><table>
-<thead>
-<tr>
-<th>sequence number</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>acknowledgment number</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="HL-rsvd-C-E-U-A-P-R-S-F-window-size"><a href="#HL-rsvd-C-E-U-A-P-R-S-F-window-size" class="headerlink" title="|  HL   | rsvd  |C|E|U|A|P|R|S|F|        window size            |"></a>|  HL   | rsvd  |C|E|U|A|P|R|S|F|        window size            |</h2><h2 id="TCP-checksum-urgent-pointer"><a href="#TCP-checksum-urgent-pointer" class="headerlink" title="|         TCP checksum          |       urgent pointer          |"></a>|         TCP checksum          |       urgent pointer          |</h2><table>
-<thead>
-<tr>
-<th>Optional</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Data</td>
-</tr>
-</tbody></table>
-<hr>
-<p>// TCP头标志位掩码 OffFlag<br>#define TCP_HDR_LEN             0xF000              // TCP头长度&lt;双字的个数&gt;转化为字节数需要x4<br>#define TCP_URG_FLAG            0x0020              // URG标志<br>#define TCP_ACK_FLAG            0x0010              // ACK标志 应答1或请求0<br>#define TCP_PSH_FLAG            0x0008              // psh标志 以最快速度传输数据<br>#define TCP_RST_FLAG            0x0004              // RST标志 先断开连接,再重建连接<br>#define TCP_SYN_FLAG            0x0002              // SYN标志 用来建立连接<br>#define TCP_FIN_FLAG            0x0001              // FIN标志 发送方完成数据发送</p>
-<p>typedef struct _TcpHeader           // TCP头 20 BYTES<br>{<br>    USHORT      SrcPort;                            // 源端口<br>    USHORT      DstPort;                            // 目的端口<br>    ULONG       SeqNum;                             // 序号<br>    ULONG       AckNum;                             // 确认号<br>    USHORT      OffFlag;                            // 首部长度&lt;首部双字的个数&gt;+保留位+标志位<br>    USHORT      WndSize;                            // 窗口大小&lt;实现流量控制&gt;<br>    USHORT      Checksum;                           // 效验和<br>    USHORT      UrgPointer;                         // 紧急指针<br>}TcpHeader, *PTcpHeader;</p>
-<p>// OffFlag : 4位首部长度 + 6位保留位 + URG+ACK+PSH+RST+SYN+FIN</p>
-<p>typedef struct _TCPPACKET           // TCP封包 &lt;当ip中没有附加数据时&gt;<br>{<br>    EthernetHeader  Ehhdr;<br>    IPHeader        Iphdr;<br>    TcpHeader       Tcphdr;<br>}TCPPACKET, *PTCPPACKET;</p>
-<p>```</p>
-<p>SYN和ACK可能同时为1，它表示的就是建立连接之后的响应，<br>如果只是单个的一个SYN，它表示的只是建立连接。</p>
-<p>参考</p>
-<hr>
-<ul>
-<li><a href="http://bbs.pediy.com/thread-147644.htm">http://bbs.pediy.com/thread-147644.htm</a></li>
-<li><a href="http://www.yunsec.net/a/school/wlcs/agreement/2012/0317/10262.html">http://www.yunsec.net/a/school/wlcs/agreement/2012/0317/10262.html</a></li>
-<li><a href="http://www.9upk.com/article/2537.html">http://www.9upk.com/article/2537.html</a> （抓包工具教程）</li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>抓包工具</tag>
-        <tag>wireShark</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git之技能记录</title>
     <url>/2018/02/11/3432.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一-Git-功能预览图"><a href="#一-Git-功能预览图" class="headerlink" title="一. Git 功能预览图"></a>一. Git 功能预览图</h2><p><img src="http://upload-images.jianshu.io/upload_images/1736256-510243b84e2d36f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Git"></p>
@@ -5122,6 +5139,12 @@ TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)
       </tags>
   </entry>
   <entry>
+    <title>Hexo自动备份教程</title>
+    <url>/2017/08/01/5973.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://notes.wanghao.work/2015-07-06-%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6.html">连接</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2017/03/26/3eeb.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
@@ -5136,45 +5159,6 @@ TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)
 <p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
 <p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>macOS小技能</title>
-    <url>/2018/12/10/d7f9.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="iTerm2"><a href="#iTerm2" class="headerlink" title="iTerm2"></a>iTerm2</h2><h3 id="iTerm2-SSH免密码远程连接服务器"><a href="#iTerm2-SSH免密码远程连接服务器" class="headerlink" title="iTerm2 SSH免密码远程连接服务器"></a>iTerm2 SSH免密码远程连接服务器</h3><pre class=" language-sh"><code class="language-sh">#!/usr/bin/expect
-
-set timeout 30
-spawn ssh -p [lindex $argv 0] [lindex $argv 1]@[lindex $argv 2]
-expect &#123;
-        "(yes/no)?"
-        &#123;send "yes\n";exp_continue&#125;
-        "password:"
-        &#123;send "[lindex $argv 3]\n"&#125;
-&#125;
-expect "~"
-send "clear\n"
-interact</code></pre>
-<a id="more"></a>
-<p>解说<br>这里<code>[lindex argv0]</code>，<code>[lindexargv0]</code>，<code>[lindexargv 1]</code>， <code>[lindex argv2]</code>，<code>[lindexargv2]</code>，<code>[lindexargv 3]</code>分别代表着4个参数。分别是：端口号、用户名、服务器地址、密码。</p>
-<h3 id="iTerm2-界面设置如下"><a href="#iTerm2-界面设置如下" class="headerlink" title="iTerm2 界面设置如下"></a>iTerm2 界面设置如下</h3><p><img src="https://upload-images.jianshu.io/upload_images/1736256-40764b317275b7a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iTerm2"></p>
-<h3 id="SSH-免密登陆到服务器"><a href="#SSH-免密登陆到服务器" class="headerlink" title="SSH 免密登陆到服务器"></a>SSH 免密登陆到服务器</h3><ol>
-<li>拷贝公钥到服务器<pre><code>scp -p ~/.ssh/id_rsa.pub ubuntu@10.10.10.10:/home/ubuntu/.ssh/authorized_keys</code></pre>
-</li>
-<li>ssh 配置文件设置<br><br> <code>/Users/alex/.ssh/config</code><br>设置如下<br><img src="/images/ssh_config.png" alt="ssh_config"></li>
-</ol>
-]]></content>
-      <categories>
-        <category>macOS</category>
-      </categories>
-      <tags>
-        <tag>macOS</tag>
-        <tag>uninx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo自动备份教程</title>
-    <url>/2017/08/01/5973.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://notes.wanghao.work/2015-07-06-%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6.html">连接</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -5416,36 +5400,36 @@ interact</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Tool 记</title>
-    <url>/2017/03/26/bff4.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h1 id="工具1–esptool"><a href="#工具1–esptool" class="headerlink" title="工具1–esptool"></a>工具1–esptool</h1><h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法:"></a>安装方法:</h2><p>1.超级简单按照方法</p>
-<pre class=" language-bash"><code class="language-bash"> $  pip <span class="token function">install</span> esptool</code></pre>
-<p>2.源码安装方法.</p>
-<pre class=" language-bash"><code class="language-bash"> <span class="token comment" spellcheck="true"># 下载源码</span>
- $ git@github.com:themadinventor/esptool.git
- <span class="token comment" spellcheck="true">#安装依赖</span>
- $ pip <span class="token function">install</span> pyserial, easy_install pyserial
- <span class="token comment" spellcheck="true">#或者 depending on your platform.</span>
- $ <span class="token function">apt-get</span> <span class="token function">install</span> python-serial</code></pre>
-<a id="more"></a>
+    <title>macOS小技能</title>
+    <url>/2018/12/10/d7f9.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="iTerm2"><a href="#iTerm2" class="headerlink" title="iTerm2"></a>iTerm2</h2><h3 id="iTerm2-SSH免密码远程连接服务器"><a href="#iTerm2-SSH免密码远程连接服务器" class="headerlink" title="iTerm2 SSH免密码远程连接服务器"></a>iTerm2 SSH免密码远程连接服务器</h3><pre class=" language-sh"><code class="language-sh">#!/usr/bin/expect
 
-<h2 id="帮助说明"><a href="#帮助说明" class="headerlink" title="帮助说明"></a>帮助说明</h2><pre><code>esptool.py write_flash -h</code></pre>
-<h2 id="使用例子"><a href="#使用例子" class="headerlink" title="使用例子:"></a>使用例子:</h2><pre><code>sudo python esptool.py --port /dev/ttyUSB0 --baud 1500000 \
-write_flash -fm qio -fs 32m -ff 40m 0x3fc000 ../bin/0x3fc000.bin</code></pre>
-<h2 id="几个文件一起烧录"><a href="#几个文件一起烧录" class="headerlink" title="几个文件一起烧录"></a>几个文件一起烧录</h2><pre><code>sudo esptool.py --port /dev/tty.usbserial-DA00H0QE \
---baud 1500000 write_flash -fm qio -fs 32m -ff 40m 0x00000 \
-../boot_v1.6.bin 0x01000 user1.4096.new.6.bin 0x3fc000 \
-../esp_init_data_default.bin 0x3fe000 ../blank.bin </code></pre>
-<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>|关键字| 解释|<br>|—-|<br>|<strong>port</strong>|                 指定串口号|<br>|<strong>baud</strong>|               指定下载波特率<br>|<strong>write_flash</strong>|      烧写二进制文件到指定位置<br>|<strong>-fm</strong>|                  SPI Flash mode( ‘qio’, ‘qout’, ‘dio’, ‘dout’)<br>|<strong>-ff</strong>|                    SPI Flash frequency(‘40m’, ‘26m’, ‘20m’, ‘80m’)<br>|<strong>-fs</strong>|                   SPI Flash size in Mbit(4m’, ‘2m’, ‘8m’, ‘16m’, ‘32m’, ‘16m-c1’, ‘32m-c1’, ‘32m-c2’, ‘64m’, ‘128m’)<br>|<strong>0x3fc000</strong>|         指定烧录地址<br>|<strong>0x3fc000.bin</strong>|   对应的烧录文件</p>
+set timeout 30
+spawn ssh -p [lindex $argv 0] [lindex $argv 1]@[lindex $argv 2]
+expect &#123;
+        "(yes/no)?"
+        &#123;send "yes\n";exp_continue&#125;
+        "password:"
+        &#123;send "[lindex $argv 3]\n"&#125;
+&#125;
+expect "~"
+send "clear\n"
+interact</code></pre>
+<a id="more"></a>
+<p>解说<br>这里<code>[lindex argv0]</code>，<code>[lindexargv0]</code>，<code>[lindexargv 1]</code>， <code>[lindex argv2]</code>，<code>[lindexargv2]</code>，<code>[lindexargv 3]</code>分别代表着4个参数。分别是：端口号、用户名、服务器地址、密码。</p>
+<h3 id="iTerm2-界面设置如下"><a href="#iTerm2-界面设置如下" class="headerlink" title="iTerm2 界面设置如下"></a>iTerm2 界面设置如下</h3><p><img src="https://upload-images.jianshu.io/upload_images/1736256-40764b317275b7a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iTerm2"></p>
+<h3 id="SSH-免密登陆到服务器"><a href="#SSH-免密登陆到服务器" class="headerlink" title="SSH 免密登陆到服务器"></a>SSH 免密登陆到服务器</h3><ol>
+<li>拷贝公钥到服务器<pre><code>scp -p ~/.ssh/id_rsa.pub ubuntu@10.10.10.10:/home/ubuntu/.ssh/authorized_keys</code></pre>
+</li>
+<li>ssh 配置文件设置<br><br> <code>/Users/alex/.ssh/config</code><br>设置如下<br><img src="/images/ssh_config.png" alt="ssh_config"></li>
+</ol>
 ]]></content>
       <categories>
-        <category>esp8266</category>
+        <category>macOS</category>
       </categories>
       <tags>
-        <tag>esp8266</tag>
-        <tag>WiFi</tag>
-        <tag>esptool</tag>
+        <tag>macOS</tag>
+        <tag>uninx</tag>
       </tags>
   </entry>
   <entry>
@@ -5564,69 +5548,36 @@ Creating shortcut for 7-Zip (7zFM.exe)
 ]]></content>
   </entry>
   <entry>
-    <title>win10子系统wsl</title>
-    <url>/2019/08/21/d9b0.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="子系统重启wsl"><a href="#子系统重启wsl" class="headerlink" title="子系统重启wsl"></a>子系统重启wsl</h2><p>管理员权限下:</p>
-<pre class=" language-sh"><code class="language-sh">net stop LxssManager
-net start LxssManager</code></pre>
-<h2 id="子系统在win10的默认位置"><a href="#子系统在win10的默认位置" class="headerlink" title="子系统在win10的默认位置"></a>子系统在win10的默认位置</h2><pre class=" language-sh"><code class="language-sh">C:\Users\87832\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState</code></pre>
-<p><img src="/images/pasted-1.png" alt="upload successful"></p>
-]]></content>
-      <tags>
-        <tag>win10</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>哈夫曼树&amp;哈夫曼编码</title>
-    <url>/2020/08/12/3729.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h2><blockquote>
-<p>哈夫曼树也叫最优二叉树（哈夫曼树）</p>
-</blockquote>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>  <a href="https://baike.baidu.com/item/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91/2305769?fr=aladdin">给定N个权值作为N个叶子结点，构造一棵二叉树，若该树的带权路径长度达到最小，称这样的二叉树为最优二叉树，也称为哈夫曼树(Huffman Tree)。哈夫曼树是带权路径长度最短的树，权值较大的结点离根较近。</a></p>
-<h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><table>
-<thead>
-<tr>
-<th align="left">名词</th>
-<th align="left">解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">路径长度</td>
-<td align="left">根结点到第L层结点路径长度为L-1</td>
-</tr>
-<tr>
-<td align="left">树的带权路径长度（WPL）</td>
-<td align="left">树中所有叶子结点的带权路径长度之和<br><img src="/images/pasted-75.png" alt="upload successful"><br>其中，n表示叶子结点的数目，wi和li分别表示叶子结点ki的权值和树根结点到叶子结点ki之间的路径长度。</td>
-</tr>
-<tr>
-<td align="left"><img src="/images/pasted-76.png" alt="upload successful"></td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<p>|</p>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
-<li>哈夫曼树中权越大的叶子离根越近(WPL最小的二叉树)</li>
-<li>具有相同带权结点的哈夫曼树不惟一</li>
-<li>哈夫曼树的结点的度数为 0 或 2， 没有度为 1 的结点；</li>
-<li>包含 n 个叶子结点的哈夫曼树中共有 2n – 1 个结点。</li>
-<li>包含 n 棵树的森林要经过 n–1 次合并才能形成哈夫曼树，共产生 n–1 个新结点</li>
-</ol>
-<p><img src="/images/pasted-74.png" alt="upload successful"><br><img src="/images/pasted-62.png" alt="upload successful"><br><strong>WPL 最小的值所属的树即为哈夫曼树</strong></p>
-<p><img src="/images/pasted-65.png" alt="upload successful" title="hello"><br><img src="/images/pasted-63.png" alt="upload successful"><br><img src="/images/pasted-64.png" alt="upload successful"></p>
-<h2 id="哈夫曼创建"><a href="#哈夫曼创建" class="headerlink" title="哈夫曼创建"></a>哈夫曼创建</h2><p><img src="/images/pasted-66.png" alt="upload successful"><br>为什么数组buffTree[2n-1] 的大小是2n-1,是因为n个子节点构成的树节点最多的个数是2n-1个<br><img src="/images/pasted-67.png" alt="upload successful"></p>
-<p><img src="/images/pasted-68.png" alt="upload successful"></p>
-<p><img src="/images/pasted-69.png" alt="upload successful"></p>
-<h2 id="哈夫曼树编码"><a href="#哈夫曼树编码" class="headerlink" title="哈夫曼树编码"></a>哈夫曼树编码</h2><h3 id="前缀编码"><a href="#前缀编码" class="headerlink" title="前缀编码"></a>前缀编码</h3><p><img src="/images/pasted-70.png" alt="upload successful"></p>
-<p><img src="/images/pasted-71.png" alt="upload successful"></p>
-<p><img src="/images/pasted-72.png" alt="upload successful"></p>
-<p>特点:<br>权值越高的叶子节点越靠近根节点</p>
-<p><img src="/images/pasted-73.png" alt="upload successful"></p>
+    <title>Tool 记</title>
+    <url>/2017/03/26/bff4.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h1 id="工具1–esptool"><a href="#工具1–esptool" class="headerlink" title="工具1–esptool"></a>工具1–esptool</h1><h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法:"></a>安装方法:</h2><p>1.超级简单按照方法</p>
+<pre class=" language-bash"><code class="language-bash"> $  pip <span class="token function">install</span> esptool</code></pre>
+<p>2.源码安装方法.</p>
+<pre class=" language-bash"><code class="language-bash"> <span class="token comment" spellcheck="true"># 下载源码</span>
+ $ git@github.com:themadinventor/esptool.git
+ <span class="token comment" spellcheck="true">#安装依赖</span>
+ $ pip <span class="token function">install</span> pyserial, easy_install pyserial
+ <span class="token comment" spellcheck="true">#或者 depending on your platform.</span>
+ $ <span class="token function">apt-get</span> <span class="token function">install</span> python-serial</code></pre>
+<a id="more"></a>
+
+<h2 id="帮助说明"><a href="#帮助说明" class="headerlink" title="帮助说明"></a>帮助说明</h2><pre><code>esptool.py write_flash -h</code></pre>
+<h2 id="使用例子"><a href="#使用例子" class="headerlink" title="使用例子:"></a>使用例子:</h2><pre><code>sudo python esptool.py --port /dev/ttyUSB0 --baud 1500000 \
+write_flash -fm qio -fs 32m -ff 40m 0x3fc000 ../bin/0x3fc000.bin</code></pre>
+<h2 id="几个文件一起烧录"><a href="#几个文件一起烧录" class="headerlink" title="几个文件一起烧录"></a>几个文件一起烧录</h2><pre><code>sudo esptool.py --port /dev/tty.usbserial-DA00H0QE \
+--baud 1500000 write_flash -fm qio -fs 32m -ff 40m 0x00000 \
+../boot_v1.6.bin 0x01000 user1.4096.new.6.bin 0x3fc000 \
+../esp_init_data_default.bin 0x3fe000 ../blank.bin </code></pre>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>|关键字| 解释|<br>|—-|<br>|<strong>port</strong>|                 指定串口号|<br>|<strong>baud</strong>|               指定下载波特率<br>|<strong>write_flash</strong>|      烧写二进制文件到指定位置<br>|<strong>-fm</strong>|                  SPI Flash mode( ‘qio’, ‘qout’, ‘dio’, ‘dout’)<br>|<strong>-ff</strong>|                    SPI Flash frequency(‘40m’, ‘26m’, ‘20m’, ‘80m’)<br>|<strong>-fs</strong>|                   SPI Flash size in Mbit(4m’, ‘2m’, ‘8m’, ‘16m’, ‘32m’, ‘16m-c1’, ‘32m-c1’, ‘32m-c2’, ‘64m’, ‘128m’)<br>|<strong>0x3fc000</strong>|         指定烧录地址<br>|<strong>0x3fc000.bin</strong>|   对应的烧录文件</p>
 ]]></content>
       <categories>
-        <category>算法</category>
+        <category>esp8266</category>
       </categories>
       <tags>
-        <tag>算法</tag>
+        <tag>esp8266</tag>
+        <tag>WiFi</tag>
+        <tag>esptool</tag>
       </tags>
   </entry>
   <entry>
@@ -5741,6 +5692,19 @@ struct AVLNode
       <tags>
         <tag>算法</tag>
         <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>win10子系统wsl</title>
+    <url>/2019/08/21/d9b0.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="子系统重启wsl"><a href="#子系统重启wsl" class="headerlink" title="子系统重启wsl"></a>子系统重启wsl</h2><p>管理员权限下:</p>
+<pre class=" language-sh"><code class="language-sh">net stop LxssManager
+net start LxssManager</code></pre>
+<h2 id="子系统在win10的默认位置"><a href="#子系统在win10的默认位置" class="headerlink" title="子系统在win10的默认位置"></a>子系统在win10的默认位置</h2><pre class=" language-sh"><code class="language-sh">C:\Users\87832\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState</code></pre>
+<p><img src="/images/pasted-1.png" alt="upload successful"></p>
+]]></content>
+      <tags>
+        <tag>win10</tag>
       </tags>
   </entry>
   <entry>
@@ -5887,43 +5851,6 @@ Aditya Bhargava
       <tags>
         <tag>算法</tag>
         <tag>图解算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>实用网站</title>
-    <url>/2020/04/22/6c49.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="搜索相关"><a href="#搜索相关" class="headerlink" title="搜索相关"></a>搜索相关</h2><ul>
-<li><a href="https://mijisou.com/">秘迹搜索</a><br><img src="/images/pasted-18.png" alt="upload successful"></li>
-</ul>
-<a id="more"></a>
-
-<ul>
-<li><a href="https://www.xiaobaipan.com/">小白盘</a><br><img src="/images/pasted-19.png" alt="upload successful"></li>
-<li><a href="https://www.dogedoge.com/">DogeDoge搜索</a><br><img src="/images/pasted-20.png" alt="upload successful"></li>
-<li><a href="https://www.gitlogs.com/">gitlogs</a> GitHub网站的内容搜索引擎<br><img src="/images/pasted-21.png" alt="upload successful"></li>
-</ul>
-<h2 id="PPT"><a href="#PPT" class="headerlink" title="PPT"></a>PPT</h2><ul>
-<li><a href="http://www.ypppt.com/">优品PPT</a><br><img src="/images/pasted-22.png" alt="upload successful"></li>
-<li><a href="https://www.pdfpai.com/">PDF派</a><br><img src="/images/pasted-29.png" alt="upload successful"></li>
-</ul>
-<h2 id="图片处理"><a href="#图片处理" class="headerlink" title="图片处理"></a>图片处理</h2><ul>
-<li><a href="https://www.uupoop.com/">在线PS</a><br><img src="/images/pasted-23.png" alt="upload successful"></li>
-<li><a href="https://tinypng.com/">在线图片压缩</a><br><img src="/images/pasted-24.png" alt="upload successful"></li>
-<li><a href="https://www.smartresize.com/zh-cn">在线批量裁剪图片工具</a><br><img src="/images/pasted-25.png" alt="upload successful"></li>
-</ul>
-<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ul>
-<li><a href="https://visualgo.net/zh">VisuAlgo</a><br><img src="/images/pasted-26.png" alt="upload successful"></li>
-</ul>
-<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><ul>
-<li><a href="https://www.toolnb.com/">爱资料工具</a><br><img src="/images/pasted-27.png" alt="upload successful"></li>
-<li><a href="%E8%8F%9C%E9%B8%9F%E5%B7%A5%E5%85%B7">菜鸟工具</a><br><img src="/images/pasted-28.png" alt="upload successful"></li>
-<li><a href="http://www.matools.com/#">matool</a><br><img src="/images/pasted-30.png" alt="upload successful"></li>
-<li><a href="https://www.coder.work/">https://www.coder.work</a>  (里面有一个在线HTTP 测试工具我比较喜欢)<br><img src="/images/pasted-32.png" alt="upload successful"></li>
-</ul>
-<h2 id="素材"><a href="#素材" class="headerlink" title="素材"></a>素材</h2><p>-<a href="https://www.runoob.com/manual/Flat-UI/#">FlatUI</a><br><img src="/images/pasted-31.png" alt="upload successful"></p>
-]]></content>
-      <tags>
-        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -6168,14 +6095,40 @@ Aditya Bhargava
       </tags>
   </entry>
   <entry>
-    <title>微信开发</title>
-    <url>/2017/04/06/1051.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="http://iot.weixin.qq.com/wiki/new/index.html?page=2-1">微信硬件平台</a><br><a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=2017118">小程序</a></p>
-<p>蛋疼的一天</p>
+    <title>实用网站</title>
+    <url>/2020/04/22/6c49.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="搜索相关"><a href="#搜索相关" class="headerlink" title="搜索相关"></a>搜索相关</h2><ul>
+<li><a href="https://mijisou.com/">秘迹搜索</a><br><img src="/images/pasted-18.png" alt="upload successful"></li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li><a href="https://www.xiaobaipan.com/">小白盘</a><br><img src="/images/pasted-19.png" alt="upload successful"></li>
+<li><a href="https://www.dogedoge.com/">DogeDoge搜索</a><br><img src="/images/pasted-20.png" alt="upload successful"></li>
+<li><a href="https://www.gitlogs.com/">gitlogs</a> GitHub网站的内容搜索引擎<br><img src="/images/pasted-21.png" alt="upload successful"></li>
+</ul>
+<h2 id="PPT"><a href="#PPT" class="headerlink" title="PPT"></a>PPT</h2><ul>
+<li><a href="http://www.ypppt.com/">优品PPT</a><br><img src="/images/pasted-22.png" alt="upload successful"></li>
+<li><a href="https://www.pdfpai.com/">PDF派</a><br><img src="/images/pasted-29.png" alt="upload successful"></li>
+</ul>
+<h2 id="图片处理"><a href="#图片处理" class="headerlink" title="图片处理"></a>图片处理</h2><ul>
+<li><a href="https://www.uupoop.com/">在线PS</a><br><img src="/images/pasted-23.png" alt="upload successful"></li>
+<li><a href="https://tinypng.com/">在线图片压缩</a><br><img src="/images/pasted-24.png" alt="upload successful"></li>
+<li><a href="https://www.smartresize.com/zh-cn">在线批量裁剪图片工具</a><br><img src="/images/pasted-25.png" alt="upload successful"></li>
+</ul>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ul>
+<li><a href="https://visualgo.net/zh">VisuAlgo</a><br><img src="/images/pasted-26.png" alt="upload successful"></li>
+</ul>
+<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><ul>
+<li><a href="https://www.toolnb.com/">爱资料工具</a><br><img src="/images/pasted-27.png" alt="upload successful"></li>
+<li><a href="%E8%8F%9C%E9%B8%9F%E5%B7%A5%E5%85%B7">菜鸟工具</a><br><img src="/images/pasted-28.png" alt="upload successful"></li>
+<li><a href="http://www.matools.com/#">matool</a><br><img src="/images/pasted-30.png" alt="upload successful"></li>
+<li><a href="https://www.coder.work/">https://www.coder.work</a>  (里面有一个在线HTTP 测试工具我比较喜欢)<br><img src="/images/pasted-32.png" alt="upload successful"></li>
+</ul>
+<h2 id="素材"><a href="#素材" class="headerlink" title="素材"></a>素材</h2><p>-<a href="https://www.runoob.com/manual/Flat-UI/#">FlatUI</a><br><img src="/images/pasted-31.png" alt="upload successful"></p>
 ]]></content>
       <tags>
-        <tag>微信</tag>
-        <tag>硬件</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -6254,6 +6207,70 @@ Log("\r\n\r\n");&amp;#125;\
 ]]></content>
   </entry>
   <entry>
+    <title>微信开发</title>
+    <url>/2017/04/06/1051.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="http://iot.weixin.qq.com/wiki/new/index.html?page=2-1">微信硬件平台</a><br><a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=2017118">小程序</a></p>
+<p>蛋疼的一天</p>
+]]></content>
+      <tags>
+        <tag>微信</tag>
+        <tag>硬件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哈夫曼树&amp;哈夫曼编码</title>
+    <url>/2020/08/12/3729.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h2><blockquote>
+<p>哈夫曼树也叫最优二叉树（哈夫曼树）</p>
+</blockquote>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>  <a href="https://baike.baidu.com/item/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91/2305769?fr=aladdin">给定N个权值作为N个叶子结点，构造一棵二叉树，若该树的带权路径长度达到最小，称这样的二叉树为最优二叉树，也称为哈夫曼树(Huffman Tree)。哈夫曼树是带权路径长度最短的树，权值较大的结点离根较近。</a></p>
+<h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><table>
+<thead>
+<tr>
+<th align="left">名词</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">路径长度</td>
+<td align="left">根结点到第L层结点路径长度为L-1</td>
+</tr>
+<tr>
+<td align="left">树的带权路径长度（WPL）</td>
+<td align="left">树中所有叶子结点的带权路径长度之和<br><img src="/images/pasted-75.png" alt="upload successful"><br>其中，n表示叶子结点的数目，wi和li分别表示叶子结点ki的权值和树根结点到叶子结点ki之间的路径长度。</td>
+</tr>
+<tr>
+<td align="left"><img src="/images/pasted-76.png" alt="upload successful"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>|</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
+<li>哈夫曼树中权越大的叶子离根越近(WPL最小的二叉树)</li>
+<li>具有相同带权结点的哈夫曼树不惟一</li>
+<li>哈夫曼树的结点的度数为 0 或 2， 没有度为 1 的结点；</li>
+<li>包含 n 个叶子结点的哈夫曼树中共有 2n – 1 个结点。</li>
+<li>包含 n 棵树的森林要经过 n–1 次合并才能形成哈夫曼树，共产生 n–1 个新结点</li>
+</ol>
+<p><img src="/images/pasted-74.png" alt="upload successful"><br><img src="/images/pasted-62.png" alt="upload successful"><br><strong>WPL 最小的值所属的树即为哈夫曼树</strong></p>
+<p><img src="/images/pasted-65.png" alt="upload successful" title="hello"><br><img src="/images/pasted-63.png" alt="upload successful"><br><img src="/images/pasted-64.png" alt="upload successful"></p>
+<h2 id="哈夫曼创建"><a href="#哈夫曼创建" class="headerlink" title="哈夫曼创建"></a>哈夫曼创建</h2><p><img src="/images/pasted-66.png" alt="upload successful"><br>为什么数组buffTree[2n-1] 的大小是2n-1,是因为n个子节点构成的树节点最多的个数是2n-1个<br><img src="/images/pasted-67.png" alt="upload successful"></p>
+<p><img src="/images/pasted-68.png" alt="upload successful"></p>
+<p><img src="/images/pasted-69.png" alt="upload successful"></p>
+<h2 id="哈夫曼树编码"><a href="#哈夫曼树编码" class="headerlink" title="哈夫曼树编码"></a>哈夫曼树编码</h2><h3 id="前缀编码"><a href="#前缀编码" class="headerlink" title="前缀编码"></a>前缀编码</h3><p><img src="/images/pasted-70.png" alt="upload successful"></p>
+<p><img src="/images/pasted-71.png" alt="upload successful"></p>
+<p><img src="/images/pasted-72.png" alt="upload successful"></p>
+<p>特点:<br>权值越高的叶子节点越靠近根节点</p>
+<p><img src="/images/pasted-73.png" alt="upload successful"></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>树莓派之Hexo环境搭建</title>
     <url>/2019/01/27/7c1e.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="安装node-js-环境"><a href="#安装node-js-环境" class="headerlink" title="安装node.js 环境"></a>安装node.js 环境</h2><pre><code>pi@raspberrypi:~/workdir/node_js $ wget -qO- https://raw.github.com/creationix/nvm/v0.33.11/install.sh | sh
@@ -6302,73 +6319,6 @@ added 225 packages from 431 contributors in 181.245s</code></pre>
         <tag>hexo</tag>
         <tag>Linux</tag>
         <tag>raspberry</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>汉枫系列-LPT230环境搭建</title>
-    <url>/2018/04/17/97d9.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="MAC-下编译器下载"><a href="#MAC-下编译器下载" class="headerlink" title="MAC 下编译器下载"></a>MAC 下编译器下载</h2><blockquote>
-<p>Linux 环境类似；</p>
-</blockquote>
-<ul>
-<li><a href="https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads">https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>汉枫</category>
-      </categories>
-      <tags>
-        <tag>lpt230</tag>
-        <tag>gcc</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>活成自己的样子</title>
-    <url>/2888/03/28/dbbb.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<blockquote>
-<p>我们总是拼尽全力… 想活成大家所期待的样子，以为那样就是最完美的。但其实，真正的成功，或许是不被他人绑架自己的梦想，全然按照自己的意愿过好这一生。</p>
-</blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/ilxj/ilxj.github.io@master/images/pasted-15.png" alt="1"></p>
-<pre class=" language-sh"><code class="language-sh">==============================================================================================
-
-                                            _ooOoo_
-                                           o8888888o
-                                           88" . "88
-                                           (| -_- |)
-                                            O\ = /O
-                                        ____/`---'\____
-                                        .' \\|   |// `.
-                                       / \\||| : |||// \
-                                     / _||||| -:- |||||- \
-                                       | | \\\ - /// | |
-                                     | \_| ''\---/'' | |
-                                      \ .-\__ `-` ___/-. /
-                                   ___`. .' /--.--\ `. . __
-                                . '< `.___\_<|>_/___.' >'.
-                               | | : `- \`.;`\ _ /`;.`/ - ` : | |
-                                 \ \ `-. \_ __\ /__ _/ .-` / /
-                         ======`-.____`-.___\_____/___.-`____.-'======
-                                            `=---='
-                         .............................................
-                            !Write the code!       Change the world!
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</code></pre>
-<iframe frameborder="no" border="0" autoPlay=true marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=28285910&auto=0&height=66"></iframe>
-
-<a id="more"></a>
-
-<p><embed src="http://player.hunantv.com/mgtv_v5_main/main.swf?play_type=1&video_id=3954767" autostart=false allowFullScreen="true" quality="high" width="900" height="498" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
-<!-- <div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","loop":true,"video":{"url":"http://devtest.qiniudn.com/若能绽放光芒.mp4","pic":"http://devtest.qiniudn.com/若能绽放光芒.png"},"danmaku":{"id":"9E2E3368B56CDBB4","api":"http://dplayer.daoapp.io","token":"tokendemo"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script> -->
-
-
-]]></content>
-      <categories>
-        <category>新奇</category>
-      </categories>
-      <tags>
-        <tag>新奇</tag>
-        <tag>音乐</tag>
-        <tag>🎵</tag>
       </tags>
   </entry>
   <entry>
@@ -6434,6 +6384,24 @@ added 225 packages from 431 contributors in 181.245s</code></pre>
 <li><a href="https://blog.csdn.net/qq_39690917/article/details/86713809">https://blog.csdn.net/qq_39690917/article/details/86713809</a></li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>汉枫系列-LPT230环境搭建</title>
+    <url>/2018/04/17/97d9.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="MAC-下编译器下载"><a href="#MAC-下编译器下载" class="headerlink" title="MAC 下编译器下载"></a>MAC 下编译器下载</h2><blockquote>
+<p>Linux 环境类似；</p>
+</blockquote>
+<ul>
+<li><a href="https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads">https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>汉枫</category>
+      </categories>
+      <tags>
+        <tag>lpt230</tag>
+        <tag>gcc</tag>
+      </tags>
   </entry>
   <entry>
     <title>编辑器介绍</title>
@@ -6820,6 +6788,55 @@ alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ source ~/.pro
       <tags>
         <tag>esp8266</tag>
         <tag>gcc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>活成自己的样子</title>
+    <url>/2888/03/28/dbbb.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<blockquote>
+<p>我们总是拼尽全力… 想活成大家所期待的样子，以为那样就是最完美的。但其实，真正的成功，或许是不被他人绑架自己的梦想，全然按照自己的意愿过好这一生。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/ilxj/ilxj.github.io@master/images/pasted-15.png" alt="1"></p>
+<pre class=" language-sh"><code class="language-sh">==============================================================================================
+
+                                            _ooOoo_
+                                           o8888888o
+                                           88" . "88
+                                           (| -_- |)
+                                            O\ = /O
+                                        ____/`---'\____
+                                        .' \\|   |// `.
+                                       / \\||| : |||// \
+                                     / _||||| -:- |||||- \
+                                       | | \\\ - /// | |
+                                     | \_| ''\---/'' | |
+                                      \ .-\__ `-` ___/-. /
+                                   ___`. .' /--.--\ `. . __
+                                . '< `.___\_<|>_/___.' >'.
+                               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+                                 \ \ `-. \_ __\ /__ _/ .-` / /
+                         ======`-.____`-.___\_____/___.-`____.-'======
+                                            `=---='
+                         .............................................
+                            !Write the code!       Change the world!
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</code></pre>
+<iframe frameborder="no" border="0" autoPlay=true marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=28285910&auto=0&height=66"></iframe>
+
+<a id="more"></a>
+
+<p><embed src="http://player.hunantv.com/mgtv_v5_main/main.swf?play_type=1&video_id=3954767" autostart=false allowFullScreen="true" quality="high" width="900" height="498" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
+<!-- <div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","loop":true,"video":{"url":"http://devtest.qiniudn.com/若能绽放光芒.mp4","pic":"http://devtest.qiniudn.com/若能绽放光芒.png"},"danmaku":{"id":"9E2E3368B56CDBB4","api":"http://dplayer.daoapp.io","token":"tokendemo"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script> -->
+
+
+]]></content>
+      <categories>
+        <category>新奇</category>
+      </categories>
+      <tags>
+        <tag>新奇</tag>
+        <tag>音乐</tag>
+        <tag>🎵</tag>
       </tags>
   </entry>
   <entry>
