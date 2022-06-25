@@ -66,307 +66,6 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-4.4-all.zip</c
       </tags>
   </entry>
   <entry>
-    <title>COAP系列-入门介绍</title>
-    <url>/2017/10/18/fb1f.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a href="http://coap.technology/">http://coap.technology/</a><br>WiKi<br><a href="https://en.wikipedia.org/wiki/Constrained_Application_Protocol">https://en.wikipedia.org/wiki/Constrained_Application_Protocol</a><br>开源库<br><a href="https://github.com/miri64/libcoap">https://github.com/miri64/libcoap</a></p>
-<h2 id="1-COAP-架构"><a href="#1-COAP-架构" class="headerlink" title="1. COAP 架构"></a>1. COAP 架构</h2><p>COAP运行于UDP协议之上,架构如下图</p>
-<p> <img src="http://upload-images.jianshu.io/upload_images/1736256-55f00669c46bccfd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="COAP 架构图"></p>
-<a id="more"></a>
-
-<h3 id="2-消息类型"><a href="#2-消息类型" class="headerlink" title="2. 消息类型"></a>2. 消息类型</h3><p>CoAP协议共有4中不同的消息类型。</p>
-<ul>
-<li>CON——需要被确认的请求，如果CON请求被发送，那么对方必须做出响应。</li>
-<li>NON——不需要被确认的请求，如果NON请求被发送，那么对方不必做出回应。</li>
-<li>ACK——应答消息，接受到CON消息的响应。</li>
-<li>RST——复位消息，当接收者接受到的消息包含一个错误，接收者解析消息或者不再关心发送者发送的内容，那么复位消息将会被发送。</li>
-</ul>
-<h3 id="3-COAP-消息格式"><a href="#3-COAP-消息格式" class="headerlink" title="3. COAP 消息格式"></a>3. COAP 消息格式</h3><ul>
-<li>一个COAP消息最小为4个字节；</li>
-<li>CoAP协议总是以“头”的形式出现在负载之前，而负载和CoAP头之间使用单字节0xFF分离；</li>
-<li>具体格式如下图<br><img src="http://upload-images.jianshu.io/upload_images/1736256-34c6ef619d17ae78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="COAP 消息格式"></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">字段</th>
-<th align="left">长度</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">ver</td>
-<td align="left">2bit</td>
-<td align="left">版本号</td>
-</tr>
-<tr>
-<td align="left">Type</td>
-<td align="left">2bit</td>
-<td align="left">消息类型:CON/NON/ACK/RST</td>
-</tr>
-<tr>
-<td align="left">TKL(TokenLength)</td>
-<td align="left">4bit</td>
-<td align="left">标识符长度CoAP协议中具有两种功能相似的标识符，一种为MessageID(报文编号)，一种为Token(标识符)。其中每个报文均包含消息编号，但是标识符对于报文来说是<strong>非必须</strong>的</td>
-</tr>
-<tr>
-<td align="left">Code</td>
-<td align="left">8bit</td>
-<td align="left">功能码/响应码:前3位一部分，后5位一部分;为了方便描述它被写成了c.dd结构。其中0.XX表示CoAP请求的某种方法，而2.XX、4.XX或5.XX则表示CoAP响应的某种具体表现(具体Code见下面👇)。</td>
-</tr>
-<tr>
-<td align="left">Message ID</td>
-<td align="left">16bit</td>
-<td align="left">报文编号,用于重复消息检测，匹配消息类型等</td>
-</tr>
-<tr>
-<td align="left">Token</td>
-<td align="left">nBit</td>
-<td align="left">标识符具体内容，通过TKL指定Token长度</td>
-</tr>
-<tr>
-<td align="left">Option</td>
-<td align="left">nBit</td>
-<td align="left">报文选项，通过报文选项可设定CoAP主机，CoAP URI，CoAP请求参数和负载媒体类型等等。</td>
-</tr>
-</tbody></table>
-<h4 id="3-1-COAP-Code-字段"><a href="#3-1-COAP-Code-字段" class="headerlink" title="3.1 COAP Code 字段"></a>3.1 COAP Code 字段</h4><p>请求字段</p>
-<ul>
-<li>Req:0.xx</li>
-</ul>
-<hr>
-<p>响应字段</p>
-<ul>
-<li>Success : 2.xx</li>
-<li>Client Error : 4.xx</li>
-<li>Server Error : 5.xx</li>
-</ul>
-<hr>
-<h5 id="3-1-1-请求消息类型"><a href="#3-1-1-请求消息类型" class="headerlink" title="3.1.1 请求消息类型 "></a>3.1.1 请求消息类型 </h5><table>
-<thead>
-<tr>
-<th align="left">Code码</th>
-<th align="left">方法</th>
-<th align="left">解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">0.01</td>
-<td align="left">GET</td>
-<td align="left">用于获得某资源</td>
-</tr>
-<tr>
-<td align="left">0.02</td>
-<td align="left">POST</td>
-<td align="left">用于创建某资源</td>
-</tr>
-<tr>
-<td align="left">0.03</td>
-<td align="left">PUT</td>
-<td align="left">用于更新某资源</td>
-</tr>
-<tr>
-<td align="left">0.04</td>
-<td align="left">DELETE</td>
-<td align="left">用于删除某资源</td>
-</tr>
-</tbody></table>
-<h5 id="3-1-2-响应消息类型"><a href="#3-1-2-响应消息类型" class="headerlink" title="3.1.2 响应消息类型  "></a>3.1.2 响应消息类型  </h5><ul>
-<li><strong>Success 2.xx</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">Code码</th>
-<th align="left">方法</th>
-<th align="left">解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">2.01</td>
-<td align="left">Created</td>
-<td align="left">回复POST或者PUT。</td>
-</tr>
-<tr>
-<td align="left">2.02</td>
-<td align="left">Deleted</td>
-<td align="left">回复DELETE，有些情况下的POST。</td>
-</tr>
-<tr>
-<td align="left">2.03</td>
-<td align="left">Valid</td>
-<td align="left">表示响应是有效的所以，Response必须带ETag Option。</td>
-</tr>
-<tr>
-<td align="left">2.04</td>
-<td align="left">Changed</td>
-<td align="left">回复POST和PUT。</td>
-</tr>
-<tr>
-<td align="left">2.05</td>
-<td align="left">Content</td>
-<td align="left">回复GET。</td>
-</tr>
-</tbody></table>
-<ul>
-<li><strong>Client Error 4.xx</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">Code码</th>
-<th align="left">解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">4.00</td>
-<td align="left">Bad Resuest.</td>
-</tr>
-<tr>
-<td align="left">4.01</td>
-<td align="left">Unauthorized</td>
-</tr>
-<tr>
-<td align="left">4.02</td>
-<td align="left">Bad Option</td>
-</tr>
-<tr>
-<td align="left">4.03</td>
-<td align="left">Forbidden</td>
-</tr>
-<tr>
-<td align="left">4.04</td>
-<td align="left">Not Found</td>
-</tr>
-<tr>
-<td align="left">4.05</td>
-<td align="left">Method Not Allowed</td>
-</tr>
-<tr>
-<td align="left">4.06</td>
-<td align="left">Not Acceptable</td>
-</tr>
-<tr>
-<td align="left">4.12</td>
-<td align="left">Precondition Failed</td>
-</tr>
-<tr>
-<td align="left">4.13</td>
-<td align="left">Request Entity Too Large</td>
-</tr>
-<tr>
-<td align="left">4.15</td>
-<td align="left">Unsupported Content-Format</td>
-</tr>
-</tbody></table>
-<ul>
-<li><strong>Server Error 5.xx</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">Code码</th>
-<th align="left">解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">5.00</td>
-<td align="left">Internal Server Error</td>
-</tr>
-<tr>
-<td align="left">5.01</td>
-<td align="left">Not Implemented</td>
-</tr>
-<tr>
-<td align="left">5.02</td>
-<td align="left">Bad Gateway</td>
-</tr>
-<tr>
-<td align="left">5.03</td>
-<td align="left">Service Unavailable</td>
-</tr>
-<tr>
-<td align="left">5.04</td>
-<td align="left">Gateway Timeout</td>
-</tr>
-<tr>
-<td align="left">5.05</td>
-<td align="left">Proxying Not Supported</td>
-</tr>
-</tbody></table>
-<h4 id="3-2-COAP-Option-字段"><a href="#3-2-COAP-Option-字段" class="headerlink" title="3.2 COAP Option 字段"></a>3.2 COAP Option 字段</h4><p>每个Optoin由以下三部分组成</p>
-<ul>
-<li><strong>OptionDelta :</strong> 表示Option的增量，当前的Option的具体编号等于之前所有Option Delta的总和。</li>
-<li><strong>OptionLength :</strong>  表示Option Value的具体长度</li>
-<li><strong>OptionValue :</strong> 表示Option具体内容</li>
-</ul>
-<p><strong>Opton的数据可以跟随多个，每个的格式都一致</strong><br><strong>例子:</strong></p>
-<ul>
-<li>第一个Option Delta=11，表示该Option表示Uri-Path(11)</li>
-<li>第二个Option Delta=1，表示该Option=1+11，表示Content-Format(12)</li>
-<li>第三个Option Delta=3，表示该Option=3+1+11，表示Uri-Query(15)<br>CoAP采用这样的方式表示多个Option，而每种Option都可以在HTTP协议中找到对应项。</li>
-</ul>
-<h5 id="3-2-1-Option-格式"><a href="#3-2-1-Option-格式" class="headerlink" title="3.2.1 Option 格式"></a>3.2.1 Option 格式</h5><p><img src="http://upload-images.jianshu.io/upload_images/1736256-de231b37e70545d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Option 格式图"></p>
-<p>CoAP中所有的Option都采用编号的方式，这些Option及编号的定义如下图所示<br><img src="http://upload-images.jianshu.io/upload_images/1736256-2c26b5c2d652ef37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p><strong>Option之中的各个字段的含义如下：</strong></p>
-<p><strong>【Option Delta】</strong></p>
-<ul>
-<li>Option Delta：4-bit无符号整型。值0-12代表option delta。其它3个值作为特殊情况保留：</li>
-<li>当值为<strong>13</strong>：有一个8-bit无符号整型（extended）跟随在第一个字节之后，本option的实际delta是这个8-bit值加13。</li>
-<li>当值为<strong>14</strong>：有一个16-bit无符号整型（网络字节序）（extended）跟随在第一个字节之后，本option的实际delta是这个16-bit值加269。</li>
-<li>当值为<strong>15</strong>：为payload标识符而保留。如果这个字段被设置为值15，但这个字节不是payload标识符，那么必须当作消息格式错误来处理。</li>
-</ul>
-<p><strong>【Option Length】</strong></p>
-<ul>
-<li>Option Length：4-bit无符号整数。值0-12代表这个option值的长度，单位是字节。其它3个值是特殊保留的：</li>
-<li>当值为13：有一个8-bit无符号整型跟随在第一个字节之后，本option的实际长度是这个8-bit值加13。</li>
-<li>当值为14：一个16-bit无符号整型（网络字节序）跟随在第一个字节之后，本option的实际长度是这个16-bit值加269。</li>
-<li>当值为15：保留为将来使用。如果这个字段被设置为值15，必须当作消息格式错误来处理。</li>
-</ul>
-<p><strong>【Option value】</strong></p>
-<ul>
-<li>Option Value：共option Length个字节。option Value字段的长度和格式取决于具体的option，有可能定义变长的值。</li>
-</ul>
-<p><strong>【Option value的格式】</strong></p>
-<ul>
-<li>Empty：长度为0。</li>
-<li>Opaque：一个（用户自定义的）字节序列。</li>
-<li>Uint：一个非负的整数，以网络字节序表现，由option Length字段指定其长度。<br>option有可能指定字节数的范围。如果有选择的话，发送者应该用尽可能少的字节数表示这个整数，如省略开头为的0的字节。例如，数字0用空的option值来表示（0长度字节序列），数字1用一个单字节表示，MSB first（高位优先）下为0b00000001。接收端必须能够处理0开头的值。<br>实现注意：在一些高受限的、模板化的实现（比如由硬件实现）下，允许发送者使用固定长度的option。</li>
-<li>String：Unicode字符串，使用UTF-8<a href="http://tools.ietf.org/pdf/rfc3629.pdf">[RFC3629]</a>编码，使用Net-Unicode格式<a href="http://tools.ietf.org/pdf/rfc5198">[RFC5198]</a>。</li>
-</ul>
-<p><strong>注意 :</strong> 在CoAP协议中，所有使用UTF-8编码的字符串可以不需要经过标准化转换而被直接使用，或者作为用户自定义的字节序列比较，除非该Unicode字符串是从CoAP协议之外的资源中引入的。注意，所有的ASCII（不作为特殊控制字符使用）字符都是合法的UTF-8 Net-Unicode字符串。</p>
-<h3 id="4-COAP-观察者模式"><a href="#4-COAP-观察者模式" class="headerlink" title="4. COAP 观察者模式"></a>4. COAP 观察者模式</h3><hr>
-<p>当你需要去监控某个传感器例如温度或湿度等。在这种情况下，CoAP客户端并不需要不停的查询CoAP服务器端的数据变化情况。<br>CoAP客户端可以发送一个观察请求到服务器端。从该时间点开始计算，服务器便会记住客户端的连接信息，一旦温度发生变化，服务器将会把新结果发送给客户端。<br>如果客户端不在希望获得温度检测结果，那么客户端将会发送一个RST复位请求，此时服务器便会清除与客户端的连接信息。</p>
-<h3 id="5-CoAP块传输"><a href="#5-CoAP块传输" class="headerlink" title="5. CoAP块传输"></a>5. CoAP块传输</h3><hr>
-<p>CoAP协议的特点是传输的内容小巧精简，但是在某些情况下不得不传输较大的数据。在这种情况下可以使用CoAP协议中的某个选项设定分块传输的大小，那么无论是服务器或客户端可完成分片和组装这两个动作。</p>
-<h2 id="COAP-总结"><a href="#COAP-总结" class="headerlink" title="COAP 总结"></a>COAP 总结</h2><hr>
-<h3 id="适合运行于小设备"><a href="#适合运行于小设备" class="headerlink" title="适合运行于小设备"></a>适合运行于小设备</h3><ul>
-<li><strong>小设备：</strong>256KB Flash 32KB RAM 20MHz主频….的设备</li>
-</ul>
-<h3 id="特点总结"><a href="#特点总结" class="headerlink" title="特点总结"></a>特点总结</h3><ol>
-<li>满足资源受限的网络需求。</li>
-<li>无状态HTTP映射，可以通过HTTP代理实现访问CoAP资源，或者在CoAP智商构建HTTP接口。</li>
-<li>使用UDP实现可靠IP单播和最大努力IP多播。</li>
-<li>异步消息交换</li>
-<li>很小的消息头载荷及解析复杂度。</li>
-<li>支持URI和内容类型(Content-type).</li>
-<li>支持代理和缓存.</li>
-<li>内建资源发现.</li>
-<li>可以使用DTLS作为安全加密层。</li>
-<li>资源消耗低，所需RAM和ROM资源均小于10KB。</li>
-<li>其双层(事务层，请求/响应层)处理方式可支持异步通信.</li>
-<li>支持观察模式。</li>
-<li>支持块传输</li>
-</ol>
-]]></content>
-      <categories>
-        <category>协议</category>
-      </categories>
-      <tags>
-        <tag>COAP</tag>
-        <tag>协议</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android系列之工具adb</title>
     <url>/2018/10/11/b305.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h2><hr>
@@ -733,76 +432,6 @@ Failure [INSTALL_FAILED_ALREADY_EXISTS]</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>COAP系列-lwm2m初识</title>
-    <url>/2018/01/29/7f47.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Wakaama"><a href="#Wakaama" class="headerlink" title="Wakaama"></a>Wakaama</h2><hr>
-<h2 id="1-Source-Layout"><a href="#1-Source-Layout" class="headerlink" title="1. Source Layout"></a>1. Source Layout</h2><pre><code>-+- core                   (the LWM2M engine)
- |    |
- |    +- er-coap-13        (Slightly modified Erbium&#39;s CoAP engine from
- |                          http://people.inf.ethz.ch/mkovatsc/erbium.php
- |
- +- tests                  (test cases)
- |
- +- examples
-      |
-      +- bootstrap_server  (a command-line LWM2M bootstrap server)
-      |
-      +- client            (a command-line LWM2M client with several test objects)
-      |
-      +- lightclient       (a very simple command-line LWM2M client with several test objects)
-      |
-      +- server            (a command-line LWM2M server)
-      |
-      +- shared            (utility functions for connection handling and command-
-                            line interface)</code></pre>
-<a id="more"></a>
-
-<h2 id="2-Compiling"><a href="#2-Compiling" class="headerlink" title="2.Compiling"></a>2.Compiling</h2><p>Wakaama is not a library but files to be built with an application. Wakaama uses CMake &gt;= 3. Look at examples/server/CMakeLists.txt for an example of how to include it. Several compilation switches are used:</p>
-<ul>
-<li>LWM2M_BIG_ENDIAN if your target platform uses big-endian format.</li>
-<li>LWM2M_LITTLE_ENDIAN if your target platform uses little-endian format.</li>
-<li>LWM2M_CLIENT_MODE to enable LWM2M Client interfaces.</li>
-<li>LWM2M_SERVER_MODE to enable LWM2M Server interfaces.</li>
-<li>LWM2M_BOOTSTRAP_SERVER_MODE to enable LWM2M Bootstrap Server interfaces.</li>
-<li>LWM2M_BOOTSTRAP to enable LWM2M Bootstrap support in a LWM2M Client.</li>
-<li>LWM2M_SUPPORT_JSON to enable JSON payload support (implicit when defining - LWM2M_SERVER_MODE)</li>
-<li>LWM2M_OLD_CONTENT_FORMAT_SUPPORT to support the deprecated content format values for TLV and JSON.</li>
-</ul>
-<h2 id="3-基础知识"><a href="#3-基础知识" class="headerlink" title="3.基础知识"></a>3.基础知识</h2><p>通过URI访问LWM2M实体</p>
-<pre><code>/&lt;object id&gt;[/&lt;object instance id&gt;][/&lt;resource id&gt;]</code></pre>
-<p>在LWM2M中，合法的URI应当像如下格式（注意，不能以/结尾）：</p>
-<pre><code>/&lt;object id&gt;[/&lt;object instance id&gt;][/&lt;resource id&gt;]
-
-# legal example
-/0
-/0/0
-/0/1
-/0/1/1
-1
-2
-3
-4
-5
-6
-7</code></pre>
-<p>URI分别标识了访问资源的object id、object instance id、resource id，后两个id是可选的。</p>
-<p>Depending on your platform, you need to define LWM2M_BIG_ENDIAN or LWM2M_LITTLE_ENDIAN. LWM2M_CLIENT_MODE and LWM2M_SERVER_MODE can be defined at the same time.</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><a href="http://www.eclipse.org/wakaama/">wakaama</a></li>
-<li><a href="https://github.com/eclipse/wakaama">github</a></li>
-<li><a href="http://blog.csdn.net/github_39603316/article/details/76014609">Blog</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>协议</category>
-      </categories>
-      <tags>
-        <tag>COAP</tag>
-        <tag>协议</tag>
-        <tag>lwm2m</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C语言之奇门遁甲术</title>
     <url>/2019/01/09/b2a3.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="C语言位操作与计算"><a href="#C语言位操作与计算" class="headerlink" title="C语言位操作与计算"></a>C语言位操作与计算</h2><hr>
@@ -899,6 +528,377 @@ eqSign <span class="token operator">=</span> a <span class="token operator">^</s
       </categories>
       <tags>
         <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>COAP系列-入门介绍</title>
+    <url>/2017/10/18/fb1f.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a href="http://coap.technology/">http://coap.technology/</a><br>WiKi<br><a href="https://en.wikipedia.org/wiki/Constrained_Application_Protocol">https://en.wikipedia.org/wiki/Constrained_Application_Protocol</a><br>开源库<br><a href="https://github.com/miri64/libcoap">https://github.com/miri64/libcoap</a></p>
+<h2 id="1-COAP-架构"><a href="#1-COAP-架构" class="headerlink" title="1. COAP 架构"></a>1. COAP 架构</h2><p>COAP运行于UDP协议之上,架构如下图</p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/1736256-55f00669c46bccfd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="COAP 架构图"></p>
+<a id="more"></a>
+
+<h3 id="2-消息类型"><a href="#2-消息类型" class="headerlink" title="2. 消息类型"></a>2. 消息类型</h3><p>CoAP协议共有4中不同的消息类型。</p>
+<ul>
+<li>CON——需要被确认的请求，如果CON请求被发送，那么对方必须做出响应。</li>
+<li>NON——不需要被确认的请求，如果NON请求被发送，那么对方不必做出回应。</li>
+<li>ACK——应答消息，接受到CON消息的响应。</li>
+<li>RST——复位消息，当接收者接受到的消息包含一个错误，接收者解析消息或者不再关心发送者发送的内容，那么复位消息将会被发送。</li>
+</ul>
+<h3 id="3-COAP-消息格式"><a href="#3-COAP-消息格式" class="headerlink" title="3. COAP 消息格式"></a>3. COAP 消息格式</h3><ul>
+<li>一个COAP消息最小为4个字节；</li>
+<li>CoAP协议总是以“头”的形式出现在负载之前，而负载和CoAP头之间使用单字节0xFF分离；</li>
+<li>具体格式如下图<br><img src="http://upload-images.jianshu.io/upload_images/1736256-34c6ef619d17ae78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="COAP 消息格式"></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">字段</th>
+<th align="left">长度</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ver</td>
+<td align="left">2bit</td>
+<td align="left">版本号</td>
+</tr>
+<tr>
+<td align="left">Type</td>
+<td align="left">2bit</td>
+<td align="left">消息类型:CON/NON/ACK/RST</td>
+</tr>
+<tr>
+<td align="left">TKL(TokenLength)</td>
+<td align="left">4bit</td>
+<td align="left">标识符长度CoAP协议中具有两种功能相似的标识符，一种为MessageID(报文编号)，一种为Token(标识符)。其中每个报文均包含消息编号，但是标识符对于报文来说是<strong>非必须</strong>的</td>
+</tr>
+<tr>
+<td align="left">Code</td>
+<td align="left">8bit</td>
+<td align="left">功能码/响应码:前3位一部分，后5位一部分;为了方便描述它被写成了c.dd结构。其中0.XX表示CoAP请求的某种方法，而2.XX、4.XX或5.XX则表示CoAP响应的某种具体表现(具体Code见下面👇)。</td>
+</tr>
+<tr>
+<td align="left">Message ID</td>
+<td align="left">16bit</td>
+<td align="left">报文编号,用于重复消息检测，匹配消息类型等</td>
+</tr>
+<tr>
+<td align="left">Token</td>
+<td align="left">nBit</td>
+<td align="left">标识符具体内容，通过TKL指定Token长度</td>
+</tr>
+<tr>
+<td align="left">Option</td>
+<td align="left">nBit</td>
+<td align="left">报文选项，通过报文选项可设定CoAP主机，CoAP URI，CoAP请求参数和负载媒体类型等等。</td>
+</tr>
+</tbody></table>
+<h4 id="3-1-COAP-Code-字段"><a href="#3-1-COAP-Code-字段" class="headerlink" title="3.1 COAP Code 字段"></a>3.1 COAP Code 字段</h4><p>请求字段</p>
+<ul>
+<li>Req:0.xx</li>
+</ul>
+<hr>
+<p>响应字段</p>
+<ul>
+<li>Success : 2.xx</li>
+<li>Client Error : 4.xx</li>
+<li>Server Error : 5.xx</li>
+</ul>
+<hr>
+<h5 id="3-1-1-请求消息类型"><a href="#3-1-1-请求消息类型" class="headerlink" title="3.1.1 请求消息类型 "></a>3.1.1 请求消息类型 </h5><table>
+<thead>
+<tr>
+<th align="left">Code码</th>
+<th align="left">方法</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0.01</td>
+<td align="left">GET</td>
+<td align="left">用于获得某资源</td>
+</tr>
+<tr>
+<td align="left">0.02</td>
+<td align="left">POST</td>
+<td align="left">用于创建某资源</td>
+</tr>
+<tr>
+<td align="left">0.03</td>
+<td align="left">PUT</td>
+<td align="left">用于更新某资源</td>
+</tr>
+<tr>
+<td align="left">0.04</td>
+<td align="left">DELETE</td>
+<td align="left">用于删除某资源</td>
+</tr>
+</tbody></table>
+<h5 id="3-1-2-响应消息类型"><a href="#3-1-2-响应消息类型" class="headerlink" title="3.1.2 响应消息类型  "></a>3.1.2 响应消息类型  </h5><ul>
+<li><strong>Success 2.xx</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Code码</th>
+<th align="left">方法</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">2.01</td>
+<td align="left">Created</td>
+<td align="left">回复POST或者PUT。</td>
+</tr>
+<tr>
+<td align="left">2.02</td>
+<td align="left">Deleted</td>
+<td align="left">回复DELETE，有些情况下的POST。</td>
+</tr>
+<tr>
+<td align="left">2.03</td>
+<td align="left">Valid</td>
+<td align="left">表示响应是有效的所以，Response必须带ETag Option。</td>
+</tr>
+<tr>
+<td align="left">2.04</td>
+<td align="left">Changed</td>
+<td align="left">回复POST和PUT。</td>
+</tr>
+<tr>
+<td align="left">2.05</td>
+<td align="left">Content</td>
+<td align="left">回复GET。</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>Client Error 4.xx</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Code码</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">4.00</td>
+<td align="left">Bad Resuest.</td>
+</tr>
+<tr>
+<td align="left">4.01</td>
+<td align="left">Unauthorized</td>
+</tr>
+<tr>
+<td align="left">4.02</td>
+<td align="left">Bad Option</td>
+</tr>
+<tr>
+<td align="left">4.03</td>
+<td align="left">Forbidden</td>
+</tr>
+<tr>
+<td align="left">4.04</td>
+<td align="left">Not Found</td>
+</tr>
+<tr>
+<td align="left">4.05</td>
+<td align="left">Method Not Allowed</td>
+</tr>
+<tr>
+<td align="left">4.06</td>
+<td align="left">Not Acceptable</td>
+</tr>
+<tr>
+<td align="left">4.12</td>
+<td align="left">Precondition Failed</td>
+</tr>
+<tr>
+<td align="left">4.13</td>
+<td align="left">Request Entity Too Large</td>
+</tr>
+<tr>
+<td align="left">4.15</td>
+<td align="left">Unsupported Content-Format</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>Server Error 5.xx</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Code码</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">5.00</td>
+<td align="left">Internal Server Error</td>
+</tr>
+<tr>
+<td align="left">5.01</td>
+<td align="left">Not Implemented</td>
+</tr>
+<tr>
+<td align="left">5.02</td>
+<td align="left">Bad Gateway</td>
+</tr>
+<tr>
+<td align="left">5.03</td>
+<td align="left">Service Unavailable</td>
+</tr>
+<tr>
+<td align="left">5.04</td>
+<td align="left">Gateway Timeout</td>
+</tr>
+<tr>
+<td align="left">5.05</td>
+<td align="left">Proxying Not Supported</td>
+</tr>
+</tbody></table>
+<h4 id="3-2-COAP-Option-字段"><a href="#3-2-COAP-Option-字段" class="headerlink" title="3.2 COAP Option 字段"></a>3.2 COAP Option 字段</h4><p>每个Optoin由以下三部分组成</p>
+<ul>
+<li><strong>OptionDelta :</strong> 表示Option的增量，当前的Option的具体编号等于之前所有Option Delta的总和。</li>
+<li><strong>OptionLength :</strong>  表示Option Value的具体长度</li>
+<li><strong>OptionValue :</strong> 表示Option具体内容</li>
+</ul>
+<p><strong>Opton的数据可以跟随多个，每个的格式都一致</strong><br><strong>例子:</strong></p>
+<ul>
+<li>第一个Option Delta=11，表示该Option表示Uri-Path(11)</li>
+<li>第二个Option Delta=1，表示该Option=1+11，表示Content-Format(12)</li>
+<li>第三个Option Delta=3，表示该Option=3+1+11，表示Uri-Query(15)<br>CoAP采用这样的方式表示多个Option，而每种Option都可以在HTTP协议中找到对应项。</li>
+</ul>
+<h5 id="3-2-1-Option-格式"><a href="#3-2-1-Option-格式" class="headerlink" title="3.2.1 Option 格式"></a>3.2.1 Option 格式</h5><p><img src="http://upload-images.jianshu.io/upload_images/1736256-de231b37e70545d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Option 格式图"></p>
+<p>CoAP中所有的Option都采用编号的方式，这些Option及编号的定义如下图所示<br><img src="http://upload-images.jianshu.io/upload_images/1736256-2c26b5c2d652ef37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><strong>Option之中的各个字段的含义如下：</strong></p>
+<p><strong>【Option Delta】</strong></p>
+<ul>
+<li>Option Delta：4-bit无符号整型。值0-12代表option delta。其它3个值作为特殊情况保留：</li>
+<li>当值为<strong>13</strong>：有一个8-bit无符号整型（extended）跟随在第一个字节之后，本option的实际delta是这个8-bit值加13。</li>
+<li>当值为<strong>14</strong>：有一个16-bit无符号整型（网络字节序）（extended）跟随在第一个字节之后，本option的实际delta是这个16-bit值加269。</li>
+<li>当值为<strong>15</strong>：为payload标识符而保留。如果这个字段被设置为值15，但这个字节不是payload标识符，那么必须当作消息格式错误来处理。</li>
+</ul>
+<p><strong>【Option Length】</strong></p>
+<ul>
+<li>Option Length：4-bit无符号整数。值0-12代表这个option值的长度，单位是字节。其它3个值是特殊保留的：</li>
+<li>当值为13：有一个8-bit无符号整型跟随在第一个字节之后，本option的实际长度是这个8-bit值加13。</li>
+<li>当值为14：一个16-bit无符号整型（网络字节序）跟随在第一个字节之后，本option的实际长度是这个16-bit值加269。</li>
+<li>当值为15：保留为将来使用。如果这个字段被设置为值15，必须当作消息格式错误来处理。</li>
+</ul>
+<p><strong>【Option value】</strong></p>
+<ul>
+<li>Option Value：共option Length个字节。option Value字段的长度和格式取决于具体的option，有可能定义变长的值。</li>
+</ul>
+<p><strong>【Option value的格式】</strong></p>
+<ul>
+<li>Empty：长度为0。</li>
+<li>Opaque：一个（用户自定义的）字节序列。</li>
+<li>Uint：一个非负的整数，以网络字节序表现，由option Length字段指定其长度。<br>option有可能指定字节数的范围。如果有选择的话，发送者应该用尽可能少的字节数表示这个整数，如省略开头为的0的字节。例如，数字0用空的option值来表示（0长度字节序列），数字1用一个单字节表示，MSB first（高位优先）下为0b00000001。接收端必须能够处理0开头的值。<br>实现注意：在一些高受限的、模板化的实现（比如由硬件实现）下，允许发送者使用固定长度的option。</li>
+<li>String：Unicode字符串，使用UTF-8<a href="http://tools.ietf.org/pdf/rfc3629.pdf">[RFC3629]</a>编码，使用Net-Unicode格式<a href="http://tools.ietf.org/pdf/rfc5198">[RFC5198]</a>。</li>
+</ul>
+<p><strong>注意 :</strong> 在CoAP协议中，所有使用UTF-8编码的字符串可以不需要经过标准化转换而被直接使用，或者作为用户自定义的字节序列比较，除非该Unicode字符串是从CoAP协议之外的资源中引入的。注意，所有的ASCII（不作为特殊控制字符使用）字符都是合法的UTF-8 Net-Unicode字符串。</p>
+<h3 id="4-COAP-观察者模式"><a href="#4-COAP-观察者模式" class="headerlink" title="4. COAP 观察者模式"></a>4. COAP 观察者模式</h3><hr>
+<p>当你需要去监控某个传感器例如温度或湿度等。在这种情况下，CoAP客户端并不需要不停的查询CoAP服务器端的数据变化情况。<br>CoAP客户端可以发送一个观察请求到服务器端。从该时间点开始计算，服务器便会记住客户端的连接信息，一旦温度发生变化，服务器将会把新结果发送给客户端。<br>如果客户端不在希望获得温度检测结果，那么客户端将会发送一个RST复位请求，此时服务器便会清除与客户端的连接信息。</p>
+<h3 id="5-CoAP块传输"><a href="#5-CoAP块传输" class="headerlink" title="5. CoAP块传输"></a>5. CoAP块传输</h3><hr>
+<p>CoAP协议的特点是传输的内容小巧精简，但是在某些情况下不得不传输较大的数据。在这种情况下可以使用CoAP协议中的某个选项设定分块传输的大小，那么无论是服务器或客户端可完成分片和组装这两个动作。</p>
+<h2 id="COAP-总结"><a href="#COAP-总结" class="headerlink" title="COAP 总结"></a>COAP 总结</h2><hr>
+<h3 id="适合运行于小设备"><a href="#适合运行于小设备" class="headerlink" title="适合运行于小设备"></a>适合运行于小设备</h3><ul>
+<li><strong>小设备：</strong>256KB Flash 32KB RAM 20MHz主频….的设备</li>
+</ul>
+<h3 id="特点总结"><a href="#特点总结" class="headerlink" title="特点总结"></a>特点总结</h3><ol>
+<li>满足资源受限的网络需求。</li>
+<li>无状态HTTP映射，可以通过HTTP代理实现访问CoAP资源，或者在CoAP智商构建HTTP接口。</li>
+<li>使用UDP实现可靠IP单播和最大努力IP多播。</li>
+<li>异步消息交换</li>
+<li>很小的消息头载荷及解析复杂度。</li>
+<li>支持URI和内容类型(Content-type).</li>
+<li>支持代理和缓存.</li>
+<li>内建资源发现.</li>
+<li>可以使用DTLS作为安全加密层。</li>
+<li>资源消耗低，所需RAM和ROM资源均小于10KB。</li>
+<li>其双层(事务层，请求/响应层)处理方式可支持异步通信.</li>
+<li>支持观察模式。</li>
+<li>支持块传输</li>
+</ol>
+]]></content>
+      <categories>
+        <category>协议</category>
+      </categories>
+      <tags>
+        <tag>COAP</tag>
+        <tag>协议</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>COAP系列-lwm2m初识</title>
+    <url>/2018/01/29/7f47.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Wakaama"><a href="#Wakaama" class="headerlink" title="Wakaama"></a>Wakaama</h2><hr>
+<h2 id="1-Source-Layout"><a href="#1-Source-Layout" class="headerlink" title="1. Source Layout"></a>1. Source Layout</h2><pre><code>-+- core                   (the LWM2M engine)
+ |    |
+ |    +- er-coap-13        (Slightly modified Erbium&#39;s CoAP engine from
+ |                          http://people.inf.ethz.ch/mkovatsc/erbium.php
+ |
+ +- tests                  (test cases)
+ |
+ +- examples
+      |
+      +- bootstrap_server  (a command-line LWM2M bootstrap server)
+      |
+      +- client            (a command-line LWM2M client with several test objects)
+      |
+      +- lightclient       (a very simple command-line LWM2M client with several test objects)
+      |
+      +- server            (a command-line LWM2M server)
+      |
+      +- shared            (utility functions for connection handling and command-
+                            line interface)</code></pre>
+<a id="more"></a>
+
+<h2 id="2-Compiling"><a href="#2-Compiling" class="headerlink" title="2.Compiling"></a>2.Compiling</h2><p>Wakaama is not a library but files to be built with an application. Wakaama uses CMake &gt;= 3. Look at examples/server/CMakeLists.txt for an example of how to include it. Several compilation switches are used:</p>
+<ul>
+<li>LWM2M_BIG_ENDIAN if your target platform uses big-endian format.</li>
+<li>LWM2M_LITTLE_ENDIAN if your target platform uses little-endian format.</li>
+<li>LWM2M_CLIENT_MODE to enable LWM2M Client interfaces.</li>
+<li>LWM2M_SERVER_MODE to enable LWM2M Server interfaces.</li>
+<li>LWM2M_BOOTSTRAP_SERVER_MODE to enable LWM2M Bootstrap Server interfaces.</li>
+<li>LWM2M_BOOTSTRAP to enable LWM2M Bootstrap support in a LWM2M Client.</li>
+<li>LWM2M_SUPPORT_JSON to enable JSON payload support (implicit when defining - LWM2M_SERVER_MODE)</li>
+<li>LWM2M_OLD_CONTENT_FORMAT_SUPPORT to support the deprecated content format values for TLV and JSON.</li>
+</ul>
+<h2 id="3-基础知识"><a href="#3-基础知识" class="headerlink" title="3.基础知识"></a>3.基础知识</h2><p>通过URI访问LWM2M实体</p>
+<pre><code>/&lt;object id&gt;[/&lt;object instance id&gt;][/&lt;resource id&gt;]</code></pre>
+<p>在LWM2M中，合法的URI应当像如下格式（注意，不能以/结尾）：</p>
+<pre><code>/&lt;object id&gt;[/&lt;object instance id&gt;][/&lt;resource id&gt;]
+
+# legal example
+/0
+/0/0
+/0/1
+/0/1/1
+1
+2
+3
+4
+5
+6
+7</code></pre>
+<p>URI分别标识了访问资源的object id、object instance id、resource id，后两个id是可选的。</p>
+<p>Depending on your platform, you need to define LWM2M_BIG_ENDIAN or LWM2M_LITTLE_ENDIAN. LWM2M_CLIENT_MODE and LWM2M_SERVER_MODE can be defined at the same time.</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://www.eclipse.org/wakaama/">wakaama</a></li>
+<li><a href="https://github.com/eclipse/wakaama">github</a></li>
+<li><a href="http://blog.csdn.net/github_39603316/article/details/76014609">Blog</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>协议</category>
+      </categories>
+      <tags>
+        <tag>COAP</tag>
+        <tag>协议</tag>
+        <tag>lwm2m</tag>
       </tags>
   </entry>
   <entry>
@@ -1140,68 +1140,6 @@ invalid reference format</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>ESP8266系列-各个模组型号模组对比</title>
-    <url>/2017/08/04/9fbf.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="烧录Flash-地址说明"><a href="#烧录Flash-地址说明" class="headerlink" title="烧录Flash 地址说明"></a>烧录Flash 地址说明</h2><table>
-<thead>
-<tr>
-<th align="center">文件名称</th>
-<th align="center">8Mbit烧录地址</th>
-<th align="center">16Mbit烧录地址</th>
-<th align="center">32Mbit烧录地址</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">boot.bin</td>
-<td align="center">0x00000</td>
-<td align="center">0x00000</td>
-<td align="center">0x00000</td>
-<td align="left">由乐鑫在 SDK 中提供，建议一直使用最新版本</td>
-</tr>
-<tr>
-<td align="center">user1.bin</td>
-<td align="center">0x01000</td>
-<td align="center">0x01000</td>
-<td align="center">0x01000</td>
-<td align="left">主程序，由代码编译生成</td>
-</tr>
-<tr>
-<td align="center">user2.bin</td>
-<td align="center">0x81000</td>
-<td align="center">0x81000</td>
-<td align="center">0x81000</td>
-<td align="left">主程序，由代码编译生成</td>
-</tr>
-<tr>
-<td align="center">esp_init_data_default.bin</td>
-<td align="center">0xFC000</td>
-<td align="center">0x1FC000</td>
-<td align="center">0x3FC000</td>
-<td align="left">由乐鑫在 SDK 中提供</td>
-</tr>
-<tr>
-<td align="center">blank.bin</td>
-<td align="center">0xFE000</td>
-<td align="center">0x1FE000</td>
-<td align="center">0x3FE000</td>
-<td align="left">由乐鑫在 SDK 中提供</td>
-</tr>
-</tbody></table>
-<a id="more"></a>
-
-<h2 id="硬件连接"><a href="#硬件连接" class="headerlink" title="硬件连接"></a>硬件连接</h2><p>ESP8266有运行模式、下载模式、测试模式的区别，进入下载模式可参考以下配置：</p>
-<p>|模式|CH_PD(EN)| RST |GPIO15|GPIO0|GPIO2|TXD0|<br>|:—:|:—:|<br>|UART 下载模式|高|高|低|低|高|高|<br>|Flash运行模式|高|高|低|高|高|高|<br>|Chip 测试模式|- |- |- | -| -|低|</p>
-<h2 id="模组对比"><a href="#模组对比" class="headerlink" title="模组对比"></a>模组对比</h2><p>![模组对比][1]<br>[1]: <a href="http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a></p>
-]]></content>
-      <categories>
-        <category>esp8266</category>
-      </categories>
-      <tags>
-        <tag>esp8266</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ESP8266系列-12F引脚说明</title>
     <url>/2017/08/06/53ce.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="ESP8266-12F-模组图"><a href="#ESP8266-12F-模组图" class="headerlink" title="ESP8266-12F 模组图"></a>ESP8266-12F 模组图</h2><p><img src="/images/pasted-14.png" alt="硬件模组图"><br><img src="/images/pasted-13.png" alt="esp12f管脚定义图"></p>
@@ -1393,6 +1331,134 @@ invalid reference format</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>ESP8266系列-各个模组型号模组对比</title>
+    <url>/2017/08/04/9fbf.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="烧录Flash-地址说明"><a href="#烧录Flash-地址说明" class="headerlink" title="烧录Flash 地址说明"></a>烧录Flash 地址说明</h2><table>
+<thead>
+<tr>
+<th align="center">文件名称</th>
+<th align="center">8Mbit烧录地址</th>
+<th align="center">16Mbit烧录地址</th>
+<th align="center">32Mbit烧录地址</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">boot.bin</td>
+<td align="center">0x00000</td>
+<td align="center">0x00000</td>
+<td align="center">0x00000</td>
+<td align="left">由乐鑫在 SDK 中提供，建议一直使用最新版本</td>
+</tr>
+<tr>
+<td align="center">user1.bin</td>
+<td align="center">0x01000</td>
+<td align="center">0x01000</td>
+<td align="center">0x01000</td>
+<td align="left">主程序，由代码编译生成</td>
+</tr>
+<tr>
+<td align="center">user2.bin</td>
+<td align="center">0x81000</td>
+<td align="center">0x81000</td>
+<td align="center">0x81000</td>
+<td align="left">主程序，由代码编译生成</td>
+</tr>
+<tr>
+<td align="center">esp_init_data_default.bin</td>
+<td align="center">0xFC000</td>
+<td align="center">0x1FC000</td>
+<td align="center">0x3FC000</td>
+<td align="left">由乐鑫在 SDK 中提供</td>
+</tr>
+<tr>
+<td align="center">blank.bin</td>
+<td align="center">0xFE000</td>
+<td align="center">0x1FE000</td>
+<td align="center">0x3FE000</td>
+<td align="left">由乐鑫在 SDK 中提供</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+
+<h2 id="硬件连接"><a href="#硬件连接" class="headerlink" title="硬件连接"></a>硬件连接</h2><p>ESP8266有运行模式、下载模式、测试模式的区别，进入下载模式可参考以下配置：</p>
+<p>|模式|CH_PD(EN)| RST |GPIO15|GPIO0|GPIO2|TXD0|<br>|:—:|:—:|<br>|UART 下载模式|高|高|低|低|高|高|<br>|Flash运行模式|高|高|低|高|高|高|<br>|Chip 测试模式|- |- |- | -| -|低|</p>
+<h2 id="模组对比"><a href="#模组对比" class="headerlink" title="模组对比"></a>模组对比</h2><p>![模组对比][1]<br>[1]: <a href="http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">http://upload-images.jianshu.io/upload_images/1736256-9acf4a0574852890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a></p>
+]]></content>
+      <categories>
+        <category>esp8266</category>
+      </categories>
+      <tags>
+        <tag>esp8266</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ESP8266系列-连接OLED模块</title>
+    <url>/2020/04/09/8529.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="OLED-屏幕介绍"><a href="#OLED-屏幕介绍" class="headerlink" title="OLED 屏幕介绍"></a>OLED 屏幕介绍</h2><ul>
+<li>芯片型号 <a href="https://wenku.baidu.com/view/6d6497a53d1ec5da50e2524de518964bce84d233.html">SSD1306</a></li>
+<li>分辨率 128*64</li>
+<li>供电范围 直流 3.3-5v</li>
+<li>体积 27<em>27</em>2mm</li>
+<li>尺寸 <img src="/images/pasted-10.png" alt="upload successful"></li>
+<li>SPI 4线接法 <img src="/images/pasted-11.png" alt="upload successful"></li>
+<li>IIC 接法 <img src="/images/pasted-12.png" alt="upload successful"></li>
+</ul>
+<h3 id="OLED与ESP8266-4线SPI接线"><a href="#OLED与ESP8266-4线SPI接线" class="headerlink" title="OLED与ESP8266 4线SPI接线"></a>OLED与ESP8266 4线SPI接线</h3><table>
+<thead>
+<tr>
+<th align="left">ESP8266</th>
+<th align="left">OLED</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">IO_12</td>
+<td align="left">DC</td>
+</tr>
+<tr>
+<td align="left">IO_13</td>
+<td align="left">DIN(MOSI)</td>
+</tr>
+<tr>
+<td align="left">IO_14</td>
+<td align="left">CLK</td>
+</tr>
+<tr>
+<td align="left">IO_15</td>
+<td align="left">RST</td>
+</tr>
+<tr>
+<td align="left">GND</td>
+<td align="left">CS</td>
+</tr>
+</tbody></table>
+<h2 id="ESP8266-SPI"><a href="#ESP8266-SPI" class="headerlink" title="ESP8266 SPI"></a>ESP8266 SPI</h2><p><img src="/images/pasted-17.png" alt="upload successful"></p>
+<h2 id="U8g2库"><a href="#U8g2库" class="headerlink" title="U8g2库"></a>U8g2库</h2><p><a href="https://github.com/olikraus/u8g2/wiki/u8g2reference">官方api说明</a></p>
+<ul>
+<li>u8g2_SetFontMode<br>```c<br>/*<br>set one of:<br>  U8G2_FONT_MODE_TRANSPARENT<br>  U8G2_FONT_MODE_SOLID<br>  U8G2_FONT_MODE_NONE<br>This has been changed for the new font procedures  </li>
+</ul>
+<p>*/<br>void u8g2_SetFontMode(u8g2_t *u8g2, uint8_t is_transparent)</p>
+<pre><code>**说明:**定义字形和字符串绘制函数是否写入背景色（模式0 / solid，is_transparent = 0）或不写入背景颜色（模式1 /透明，is_transparent = 1）。 默认模式为0（字符的背景颜色被覆盖）。
+
+- u8g2_SetFontDirection</code></pre>
+<p>void u8g2_SetFontDirection(u8g2_t *u8g2, uint8_t dir)</p>
+<p>```</p>
+<h2 id="取模软件"><a href="#取模软件" class="headerlink" title="取模软件"></a>取模软件</h2><ul>
+<li><a href="https://tools.clz.me/">https://tools.clz.me/</a></li>
+<li><a href="https://github.com/coloz/image-to-bitmap-array">https://github.com/coloz/image-to-bitmap-array</a></li>
+</ul>
+<h2 id="天气获取API"><a href="#天气获取API" class="headerlink" title="天气获取API"></a>天气获取API</h2><p><a href="http://wthrcdn.etouch.cn/WeatherApi?city=%E5%B9%BF%E5%B7%9E">http://wthrcdn.etouch.cn/WeatherApi?city=%E5%B9%BF%E5%B7%9E</a></p>
+<h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><ul>
+<li><a href="https://www.jianshu.com/p/404907770c90">https://www.jianshu.com/p/404907770c90</a></li>
+<li><a href="https://www.cnblogs.com/huan-huan/p/8528307.html">https://www.cnblogs.com/huan-huan/p/8528307.html</a></li>
+<li><a href="https://mbb.eet-china.com/forum/topic/74077_1_1.html">https://mbb.eet-china.com/forum/topic/74077_1_1.html</a></li>
+<li><a href="https://blog.csdn.net/dpjcn1990/article/details/92831760">https://blog.csdn.net/dpjcn1990/article/details/92831760</a></li>
+<li><a href="https://blog.csdn.net/notMine/article/details/79317782">https://blog.csdn.net/notMine/article/details/79317782</a></li>
+<li><a href="http://www.mculover666.cn/posts/3603126757/">http://www.mculover666.cn/posts/3603126757/</a>   (RT-Thread Oled)</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>ESP8266系列-资料收集</title>
     <url>/2017/08/06/1260.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="ESP8266-通用系类"><a href="#ESP8266-通用系类" class="headerlink" title="ESP8266 通用系类"></a>ESP8266 通用系类</h2><p>安信可科技: <a href="http://wiki.ai-thinker.com/esp8266">http://wiki.ai-thinker.com/esp8266</a><br>Jack’s LAB: <a href="http://wiki.jackslab.org/ESP8266">http://wiki.jackslab.org/ESP8266</a><br>乐鑫论坛: <a href="http://bbs.espressif.com/index.php">http://bbs.espressif.com/index.php</a></p>
@@ -1498,72 +1564,6 @@ echo $&#123;SPI_FLASH_SIZE&#125;0 | xxd -r -ps | dd of=$&#123;TARGET_DIR&#125;/$
       <tags>
         <tag>esp8266</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>ESP8266系列-连接OLED模块</title>
-    <url>/2020/04/09/8529.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="OLED-屏幕介绍"><a href="#OLED-屏幕介绍" class="headerlink" title="OLED 屏幕介绍"></a>OLED 屏幕介绍</h2><ul>
-<li>芯片型号 <a href="https://wenku.baidu.com/view/6d6497a53d1ec5da50e2524de518964bce84d233.html">SSD1306</a></li>
-<li>分辨率 128*64</li>
-<li>供电范围 直流 3.3-5v</li>
-<li>体积 27<em>27</em>2mm</li>
-<li>尺寸 <img src="/images/pasted-10.png" alt="upload successful"></li>
-<li>SPI 4线接法 <img src="/images/pasted-11.png" alt="upload successful"></li>
-<li>IIC 接法 <img src="/images/pasted-12.png" alt="upload successful"></li>
-</ul>
-<h3 id="OLED与ESP8266-4线SPI接线"><a href="#OLED与ESP8266-4线SPI接线" class="headerlink" title="OLED与ESP8266 4线SPI接线"></a>OLED与ESP8266 4线SPI接线</h3><table>
-<thead>
-<tr>
-<th align="left">ESP8266</th>
-<th align="left">OLED</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">IO_12</td>
-<td align="left">DC</td>
-</tr>
-<tr>
-<td align="left">IO_13</td>
-<td align="left">DIN(MOSI)</td>
-</tr>
-<tr>
-<td align="left">IO_14</td>
-<td align="left">CLK</td>
-</tr>
-<tr>
-<td align="left">IO_15</td>
-<td align="left">RST</td>
-</tr>
-<tr>
-<td align="left">GND</td>
-<td align="left">CS</td>
-</tr>
-</tbody></table>
-<h2 id="ESP8266-SPI"><a href="#ESP8266-SPI" class="headerlink" title="ESP8266 SPI"></a>ESP8266 SPI</h2><p><img src="/images/pasted-17.png" alt="upload successful"></p>
-<h2 id="U8g2库"><a href="#U8g2库" class="headerlink" title="U8g2库"></a>U8g2库</h2><p><a href="https://github.com/olikraus/u8g2/wiki/u8g2reference">官方api说明</a></p>
-<ul>
-<li>u8g2_SetFontMode<br>```c<br>/*<br>set one of:<br>  U8G2_FONT_MODE_TRANSPARENT<br>  U8G2_FONT_MODE_SOLID<br>  U8G2_FONT_MODE_NONE<br>This has been changed for the new font procedures  </li>
-</ul>
-<p>*/<br>void u8g2_SetFontMode(u8g2_t *u8g2, uint8_t is_transparent)</p>
-<pre><code>**说明:**定义字形和字符串绘制函数是否写入背景色（模式0 / solid，is_transparent = 0）或不写入背景颜色（模式1 /透明，is_transparent = 1）。 默认模式为0（字符的背景颜色被覆盖）。
-
-- u8g2_SetFontDirection</code></pre>
-<p>void u8g2_SetFontDirection(u8g2_t *u8g2, uint8_t dir)</p>
-<p>```</p>
-<h2 id="取模软件"><a href="#取模软件" class="headerlink" title="取模软件"></a>取模软件</h2><ul>
-<li><a href="https://tools.clz.me/">https://tools.clz.me/</a></li>
-<li><a href="https://github.com/coloz/image-to-bitmap-array">https://github.com/coloz/image-to-bitmap-array</a></li>
-</ul>
-<h2 id="天气获取API"><a href="#天气获取API" class="headerlink" title="天气获取API"></a>天气获取API</h2><p><a href="http://wthrcdn.etouch.cn/WeatherApi?city=%E5%B9%BF%E5%B7%9E">http://wthrcdn.etouch.cn/WeatherApi?city=%E5%B9%BF%E5%B7%9E</a></p>
-<h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><ul>
-<li><a href="https://www.jianshu.com/p/404907770c90">https://www.jianshu.com/p/404907770c90</a></li>
-<li><a href="https://www.cnblogs.com/huan-huan/p/8528307.html">https://www.cnblogs.com/huan-huan/p/8528307.html</a></li>
-<li><a href="https://mbb.eet-china.com/forum/topic/74077_1_1.html">https://mbb.eet-china.com/forum/topic/74077_1_1.html</a></li>
-<li><a href="https://blog.csdn.net/dpjcn1990/article/details/92831760">https://blog.csdn.net/dpjcn1990/article/details/92831760</a></li>
-<li><a href="https://blog.csdn.net/notMine/article/details/79317782">https://blog.csdn.net/notMine/article/details/79317782</a></li>
-<li><a href="http://www.mculover666.cn/posts/3603126757/">http://www.mculover666.cn/posts/3603126757/</a>   (RT-Thread Oled)</li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>Hexo插件-Hexo Admin</title>
@@ -1723,6 +1723,25 @@ search:
       </tags>
   </entry>
   <entry>
+    <title>Hexo第三方评论插件引用</title>
+    <url>/2017/08/01/6835.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="第三方插件-友言"><a href="#第三方插件-友言" class="headerlink" title="第三方插件-友言"></a>第三方插件-友言</h2><blockquote>
+<p>友言已经暂停服务了，又不能用<br>因公司业务调整，非常遗憾的向大家宣布JiaThis公司决定自2018年4月30日起关闭旗下“友言”业务。<br>因为关停“友言”业务给您造成的不便，我们深表歉意。</p>
+</blockquote>
+<ul>
+<li><a href="http://www.uyan.cc/">友言官网</a></li>
+<li><a href="http://www.jianshu.com/p/4729e92fddbe">相关教程 1 </a></li>
+<li><a href="http://www.qtdebug.com/hexo-uyan/">相关教程 2 </a></li>
+</ul>
+<a id="more"></a>
+
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo相关资源</title>
     <url>/2017/08/04/ddcb.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>中文网站 : <a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
@@ -1760,25 +1779,6 @@ search:
       <tags>
         <tag>智能硬件</tag>
         <tag>IoT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo第三方评论插件引用</title>
-    <url>/2017/08/01/6835.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="第三方插件-友言"><a href="#第三方插件-友言" class="headerlink" title="第三方插件-友言"></a>第三方插件-友言</h2><blockquote>
-<p>友言已经暂停服务了，又不能用<br>因公司业务调整，非常遗憾的向大家宣布JiaThis公司决定自2018年4月30日起关闭旗下“友言”业务。<br>因为关停“友言”业务给您造成的不便，我们深表歉意。</p>
-</blockquote>
-<ul>
-<li><a href="http://www.uyan.cc/">友言官网</a></li>
-<li><a href="http://www.jianshu.com/p/4729e92fddbe">相关教程 1 </a></li>
-<li><a href="http://www.qtdebug.com/hexo-uyan/">相关教程 2 </a></li>
-</ul>
-<a id="more"></a>
-
-]]></content>
-      <tags>
-        <tag>hexo</tag>
-        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -2015,6 +2015,19 @@ alex@ubuntu:/media/psf/Home/myself/C$ addr2line -e demo 080483e9
 <li><code>dmesg | grep demo</code> ：获得执行demo后的出错信息， 你可以将结果理解为日志， 其中的080483c9是一个地址， 正是这个地址出错了</li>
 <li><code>addr2line -e demo 080483e9</code> ：将出错地址转换成源代码对应的行， 结果为6， 也就是说源代码第6行有问题。 一看， 果然是，万恶的*p=0;被揪出来了。</li>
 </ol>
+]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux之SSH</title>
+    <url>/2018/12/18/720f.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
+<li><a href="https://linux.cn/article-5975-1.html">https://linux.cn/article-5975-1.html</a></li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">autossh -M 10109 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=false" -o "PasswordAuthentication=no" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -R ubuntu.lxj-life.com:10108:localhost:22 ubuntu@ubuntu.lxj-life.com</code></pre>
 ]]></content>
       <tags>
         <tag>工具</tag>
@@ -3285,19 +3298,6 @@ clean:
       </tags>
   </entry>
   <entry>
-    <title>Linux之SSH</title>
-    <url>/2018/12/18/720f.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
-<li><a href="https://linux.cn/article-5975-1.html">https://linux.cn/article-5975-1.html</a></li>
-</ul>
-<pre class=" language-sh"><code class="language-sh">autossh -M 10109 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=false" -o "PasswordAuthentication=no" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -R ubuntu.lxj-life.com:10108:localhost:22 ubuntu@ubuntu.lxj-life.com</code></pre>
-]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux之实用技能</title>
     <url>/2017/06/06/ef18.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="查看机器是多少位"><a href="#查看机器是多少位" class="headerlink" title="查看机器是多少位"></a>查看机器是多少位</h2><hr>
@@ -3625,128 +3625,6 @@ usage: nc [-46CDdFhklNnrStUuvZz] [-I length] [-i interval] [-M ttl]
       </tags>
   </entry>
   <entry>
-    <title>MarkDonw语法</title>
-    <url>/2017/06/07/9530.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>MarkDonw语法</p>
-<p>[TOC] 生成目录</p>
-<h2 id="生成目录"><a href="#生成目录" class="headerlink" title="生成目录"></a>生成目录</h2><pre><code> [TOC]     生成目录</code></pre>
-<h2 id="嵌套列表"><a href="#嵌套列表" class="headerlink" title="嵌套列表"></a>嵌套列表</h2><p>-+*可循环使用，但符号之后的空格不能少，符号之前的空格也不能少</p>
-<pre><code>- 嵌套列表1
- + 嵌套列表2
- + 嵌套列表3
-  - 嵌套列表4
-   * 嵌套列表5
-- 嵌套列表6</code></pre>
-<ul>
-<li>嵌套列表1</li>
-</ul>
-<ul>
-<li>嵌套列表2</li>
-<li>嵌套列表3</li>
-</ul>
-<ul>
-<li>嵌套列表4</li>
-</ul>
-<ul>
-<li>嵌套列表5</li>
-</ul>
-<ul>
-<li>嵌套列表6</li>
-</ul>
-<h2 id="图片链接"><a href="#图片链接" class="headerlink" title="图片链接"></a>图片链接</h2><pre><code>![GitHub Mark](http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png &quot;GitHub Mark&quot;)</code></pre>
-<p><img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Mark" title="GitHub Mark"></p>
-<h2 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h2><pre><code>\\ 反斜杠
-
-\` 反引号
-
-\* 星号
-
-\_ 下划线
-
-\&#123;\&#125; 大括号
-
-\[\] 中括号
-
-\(\) 小括号
-
-\# 井号
-
-\+ 加号
-
-\- 减号
-
-\. 英文句号
-
-\! 感叹号</code></pre>
-<p>\ 反斜杠</p>
-<p>` 反引号</p>
-<p>* 星号</p>
-<p>_ 下划线</p>
-<p>{} 大括号</p>
-<p>[] 中括号</p>
-<p>() 小括号</p>
-<p># 井号</p>
-<p>+ 加号</p>
-<p>- 减号</p>
-<p>. 英文句号</p>
-<p>! 感叹号</p>
-<h2 id="段落缩进（空格）"><a href="#段落缩进（空格）" class="headerlink" title="段落缩进（空格）"></a>段落缩进（空格）</h2><pre><code>半方大的空白&amp;ensp;或&amp;#8194;看，飞碟
-全方大的空白&amp;emsp;或&amp;#8195;看，飞碟
-不断行的空白格&amp;nbsp;或&amp;#160;看，飞碟
-&amp;emsp;&amp;emsp;段落从此开始。</code></pre>
-<h2 id="字体、字号、颜色"><a href="#字体、字号、颜色" class="headerlink" title="字体、字号、颜色"></a>字体、字号、颜色</h2><pre><code>&lt;font face=&quot;黑体&quot;&gt;我是黑体字&lt;/font&gt;
-&lt;font face=&quot;微软雅黑&quot;&gt;我是微软雅黑&lt;/font&gt;
-&lt;font face=&quot;STCAIYUN&quot;&gt;我是华文彩云&lt;/font&gt;
-&lt;font color=#0099ff size=12 face=&quot;黑体&quot;&gt;黑体&lt;/font&gt;
-&lt;font color=#00ffff size=3&gt;null&lt;/font&gt;
-&lt;font color=gray size=5&gt;gray&lt;/font&gt;</code></pre>
-<h2 id="行内标签"><a href="#行内标签" class="headerlink" title="行内标签"></a>行内标签</h2><pre><code>快捷键 `Ctrl + D` 来收藏本页</code></pre>
-<p>快捷键 <code>Ctrl + D</code> 来收藏本页</p>
-<h2 id="数学公式支持"><a href="#数学公式支持" class="headerlink" title="数学公式支持"></a>数学公式支持</h2><p><code>next</code>主题为例子</p>
-<ul>
-<li>打开根目录下<code>_config.yml</code> , 添加<code>mathjax: true</code>;</li>
-<li>在主题目录下<code>_config.yml</code> , 打开使能<pre><code># MathJax Support
-mathjax:
-enable: true
-per_page: true
-cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML</code></pre>
-</li>
-<li>在需要数学公式的文章头部添加支持<code>mathjax: true</code><pre><code></code></pre>
-</li>
-</ul>
-<hr>
-<p>title: 基本算法之二叉树<br>date: 2018-03-25 15:06:11<br>tags: [算法,二叉树]<br>categories: [算法]<br>mathjax: true<br>Author: AlexLin</p>
-<hr>
-<pre><code>
-#### $ 表示行内公式：
-
-质能守恒方程可以用一个很简洁的方程式 `$E=mc^2$` 来表达：$E=mc^2$。
-
-#### $$ 表示整行公式：
-
-`$$\sum_&#123;i=1&#125;^n a_i=0$$`
-$$\sum_&#123;i=1&#125;^n a_i=0$$
-
-`$$f(x_1,x_2,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2$$`
-$$f(x_1,x_2,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2$$
-`$$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$`
-$$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$
-</code></pre>
-<p>$$ i\hbar\frac{\partial \psi}{\partial t}= \frac{-\hbar^2}{2m}\left(\frac{\partial^2}{\partial x^2}+ \frac{\partial^2}{\partial y^2}+ \frac{\partial^2}{\partial z^2}\right) \psi + V \psi.$$</p>
-<p>```<br>$$ i\hbar\frac{\partial \psi}{\partial t}= \frac{-\hbar^2}{2m}\left(\frac{\partial^2}{\partial x^2}+ \frac{\partial^2}{\partial y^2}+ \frac{\partial^2}{\partial z^2}\right) \psi + V \psi.$$</p>
-<p>更多语法:<a href="https://www.mathjax.org/">https://www.mathjax.org/</a>、<a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference</a></p>
-<h2 id="Html-Color"><a href="#Html-Color" class="headerlink" title="Html Color"></a>Html Color</h2><p>[COLOR][1]</p>
-<div align=center>
-![color][2]
-</div>
-[1]: https://html-color-codes.info/
-[2]: https://upload-images.jianshu.io/upload_images/1736256-b729fdf4393a7989.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240 (color)]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux之服务安装</title>
     <url>/2017/06/06/9372.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="ssh-server-安装"><a href="#ssh-server-安装" class="headerlink" title="ssh-server 安装"></a>ssh-server 安装</h1><p><strong>SSH分客户端</strong></p>
@@ -3942,6 +3820,159 @@ Environment variables are:
       </tags>
   </entry>
   <entry>
+    <title>Lua之 loadfile ,dofile, loadstring，require</title>
+    <url>/2017/03/26/4bf8.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h3 id="loadfile——只编译，不运行"><a href="#loadfile——只编译，不运行" class="headerlink" title="loadfile——只编译，不运行"></a>loadfile——只编译，不运行</h3><p>    1.功能：载入文件但不执行代码块，对于相同的文件每次都会执行。只是编译代码，然后将编译结果作为一个函数返回<br>    2.调用：loadfile(“filename”)<br>    3.错误处理：不引发错误，只返回错误值但不处理错误,即返回nil和错误消息<br>    4.优点：调用一次之后可以多次调用返回的结果（即函数），<br>      即“多次调用”只需编译一次（注：这里的多次调用   是指多次调用返回的函数，而不是多次调用loadfile）</p>
+<a id="more"></a>
+
+<p><strong>dofile可如下定义：</strong></p>
+<pre class=" language-lua"><code class="language-lua">    <span class="token keyword">function</span> <span class="token function">dofile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span>
+    　　<span class="token keyword">local</span> f <span class="token operator">=</span> <span class="token function">assert</span><span class="token punctuation">(</span><span class="token function">loadfile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--调用loadfile（的返回结果）并可处理错误</span>
+    <span class="token keyword">return</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">end</span></code></pre>
+<p><code>注：加载了程序块并没有定义其中的函数。在Lua中，函数定义是一种赋值操作，是在运行时才完成的操作。 例如：一个文件test.lua中有一个函数 function foo(x) print(x) end ,执行如下代码： 　　　f = loadfile(test.lua) --加载程序块，此时还没有定义函数foo 　　　f() --运行加载的程序块，此时就定义了函数foo      foo(&quot;hello lua&quot;) --&gt;hello lua --经过上面的步骤才能调用foo    </code></p>
+<h3 id="dofile——执行"><a href="#dofile——执行" class="headerlink" title="dofile——执行"></a>dofile——执行</h3><pre><code>1.功能：载入文件并执行代码块，对于相同的文件每次都会执行
+2.调用：dofile(&quot;filename&quot;)
+3.错误处理：如果代码块中有错误则会引发错误
+4.优点：对简单任务而言，非常便捷
+5.缺点：每次载入文件时都会执行程序块</code></pre>
+<p>    6.定位：内置操作，辅助函数</p>
+<h3 id="require——我只执行一次"><a href="#require——我只执行一次" class="headerlink" title="require——我只执行一次"></a>require——我只执行一次</h3><pre><code>require和dofile有点像，不过又很不一样，require在第一次加载文件的时候，会执行里面的代码。
+但是，第二次之后，再次加载文件，则不会重复执行了。换句话说，它会保存已经加载过的文件，不会重复加载。</code></pre>
+<h3 id="loadstring"><a href="#loadstring" class="headerlink" title="loadstring"></a>loadstring</h3><pre><code>1.特点：功能强大，但开销大；
+2.典型用处：执行外部代码，如：用户的输入
+3.错误错里：代码中如果有语法错误就会返回nil
+4.理解：f = loadstring(&quot;i = i+1&quot;)  可理解为（但不完全是）f = function()  i = i+1  end 
+(注：这里的变量&quot;i&quot;是全局变量，不是指局部变量，如果没有定义全局变量&quot;i&quot;,调用f()则会报错！，即loadstring   不涉及词法域)</code></pre>
+]]></content>
+      <tags>
+        <tag>lua</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MarkDonw语法</title>
+    <url>/2017/06/07/9530.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>MarkDonw语法</p>
+<p>[TOC] 生成目录</p>
+<h2 id="生成目录"><a href="#生成目录" class="headerlink" title="生成目录"></a>生成目录</h2><pre><code> [TOC]     生成目录</code></pre>
+<h2 id="嵌套列表"><a href="#嵌套列表" class="headerlink" title="嵌套列表"></a>嵌套列表</h2><p>-+*可循环使用，但符号之后的空格不能少，符号之前的空格也不能少</p>
+<pre><code>- 嵌套列表1
+ + 嵌套列表2
+ + 嵌套列表3
+  - 嵌套列表4
+   * 嵌套列表5
+- 嵌套列表6</code></pre>
+<ul>
+<li>嵌套列表1</li>
+</ul>
+<ul>
+<li>嵌套列表2</li>
+<li>嵌套列表3</li>
+</ul>
+<ul>
+<li>嵌套列表4</li>
+</ul>
+<ul>
+<li>嵌套列表5</li>
+</ul>
+<ul>
+<li>嵌套列表6</li>
+</ul>
+<h2 id="图片链接"><a href="#图片链接" class="headerlink" title="图片链接"></a>图片链接</h2><pre><code>![GitHub Mark](http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png &quot;GitHub Mark&quot;)</code></pre>
+<p><img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Mark" title="GitHub Mark"></p>
+<h2 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h2><pre><code>\\ 反斜杠
+
+\` 反引号
+
+\* 星号
+
+\_ 下划线
+
+\&#123;\&#125; 大括号
+
+\[\] 中括号
+
+\(\) 小括号
+
+\# 井号
+
+\+ 加号
+
+\- 减号
+
+\. 英文句号
+
+\! 感叹号</code></pre>
+<p>\ 反斜杠</p>
+<p>` 反引号</p>
+<p>* 星号</p>
+<p>_ 下划线</p>
+<p>{} 大括号</p>
+<p>[] 中括号</p>
+<p>() 小括号</p>
+<p># 井号</p>
+<p>+ 加号</p>
+<p>- 减号</p>
+<p>. 英文句号</p>
+<p>! 感叹号</p>
+<h2 id="段落缩进（空格）"><a href="#段落缩进（空格）" class="headerlink" title="段落缩进（空格）"></a>段落缩进（空格）</h2><pre><code>半方大的空白&amp;ensp;或&amp;#8194;看，飞碟
+全方大的空白&amp;emsp;或&amp;#8195;看，飞碟
+不断行的空白格&amp;nbsp;或&amp;#160;看，飞碟
+&amp;emsp;&amp;emsp;段落从此开始。</code></pre>
+<h2 id="字体、字号、颜色"><a href="#字体、字号、颜色" class="headerlink" title="字体、字号、颜色"></a>字体、字号、颜色</h2><pre><code>&lt;font face=&quot;黑体&quot;&gt;我是黑体字&lt;/font&gt;
+&lt;font face=&quot;微软雅黑&quot;&gt;我是微软雅黑&lt;/font&gt;
+&lt;font face=&quot;STCAIYUN&quot;&gt;我是华文彩云&lt;/font&gt;
+&lt;font color=#0099ff size=12 face=&quot;黑体&quot;&gt;黑体&lt;/font&gt;
+&lt;font color=#00ffff size=3&gt;null&lt;/font&gt;
+&lt;font color=gray size=5&gt;gray&lt;/font&gt;</code></pre>
+<h2 id="行内标签"><a href="#行内标签" class="headerlink" title="行内标签"></a>行内标签</h2><pre><code>快捷键 `Ctrl + D` 来收藏本页</code></pre>
+<p>快捷键 <code>Ctrl + D</code> 来收藏本页</p>
+<h2 id="数学公式支持"><a href="#数学公式支持" class="headerlink" title="数学公式支持"></a>数学公式支持</h2><p><code>next</code>主题为例子</p>
+<ul>
+<li>打开根目录下<code>_config.yml</code> , 添加<code>mathjax: true</code>;</li>
+<li>在主题目录下<code>_config.yml</code> , 打开使能<pre><code># MathJax Support
+mathjax:
+enable: true
+per_page: true
+cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML</code></pre>
+</li>
+<li>在需要数学公式的文章头部添加支持<code>mathjax: true</code><pre><code></code></pre>
+</li>
+</ul>
+<hr>
+<p>title: 基本算法之二叉树<br>date: 2018-03-25 15:06:11<br>tags: [算法,二叉树]<br>categories: [算法]<br>mathjax: true<br>Author: AlexLin</p>
+<hr>
+<pre><code>
+#### $ 表示行内公式：
+
+质能守恒方程可以用一个很简洁的方程式 `$E=mc^2$` 来表达：$E=mc^2$。
+
+#### $$ 表示整行公式：
+
+`$$\sum_&#123;i=1&#125;^n a_i=0$$`
+$$\sum_&#123;i=1&#125;^n a_i=0$$
+
+`$$f(x_1,x_2,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2$$`
+$$f(x_1,x_2,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2$$
+`$$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$`
+$$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$$
+</code></pre>
+<p>$$ i\hbar\frac{\partial \psi}{\partial t}= \frac{-\hbar^2}{2m}\left(\frac{\partial^2}{\partial x^2}+ \frac{\partial^2}{\partial y^2}+ \frac{\partial^2}{\partial z^2}\right) \psi + V \psi.$$</p>
+<p>```<br>$$ i\hbar\frac{\partial \psi}{\partial t}= \frac{-\hbar^2}{2m}\left(\frac{\partial^2}{\partial x^2}+ \frac{\partial^2}{\partial y^2}+ \frac{\partial^2}{\partial z^2}\right) \psi + V \psi.$$</p>
+<p>更多语法:<a href="https://www.mathjax.org/">https://www.mathjax.org/</a>、<a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference</a></p>
+<h2 id="Html-Color"><a href="#Html-Color" class="headerlink" title="Html Color"></a>Html Color</h2><p>[COLOR][1]</p>
+<div align=center>
+![color][2]
+</div>
+[1]: https://html-color-codes.info/
+[2]: https://upload-images.jianshu.io/upload_images/1736256-b729fdf4393a7989.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240 (color)]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>NB-IoT 记录</title>
     <url>/2020/07/09/26e6.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="NB状态"><a href="#NB状态" class="headerlink" title="NB状态"></a>NB状态</h2><ul>
@@ -3974,37 +4005,6 @@ Environment variables are:
 ]]></content>
   </entry>
   <entry>
-    <title>Lua之 loadfile ,dofile, loadstring，require</title>
-    <url>/2017/03/26/4bf8.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h3 id="loadfile——只编译，不运行"><a href="#loadfile——只编译，不运行" class="headerlink" title="loadfile——只编译，不运行"></a>loadfile——只编译，不运行</h3><p>    1.功能：载入文件但不执行代码块，对于相同的文件每次都会执行。只是编译代码，然后将编译结果作为一个函数返回<br>    2.调用：loadfile(“filename”)<br>    3.错误处理：不引发错误，只返回错误值但不处理错误,即返回nil和错误消息<br>    4.优点：调用一次之后可以多次调用返回的结果（即函数），<br>      即“多次调用”只需编译一次（注：这里的多次调用   是指多次调用返回的函数，而不是多次调用loadfile）</p>
-<a id="more"></a>
-
-<p><strong>dofile可如下定义：</strong></p>
-<pre class=" language-lua"><code class="language-lua">    <span class="token keyword">function</span> <span class="token function">dofile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span>
-    　　<span class="token keyword">local</span> f <span class="token operator">=</span> <span class="token function">assert</span><span class="token punctuation">(</span><span class="token function">loadfile</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--调用loadfile（的返回结果）并可处理错误</span>
-    <span class="token keyword">return</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">end</span></code></pre>
-<p><code>注：加载了程序块并没有定义其中的函数。在Lua中，函数定义是一种赋值操作，是在运行时才完成的操作。 例如：一个文件test.lua中有一个函数 function foo(x) print(x) end ,执行如下代码： 　　　f = loadfile(test.lua) --加载程序块，此时还没有定义函数foo 　　　f() --运行加载的程序块，此时就定义了函数foo      foo(&quot;hello lua&quot;) --&gt;hello lua --经过上面的步骤才能调用foo    </code></p>
-<h3 id="dofile——执行"><a href="#dofile——执行" class="headerlink" title="dofile——执行"></a>dofile——执行</h3><pre><code>1.功能：载入文件并执行代码块，对于相同的文件每次都会执行
-2.调用：dofile(&quot;filename&quot;)
-3.错误处理：如果代码块中有错误则会引发错误
-4.优点：对简单任务而言，非常便捷
-5.缺点：每次载入文件时都会执行程序块</code></pre>
-<p>    6.定位：内置操作，辅助函数</p>
-<h3 id="require——我只执行一次"><a href="#require——我只执行一次" class="headerlink" title="require——我只执行一次"></a>require——我只执行一次</h3><pre><code>require和dofile有点像，不过又很不一样，require在第一次加载文件的时候，会执行里面的代码。
-但是，第二次之后，再次加载文件，则不会重复执行了。换句话说，它会保存已经加载过的文件，不会重复加载。</code></pre>
-<h3 id="loadstring"><a href="#loadstring" class="headerlink" title="loadstring"></a>loadstring</h3><pre><code>1.特点：功能强大，但开销大；
-2.典型用处：执行外部代码，如：用户的输入
-3.错误错里：代码中如果有语法错误就会返回nil
-4.理解：f = loadstring(&quot;i = i+1&quot;)  可理解为（但不完全是）f = function()  i = i+1  end 
-(注：这里的变量&quot;i&quot;是全局变量，不是指局部变量，如果没有定义全局变量&quot;i&quot;,调用f()则会报错！，即loadstring   不涉及词法域)</code></pre>
-]]></content>
-      <tags>
-        <tag>lua</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>OneNet OTA 操作笔记</title>
     <url>/2020/09/15/91bc.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="OneNet-OTA-M5311-笔记"><a href="#OneNet-OTA-M5311-笔记" class="headerlink" title="OneNet OTA M5311 笔记"></a>OneNet OTA M5311 笔记</h2><ul>
@@ -4022,6 +4022,34 @@ Environment variables are:
 <p>到此，平台端操作完成，关联的设备上电就会查询是否有升级包，若检测到升级包则能看到设备升级；</p>
 <h3 id="OTA时设备端关键日志"><a href="#OTA时设备端关键日志" class="headerlink" title="OTA时设备端关键日志"></a>OTA时设备端关键日志</h3><p><img src="/images/pasted-103.png" alt="upload successful"><br><img src="/images/pasted-104.png" alt="upload successful"><br>OneNet平台也可以看到一些OTA数据统计<br><img src="/images/pasted-105.png" alt="upload successful"></p>
 <h3 id="设备端M5311固件生产"><a href="#设备端M5311固件生产" class="headerlink" title="设备端M5311固件生产"></a>设备端M5311固件生产</h3>]]></content>
+  </entry>
+  <entry>
+    <title>OpenSSL 笔记</title>
+    <url>/2020/07/08/dfdf.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一些加密知识"><a href="#一些加密知识" class="headerlink" title="一些加密知识"></a>一些加密知识</h2><ul>
+<li>摘要算法 : </li>
+<li>公钥算法</li>
+<li>数字签名</li>
+</ul>
+<p><a href="http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html">http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html</a><br><a href="http://www.jinbuguo.com/linux/openssl_install.html">http://www.jinbuguo.com/linux/openssl_install.html</a><br><a href="https://blog.csdn.net/zzhongcy/article/details/21990859">https://blog.csdn.net/zzhongcy/article/details/21990859</a></p>
+<a id="more"></a>
+
+<h2 id="OpenSSL-官网"><a href="#OpenSSL-官网" class="headerlink" title="OpenSSL 官网"></a>OpenSSL 官网</h2><p><a href="https://www.openssl.org/">https://www.openssl.org/</a></p>
+<h2 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h2><ul>
+<li>安装包 : openssl-1.1.0f.tar.gz</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">tar -xzf openssl-1.1.0f.tar.gz
+# 配置安装路径和生成makefile
+./config --prefix=/home/gagent/alexLam/gizwis_sdk/openssl_alexLin_20200702
+make
+make install</code></pre>
+<p><strong>备注：</strong>运行./config –prefix=/usr/local/openssl (更多选项用./config –help 来查看),可用的选项有： no-mdc2、 no-cast no-rc2、 no-rc5、 no-ripemd、 no-rc4 no-des 、 no-md2、 no-md4、 no-idea 、no-aes、 no-bf、 no-err、 no-dsa、 no-dh、 no-ec、 no-hw、 no-asm、 no-krb5、 no-dso 、 no-threads 、no-zlib、 -DOPENSSL_NO_HASH_COMP、 -DOPENSSL_NO_ERR、 -DOPENSSL_NO_HW 、-DOPENSSL_NO_OCSP、 -DOPENSSL_NO_SHA256 和-DOPENSSL_NO_SHA512 等。去掉不必要的内容可以减少生成库的大小。 若要生成 debug 版本的库和可执行程序加-g 或者-g3(openssl 中有很多宏，需要调试学习最好加上-g3)。</p>
+<h2 id="OpenSSL-编程"><a href="#OpenSSL-编程" class="headerlink" title="OpenSSL 编程"></a>OpenSSL 编程</h2><h3 id="OpenSSL-服务端编写步骤"><a href="#OpenSSL-服务端编写步骤" class="headerlink" title="OpenSSL 服务端编写步骤"></a>OpenSSL 服务端编写步骤</h3><p><img src="/images/pasted-57.png" alt="upload successful"></p>
+<blockquote>
+<p><strong>绿色的胃普通socket 操作，其他的为ssl 操作。</strong></p>
+</blockquote>
+<h3 id="OpenSSL-客户端编写步骤"><a href="#OpenSSL-客户端编写步骤" class="headerlink" title="OpenSSL 客户端编写步骤"></a>OpenSSL 客户端编写步骤</h3><p><img src="/images/pasted-58.png" alt="upload successful"></p>
+]]></content>
   </entry>
   <entry>
     <title>PC小技巧</title>
@@ -4061,59 +4089,6 @@ Environment variables are:
 <li>安装</li>
 </ul>
 <pre class=" language-py"><code class="language-py">pip install -r requirements.txt</code></pre>
-]]></content>
-  </entry>
-  <entry>
-    <title>Qt打包发布</title>
-    <url>/2022/06/25/d67d.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="打包步骤"><a href="#打包步骤" class="headerlink" title="打包步骤"></a>打包步骤</h2><ol>
-<li>把当前Qt项目下的编译输出exe文件和引用的第三方库，如<code>dll</code>文件拷贝到新创建的目录下;</li>
-<li>打开对应的终端,如下<br>  <img src="/images/Qt-1.png" alt="Qt"></li>
-<li>进入到第一步的目录下，然后执行命令： <code>windeployqt xxx.exe</code><br> <img src="/images/Qt-2.png" alt="Qt"></li>
-<li>打开QT程序打包工具<code>Enigma Virtual Box</code><img src="/images/Qt-3.png" alt="Enigma Virtual Box"></li>
-<li>设置如下<br><img src="/images/Qt-4.png" alt="Qt"><br><img src="/images/Qt-5.png" alt="Qt"></li>
-<li>成功打包后如同<br><img src="/images/Qt-6.png" alt="Qt"></li>
-<li>然后再目录下发现有文件:<code>xxx_boxed.exe</code>即为独立可执行文件；</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>Qt</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>OpenSSL 笔记</title>
-    <url>/2020/07/08/dfdf.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一些加密知识"><a href="#一些加密知识" class="headerlink" title="一些加密知识"></a>一些加密知识</h2><ul>
-<li>摘要算法 : </li>
-<li>公钥算法</li>
-<li>数字签名</li>
-</ul>
-<p><a href="http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html">http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html</a><br><a href="http://www.jinbuguo.com/linux/openssl_install.html">http://www.jinbuguo.com/linux/openssl_install.html</a><br><a href="https://blog.csdn.net/zzhongcy/article/details/21990859">https://blog.csdn.net/zzhongcy/article/details/21990859</a></p>
-<a id="more"></a>
-
-<h2 id="OpenSSL-官网"><a href="#OpenSSL-官网" class="headerlink" title="OpenSSL 官网"></a>OpenSSL 官网</h2><p><a href="https://www.openssl.org/">https://www.openssl.org/</a></p>
-<h2 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h2><ul>
-<li>安装包 : openssl-1.1.0f.tar.gz</li>
-</ul>
-<pre class=" language-sh"><code class="language-sh">tar -xzf openssl-1.1.0f.tar.gz
-# 配置安装路径和生成makefile
-./config --prefix=/home/gagent/alexLam/gizwis_sdk/openssl_alexLin_20200702
-make
-make install</code></pre>
-<p><strong>备注：</strong>运行./config –prefix=/usr/local/openssl (更多选项用./config –help 来查看),可用的选项有： no-mdc2、 no-cast no-rc2、 no-rc5、 no-ripemd、 no-rc4 no-des 、 no-md2、 no-md4、 no-idea 、no-aes、 no-bf、 no-err、 no-dsa、 no-dh、 no-ec、 no-hw、 no-asm、 no-krb5、 no-dso 、 no-threads 、no-zlib、 -DOPENSSL_NO_HASH_COMP、 -DOPENSSL_NO_ERR、 -DOPENSSL_NO_HW 、-DOPENSSL_NO_OCSP、 -DOPENSSL_NO_SHA256 和-DOPENSSL_NO_SHA512 等。去掉不必要的内容可以减少生成库的大小。 若要生成 debug 版本的库和可执行程序加-g 或者-g3(openssl 中有很多宏，需要调试学习最好加上-g3)。</p>
-<h2 id="OpenSSL-编程"><a href="#OpenSSL-编程" class="headerlink" title="OpenSSL 编程"></a>OpenSSL 编程</h2><h3 id="OpenSSL-服务端编写步骤"><a href="#OpenSSL-服务端编写步骤" class="headerlink" title="OpenSSL 服务端编写步骤"></a>OpenSSL 服务端编写步骤</h3><p><img src="/images/pasted-57.png" alt="upload successful"></p>
-<blockquote>
-<p><strong>绿色的胃普通socket 操作，其他的为ssl 操作。</strong></p>
-</blockquote>
-<h3 id="OpenSSL-客户端编写步骤"><a href="#OpenSSL-客户端编写步骤" class="headerlink" title="OpenSSL 客户端编写步骤"></a>OpenSSL 客户端编写步骤</h3><p><img src="/images/pasted-58.png" alt="upload successful"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>QT 笔记</title>
-    <url>/2020/05/04/8182.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><ul>
-<li> <a href="https://doc.qt.io/qt-5/index.html">官方文档</a></li>
-</ul>
 ]]></content>
   </entry>
   <entry>
@@ -4211,34 +4186,12 @@ make install</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>SSL握手过程</title>
-    <url>/2018/03/26/b45f.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div align="center">
-![hand][1]
-</div>
-
-<a id="more"></a>
-
-<h2 id="SSL-握手目的"><a href="#SSL-握手目的" class="headerlink" title="SSL 握手目的"></a>SSL 握手目的</h2><ol>
-<li>客户端与服务器需要就一组用于保护数据的算法达成一致；</li>
-<li>它们需要确立一组由那些算法所使用的加密密钥；</li>
-<li>握手还可以选择对客户端进行认证(单向/双向 认证)。</li>
-</ol>
-<h2 id="SSL-四次握手过程"><a href="#SSL-四次握手过程" class="headerlink" title="SSL 四次握手过程"></a>SSL 四次握手过程</h2><p>1、客户端请求建立SSL链接，并向服务端发送一个随机数–Client random和客户端支持的加密方法，比如RSA公钥加密，此时是明文传输。<br>2、服务端回复一种客户端支持的加密方法、一个随机数–Server random、授信的服务器证书和非对称加密的公钥。<br>3、客户端收到服务端的回复后利用服务端的公钥，加上新的随机数–Premaster secret 通过服务端下发的公钥及加密方法进行加密，发送给服务器。<br>4、服务端收到客户端的回复，利用已知的加解密方式进行解密，同时利用Client random、Server random和Premaster secret通过一定的算法生成HTTP链接数据传输的对称加密key – session key</p>
-<p><strong>此后通讯基于 sessionkey 对称加密进行</strong></p>
-<p>参考:</p>
-<ul>
-<li><a href="http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html">http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html</a></li>
-<li><a href="https://blog.csdn.net/zxk364961978/article/details/54809008">https://blog.csdn.net/zxk364961978/article/details/54809008</a></li>
+    <title>QT 笔记</title>
+    <url>/2020/05/04/8182.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><ul>
+<li> <a href="https://doc.qt.io/qt-5/index.html">官方文档</a></li>
 </ul>
 ]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>ssl</tag>
-      </tags>
   </entry>
   <entry>
     <title>STM32 命名规则</title>
@@ -4274,6 +4227,36 @@ hd：高密度产品，FLASH大于128</code></pre>
       <tags>
         <tag>ST</tag>
         <tag>STM32</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SSL握手过程</title>
+    <url>/2018/03/26/b45f.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div align="center">
+![hand][1]
+</div>
+
+<a id="more"></a>
+
+<h2 id="SSL-握手目的"><a href="#SSL-握手目的" class="headerlink" title="SSL 握手目的"></a>SSL 握手目的</h2><ol>
+<li>客户端与服务器需要就一组用于保护数据的算法达成一致；</li>
+<li>它们需要确立一组由那些算法所使用的加密密钥；</li>
+<li>握手还可以选择对客户端进行认证(单向/双向 认证)。</li>
+</ol>
+<h2 id="SSL-四次握手过程"><a href="#SSL-四次握手过程" class="headerlink" title="SSL 四次握手过程"></a>SSL 四次握手过程</h2><p>1、客户端请求建立SSL链接，并向服务端发送一个随机数–Client random和客户端支持的加密方法，比如RSA公钥加密，此时是明文传输。<br>2、服务端回复一种客户端支持的加密方法、一个随机数–Server random、授信的服务器证书和非对称加密的公钥。<br>3、客户端收到服务端的回复后利用服务端的公钥，加上新的随机数–Premaster secret 通过服务端下发的公钥及加密方法进行加密，发送给服务器。<br>4、服务端收到客户端的回复，利用已知的加解密方式进行解密，同时利用Client random、Server random和Premaster secret通过一定的算法生成HTTP链接数据传输的对称加密key – session key</p>
+<p><strong>此后通讯基于 sessionkey 对称加密进行</strong></p>
+<p>参考:</p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html">http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html</a></li>
+<li><a href="https://blog.csdn.net/zxk364961978/article/details/54809008">https://blog.csdn.net/zxk364961978/article/details/54809008</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>ssl</tag>
       </tags>
   </entry>
   <entry>
@@ -4318,6 +4301,323 @@ returnadc;//返回最近一次ADCx规则组的转换结果
         <tag>ST</tag>
         <tag>STM32</tag>
         <tag>ADC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>STM8 命名规则</title>
+    <url>/2017/03/26/3ec7.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<p><strong>STM8命名规则示列：STM8S005K6T6Cxxx</strong>代表的意义为： 超值型 STM8内核（可以理解为8位51增强型内核）MCU,LQFP-32封装，32KB FLASH容量，温度范围-40℃-85℃；（工业级）<br><strong>具体分解如下：</strong></p>
+<a id="more"></a>
+
+<p>|<strong>STM8</strong>|<strong>S</strong>|<strong>005</strong>|<strong>K</strong>|<strong>6</strong>|<strong>T</strong>|<strong>6</strong>|<strong>C</strong>|<strong>XXX</strong>|<br>|-|-|<br>|1|2|3|4|5|6|7|8|9</p>
+<p><strong>1.产品系列:</strong><br>STM8单片机包括以下几个系列：<br>STM8： 8位MCU； STM8A：8位自动MCU； STM8T：8位触摸感应MCU； STM8TL：8位触摸感应低电压MCU；<br><strong>2.产品类型:</strong><br>S：标准型； L：低电压型；<br><strong>3.产品子系列：</strong><br>005：超值型STM8S005X，速度16MHz； 051：超低压ULTRA串口； 052：带LCD； 007：ARM3超值型，速度24 MHz； 00x：超值型； 003：子系列； 105：基本型STM8S1005X； 10X：基本型； 103：子系列； 207：中间层的外围设定; 208：所有层的外围设定; 903：903子系列; 151：超低压ULTRA串口; 152：超低压ULTRA串口带LCD; 101：子系列；<br><strong>4.管脚数</strong><br>F：20PIN；G：28PIN；K：32PIN；S：44PIN；C：48PIN；R：64PIN；M：80PIN；<br><strong>5.Flash存存容量</strong><br>1：2KB flash；（小容量）; 2：4KB flash；（小容量）; 3：8KB flash；（小容量）; 4：16KB flash；（小容量）; 6：32KB flash；（小容量）; 8：64KB flash；（中容量）; B：128KB flash；（中容量）; C：256KB flash；（大容量）; D：384KB flash；（大容量）; E：512KB flash；（大容量）; F：768KB flash；（大容量）; G：1MKB flash；（大容量）<br><strong>6.封装</strong><br>T：LQFP； P：TSSOP； U：UFQFPN； B：SDIP； M：SO； Y：WLCSP；<br><strong>7.温度范围</strong><br>3：-40℃-125℃；（工业级）; 6：-40℃-85℃；（工业级）; 7：-40℃-105℃；（工业级）<br><strong>8.包装尺寸</strong><br>无特性：0.5mm；C：0.8mm; A：0.55mm的UFQFPN；Blank：0.5mm或0.65mm;<br>低压101系列的A：COMP_REF可变；Blank：COMP_REF不可变;<br>低压162系列的D：VDD的范围为1.8V-3.6V，且BOR使能； Blank：VDD的范围为1.8V-3.6V，且BOR不使能;<br><strong>9.包装方式：</strong><br>TR：带卷；无特性：盘装；</p>
+<hr>
+<p><img src="http://upload-images.jianshu.io/upload_images/1736256-f177ef8447b808f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="STM8 MCU 选型列表"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1736256-d448c89177176b7e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="STM8L101F3P6"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1736256-37063209962e156c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="原理图"></p>
+]]></content>
+      <tags>
+        <tag>ST</tag>
+        <tag>STM8</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>tcpDump</title>
+    <url>/2017/07/01/154.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h2 id="Linux-混杂模式设置"><a href="#Linux-混杂模式设置" class="headerlink" title="Linux 混杂模式设置"></a>Linux 混杂模式设置</h2><p><strong>1. 查看网卡混杂模式状态</strong></p>
+<pre class=" language-SH"><code class="language-SH">alex@ubuntu:~$ ifconfig eth0
+
+eth0      Link encap:Ethernet  HWaddr 00:0c:29:01:02:03
+          inet addr:10.211.55.3  Bcast:10.211.55.255  Mask:255.255.255.0
+          inet6 addr: fdb2:2c26:f4e4:0:49c8:a8e5:be6:a7f9/64 Scope:Global
+          inet6 addr: fdb2:2c26:f4e4:0:20c:29ff:fe01:203/64 Scope:Global
+          inet6 addr: fe80::20c:29ff:fe01:203/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1735 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1780 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:1451555 (1.4 MB)  TX bytes:193802 (193.8 KB)</code></pre>
+<a id="more"></a>
+
+<p><strong>2. 启动混杂模式</strong><br>主要是这个:<strong>PROMISC</strong></p>
+<pre class=" language-yaml"><code class="language-yaml">alex@ubuntu<span class="token punctuation">:</span>~$ sudo ifconfig eth0 promisc
+alex@ubuntu<span class="token punctuation">:</span>~$ ifconfig eth0
+eth0      Link encap<span class="token punctuation">:</span>Ethernet  HWaddr 00<span class="token punctuation">:</span>0c<span class="token punctuation">:</span>29<span class="token punctuation">:</span><span class="token datetime number">01:02:03</span>
+          inet addr<span class="token punctuation">:</span>10.211.55.3  Bcast<span class="token punctuation">:</span>10.211.55.255  Mask<span class="token punctuation">:</span>255.255.255.0
+          inet6 addr<span class="token punctuation">:</span> fdb2<span class="token punctuation">:</span>2c26<span class="token punctuation">:</span>f4e4<span class="token punctuation">:</span>0<span class="token punctuation">:</span>49c8<span class="token punctuation">:</span>a8e5<span class="token punctuation">:</span>be6<span class="token punctuation">:</span>a7f9/64 Scope<span class="token punctuation">:</span>Global
+          inet6 addr<span class="token punctuation">:</span> fdb2<span class="token punctuation">:</span>2c26<span class="token punctuation">:</span>f4e4<span class="token punctuation">:</span>0<span class="token punctuation">:</span>20c<span class="token punctuation">:</span>29ff<span class="token punctuation">:</span>fe01<span class="token punctuation">:</span>203/64 Scope<span class="token punctuation">:</span>Global
+          inet6 addr<span class="token punctuation">:</span> fe80<span class="token punctuation">:</span><span class="token punctuation">:</span>20c<span class="token punctuation">:</span>29ff<span class="token punctuation">:</span>fe01<span class="token punctuation">:</span>203/64 Scope<span class="token punctuation">:</span>Link
+          UP BROADCAST RUNNING PROMISC MULTICAST  MTU<span class="token punctuation">:</span>1500  Metric<span class="token punctuation">:</span><span class="token number">1</span>
+          RX packets<span class="token punctuation">:</span>1742 errors<span class="token punctuation">:</span>0 dropped<span class="token punctuation">:</span>0 overruns<span class="token punctuation">:</span>0 frame<span class="token punctuation">:</span><span class="token number">0</span>
+          TX packets<span class="token punctuation">:</span>1782 errors<span class="token punctuation">:</span>0 dropped<span class="token punctuation">:</span>0 overruns<span class="token punctuation">:</span>0 carrier<span class="token punctuation">:</span><span class="token number">0</span>
+          collisions<span class="token punctuation">:</span>0 txqueuelen<span class="token punctuation">:</span><span class="token number">1000</span>
+          RX bytes<span class="token punctuation">:</span>1452336 (1.4 MB)  TX bytes<span class="token punctuation">:</span>194198 (194.1 KB)</code></pre>
+<p><strong>3. 关闭混杂模式</strong></p>
+<pre class=" language-shell"><code class="language-shell">alex@ubuntu:~$ sudo ifconfig eth0 -promisc
+alex@ubuntu:~$ ifconfig eth0
+eth0      Link encap:Ethernet  HWaddr 00:0c:29:01:02:03
+          inet addr:10.211.55.3  Bcast:10.211.55.255  Mask:255.255.255.0
+          inet6 addr: fdb2:2c26:f4e4:0:49c8:a8e5:be6:a7f9/64 Scope:Global
+          inet6 addr: fdb2:2c26:f4e4:0:20c:29ff:fe01:203/64 Scope:Global
+          inet6 addr: fe80::20c:29ff:fe01:203/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1766 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1796 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:1455202 (1.4 MB)  TX bytes:195410 (195.4 KB)</code></pre>
+<h2 id="TcpDump"><a href="#TcpDump" class="headerlink" title="TcpDump"></a>TcpDump</h2><blockquote>
+<ul>
+<li>tcpdump存在于基本的FreeBSD系统中，由于它需要将网络界面设置为混杂模式，普通用户不能正常执行，但具备root权限的用户可以直接执行它来获取网络上的信息。因此系统中存在网络分析工具主要不是对本机安全的威胁，而是对网络上的其他计算机的安全存在威胁。</li>
+</ul>
+</blockquote>
+<ul>
+<li>显然为了安全起见，不用作网络管理用途的计算机上不应该运行这一类的网络分析软件，为了屏蔽它们，可以屏蔽内核中的bpfilter伪设备。一般情况下网络硬件和TCP/IP堆栈不支持接收或发送与本计算机无关的数据包，为了接收这些数据包，就必须使用网卡的混杂模式，并绕过标准的TCP/IP堆栈才行。在FreeBSD下，这就需要内核支持伪设备bpfilter。因此，在内核中取消bpfilter支持，就能屏蔽tcpdump之类的网络分析工具。</li>
+<li>并且当网卡被设置为混杂模式时，系统会在控制台和日志文件中留下记录，提醒管理员留意这台系统是否被用作攻击同网络的其他计算机的跳板。<h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3></li>
+</ul>
+<p>tcpdump采用命令行方式，它的命令格式为：<br>    tcpdump [ -adeflnNOpqStvx ] [ -c 数量 ] [ -F 文件名 ]<br>　　　　　　　　　　[ -i 网络接口 ] [ -r 文件名] [ -s snaplen ]<br>　　　　　　　　　　[ -T 类型 ] [ -w 文件名 ] [表达式 ]
+　　　　　　　　　　</p>
+<h3 id="命令参数"><a href="#命令参数" class="headerlink" title="命令参数"></a>命令参数</h3><table>
+<thead>
+<tr>
+<th align="left">命令字</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-a</td>
+<td align="left">将网络地址和广播地址转变成名字；</td>
+</tr>
+<tr>
+<td align="left">-d</td>
+<td align="left">将匹配信息包的代码以人们能够理解的汇编格式给出；</td>
+</tr>
+<tr>
+<td align="left">-dd</td>
+<td align="left">将匹配信息包的代码以c语言程序段的格式给出；</td>
+</tr>
+<tr>
+<td align="left">-ddd</td>
+<td align="left">将匹配信息包的代码以十进制的形式给出；</td>
+</tr>
+<tr>
+<td align="left">-e</td>
+<td align="left">在输出行打印出数据链路层的头部信息；</td>
+</tr>
+<tr>
+<td align="left">-f</td>
+<td align="left">将外部的Internet地址以数字的形式打印出来；</td>
+</tr>
+<tr>
+<td align="left">-l</td>
+<td align="left">使标准输出变为缓冲行形式；</td>
+</tr>
+<tr>
+<td align="left">-n</td>
+<td align="left">不把网络地址转换成名字；</td>
+</tr>
+<tr>
+<td align="left">-t</td>
+<td align="left">在输出的每一行不打印时间戳；</td>
+</tr>
+<tr>
+<td align="left">-v</td>
+<td align="left">输出一个稍微详细的信息，例如在ip包中可以包括ttl和服务类型的信息；</td>
+</tr>
+<tr>
+<td align="left">-vv</td>
+<td align="left">输出详细的报文信息；</td>
+</tr>
+<tr>
+<td align="left">-c</td>
+<td align="left">在收到指定的包的数目后，tcpdump就会停止；</td>
+</tr>
+<tr>
+<td align="left">-F</td>
+<td align="left">从指定的文件中读取表达式,忽略其它的表达式；</td>
+</tr>
+<tr>
+<td align="left">-i</td>
+<td align="left">指定监听的网络接口；</td>
+</tr>
+<tr>
+<td align="left">-r</td>
+<td align="left">从指定的文件中读取包(这些包一般通过-w选项产生)；</td>
+</tr>
+<tr>
+<td align="left">-w</td>
+<td align="left">直接将包写入文件中，并不分析和打印出来(<strong>-w xx.pcap:保存为 wireshark可读文件</strong>)；</td>
+</tr>
+<tr>
+<td align="left">-T</td>
+<td align="left">将监听到的包直接解释为指定的类型的报文，常见的类型有rpc （远程过程调用）和snmp（简单网络管理协议；）</td>
+</tr>
+<tr>
+<td align="left">-x</td>
+<td align="left">用 hex 显示报文的内容</td>
+</tr>
+<tr>
+<td align="left">-X</td>
+<td align="left">同时用 hex 和 ascii 显示报文的内容</td>
+</tr>
+<tr>
+<td align="left">-XX</td>
+<td align="left">同 -X，但同时显示以太网头部</td>
+</tr>
+<tr>
+<td align="left">-A</td>
+<td align="left">只使用 ascii 打印报文的全部数据，不要和 -X 一起使用</td>
+</tr>
+<tr>
+<td align="left">port xxx</td>
+<td align="left">指定端口xxx</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h3 id="tcpdump的表达式介绍"><a href="#tcpdump的表达式介绍" class="headerlink" title="tcpdump的表达式介绍"></a>tcpdump的表达式介绍</h3><blockquote>
+<p>表达式是一个正则表达式，tcpdump利用它作为过滤报文的条件，如果一个报文满足表达式的条件，则这个报文将会被捕获。如果没有给出任何条件，则网络上所有的信息包将会被截获。在表达式中一般如下几种类型的关键字。</p>
+</blockquote>
+<h4 id="第一种是关于类型的关键字"><a href="#第一种是关于类型的关键字" class="headerlink" title="第一种是关于类型的关键字"></a>第一种是关于类型的关键字</h4><p>主要包括host，net，port, 例如 host 210.27.48.2，指明210.27.48.2是一台主机，net 202.0.0.0 指明 202.0.0.0是一个网络地址，port 23指明端口号是23。如果没有指定类型，缺省的类型是host.</p>
+<h4 id="第二种是确定传输方向的关键字"><a href="#第二种是确定传输方向的关键字" class="headerlink" title="第二种是确定传输方向的关键字"></a>第二种是确定传输方向的关键字</h4><p>主要包括src , dst ,dst or src, dst and src,这些关键字指明了传输的方向。举例说明，src 210.27.48.2 ,指明ip包中源地址是210.27.48.2 , dst net202.0.0.0 指明目的网络地址是202.0.0.0 。如果没有指明方向关键字，则缺省是src or dst关键字。</p>
+<h4 id="第三种是协议的关键字"><a href="#第三种是协议的关键字" class="headerlink" title="第三种是协议的关键字"></a>第三种是协议的关键字</h4><p>主要包括fddi,ip,arp,rarp,tcp,udp等类型。Fddi指明是在FDDI(分布式光纤数据接口网络)上的特定的网络协议，实际上它是”ether”的别名，fddi和ether具有类似的源地址和目的地址，所以可以将fddi协议包当作ether的包进行处理和分析。其他的几个关键字就是指明了监听的包的协议内容。如果没有指定任何协议，则tcpdump将会监听所有协议的信息包。</p>
+<h4 id="其他关键字"><a href="#其他关键字" class="headerlink" title="其他关键字"></a>其他关键字</h4><p>除了这三种类型的关键字之外，其他重要的关键字如下：gateway,broadcast,less,greater,还有三种逻辑运算，取非运算是 ‘not ‘ ‘! ‘,与运算是’and’,’&amp;&amp;’;或运算 是’or’,’││’；这些关键字可以组合起来构成强大的组合条件来满足人们的需要，下面举几个例子来说明。</p>
+<ul>
+<li><p>A想要截获所有210.27.48.1 的主机收到的和发出的所有的数据包：</p>
+<pre class=" language-sh"><code class="language-sh">tcpdump host 210.27.48.1</code></pre>
+</li>
+<li><p>B想要截获主机210.27.48.1 和主机210.27.48.2 或210.27.48.3的通信，使用命令：(在命令行中使用括号时，一定要添加’&#39;)</p>
+<pre class=" language-sh"><code class="language-sh">tcpdump host 210.27.48.1 and \ (210.27.48.2 or 210.27.48.3 \)</code></pre>
+</li>
+<li><p>C如果想要获取主机210.27.48.1除了和主机210.27.48.2之外所有主机通信的ip包，使用命令：</p>
+<pre class=" language-sh"><code class="language-sh">tcpdump ip host 210.27.48.1 and ! 210.27.48.2</code></pre>
+</li>
+<li><p>D如果想要获取主机210.27.48.1接收或发出的telnet包，使用如下命令：</p>
+<pre class=" language-sh"><code class="language-sh">tcpdump tcp port 23 host 210.27.48.1</code></pre>
+</li>
+<li><p>E 对本机的udp 123 端口进行监视 123 为ntp的服务端口</p>
+<pre class=" language-sh"><code class="language-sh">tcpdump udp port 123</code></pre>
+</li>
+<li><p>F 系统将只对名为hostname的主机的通信数据包进行监视。主机名可以是本地主机，也可以是网络上的任何一台计算机。下面的命令可以读取主机hostname发送的所有数据：</p>
+<pre class=" language-sh"><code class="language-sh">tcpdump -i eth0 src host hostname</code></pre>
+</li>
+<li><p>G 下面的命令可以监视所有送到主机hostname的数据包：</p>
+<pre class=" language-sh"><code class="language-sh">tcpdump -i eth0 dst host hostname</code></pre>
+</li>
+<li><p>H 我们还可以监视通过指定网关的数据包：</p>
+<pre class=" language-sh"><code class="language-sh">tcpdump -i eth0 gateway Gatewayname</code></pre>
+</li>
+<li><p>I 如果你还想监视编址到指定端口的TCP或UDP数据包，那么执行以下命令：</p>
+<pre class=" language-sh"><code class="language-sh">tcpdump -i eth0 host hostname and port 80</code></pre>
+</li>
+<li><p>J 如果想要获取主机210.27.48.1除了和主机210.27.48.2之外所有主机通信的ip包，使用命令：</p>
+<pre class=" language-sh"><code class="language-sh">tcpdump ip host 210.27.48.1 and ! 210.27.48.2</code></pre>
+</li>
+<li><p>K 想要截获主机210.27.48.1 和主机210.27.48.2 或210.27.48.3的通信，使用命令：</p>
+<pre class=" language-sh"><code class="language-sh">tcpdump host 210.27.48.1 and \ (210.27.48.2 or 210.27.48.3 \)</code></pre>
+</li>
+<li><p>L 如果想要获取主机210.27.48.1除了和主机210.27.48.2之外所有主机通信的ip包，使用命令：</p>
+<pre class=" language-sh"><code class="language-sh">tcpdump ip host 210.27.48.1 and ! 210.27.48.2</code></pre>
+</li>
+<li><p>M 如果想要获取主机210.27.48.1接收或发出的telnet包，使用如下命令：</p>
+<pre class=" language-sh"><code class="language-sh">tcpdump tcp port 23 host 210.27.48.1</code></pre>
+</li>
+</ul>
+<h3 id="tcpdump的输出结果介绍"><a href="#tcpdump的输出结果介绍" class="headerlink" title="tcpdump的输出结果介绍"></a>tcpdump的输出结果介绍</h3><p>下面我们介绍几种典型的tcpdump命令的输出信息</p>
+<ul>
+<li>A,数据链路层头信息<br>使用命令:<pre class=" language-sh"><code class="language-sh">tcpdump --e host ice</code></pre>
+ice 是一台装有linux的主机，她的MAC地址是0：90：27：58：AF：1A；<br>H219是一台装有SOLARIC的SUN工作站，它的MAC地址是8：0：20：79：5B：46；<br>上一条命令的输出结果如下所示：<pre class=" language-sh"><code class="language-sh">21:50:12.847509 eth0 < 8:0:20:79:5b:46 0:90:27:58:af:1a ip 60: h219.33357 > ice.telne
+t 0:0(0) ack 22535 win 8760 (DF)</code></pre>
+</li>
+</ul>
+<p><strong>分析：</strong>21：50：12是显示的时间， 847509是ID号，eth0 &lt;表示从网络接口eth0 接受该数据包，eth0&gt;表示从网络接口设备发送数据包, 8:0:20:79:5b:46是主机H219的MAC地址,它表明是从源地址H219发来的数据包.0:90:27:58:af:1a是主机ICE的MAC地址,表示该数据包的目的地址是ICE . ip 是表明该数据包是IP数据包,60是数据包的长度, h219.33357 &gt; ice.telnet表明该数据包是从主机H219的33357端口发往主机ICE的TELNET(23)端口. ack 22535表明对序列号是222535的包进行响应. win 8760表明发送窗口的大小是8760.</p>
+<ul>
+<li>B,ARP包的TCPDUMP输出信息<br><br>使用命令:<pre class=" language-sh"><code class="language-sh">tcpdump arp</code></pre>
+得到的输出结果是：<pre class=" language-base"><code class="language-base">22:32:42.802509 eth0 > arp who-has route tell ice (0:90:27:58:af:1a)
+22:32:42.802902 eth0 < arp reply route is-at 0:90:27:12:10:66 (0:90:27:58:af:1a)</code></pre>
+</li>
+</ul>
+<p><strong>分析:</strong> 22:32:42是时间戳, 802509是ID号, eth0 &gt;表明从主机发出该数据包, arp表明是ARP请求包,who-has route tell ice表明是主机ICE请求主机ROUTE的MAC地址。0:90:27:58:af:1a是主机ICE的MAC地址。</p>
+<ul>
+<li><p>C,TCP包的输出信息<br><br>用TCPDUMP捕获的TCP包的一般输出信息是：</p>
+<pre class=" language-sh"><code class="language-sh">src > dst: flags data-seqno ack window urgent options</code></pre>
+<p>src&gt; dst:表明从源地址到目的地址, flags是TCP包中的标志信息,S 是SYN标志, F (FIN), P (PUSH) , R(RST) “.” (没有标记); data-seqno是数据包中的数据的顺序号, ack是下次期望的顺序号,window是接收缓存的窗口大小, urgent表明数据包中是否有紧急指针. Options是选项.</p>
+</li>
+<li><p>D,UDP包的输出信息<br><br>用TCPDUMP捕获的UDP包的一般输出信息是：</p>
+<pre class=" language-sh"><code class="language-sh">route.port1 > ice.port2: udp lenth</code></pre>
+<p>UDP十分简单，上面的输出行表明从主机ROUTE的port1端口发出的一个UDP数据包到主机ICE的port2端口，类型是UDP， 包的长度是lenth</p>
+</li>
+</ul>
+<h3 id="辅助工具"><a href="#辅助工具" class="headerlink" title="辅助工具"></a>辅助工具</h3><ul>
+<li><p>想查看TCP或者UDP端口使用情况，使用</p>
+<pre class=" language-sh"><code class="language-sh">netstat -anp</code></pre>
+</li>
+<li><p>如果有些进程看不见，如只显示”-”，可以尝试</p>
+<pre class=" language-sh"><code class="language-sh">sudo netstat -anp</code></pre>
+</li>
+<li><p>如果想看某个端口的信息，使用lsof命令，如：</p>
+<pre class=" language-sh"><code class="language-sh">sudo lsof -i :631</code></pre>
+<pre class=" language-sh"><code class="language-sh">netstat -tln</code></pre>
+<pre class=" language-sh"><code class="language-sh">netstat -tln #命令是用来查看linux的端口使用情况</code></pre>
+</li>
+<li><p>启动ftp端口</p>
+<pre class=" language-sh"><code class="language-sh">/xtc/init.d/vsftp start</code></pre>
+</li>
+</ul>
+<p>看文件/etc/services<br>netstat</p>
+<p>查看已经连接的服务端口（ESTABLISHED）</p>
+<ul>
+<li><p>查看所有的服务端口（LISTEN，ESTABLISHED）</p>
+<pre class=" language-sh"><code class="language-sh">netstat -a</code></pre>
+</li>
+<li><p>查看所有 的服务端口并显示对应的服务程序名</p>
+<pre class=" language-sh"><code class="language-sh">sudo netstat -ap</code></pre>
+</li>
+<li><p>nmap ＜扫描类型＞＜扫描参数＞<br>例如：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#nmap localhost</span>
+<span class="token comment" spellcheck="true">#nmap -p 1024-65535 localhost</span>
+<span class="token comment" spellcheck="true">#nmap -PT 192.168.1.127-245</span></code></pre>
+<p>当我们使用　netstat -apn　查看网络连接的时候，会发现很多类似下面的内容：</p>
+<pre class=" language-bash"><code class="language-bash">Proto Recv-Q Send-Q Local Address Foreign Address State PID/Program name
+tcp 0 52 218.104.81.152：7710 211.100.39.250：29488 ESTABLISHED 6111/1</code></pre>
+<p>显示这台服务器开放了7710端口，那么 这个端口属于哪个程序呢？我们可以使用　</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">lsof</span> -i ：7710　</code></pre>
+<p>命令来查询：</p>
+<pre class=" language-bash"><code class="language-bash">COMMAND PID USER FD TYPE DEVICE SIZE NODE NAME
+sshd 1990 root 3u IPv4 4836 TCP *：7710 （LISTEN）</code></pre>
+<p>  这样，我们就知道了7710端口是属于sshd程序的。</p>
+</li>
+<li><p>运行tcpdump命令出现错误信息排除</p>
+<pre class=" language-bash"><code class="language-bash">tcpdump: no suitable device found
+tcpdump: no devices found /dev/bpf4: A <span class="token function">file</span> or directory <span class="token keyword">in</span> the path name does not exist.</code></pre>
+</li>
+</ul>
+<p>解决方案 2种原因：<br><br>1.权限不够，一般不经过处理，只用root用户能使用tcpdump<br><br>2.缺省只能同时使用4个tcpdump，如用完，则报此类错。需要停掉多余的tcpdump</p>
+<h3 id="Ubuntu系统日志配置-var-log-messages"><a href="#Ubuntu系统日志配置-var-log-messages" class="headerlink" title="Ubuntu系统日志配置 /var/log/messages"></a>Ubuntu系统日志配置 /var/log/messages</h3><p><strong>1. 问题描述</strong><br><br>　　今天需要查看Ubuntu系统的日志文件，但却没有找到<code>/var/log/messages</code>这个文件。网上搜素资料，说是要配置<code>/etc/syslog.conf</code>。syslog采用可配置的、统一的系统登记程序，随时从系统各处接受log请求，然后根据<code>/etc/syslog.conf</code>中的预先设定把log信息写入相应文件中、邮寄给特 定用户或者直接以消息的方式发往控制台。<br><br>　　好吧，问题又来了。系统中依然没有<code>/etc/syslog.conf</code>，经过一番搜素，最后得到的结论是：在Ubuntu下对应的应该是<code>/etc/rsyslog.conf</code>和<code>rsyslogd</code>。<br><br><strong>2. 解决方案</strong><br><br>　　关于syslog.conf文件和syslog.d下文件功能解释可以参考下面这篇文章：<br><br>　　<a href="http://www.linuxidc.com/Linux/2012-03/56434.htm">http://www.linuxidc.com/Linux/2012-03/56434.htm</a><br><br>　　通过查看<code>rsyslog.conf</code>文件，发现所有的配置文件都在<code>/etc/rsyslog.d/</code>文件夹下。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># /etc/rsyslog.conf Configuration file for rsyslog.</span>
+<span class="token comment" spellcheck="true">#</span>
+<span class="token comment" spellcheck="true"># For more information see</span>
+<span class="token comment" spellcheck="true"># /usr/share/doc/rsyslog-doc/html/rsyslog_conf.html</span>
+<span class="token comment" spellcheck="true">#</span>
+<span class="token comment" spellcheck="true"># Default logging rules can be found in /etc/rsyslog.d/50-default.conf</span>
+… …
+<span class="token comment" spellcheck="true">#</span>
+<span class="token comment" spellcheck="true"># Include all config files in /etc/rsyslog.d/</span>
+<span class="token comment" spellcheck="true">#</span>
+<span class="token variable">$IncludeConfig</span> /etc/rsyslog.d/*.conf</code></pre>
+<p>用vim打开/etc/rsyslog.d/50-default.conf文件增加一行内容如下：</p>
+<pre class=" language-bash"><code class="language-bash">*.info<span class="token punctuation">;</span>mail.none<span class="token punctuation">;</span>authpriv.none<span class="token punctuation">;</span>cron.none /var/log/messages</code></pre>
+<p><a href="http://www.cnblogs.com/yc_sunniwell/archive/2010/07/05/1771563.html">原文</a></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>抓包工具</tag>
+        <tag>tcp</tag>
       </tags>
   </entry>
   <entry>
@@ -4448,22 +4748,77 @@ returnadc;//返回最近一次ADCx规则组的转换结果
       </tags>
   </entry>
   <entry>
-    <title>STM8 命名规则</title>
-    <url>/2017/03/26/3ec7.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<p><strong>STM8命名规则示列：STM8S005K6T6Cxxx</strong>代表的意义为： 超值型 STM8内核（可以理解为8位51增强型内核）MCU,LQFP-32封装，32KB FLASH容量，温度范围-40℃-85℃；（工业级）<br><strong>具体分解如下：</strong></p>
+    <title>Git之技能记录</title>
+    <url>/2018/02/11/3432.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一-Git-功能预览图"><a href="#一-Git-功能预览图" class="headerlink" title="一. Git 功能预览图"></a>一. Git 功能预览图</h2><p><img src="http://upload-images.jianshu.io/upload_images/1736256-510243b84e2d36f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Git"></p>
 <a id="more"></a>
 
-<p>|<strong>STM8</strong>|<strong>S</strong>|<strong>005</strong>|<strong>K</strong>|<strong>6</strong>|<strong>T</strong>|<strong>6</strong>|<strong>C</strong>|<strong>XXX</strong>|<br>|-|-|<br>|1|2|3|4|5|6|7|8|9</p>
-<p><strong>1.产品系列:</strong><br>STM8单片机包括以下几个系列：<br>STM8： 8位MCU； STM8A：8位自动MCU； STM8T：8位触摸感应MCU； STM8TL：8位触摸感应低电压MCU；<br><strong>2.产品类型:</strong><br>S：标准型； L：低电压型；<br><strong>3.产品子系列：</strong><br>005：超值型STM8S005X，速度16MHz； 051：超低压ULTRA串口； 052：带LCD； 007：ARM3超值型，速度24 MHz； 00x：超值型； 003：子系列； 105：基本型STM8S1005X； 10X：基本型； 103：子系列； 207：中间层的外围设定; 208：所有层的外围设定; 903：903子系列; 151：超低压ULTRA串口; 152：超低压ULTRA串口带LCD; 101：子系列；<br><strong>4.管脚数</strong><br>F：20PIN；G：28PIN；K：32PIN；S：44PIN；C：48PIN；R：64PIN；M：80PIN；<br><strong>5.Flash存存容量</strong><br>1：2KB flash；（小容量）; 2：4KB flash；（小容量）; 3：8KB flash；（小容量）; 4：16KB flash；（小容量）; 6：32KB flash；（小容量）; 8：64KB flash；（中容量）; B：128KB flash；（中容量）; C：256KB flash；（大容量）; D：384KB flash；（大容量）; E：512KB flash；（大容量）; F：768KB flash；（大容量）; G：1MKB flash；（大容量）<br><strong>6.封装</strong><br>T：LQFP； P：TSSOP； U：UFQFPN； B：SDIP； M：SO； Y：WLCSP；<br><strong>7.温度范围</strong><br>3：-40℃-125℃；（工业级）; 6：-40℃-85℃；（工业级）; 7：-40℃-105℃；（工业级）<br><strong>8.包装尺寸</strong><br>无特性：0.5mm；C：0.8mm; A：0.55mm的UFQFPN；Blank：0.5mm或0.65mm;<br>低压101系列的A：COMP_REF可变；Blank：COMP_REF不可变;<br>低压162系列的D：VDD的范围为1.8V-3.6V，且BOR使能； Blank：VDD的范围为1.8V-3.6V，且BOR不使能;<br><strong>9.包装方式：</strong><br>TR：带卷；无特性：盘装；</p>
-<hr>
-<p><img src="http://upload-images.jianshu.io/upload_images/1736256-f177ef8447b808f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="STM8 MCU 选型列表"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1736256-d448c89177176b7e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="STM8L101F3P6"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1736256-37063209962e156c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="原理图"></p>
+<h2 id="二-tag"><a href="#二-tag" class="headerlink" title="二. tag"></a>二. tag</h2><ul>
+<li>列出所有tag</li>
+</ul>
+<pre><code>$ git tag -l</code></pre>
+<ul>
+<li>打tag</li>
+</ul>
+<pre><code>$ git tag &#39;tag&#39;</code></pre>
+<ul>
+<li>打tag 加注释</li>
+</ul>
+<pre><code>$ git tag -a [tag name] -m [message]</code></pre>
+<ul>
+<li>删除本地tag</li>
+</ul>
+<pre><code>$ git tag -d [tag]</code></pre>
+<ul>
+<li>删除远程tag</li>
+</ul>
+<pre><code>git push origin --delete tag &lt;tagname&gt;</code></pre>
+<ul>
+<li>查看tag信息</li>
+</ul>
+<pre><code>$ git show [tag]</code></pre>
+<ul>
+<li>提交指定tag</li>
+</ul>
+<pre><code>$ git push [remote] [tag]
+</code></pre>
+<p>例如，将v1.0标签推送到远程服务器上</p>
+<pre><code>$ git push origin v1.0</code></pre>
+<ul>
+<li>提交所有tag</li>
+</ul>
+<pre><code>$ git push [remote] --tags</code></pre>
+<h2 id="三-git-信息查询"><a href="#三-git-信息查询" class="headerlink" title="三. git 信息查询"></a>三. git 信息查询</h2><ul>
+<li>查看远程仓库信息</li>
+</ul>
+<pre><code>$ git remote -v</code></pre>
+<ul>
+<li>查看分支</li>
+</ul>
+<pre><code>$ git branch -a</code></pre>
+<ul>
+<li>查看分支合并图</li>
+</ul>
+<pre><code>git log --graph</code></pre>
+<h2 id="四-工程设置"><a href="#四-工程设置" class="headerlink" title="四. 工程设置"></a>四. 工程设置</h2><ul>
+<li>更新远程仓库</li>
+</ul>
+<pre><code>git remote set-url origin git@gitlab.gizwits.com:********.git</code></pre>
+<h2 id="五-下载"><a href="#五-下载" class="headerlink" title="五. 下载"></a>五. 下载</h2><ul>
+<li>指定分支下载(-b branch_xxx)</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">git clone -b branch_xxx git@github.com:xxxxxxxxxx.git</code></pre>
+<ul>
+<li>子仓库递归下载(–recursive)</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">git clone -b branch_xxx --recursive git@github.com:xxxxxxxxxx.git</code></pre>
 ]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
       <tags>
-        <tag>ST</tag>
-        <tag>STM8</tag>
+        <tag>git</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -4767,375 +5122,36 @@ TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)
       </tags>
   </entry>
   <entry>
-    <title>tcpDump</title>
-    <url>/2017/07/01/154.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h2 id="Linux-混杂模式设置"><a href="#Linux-混杂模式设置" class="headerlink" title="Linux 混杂模式设置"></a>Linux 混杂模式设置</h2><p><strong>1. 查看网卡混杂模式状态</strong></p>
-<pre class=" language-SH"><code class="language-SH">alex@ubuntu:~$ ifconfig eth0
+    <title>macOS小技能</title>
+    <url>/2018/12/10/d7f9.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="iTerm2"><a href="#iTerm2" class="headerlink" title="iTerm2"></a>iTerm2</h2><h3 id="iTerm2-SSH免密码远程连接服务器"><a href="#iTerm2-SSH免密码远程连接服务器" class="headerlink" title="iTerm2 SSH免密码远程连接服务器"></a>iTerm2 SSH免密码远程连接服务器</h3><pre class=" language-sh"><code class="language-sh">#!/usr/bin/expect
 
-eth0      Link encap:Ethernet  HWaddr 00:0c:29:01:02:03
-          inet addr:10.211.55.3  Bcast:10.211.55.255  Mask:255.255.255.0
-          inet6 addr: fdb2:2c26:f4e4:0:49c8:a8e5:be6:a7f9/64 Scope:Global
-          inet6 addr: fdb2:2c26:f4e4:0:20c:29ff:fe01:203/64 Scope:Global
-          inet6 addr: fe80::20c:29ff:fe01:203/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:1735 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:1780 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:1451555 (1.4 MB)  TX bytes:193802 (193.8 KB)</code></pre>
+set timeout 30
+spawn ssh -p [lindex $argv 0] [lindex $argv 1]@[lindex $argv 2]
+expect &#123;
+        "(yes/no)?"
+        &#123;send "yes\n";exp_continue&#125;
+        "password:"
+        &#123;send "[lindex $argv 3]\n"&#125;
+&#125;
+expect "~"
+send "clear\n"
+interact</code></pre>
 <a id="more"></a>
-
-<p><strong>2. 启动混杂模式</strong><br>主要是这个:<strong>PROMISC</strong></p>
-<pre class=" language-yaml"><code class="language-yaml">alex@ubuntu<span class="token punctuation">:</span>~$ sudo ifconfig eth0 promisc
-alex@ubuntu<span class="token punctuation">:</span>~$ ifconfig eth0
-eth0      Link encap<span class="token punctuation">:</span>Ethernet  HWaddr 00<span class="token punctuation">:</span>0c<span class="token punctuation">:</span>29<span class="token punctuation">:</span><span class="token datetime number">01:02:03</span>
-          inet addr<span class="token punctuation">:</span>10.211.55.3  Bcast<span class="token punctuation">:</span>10.211.55.255  Mask<span class="token punctuation">:</span>255.255.255.0
-          inet6 addr<span class="token punctuation">:</span> fdb2<span class="token punctuation">:</span>2c26<span class="token punctuation">:</span>f4e4<span class="token punctuation">:</span>0<span class="token punctuation">:</span>49c8<span class="token punctuation">:</span>a8e5<span class="token punctuation">:</span>be6<span class="token punctuation">:</span>a7f9/64 Scope<span class="token punctuation">:</span>Global
-          inet6 addr<span class="token punctuation">:</span> fdb2<span class="token punctuation">:</span>2c26<span class="token punctuation">:</span>f4e4<span class="token punctuation">:</span>0<span class="token punctuation">:</span>20c<span class="token punctuation">:</span>29ff<span class="token punctuation">:</span>fe01<span class="token punctuation">:</span>203/64 Scope<span class="token punctuation">:</span>Global
-          inet6 addr<span class="token punctuation">:</span> fe80<span class="token punctuation">:</span><span class="token punctuation">:</span>20c<span class="token punctuation">:</span>29ff<span class="token punctuation">:</span>fe01<span class="token punctuation">:</span>203/64 Scope<span class="token punctuation">:</span>Link
-          UP BROADCAST RUNNING PROMISC MULTICAST  MTU<span class="token punctuation">:</span>1500  Metric<span class="token punctuation">:</span><span class="token number">1</span>
-          RX packets<span class="token punctuation">:</span>1742 errors<span class="token punctuation">:</span>0 dropped<span class="token punctuation">:</span>0 overruns<span class="token punctuation">:</span>0 frame<span class="token punctuation">:</span><span class="token number">0</span>
-          TX packets<span class="token punctuation">:</span>1782 errors<span class="token punctuation">:</span>0 dropped<span class="token punctuation">:</span>0 overruns<span class="token punctuation">:</span>0 carrier<span class="token punctuation">:</span><span class="token number">0</span>
-          collisions<span class="token punctuation">:</span>0 txqueuelen<span class="token punctuation">:</span><span class="token number">1000</span>
-          RX bytes<span class="token punctuation">:</span>1452336 (1.4 MB)  TX bytes<span class="token punctuation">:</span>194198 (194.1 KB)</code></pre>
-<p><strong>3. 关闭混杂模式</strong></p>
-<pre class=" language-shell"><code class="language-shell">alex@ubuntu:~$ sudo ifconfig eth0 -promisc
-alex@ubuntu:~$ ifconfig eth0
-eth0      Link encap:Ethernet  HWaddr 00:0c:29:01:02:03
-          inet addr:10.211.55.3  Bcast:10.211.55.255  Mask:255.255.255.0
-          inet6 addr: fdb2:2c26:f4e4:0:49c8:a8e5:be6:a7f9/64 Scope:Global
-          inet6 addr: fdb2:2c26:f4e4:0:20c:29ff:fe01:203/64 Scope:Global
-          inet6 addr: fe80::20c:29ff:fe01:203/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:1766 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:1796 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:1455202 (1.4 MB)  TX bytes:195410 (195.4 KB)</code></pre>
-<h2 id="TcpDump"><a href="#TcpDump" class="headerlink" title="TcpDump"></a>TcpDump</h2><blockquote>
-<ul>
-<li>tcpdump存在于基本的FreeBSD系统中，由于它需要将网络界面设置为混杂模式，普通用户不能正常执行，但具备root权限的用户可以直接执行它来获取网络上的信息。因此系统中存在网络分析工具主要不是对本机安全的威胁，而是对网络上的其他计算机的安全存在威胁。</li>
-</ul>
-</blockquote>
-<ul>
-<li>显然为了安全起见，不用作网络管理用途的计算机上不应该运行这一类的网络分析软件，为了屏蔽它们，可以屏蔽内核中的bpfilter伪设备。一般情况下网络硬件和TCP/IP堆栈不支持接收或发送与本计算机无关的数据包，为了接收这些数据包，就必须使用网卡的混杂模式，并绕过标准的TCP/IP堆栈才行。在FreeBSD下，这就需要内核支持伪设备bpfilter。因此，在内核中取消bpfilter支持，就能屏蔽tcpdump之类的网络分析工具。</li>
-<li>并且当网卡被设置为混杂模式时，系统会在控制台和日志文件中留下记录，提醒管理员留意这台系统是否被用作攻击同网络的其他计算机的跳板。<h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3></li>
-</ul>
-<p>tcpdump采用命令行方式，它的命令格式为：<br>    tcpdump [ -adeflnNOpqStvx ] [ -c 数量 ] [ -F 文件名 ]<br>　　　　　　　　　　[ -i 网络接口 ] [ -r 文件名] [ -s snaplen ]<br>　　　　　　　　　　[ -T 类型 ] [ -w 文件名 ] [表达式 ]
-　　　　　　　　　　</p>
-<h3 id="命令参数"><a href="#命令参数" class="headerlink" title="命令参数"></a>命令参数</h3><table>
-<thead>
-<tr>
-<th align="left">命令字</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">-a</td>
-<td align="left">将网络地址和广播地址转变成名字；</td>
-</tr>
-<tr>
-<td align="left">-d</td>
-<td align="left">将匹配信息包的代码以人们能够理解的汇编格式给出；</td>
-</tr>
-<tr>
-<td align="left">-dd</td>
-<td align="left">将匹配信息包的代码以c语言程序段的格式给出；</td>
-</tr>
-<tr>
-<td align="left">-ddd</td>
-<td align="left">将匹配信息包的代码以十进制的形式给出；</td>
-</tr>
-<tr>
-<td align="left">-e</td>
-<td align="left">在输出行打印出数据链路层的头部信息；</td>
-</tr>
-<tr>
-<td align="left">-f</td>
-<td align="left">将外部的Internet地址以数字的形式打印出来；</td>
-</tr>
-<tr>
-<td align="left">-l</td>
-<td align="left">使标准输出变为缓冲行形式；</td>
-</tr>
-<tr>
-<td align="left">-n</td>
-<td align="left">不把网络地址转换成名字；</td>
-</tr>
-<tr>
-<td align="left">-t</td>
-<td align="left">在输出的每一行不打印时间戳；</td>
-</tr>
-<tr>
-<td align="left">-v</td>
-<td align="left">输出一个稍微详细的信息，例如在ip包中可以包括ttl和服务类型的信息；</td>
-</tr>
-<tr>
-<td align="left">-vv</td>
-<td align="left">输出详细的报文信息；</td>
-</tr>
-<tr>
-<td align="left">-c</td>
-<td align="left">在收到指定的包的数目后，tcpdump就会停止；</td>
-</tr>
-<tr>
-<td align="left">-F</td>
-<td align="left">从指定的文件中读取表达式,忽略其它的表达式；</td>
-</tr>
-<tr>
-<td align="left">-i</td>
-<td align="left">指定监听的网络接口；</td>
-</tr>
-<tr>
-<td align="left">-r</td>
-<td align="left">从指定的文件中读取包(这些包一般通过-w选项产生)；</td>
-</tr>
-<tr>
-<td align="left">-w</td>
-<td align="left">直接将包写入文件中，并不分析和打印出来(<strong>-w xx.pcap:保存为 wireshark可读文件</strong>)；</td>
-</tr>
-<tr>
-<td align="left">-T</td>
-<td align="left">将监听到的包直接解释为指定的类型的报文，常见的类型有rpc （远程过程调用）和snmp（简单网络管理协议；）</td>
-</tr>
-<tr>
-<td align="left">-x</td>
-<td align="left">用 hex 显示报文的内容</td>
-</tr>
-<tr>
-<td align="left">-X</td>
-<td align="left">同时用 hex 和 ascii 显示报文的内容</td>
-</tr>
-<tr>
-<td align="left">-XX</td>
-<td align="left">同 -X，但同时显示以太网头部</td>
-</tr>
-<tr>
-<td align="left">-A</td>
-<td align="left">只使用 ascii 打印报文的全部数据，不要和 -X 一起使用</td>
-</tr>
-<tr>
-<td align="left">port xxx</td>
-<td align="left">指定端口xxx</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<h3 id="tcpdump的表达式介绍"><a href="#tcpdump的表达式介绍" class="headerlink" title="tcpdump的表达式介绍"></a>tcpdump的表达式介绍</h3><blockquote>
-<p>表达式是一个正则表达式，tcpdump利用它作为过滤报文的条件，如果一个报文满足表达式的条件，则这个报文将会被捕获。如果没有给出任何条件，则网络上所有的信息包将会被截获。在表达式中一般如下几种类型的关键字。</p>
-</blockquote>
-<h4 id="第一种是关于类型的关键字"><a href="#第一种是关于类型的关键字" class="headerlink" title="第一种是关于类型的关键字"></a>第一种是关于类型的关键字</h4><p>主要包括host，net，port, 例如 host 210.27.48.2，指明210.27.48.2是一台主机，net 202.0.0.0 指明 202.0.0.0是一个网络地址，port 23指明端口号是23。如果没有指定类型，缺省的类型是host.</p>
-<h4 id="第二种是确定传输方向的关键字"><a href="#第二种是确定传输方向的关键字" class="headerlink" title="第二种是确定传输方向的关键字"></a>第二种是确定传输方向的关键字</h4><p>主要包括src , dst ,dst or src, dst and src,这些关键字指明了传输的方向。举例说明，src 210.27.48.2 ,指明ip包中源地址是210.27.48.2 , dst net202.0.0.0 指明目的网络地址是202.0.0.0 。如果没有指明方向关键字，则缺省是src or dst关键字。</p>
-<h4 id="第三种是协议的关键字"><a href="#第三种是协议的关键字" class="headerlink" title="第三种是协议的关键字"></a>第三种是协议的关键字</h4><p>主要包括fddi,ip,arp,rarp,tcp,udp等类型。Fddi指明是在FDDI(分布式光纤数据接口网络)上的特定的网络协议，实际上它是”ether”的别名，fddi和ether具有类似的源地址和目的地址，所以可以将fddi协议包当作ether的包进行处理和分析。其他的几个关键字就是指明了监听的包的协议内容。如果没有指定任何协议，则tcpdump将会监听所有协议的信息包。</p>
-<h4 id="其他关键字"><a href="#其他关键字" class="headerlink" title="其他关键字"></a>其他关键字</h4><p>除了这三种类型的关键字之外，其他重要的关键字如下：gateway,broadcast,less,greater,还有三种逻辑运算，取非运算是 ‘not ‘ ‘! ‘,与运算是’and’,’&amp;&amp;’;或运算 是’or’,’││’；这些关键字可以组合起来构成强大的组合条件来满足人们的需要，下面举几个例子来说明。</p>
-<ul>
-<li><p>A想要截获所有210.27.48.1 的主机收到的和发出的所有的数据包：</p>
-<pre class=" language-sh"><code class="language-sh">tcpdump host 210.27.48.1</code></pre>
+<p>解说<br>这里<code>[lindex argv0]</code>，<code>[lindexargv0]</code>，<code>[lindexargv 1]</code>， <code>[lindex argv2]</code>，<code>[lindexargv2]</code>，<code>[lindexargv 3]</code>分别代表着4个参数。分别是：端口号、用户名、服务器地址、密码。</p>
+<h3 id="iTerm2-界面设置如下"><a href="#iTerm2-界面设置如下" class="headerlink" title="iTerm2 界面设置如下"></a>iTerm2 界面设置如下</h3><p><img src="https://upload-images.jianshu.io/upload_images/1736256-40764b317275b7a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iTerm2"></p>
+<h3 id="SSH-免密登陆到服务器"><a href="#SSH-免密登陆到服务器" class="headerlink" title="SSH 免密登陆到服务器"></a>SSH 免密登陆到服务器</h3><ol>
+<li>拷贝公钥到服务器<pre><code>scp -p ~/.ssh/id_rsa.pub ubuntu@10.10.10.10:/home/ubuntu/.ssh/authorized_keys</code></pre>
 </li>
-<li><p>B想要截获主机210.27.48.1 和主机210.27.48.2 或210.27.48.3的通信，使用命令：(在命令行中使用括号时，一定要添加’&#39;)</p>
-<pre class=" language-sh"><code class="language-sh">tcpdump host 210.27.48.1 and \ (210.27.48.2 or 210.27.48.3 \)</code></pre>
-</li>
-<li><p>C如果想要获取主机210.27.48.1除了和主机210.27.48.2之外所有主机通信的ip包，使用命令：</p>
-<pre class=" language-sh"><code class="language-sh">tcpdump ip host 210.27.48.1 and ! 210.27.48.2</code></pre>
-</li>
-<li><p>D如果想要获取主机210.27.48.1接收或发出的telnet包，使用如下命令：</p>
-<pre class=" language-sh"><code class="language-sh">tcpdump tcp port 23 host 210.27.48.1</code></pre>
-</li>
-<li><p>E 对本机的udp 123 端口进行监视 123 为ntp的服务端口</p>
-<pre class=" language-sh"><code class="language-sh">tcpdump udp port 123</code></pre>
-</li>
-<li><p>F 系统将只对名为hostname的主机的通信数据包进行监视。主机名可以是本地主机，也可以是网络上的任何一台计算机。下面的命令可以读取主机hostname发送的所有数据：</p>
-<pre class=" language-sh"><code class="language-sh">tcpdump -i eth0 src host hostname</code></pre>
-</li>
-<li><p>G 下面的命令可以监视所有送到主机hostname的数据包：</p>
-<pre class=" language-sh"><code class="language-sh">tcpdump -i eth0 dst host hostname</code></pre>
-</li>
-<li><p>H 我们还可以监视通过指定网关的数据包：</p>
-<pre class=" language-sh"><code class="language-sh">tcpdump -i eth0 gateway Gatewayname</code></pre>
-</li>
-<li><p>I 如果你还想监视编址到指定端口的TCP或UDP数据包，那么执行以下命令：</p>
-<pre class=" language-sh"><code class="language-sh">tcpdump -i eth0 host hostname and port 80</code></pre>
-</li>
-<li><p>J 如果想要获取主机210.27.48.1除了和主机210.27.48.2之外所有主机通信的ip包，使用命令：</p>
-<pre class=" language-sh"><code class="language-sh">tcpdump ip host 210.27.48.1 and ! 210.27.48.2</code></pre>
-</li>
-<li><p>K 想要截获主机210.27.48.1 和主机210.27.48.2 或210.27.48.3的通信，使用命令：</p>
-<pre class=" language-sh"><code class="language-sh">tcpdump host 210.27.48.1 and \ (210.27.48.2 or 210.27.48.3 \)</code></pre>
-</li>
-<li><p>L 如果想要获取主机210.27.48.1除了和主机210.27.48.2之外所有主机通信的ip包，使用命令：</p>
-<pre class=" language-sh"><code class="language-sh">tcpdump ip host 210.27.48.1 and ! 210.27.48.2</code></pre>
-</li>
-<li><p>M 如果想要获取主机210.27.48.1接收或发出的telnet包，使用如下命令：</p>
-<pre class=" language-sh"><code class="language-sh">tcpdump tcp port 23 host 210.27.48.1</code></pre>
-</li>
-</ul>
-<h3 id="tcpdump的输出结果介绍"><a href="#tcpdump的输出结果介绍" class="headerlink" title="tcpdump的输出结果介绍"></a>tcpdump的输出结果介绍</h3><p>下面我们介绍几种典型的tcpdump命令的输出信息</p>
-<ul>
-<li>A,数据链路层头信息<br>使用命令:<pre class=" language-sh"><code class="language-sh">tcpdump --e host ice</code></pre>
-ice 是一台装有linux的主机，她的MAC地址是0：90：27：58：AF：1A；<br>H219是一台装有SOLARIC的SUN工作站，它的MAC地址是8：0：20：79：5B：46；<br>上一条命令的输出结果如下所示：<pre class=" language-sh"><code class="language-sh">21:50:12.847509 eth0 < 8:0:20:79:5b:46 0:90:27:58:af:1a ip 60: h219.33357 > ice.telne
-t 0:0(0) ack 22535 win 8760 (DF)</code></pre>
-</li>
-</ul>
-<p><strong>分析：</strong>21：50：12是显示的时间， 847509是ID号，eth0 &lt;表示从网络接口eth0 接受该数据包，eth0&gt;表示从网络接口设备发送数据包, 8:0:20:79:5b:46是主机H219的MAC地址,它表明是从源地址H219发来的数据包.0:90:27:58:af:1a是主机ICE的MAC地址,表示该数据包的目的地址是ICE . ip 是表明该数据包是IP数据包,60是数据包的长度, h219.33357 &gt; ice.telnet表明该数据包是从主机H219的33357端口发往主机ICE的TELNET(23)端口. ack 22535表明对序列号是222535的包进行响应. win 8760表明发送窗口的大小是8760.</p>
-<ul>
-<li>B,ARP包的TCPDUMP输出信息<br><br>使用命令:<pre class=" language-sh"><code class="language-sh">tcpdump arp</code></pre>
-得到的输出结果是：<pre class=" language-base"><code class="language-base">22:32:42.802509 eth0 > arp who-has route tell ice (0:90:27:58:af:1a)
-22:32:42.802902 eth0 < arp reply route is-at 0:90:27:12:10:66 (0:90:27:58:af:1a)</code></pre>
-</li>
-</ul>
-<p><strong>分析:</strong> 22:32:42是时间戳, 802509是ID号, eth0 &gt;表明从主机发出该数据包, arp表明是ARP请求包,who-has route tell ice表明是主机ICE请求主机ROUTE的MAC地址。0:90:27:58:af:1a是主机ICE的MAC地址。</p>
-<ul>
-<li><p>C,TCP包的输出信息<br><br>用TCPDUMP捕获的TCP包的一般输出信息是：</p>
-<pre class=" language-sh"><code class="language-sh">src > dst: flags data-seqno ack window urgent options</code></pre>
-<p>src&gt; dst:表明从源地址到目的地址, flags是TCP包中的标志信息,S 是SYN标志, F (FIN), P (PUSH) , R(RST) “.” (没有标记); data-seqno是数据包中的数据的顺序号, ack是下次期望的顺序号,window是接收缓存的窗口大小, urgent表明数据包中是否有紧急指针. Options是选项.</p>
-</li>
-<li><p>D,UDP包的输出信息<br><br>用TCPDUMP捕获的UDP包的一般输出信息是：</p>
-<pre class=" language-sh"><code class="language-sh">route.port1 > ice.port2: udp lenth</code></pre>
-<p>UDP十分简单，上面的输出行表明从主机ROUTE的port1端口发出的一个UDP数据包到主机ICE的port2端口，类型是UDP， 包的长度是lenth</p>
-</li>
-</ul>
-<h3 id="辅助工具"><a href="#辅助工具" class="headerlink" title="辅助工具"></a>辅助工具</h3><ul>
-<li><p>想查看TCP或者UDP端口使用情况，使用</p>
-<pre class=" language-sh"><code class="language-sh">netstat -anp</code></pre>
-</li>
-<li><p>如果有些进程看不见，如只显示”-”，可以尝试</p>
-<pre class=" language-sh"><code class="language-sh">sudo netstat -anp</code></pre>
-</li>
-<li><p>如果想看某个端口的信息，使用lsof命令，如：</p>
-<pre class=" language-sh"><code class="language-sh">sudo lsof -i :631</code></pre>
-<pre class=" language-sh"><code class="language-sh">netstat -tln</code></pre>
-<pre class=" language-sh"><code class="language-sh">netstat -tln #命令是用来查看linux的端口使用情况</code></pre>
-</li>
-<li><p>启动ftp端口</p>
-<pre class=" language-sh"><code class="language-sh">/xtc/init.d/vsftp start</code></pre>
-</li>
-</ul>
-<p>看文件/etc/services<br>netstat</p>
-<p>查看已经连接的服务端口（ESTABLISHED）</p>
-<ul>
-<li><p>查看所有的服务端口（LISTEN，ESTABLISHED）</p>
-<pre class=" language-sh"><code class="language-sh">netstat -a</code></pre>
-</li>
-<li><p>查看所有 的服务端口并显示对应的服务程序名</p>
-<pre class=" language-sh"><code class="language-sh">sudo netstat -ap</code></pre>
-</li>
-<li><p>nmap ＜扫描类型＞＜扫描参数＞<br>例如：</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#nmap localhost</span>
-<span class="token comment" spellcheck="true">#nmap -p 1024-65535 localhost</span>
-<span class="token comment" spellcheck="true">#nmap -PT 192.168.1.127-245</span></code></pre>
-<p>当我们使用　netstat -apn　查看网络连接的时候，会发现很多类似下面的内容：</p>
-<pre class=" language-bash"><code class="language-bash">Proto Recv-Q Send-Q Local Address Foreign Address State PID/Program name
-tcp 0 52 218.104.81.152：7710 211.100.39.250：29488 ESTABLISHED 6111/1</code></pre>
-<p>显示这台服务器开放了7710端口，那么 这个端口属于哪个程序呢？我们可以使用　</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">lsof</span> -i ：7710　</code></pre>
-<p>命令来查询：</p>
-<pre class=" language-bash"><code class="language-bash">COMMAND PID USER FD TYPE DEVICE SIZE NODE NAME
-sshd 1990 root 3u IPv4 4836 TCP *：7710 （LISTEN）</code></pre>
-<p>  这样，我们就知道了7710端口是属于sshd程序的。</p>
-</li>
-<li><p>运行tcpdump命令出现错误信息排除</p>
-<pre class=" language-bash"><code class="language-bash">tcpdump: no suitable device found
-tcpdump: no devices found /dev/bpf4: A <span class="token function">file</span> or directory <span class="token keyword">in</span> the path name does not exist.</code></pre>
-</li>
-</ul>
-<p>解决方案 2种原因：<br><br>1.权限不够，一般不经过处理，只用root用户能使用tcpdump<br><br>2.缺省只能同时使用4个tcpdump，如用完，则报此类错。需要停掉多余的tcpdump</p>
-<h3 id="Ubuntu系统日志配置-var-log-messages"><a href="#Ubuntu系统日志配置-var-log-messages" class="headerlink" title="Ubuntu系统日志配置 /var/log/messages"></a>Ubuntu系统日志配置 /var/log/messages</h3><p><strong>1. 问题描述</strong><br><br>　　今天需要查看Ubuntu系统的日志文件，但却没有找到<code>/var/log/messages</code>这个文件。网上搜素资料，说是要配置<code>/etc/syslog.conf</code>。syslog采用可配置的、统一的系统登记程序，随时从系统各处接受log请求，然后根据<code>/etc/syslog.conf</code>中的预先设定把log信息写入相应文件中、邮寄给特 定用户或者直接以消息的方式发往控制台。<br><br>　　好吧，问题又来了。系统中依然没有<code>/etc/syslog.conf</code>，经过一番搜素，最后得到的结论是：在Ubuntu下对应的应该是<code>/etc/rsyslog.conf</code>和<code>rsyslogd</code>。<br><br><strong>2. 解决方案</strong><br><br>　　关于syslog.conf文件和syslog.d下文件功能解释可以参考下面这篇文章：<br><br>　　<a href="http://www.linuxidc.com/Linux/2012-03/56434.htm">http://www.linuxidc.com/Linux/2012-03/56434.htm</a><br><br>　　通过查看<code>rsyslog.conf</code>文件，发现所有的配置文件都在<code>/etc/rsyslog.d/</code>文件夹下。</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># /etc/rsyslog.conf Configuration file for rsyslog.</span>
-<span class="token comment" spellcheck="true">#</span>
-<span class="token comment" spellcheck="true"># For more information see</span>
-<span class="token comment" spellcheck="true"># /usr/share/doc/rsyslog-doc/html/rsyslog_conf.html</span>
-<span class="token comment" spellcheck="true">#</span>
-<span class="token comment" spellcheck="true"># Default logging rules can be found in /etc/rsyslog.d/50-default.conf</span>
-… …
-<span class="token comment" spellcheck="true">#</span>
-<span class="token comment" spellcheck="true"># Include all config files in /etc/rsyslog.d/</span>
-<span class="token comment" spellcheck="true">#</span>
-<span class="token variable">$IncludeConfig</span> /etc/rsyslog.d/*.conf</code></pre>
-<p>用vim打开/etc/rsyslog.d/50-default.conf文件增加一行内容如下：</p>
-<pre class=" language-bash"><code class="language-bash">*.info<span class="token punctuation">;</span>mail.none<span class="token punctuation">;</span>authpriv.none<span class="token punctuation">;</span>cron.none /var/log/messages</code></pre>
-<p><a href="http://www.cnblogs.com/yc_sunniwell/archive/2010/07/05/1771563.html">原文</a></p>
+<li>ssh 配置文件设置<br><br> <code>/Users/alex/.ssh/config</code><br>设置如下<br><img src="/images/ssh_config.png" alt="ssh_config"></li>
+</ol>
 ]]></content>
       <categories>
-        <category>工具</category>
+        <category>macOS</category>
       </categories>
       <tags>
-        <tag>抓包工具</tag>
-        <tag>tcp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git之技能记录</title>
-    <url>/2018/02/11/3432.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一-Git-功能预览图"><a href="#一-Git-功能预览图" class="headerlink" title="一. Git 功能预览图"></a>一. Git 功能预览图</h2><p><img src="http://upload-images.jianshu.io/upload_images/1736256-510243b84e2d36f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Git"></p>
-<a id="more"></a>
-
-<h2 id="二-tag"><a href="#二-tag" class="headerlink" title="二. tag"></a>二. tag</h2><ul>
-<li>列出所有tag</li>
-</ul>
-<pre><code>$ git tag -l</code></pre>
-<ul>
-<li>打tag</li>
-</ul>
-<pre><code>$ git tag &#39;tag&#39;</code></pre>
-<ul>
-<li>打tag 加注释</li>
-</ul>
-<pre><code>$ git tag -a [tag name] -m [message]</code></pre>
-<ul>
-<li>删除本地tag</li>
-</ul>
-<pre><code>$ git tag -d [tag]</code></pre>
-<ul>
-<li>删除远程tag</li>
-</ul>
-<pre><code>git push origin --delete tag &lt;tagname&gt;</code></pre>
-<ul>
-<li>查看tag信息</li>
-</ul>
-<pre><code>$ git show [tag]</code></pre>
-<ul>
-<li>提交指定tag</li>
-</ul>
-<pre><code>$ git push [remote] [tag]
-</code></pre>
-<p>例如，将v1.0标签推送到远程服务器上</p>
-<pre><code>$ git push origin v1.0</code></pre>
-<ul>
-<li>提交所有tag</li>
-</ul>
-<pre><code>$ git push [remote] --tags</code></pre>
-<h2 id="三-git-信息查询"><a href="#三-git-信息查询" class="headerlink" title="三. git 信息查询"></a>三. git 信息查询</h2><ul>
-<li>查看远程仓库信息</li>
-</ul>
-<pre><code>$ git remote -v</code></pre>
-<ul>
-<li>查看分支</li>
-</ul>
-<pre><code>$ git branch -a</code></pre>
-<ul>
-<li>查看分支合并图</li>
-</ul>
-<pre><code>git log --graph</code></pre>
-<h2 id="四-工程设置"><a href="#四-工程设置" class="headerlink" title="四. 工程设置"></a>四. 工程设置</h2><ul>
-<li>更新远程仓库</li>
-</ul>
-<pre><code>git remote set-url origin git@gitlab.gizwits.com:********.git</code></pre>
-<h2 id="五-下载"><a href="#五-下载" class="headerlink" title="五. 下载"></a>五. 下载</h2><ul>
-<li>指定分支下载(-b branch_xxx)</li>
-</ul>
-<pre class=" language-sh"><code class="language-sh">git clone -b branch_xxx git@github.com:xxxxxxxxxx.git</code></pre>
-<ul>
-<li>子仓库递归下载(–recursive)</li>
-</ul>
-<pre class=" language-sh"><code class="language-sh">git clone -b branch_xxx --recursive git@github.com:xxxxxxxxxx.git</code></pre>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-        <tag>工具</tag>
+        <tag>macOS</tag>
+        <tag>uninx</tag>
       </tags>
   </entry>
   <entry>
@@ -5160,6 +5176,39 @@ tcpdump: no devices found /dev/bpf4: A <span class="token function">file</span> 
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
 <p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Tool 记</title>
+    <url>/2017/03/26/bff4.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<h1 id="工具1–esptool"><a href="#工具1–esptool" class="headerlink" title="工具1–esptool"></a>工具1–esptool</h1><h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法:"></a>安装方法:</h2><p>1.超级简单按照方法</p>
+<pre class=" language-bash"><code class="language-bash"> $  pip <span class="token function">install</span> esptool</code></pre>
+<p>2.源码安装方法.</p>
+<pre class=" language-bash"><code class="language-bash"> <span class="token comment" spellcheck="true"># 下载源码</span>
+ $ git@github.com:themadinventor/esptool.git
+ <span class="token comment" spellcheck="true">#安装依赖</span>
+ $ pip <span class="token function">install</span> pyserial, easy_install pyserial
+ <span class="token comment" spellcheck="true">#或者 depending on your platform.</span>
+ $ <span class="token function">apt-get</span> <span class="token function">install</span> python-serial</code></pre>
+<a id="more"></a>
+
+<h2 id="帮助说明"><a href="#帮助说明" class="headerlink" title="帮助说明"></a>帮助说明</h2><pre><code>esptool.py write_flash -h</code></pre>
+<h2 id="使用例子"><a href="#使用例子" class="headerlink" title="使用例子:"></a>使用例子:</h2><pre><code>sudo python esptool.py --port /dev/ttyUSB0 --baud 1500000 \
+write_flash -fm qio -fs 32m -ff 40m 0x3fc000 ../bin/0x3fc000.bin</code></pre>
+<h2 id="几个文件一起烧录"><a href="#几个文件一起烧录" class="headerlink" title="几个文件一起烧录"></a>几个文件一起烧录</h2><pre><code>sudo esptool.py --port /dev/tty.usbserial-DA00H0QE \
+--baud 1500000 write_flash -fm qio -fs 32m -ff 40m 0x00000 \
+../boot_v1.6.bin 0x01000 user1.4096.new.6.bin 0x3fc000 \
+../esp_init_data_default.bin 0x3fe000 ../blank.bin </code></pre>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>|关键字| 解释|<br>|—-|<br>|<strong>port</strong>|                 指定串口号|<br>|<strong>baud</strong>|               指定下载波特率<br>|<strong>write_flash</strong>|      烧写二进制文件到指定位置<br>|<strong>-fm</strong>|                  SPI Flash mode( ‘qio’, ‘qout’, ‘dio’, ‘dout’)<br>|<strong>-ff</strong>|                    SPI Flash frequency(‘40m’, ‘26m’, ‘20m’, ‘80m’)<br>|<strong>-fs</strong>|                   SPI Flash size in Mbit(4m’, ‘2m’, ‘8m’, ‘16m’, ‘32m’, ‘16m-c1’, ‘32m-c1’, ‘32m-c2’, ‘64m’, ‘128m’)<br>|<strong>0x3fc000</strong>|         指定烧录地址<br>|<strong>0x3fc000.bin</strong>|   对应的烧录文件</p>
+]]></content>
+      <categories>
+        <category>esp8266</category>
+      </categories>
+      <tags>
+        <tag>esp8266</tag>
+        <tag>WiFi</tag>
+        <tag>esptool</tag>
+      </tags>
   </entry>
   <entry>
     <title>linux 工具函数之网络工具函数</title>
@@ -5400,39 +5449,6 @@ tcpdump: no devices found /dev/bpf4: A <span class="token function">file</span> 
       </tags>
   </entry>
   <entry>
-    <title>macOS小技能</title>
-    <url>/2018/12/10/d7f9.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="iTerm2"><a href="#iTerm2" class="headerlink" title="iTerm2"></a>iTerm2</h2><h3 id="iTerm2-SSH免密码远程连接服务器"><a href="#iTerm2-SSH免密码远程连接服务器" class="headerlink" title="iTerm2 SSH免密码远程连接服务器"></a>iTerm2 SSH免密码远程连接服务器</h3><pre class=" language-sh"><code class="language-sh">#!/usr/bin/expect
-
-set timeout 30
-spawn ssh -p [lindex $argv 0] [lindex $argv 1]@[lindex $argv 2]
-expect &#123;
-        "(yes/no)?"
-        &#123;send "yes\n";exp_continue&#125;
-        "password:"
-        &#123;send "[lindex $argv 3]\n"&#125;
-&#125;
-expect "~"
-send "clear\n"
-interact</code></pre>
-<a id="more"></a>
-<p>解说<br>这里<code>[lindex argv0]</code>，<code>[lindexargv0]</code>，<code>[lindexargv 1]</code>， <code>[lindex argv2]</code>，<code>[lindexargv2]</code>，<code>[lindexargv 3]</code>分别代表着4个参数。分别是：端口号、用户名、服务器地址、密码。</p>
-<h3 id="iTerm2-界面设置如下"><a href="#iTerm2-界面设置如下" class="headerlink" title="iTerm2 界面设置如下"></a>iTerm2 界面设置如下</h3><p><img src="https://upload-images.jianshu.io/upload_images/1736256-40764b317275b7a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iTerm2"></p>
-<h3 id="SSH-免密登陆到服务器"><a href="#SSH-免密登陆到服务器" class="headerlink" title="SSH 免密登陆到服务器"></a>SSH 免密登陆到服务器</h3><ol>
-<li>拷贝公钥到服务器<pre><code>scp -p ~/.ssh/id_rsa.pub ubuntu@10.10.10.10:/home/ubuntu/.ssh/authorized_keys</code></pre>
-</li>
-<li>ssh 配置文件设置<br><br> <code>/Users/alex/.ssh/config</code><br>设置如下<br><img src="/images/ssh_config.png" alt="ssh_config"></li>
-</ol>
-]]></content>
-      <categories>
-        <category>macOS</category>
-      </categories>
-      <tags>
-        <tag>macOS</tag>
-        <tag>uninx</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>vscode配置</title>
     <url>/2019/08/26/fc74.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Vscode终端Terminal显示zsh的字体设置"><a href="#Vscode终端Terminal显示zsh的字体设置" class="headerlink" title="Vscode终端Terminal显示zsh的字体设置"></a>Vscode终端Terminal显示zsh的字体设置</h2><ul>
@@ -5465,6 +5481,72 @@ interact</code></pre>
       <tags>
         <tag>go</tag>
         <tag>vscode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哈夫曼树&amp;哈夫曼编码</title>
+    <url>/2020/08/12/3729.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h2><blockquote>
+<p>哈夫曼树也叫最优二叉树（哈夫曼树）</p>
+</blockquote>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>  <a href="https://baike.baidu.com/item/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91/2305769?fr=aladdin">给定N个权值作为N个叶子结点，构造一棵二叉树，若该树的带权路径长度达到最小，称这样的二叉树为最优二叉树，也称为哈夫曼树(Huffman Tree)。哈夫曼树是带权路径长度最短的树，权值较大的结点离根较近。</a></p>
+<h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><table>
+<thead>
+<tr>
+<th align="left">名词</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">路径长度</td>
+<td align="left">根结点到第L层结点路径长度为L-1</td>
+</tr>
+<tr>
+<td align="left">树的带权路径长度（WPL）</td>
+<td align="left">树中所有叶子结点的带权路径长度之和<br><img src="/images/pasted-75.png" alt="upload successful"><br>其中，n表示叶子结点的数目，wi和li分别表示叶子结点ki的权值和树根结点到叶子结点ki之间的路径长度。</td>
+</tr>
+<tr>
+<td align="left"><img src="/images/pasted-76.png" alt="upload successful"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>|</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
+<li>哈夫曼树中权越大的叶子离根越近(WPL最小的二叉树)</li>
+<li>具有相同带权结点的哈夫曼树不惟一</li>
+<li>哈夫曼树的结点的度数为 0 或 2， 没有度为 1 的结点；</li>
+<li>包含 n 个叶子结点的哈夫曼树中共有 2n – 1 个结点。</li>
+<li>包含 n 棵树的森林要经过 n–1 次合并才能形成哈夫曼树，共产生 n–1 个新结点</li>
+</ol>
+<p><img src="/images/pasted-74.png" alt="upload successful"><br><img src="/images/pasted-62.png" alt="upload successful"><br><strong>WPL 最小的值所属的树即为哈夫曼树</strong></p>
+<p><img src="/images/pasted-65.png" alt="upload successful" title="hello"><br><img src="/images/pasted-63.png" alt="upload successful"><br><img src="/images/pasted-64.png" alt="upload successful"></p>
+<h2 id="哈夫曼创建"><a href="#哈夫曼创建" class="headerlink" title="哈夫曼创建"></a>哈夫曼创建</h2><p><img src="/images/pasted-66.png" alt="upload successful"><br>为什么数组buffTree[2n-1] 的大小是2n-1,是因为n个子节点构成的树节点最多的个数是2n-1个<br><img src="/images/pasted-67.png" alt="upload successful"></p>
+<p><img src="/images/pasted-68.png" alt="upload successful"></p>
+<p><img src="/images/pasted-69.png" alt="upload successful"></p>
+<h2 id="哈夫曼树编码"><a href="#哈夫曼树编码" class="headerlink" title="哈夫曼树编码"></a>哈夫曼树编码</h2><h3 id="前缀编码"><a href="#前缀编码" class="headerlink" title="前缀编码"></a>前缀编码</h3><p><img src="/images/pasted-70.png" alt="upload successful"></p>
+<p><img src="/images/pasted-71.png" alt="upload successful"></p>
+<p><img src="/images/pasted-72.png" alt="upload successful"></p>
+<p>特点:<br>权值越高的叶子节点越靠近根节点</p>
+<p><img src="/images/pasted-73.png" alt="upload successful"></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>win10子系统wsl</title>
+    <url>/2019/08/21/d9b0.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="子系统重启wsl"><a href="#子系统重启wsl" class="headerlink" title="子系统重启wsl"></a>子系统重启wsl</h2><p>管理员权限下:</p>
+<pre class=" language-sh"><code class="language-sh">net stop LxssManager
+net start LxssManager</code></pre>
+<h2 id="子系统在win10的默认位置"><a href="#子系统在win10的默认位置" class="headerlink" title="子系统在win10的默认位置"></a>子系统在win10的默认位置</h2><pre class=" language-sh"><code class="language-sh">C:\Users\87832\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState</code></pre>
+<p><img src="/images/pasted-1.png" alt="upload successful"></p>
+]]></content>
+      <tags>
+        <tag>win10</tag>
       </tags>
   </entry>
   <entry>
@@ -5546,39 +5628,6 @@ Creating shortcut for 7-Zip (7zFM.exe)
 </tr>
 </tbody></table>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Tool 记</title>
-    <url>/2017/03/26/bff4.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<h1 id="工具1–esptool"><a href="#工具1–esptool" class="headerlink" title="工具1–esptool"></a>工具1–esptool</h1><h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法:"></a>安装方法:</h2><p>1.超级简单按照方法</p>
-<pre class=" language-bash"><code class="language-bash"> $  pip <span class="token function">install</span> esptool</code></pre>
-<p>2.源码安装方法.</p>
-<pre class=" language-bash"><code class="language-bash"> <span class="token comment" spellcheck="true"># 下载源码</span>
- $ git@github.com:themadinventor/esptool.git
- <span class="token comment" spellcheck="true">#安装依赖</span>
- $ pip <span class="token function">install</span> pyserial, easy_install pyserial
- <span class="token comment" spellcheck="true">#或者 depending on your platform.</span>
- $ <span class="token function">apt-get</span> <span class="token function">install</span> python-serial</code></pre>
-<a id="more"></a>
-
-<h2 id="帮助说明"><a href="#帮助说明" class="headerlink" title="帮助说明"></a>帮助说明</h2><pre><code>esptool.py write_flash -h</code></pre>
-<h2 id="使用例子"><a href="#使用例子" class="headerlink" title="使用例子:"></a>使用例子:</h2><pre><code>sudo python esptool.py --port /dev/ttyUSB0 --baud 1500000 \
-write_flash -fm qio -fs 32m -ff 40m 0x3fc000 ../bin/0x3fc000.bin</code></pre>
-<h2 id="几个文件一起烧录"><a href="#几个文件一起烧录" class="headerlink" title="几个文件一起烧录"></a>几个文件一起烧录</h2><pre><code>sudo esptool.py --port /dev/tty.usbserial-DA00H0QE \
---baud 1500000 write_flash -fm qio -fs 32m -ff 40m 0x00000 \
-../boot_v1.6.bin 0x01000 user1.4096.new.6.bin 0x3fc000 \
-../esp_init_data_default.bin 0x3fe000 ../blank.bin </code></pre>
-<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>|关键字| 解释|<br>|—-|<br>|<strong>port</strong>|                 指定串口号|<br>|<strong>baud</strong>|               指定下载波特率<br>|<strong>write_flash</strong>|      烧写二进制文件到指定位置<br>|<strong>-fm</strong>|                  SPI Flash mode( ‘qio’, ‘qout’, ‘dio’, ‘dout’)<br>|<strong>-ff</strong>|                    SPI Flash frequency(‘40m’, ‘26m’, ‘20m’, ‘80m’)<br>|<strong>-fs</strong>|                   SPI Flash size in Mbit(4m’, ‘2m’, ‘8m’, ‘16m’, ‘32m’, ‘16m-c1’, ‘32m-c1’, ‘32m-c2’, ‘64m’, ‘128m’)<br>|<strong>0x3fc000</strong>|         指定烧录地址<br>|<strong>0x3fc000.bin</strong>|   对应的烧录文件</p>
-]]></content>
-      <categories>
-        <category>esp8266</category>
-      </categories>
-      <tags>
-        <tag>esp8266</tag>
-        <tag>WiFi</tag>
-        <tag>esptool</tag>
-      </tags>
   </entry>
   <entry>
     <title>基本算法之平衡二叉树</title>
@@ -5692,19 +5741,6 @@ struct AVLNode
       <tags>
         <tag>算法</tag>
         <tag>二叉树</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>win10子系统wsl</title>
-    <url>/2019/08/21/d9b0.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="子系统重启wsl"><a href="#子系统重启wsl" class="headerlink" title="子系统重启wsl"></a>子系统重启wsl</h2><p>管理员权限下:</p>
-<pre class=" language-sh"><code class="language-sh">net stop LxssManager
-net start LxssManager</code></pre>
-<h2 id="子系统在win10的默认位置"><a href="#子系统在win10的默认位置" class="headerlink" title="子系统在win10的默认位置"></a>子系统在win10的默认位置</h2><pre class=" language-sh"><code class="language-sh">C:\Users\87832\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState</code></pre>
-<p><img src="/images/pasted-1.png" alt="upload successful"></p>
-]]></content>
-      <tags>
-        <tag>win10</tag>
       </tags>
   </entry>
   <entry>
@@ -6132,6 +6168,17 @@ Aditya Bhargava
       </tags>
   </entry>
   <entry>
+    <title>微信开发</title>
+    <url>/2017/04/06/1051.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="http://iot.weixin.qq.com/wiki/new/index.html?page=2-1">微信硬件平台</a><br><a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=2017118">小程序</a></p>
+<p>蛋疼的一天</p>
+]]></content>
+      <tags>
+        <tag>微信</tag>
+        <tag>硬件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>日志打印</title>
     <url>/2021/03/17/f5b3.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="定义打印函数"><a href="#定义打印函数" class="headerlink" title="定义打印函数"></a>定义打印函数</h2><p>参考ESP8266的打印，定义如下打印函数</p>
@@ -6207,70 +6254,6 @@ Log("\r\n\r\n");&amp;#125;\
 ]]></content>
   </entry>
   <entry>
-    <title>微信开发</title>
-    <url>/2017/04/06/1051.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="http://iot.weixin.qq.com/wiki/new/index.html?page=2-1">微信硬件平台</a><br><a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=2017118">小程序</a></p>
-<p>蛋疼的一天</p>
-]]></content>
-      <tags>
-        <tag>微信</tag>
-        <tag>硬件</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>哈夫曼树&amp;哈夫曼编码</title>
-    <url>/2020/08/12/3729.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h2><blockquote>
-<p>哈夫曼树也叫最优二叉树（哈夫曼树）</p>
-</blockquote>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>  <a href="https://baike.baidu.com/item/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91/2305769?fr=aladdin">给定N个权值作为N个叶子结点，构造一棵二叉树，若该树的带权路径长度达到最小，称这样的二叉树为最优二叉树，也称为哈夫曼树(Huffman Tree)。哈夫曼树是带权路径长度最短的树，权值较大的结点离根较近。</a></p>
-<h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><table>
-<thead>
-<tr>
-<th align="left">名词</th>
-<th align="left">解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">路径长度</td>
-<td align="left">根结点到第L层结点路径长度为L-1</td>
-</tr>
-<tr>
-<td align="left">树的带权路径长度（WPL）</td>
-<td align="left">树中所有叶子结点的带权路径长度之和<br><img src="/images/pasted-75.png" alt="upload successful"><br>其中，n表示叶子结点的数目，wi和li分别表示叶子结点ki的权值和树根结点到叶子结点ki之间的路径长度。</td>
-</tr>
-<tr>
-<td align="left"><img src="/images/pasted-76.png" alt="upload successful"></td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<p>|</p>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
-<li>哈夫曼树中权越大的叶子离根越近(WPL最小的二叉树)</li>
-<li>具有相同带权结点的哈夫曼树不惟一</li>
-<li>哈夫曼树的结点的度数为 0 或 2， 没有度为 1 的结点；</li>
-<li>包含 n 个叶子结点的哈夫曼树中共有 2n – 1 个结点。</li>
-<li>包含 n 棵树的森林要经过 n–1 次合并才能形成哈夫曼树，共产生 n–1 个新结点</li>
-</ol>
-<p><img src="/images/pasted-74.png" alt="upload successful"><br><img src="/images/pasted-62.png" alt="upload successful"><br><strong>WPL 最小的值所属的树即为哈夫曼树</strong></p>
-<p><img src="/images/pasted-65.png" alt="upload successful" title="hello"><br><img src="/images/pasted-63.png" alt="upload successful"><br><img src="/images/pasted-64.png" alt="upload successful"></p>
-<h2 id="哈夫曼创建"><a href="#哈夫曼创建" class="headerlink" title="哈夫曼创建"></a>哈夫曼创建</h2><p><img src="/images/pasted-66.png" alt="upload successful"><br>为什么数组buffTree[2n-1] 的大小是2n-1,是因为n个子节点构成的树节点最多的个数是2n-1个<br><img src="/images/pasted-67.png" alt="upload successful"></p>
-<p><img src="/images/pasted-68.png" alt="upload successful"></p>
-<p><img src="/images/pasted-69.png" alt="upload successful"></p>
-<h2 id="哈夫曼树编码"><a href="#哈夫曼树编码" class="headerlink" title="哈夫曼树编码"></a>哈夫曼树编码</h2><h3 id="前缀编码"><a href="#前缀编码" class="headerlink" title="前缀编码"></a>前缀编码</h3><p><img src="/images/pasted-70.png" alt="upload successful"></p>
-<p><img src="/images/pasted-71.png" alt="upload successful"></p>
-<p><img src="/images/pasted-72.png" alt="upload successful"></p>
-<p>特点:<br>权值越高的叶子节点越靠近根节点</p>
-<p><img src="/images/pasted-73.png" alt="upload successful"></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>树莓派之Hexo环境搭建</title>
     <url>/2019/01/27/7c1e.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="安装node-js-环境"><a href="#安装node-js-环境" class="headerlink" title="安装node.js 环境"></a>安装node.js 环境</h2><pre><code>pi@raspberrypi:~/workdir/node_js $ wget -qO- https://raw.github.com/creationix/nvm/v0.33.11/install.sh | sh
@@ -6319,6 +6302,73 @@ added 225 packages from 431 contributors in 181.245s</code></pre>
         <tag>hexo</tag>
         <tag>Linux</tag>
         <tag>raspberry</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>活成自己的样子</title>
+    <url>/2888/03/28/dbbb.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<blockquote>
+<p>我们总是拼尽全力… 想活成大家所期待的样子，以为那样就是最完美的。但其实，真正的成功，或许是不被他人绑架自己的梦想，全然按照自己的意愿过好这一生。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/ilxj/ilxj.github.io@master/images/pasted-15.png" alt="1"></p>
+<pre class=" language-sh"><code class="language-sh">==============================================================================================
+
+                                            _ooOoo_
+                                           o8888888o
+                                           88" . "88
+                                           (| -_- |)
+                                            O\ = /O
+                                        ____/`---'\____
+                                        .' \\|   |// `.
+                                       / \\||| : |||// \
+                                     / _||||| -:- |||||- \
+                                       | | \\\ - /// | |
+                                     | \_| ''\---/'' | |
+                                      \ .-\__ `-` ___/-. /
+                                   ___`. .' /--.--\ `. . __
+                                . '< `.___\_<|>_/___.' >'.
+                               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+                                 \ \ `-. \_ __\ /__ _/ .-` / /
+                         ======`-.____`-.___\_____/___.-`____.-'======
+                                            `=---='
+                         .............................................
+                            !Write the code!       Change the world!
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</code></pre>
+<iframe frameborder="no" border="0" autoPlay=true marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=28285910&auto=0&height=66"></iframe>
+
+<a id="more"></a>
+
+<p><embed src="http://player.hunantv.com/mgtv_v5_main/main.swf?play_type=1&video_id=3954767" autostart=false allowFullScreen="true" quality="high" width="900" height="498" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
+<!-- <div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","loop":true,"video":{"url":"http://devtest.qiniudn.com/若能绽放光芒.mp4","pic":"http://devtest.qiniudn.com/若能绽放光芒.png"},"danmaku":{"id":"9E2E3368B56CDBB4","api":"http://dplayer.daoapp.io","token":"tokendemo"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script> -->
+
+
+]]></content>
+      <categories>
+        <category>新奇</category>
+      </categories>
+      <tags>
+        <tag>新奇</tag>
+        <tag>音乐</tag>
+        <tag>🎵</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>汉枫系列-LPT230环境搭建</title>
+    <url>/2018/04/17/97d9.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="MAC-下编译器下载"><a href="#MAC-下编译器下载" class="headerlink" title="MAC 下编译器下载"></a>MAC 下编译器下载</h2><blockquote>
+<p>Linux 环境类似；</p>
+</blockquote>
+<ul>
+<li><a href="https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads">https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>汉枫</category>
+      </categories>
+      <tags>
+        <tag>lpt230</tag>
+        <tag>gcc</tag>
       </tags>
   </entry>
   <entry>
@@ -6384,24 +6434,6 @@ added 225 packages from 431 contributors in 181.245s</code></pre>
 <li><a href="https://blog.csdn.net/qq_39690917/article/details/86713809">https://blog.csdn.net/qq_39690917/article/details/86713809</a></li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>汉枫系列-LPT230环境搭建</title>
-    <url>/2018/04/17/97d9.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="MAC-下编译器下载"><a href="#MAC-下编译器下载" class="headerlink" title="MAC 下编译器下载"></a>MAC 下编译器下载</h2><blockquote>
-<p>Linux 环境类似；</p>
-</blockquote>
-<ul>
-<li><a href="https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads">https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>汉枫</category>
-      </categories>
-      <tags>
-        <tag>lpt230</tag>
-        <tag>gcc</tag>
-      </tags>
   </entry>
   <entry>
     <title>编辑器介绍</title>
@@ -6788,55 +6820,6 @@ alex@alex-virtual-machine:~/esptool/buildTool/crosstool-NG/builds$ source ~/.pro
       <tags>
         <tag>esp8266</tag>
         <tag>gcc</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>活成自己的样子</title>
-    <url>/2888/03/28/dbbb.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<blockquote>
-<p>我们总是拼尽全力… 想活成大家所期待的样子，以为那样就是最完美的。但其实，真正的成功，或许是不被他人绑架自己的梦想，全然按照自己的意愿过好这一生。</p>
-</blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/ilxj/ilxj.github.io@master/images/pasted-15.png" alt="1"></p>
-<pre class=" language-sh"><code class="language-sh">==============================================================================================
-
-                                            _ooOoo_
-                                           o8888888o
-                                           88" . "88
-                                           (| -_- |)
-                                            O\ = /O
-                                        ____/`---'\____
-                                        .' \\|   |// `.
-                                       / \\||| : |||// \
-                                     / _||||| -:- |||||- \
-                                       | | \\\ - /// | |
-                                     | \_| ''\---/'' | |
-                                      \ .-\__ `-` ___/-. /
-                                   ___`. .' /--.--\ `. . __
-                                . '< `.___\_<|>_/___.' >'.
-                               | | : `- \`.;`\ _ /`;.`/ - ` : | |
-                                 \ \ `-. \_ __\ /__ _/ .-` / /
-                         ======`-.____`-.___\_____/___.-`____.-'======
-                                            `=---='
-                         .............................................
-                            !Write the code!       Change the world!
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</code></pre>
-<iframe frameborder="no" border="0" autoPlay=true marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=28285910&auto=0&height=66"></iframe>
-
-<a id="more"></a>
-
-<p><embed src="http://player.hunantv.com/mgtv_v5_main/main.swf?play_type=1&video_id=3954767" autostart=false allowFullScreen="true" quality="high" width="900" height="498" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
-<!-- <div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","loop":true,"video":{"url":"http://devtest.qiniudn.com/若能绽放光芒.mp4","pic":"http://devtest.qiniudn.com/若能绽放光芒.png"},"danmaku":{"id":"9E2E3368B56CDBB4","api":"http://dplayer.daoapp.io","token":"tokendemo"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script> -->
-
-
-]]></content>
-      <categories>
-        <category>新奇</category>
-      </categories>
-      <tags>
-        <tag>新奇</tag>
-        <tag>音乐</tag>
-        <tag>🎵</tag>
       </tags>
   </entry>
   <entry>
@@ -8870,6 +8853,23 @@ netstat -nlutp |grep mbd</code></pre>
       <tags>
         <tag>Linux</tag>
         <tag>raspberry</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Qt打包发布</title>
+    <url>/2022/06/25/d67d.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="打包步骤"><a href="#打包步骤" class="headerlink" title="打包步骤"></a>打包步骤</h2><ol>
+<li>把当前Qt项目下的编译输出exe文件和引用的第三方库，如<code>dll</code>文件拷贝到新创建的目录下;</li>
+<li>打开对应的终端,如下<br>  <img src="/images/Qt-1.png" alt="Qt"></li>
+<li>进入到第一步的目录下，然后执行命令： <code>windeployqt xxx.exe</code><br> <img src="/images/Qt-2.png" alt="Qt"></li>
+<li>打开QT程序打包工具<code>Enigma Virtual Box</code><img src="/images/Qt-3.png" alt="Enigma Virtual Box"></li>
+<li>设置如下<br><img src="/images/Qt-4.png" alt="Qt"><br><img src="/images/Qt-5.png" alt="Qt"></li>
+<li>成功打包后如同<br><img src="/images/Qt-6.png" alt="Qt"></li>
+<li>然后再目录下发现有文件:<code>xxx_boxed.exe</code>即为独立可执行文件；</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Qt</tag>
       </tags>
   </entry>
 </search>
