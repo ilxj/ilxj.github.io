@@ -1,6 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ESP32-Wemos开发板</title>
+    <url>/2021/02/22/b88b.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="ESP32-Wemos开发板"><a href="#ESP32-Wemos开发板" class="headerlink" title="ESP32-Wemos开发板"></a>ESP32-Wemos开发板</h2><p><img src="/images/pasted-114.png" alt="upload successful"></p>
+<h2 id="I2C-displays-on-I2C1"><a href="#I2C-displays-on-I2C1" class="headerlink" title="I2C displays on I2C1"></a>I2C displays on I2C1</h2><table>
+<thead>
+<tr>
+<th align="left">Signal</th>
+<th align="left">GPIO</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">SCL</td>
+<td align="left">GPIO4</td>
+</tr>
+<tr>
+<td align="left">SDA</td>
+<td align="left">GPIO5</td>
+</tr>
+</tbody></table>
+<h2 id="串口"><a href="#串口" class="headerlink" title="串口"></a>串口</h2><table>
+<thead>
+<tr>
+<th align="left">UART</th>
+<th align="left">Signal</th>
+<th align="left">GPIO</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0</td>
+<td align="left">RX<br>TX</td>
+<td align="left">GPIO3<br>GPIO1</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">RX<br>TX</td>
+<td align="left">GPIO12<br>GPIO13</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">RX<br>TX</td>
+<td align="left">GPIO16<br>GPIO17</td>
+</tr>
+</tbody></table>
+<h2 id="SPI"><a href="#SPI" class="headerlink" title="SPI"></a>SPI</h2><table>
+<thead>
+<tr>
+<th align="left">SPI</th>
+<th align="left">Signal</th>
+<th align="left">GPIO</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">2</td>
+<td align="left">MISO<br>MOSI<br>CLK</td>
+<td align="left">GPIO12<br>GPIO13<br>GPIO14</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">MISO<br>MOSI<br>CLK</td>
+<td align="left">GPIO19<br>GPIO23<br>GPIO18</td>
+</tr>
+</tbody></table>
+<h2 id="I2C"><a href="#I2C" class="headerlink" title="I2C"></a>I2C</h2><table>
+<thead>
+<tr>
+<th align="left">I2C</th>
+<th align="left">Signal</th>
+<th align="left">GPIO</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0</td>
+<td align="left">SCL<br>SDA</td>
+<td align="left">GPIO21<br>GPIO22</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">SCL<br>SDA</td>
+<td align="left">GPIO4<br>GPIO5</td>
+</tr>
+</tbody></table>
+<h2 id="OLED"><a href="#OLED" class="headerlink" title="OLED"></a>OLED</h2><p>参数</p>
+<ul>
+<li>128x64 SSD1306 I2C</li>
+<li>GPIO5: SDA</li>
+<li>GPIO4: SCL<h2 id="SPI-1"><a href="#SPI-1" class="headerlink" title="SPI"></a>SPI</h2></li>
+<li>CLK -&gt; GPIO5</li>
+<li>MOSI -&gt; GPIO7</li>
+<li>RST -&gt; GPIO0</li>
+<li>DC -&gt; GPIO2</li>
+<li>CS -&gt; GPIO8</li>
+</ul>
+<h3 id="SSD1306介绍"><a href="#SSD1306介绍" class="headerlink" title="SSD1306介绍"></a>SSD1306介绍</h3><p><a href="https://blog.csdn.net/weixin_44457994/article/details/121484335">https://blog.csdn.net/weixin_44457994/article/details/121484335</a></p>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><ul>
+<li><a href="https://github.com/nopnop2002/esp-idf-ssd1306">https://github.com/nopnop2002/esp-idf-ssd1306</a></li>
+<li><a href="https://randomnerdtutorials.com/esp32-built-in-oled-ssd1306/">https://randomnerdtutorials.com/esp32-built-in-oled-ssd1306/</a></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>Android系列之各种疑难杂症处理</title>
     <url>/2018/05/06/7aeb.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h2><blockquote>
@@ -8871,5 +8971,1024 @@ netstat -nlutp |grep mbd</code></pre>
       <tags>
         <tag>Qt</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>npm 命令</title>
+    <url>/2022/08/22/21d.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
+<li><p><code>~</code> 、<code>^</code> 和 <code>*</code></p>
+<ul>
+<li><code>~</code>会匹配最近的小版本依赖包，比如<code>~1.2.3</code>会匹配所有<code>1.2.x</code>版本，但是不包括<code>1.3.0</code></li>
+<li><code>^</code>会匹配最新的大版本依赖包，比如<code>^1.2.3</code>会匹配所有<code>1.x.x</code>的包，包括<code>1.3.0</code>，但是不包括<code>2.0.0</code></li>
+<li>什么前缀也没有，比如<code>1.2.3</code>，指定特定的版本</li>
+<li><code>*</code>安装最新版本的依赖包。可能会造成版本不兼容，<strong>慎用</strong></li>
+</ul>
+</li>
+<li><p>查看hexo 版本</p>
+<pre class=" language-sh"><code class="language-sh">hexo version</code></pre>
+</li>
+<li><p>hexo版本升级</p>
+<pre class=" language-sh"><code class="language-sh">npm install hexo-cli -g # -g 表示全局升级</code></pre>
+</li>
+<li><p>npm-check 检查更新</p>
+<pre class=" language-sh"><code class="language-sh">npm install -g npm-check
+npm-check</code></pre>
+</li>
+<li><p>npm-upgrade 更新</p>
+<pre class=" language-sh"><code class="language-sh">npm install -g npm-upgrade
+npm-upgrade</code></pre>
+</li>
+<li><p>更新全局包</p>
+<pre class=" language-sh"><code class="language-sh">npm upgrade <name> -g</code></pre>
+</li>
+<li><p>不带<code>-g</code>参数</p>
+<ul>
+<li> 安装模块到项目node_modules目录下</li>
+<li> 不会修改package.json文件</li>
+<li> 运行 npm install 初始化项目时不会下载模块</li>
+</ul>
+</li>
+<li><p>带<code>-g</code>参数</p>
+<ul>
+<li>安装模块到全局，不会在项目node_modules目录中保存模块包</li>
+<li>不会修改package.json文件</li>
+<li>运行 npm install 初始化项目时不会下载模块</li>
+</ul>
+</li>
+<li><p>更新生产环境依赖包</p>
+<pre class=" language-sh"><code class="language-sh">npm upgrade <name> --save</code></pre>
+</li>
+</ul>
+<p><strong>注意 ：</strong></p>
+<ul>
+<li><code>save</code>参数: <code>npm install X --save</code><ul>
+<li>会把X包安装到<code>node_modules</code>目录中</li>
+<li>会在<code>package.json</code>的<code>dependencies</code>属性下添加X</li>
+<li>之后运行<code>npm install</code>命令时，会自动安装<code>X</code>到<code>node_modules</code>目录中；</li>
+<li>运行<code>npm install --production</code>或者注明<code>NODE_ENV</code>变量值为<code>production</code>时，会自动下载模块到<code>node_modules</code>目录中。</li>
+</ul>
+</li>
+<li>不带<code>save</code>参数：<code>npm install X</code><ul>
+<li>会把X包安装到<code>node_modules</code>目录中;</li>
+<li>不会在<code>package.json</code>的<code>dependencies</code>属性下添加X</li>
+</ul>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>BLE-基础知识</title>
+    <url>/2022/08/22/36c8.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="协议栈结构图"><a href="#协议栈结构图" class="headerlink" title="协议栈结构图"></a>协议栈结构图</h2><p><img src="/images/BLE-%E5%8D%8F%E8%AE%AE%E6%A0%88.png" alt="BLE-协议栈"></p>
+<h2 id="名词介绍"><a href="#名词介绍" class="headerlink" title="名词介绍"></a>名词介绍</h2><table>
+<thead>
+<tr>
+<th align="left">名词</th>
+<th align="left">介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">低功耗蓝牙(<strong>BLE</strong>)</td>
+<td align="left">支持蓝牙协议4.0或更高的模块。主打低功耗，多用于物联网类型</td>
+</tr>
+<tr>
+<td align="left">经典蓝牙(<strong>BT</strong>)</td>
+<td align="left">指支持蓝牙协议在4.0以下的模块。主打短距离数据高速传输，多用于蓝牙耳机等。</td>
+</tr>
+<tr>
+<td align="left">Basic Rate(<strong>BR</strong>)</td>
+<td align="left">蓝牙基础速率技术，属于BT</td>
+</tr>
+<tr>
+<td align="left">Enhanced Data Rate(<strong>EDR</strong>)</td>
+<td align="left">蓝牙增强速率技术,是在BR技术基础上升级出来的，所以可以和BR共存，属于BT</td>
+</tr>
+<tr>
+<td align="left">Alternate MAC/PHYs(<strong>AMP</strong>))</td>
+<td align="left">蓝牙核心系统的次要控制器,可切换的媒体访问控制器（<code>Media Access Controller</code>）和物理层（<code>Physical Layer</code>）属于BT</td>
+</tr>
+<tr>
+<td align="left">Low Energy(<strong>LE</strong>)</td>
+<td align="left">蓝牙低功耗技术,属于BLE</td>
+</tr>
+</tbody></table>
+<h2 id="BLE-广播"><a href="#BLE-广播" class="headerlink" title="BLE 广播"></a>BLE 广播</h2><h3 id="广播数据格式"><a href="#广播数据格式" class="headerlink" title="广播数据格式"></a>广播数据格式</h3><p><img src="http://help-static-aliyun-doc.aliyuncs.com/assets/img/zh-CN/3394359951/p128952.png" alt="ble"></p>
+<h3 id="广播类型如下"><a href="#广播类型如下" class="headerlink" title="广播类型如下"></a>广播类型如下</h3><pre class=" language-C"><code class="language-C">typedef enum &#123;
+    ESP_BLE_AD_TYPE_FLAG                     = 0x01,    /* relate to BTM_BLE_AD_TYPE_FLAG in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_16SRV_PART               = 0x02,    /* relate to BTM_BLE_AD_TYPE_16SRV_PART in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_16SRV_CMPL               = 0x03,    /* relate to BTM_BLE_AD_TYPE_16SRV_CMPL in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_32SRV_PART               = 0x04,    /* relate to BTM_BLE_AD_TYPE_32SRV_PART in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_32SRV_CMPL               = 0x05,    /* relate to BTM_BLE_AD_TYPE_32SRV_CMPL in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_128SRV_PART              = 0x06,    /* relate to BTM_BLE_AD_TYPE_128SRV_PART in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_128SRV_CMPL              = 0x07,    /* relate to BTM_BLE_AD_TYPE_128SRV_CMPL in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_NAME_SHORT               = 0x08,    /* relate to BTM_BLE_AD_TYPE_NAME_SHORT in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_NAME_CMPL                = 0x09,    /* relate to BTM_BLE_AD_TYPE_NAME_CMPL in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_TX_PWR                   = 0x0A,    /* relate to BTM_BLE_AD_TYPE_TX_PWR in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_DEV_CLASS                = 0x0D,    /* relate to BTM_BLE_AD_TYPE_DEV_CLASS in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_SM_TK                    = 0x10,    /* relate to BTM_BLE_AD_TYPE_SM_TK in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_SM_OOB_FLAG              = 0x11,    /* relate to BTM_BLE_AD_TYPE_SM_OOB_FLAG in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_INT_RANGE                = 0x12,    /* relate to BTM_BLE_AD_TYPE_INT_RANGE in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_SOL_SRV_UUID             = 0x14,    /* relate to BTM_BLE_AD_TYPE_SOL_SRV_UUID in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_128SOL_SRV_UUID          = 0x15,    /* relate to BTM_BLE_AD_TYPE_128SOL_SRV_UUID in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_SERVICE_DATA             = 0x16,    /* relate to BTM_BLE_AD_TYPE_SERVICE_DATA in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_PUBLIC_TARGET            = 0x17,    /* relate to BTM_BLE_AD_TYPE_PUBLIC_TARGET in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_RANDOM_TARGET            = 0x18,    /* relate to BTM_BLE_AD_TYPE_RANDOM_TARGET in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_APPEARANCE               = 0x19,    /* relate to BTM_BLE_AD_TYPE_APPEARANCE in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_ADV_INT                  = 0x1A,    /* relate to BTM_BLE_AD_TYPE_ADV_INT in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_LE_DEV_ADDR              = 0x1b,    /* relate to BTM_BLE_AD_TYPE_LE_DEV_ADDR in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_LE_ROLE                  = 0x1c,    /* relate to BTM_BLE_AD_TYPE_LE_ROLE in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_SPAIR_C256               = 0x1d,    /* relate to BTM_BLE_AD_TYPE_SPAIR_C256 in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_SPAIR_R256               = 0x1e,    /* relate to BTM_BLE_AD_TYPE_SPAIR_R256 in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_32SOL_SRV_UUID           = 0x1f,    /* relate to BTM_BLE_AD_TYPE_32SOL_SRV_UUID in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_32SERVICE_DATA           = 0x20,    /* relate to BTM_BLE_AD_TYPE_32SERVICE_DATA in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_128SERVICE_DATA          = 0x21,    /* relate to BTM_BLE_AD_TYPE_128SERVICE_DATA in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_LE_SECURE_CONFIRM        = 0x22,    /* relate to BTM_BLE_AD_TYPE_LE_SECURE_CONFIRM in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_LE_SECURE_RANDOM         = 0x23,    /* relate to BTM_BLE_AD_TYPE_LE_SECURE_RANDOM in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_URI                      = 0x24,    /* relate to BTM_BLE_AD_TYPE_URI in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_INDOOR_POSITION          = 0x25,    /* relate to BTM_BLE_AD_TYPE_INDOOR_POSITION in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_TRANS_DISC_DATA          = 0x26,    /* relate to BTM_BLE_AD_TYPE_TRANS_DISC_DATA in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_LE_SUPPORT_FEATURE       = 0x27,    /* relate to BTM_BLE_AD_TYPE_LE_SUPPORT_FEATURE in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_CHAN_MAP_UPDATE          = 0x28,    /* relate to BTM_BLE_AD_TYPE_CHAN_MAP_UPDATE in stack/btm_ble_api.h */
+    ESP_BLE_AD_MANUFACTURER_SPECIFIC_TYPE    = 0xFF,    /* relate to BTM_BLE_AD_MANUFACTURER_SPECIFIC_TYPE in stack/btm_ble_api.h */
+&#125; esp_ble_adv_data_type;</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ESP_BLE_AD_TYPE_FLAG</td>
+<td align="left">1</td>
+<td align="left">低功耗蓝牙定义了如下标识;<br> Bit[0]: 有限可发现模式<br>Bit[1]:通用可发现模式;<br>Bit[2]:不支持BR/EDR<br>Bit[3]:设备同时支持LE和BR/EDR（控制器）<br>Bit[4]:设备同时支持LE和BR/EDR（主机）</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_16SRV_PART</td>
+<td align="left">0x02</td>
+<td align="left">不完整的16位服务等级UUID列表</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_16SRV_CMPL</td>
+<td align="left">0x03</td>
+<td align="left">16位服务类别UUID的完整列表</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_32SRV_PART</td>
+<td align="left">0x04</td>
+<td align="left">不完整的32位服务类UUID列表</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_32SRV_CMPL</td>
+<td align="left">0x05</td>
+<td align="left">32位服务类UUID的完整列表</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_128SRV_PART</td>
+<td align="left">0x06</td>
+<td align="left">不完整的128位服务等级UUID列表</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_128SRV_CMPL</td>
+<td align="left">0x07</td>
+<td align="left">完整的128位服务等级UUID列表</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_NAME_SHORT</td>
+<td align="left">0x08</td>
+<td align="left">缩短的本地名称</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_NAME_CMPL</td>
+<td align="left">0x09</td>
+<td align="left">完整的本地名称</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_TX_PWR</td>
+<td align="left">0x0A</td>
+<td align="left">发射功率等级</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_DEV_CLASS</td>
+<td align="left">0x0D</td>
+<td align="left">设备类别</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">0X0E</td>
+<td align="left">简单配对哈希C</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">0X0E</td>
+<td align="left">简单配对哈希C-192</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">0X0F</td>
+<td align="left">简单配对随机数R</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">0X0F</td>
+<td align="left">简单配对随机发生器R-192</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_SM_TK</td>
+<td align="left">0x10</td>
+<td align="left">设备编号</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_SM_OOB_FLAG</td>
+<td align="left">0x11</td>
+<td align="left">安全管理器带外标志</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_INT_RANGE</td>
+<td align="left">0x12</td>
+<td align="left">从站连接间隔范围</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_SOL_SRV_UUID</td>
+<td align="left">0x14</td>
+<td align="left">16位服务请求UUID列表</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_128SOL_SRV_UUID</td>
+<td align="left">0x15</td>
+<td align="left">128位服务请求UUID列表</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_SERVICE_DATA</td>
+<td align="left">0x16</td>
+<td align="left">服务数据</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_PUBLIC_TARGET</td>
+<td align="left">0x17</td>
+<td align="left">公共目标地址</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_RANDOM_TARGET</td>
+<td align="left">0x18</td>
+<td align="left">随机目标地址</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_APPEARANCE</td>
+<td align="left">0x19</td>
+<td align="left">外观</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_ADV_INT</td>
+<td align="left">0x1A</td>
+<td align="left">广告间隔</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_LE_DEV_ADDR</td>
+<td align="left">0x1b</td>
+<td align="left">LE蓝牙设备地址</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_LE_ROLE</td>
+<td align="left">0x1c</td>
+<td align="left">LE角色</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_SPAIR_C256</td>
+<td align="left">0x1d</td>
+<td align="left">简单配对哈希C-256</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_SPAIR_R256</td>
+<td align="left">0x1e</td>
+<td align="left">简单配对随机数发生器R-256</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_32SOL_SRV_UUID</td>
+<td align="left">0x1f</td>
+<td align="left">32位服务请求UUID列表</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_32SERVICE_DATA</td>
+<td align="left">0x20</td>
+<td align="left">服务数据-32位UUID</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_128SERVICE_DATA</td>
+<td align="left">0x21</td>
+<td align="left">服务数据-128位UUID</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_LE_SECURE_CONFIRM</td>
+<td align="left">0x22</td>
+<td align="left">LE安全连接确认值</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_LE_SECURE_RANDOM</td>
+<td align="left">0x23</td>
+<td align="left">LE安全连接随机值</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_URI</td>
+<td align="left">0x24</td>
+<td align="left">URI</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_INDOOR_POSITION</td>
+<td align="left">0x25</td>
+<td align="left">室内定位</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_TRANS_DISC_DATA</td>
+<td align="left">0x26</td>
+<td align="left">运输发现数据</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_LE_SUPPORT_FEATURE</td>
+<td align="left">0x27</td>
+<td align="left">LE支持的功能</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_CHAN_MAP_UPDATE</td>
+<td align="left">0x28</td>
+<td align="left">频道地图更新指示</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_MANUFACTURER_SPECIFIC_TYPE</td>
+<td align="left">0xFF</td>
+<td align="left">制造商特定数据</td>
+</tr>
+</tbody></table>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><h3 id="属性协议格式"><a href="#属性协议格式" class="headerlink" title="属性协议格式"></a>属性协议格式</h3><table>
+<thead>
+<tr>
+<th align="left">Attribute Handle</th>
+<th align="left">Attribute Type</th>
+<th align="left">Attribute Value</th>
+<th align="left">Attribute Permissions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">句柄2字节</td>
+<td align="left">属性类型2-6字节</td>
+<td align="left">属性值0~512</td>
+<td align="left">权限</td>
+</tr>
+</tbody></table>
+<h3 id="属性UUID分类"><a href="#属性UUID分类" class="headerlink" title="属性UUID分类"></a>属性UUID分类</h3><ul>
+<li>0X1800-0X26FF 用于服务类通用唯一识别码</li>
+<li>0X2700-0X27C5 用于标识计量单位</li>
+<li>0X2800-0X2803 用于区分属性类型(声明服务Declaration)</li>
+<li>0X2900-0X290F 用于作特性描述(Description)</li>
+<li>0X2A00-0x2BDC 用于区分特性类型</li>
+</ul>
+<h3 id="GATT属性类型"><a href="#GATT属性类型" class="headerlink" title="GATT属性类型"></a>GATT属性类型</h3><table>
+<thead>
+<tr>
+<th align="left">Attribute Type</th>
+<th align="left">UUID</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">«Primary Service»</td>
+<td align="left">0x2800</td>
+<td align="left">Primary Service Declaration</td>
+</tr>
+<tr>
+<td align="left">«Secondary Service»</td>
+<td align="left">0x2801</td>
+<td align="left">Secondary Service Declaration</td>
+</tr>
+<tr>
+<td align="left">«Include»</td>
+<td align="left">0x2802</td>
+<td align="left">Include Declaration</td>
+</tr>
+<tr>
+<td align="left">«Characteristic»</td>
+<td align="left">0x2803</td>
+<td align="left">Characteristic Declaration</td>
+</tr>
+<tr>
+<td align="left">«Characteristic Extended Properties»</td>
+<td align="left">0x2900</td>
+<td align="left">Characteristic Extended Properties</td>
+</tr>
+<tr>
+<td align="left">«Characteristic User Description»</td>
+<td align="left">0x2901</td>
+<td align="left">Characteristic User Description Descriptor</td>
+</tr>
+<tr>
+<td align="left">«Client Characteristic Configuration»</td>
+<td align="left">0x2902</td>
+<td align="left">Client Characteristic Configuration Descriptor</td>
+</tr>
+<tr>
+<td align="left">«Server Characteristic Configuration»</td>
+<td align="left">0x2903</td>
+<td align="left">Server Characteristic Configuration Descriptor</td>
+</tr>
+<tr>
+<td align="left">«Characteristic Format»</td>
+<td align="left">0x2904</td>
+<td align="left">Characteristic Format Descriptor</td>
+</tr>
+<tr>
+<td align="left">«Characteristic Aggregate Format»</td>
+<td align="left">0x2905</td>
+<td align="left">Characteristic Aggregate Format Descriptor</td>
+</tr>
+</tbody></table>
+<h4 id="UUID-0x2803"><a href="#UUID-0x2803" class="headerlink" title="UUID-0x2803"></a>UUID-0x2803</h4><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>特征声明(characteristic declaration)</p>
+<h5 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h5><p>特征值被分为3部分,分别是:<code>Properties</code><strong>(属性)**、<code>Characteristic Value Attribute</code></strong>(特征值属性句柄)<strong>、</strong>特征的UUID**。</p>
+<table>
+<thead>
+<tr>
+<th align="left">Handle</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Permissions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0xNNNN</td>
+<td align="left">0x2803</td>
+<td align="left"><strong>属性(1Byte)</strong>+<strong>特征值属性句柄(2Byte)</strong>+<strong>特征的UUID(16bit或者128bit)</strong></td>
+<td align="left">只读（Read Only）<br>无需认证(No Authentication)<br>无需授权(No Authorization)</td>
+</tr>
+</tbody></table>
+<h4 id="UUID-0x2904"><a href="#UUID-0x2904" class="headerlink" title="UUID-0x2904"></a>UUID-0x2904</h4><h5 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h5><p>是特征值的一个可选项,用于定义特征值的描述,此定义载特征值之后的定义;&lt;br<br>如果存在多个特征值描述,采用共存方式;<br></p>
+<h5 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h5><p>特征值描述值被分为5部分,分别是:<code>format</code><strong>(格式)</strong>, <code>exponent</code><strong>(指数)</strong>,<code>unit</code><strong>(单位)</strong>, <code>name space</code><strong>(命名空间)</strong>,<code>and description</code><strong>(描述)</strong>;</p>
+<table>
+<thead>
+<tr>
+<th align="left">Handle</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Permissions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0xNNNN</td>
+<td align="left">0x2904</td>
+<td align="left">1.[Format]:1B<br>2.[Exponent]:1B<br>3.[Unit]:2B<br>4.[Name Space]:1B<br>5.[Description]:2B</td>
+<td align="left">1.Read only<br>2.No Authentication,<br>3.NO authorization</td>
+</tr>
+<tr>
+<td align="left"><strong>注意:</strong> Value 按照<strong>小端字节序</strong>计算 ;</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>Format</strong>定义见:<strong>Core_V4.2-3.3.3.5.2</strong></li>
+<li><strong>Exponent</strong>定义见 :<strong>Core_V4.2-3.3.3.5.3</strong></li>
+<li><strong>Unit</strong>定义见 :<strong>Core_V4.2-3.3.3.5.4</strong>, <a href="https://btprodspecificationrefs.blob.core.windows.net/assigned-numbers/Assigned%20Number%20Types/Format%20Types.pdf">具体见</a></li>
+<li><strong>Name Space</strong>定义见 :<strong>Core_V4.2-3.3.3.5.5</strong> <a href="https://btprodspecificationrefs.blob.core.windows.net/assigned-numbers/Assigned%20Number%20Types/GATT%20Namespace%20Descriptors.pdf">具体见</a>目前好在只支持0X01值</li>
+<li><strong>Description</strong>定义见 :<strong>Core_V4.2-3.3.3.5.6</strong>具体见 <strong>Name Space</strong>文档的GATT Bluetooth Namespace Descriptors</li>
+</ul>
+<h4 id="0x2902-CCCD"><a href="#0x2902-CCCD" class="headerlink" title="0x2902(CCCD)"></a>0x2902(CCCD)</h4><p>Value : 2Byte</p>
+<ul>
+<li>0x0001:Notification</li>
+<li>0x0002:Indication</li>
+<li>0xFFF4:预留</li>
+</ul>
+<h5 id="Notification-和-Indication-的区别"><a href="#Notification-和-Indication-的区别" class="headerlink" title="Notification 和 Indication 的区别"></a>Notification 和 Indication 的区别</h5><ul>
+<li>Notification 不需要应答，所以服务端发送的消息，它自己并不知道消息是否发送成功。</li>
+<li>Indication 需要客户端应答，每次服务端发送完数据都需要客户端发送应答消息。其中有一点很重要，如果你发送的 indication客户端没有应答，你是不能再次发送indication的；<br><blockquote>
+<p><strong>Notification</strong>和 <strong>Indication</strong>需要客户端通过CCCD特征(Client Characteristic Configuration Descriptor)来配置,且服务端要有CCCD特征；</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="一些已知UUID"><a href="#一些已知UUID" class="headerlink" title="一些已知UUID"></a>一些已知UUID</h3><h4 id="Service-UUID"><a href="#Service-UUID" class="headerlink" title="Service UUID"></a>Service UUID</h4><p>范围: <strong>0x1800 - 0x1856</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">UUID</th>
+<th align="left">Name</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0x1800</td>
+<td align="left">Generic Access</td>
+<td align="left">GATT Service</td>
+<td align="left">通用访问</td>
+</tr>
+<tr>
+<td align="left">0x1801</td>
+<td align="left">Generic Attribute</td>
+<td align="left">GATT Service</td>
+<td align="left">通用属性</td>
+</tr>
+<tr>
+<td align="left">0x1802</td>
+<td align="left">Immediate Alert</td>
+<td align="left">GATT Service</td>
+<td align="left">即时闹钟</td>
+</tr>
+<tr>
+<td align="left">0x1803</td>
+<td align="left">Link Loss</td>
+<td align="left">GATT Service</td>
+<td align="left">连接丢失</td>
+</tr>
+<tr>
+<td align="left">0x1804</td>
+<td align="left">Tx Power</td>
+<td align="left">GATT Service</td>
+<td align="left">发送功率</td>
+</tr>
+<tr>
+<td align="left">0x1805</td>
+<td align="left">Current Time</td>
+<td align="left">GATT Service</td>
+<td align="left">当前时间</td>
+</tr>
+<tr>
+<td align="left">0x1806</td>
+<td align="left">Reference Time Update</td>
+<td align="left">GATT Service</td>
+<td align="left">参考时间更新</td>
+</tr>
+<tr>
+<td align="left">0x1807</td>
+<td align="left">Next DST Change</td>
+<td align="left">GATT Service</td>
+<td align="left">下个日光节约时间（夏令时）更改</td>
+</tr>
+<tr>
+<td align="left">0x1808</td>
+<td align="left">Glucose</td>
+<td align="left">GATT Service</td>
+<td align="left">葡萄糖</td>
+</tr>
+<tr>
+<td align="left">0x1809</td>
+<td align="left">Health Thermometer</td>
+<td align="left">GATT Service</td>
+<td align="left">温度计</td>
+</tr>
+<tr>
+<td align="left">0x180A</td>
+<td align="left">Device Information</td>
+<td align="left">GATT Service</td>
+<td align="left">设备信息</td>
+</tr>
+<tr>
+<td align="left">0x180D</td>
+<td align="left">Heart Rate</td>
+<td align="left">GATT Service</td>
+<td align="left">心率</td>
+</tr>
+<tr>
+<td align="left">0x180E</td>
+<td align="left">Phone Alert Status</td>
+<td align="left">GATT Service</td>
+<td align="left">手机报警状态</td>
+</tr>
+<tr>
+<td align="left">0x180F</td>
+<td align="left">Battery</td>
+<td align="left">GATT Service</td>
+<td align="left">电池</td>
+</tr>
+<tr>
+<td align="left">0x1810</td>
+<td align="left">Blood Pressure</td>
+<td align="left">GATT Service</td>
+<td align="left">血压</td>
+</tr>
+<tr>
+<td align="left">0x1811</td>
+<td align="left">Alert Notification</td>
+<td align="left">GATT Service</td>
+<td align="left">闹钟推送</td>
+</tr>
+<tr>
+<td align="left">0x1812</td>
+<td align="left">Human Interface Device</td>
+<td align="left">GATT Service</td>
+<td align="left">HID设备</td>
+</tr>
+<tr>
+<td align="left">0x1813</td>
+<td align="left">Scan Parameters</td>
+<td align="left">GATT Service</td>
+<td align="left">扫描参数</td>
+</tr>
+<tr>
+<td align="left">0x1814</td>
+<td align="left">Running Speed and Cadence</td>
+<td align="left">GATT Service</td>
+<td align="left">跑步速度、节奏</td>
+</tr>
+<tr>
+<td align="left">0x1815</td>
+<td align="left">Automation IO</td>
+<td align="left">GATT Service</td>
+<td align="left">自动化输入输出</td>
+</tr>
+<tr>
+<td align="left">0x1816</td>
+<td align="left">Cycling Speed and Cadence</td>
+<td align="left">GATT Service</td>
+<td align="left">循环速度、节奏</td>
+</tr>
+<tr>
+<td align="left">0x1818</td>
+<td align="left">Cycling Power</td>
+<td align="left">GATT Service</td>
+<td align="left">骑行能量</td>
+</tr>
+<tr>
+<td align="left">0x1819</td>
+<td align="left">Location and Navigation</td>
+<td align="left">GATT Service</td>
+<td align="left">定位及导航</td>
+</tr>
+<tr>
+<td align="left">0x181A</td>
+<td align="left">Environmental Sensing</td>
+<td align="left">GATT Service</td>
+<td align="left">环境传感</td>
+</tr>
+<tr>
+<td align="left">0x181B</td>
+<td align="left">Body Composition</td>
+<td align="left">GATT Service</td>
+<td align="left">身体组成</td>
+</tr>
+<tr>
+<td align="left">0x181C</td>
+<td align="left">User Data</td>
+<td align="left">GATT Service</td>
+<td align="left">用户数据</td>
+</tr>
+<tr>
+<td align="left">0x181D</td>
+<td align="left">Weight Scale</td>
+<td align="left">GATT Service</td>
+<td align="left">体重秤</td>
+</tr>
+<tr>
+<td align="left">0x181E</td>
+<td align="left">Bond Management</td>
+<td align="left">GATT Service</td>
+<td align="left">设备绑定管理</td>
+</tr>
+<tr>
+<td align="left">0x181F</td>
+<td align="left">Continuous Glucose Monitoring</td>
+<td align="left">GATT Service</td>
+<td align="left">动态血糖检测</td>
+</tr>
+<tr>
+<td align="left">0x1820</td>
+<td align="left">Internet Protocol Support</td>
+<td align="left">GATT Service</td>
+<td align="left">互联网协议支持</td>
+</tr>
+<tr>
+<td align="left">0x1821</td>
+<td align="left">Indoor Positioning</td>
+<td align="left">GATT Service</td>
+<td align="left">室内定位</td>
+</tr>
+<tr>
+<td align="left">0x1822</td>
+<td align="left">Pulse Oximeter</td>
+<td align="left">GATT Service</td>
+<td align="left">脉搏血氧计</td>
+</tr>
+<tr>
+<td align="left">0x1823</td>
+<td align="left">HTTP Proxy</td>
+<td align="left">GATT Service</td>
+<td align="left">HTTP代理</td>
+</tr>
+<tr>
+<td align="left">0x1824</td>
+<td align="left">Transport Discovery</td>
+<td align="left">GATT Service</td>
+<td align="left">传输发现</td>
+</tr>
+<tr>
+<td align="left">0x1825</td>
+<td align="left">Object Transfer</td>
+<td align="left">GATT Service</td>
+<td align="left">对象传输</td>
+</tr>
+<tr>
+<td align="left">0x1826</td>
+<td align="left">Fitness Machine</td>
+<td align="left">GATT Service</td>
+<td align="left">健康设备</td>
+</tr>
+<tr>
+<td align="left">0x1827</td>
+<td align="left">Mesh Provisioning</td>
+<td align="left">GATT Service</td>
+<td align="left">Mesh配置</td>
+</tr>
+<tr>
+<td align="left">0x1828</td>
+<td align="left">Mesh Proxy</td>
+<td align="left">GATT Service</td>
+<td align="left">Mesh代理</td>
+</tr>
+<tr>
+<td align="left">0x1829</td>
+<td align="left">Reconnection Configuration</td>
+<td align="left">GATT Service</td>
+<td align="left">重连配置</td>
+</tr>
+<tr>
+<td align="left">0x183A</td>
+<td align="left">Insulin Delivery</td>
+<td align="left">GATT Service</td>
+<td align="left">胰岛素给药</td>
+</tr>
+<tr>
+<td align="left">0x183B</td>
+<td align="left">Binary Sensor</td>
+<td align="left">GATT Service</td>
+<td align="left">二元传感器</td>
+</tr>
+<tr>
+<td align="left">0x183C</td>
+<td align="left">Emergency Configuration</td>
+<td align="left">GATT Service</td>
+<td align="left">应急配置</td>
+</tr>
+<tr>
+<td align="left">0x183E</td>
+<td align="left">Physical Activity Monitor</td>
+<td align="left">GATT Service</td>
+<td align="left">体力活动监视器</td>
+</tr>
+<tr>
+<td align="left">0x1843</td>
+<td align="left">Audio Input Control</td>
+<td align="left">GATT Service</td>
+<td align="left">音频输入控制</td>
+</tr>
+<tr>
+<td align="left">0x1844</td>
+<td align="left">Volume Control</td>
+<td align="left">GATT Service</td>
+<td align="left">音量控制</td>
+</tr>
+<tr>
+<td align="left">0x1845</td>
+<td align="left">Volume Offset Control</td>
+<td align="left">GATT Service</td>
+<td align="left">音量偏移控制</td>
+</tr>
+<tr>
+<td align="left">0x1846</td>
+<td align="left">Coordinated Set Identification</td>
+<td align="left">GATT Service</td>
+<td align="left">协调集识别</td>
+</tr>
+<tr>
+<td align="left">0x1847</td>
+<td align="left">Device Time</td>
+<td align="left">GATT Service</td>
+<td align="left">设备时间</td>
+</tr>
+<tr>
+<td align="left">0x1848</td>
+<td align="left">Media Control</td>
+<td align="left">GATT Service</td>
+<td align="left">多媒体控制</td>
+</tr>
+<tr>
+<td align="left">0x1849</td>
+<td align="left">Generic Media Control</td>
+<td align="left">GATT Service</td>
+<td align="left">通用媒体控制</td>
+</tr>
+<tr>
+<td align="left">0x184A</td>
+<td align="left">Constant Tone Extension</td>
+<td align="left">GATT Service</td>
+<td align="left">恒定音调扩展</td>
+</tr>
+<tr>
+<td align="left">0x184B</td>
+<td align="left">Telephone Bearer</td>
+<td align="left">GATT Service</td>
+<td align="left">电话持有人</td>
+</tr>
+<tr>
+<td align="left">0x184C</td>
+<td align="left">Generic Telephone Bearer</td>
+<td align="left">GATT Service</td>
+<td align="left">通用电话承载</td>
+</tr>
+<tr>
+<td align="left">0x184D</td>
+<td align="left">Microphone Control</td>
+<td align="left">GATT Service</td>
+<td align="left">麦克风控制</td>
+</tr>
+<tr>
+<td align="left">0x184E</td>
+<td align="left">Audio Stream Control</td>
+<td align="left">GATT Service</td>
+<td align="left">音频流控制</td>
+</tr>
+<tr>
+<td align="left">0x184F</td>
+<td align="left">Broadcast Audio Scan</td>
+<td align="left">GATT Service</td>
+<td align="left">广播音频扫描</td>
+</tr>
+<tr>
+<td align="left">0x1850</td>
+<td align="left">Published Audio Capabilities</td>
+<td align="left">GATT Service</td>
+<td align="left">已发布的音频功能</td>
+</tr>
+<tr>
+<td align="left">0x1851</td>
+<td align="left">Basic Audio Announcement</td>
+<td align="left">GATT Service</td>
+<td align="left">基本音频公告</td>
+</tr>
+<tr>
+<td align="left">0x1852</td>
+<td align="left">Broadcast Audio Announcement</td>
+<td align="left">GATT Service</td>
+<td align="left">广播音频公告</td>
+</tr>
+<tr>
+<td align="left">0x1853</td>
+<td align="left">Common Audio</td>
+<td align="left">GATT Service</td>
+<td align="left">普通音频</td>
+</tr>
+<tr>
+<td align="left">0x1854</td>
+<td align="left">Hearing Access</td>
+<td align="left">GATT Service</td>
+<td align="left">听力访问</td>
+</tr>
+<tr>
+<td align="left">0x1855</td>
+<td align="left">TMAS</td>
+<td align="left">GATT Service</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">0x1856</td>
+<td align="left">Public Broadcast Announcemen</td>
+<td align="left">GATT Service</td>
+<td align="left">公共广播公告</td>
+</tr>
+</tbody></table>
+<h4 id="属性声明"><a href="#属性声明" class="headerlink" title="属性声明"></a>属性声明</h4><p>范围: <strong>0X2800-0X2803</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">UUID</th>
+<th align="left">Name</th>
+<th align="left">类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0x2800</td>
+<td align="left">Primary Service</td>
+<td align="left">GATT Declarations</td>
+</tr>
+<tr>
+<td align="left">0x2801</td>
+<td align="left">Secondary Service</td>
+<td align="left">GATT Declarations</td>
+</tr>
+<tr>
+<td align="left">0x2802</td>
+<td align="left">Include</td>
+<td align="left">GATT Declarations</td>
+</tr>
+<tr>
+<td align="left">0x2803</td>
+<td align="left">Characteristic</td>
+<td align="left">GATT Declarations</td>
+</tr>
+</tbody></table>
+<h4 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h4><p>范围: <strong>0X2700-0X27C5</strong></p>
+<h4 id="设备信息"><a href="#设备信息" class="headerlink" title="设备信息"></a>设备信息</h4><table>
+<thead>
+<tr>
+<th align="left">UUID</th>
+<th align="left">Name</th>
+<th align="left">类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0x2A23</td>
+<td align="left">System ID</td>
+<td align="left">GATT Characteristic and Object</td>
+</tr>
+<tr>
+<td align="left">0x2A24</td>
+<td align="left">Model Number String</td>
+<td align="left">GATT Characteristic and Object</td>
+</tr>
+<tr>
+<td align="left">0x2A25</td>
+<td align="left">Serial Number String</td>
+<td align="left">GATT Characteristic and Object</td>
+</tr>
+<tr>
+<td align="left">0x2A26</td>
+<td align="left">Firmware Revision String</td>
+<td align="left">GATT Characteristic and Object</td>
+</tr>
+<tr>
+<td align="left">0x2A27</td>
+<td align="left">Hardware Revision String</td>
+<td align="left">GATT Characteristic and Object</td>
+</tr>
+<tr>
+<td align="left">0x2A28</td>
+<td align="left">Software Revision String</td>
+<td align="left">GATT Characteristic and Object</td>
+</tr>
+<tr>
+<td align="left">0x2A29</td>
+<td align="left">Manufacturer Name String</td>
+<td align="left">GATT Characteristic and Object</td>
+</tr>
+<tr>
+<td align="left">0x2A2A</td>
+<td align="left">IEEE  Data</td>
+<td align="left">GATT Characteristic and Object</td>
+</tr>
+</tbody></table>
+<h4 id="HID"><a href="#HID" class="headerlink" title="HID"></a>HID</h4><table>
+<thead>
+<tr>
+<th align="left">UUID</th>
+<th align="left">Name</th>
+<th align="left">类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0x2A4A</td>
+<td align="left">HID Information</td>
+<td align="left">GATT Characteristic</td>
+</tr>
+<tr>
+<td align="left">0x2A4B</td>
+<td align="left">Report Map</td>
+<td align="left">GATT Characteristic</td>
+</tr>
+<tr>
+<td align="left">0x2A4C</td>
+<td align="left">HID Control Poin</td>
+<td align="left">GATT Characteristic</td>
+</tr>
+<tr>
+<td align="left">0x2A4D</td>
+<td align="left">Report</td>
+<td align="left">GATT Characteristic</td>
+</tr>
+<tr>
+<td align="left">0x2A4E</td>
+<td align="left">Protocol Mode</td>
+<td align="left">GATT Characteristic</td>
+</tr>
+<tr>
+<td align="left">0x2A22</td>
+<td align="left">BT Keyboard Input Report</td>
+<td align="left">GATT Characteristic</td>
+</tr>
+<tr>
+<td align="left">0x2A32</td>
+<td align="left">BT Keyboard Output Report</td>
+<td align="left">GATT Characteristic</td>
+</tr>
+<tr>
+<td align="left">0x2A33</td>
+<td align="left">BT Mouse Input Report</td>
+<td align="left">GATT Characteristic</td>
+</tr>
+</tbody></table>
+<p>|characteristic|设备名|Device Name|0x2A00|0-248字节长度的设备明,一个设备应该只有一个实例化的设备名|<br>||</p>
+<p><img src="/images/BLE-Server.png" alt="BLE-Service"></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://www.bluetooth.com/specifications/assigned-numbers/">《Core_v4.2.pdf》</a></li>
+<li><a href="https://btprodspecificationrefs.blob.core.windows.net/assigned-values/16-bit%20UUID%20Numbers%20Document.pdf">《UUID 定义》</a></li>
+<li><a href="https://www.bluetooth.com/specifications/assigned-numbers/">【一些官方定义】</a></li>
+</ol>
+]]></content>
   </entry>
 </search>

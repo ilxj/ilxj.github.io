@@ -1,0 +1,2116 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="BLE-基础知识, AlexLin">
+    <meta name="description" content="Write the code Change the world">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>BLE-基础知识 | AlexLin</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">AlexLin</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">AlexLin</div>
+        <div class="logo-desc">
+            
+            Write the code Change the world
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">BLE-基础知识</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-08-22
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.4k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    11 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="协议栈结构图"><a href="#协议栈结构图" class="headerlink" title="协议栈结构图"></a>协议栈结构图</h2><p><img src="/images/BLE-%E5%8D%8F%E8%AE%AE%E6%A0%88.png" alt="BLE-协议栈"></p>
+<h2 id="名词介绍"><a href="#名词介绍" class="headerlink" title="名词介绍"></a>名词介绍</h2><table>
+<thead>
+<tr>
+<th align="left">名词</th>
+<th align="left">介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">低功耗蓝牙(<strong>BLE</strong>)</td>
+<td align="left">支持蓝牙协议4.0或更高的模块。主打低功耗，多用于物联网类型</td>
+</tr>
+<tr>
+<td align="left">经典蓝牙(<strong>BT</strong>)</td>
+<td align="left">指支持蓝牙协议在4.0以下的模块。主打短距离数据高速传输，多用于蓝牙耳机等。</td>
+</tr>
+<tr>
+<td align="left">Basic Rate(<strong>BR</strong>)</td>
+<td align="left">蓝牙基础速率技术，属于BT</td>
+</tr>
+<tr>
+<td align="left">Enhanced Data Rate(<strong>EDR</strong>)</td>
+<td align="left">蓝牙增强速率技术,是在BR技术基础上升级出来的，所以可以和BR共存，属于BT</td>
+</tr>
+<tr>
+<td align="left">Alternate MAC/PHYs(<strong>AMP</strong>))</td>
+<td align="left">蓝牙核心系统的次要控制器,可切换的媒体访问控制器（<code>Media Access Controller</code>）和物理层（<code>Physical Layer</code>）属于BT</td>
+</tr>
+<tr>
+<td align="left">Low Energy(<strong>LE</strong>)</td>
+<td align="left">蓝牙低功耗技术,属于BLE</td>
+</tr>
+</tbody></table>
+<h2 id="BLE-广播"><a href="#BLE-广播" class="headerlink" title="BLE 广播"></a>BLE 广播</h2><h3 id="广播数据格式"><a href="#广播数据格式" class="headerlink" title="广播数据格式"></a>广播数据格式</h3><p><img src="http://help-static-aliyun-doc.aliyuncs.com/assets/img/zh-CN/3394359951/p128952.png" alt="ble"></p>
+<h3 id="广播类型如下"><a href="#广播类型如下" class="headerlink" title="广播类型如下"></a>广播类型如下</h3><pre class=" language-C"><code class="language-C">typedef enum &#123;
+    ESP_BLE_AD_TYPE_FLAG                     = 0x01,    /* relate to BTM_BLE_AD_TYPE_FLAG in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_16SRV_PART               = 0x02,    /* relate to BTM_BLE_AD_TYPE_16SRV_PART in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_16SRV_CMPL               = 0x03,    /* relate to BTM_BLE_AD_TYPE_16SRV_CMPL in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_32SRV_PART               = 0x04,    /* relate to BTM_BLE_AD_TYPE_32SRV_PART in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_32SRV_CMPL               = 0x05,    /* relate to BTM_BLE_AD_TYPE_32SRV_CMPL in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_128SRV_PART              = 0x06,    /* relate to BTM_BLE_AD_TYPE_128SRV_PART in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_128SRV_CMPL              = 0x07,    /* relate to BTM_BLE_AD_TYPE_128SRV_CMPL in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_NAME_SHORT               = 0x08,    /* relate to BTM_BLE_AD_TYPE_NAME_SHORT in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_NAME_CMPL                = 0x09,    /* relate to BTM_BLE_AD_TYPE_NAME_CMPL in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_TX_PWR                   = 0x0A,    /* relate to BTM_BLE_AD_TYPE_TX_PWR in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_DEV_CLASS                = 0x0D,    /* relate to BTM_BLE_AD_TYPE_DEV_CLASS in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_SM_TK                    = 0x10,    /* relate to BTM_BLE_AD_TYPE_SM_TK in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_SM_OOB_FLAG              = 0x11,    /* relate to BTM_BLE_AD_TYPE_SM_OOB_FLAG in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_INT_RANGE                = 0x12,    /* relate to BTM_BLE_AD_TYPE_INT_RANGE in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_SOL_SRV_UUID             = 0x14,    /* relate to BTM_BLE_AD_TYPE_SOL_SRV_UUID in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_128SOL_SRV_UUID          = 0x15,    /* relate to BTM_BLE_AD_TYPE_128SOL_SRV_UUID in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_SERVICE_DATA             = 0x16,    /* relate to BTM_BLE_AD_TYPE_SERVICE_DATA in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_PUBLIC_TARGET            = 0x17,    /* relate to BTM_BLE_AD_TYPE_PUBLIC_TARGET in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_RANDOM_TARGET            = 0x18,    /* relate to BTM_BLE_AD_TYPE_RANDOM_TARGET in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_APPEARANCE               = 0x19,    /* relate to BTM_BLE_AD_TYPE_APPEARANCE in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_ADV_INT                  = 0x1A,    /* relate to BTM_BLE_AD_TYPE_ADV_INT in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_LE_DEV_ADDR              = 0x1b,    /* relate to BTM_BLE_AD_TYPE_LE_DEV_ADDR in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_LE_ROLE                  = 0x1c,    /* relate to BTM_BLE_AD_TYPE_LE_ROLE in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_SPAIR_C256               = 0x1d,    /* relate to BTM_BLE_AD_TYPE_SPAIR_C256 in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_SPAIR_R256               = 0x1e,    /* relate to BTM_BLE_AD_TYPE_SPAIR_R256 in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_32SOL_SRV_UUID           = 0x1f,    /* relate to BTM_BLE_AD_TYPE_32SOL_SRV_UUID in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_32SERVICE_DATA           = 0x20,    /* relate to BTM_BLE_AD_TYPE_32SERVICE_DATA in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_128SERVICE_DATA          = 0x21,    /* relate to BTM_BLE_AD_TYPE_128SERVICE_DATA in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_LE_SECURE_CONFIRM        = 0x22,    /* relate to BTM_BLE_AD_TYPE_LE_SECURE_CONFIRM in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_LE_SECURE_RANDOM         = 0x23,    /* relate to BTM_BLE_AD_TYPE_LE_SECURE_RANDOM in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_URI                      = 0x24,    /* relate to BTM_BLE_AD_TYPE_URI in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_INDOOR_POSITION          = 0x25,    /* relate to BTM_BLE_AD_TYPE_INDOOR_POSITION in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_TRANS_DISC_DATA          = 0x26,    /* relate to BTM_BLE_AD_TYPE_TRANS_DISC_DATA in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_LE_SUPPORT_FEATURE       = 0x27,    /* relate to BTM_BLE_AD_TYPE_LE_SUPPORT_FEATURE in stack/btm_ble_api.h */
+    ESP_BLE_AD_TYPE_CHAN_MAP_UPDATE          = 0x28,    /* relate to BTM_BLE_AD_TYPE_CHAN_MAP_UPDATE in stack/btm_ble_api.h */
+    ESP_BLE_AD_MANUFACTURER_SPECIFIC_TYPE    = 0xFF,    /* relate to BTM_BLE_AD_MANUFACTURER_SPECIFIC_TYPE in stack/btm_ble_api.h */
+&#125; esp_ble_adv_data_type;</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ESP_BLE_AD_TYPE_FLAG</td>
+<td align="left">1</td>
+<td align="left">低功耗蓝牙定义了如下标识;<br> Bit[0]: 有限可发现模式<br>Bit[1]:通用可发现模式;<br>Bit[2]:不支持BR/EDR<br>Bit[3]:设备同时支持LE和BR/EDR（控制器）<br>Bit[4]:设备同时支持LE和BR/EDR（主机）</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_16SRV_PART</td>
+<td align="left">0x02</td>
+<td align="left">不完整的16位服务等级UUID列表</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_16SRV_CMPL</td>
+<td align="left">0x03</td>
+<td align="left">16位服务类别UUID的完整列表</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_32SRV_PART</td>
+<td align="left">0x04</td>
+<td align="left">不完整的32位服务类UUID列表</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_32SRV_CMPL</td>
+<td align="left">0x05</td>
+<td align="left">32位服务类UUID的完整列表</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_128SRV_PART</td>
+<td align="left">0x06</td>
+<td align="left">不完整的128位服务等级UUID列表</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_128SRV_CMPL</td>
+<td align="left">0x07</td>
+<td align="left">完整的128位服务等级UUID列表</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_NAME_SHORT</td>
+<td align="left">0x08</td>
+<td align="left">缩短的本地名称</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_NAME_CMPL</td>
+<td align="left">0x09</td>
+<td align="left">完整的本地名称</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_TX_PWR</td>
+<td align="left">0x0A</td>
+<td align="left">发射功率等级</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_DEV_CLASS</td>
+<td align="left">0x0D</td>
+<td align="left">设备类别</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">0X0E</td>
+<td align="left">简单配对哈希C</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">0X0E</td>
+<td align="left">简单配对哈希C-192</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">0X0F</td>
+<td align="left">简单配对随机数R</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">0X0F</td>
+<td align="left">简单配对随机发生器R-192</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_SM_TK</td>
+<td align="left">0x10</td>
+<td align="left">设备编号</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_SM_OOB_FLAG</td>
+<td align="left">0x11</td>
+<td align="left">安全管理器带外标志</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_INT_RANGE</td>
+<td align="left">0x12</td>
+<td align="left">从站连接间隔范围</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_SOL_SRV_UUID</td>
+<td align="left">0x14</td>
+<td align="left">16位服务请求UUID列表</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_128SOL_SRV_UUID</td>
+<td align="left">0x15</td>
+<td align="left">128位服务请求UUID列表</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_SERVICE_DATA</td>
+<td align="left">0x16</td>
+<td align="left">服务数据</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_PUBLIC_TARGET</td>
+<td align="left">0x17</td>
+<td align="left">公共目标地址</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_RANDOM_TARGET</td>
+<td align="left">0x18</td>
+<td align="left">随机目标地址</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_APPEARANCE</td>
+<td align="left">0x19</td>
+<td align="left">外观</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_ADV_INT</td>
+<td align="left">0x1A</td>
+<td align="left">广告间隔</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_LE_DEV_ADDR</td>
+<td align="left">0x1b</td>
+<td align="left">LE蓝牙设备地址</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_LE_ROLE</td>
+<td align="left">0x1c</td>
+<td align="left">LE角色</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_SPAIR_C256</td>
+<td align="left">0x1d</td>
+<td align="left">简单配对哈希C-256</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_SPAIR_R256</td>
+<td align="left">0x1e</td>
+<td align="left">简单配对随机数发生器R-256</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_32SOL_SRV_UUID</td>
+<td align="left">0x1f</td>
+<td align="left">32位服务请求UUID列表</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_32SERVICE_DATA</td>
+<td align="left">0x20</td>
+<td align="left">服务数据-32位UUID</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_128SERVICE_DATA</td>
+<td align="left">0x21</td>
+<td align="left">服务数据-128位UUID</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_LE_SECURE_CONFIRM</td>
+<td align="left">0x22</td>
+<td align="left">LE安全连接确认值</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_LE_SECURE_RANDOM</td>
+<td align="left">0x23</td>
+<td align="left">LE安全连接随机值</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_URI</td>
+<td align="left">0x24</td>
+<td align="left">URI</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_INDOOR_POSITION</td>
+<td align="left">0x25</td>
+<td align="left">室内定位</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_TRANS_DISC_DATA</td>
+<td align="left">0x26</td>
+<td align="left">运输发现数据</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_LE_SUPPORT_FEATURE</td>
+<td align="left">0x27</td>
+<td align="left">LE支持的功能</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_TYPE_CHAN_MAP_UPDATE</td>
+<td align="left">0x28</td>
+<td align="left">频道地图更新指示</td>
+</tr>
+<tr>
+<td align="left">ESP_BLE_AD_MANUFACTURER_SPECIFIC_TYPE</td>
+<td align="left">0xFF</td>
+<td align="left">制造商特定数据</td>
+</tr>
+</tbody></table>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><h3 id="属性协议格式"><a href="#属性协议格式" class="headerlink" title="属性协议格式"></a>属性协议格式</h3><table>
+<thead>
+<tr>
+<th align="left">Attribute Handle</th>
+<th align="left">Attribute Type</th>
+<th align="left">Attribute Value</th>
+<th align="left">Attribute Permissions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">句柄2字节</td>
+<td align="left">属性类型2-6字节</td>
+<td align="left">属性值0~512</td>
+<td align="left">权限</td>
+</tr>
+</tbody></table>
+<h3 id="属性UUID分类"><a href="#属性UUID分类" class="headerlink" title="属性UUID分类"></a>属性UUID分类</h3><ul>
+<li>0X1800-0X26FF 用于服务类通用唯一识别码</li>
+<li>0X2700-0X27C5 用于标识计量单位</li>
+<li>0X2800-0X2803 用于区分属性类型(声明服务Declaration)</li>
+<li>0X2900-0X290F 用于作特性描述(Description)</li>
+<li>0X2A00-0x2BDC 用于区分特性类型</li>
+</ul>
+<h3 id="GATT属性类型"><a href="#GATT属性类型" class="headerlink" title="GATT属性类型"></a>GATT属性类型</h3><table>
+<thead>
+<tr>
+<th align="left">Attribute Type</th>
+<th align="left">UUID</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">«Primary Service»</td>
+<td align="left">0x2800</td>
+<td align="left">Primary Service Declaration</td>
+</tr>
+<tr>
+<td align="left">«Secondary Service»</td>
+<td align="left">0x2801</td>
+<td align="left">Secondary Service Declaration</td>
+</tr>
+<tr>
+<td align="left">«Include»</td>
+<td align="left">0x2802</td>
+<td align="left">Include Declaration</td>
+</tr>
+<tr>
+<td align="left">«Characteristic»</td>
+<td align="left">0x2803</td>
+<td align="left">Characteristic Declaration</td>
+</tr>
+<tr>
+<td align="left">«Characteristic Extended Properties»</td>
+<td align="left">0x2900</td>
+<td align="left">Characteristic Extended Properties</td>
+</tr>
+<tr>
+<td align="left">«Characteristic User Description»</td>
+<td align="left">0x2901</td>
+<td align="left">Characteristic User Description Descriptor</td>
+</tr>
+<tr>
+<td align="left">«Client Characteristic Configuration»</td>
+<td align="left">0x2902</td>
+<td align="left">Client Characteristic Configuration Descriptor</td>
+</tr>
+<tr>
+<td align="left">«Server Characteristic Configuration»</td>
+<td align="left">0x2903</td>
+<td align="left">Server Characteristic Configuration Descriptor</td>
+</tr>
+<tr>
+<td align="left">«Characteristic Format»</td>
+<td align="left">0x2904</td>
+<td align="left">Characteristic Format Descriptor</td>
+</tr>
+<tr>
+<td align="left">«Characteristic Aggregate Format»</td>
+<td align="left">0x2905</td>
+<td align="left">Characteristic Aggregate Format Descriptor</td>
+</tr>
+</tbody></table>
+<h4 id="UUID-0x2803"><a href="#UUID-0x2803" class="headerlink" title="UUID-0x2803"></a>UUID-0x2803</h4><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>特征声明(characteristic declaration)</p>
+<h5 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h5><p>特征值被分为3部分,分别是:<code>Properties</code><strong>(属性)**、<code>Characteristic Value Attribute</code></strong>(特征值属性句柄)<strong>、</strong>特征的UUID**。</p>
+<table>
+<thead>
+<tr>
+<th align="left">Handle</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Permissions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0xNNNN</td>
+<td align="left">0x2803</td>
+<td align="left"><strong>属性(1Byte)</strong>+<strong>特征值属性句柄(2Byte)</strong>+<strong>特征的UUID(16bit或者128bit)</strong></td>
+<td align="left">只读（Read Only）<br>无需认证(No Authentication)<br>无需授权(No Authorization)</td>
+</tr>
+</tbody></table>
+<h4 id="UUID-0x2904"><a href="#UUID-0x2904" class="headerlink" title="UUID-0x2904"></a>UUID-0x2904</h4><h5 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h5><p>是特征值的一个可选项,用于定义特征值的描述,此定义载特征值之后的定义;&lt;br<br>如果存在多个特征值描述,采用共存方式;<br></p>
+<h5 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h5><p>特征值描述值被分为5部分,分别是:<code>format</code><strong>(格式)</strong>, <code>exponent</code><strong>(指数)</strong>,<code>unit</code><strong>(单位)</strong>, <code>name space</code><strong>(命名空间)</strong>,<code>and description</code><strong>(描述)</strong>;</p>
+<table>
+<thead>
+<tr>
+<th align="left">Handle</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Permissions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0xNNNN</td>
+<td align="left">0x2904</td>
+<td align="left">1.[Format]:1B<br>2.[Exponent]:1B<br>3.[Unit]:2B<br>4.[Name Space]:1B<br>5.[Description]:2B</td>
+<td align="left">1.Read only<br>2.No Authentication,<br>3.NO authorization</td>
+</tr>
+<tr>
+<td align="left"><strong>注意:</strong> Value 按照<strong>小端字节序</strong>计算 ;</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>Format</strong>定义见:<strong>Core_V4.2-3.3.3.5.2</strong></li>
+<li><strong>Exponent</strong>定义见 :<strong>Core_V4.2-3.3.3.5.3</strong></li>
+<li><strong>Unit</strong>定义见 :<strong>Core_V4.2-3.3.3.5.4</strong>, <a target="_blank" rel="noopener" href="https://btprodspecificationrefs.blob.core.windows.net/assigned-numbers/Assigned%20Number%20Types/Format%20Types.pdf">具体见</a></li>
+<li><strong>Name Space</strong>定义见 :<strong>Core_V4.2-3.3.3.5.5</strong> <a target="_blank" rel="noopener" href="https://btprodspecificationrefs.blob.core.windows.net/assigned-numbers/Assigned%20Number%20Types/GATT%20Namespace%20Descriptors.pdf">具体见</a>目前好在只支持0X01值</li>
+<li><strong>Description</strong>定义见 :<strong>Core_V4.2-3.3.3.5.6</strong>具体见 <strong>Name Space</strong>文档的GATT Bluetooth Namespace Descriptors</li>
+</ul>
+<h4 id="0x2902-CCCD"><a href="#0x2902-CCCD" class="headerlink" title="0x2902(CCCD)"></a>0x2902(CCCD)</h4><p>Value : 2Byte</p>
+<ul>
+<li>0x0001:Notification</li>
+<li>0x0002:Indication</li>
+<li>0xFFF4:预留</li>
+</ul>
+<h5 id="Notification-和-Indication-的区别"><a href="#Notification-和-Indication-的区别" class="headerlink" title="Notification 和 Indication 的区别"></a>Notification 和 Indication 的区别</h5><ul>
+<li>Notification 不需要应答，所以服务端发送的消息，它自己并不知道消息是否发送成功。</li>
+<li>Indication 需要客户端应答，每次服务端发送完数据都需要客户端发送应答消息。其中有一点很重要，如果你发送的 indication客户端没有应答，你是不能再次发送indication的；<br><blockquote>
+<p><strong>Notification</strong>和 <strong>Indication</strong>需要客户端通过CCCD特征(Client Characteristic Configuration Descriptor)来配置,且服务端要有CCCD特征；</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="一些已知UUID"><a href="#一些已知UUID" class="headerlink" title="一些已知UUID"></a>一些已知UUID</h3><h4 id="Service-UUID"><a href="#Service-UUID" class="headerlink" title="Service UUID"></a>Service UUID</h4><p>范围: <strong>0x1800 - 0x1856</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">UUID</th>
+<th align="left">Name</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0x1800</td>
+<td align="left">Generic Access</td>
+<td align="left">GATT Service</td>
+<td align="left">通用访问</td>
+</tr>
+<tr>
+<td align="left">0x1801</td>
+<td align="left">Generic Attribute</td>
+<td align="left">GATT Service</td>
+<td align="left">通用属性</td>
+</tr>
+<tr>
+<td align="left">0x1802</td>
+<td align="left">Immediate Alert</td>
+<td align="left">GATT Service</td>
+<td align="left">即时闹钟</td>
+</tr>
+<tr>
+<td align="left">0x1803</td>
+<td align="left">Link Loss</td>
+<td align="left">GATT Service</td>
+<td align="left">连接丢失</td>
+</tr>
+<tr>
+<td align="left">0x1804</td>
+<td align="left">Tx Power</td>
+<td align="left">GATT Service</td>
+<td align="left">发送功率</td>
+</tr>
+<tr>
+<td align="left">0x1805</td>
+<td align="left">Current Time</td>
+<td align="left">GATT Service</td>
+<td align="left">当前时间</td>
+</tr>
+<tr>
+<td align="left">0x1806</td>
+<td align="left">Reference Time Update</td>
+<td align="left">GATT Service</td>
+<td align="left">参考时间更新</td>
+</tr>
+<tr>
+<td align="left">0x1807</td>
+<td align="left">Next DST Change</td>
+<td align="left">GATT Service</td>
+<td align="left">下个日光节约时间（夏令时）更改</td>
+</tr>
+<tr>
+<td align="left">0x1808</td>
+<td align="left">Glucose</td>
+<td align="left">GATT Service</td>
+<td align="left">葡萄糖</td>
+</tr>
+<tr>
+<td align="left">0x1809</td>
+<td align="left">Health Thermometer</td>
+<td align="left">GATT Service</td>
+<td align="left">温度计</td>
+</tr>
+<tr>
+<td align="left">0x180A</td>
+<td align="left">Device Information</td>
+<td align="left">GATT Service</td>
+<td align="left">设备信息</td>
+</tr>
+<tr>
+<td align="left">0x180D</td>
+<td align="left">Heart Rate</td>
+<td align="left">GATT Service</td>
+<td align="left">心率</td>
+</tr>
+<tr>
+<td align="left">0x180E</td>
+<td align="left">Phone Alert Status</td>
+<td align="left">GATT Service</td>
+<td align="left">手机报警状态</td>
+</tr>
+<tr>
+<td align="left">0x180F</td>
+<td align="left">Battery</td>
+<td align="left">GATT Service</td>
+<td align="left">电池</td>
+</tr>
+<tr>
+<td align="left">0x1810</td>
+<td align="left">Blood Pressure</td>
+<td align="left">GATT Service</td>
+<td align="left">血压</td>
+</tr>
+<tr>
+<td align="left">0x1811</td>
+<td align="left">Alert Notification</td>
+<td align="left">GATT Service</td>
+<td align="left">闹钟推送</td>
+</tr>
+<tr>
+<td align="left">0x1812</td>
+<td align="left">Human Interface Device</td>
+<td align="left">GATT Service</td>
+<td align="left">HID设备</td>
+</tr>
+<tr>
+<td align="left">0x1813</td>
+<td align="left">Scan Parameters</td>
+<td align="left">GATT Service</td>
+<td align="left">扫描参数</td>
+</tr>
+<tr>
+<td align="left">0x1814</td>
+<td align="left">Running Speed and Cadence</td>
+<td align="left">GATT Service</td>
+<td align="left">跑步速度、节奏</td>
+</tr>
+<tr>
+<td align="left">0x1815</td>
+<td align="left">Automation IO</td>
+<td align="left">GATT Service</td>
+<td align="left">自动化输入输出</td>
+</tr>
+<tr>
+<td align="left">0x1816</td>
+<td align="left">Cycling Speed and Cadence</td>
+<td align="left">GATT Service</td>
+<td align="left">循环速度、节奏</td>
+</tr>
+<tr>
+<td align="left">0x1818</td>
+<td align="left">Cycling Power</td>
+<td align="left">GATT Service</td>
+<td align="left">骑行能量</td>
+</tr>
+<tr>
+<td align="left">0x1819</td>
+<td align="left">Location and Navigation</td>
+<td align="left">GATT Service</td>
+<td align="left">定位及导航</td>
+</tr>
+<tr>
+<td align="left">0x181A</td>
+<td align="left">Environmental Sensing</td>
+<td align="left">GATT Service</td>
+<td align="left">环境传感</td>
+</tr>
+<tr>
+<td align="left">0x181B</td>
+<td align="left">Body Composition</td>
+<td align="left">GATT Service</td>
+<td align="left">身体组成</td>
+</tr>
+<tr>
+<td align="left">0x181C</td>
+<td align="left">User Data</td>
+<td align="left">GATT Service</td>
+<td align="left">用户数据</td>
+</tr>
+<tr>
+<td align="left">0x181D</td>
+<td align="left">Weight Scale</td>
+<td align="left">GATT Service</td>
+<td align="left">体重秤</td>
+</tr>
+<tr>
+<td align="left">0x181E</td>
+<td align="left">Bond Management</td>
+<td align="left">GATT Service</td>
+<td align="left">设备绑定管理</td>
+</tr>
+<tr>
+<td align="left">0x181F</td>
+<td align="left">Continuous Glucose Monitoring</td>
+<td align="left">GATT Service</td>
+<td align="left">动态血糖检测</td>
+</tr>
+<tr>
+<td align="left">0x1820</td>
+<td align="left">Internet Protocol Support</td>
+<td align="left">GATT Service</td>
+<td align="left">互联网协议支持</td>
+</tr>
+<tr>
+<td align="left">0x1821</td>
+<td align="left">Indoor Positioning</td>
+<td align="left">GATT Service</td>
+<td align="left">室内定位</td>
+</tr>
+<tr>
+<td align="left">0x1822</td>
+<td align="left">Pulse Oximeter</td>
+<td align="left">GATT Service</td>
+<td align="left">脉搏血氧计</td>
+</tr>
+<tr>
+<td align="left">0x1823</td>
+<td align="left">HTTP Proxy</td>
+<td align="left">GATT Service</td>
+<td align="left">HTTP代理</td>
+</tr>
+<tr>
+<td align="left">0x1824</td>
+<td align="left">Transport Discovery</td>
+<td align="left">GATT Service</td>
+<td align="left">传输发现</td>
+</tr>
+<tr>
+<td align="left">0x1825</td>
+<td align="left">Object Transfer</td>
+<td align="left">GATT Service</td>
+<td align="left">对象传输</td>
+</tr>
+<tr>
+<td align="left">0x1826</td>
+<td align="left">Fitness Machine</td>
+<td align="left">GATT Service</td>
+<td align="left">健康设备</td>
+</tr>
+<tr>
+<td align="left">0x1827</td>
+<td align="left">Mesh Provisioning</td>
+<td align="left">GATT Service</td>
+<td align="left">Mesh配置</td>
+</tr>
+<tr>
+<td align="left">0x1828</td>
+<td align="left">Mesh Proxy</td>
+<td align="left">GATT Service</td>
+<td align="left">Mesh代理</td>
+</tr>
+<tr>
+<td align="left">0x1829</td>
+<td align="left">Reconnection Configuration</td>
+<td align="left">GATT Service</td>
+<td align="left">重连配置</td>
+</tr>
+<tr>
+<td align="left">0x183A</td>
+<td align="left">Insulin Delivery</td>
+<td align="left">GATT Service</td>
+<td align="left">胰岛素给药</td>
+</tr>
+<tr>
+<td align="left">0x183B</td>
+<td align="left">Binary Sensor</td>
+<td align="left">GATT Service</td>
+<td align="left">二元传感器</td>
+</tr>
+<tr>
+<td align="left">0x183C</td>
+<td align="left">Emergency Configuration</td>
+<td align="left">GATT Service</td>
+<td align="left">应急配置</td>
+</tr>
+<tr>
+<td align="left">0x183E</td>
+<td align="left">Physical Activity Monitor</td>
+<td align="left">GATT Service</td>
+<td align="left">体力活动监视器</td>
+</tr>
+<tr>
+<td align="left">0x1843</td>
+<td align="left">Audio Input Control</td>
+<td align="left">GATT Service</td>
+<td align="left">音频输入控制</td>
+</tr>
+<tr>
+<td align="left">0x1844</td>
+<td align="left">Volume Control</td>
+<td align="left">GATT Service</td>
+<td align="left">音量控制</td>
+</tr>
+<tr>
+<td align="left">0x1845</td>
+<td align="left">Volume Offset Control</td>
+<td align="left">GATT Service</td>
+<td align="left">音量偏移控制</td>
+</tr>
+<tr>
+<td align="left">0x1846</td>
+<td align="left">Coordinated Set Identification</td>
+<td align="left">GATT Service</td>
+<td align="left">协调集识别</td>
+</tr>
+<tr>
+<td align="left">0x1847</td>
+<td align="left">Device Time</td>
+<td align="left">GATT Service</td>
+<td align="left">设备时间</td>
+</tr>
+<tr>
+<td align="left">0x1848</td>
+<td align="left">Media Control</td>
+<td align="left">GATT Service</td>
+<td align="left">多媒体控制</td>
+</tr>
+<tr>
+<td align="left">0x1849</td>
+<td align="left">Generic Media Control</td>
+<td align="left">GATT Service</td>
+<td align="left">通用媒体控制</td>
+</tr>
+<tr>
+<td align="left">0x184A</td>
+<td align="left">Constant Tone Extension</td>
+<td align="left">GATT Service</td>
+<td align="left">恒定音调扩展</td>
+</tr>
+<tr>
+<td align="left">0x184B</td>
+<td align="left">Telephone Bearer</td>
+<td align="left">GATT Service</td>
+<td align="left">电话持有人</td>
+</tr>
+<tr>
+<td align="left">0x184C</td>
+<td align="left">Generic Telephone Bearer</td>
+<td align="left">GATT Service</td>
+<td align="left">通用电话承载</td>
+</tr>
+<tr>
+<td align="left">0x184D</td>
+<td align="left">Microphone Control</td>
+<td align="left">GATT Service</td>
+<td align="left">麦克风控制</td>
+</tr>
+<tr>
+<td align="left">0x184E</td>
+<td align="left">Audio Stream Control</td>
+<td align="left">GATT Service</td>
+<td align="left">音频流控制</td>
+</tr>
+<tr>
+<td align="left">0x184F</td>
+<td align="left">Broadcast Audio Scan</td>
+<td align="left">GATT Service</td>
+<td align="left">广播音频扫描</td>
+</tr>
+<tr>
+<td align="left">0x1850</td>
+<td align="left">Published Audio Capabilities</td>
+<td align="left">GATT Service</td>
+<td align="left">已发布的音频功能</td>
+</tr>
+<tr>
+<td align="left">0x1851</td>
+<td align="left">Basic Audio Announcement</td>
+<td align="left">GATT Service</td>
+<td align="left">基本音频公告</td>
+</tr>
+<tr>
+<td align="left">0x1852</td>
+<td align="left">Broadcast Audio Announcement</td>
+<td align="left">GATT Service</td>
+<td align="left">广播音频公告</td>
+</tr>
+<tr>
+<td align="left">0x1853</td>
+<td align="left">Common Audio</td>
+<td align="left">GATT Service</td>
+<td align="left">普通音频</td>
+</tr>
+<tr>
+<td align="left">0x1854</td>
+<td align="left">Hearing Access</td>
+<td align="left">GATT Service</td>
+<td align="left">听力访问</td>
+</tr>
+<tr>
+<td align="left">0x1855</td>
+<td align="left">TMAS</td>
+<td align="left">GATT Service</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">0x1856</td>
+<td align="left">Public Broadcast Announcemen</td>
+<td align="left">GATT Service</td>
+<td align="left">公共广播公告</td>
+</tr>
+</tbody></table>
+<h4 id="属性声明"><a href="#属性声明" class="headerlink" title="属性声明"></a>属性声明</h4><p>范围: <strong>0X2800-0X2803</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">UUID</th>
+<th align="left">Name</th>
+<th align="left">类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0x2800</td>
+<td align="left">Primary Service</td>
+<td align="left">GATT Declarations</td>
+</tr>
+<tr>
+<td align="left">0x2801</td>
+<td align="left">Secondary Service</td>
+<td align="left">GATT Declarations</td>
+</tr>
+<tr>
+<td align="left">0x2802</td>
+<td align="left">Include</td>
+<td align="left">GATT Declarations</td>
+</tr>
+<tr>
+<td align="left">0x2803</td>
+<td align="left">Characteristic</td>
+<td align="left">GATT Declarations</td>
+</tr>
+</tbody></table>
+<h4 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h4><p>范围: <strong>0X2700-0X27C5</strong></p>
+<h4 id="设备信息"><a href="#设备信息" class="headerlink" title="设备信息"></a>设备信息</h4><table>
+<thead>
+<tr>
+<th align="left">UUID</th>
+<th align="left">Name</th>
+<th align="left">类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0x2A23</td>
+<td align="left">System ID</td>
+<td align="left">GATT Characteristic and Object</td>
+</tr>
+<tr>
+<td align="left">0x2A24</td>
+<td align="left">Model Number String</td>
+<td align="left">GATT Characteristic and Object</td>
+</tr>
+<tr>
+<td align="left">0x2A25</td>
+<td align="left">Serial Number String</td>
+<td align="left">GATT Characteristic and Object</td>
+</tr>
+<tr>
+<td align="left">0x2A26</td>
+<td align="left">Firmware Revision String</td>
+<td align="left">GATT Characteristic and Object</td>
+</tr>
+<tr>
+<td align="left">0x2A27</td>
+<td align="left">Hardware Revision String</td>
+<td align="left">GATT Characteristic and Object</td>
+</tr>
+<tr>
+<td align="left">0x2A28</td>
+<td align="left">Software Revision String</td>
+<td align="left">GATT Characteristic and Object</td>
+</tr>
+<tr>
+<td align="left">0x2A29</td>
+<td align="left">Manufacturer Name String</td>
+<td align="left">GATT Characteristic and Object</td>
+</tr>
+<tr>
+<td align="left">0x2A2A</td>
+<td align="left">IEEE  Data</td>
+<td align="left">GATT Characteristic and Object</td>
+</tr>
+</tbody></table>
+<h4 id="HID"><a href="#HID" class="headerlink" title="HID"></a>HID</h4><table>
+<thead>
+<tr>
+<th align="left">UUID</th>
+<th align="left">Name</th>
+<th align="left">类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0x2A4A</td>
+<td align="left">HID Information</td>
+<td align="left">GATT Characteristic</td>
+</tr>
+<tr>
+<td align="left">0x2A4B</td>
+<td align="left">Report Map</td>
+<td align="left">GATT Characteristic</td>
+</tr>
+<tr>
+<td align="left">0x2A4C</td>
+<td align="left">HID Control Poin</td>
+<td align="left">GATT Characteristic</td>
+</tr>
+<tr>
+<td align="left">0x2A4D</td>
+<td align="left">Report</td>
+<td align="left">GATT Characteristic</td>
+</tr>
+<tr>
+<td align="left">0x2A4E</td>
+<td align="left">Protocol Mode</td>
+<td align="left">GATT Characteristic</td>
+</tr>
+<tr>
+<td align="left">0x2A22</td>
+<td align="left">BT Keyboard Input Report</td>
+<td align="left">GATT Characteristic</td>
+</tr>
+<tr>
+<td align="left">0x2A32</td>
+<td align="left">BT Keyboard Output Report</td>
+<td align="left">GATT Characteristic</td>
+</tr>
+<tr>
+<td align="left">0x2A33</td>
+<td align="left">BT Mouse Input Report</td>
+<td align="left">GATT Characteristic</td>
+</tr>
+</tbody></table>
+<p>|characteristic|设备名|Device Name|0x2A00|0-248字节长度的设备明,一个设备应该只有一个实例化的设备名|<br>||</p>
+<p><img src="/images/BLE-Server.png" alt="BLE-Service"></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.bluetooth.com/specifications/assigned-numbers/">《Core_v4.2.pdf》</a></li>
+<li><a target="_blank" rel="noopener" href="https://btprodspecificationrefs.blob.core.windows.net/assigned-values/16-bit%20UUID%20Numbers%20Document.pdf">《UUID 定义》</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bluetooth.com/specifications/assigned-numbers/">【一些官方定义】</a></li>
+</ol>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Alex.Lin</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://lxj-life.com/2022/08/22/36c8.html">http://lxj-life.com/2022/08/22/36c8.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Alex.Lin</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/images/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/images/wechatpay.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2888/03/28/dbbb.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="活成自己的样子">
+                        
+                        <span class="card-title">活成自己的样子</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+
+我们总是拼尽全力… 想活成大家所期待的样子，以为那样就是最完美的。但其实，真正的成功，或许是不被他人绑架自己的梦想，全然按照自己的意愿过好这一生。
+
+
+==========================================
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2888-03-28
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%96%B0%E5%A5%87/" class="post-category">
+                                    新奇
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%96%B0%E5%A5%87/">
+                        <span class="chip bg-color">新奇</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%9F%B3%E4%B9%90/">
+                        <span class="chip bg-color">音乐</span>
+                    </a>
+                    
+                    <a href="/tags/%F0%9F%8E%B5/">
+                        <span class="chip bg-color">🎵</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/08/22/21d.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="npm 命令">
+                        
+                        <span class="card-title">npm 命令</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Alex.Lin
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">Alex.Lin</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">65.4k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/ilxj" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:878329009@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=878329009" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 878329009" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":"hijiki","bottom":-30,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
