@@ -397,14 +397,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.3k
+                    3.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    34 分
+                    20 分
                 </div>
                 
 
@@ -464,7 +464,7 @@ Usage: iwlist [interface] scanning [essid NNN] [last]
 <blockquote>
 <p>iwconfig 系统配置无线网络设备或显示无线网络设备信息。iwconfig 命令类似于ifconfig命令，但是他配置对象是无线网卡，它对网络设备进行无线操作，如设置无线通信频段</p>
 </blockquote>
-<pre><code>pi@raspberrypi:~$ iwconfig --help
+<pre class=" language-sh"><code class="language-sh">pi@raspberrypi:~$ iwconfig --help
 Usage: iwconfig [interface]
                 interface essid &#123;NNN|any|on|off&#125;
                 interface mode &#123;managed|ad-hoc|master|...&#125;
@@ -486,8 +486,8 @@ Usage: iwconfig [interface]
                 interface modulation &#123;11g|11a|CCK|OFDMg|...&#125;
                 interface commit
        Check man pages for more details.</code></pre>
-<p><strong>解锁</strong></p>
-<pre><code>auto        自动模式
+<p><strong>解说</strong></p>
+<pre class=" language-sh"><code class="language-sh">auto        自动模式
 essid       设置ESSID
 nwid        设置网络ID
 freq        设置无线网络通信频段
@@ -495,15 +495,15 @@ channel     设置无线网络通信频段
 sens        设置无线网络设备的感知阀值
 mode        设置无线网络设备的通信设备
 ap          强迫无线网卡向给定地址的接入点注册
-nick&lt;名字&gt;   为网卡设定别名
-rate&lt;速率&gt;   设定无线网卡的速率
-rts&lt;阀值&gt;    在传输数据包之前增加一次握手，确信信道在正常的
+nick<名字>   为网卡设定别名
+rate<速率>   设定无线网卡的速率
+rts<阀值>    在传输数据包之前增加一次握手，确信信道在正常的
 power       无线网卡的功率设置</code></pre>
 <h3 id="iw-命令"><a href="#iw-命令" class="headerlink" title="iw 命令"></a>iw 命令</h3><hr>
 <blockquote>
 <p>iw 是一种新的基于 nl80211 的用于无线设备的CLI配置实用程序。它支持最近已添加到内核所有新的驱动程序。采用无线扩展接口的旧工具iwconfig已被废弃，强烈建议切换到 iw 和 nl80211。</p>
 </blockquote>
-<pre><code>pi@raspberrypi:~$ iw --help
+<pre class=" language-shell"><code class="language-shell">pi@raspberrypi:~$ iw --help
 Usage:  iw [options] command
 Options:
         --debug         enable netlink debugging
@@ -511,7 +511,7 @@ Options:
 Commands:
         help [command]
                 Print usage for all or a specific command, e.g.
-                &quot;help wowlan&quot; or &quot;help wowlan enable&quot;.
+                "help wowlan" or "help wowlan enable".
 
         event [-t|-r] [-f]
                 Monitor events from the kernel.
@@ -523,29 +523,29 @@ Commands:
 
 
         commands
-                list all known commands and their decimal &amp; hex value
+                list all known commands and their decimal & hex value
 
         phy
         list
                 List all wireless devices and their capabilities.
 
-        phy &lt;phyname&gt; info
+        phy <phyname> info
                 Show capabilities for the specified wireless device.
 
-        phy &lt;phyname&gt; channels
+        phy <phyname> channels
                 Show available channels.
 
         dev
                 List all network interfaces for wireless hardware.
 
-        dev &lt;devname&gt; info
+        dev <devname> info
                 Show information for this interface.
 
-        dev &lt;devname&gt; del
+        dev <devname> del
                 Remove this virtual interface
 
-        dev &lt;devname&gt; interface add &lt;name&gt; type &lt;type&gt; [mesh_id &lt;meshid&gt;] [4addr on|off] [flags &lt;flag&gt;*] [addr &lt;mac-addr&gt;]
-        phy &lt;phyname&gt; interface add &lt;name&gt; type &lt;type&gt; [mesh_id &lt;meshid&gt;] [4addr on|off] [flags &lt;flag&gt;*] [addr &lt;mac-addr&gt;]
+        dev <devname> interface add <name> type <type> [mesh_id <meshid>] [4addr on|off] [flags <flag>*] [addr <mac-addr>]
+        phy <phyname> interface add <name> type <type> [mesh_id <meshid>] [4addr on|off] [flags <flag>*] [addr <mac-addr>]
                 Add a new virtual interface with the given configuration.
                 Valid interface types are: managed, ibss, monitor, mesh, wds.
 
@@ -556,268 +556,268 @@ Commands:
                 otherbss: show frames from other BSSes
                 cook:     use cooked mode
                 active:   use active mode (ACK incoming unicast packets)
-                mumimo-groupid &lt;GROUP_ID&gt;: use MUMIMO according to a group id
-                mumimo-follow-mac &lt;MAC_ADDRESS&gt;: use MUMIMO according to a MAC address
+                mumimo-groupid <GROUP_ID>: use MUMIMO according to a group id
+                mumimo-follow-mac <MAC_ADDRESS>: use MUMIMO according to a MAC address
 
                 The mesh_id is used only for mesh mode.
 
-        dev &lt;devname&gt; ibss join &lt;SSID&gt; &lt;freq in MHz&gt; [NOHT|HT20|HT40+|HT40-|5MHz|10MHz|80MHz] [fixed-freq] [&lt;fixed bssid&gt;] [beacon-interval &lt;TU&gt;] [basic-rates &lt;rate in Mbps,rate2,...&gt;] [mcast-rate &lt;rate in Mbps&gt;] [key d:0:abcde]
-                Join the IBSS cell with the given SSID, if it doesn&#39;t exist create
-                it on the given frequency. When fixed frequency is requested, don&#39;t
+        dev <devname> ibss join <SSID> <freq in MHz> [NOHT|HT20|HT40+|HT40-|5MHz|10MHz|80MHz] [fixed-freq] [<fixed bssid>] [beacon-interval <TU>] [basic-rates <rate in Mbps,rate2,...>] [mcast-rate <rate in Mbps>] [key d:0:abcde]
+                Join the IBSS cell with the given SSID, if it doesn't exist create
+                it on the given frequency. When fixed frequency is requested, don't
                 join/create a cell on a different frequency. When a fixed BSSID is
-                requested use that BSSID and do not adopt another cell&#39;s BSSID even
+                requested use that BSSID and do not adopt another cell's BSSID even
                 if it has higher TSF and the same SSID. If an IBSS is created, create
                 it with the specified basic-rates, multicast-rate and beacon-interval.
 
-        dev &lt;devname&gt; ibss leave
+        dev <devname> ibss leave
                 Leave the current IBSS cell.
 
-        dev &lt;devname&gt; station set &lt;MAC address&gt; plink_action &lt;open|block&gt;
+        dev <devname> station set <MAC address> plink_action <open|block>
                 Set mesh peer link action for this station (peer).
 
-        dev &lt;devname&gt; station set &lt;MAC address&gt; vlan &lt;ifindex&gt;
+        dev <devname> station set <MAC address> vlan <ifindex>
                 Set an AP VLAN for this station.
 
-        dev &lt;devname&gt; station set &lt;MAC address&gt; mesh_power_mode &lt;active|light|deep&gt;
+        dev <devname> station set <MAC address> mesh_power_mode <active|light|deep>
                 Set link-specific mesh power mode for this station
 
-        dev &lt;devname&gt; station dump [-v]
+        dev <devname> station dump [-v]
                 List all stations known, e.g. the AP on managed interfaces
 
-        dev &lt;devname&gt; station del &lt;MAC address&gt; [subtype &lt;subtype&gt;] [reason-code &lt;code&gt;]
+        dev <devname> station del <MAC address> [subtype <subtype>] [reason-code <code>]
                 Remove the given station entry (use with caution!)
                 Example subtype values: 0xA (disassociation), 0xC (deauthentication)
 
-        dev &lt;devname&gt; station get &lt;MAC address&gt;
+        dev <devname> station get <MAC address>
                 Get information for a specific station.
 
-        dev &lt;devname&gt; survey dump
+        dev <devname> survey dump
                 List all gathered channel survey data
 
-        dev &lt;devname&gt; ocb leave
+        dev <devname> ocb leave
                 Leave the OCB mode network.
 
-        dev &lt;devname&gt; ocb join &lt;freq in MHz&gt; &lt;5MHz|10MHz&gt;
+        dev <devname> ocb join <freq in MHz> <5MHz|10MHz>
                 Join the OCB mode network.
 
-        dev &lt;devname&gt; mesh leave
+        dev <devname> mesh leave
                 Leave a mesh.
 
-        dev &lt;devname&gt; mesh join &lt;mesh ID&gt; [[freq &lt;freq in MHz&gt; &lt;NOHT|HT20|HT40+|HT40-|80MHz&gt;] [basic-rates &lt;rate in Mbps,rate2,...&gt;]], [mcast-rate &lt;rate in Mbps&gt;] [beacon-interval &lt;time in TUs&gt;] [dtim-period &lt;value&gt;] [vendor_sync on|off] [&lt;param&gt;=&lt;value&gt;]*
+        dev <devname> mesh join <mesh ID> [[freq <freq in MHz> <NOHT|HT20|HT40+|HT40-|80MHz>] [basic-rates <rate in Mbps,rate2,...>]], [mcast-rate <rate in Mbps>] [beacon-interval <time in TUs>] [dtim-period <value>] [vendor_sync on|off] [<param>=<value>]*
                 Join a mesh with the given mesh ID with frequency, basic-rates,
                 mcast-rate and mesh parameters. Basic-rates are applied only if
                 frequency is provided.
 
-        dev &lt;devname&gt; mpath dump
+        dev <devname> mpath dump
                 List known mesh paths.
 
-        dev &lt;devname&gt; mpath set &lt;destination MAC address&gt; next_hop &lt;next hop MAC address&gt;
-                Set an existing mesh path&#39;s next hop.
+        dev <devname> mpath set <destination MAC address> next_hop <next hop MAC address>
+                Set an existing mesh path's next hop.
 
-        dev &lt;devname&gt; mpath new &lt;destination MAC address&gt; next_hop &lt;next hop MAC address&gt;
+        dev <devname> mpath new <destination MAC address> next_hop <next hop MAC address>
                 Create a new mesh path (instead of relying on automatic discovery).
 
-        dev &lt;devname&gt; mpath del &lt;MAC address&gt;
+        dev <devname> mpath del <MAC address>
                 Remove the mesh path to the given node.
 
-        dev &lt;devname&gt; mpath get &lt;MAC address&gt;
+        dev <devname> mpath get <MAC address>
                 Get information on mesh path to the given node.
 
-        dev &lt;devname&gt; mpp dump
+        dev <devname> mpp dump
                 List known mesh proxy paths.
 
-        dev &lt;devname&gt; mpp get &lt;MAC address&gt;
+        dev <devname> mpp get <MAC address>
                 Get information on mesh proxy path to the given node.
 
-        dev &lt;devname&gt; scan [-u] [freq &lt;freq&gt;*] [ies &lt;hex as 00:11:..&gt;] [meshid &lt;meshid&gt;] [lowpri,flush,ap-force] [randomise[=&lt;addr&gt;/&lt;mask&gt;]] [ssid &lt;ssid&gt;*|passive]
+        dev <devname> scan [-u] [freq <freq>*] [ies <hex as 00:11:..>] [meshid <meshid>] [lowpri,flush,ap-force] [randomise[=<addr>/<mask>]] [ssid <ssid>*|passive]
                 Scan on the given frequencies and probe for the given SSIDs
                 (or wildcard if not given) unless passive scanning is requested.
                 If -u is specified print unknown data in the scan results.
                 Specified (vendor) IEs must be well-formed.
 
-        dev &lt;devname&gt; scan sched_stop
+        dev <devname> scan sched_stop
                 Stop an ongoing scheduled scan.
 
-        dev &lt;devname&gt; scan sched_start [interval &lt;in_msecs&gt; | scan_plans [&lt;interval_secs:iterations&gt;*] &lt;interval_secs&gt;] [delay &lt;in_secs&gt;] [freqs &lt;freq&gt;+] [matches [ssid &lt;ssid&gt;]+]] [active [ssid &lt;ssid&gt;]+|passive] [randomise[=&lt;addr&gt;/&lt;mask&gt;]]
+        dev <devname> scan sched_start [interval <in_msecs> | scan_plans [<interval_secs:iterations>*] <interval_secs>] [delay <in_secs>] [freqs <freq>+] [matches [ssid <ssid>]+]] [active [ssid <ssid>]+|passive] [randomise[=<addr>/<mask>]]
                 Start a scheduled scan at the specified interval on the given frequencies
                 with probing for the given SSIDs (or wildcard if not given) unless passive
                 scanning is requested.  If matches are specified, only matching results
                 will be returned.
 
-        dev &lt;devname&gt; scan abort
+        dev <devname> scan abort
                 Abort ongoing scan
 
-        dev &lt;devname&gt; scan trigger [freq &lt;freq&gt;*] [ies &lt;hex as 00:11:..&gt;] [meshid &lt;meshid&gt;] [lowpri,flush,ap-force] [randomise[=&lt;addr&gt;/&lt;mask&gt;]] [ssid &lt;ssid&gt;*|passive]
+        dev <devname> scan trigger [freq <freq>*] [ies <hex as 00:11:..>] [meshid <meshid>] [lowpri,flush,ap-force] [randomise[=<addr>/<mask>]] [ssid <ssid>*|passive]
                 Trigger a scan on the given frequencies with probing for the given
                 SSIDs (or wildcard if not given) unless passive scanning is requested.
 
-        dev &lt;devname&gt; scan dump [-u]
+        dev <devname> scan dump [-u]
                 Dump the current scan results. If -u is specified, print unknown
                 data in scan results.
 
-        phy &lt;phyname&gt; reg get
-                Print out the devices&#39; current regulatory domain information.
+        phy <phyname> reg get
+                Print out the devices' current regulatory domain information.
 
         reg get
-                Print out the kernel&#39;s current regulatory domain information.
+                Print out the kernel's current regulatory domain information.
 
-        reg set &lt;ISO/IEC 3166-1 alpha2&gt;
+        reg set <ISO/IEC 3166-1 alpha2>
                 Notify the kernel about the current regulatory domain.
 
-        dev &lt;devname&gt; auth &lt;SSID&gt; &lt;bssid&gt; &lt;type:open|shared&gt; &lt;freq in MHz&gt; [key 0:abcde d:1:6162636465]
+        dev <devname> auth <SSID> <bssid> <type:open|shared> <freq in MHz> [key 0:abcde d:1:6162636465]
                 Authenticate with the given network.
 
 
-        dev &lt;devname&gt; connect [-w] &lt;SSID&gt; [&lt;freq in MHz&gt;] [&lt;bssid&gt;] [key 0:abcde d:1:6162636465]
+        dev <devname> connect [-w] <SSID> [<freq in MHz>] [<bssid>] [key 0:abcde d:1:6162636465]
                 Join the network with the given SSID (and frequency, BSSID).
                 With -w, wait for the connect to finish or fail.
 
-        dev &lt;devname&gt; disconnect
+        dev <devname> disconnect
                 Disconnect from the current network.
 
-        dev &lt;devname&gt; link
+        dev <devname> link
                 Print information about the current link, if any.
 
-        dev &lt;devname&gt; offchannel &lt;freq&gt; &lt;duration&gt;
+        dev <devname> offchannel <freq> <duration>
                 Leave operating channel and go to the given channel for a while.
 
-        dev &lt;devname&gt; cqm rssi &lt;threshold|off&gt; [&lt;hysteresis&gt;]
+        dev <devname> cqm rssi <threshold|off> [<hysteresis>]
                 Set connection quality monitor RSSI threshold.
 
 
-        phy &lt;phyname&gt; wowlan show
+        phy <phyname> wowlan show
                 Show WoWLAN status.
 
-        phy &lt;phyname&gt; wowlan disable
+        phy <phyname> wowlan disable
                 Disable WoWLAN.
 
-        phy &lt;phyname&gt; wowlan enable [any] [disconnect] [magic-packet] [gtk-rekey-failure] [eap-identity-request] [4way-handshake] [rfkill-release] [net-detect [interval &lt;in_msecs&gt; | scan_plans [&lt;interval_secs:iterations&gt;*] &lt;interval_secs&gt;] [delay &lt;in_secs&gt;] [freqs &lt;freq&gt;+] [matches [ssid &lt;ssid&gt;]+]] [active [ssid &lt;ssid&gt;]+|passive] [randomise[=&lt;addr&gt;/&lt;mask&gt;]]] [tcp &lt;config-file&gt;] [patterns [offset1+]&lt;pattern1&gt; ...]
+        phy <phyname> wowlan enable [any] [disconnect] [magic-packet] [gtk-rekey-failure] [eap-identity-request] [4way-handshake] [rfkill-release] [net-detect [interval <in_msecs> | scan_plans [<interval_secs:iterations>*] <interval_secs>] [delay <in_secs>] [freqs <freq>+] [matches [ssid <ssid>]+]] [active [ssid <ssid>]+|passive] [randomise[=<addr>/<mask>]]] [tcp <config-file>] [patterns [offset1+]<pattern1> ...]
                 Enable WoWLAN with the given triggers.
-                Each pattern is given as a bytestring with &#39;-&#39; in places where any byte
+                Each pattern is given as a bytestring with '-' in places where any byte
                 may be present, e.g. 00:11:22:-:44 will match 00:11:22:33:44 and
                 00:11:22:33:ff:44 etc.
-                Offset and pattern should be separated by &#39;+&#39;, e.g. 18+43:34:00:12 will match &#39;43:34:00:12&#39; after 18 bytes of offset in Rx packet.
+                Offset and pattern should be separated by '+', e.g. 18+43:34:00:12 will match '43:34:00:12' after 18 bytes of offset in Rx packet.
 
                 The TCP configuration file contains:
                   source=ip[:port]
                   dest=ip:port@mac
-                  data=&lt;hex data packet&gt;
+                  data=<hex data packet>
                   data.interval=seconds
-                  [wake=&lt;hex packet with masked out bytes indicated by &#39;-&#39;&gt;]
+                  [wake=<hex packet with masked out bytes indicated by '-'>]
                   [data.seq=len,offset[,start]]
-                  [data.tok=len,offset,&lt;token stream&gt;]
+                  [data.tok=len,offset,<token stream>]
 
                 Net-detect configuration example:
                  iw phy0 wowlan enable net-detect interval 5000 delay 30 freqs 2412 2422 matches ssid foo ssid bar
 
-        phy &lt;phyname&gt; coalesce show
+        phy <phyname> coalesce show
                 Show coalesce status.
 
-        phy &lt;phyname&gt; coalesce disable
+        phy <phyname> coalesce disable
                 Disable coalesce.
 
-        phy &lt;phyname&gt; coalesce enable &lt;config-file&gt;
+        phy <phyname> coalesce enable <config-file>
                 Enable coalesce with given configuration.
                 The configuration file contains coalesce rules:
-                  delay=&lt;delay&gt;
-                  condition=&lt;condition&gt;
-                  patterns=&lt;[offset1+]&lt;pattern1&gt;,&lt;[offset2+]&lt;pattern2&gt;,...&gt;
-                  delay=&lt;delay&gt;
-                  condition=&lt;condition&gt;
-                  patterns=&lt;[offset1+]&lt;pattern1&gt;,&lt;[offset2+]&lt;pattern2&gt;,...&gt;
+                  delay=<delay>
+                  condition=<condition>
+                  patterns=<[offset1+]<pattern1>,<[offset2+]<pattern2>,...>
+                  delay=<delay>
+                  condition=<condition>
+                  patterns=<[offset1+]<pattern1>,<[offset2+]<pattern2>,...>
                   ...
                 delay: maximum coalescing delay in msec.
-                condition: 1/0 i.e. &#39;not match&#39;/&#39;match&#39; the patterns
-                patterns: each pattern is given as a bytestring with &#39;-&#39; in
+                condition: 1/0 i.e. 'not match'/'match' the patterns
+                patterns: each pattern is given as a bytestring with '-' in
                 places where any byte may be present, e.g. 00:11:22:-:44 will
                 match 00:11:22:33:44 and 00:11:22:33:ff:44 etc. Offset and
-                pattern should be separated by &#39;+&#39;, e.g. 18+43:34:00:12 will
-                match &#39;43:34:00:12&#39; after 18 bytes of offset in Rx packet.
+                pattern should be separated by '+', e.g. 18+43:34:00:12 will
+                match '43:34:00:12' after 18 bytes of offset in Rx packet.
 
 
-        dev &lt;devname&gt; roc start &lt;freq&gt; &lt;time in ms&gt;
+        dev <devname> roc start <freq> <time in ms>
 
 
-        wdev &lt;idx&gt; p2p stop
+        wdev <idx> p2p stop
 
 
-        wdev &lt;idx&gt; p2p start
+        wdev <idx> p2p start
 
 
-        dev &lt;devname&gt; vendor recvbin &lt;oui&gt; &lt;subcmd&gt; &lt;filename|-|hex data&gt;
+        dev <devname> vendor recvbin <oui> <subcmd> <filename|-|hex data>
 
 
-        dev &lt;devname&gt; vendor recv &lt;oui&gt; &lt;subcmd&gt; &lt;filename|-|hex data&gt;
+        dev <devname> vendor recv <oui> <subcmd> <filename|-|hex data>
 
 
-        dev &lt;devname&gt; vendor send &lt;oui&gt; &lt;subcmd&gt; &lt;filename|-|hex data&gt;
+        dev <devname> vendor send <oui> <subcmd> <filename|-|hex data>
 
 
-        phy &lt;phyname&gt; set antenna &lt;bitmap&gt; | all | &lt;tx bitmap&gt; &lt;rx bitmap&gt;
+        phy <phyname> set antenna <bitmap> | all | <tx bitmap> <rx bitmap>
                 Set a bitmap of allowed antennas to use for TX and RX.
                 The driver may reject antenna configurations it cannot support.
 
-        dev &lt;devname&gt; set txpower &lt;auto|fixed|limit&gt; [&lt;tx power in mBm&gt;]
+        dev <devname> set txpower <auto|fixed|limit> [<tx power in mBm>]
                 Specify transmit power level and setting type.
 
-        phy &lt;phyname&gt; set txpower &lt;auto|fixed|limit&gt; [&lt;tx power in mBm&gt;]
+        phy <phyname> set txpower <auto|fixed|limit> [<tx power in mBm>]
                 Specify transmit power level and setting type.
 
-        phy &lt;phyname&gt; set distance &lt;auto|distance&gt;
+        phy <phyname> set distance <auto|distance>
                 Enable ACK timeout estimation algorithm (dynack) or set appropriate
                 coverage class for given link distance in meters.
                 To disable dynack set valid value for coverage class.
                 Valid values: 0 - 114750
 
-        phy &lt;phyname&gt; set coverage &lt;coverage class&gt;
+        phy <phyname> set coverage <coverage class>
                 Set coverage class (1 for every 3 usec of air propagation time).
                 Valid values: 0 - 255.
 
-        phy &lt;phyname&gt; set netns &#123; &lt;pid&gt; | name &lt;nsname&gt; &#125;
+        phy <phyname> set netns &#123; <pid> | name <nsname> &#125;
                 Put this wireless device into a different network namespace:
-                    &lt;pid&gt;    - change network namespace by process id
-                    &lt;nsname&gt; - change network namespace by name from /run/netns
+                    <pid>    - change network namespace by process id
+                    <nsname> - change network namespace by name from /run/netns
                                or by absolute path (man ip-netns)
 
 
-        phy &lt;phyname&gt; set retry [short &lt;limit&gt;] [long &lt;limit&gt;]
+        phy <phyname> set retry [short <limit>] [long <limit>]
                 Set retry limit.
 
-        phy &lt;phyname&gt; set rts &lt;rts threshold|off&gt;
+        phy <phyname> set rts <rts threshold|off>
                 Set rts threshold.
 
-        phy &lt;phyname&gt; set frag &lt;fragmentation threshold|off&gt;
+        phy <phyname> set frag <fragmentation threshold|off>
                 Set fragmentation threshold.
 
-        dev &lt;devname&gt; set channel &lt;channel&gt; [HT20|HT40+|HT40-]
-        phy &lt;phyname&gt; set channel &lt;channel&gt; [HT20|HT40+|HT40-]
-        dev &lt;devname&gt; set freq &lt;freq&gt; [HT20|HT40+|HT40-]
-        dev &lt;devname&gt; set freq &lt;control freq&gt; [20|40|80|80+80|160] [&lt;center freq 1&gt;] [&lt;center freq 2&gt;]
-        phy &lt;phyname&gt; set freq &lt;freq&gt; [HT20|HT40+|HT40-]
+        dev <devname> set channel <channel> [HT20|HT40+|HT40-]
+        phy <phyname> set channel <channel> [HT20|HT40+|HT40-]
+        dev <devname> set freq <freq> [HT20|HT40+|HT40-]
+        dev <devname> set freq <control freq> [20|40|80|80+80|160] [<center freq 1>] [<center freq 2>]
+        phy <phyname> set freq <freq> [HT20|HT40+|HT40-]
                 Set frequency/channel the hardware is using, including HT
                 configuration.
 
-        phy &lt;phyname&gt; set name &lt;new name&gt;
+        phy <phyname> set name <new name>
                 Rename this wireless device.
 
-        dev &lt;devname&gt; set mcast_rate &lt;rate in Mbps&gt;
+        dev <devname> set mcast_rate <rate in Mbps>
                 Set the multicast bitrate.
 
-        dev &lt;devname&gt; set peer &lt;MAC address&gt;
+        dev <devname> set peer <MAC address>
                 Set interface WDS peer.
 
-        dev &lt;devname&gt; set noack_map &lt;map&gt;
+        dev <devname> set noack_map <map>
                 Set the NoAck map for the TIDs. (0x0009 = BE, 0x0006 = BK, 0x0030 = VI, 0x00C0 = VO)
 
-        dev &lt;devname&gt; set 4addr &lt;on|off&gt;
+        dev <devname> set 4addr <on|off>
                 Set interface 4addr (WDS) mode.
 
-        dev &lt;devname&gt; set type &lt;type&gt;
+        dev <devname> set type <type>
                 Set interface type/mode.
                 Valid interface types are: managed, ibss, monitor, mesh, wds.
 
-        dev &lt;devname&gt; set meshid &lt;meshid&gt;
-        dev &lt;devname&gt; set monitor &lt;flag&gt;*
+        dev <devname> set meshid <meshid>
+        dev <devname> set monitor <flag>*
                 Set monitor flags. Valid flags are:
                 none:     no special flags
                 fcsfail:  show frames with FCS errors
@@ -825,35 +825,35 @@ Commands:
                 otherbss: show frames from other BSSes
                 cook:     use cooked mode
                 active:   use active mode (ACK incoming unicast packets)
-                mumimo-groupid &lt;GROUP_ID&gt;: use MUMIMO according to a group id
-                mumimo-follow-mac &lt;MAC_ADDRESS&gt;: use MUMIMO according to a MAC address
+                mumimo-groupid <GROUP_ID>: use MUMIMO according to a group id
+                mumimo-follow-mac <MAC_ADDRESS>: use MUMIMO according to a MAC address
 
-        dev &lt;devname&gt; set mesh_param &lt;param&gt;=&lt;value&gt; [&lt;param&gt;=&lt;value&gt;]*
+        dev <devname> set mesh_param <param>=<value> [<param>=<value>]*
                 Set mesh parameter (run command without any to see available ones).
 
-        dev &lt;devname&gt; set power_save &lt;on|off&gt;
+        dev <devname> set power_save <on|off>
                 Set power save state to on or off.
 
-        dev &lt;devname&gt; set bitrates [legacy-&lt;2.4|5&gt; &lt;legacy rate in Mbps&gt;*] [ht-mcs-&lt;2.4|5&gt; &lt;MCS index&gt;*] [vht-mcs-&lt;2.4|5&gt; &lt;NSS:MCSx,MCSy... | NSS:MCSx-MCSy&gt;*] [sgi-2.4|lgi-2.4] [sgi-5|lgi-5]
+        dev <devname> set bitrates [legacy-<2.4|5> <legacy rate in Mbps>*] [ht-mcs-<2.4|5> <MCS index>*] [vht-mcs-<2.4|5> <NSS:MCSx,MCSy... | NSS:MCSx-MCSy>*] [sgi-2.4|lgi-2.4] [sgi-5|lgi-5]
                 Sets up the specified rate masks.
                 Not passing any arguments would clear the existing mask (if any).
 
-        dev &lt;devname&gt; get mesh_param [&lt;param&gt;]
+        dev <devname> get mesh_param [<param>]
                 Retrieve mesh parameter (run command without any to see available ones).
 
-        dev &lt;devname&gt; get power_save &lt;param&gt;
+        dev <devname> get power_save <param>
                 Retrieve power save state.
 
 
-Commands that use the netdev (&#39;dev&#39;) can also be given the
-&#39;wdev&#39; instead to identify the device.
+Commands that use the netdev ('dev') can also be given the
+'wdev' instead to identify the device.
 
-You can omit the &#39;phy&#39; or &#39;dev&#39; if the identification is unique,
-e.g. &quot;iw wlan0 info&quot; or &quot;iw phy0 info&quot;. (Don&#39;t when scripting.)
+You can omit the 'phy' or 'dev' if the identification is unique,
+e.g. "iw wlan0 info" or "iw phy0 info". (Don't when scripting.)
 
-Do NOT screenscrape this tool, we don&#39;t consider its output stable.</code></pre>
+Do NOT screenscrape this tool, we don't consider its output stable.</code></pre>
 <p><strong>解说</strong></p>
-<pre><code># iw list                 # 获得所有设备的功能，如带宽信息（2.4GHz，和5GHz），和802.11n的信息
+<pre class=" language-sh"><code class="language-sh"># iw list                 # 获得所有设备的功能，如带宽信息（2.4GHz，和5GHz），和802.11n的信息
 # iw dev wlan0 scan       # 扫描
 # iw event                # 监听事件
 # iw dev wlan0 link       # 获得链路状态
@@ -885,7 +885,7 @@ Do NOT screenscrape this tool, we don&#39;t consider its output stable.</code></
 <ul>
 <li>立即连接WIFI网络</li>
 </ul>
-<p>　　使用命令<br>    <code>　　     sudo /etc/init.d/networking restart    </code><br>　　成功后，用 ifconfig 命令可以看到 wlan0 设备，且有了IP地址(已连接)</p>
+<p>　　使用命令<br>    <code>shell 　　     sudo /etc/init.d/networking restart     </code><br>　　成功后，用 ifconfig 命令可以看到 wlan0 设备，且有了IP地址(已连接)</p>
 <ul>
 <li>以后每次启动，系统都将自动连接到名为JoStudio的WIFI网络</li>
 </ul>
@@ -895,7 +895,7 @@ Do NOT screenscrape this tool, we don&#39;t consider its output stable.</code></
 </blockquote>
 <ol>
 <li><p>启动wpa_cli 命令界面</p>
-<pre><code>    sudo wpa_cli</code></pre>
+<pre class=" language-sh"><code class="language-sh">    sudo wpa_cli</code></pre>
 </li>
 <li><p>常用命令</p>
 </li>
@@ -1067,37 +1067,37 @@ Do NOT screenscrape this tool, we don&#39;t consider its output stable.</code></
 </tbody></table>
 <ol start="3">
 <li><p>Example wpa_cli</p>
-<pre><code>for AP that doesn`t have encryption
-&gt;add_network      (It will display a network id for you, assume it returns 0)
-&gt;set_network 0 ssid “666”
-&gt;set_network 0 key_mgmt NONE
-&gt;enable_network 0
-&gt;quit
+<pre class=" language-sh"><code class="language-sh">for AP that doesn`t have encryption
+>add_network      (It will display a network id for you, assume it returns 0)
+>set_network 0 ssid “666”
+>set_network 0 key_mgmt NONE
+>enable_network 0
+>quit
 
 if normal, we have connectted to the AP “666”, now you need a IP to access internet, for example:
 dhcpcd wlan0
-if everything is ok, it will get an IP &amp; can access internet
+if everything is ok, it will get an IP & can access internet
 
 for AP that has WEP
-&gt;add_network      (assume returns 1)
-&gt;set_network 1 ssid “666”
-&gt;set_network 1 key_mgmt NONE
-&gt;set_network 1 wep_key0 “your ap passwork”(if usting ASCII, it need double quotation marks, if using hex, then don`t need the double quotation marks)
-&gt;set_network 1 wep_tx_keyidx 0
-&gt;select_network 1  (optional, remember, if you are connecting with another AP, you should select it to disable the another)
-&gt;enable_network 1
+>add_network      (assume returns 1)
+>set_network 1 ssid “666”
+>set_network 1 key_mgmt NONE
+>set_network 1 wep_key0 “your ap passwork”(if usting ASCII, it need double quotation marks, if using hex, then don`t need the double quotation marks)
+>set_network 1 wep_tx_keyidx 0
+>select_network 1  (optional, remember, if you are connecting with another AP, you should select it to disable the another)
+>enable_network 1
 and then ,get an IP to access internet
 
 for AP that has WPA-PSK/WPA2-PSK
-&gt;add_network      (assume returns 2)
-&gt;set_network 2 ssid “666”
-&gt;set_network 2 psk “your pre-shared key”
-&gt;select_network 2  (optional, remember, if you are connecting with another AP, you should select it to disable the another)
-&gt;enable_network 2
+>add_network      (assume returns 2)
+>set_network 2 ssid “666”
+>set_network 2 psk “your pre-shared key”
+>select_network 2  (optional, remember, if you are connecting with another AP, you should select it to disable the another)
+>enable_network 2
 </code></pre>
 </li>
 <li><p>生效</p>
-<pre><code>pi@raspberrypi:~$ sudo /etc/init.d/networking restart
+<pre class=" language-sh"><code class="language-sh">pi@raspberrypi:~$ sudo /etc/init.d/networking restart
 pi@raspberrypi:~$ sudo service networking restart  #跟上面行的作用一样。
 pi@raspberrypi:~$ sudo ifdown wlan0   #有时需要执行 或者 下一行命令才能发生作用。
 pi@raspberrypi:~$ sudo ifup wlan0        #建议尝试本条命令
@@ -1136,28 +1136,28 @@ priority=1
 <li>scan_ssid:连接隐藏WiFi时需要指定该值为1</li>
 </ul>
 <p><strong>如果你的 WiFi 没有密码</strong><br></p>
-<pre><code>network=&#123;
-ssid=&quot;你的无线网络名称（ssid）
-&quot;key_mgmt=NONE
+<pre class=" language-sh"><code class="language-sh">network=&#123;
+ssid="你的无线网络名称（ssid）
+"key_mgmt=NONE
 &#125;</code></pre>
 <p><strong>如果你的 WiFi 使用WEP加密</strong><br></p>
-<pre><code>network=&#123;
-ssid=&quot;你的无线网络名称（ssid）&quot;
-key_mgmt=NONEwep_key0=&quot;你的wifi密码&quot;
+<pre class=" language-sh"><code class="language-sh">network=&#123;
+ssid="你的无线网络名称（ssid）"
+key_mgmt=NONEwep_key0="你的wifi密码"
 &#125;</code></pre>
 <p><strong>如果你的 WiFi 使用WPA/WPA2加密</strong><br></p>
-<pre><code>network=&#123;
-ssid=&quot;你的无线网络名称（ssid）&quot;
-key_mgmt=WPA-PSKpsk=&quot;你的wifi密码&quot;
+<pre class=" language-sh"><code class="language-sh">network=&#123;
+ssid="你的无线网络名称（ssid）"
+key_mgmt=WPA-PSKpsk="你的wifi密码"
 &#125;</code></pre>
-<h2 id="切换国内源"><a href="#切换国内源" class="headerlink" title="切换国内源"></a>切换国内源</h2><h3 id="查看自己的版本类型"><a href="#查看自己的版本类型" class="headerlink" title="查看自己的版本类型"></a>查看自己的版本类型</h3><pre><code>    pi@raspberrypi:~$ lsb_release -a
+<h2 id="切换国内源"><a href="#切换国内源" class="headerlink" title="切换国内源"></a>切换国内源</h2><h3 id="查看自己的版本类型"><a href="#查看自己的版本类型" class="headerlink" title="查看自己的版本类型"></a>查看自己的版本类型</h3><pre class=" language-sh"><code class="language-sh">    pi@raspberrypi:~$ lsb_release -a
     No LSB modules are available.
     Distributor ID: Raspbian
     Description:    Raspbian GNU/Linux 9.4 (stretch)
     Release:        9.4
     Codename:       stretch</code></pre>
 <h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>需要修改的地方有两处</p>
-<pre><code>    /etc/apt/sources.list
+<pre class=" language-sh"><code class="language-sh">    /etc/apt/sources.list
     /etc/apt/sources.list.d/raspi.list</code></pre>
 <p>/etc/apt/sources.list</p>
 <pre class=" language-shell"><code class="language-shell">#deb http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free rpi
@@ -1170,10 +1170,10 @@ deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free 
 #deb-src http://archive.raspberrypi.org/debian/ stretch main ui
 deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/ stretch main ui
 deb-src http://mirrors.ustc.edu.cn/archive.raspberrypi.org/ stretch main ui</code></pre>
-<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><pre><code>  sudo apt-get update
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><pre class=" language-sh"><code class="language-sh">  sudo apt-get update
   sudo apt-get upgrade</code></pre>
 <h2 id="samba"><a href="#samba" class="headerlink" title="samba"></a>samba</h2><hr>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>sudo apt-get install samba</code></pre>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre class=" language-sh"><code class="language-sh">sudo apt-get install samba</code></pre>
 <p>过程日志</p>
 <pre class=" language-shell"><code class="language-shell">pi@raspberrypi:~$ sudo apt-get install samba
 Reading package lists... Done
@@ -1269,9 +1269,9 @@ Created symlink /etc/systemd/system/multi-user.target.wants/smbd.service → /li
 Processing triggers for libc-bin (2.24-11+deb9u3) ...
 Processing triggers for systemd (232-25+deb9u4) ...
 pi@raspberrypi:~$</code></pre>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><pre><code>sudo vim /etc/samba/smb.conf</code></pre>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><pre class=" language-sh"><code class="language-sh">sudo vim /etc/samba/smb.conf</code></pre>
 <p>在最后面添加以下内容</p>
-<pre><code>[public]
+<pre class=" language-sh"><code class="language-sh">[public]
    comment = public storage
    path = /home/pi/workdir
    valid users = pi
@@ -1292,21 +1292,21 @@ pi@raspberrypi:~$</code></pre>
 <li>browseable：是否可见</li>
 </ul>
 <p>其中 <code>valid users</code> 即 <code>pi</code> 为有效用户，还需要添加其到 Samba 中，命令行执行：</p>
-<pre><code>sudo smbpasswd -a pi</code></pre>
+<pre class=" language-sh"><code class="language-sh">sudo smbpasswd -a pi</code></pre>
 <p>重启 samba 以生效配置，命令行执行：</p>
-<pre><code>sudo samba restart</code></pre>
+<pre class=" language-sh"><code class="language-sh">sudo samba restart</code></pre>
 <blockquote>
 <p>注：Samba 默认开机自启，无需为重启担心。</p>
 </blockquote>
 <p>设置文件权限<br>在 Samba 配置文件设置权限后，还需在系统中将共享文件夹的权限设置为同配置文件中相同的权限，以确保其他用户正常访问及修改文件夹内容，命令行执行：</p>
-<pre><code>sudo chmod -R 777 /mnt/udisk</code></pre>
+<pre class=" language-sh"><code class="language-sh">sudo chmod -R 777 /mnt/udisk</code></pre>
 <h3 id="其他指令设置"><a href="#其他指令设置" class="headerlink" title="其他指令设置"></a>其他指令设置</h3><pre class=" language-sh"><code class="language-sh">pdbedit –a username：新建Samba账户。
 pdbedit –x username：删除Samba账户。
 pdbedit –L：列出Samba用户列表，读取passdb.tdb数据库文件。
 pdbedit –Lv：列出Samba用户列表的详细信息。
 pdbedit –c “[D]” –u username：暂停该Samba用户的账号。
 pdbedit –c “[]” –u username：恢复该Samba用户的账号。
-# 启动服务 
+# 启动服务
 /etc/init.d/smb start
 /etc/init.d/smb start
 # 开机自启动
@@ -1856,7 +1856,7 @@ https://github.com/mzlogin/awesome-adb
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">65.4k</span>&nbsp;字
+                class="white-color">63k</span>&nbsp;字
             
             
             

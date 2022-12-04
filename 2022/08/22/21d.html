@@ -389,7 +389,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    446
+                    477
                 </div>
                 
 
@@ -450,6 +450,14 @@ npm ls -g --depth 0
 </li>
 <li><p>查看当前项目已安装包（项目跟目录必须有 package.json 文件）</p>
 <pre class=" language-sh"><code class="language-sh">npm ls</code></pre>
+</li>
+<li><p>显示生产环境依赖的包</p>
+<pre class=" language-sh"><code class="language-sh">  npm ls --depth 0 --prod</code></pre>
+</li>
+<li><p>显示开发环境依赖的包</p>
+<pre><code>```sh
+npm ls --depth 0 --dev
+```</code></pre>
 </li>
 <li><p>不带<code>-g</code>参数</p>
 <ul>
@@ -1002,7 +1010,7 @@ npm ls -g --depth 0
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">65.4k</span>&nbsp;字
+                class="white-color">63k</span>&nbsp;字
             
             
             
